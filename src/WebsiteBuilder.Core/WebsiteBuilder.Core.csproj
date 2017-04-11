@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C19C463-3117-4255-976B-135BF0B48BDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebsiteBuilder.Core</RootNamespace>
+    <AssemblyName>WebsiteBuilder.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\WebsiteBuilder.ExternalAssemblies\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonMark">
+      <HintPath>..\WebsiteBuilder.ExternalAssemblies\CommonMark.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\WebsiteBuilder.ExternalAssemblies\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\WebsiteBuilder.ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Compiling\Compiler.cs" />
+    <Compile Include="Compiling\CompilerConstants.cs" />
+    <Compile Include="Compiling\HtmlDocument.cs" />
+    <Compile Include="Compiling\HtmlElement.cs" />
+    <Compile Include="Compiling\ICompilerStep.cs" />
+    <Compile Include="Compiling\ProgressEventArgs.cs" />
+    <Compile Include="Compiling\SpriteGenerator.cs" />
+    <Compile Include="Compiling\Steps\BuildImagesStep.cs" />
+    <Compile Include="Compiling\Steps\BuildIndexFile.cs" />
+    <Compile Include="Compiling\Steps\BuildPageStep.cs" />
+    <Compile Include="Compiling\Steps\BuildStyleSheetsStep.cs" />
+    <Compile Include="Compiling\Steps\CopyMediaStep.cs" />
+    <Compile Include="Compiling\Steps\PrepareDirectoryStep.cs" />
+    <Compile Include="Exceptions\BadFileExtensionException.cs" />
+    <Compile Include="Exceptions\OutputPathMissingException.cs" />
+    <Compile Include="Localization\Language.cs" />
+    <Compile Include="Localization\LocalizedString.cs" />
+    <Compile Include="Media\MediaFile.cs" />
+    <Compile Include="Media\MediaItem.cs" />
+    <Compile Include="Media\MediaReference.cs" />
+    <Compile Include="Pages\IPage.cs" />
+    <Compile Include="Pages\Page.cs" />
+    <Compile Include="Pages\PageCollection.cs" />
+    <Compile Include="Pages\PageContent.cs" />
+    <Compile Include="Pages\PageContentItem.cs" />
+    <Compile Include="Plugins\PluginHelper.cs" />
+    <Compile Include="Plugins\PluginManager.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\ProjectReader.cs" />
+    <Compile Include="Storage\ProjectWriter.cs" />
+    <Compile Include="Theming\Layout.cs" />
+    <Compile Include="Theming\Theme.cs" />
+    <Compile Include="Theming\ThemeSettings.cs" />
+    <Compile Include="Theming\ThemeStyle.cs" />
+    <Compile Include="Theming\ThemeStyleCss.cs" />
+    <Compile Include="Theming\ThemeStyleLess.cs" />
+    <Compile Include="Tools\DotLessCompiler.cs" />
+    <Compile Include="Tools\FileSizeFormatter.cs" />
+    <Compile Include="Tools\MicrosoftMinifier.cs" />
+    <Compile Include="Tools\Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
+      <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
+      <Name>WebsiteBuilder.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

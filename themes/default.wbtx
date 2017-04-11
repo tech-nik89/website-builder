@@ -1,0 +1,239 @@
+<theme>
+	<description>
+		This is a default theme included in the project.
+		Icons from https://icons8.com are used.
+	</description>
+	<settings>
+		<imageCssClass>.img-{0}</imageCssClass>
+	</settings>
+	<style type="less" name="default">
+		@acentColor: #DD5533;
+		
+		html, body {
+			margin:0;
+			background-color:#DDDDDD;
+		}
+		
+		body {
+			font-family: Verdana;
+			font-size:9pt;
+		}
+		
+		header {
+			background-color:#303030;
+			color:#FFF;
+			padding:20px;
+			text-transform:uppercase;
+			font-size:2em;
+			
+			.img-logo {
+				vertical-align:middle;
+				padding-left:15px;
+			}
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+			text-transform:uppercase;
+			color:@acentColor;
+			font-weight:normal;
+			padding:4px;
+			margin:0;
+		}
+		
+		h1 {
+			font-size:1.5em;
+		}
+		
+		h2 {
+			font-size:1.3em;
+		}
+		
+		h3 {
+			font-size:1.2em;
+		}
+		
+		main {
+			border-top:2px solid @acentColor;
+			background-color:#FFF;
+			margin:20px;
+			padding:10px;
+			box-shadow: 0 2px 2px #AAA;
+		}
+		
+		.languages {
+			position:absolute;
+			top:10px;
+			right:10px;
+			font-size:9pt;
+			height:22px;
+			width:22px;
+			overflow:hidden;
+			text-transform:none;
+			border: 2px solid transparent;
+			outline:none;
+			
+			> i {
+				position:absolute;
+				top:4px;
+				right:4px;
+				cursor:pointer;
+			}
+			
+			&amp;:hover {
+				height:auto;
+				width:auto;
+				background-color:#292929;
+				border:2px solid @acentColor;
+				border-radius:3px;
+			}
+			
+			> ul {
+				padding:0;
+				margin:28px 0 0 0;
+				
+				> li {
+					margin:0;
+					padding:0;
+					
+					a {
+						display:block;
+						margin:0;
+						padding:4px 10px;
+						
+						&amp;:link, &amp;:visited {
+							color:#FFF;
+							text-decoration:none;
+						}
+						
+						&amp;:hover, &amp;:active {
+							background-color:@acentColor;
+						}
+					}
+				}
+			}
+		}
+		
+	</style>
+	<style type="less" name="navigation">
+		@acentColor: #DD5533;
+		@bgColor: #292929;
+		@border: 3px solid @acentColor;
+		
+		nav {
+			background-color:@bgColor;
+			border-bottom:@border;
+			text-transform:uppercase;
+			
+			a {
+				padding:10px 20px;
+				
+				&amp;:link, &amp;:visited {
+					color:#FFF;
+					text-decoration:none;
+					display:block;
+				}
+				
+				&amp;:hover, &amp;:active {
+					background-color:@acentColor;
+				}
+			}
+			
+			ul {
+				list-style-type:none;
+				background-color:@bgColor;
+				padding:0;
+				margin:0;
+			}
+			
+			> ul {
+				margin:0 15px;
+				padding:0;
+				
+				> li {
+					position:relative;
+					display:inline-block;
+					
+					> ul {
+						position:absolute;
+						left:0;
+						top:35px;
+						display:none;
+						width:100%;
+						border-top:@border;
+						z-index:1;
+						
+						li {
+							position:relative;
+							
+							ul {
+								display:none;
+								position:absolute;
+								left:100%;
+								top:0;
+							}
+						}
+					}
+				}
+				
+				li:hover {
+					> ul {
+						display:block;
+					}
+				}
+			}
+		}
+	</style>
+	<image name="logo">	
+		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</image>
+	<image name="languages">
+		iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACj0lEQVQ4T42TS0wTURiFz0xfgzOFMFOGwmBIpZWHFcXIQyXq1oUmEFmJC1dGVpogEhaiLgwSEl2JujO6kmiiC01INDFBICzUCJYCAVJCC/QFQksfTmfMXNOJNmiY3fz3v9899z/nUsj5bj//8jGxnWiUZcWSXaJpg8JambHeC3XNuf1UttA/NNUVCm/20TQoUDRq3A5Mfp0Dx5chvrECmlKhKKpaZCvo7mpz92f3EUDf0Oz9UCh4leF4ZFIx8PZSNNVLePPqE0qdbgj5P+GbX4bRkodoMAxbkfigu23/NW0vAXQOjqqqopA/XVKuVgCqVlMBiqYxcOU4aaVuPvvmTcRjlWJ5DeTtVZjMLGhLPqpdLN6/G8e51hMENTfrx9LyJrjCUgR9HuSx3Mydi7VV1I3H4xkLx9NWXkTEP498mwSThYHLsQcjHyZ0wMTnFYQDAQiSE1vRIFKxqHLvcpOB6nw4ogpSFYxmI9YWp1DbcAR20QLGTJMZaApWgyn4/EmyXuxwQ07LiPi9GOhopghgh+vuqqQDJGc1Dh0oxNvXo7pkjaApOHa6Hgu+BAHuqKD7yVhSEHlLcdlezE/PoLpmH0S7FUYDRQANzUeJ/HQyjq3IKgSpAhuhAOTE5u8ZaMlLJlInz5xtxPCwByYzA5tdJC5kFSXTCryeZQSDMRQUScQFluO+32qvdRMvrz8aVZSMQv0vB/qgcnOgAe6+9J6ProWHCm0CfqxvwSqUgGGt5M6aCyuBKGaml2AwMVgPR8CXFHf0tLgG9STqkFD0BaWC0k5zOMuxOLeIg4dd8EwukITKqqryonCpp7Xy6V9v4U/PtGSm4vGKjJIxZutGgyGdxzLjve11p/75Gndl/A5NvwAcxxIgGjS4iQAAAABJRU5ErkJggg==
+	</image>
+	<layout title="Simple" class="" sections="1">
+		@Model.Content[0]
+	</layout>
+	<layout title="Two Columns" class="two-columns" sections="2">
+		<section>
+			@Model.Content[0]
+		</section>
+		<section>
+			@Model.Content[1]
+		</section>
+	</layout>
+	<navItems>
+		<ul>
+			@Model.Children
+		</ul>
+	</navItems>
+	<navItem>
+		<li>
+			<a href="@Model.Url">@Model.Text</a>
+			@Model.Children
+		</li>
+	</navItem>
+	<languageItems>
+		<span class="languages">
+			<i class="img-languages"></i>
+			<ul>
+				@Model.Items
+			</ul>
+		</span>
+	</languageItems>
+	<languageItem>
+		<li>
+			<a href="@Model.Url">@Model.Text</a>
+		</li>
+	</languageItem>
+	<body>
+		<header>
+			<i class="img-logo"></i>
+			@Model.Title
+			@Model.Languages
+		</header>
+		<nav>
+			@Model.Navigation
+		</nav>
+		<main>
+			@Model.Content
+		</main>
+	</body>
+</theme>

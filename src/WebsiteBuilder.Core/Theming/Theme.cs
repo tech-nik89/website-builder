@@ -1,0 +1,203 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Xml;
+using WebsiteBuilder.Core.Exceptions;
+
+namespace WebsiteBuilder.Core.Theming {
+    public class Theme {
+
+		public const String FileExtension = ".wbtx";
+
+		private const String AttributeType = "type";
+
+        private const String AttributeName = "name";
+
+        private const String AttributeTitle = "title";
+
+        private const String AttributeClassName = "class";
+
+        private const String AttributeSectionCount = "sections";
+
+        private const String NodeRoot = "theme";
+
+		private const String NodeStyle = "style";
+
+		private const String NodeNavItems = "navItems";
+
+		private const String NodeNavItem = "navItem";
+
+		private const String NodeLanguageItems = "languageItems";
+
+		private const String NodeLanguageItem = "languageItem";
+
+		private const String NodeImage = "image";
+
+        private const String NodeBody = "body";
+
+		private const String NodeSettings = "settings";
+
+        private const String NodeLayout = "layout";
+
+        private const String NodeSettingsImageCssClass = "imageCssClass";
+
+		private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
+
+        private static readonly String QueryImages = String.Concat("/", NodeRoot, "/", NodeImage);
+
+        private static readonly String QueryLayouts = String.Concat("/", NodeRoot, "/", NodeLayout);
+
+        private static readonly String QueryNavItems = String.Concat("/", NodeRoot, "/", NodeNavItems);
+
+		private static readonly String QueryNavItem = String.Concat("/", NodeRoot, "/", NodeNavItem);
+
+		private static readonly String QueryLanguageItems = String.Concat("/", NodeRoot, "/", NodeLanguageItems);
+
+		private static readonly String QueryLanguageItem = String.Concat("/", NodeRoot, "/", NodeLanguageItem);
+
+		private static readonly String QueryBody = String.Concat("/", NodeRoot, "/", NodeBody);
+
+		private static readonly String QuerySettings = String.Concat("/", NodeRoot, "/", NodeSettings);
+
+		private static readonly String QuerySettingImageCssClass = String.Concat(QuerySettings, "/", NodeSettingsImageCssClass);
+
+        private const String FormatNoNameStyle = "style-{0}";
+
+        private List<ThemeStyle> _Styles;
+
+        private Dictionary<String, Image> _Images;
+
+        private List<Layout> _Layouts;
+
+		public IEnumerable<ThemeStyle> Styles => _Styles.AsReadOnly();
+
+        public IEnumerable<Layout> Layouts => _Layouts.AsReadOnly();
+
+        public IReadOnlyDictionary<String, Image> Images => _Images;
+
+		public String TemplateNavItem { get; private set; }
+
+		public String TemplateNavItems { get; private set; }
+
+		public String TemplateLanguageItems { get; private set; }
+
+		public String TemplateLanguageItem { get; private set; }
+
+		public String TemplateBody { get; private set; }
+
+		public ThemeSettings Settings { get; private set; }
+
+        internal Theme() {
+			_Styles = new List<ThemeStyle>();
+            _Images = new Dictionary<String, Image>();
+            _Layouts = new List<Layout>();
+			Settings = new ThemeSettings();
+		}
+
+		public static Theme Load(String path) {
+			FileInfo file = new FileInfo(path);
+			Validate(file);
+
+			Theme theme = new Theme();
+			XmlDocument document = new XmlDocument();
+			document.Load(path);
+
+			LoadSettings(theme.Settings, document);
+			LoadStyles(theme, document);
+            LoadTemplates(theme, document);
+            LoadImages(theme, document);
+            LoadLayouts(theme, document);
+
+			return theme;
+		}
+
+        private static void LoadLayouts(Theme theme, XmlDocument document) {
+            var xLayouts = document.SelectNodes(QueryLayouts);
+
+            foreach (XmlNode xLayout in xLayouts) {
+                if (xLayout.Attributes[AttributeClassName] == null ||
+                    xLayout.Attributes[AttributeTitle] == null ||
+                    xLayout.Attributes[AttributeSectionCount] == null) {
+
+                    continue;
+                }
+
+                Layout layout = new Layout();
+
+                layout.ClassName = xLayout.Attributes[AttributeClassName].InnerText;
+                layout.Title = xLayout.Attributes[AttributeTitle].InnerText;
+                layout.SectionCount = Convert.ToInt32(xLayout.Attributes[AttributeSectionCount].InnerText);
+                layout.Template = xLayout.InnerXml;
+
+                theme._Layouts.Add(layout);
+            }
+        }
+
+		private static void LoadSettings(ThemeSettings settings, XmlDocument document) {
+			settings.ImageCssClass = document.SelectSingleNode(QuerySettingImageCssClass)?.InnerText;
+		}
+
+        private static void LoadImages(Theme theme, XmlDocument document) {
+            var xImages = document.SelectNodes(QueryImages);
+
+            foreach (XmlNode xImage in xImages) {
+                String name = xImage.Attributes[AttributeName]?.InnerText;
+                if (String.IsNullOrWhiteSpace(name)) {
+                    continue;
+                }
+
+                try {
+                    byte[] buffer = Convert.FromBase64String(xImage.InnerText.Trim());
+                    using (Stream stream = new MemoryStream(buffer)) {
+                        theme._Images[name] = Image.FromStream(stream);
+                    }
+                }
+                catch {
+                }
+            }
+        }
+
+		private static void LoadTemplates(Theme theme, XmlDocument document) {
+			theme.TemplateBody = document.SelectSingleNode(QueryBody)?.InnerXml ?? String.Empty;
+			theme.TemplateNavItems = document.SelectSingleNode(QueryNavItems)?.InnerXml ?? String.Empty;
+			theme.TemplateNavItem = document.SelectSingleNode(QueryNavItem)?.InnerXml ?? String.Empty;
+			theme.TemplateLanguageItems = document.SelectSingleNode(QueryLanguageItems)?.InnerXml ?? String.Empty;
+			theme.TemplateLanguageItem = document.SelectSingleNode(QueryLanguageItem)?.InnerXml ?? String.Empty;
+		}
+
+		private static void LoadStyles(Theme theme, XmlDocument document) {
+			var xStyles = document.SelectNodes(QueryStyles);
+            int noNamecount = 0;
+
+			foreach (XmlNode xStyle in xStyles) {
+				var type = ThemeStyle.Types.Css;
+
+				if (!Enum.TryParse(xStyle.Attributes[AttributeType]?.InnerText, true, out type)) {
+					continue;
+				}
+
+                String name = xStyle.Attributes[AttributeName]?.InnerText ?? String.Format(FormatNoNameStyle, noNamecount++);
+
+				switch (type) {
+					case ThemeStyle.Types.Css:
+						theme._Styles.Add(new ThemeStyleCss(xStyle.InnerText, name));
+						break;
+					case ThemeStyle.Types.Less:
+						theme._Styles.Add(new ThemeStyleLess(xStyle.InnerText, name));
+						break;
+				}
+			}
+		}
+
+		private static void Validate(FileInfo file) {
+			if (!file.Exists) {
+				throw new FileNotFoundException();
+			}
+
+			if (file.Extension != FileExtension) {
+				throw new BadFileExtensionException();
+			}
+		}
+	}
+}
