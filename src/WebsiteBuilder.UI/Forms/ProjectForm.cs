@@ -83,7 +83,14 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            CurrentProject = Project.Load(ofdProject.FileName);
+            Project project = Project.Load(ofdProject.FileName);
+
+            if (project != null) {
+                CurrentProject = project;
+            }
+            else {
+                HandleError(Strings.ProjectLoadErrorMessage);
+            }
         }
 
         private void CompileProject(bool runAfterCompile = false) {

@@ -21,7 +21,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         public void Write() {
             XDocument document = new XDocument(
-                new XElement("project",
+                new XElement(ProjectStorageConstants.Root,
                     GetSettings(),
                     GetLanguages(),
                     GetMedia(),
@@ -34,35 +34,35 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private XElement GetLanguages() {
-            return new XElement("languages", 
-                _Project.Languages.Select(x => new XElement("language",
-                    new XAttribute("id", x.Id),
+            return new XElement(ProjectStorageConstants.Languages, 
+                _Project.Languages.Select(x => new XElement(ProjectStorageConstants.Language,
+                    new XAttribute(ProjectStorageConstants.Id, x.Id),
                     x.Description
             )));
         }
 
         private XElement GetPages(PageCollection pages) {
-            return new XElement("pages",
+            return new XElement(ProjectStorageConstants.Pages,
                 pages.Select(x => GetPage(x))
             );
         }
 
         private XElement GetPage(Page page) {
-            return new XElement("page",
-                new XAttribute("id", page.Id),
-                new XAttribute("path", page.PathName),
-                new XAttribute("layout", page.LayoutClassName),
-                new XElement("title", GetLocalizedString(page.Title)),
-                new XElement("content", GetContent(page.Content)),
+            return new XElement(ProjectStorageConstants.Page,
+                new XAttribute(ProjectStorageConstants.Id, page.Id),
+                new XAttribute(ProjectStorageConstants.Path, page.PathName),
+                new XAttribute(ProjectStorageConstants.Layout, page.LayoutClassName),
+                new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
+                new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
                 GetPages(page.Pages)
             );
         }
 
         private IEnumerable<XElement> GetContent(IReadOnlyDictionary<int, PageContent> content) {
-            return content.Select(x => new XElement("section",
-                new XAttribute("index", x.Key),
-                new XAttribute("editor", x.Value.EditorType.FullName),
-                new XAttribute("module", x.Value.ModuleType.FullName)
+            return content.Select(x => new XElement(ProjectStorageConstants.Section,
+                new XAttribute(ProjectStorageConstants.Index, x.Key),
+                new XAttribute(ProjectStorageConstants.Editor, x.Value.EditorType.FullName),
+                new XAttribute(ProjectStorageConstants.Module, x.Value.ModuleType.FullName)
             ));
         }
 
@@ -71,15 +71,15 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private XElement GetSettings() {
-            return new XElement("settings",
-                new XElement("autoCloseCompileDialog", _Project.AutoCloseCompileDialog),
-                new XElement("outputPath", _Project.OutputPath),
-                new XElement("themePath", _Project.ThemePath)
+            return new XElement(ProjectStorageConstants.Settings,
+                new XElement(ProjectStorageConstants.AutoCloseCompleteDialog, _Project.AutoCloseCompileDialog),
+                new XElement(ProjectStorageConstants.OutputPath, _Project.OutputPath),
+                new XElement(ProjectStorageConstants.ThemePath, _Project.ThemePath)
             );
         }
 
         private XElement GetMedia() {
-            return new XElement("media",
+            return new XElement(ProjectStorageConstants.Media,
                 _Project.Media.Select(x => GetMedia(x))
             );
         }
@@ -89,18 +89,18 @@ namespace WebsiteBuilder.Core.Storage {
             MediaReference referenceFile = item as MediaReference;
             
             if (mediaFile != null) {
-                return new XElement("file",
-                    new XAttribute("id", mediaFile.Id),
-                    new XAttribute("name", mediaFile.Name),
-                    new XAttribute("autoSave", mediaFile.AutoSave),
+                return new XElement(ProjectStorageConstants.File,
+                    new XAttribute(ProjectStorageConstants.Id, mediaFile.Id),
+                    new XAttribute(ProjectStorageConstants.Name, mediaFile.Name),
+                    new XAttribute(ProjectStorageConstants.AutoSave, mediaFile.AutoSave),
                     Convert.ToBase64String(mediaFile.Data)
                 );
             }
             else if (referenceFile != null) {
-                return new XElement("reference",
-                    new XAttribute("id", referenceFile.Id),
-                    new XAttribute("filePath", referenceFile.FilePath),
-                    new XAttribute("autoSave", referenceFile.AutoSave)
+                return new XElement(ProjectStorageConstants.Reference,
+                    new XAttribute(ProjectStorageConstants.Id, referenceFile.Id),
+                    new XAttribute(ProjectStorageConstants.Path, referenceFile.FilePath),
+                    new XAttribute(ProjectStorageConstants.AutoSave, referenceFile.AutoSave)
                 );
             }
 

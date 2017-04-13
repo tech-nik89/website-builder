@@ -243,6 +243,9 @@
   <data name="ProjectFilesFilter" xml:space="preserve">
     <value>Website Projects (*{0})|*{0}</value>
   </data>
+  <data name="ProjectLoadErrorMessage" xml:space="preserve">
+    <value>The project could not be loaded. The file either does not exist or is no valid project file.</value>
+  </data>
   <data name="ProjectSettings" xml:space="preserve">
     <value>Project Settings</value>
   </data>

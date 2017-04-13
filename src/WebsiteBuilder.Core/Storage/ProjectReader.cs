@@ -21,46 +21,51 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         public Project Read() {
-            String xml = File.ReadAllText(_File.FullName);
-            XDocument document = XDocument.Parse(xml);
-            XElement root = document.Element("project");
+            try {
+                String xml = File.ReadAllText(_File.FullName);
+                XDocument document = XDocument.Parse(xml);
+                XElement root = document.Element(ProjectStorageConstants.Root);
 
-            GetSettings(root.Element("settings"));
-            GetLanguages(root.Element("languages"));
-            GetMedia(root.Element("media"));
+                GetSettings(root.Element(ProjectStorageConstants.Settings));
+                GetLanguages(root.Element(ProjectStorageConstants.Languages));
+                GetMedia(root.Element(ProjectStorageConstants.Media));
 
-            _Project.Pages.AddRange(GetPages(root.Element("pages")));
+                _Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
 
-            _Project.ProjectFilePath = _File.FullName;
+                _Project.ProjectFilePath = _File.FullName;
 
-            return _Project;
+                return _Project;
+            }
+            catch {
+                return null;
+            }
         }
 
         private IEnumerable<Page> GetPages(XElement element) {
-            return element.Elements("page").Select(x => GetPage(x));
+            return element.Elements(ProjectStorageConstants.Page).Select(x => GetPage(x));
         }
 
         private Page GetPage(XElement element) {
             Page page = new Page(_Project) {
-                Id = element.Attribute("id").Value,
-                PathName = element.Attribute("path").Value,
-                LayoutClassName = element.Attribute("layout").Value
+                Id = element.Attribute(ProjectStorageConstants.Id).Value,
+                PathName = element.Attribute(ProjectStorageConstants.Path).Value,
+                LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value
             };
 
-            page.Pages.AddRange(GetPages(element.Element("pages")));
-            GetLocalizedString(element.Element("title"), page.Title);
-            GetContent(element.Element("content"), page);
+            page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
+            GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);
+            GetContent(element.Element(ProjectStorageConstants.Content), page);
 
             return page;
         }
 
         private void GetContent(XElement element, Page page) {
-            foreach (XElement item in element.Elements("section")) {
-                int index = Convert.ToInt32(item.Attribute("index").Value);
+            foreach (XElement item in element.Elements(ProjectStorageConstants.Section)) {
+                int index = Convert.ToInt32(item.Attribute(ProjectStorageConstants.Index).Value);
                 PageContent content = page[index];
                 content.Index = index;
-                content.EditorType = PluginManager.GetEditor(item.Attribute("editor").Value);
-                content.ModuleType = PluginManager.GetModule(item.Attribute("module").Value);
+                content.EditorType = PluginManager.GetEditor(item.Attribute(ProjectStorageConstants.Editor).Value);
+                content.ModuleType = PluginManager.GetModule(item.Attribute(ProjectStorageConstants.Module).Value);
             }
         }
 
@@ -76,17 +81,17 @@ namespace WebsiteBuilder.Core.Storage {
 
         private MediaItem GetMediaItem(XElement element) {
             switch (element.Name.ToString()) {
-                case "file":
+                case ProjectStorageConstants.File:
                     return new MediaFile() {
-                        Id = element.Attribute("id").Value,
-                        FileName = element.Attribute("name").Value,
-                        AutoSave = Convert.ToBoolean(element.Attribute("autoSave").Value)
+                        Id = element.Attribute(ProjectStorageConstants.Id).Value,
+                        FileName = element.Attribute(ProjectStorageConstants.Name).Value,
+                        AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value)
                     };
-                case "reference":
+                case ProjectStorageConstants.Reference:
                     return new MediaReference() {
-                        Id = element.Attribute("id").Value,
-                        FilePath = element.Attribute("filePath").Value,
-                        AutoSave = Convert.ToBoolean(element.Attribute("autoSave").Value)
+                        Id = element.Attribute(ProjectStorageConstants.Id).Value,
+                        FilePath = element.Attribute(ProjectStorageConstants.Path).Value,
+                        AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value)
                     };
             }
 
@@ -94,15 +99,15 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private void GetSettings(XElement element) {
-            _Project.AutoCloseCompileDialog = Convert.ToBoolean(element.Element("autoCloseCompileDialog").Value);
-            _Project.OutputPath = element.Element("outputPath").Value;
-            _Project.ThemePath = element.Element("themePath").Value;
+            _Project.AutoCloseCompileDialog = Convert.ToBoolean(element.Element(ProjectStorageConstants.AutoCloseCompleteDialog).Value);
+            _Project.OutputPath = element.Element(ProjectStorageConstants.OutputPath).Value;
+            _Project.ThemePath = element.Element(ProjectStorageConstants.ThemePath).Value;
         }
 
         private void GetLanguages(XElement element) {
-            _Project.Languages = element.Elements("language")
+            _Project.Languages = element.Elements(ProjectStorageConstants.Language)
                 .Select(x => new Language() {
-                    Id = x.Attribute("id").Value,
+                    Id = x.Attribute(ProjectStorageConstants.Id).Value,
                     Description = x.Value
                 })
             .ToArray();

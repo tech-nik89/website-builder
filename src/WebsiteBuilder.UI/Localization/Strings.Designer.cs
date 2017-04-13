@@ -439,6 +439,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The project could not be loaded. The file either does not exist or is no valid project file..
+        /// </summary>
+        internal static string ProjectLoadErrorMessage {
+            get {
+                return ResourceManager.GetString("ProjectLoadErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Settings.
         /// </summary>
         internal static string ProjectSettings {
