@@ -11,7 +11,7 @@
 		@bgColor: #292929;
 		@border: 3px solid @acentColor;
 		
-		@media (min-width: 500px) and (pointer:fine) {
+		@media (min-width: 500px), not (pointer:coarse) {
 			nav {
 				> ul {
 					> li {
@@ -162,7 +162,7 @@
 			}
 		}
 		
-		@media (min-width:500px) and (pointer:fine) {
+		@media (min-width:850px) {
 			main {
 				margin-top:20px;
 				border-top:2px solid @acentColor;

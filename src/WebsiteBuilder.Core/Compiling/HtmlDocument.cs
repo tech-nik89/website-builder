@@ -54,15 +54,14 @@ namespace WebsiteBuilder.Core.Compiling {
             
             _Head.AppendChild(_Encoding);
             _Head.AppendChild(GetMetaViewport());
-            _Head.AppendChild(GetWebkitTouchHoverFix());
+
+            ApplyWebkitTouchHoverFix();
 
             Encoding = Encoding.UTF8;
         }
 
-        private static HtmlElement GetWebkitTouchHoverFix() {
-            HtmlElement element = new HtmlElement("script");
-            element.Content = "document.addEventListener('touchstart', function(){}, true);";
-            return element;
+        private void ApplyWebkitTouchHoverFix() {
+            AddScript("document.addEventListener('touchstart', function(){}, true);");
         }
 
         private static HtmlElement GetMetaViewport() {
