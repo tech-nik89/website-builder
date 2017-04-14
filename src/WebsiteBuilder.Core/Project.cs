@@ -16,8 +16,6 @@ namespace WebsiteBuilder.Core {
 
         public const String FileIndex = "index.html";
 
-        public const String PageContentDirectory = "content";
-
         public String Id => null;
 
         public IPage Parent => null;
@@ -32,6 +30,10 @@ namespace WebsiteBuilder.Core {
             => (ProjectFilePath != null && File.Exists(ProjectFilePath))
             ? Path.GetFileNameWithoutExtension(ProjectFilePath)
             : String.Empty;
+
+        public FileInfo ProjectFile => new FileInfo(ProjectFilePath);
+
+        public DirectoryInfo ProjectContentDirectory => new DirectoryInfo(Path.Combine(ProjectFile.DirectoryName, ProjectFileName));
 
         public PageCollection Pages { get; private set; }
 
@@ -82,6 +84,10 @@ namespace WebsiteBuilder.Core {
             Pages = new PageCollection(this);
             Languages = new Language[0];
             Media = new List<MediaItem>();
+        }
+
+        public void ReloadTheme() {
+            _Theme = null;
         }
 
         public Page CreatePage() {

@@ -255,6 +255,9 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SaveAndClose" xml:space="preserve">
+    <value>Save and close</value>
+  </data>
   <data name="SaveAs" xml:space="preserve">
     <value>Save As ...</value>
   </data>

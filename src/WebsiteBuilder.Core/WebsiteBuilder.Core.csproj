@@ -63,6 +63,7 @@
     <Compile Include="Compiling\ICompilerStep.cs" />
     <Compile Include="Compiling\ProgressEventArgs.cs" />
     <Compile Include="Compiling\SpriteGenerator.cs" />
+    <Compile Include="Compiling\Steps\BuildFontsStep.cs" />
     <Compile Include="Compiling\Steps\BuildImagesStep.cs" />
     <Compile Include="Compiling\Steps\BuildIndexFile.cs" />
     <Compile Include="Compiling\Steps\BuildPageStep.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Storage\ProjectReader.cs" />
     <Compile Include="Storage\ProjectStorageConstants.cs" />
     <Compile Include="Storage\ProjectWriter.cs" />
+    <Compile Include="Theming\Font.cs" />
     <Compile Include="Theming\Layout.cs" />
     <Compile Include="Theming\Theme.cs" />
     <Compile Include="Theming\ThemeSettings.cs" />

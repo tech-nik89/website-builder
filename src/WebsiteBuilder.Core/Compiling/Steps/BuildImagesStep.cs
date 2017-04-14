@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using WebsiteBuilder.Core.Theming;
 using WebsiteBuilder.Core.Tools;
 
@@ -28,6 +29,10 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         }
 
         public void Run() {
+            if (!_Theme.Images.Any()) {
+                return;
+            }
+
             _StyleSheetFiles.Add(FileSpritesCss);
 
             String pngPath = Path.Combine(_MetaDirectory.FullName, FileSpritesPng);

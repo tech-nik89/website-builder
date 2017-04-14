@@ -25,11 +25,12 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageContentForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbSaveAndClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbInsertLink = new System.Windows.Forms.ToolStripButton();
             this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.pnlModuleContainer = new System.Windows.Forms.Panel();
-            this.tsbInsertLink = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,6 +38,7 @@
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSaveAndClose,
             this.tsbSave,
             this.toolStripSeparator1,
             this.tsbInsertLink,
@@ -47,19 +49,28 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsbSave
+            // tsbSaveAndClose
             // 
-            this.tsbSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbSave.Image")));
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(59, 22);
-            this.tsbSave.Text = "[Save]";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
+            this.tsbSaveAndClose.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveAndClose.Image")));
+            this.tsbSaveAndClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveAndClose.Name = "tsbSaveAndClose";
+            this.tsbSaveAndClose.Size = new System.Drawing.Size(112, 22);
+            this.tsbSaveAndClose.Text = "[Save and close]";
+            this.tsbSaveAndClose.Click += new System.EventHandler(this.tsbSaveAndClose_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbInsertLink
+            // 
+            this.tsbInsertLink.Image = ((System.Drawing.Image)(resources.GetObject("tsbInsertLink.Image")));
+            this.tsbInsertLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbInsertLink.Name = "tsbInsertLink";
+            this.tsbInsertLink.Size = new System.Drawing.Size(89, 22);
+            this.tsbInsertLink.Text = "{Insert Link]";
+            this.tsbInsertLink.Click += new System.EventHandler(this.tsbInsertLink_Click);
             // 
             // tsbSettings
             // 
@@ -78,14 +89,14 @@
             this.pnlModuleContainer.Size = new System.Drawing.Size(582, 384);
             this.pnlModuleContainer.TabIndex = 1;
             // 
-            // tsbInsertLink
+            // tsbSave
             // 
-            this.tsbInsertLink.Image = ((System.Drawing.Image)(resources.GetObject("tsbInsertLink.Image")));
-            this.tsbInsertLink.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbInsertLink.Name = "tsbInsertLink";
-            this.tsbInsertLink.Size = new System.Drawing.Size(89, 22);
-            this.tsbInsertLink.Text = "{Insert Link]";
-            this.tsbInsertLink.Click += new System.EventHandler(this.tsbInsertLink_Click);
+            this.tsbSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbSave.Image")));
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(59, 22);
+            this.tsbSave.Text = "[Save]";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // PageContentForm
             // 
@@ -109,10 +120,11 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbSave;
+        private System.Windows.Forms.ToolStripButton tsbSaveAndClose;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbSettings;
         private System.Windows.Forms.Panel pnlModuleContainer;
         private System.Windows.Forms.ToolStripButton tsbInsertLink;
+        private System.Windows.Forms.ToolStripButton tsbSave;
     }
 }

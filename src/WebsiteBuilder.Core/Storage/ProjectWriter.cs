@@ -61,8 +61,8 @@ namespace WebsiteBuilder.Core.Storage {
         private IEnumerable<XElement> GetContent(IReadOnlyDictionary<int, PageContent> content) {
             return content.Select(x => new XElement(ProjectStorageConstants.Section,
                 new XAttribute(ProjectStorageConstants.Index, x.Key),
-                new XAttribute(ProjectStorageConstants.Editor, x.Value.EditorType.FullName),
-                new XAttribute(ProjectStorageConstants.Module, x.Value.ModuleType.FullName)
+                new XAttribute(ProjectStorageConstants.Editor, x.Value.EditorType?.FullName ?? String.Empty),
+                new XAttribute(ProjectStorageConstants.Module, x.Value.ModuleType?.FullName ?? String.Empty)
             ));
         }
 
@@ -72,7 +72,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         private XElement GetSettings() {
             return new XElement(ProjectStorageConstants.Settings,
-                new XElement(ProjectStorageConstants.AutoCloseCompleteDialog, _Project.AutoCloseCompileDialog),
+                new XElement(ProjectStorageConstants.AutoCloseCompileDialog, _Project.AutoCloseCompileDialog),
                 new XElement(ProjectStorageConstants.OutputPath, _Project.OutputPath),
                 new XElement(ProjectStorageConstants.ThemePath, _Project.ThemePath)
             );

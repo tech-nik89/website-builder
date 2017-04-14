@@ -35,6 +35,7 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             Icon = IconPack.Current.GetIcon(IconPack.Icon.EditContent);
+            tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPack.Icon.Save);
             tsbSave.Image = IconPack.Current.GetImage(IconPack.Icon.Save);
             tsbInsertLink.Image = IconPack.Current.GetImage(IconPack.Icon.InsertLink);
             tsbSettings.Image = IconPack.Current.GetImage(IconPack.Icon.Settings);
@@ -42,6 +43,7 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void LocalizeComponent() {
             Text = Strings.EditContent;
+            tsbSaveAndClose.Text = Strings.SaveAndClose;
             tsbSave.Text = Strings.Save;
             tsbInsertLink.Text = Strings.InsertLink;
             tsbSettings.Text = Strings.ContentSettings;
@@ -95,14 +97,9 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void tsbSave_Click(object sender, System.EventArgs e) {
-            if (_Control == null) {
-                return;
-            }
-
-            Content.WriteData(_Language, _Control.Data);
-            Close();
+            Save();
         }
-        
+
         private void PageContentForm_Activated(object sender, System.EventArgs e) {
             LoadModule();
         }
@@ -116,6 +113,19 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             _Control.Insert(form.Link);
+        }
+
+        private void tsbSaveAndClose_Click(object sender, System.EventArgs e) {
+            Save();
+            Close();
+        }
+
+        private void Save() {
+            if (_Control == null) {
+                return;
+            }
+
+            Content.WriteData(_Language, _Control.Data);
         }
     }
 }

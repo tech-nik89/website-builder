@@ -21,7 +21,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         private readonly DirectoryInfo _OutputDirectory;
 
         private readonly IReadOnlyCollection<String> _StyleSheetFiles;
-
+        
         private readonly FileInfo _File;
 
         public String Output { get; private set; }
@@ -76,11 +76,36 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 htmlFile.AddStyleLink(sheetPath);
             }
 
+            htmlFile.AddStyle(GenerateFontsCSS(_Theme.Fonts, level));
+
             htmlFile.Compile(_File.FullName);
         }
 
+        private static String GenerateFontsCSS(IEnumerable<Font> fonts, int level) {
+            StringBuilder builder = new StringBuilder();
+
+            foreach (Font font in fonts) {
+                String path = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", font.Name), level);
+                String name = Path.GetFileNameWithoutExtension(font.Name);
+
+                builder.AppendLine("@font-face {");
+
+                builder.AppendFormat("font-family: '{0}';", name);
+                builder.AppendLine();
+
+                builder.AppendFormat("src: url('{0}') format('{1}');", path, font.Type);
+                builder.AppendLine();
+
+                builder.AppendLine("font-style: normal;");
+                builder.AppendLine("font-weight: normal;");
+                builder.AppendLine("}");
+            }
+
+            return builder.ToString();
+        }
+
 		private String RenderLanguageSwitcher(int pageLevel) {
-			if (!_Page.Project.Languages.Any()) {
+			if (_Page.Project.Languages.Length > 1) {
 				return String.Empty;
 			}
 

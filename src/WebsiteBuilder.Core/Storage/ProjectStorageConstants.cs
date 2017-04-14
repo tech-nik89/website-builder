@@ -33,7 +33,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String Settings = "settings";
 
-        public const String AutoCloseCompleteDialog = "autoCloseCompleteDialog";
+        public const String AutoCloseCompileDialog = "autoCloseCompileDialog";
 
         public const String OutputPath = "outputPath";
 

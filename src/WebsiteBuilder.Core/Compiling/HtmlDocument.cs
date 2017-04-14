@@ -21,6 +21,8 @@ namespace WebsiteBuilder.Core.Compiling {
 		private const String AttributeReference = "href";
 		private const String AttributeSource = "src";
         private const String AttributeCharset = "charset";
+        private const String AttributeName = "name";
+        private const String AttributeContent = "content";
 
         private const String TypeJavascript = "text/javascript";
 		private const String TypeCSS = "text/css";
@@ -51,8 +53,16 @@ namespace WebsiteBuilder.Core.Compiling {
             _Html.AppendChild(_Body);
             
             _Head.AppendChild(_Encoding);
+            _Head.AppendChild(GetMetaViewport());
 
             Encoding = Encoding.UTF8;
+        }
+
+        private HtmlElement GetMetaViewport() {
+            HtmlElement element = new HtmlElement(TagMeta);
+            element.SetAttribute(AttributeName, "viewport");
+            element.SetAttribute(AttributeContent, "width=device-width, initial-scale=1.0");
+            return element;
         }
 
 		public void AddScript(String script) {

@@ -39,6 +39,10 @@ namespace WebsiteBuilder.Core.Compiling {
         }
 
         public void GenerateSprite() {
+            if (!_Images.Any()) {
+                return;
+            }
+
             int rows = (int)Math.Ceiling(Math.Sqrt(_Images.Count));
             Dictionary<String, Point> points = new Dictionary<String, Point>();
             
@@ -99,7 +103,9 @@ namespace WebsiteBuilder.Core.Compiling {
             Image = new Bitmap(width, height);
             using (Graphics graphics = Graphics.FromImage(Image)) {
                 foreach (var point in points) {
-                    graphics.DrawImage(_Images[point.Key], point.Value);
+                    Image img = _Images[point.Key];
+                    Rectangle rect = new Rectangle(point.Value, img.Size);
+                    graphics.DrawImage(_Images[point.Key], rect);
                 }
             }
         }

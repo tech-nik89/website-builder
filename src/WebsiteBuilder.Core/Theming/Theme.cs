@@ -42,7 +42,11 @@ namespace WebsiteBuilder.Core.Theming {
 
         private const String NodeSettingsImageCssClass = "imageCssClass";
 
-		private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
+        private const String NodeFont = "font";
+
+        private static readonly String QueryFonts = String.Concat("/", NodeRoot, "/", NodeFont);
+
+        private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
 
         private static readonly String QueryImages = String.Concat("/", NodeRoot, "/", NodeImage);
 
@@ -64,6 +68,8 @@ namespace WebsiteBuilder.Core.Theming {
 
         private const String FormatNoNameStyle = "style-{0}";
 
+        private List<Font> _Fonts;
+
         private List<ThemeStyle> _Styles;
 
         private Dictionary<String, Image> _Images;
@@ -75,6 +81,8 @@ namespace WebsiteBuilder.Core.Theming {
         public IEnumerable<Layout> Layouts => _Layouts.AsReadOnly();
 
         public IReadOnlyDictionary<String, Image> Images => _Images;
+
+        public IEnumerable<Font> Fonts => _Fonts.AsReadOnly();
 
 		public String TemplateNavItem { get; private set; }
 
@@ -92,6 +100,7 @@ namespace WebsiteBuilder.Core.Theming {
 			_Styles = new List<ThemeStyle>();
             _Images = new Dictionary<String, Image>();
             _Layouts = new List<Layout>();
+            _Fonts = new List<Font>();
 			Settings = new ThemeSettings();
 		}
 
@@ -108,9 +117,34 @@ namespace WebsiteBuilder.Core.Theming {
             LoadTemplates(theme, document);
             LoadImages(theme, document);
             LoadLayouts(theme, document);
+            LoadFonts(theme, document);
 
-			return theme;
+            return theme;
 		}
+
+        private static void LoadFonts(Theme theme, XmlDocument document) {
+            var xFonts = document.SelectNodes(QueryFonts);
+
+            foreach(XmlNode xFont in xFonts) {
+                if (xFont.Attributes[AttributeName] == null
+                    || String.IsNullOrWhiteSpace(xFont.Attributes[AttributeName].InnerText)
+                    || xFont.Attributes[AttributeType] == null
+                    || String.IsNullOrWhiteSpace(xFont.Attributes[AttributeType].InnerText)
+                    || String.IsNullOrWhiteSpace(xFont.InnerText)) {
+                    continue;
+                }
+
+                try {
+                    Font font = new Font();
+                    font.Name = xFont.Attributes[AttributeName].InnerText.ToLower().Trim();
+                    font.Type = xFont.Attributes[AttributeType].InnerText.ToLower().Trim();
+                    font.Data = Convert.FromBase64String(xFont.InnerText.Trim());
+                    theme._Fonts.Add(font);
+                }
+                catch {
+                }
+            }
+        }
 
         private static void LoadLayouts(Theme theme, XmlDocument document) {
             var xLayouts = document.SelectNodes(QueryLayouts);

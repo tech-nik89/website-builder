@@ -54,6 +54,8 @@ namespace WebsiteBuilder.Core.Compiling {
 			if (_Project.Theme == null) {
                 throw new FileNotFoundException(_Project.ThemePath);
             }
+
+            _Project.ReloadTheme();
             
             _Steps = new List<ICompilerStep>();
 
@@ -62,6 +64,7 @@ namespace WebsiteBuilder.Core.Compiling {
 			_Steps.Add(new PrepareDirectoryStep(mediaDirectory));
 			_Steps.Add(new BuildIndexFile(_Project));
             _Steps.Add(new BuildStyleSheetsStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
+            _Steps.Add(new BuildFontsStep(_Project.Theme, metaDirectory));
             _Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
 			_Steps.Add(new CopyMediaStep(_Project.Media, mediaDirectory));
 

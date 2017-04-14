@@ -20,8 +20,7 @@ namespace WebsiteBuilder.Core.Pages {
 
         private FileInfo GetFile(Language language) {
             String fileName = GetFileName(language);
-            FileInfo projectFile = new FileInfo(Page.Project.ProjectFilePath);
-            String path = Path.Combine(projectFile.Directory.FullName, Project.PageContentDirectory, fileName);
+            String path = Path.Combine(Page.Project.ProjectContentDirectory.FullName, fileName);
 
             FileInfo fileInfo = new FileInfo(path);
             fileInfo.Directory.Create();
