@@ -36,8 +36,10 @@
 				overflow:hidden;
 			}
 			
-			nav:hover {
+			nav:hover, nav:active {
 				height:auto;
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
 				
 				.expander > i {
 					display:none;
@@ -160,7 +162,7 @@
 			}
 		}
 		
-		@media (min-width:500px) {
+		@media (min-width:500px) and (pointer:fine) {
 			main {
 				margin-top:20px;
 				border-top:2px solid @acentColor;

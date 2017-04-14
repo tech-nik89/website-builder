@@ -54,11 +54,18 @@ namespace WebsiteBuilder.Core.Compiling {
             
             _Head.AppendChild(_Encoding);
             _Head.AppendChild(GetMetaViewport());
+            _Head.AppendChild(GetWebkitTouchHoverFix());
 
             Encoding = Encoding.UTF8;
         }
 
-        private HtmlElement GetMetaViewport() {
+        private static HtmlElement GetWebkitTouchHoverFix() {
+            HtmlElement element = new HtmlElement("script");
+            element.Content = "document.addEventListener('touchstart', function(){}, true);";
+            return element;
+        }
+
+        private static HtmlElement GetMetaViewport() {
             HtmlElement element = new HtmlElement(TagMeta);
             element.SetAttribute(AttributeName, "viewport");
             element.SetAttribute(AttributeContent, "width=device-width, initial-scale=1.0");

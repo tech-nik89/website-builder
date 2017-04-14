@@ -22,7 +22,9 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 var language = navigator.language || navigator.userLanguage;
                 var index = supportedLanguages.indexOf(language);
 
-                if (index == -1) return;
+                if (index == -1) {
+                    language = supportedLanguages[0];
+                }
 
                 var file = 'index.html';
                 var url = location.href;
