@@ -22,22 +22,25 @@ namespace WebsiteBuilder.Modules.Gallery {
                 IHtmlElement container = helper.CreateHtmlElement("div");
                 container.SetAttribute("class", "gallery");
 
-                foreach(String file in data.Files) {
+                foreach (String file in data.Files) {
                     Guid guid = Guid.NewGuid();
                     String extension = Path.GetExtension(file);
 
                     String fullSizeTargetFileName = String.Concat(guid, extension);
                     String thumbNailTargetFileName = String.Format("{0}-s{1}", guid, extension);
 
-                    Image originalSizeImage = Image.FromFile(file);
-                    Image fullSizeImage = ImageHelper.ResizeImage(originalSizeImage, data.FullSize);
-                    Image thumbNailImage = ImageHelper.ResizeImage(originalSizeImage, data.ThumbnailSize);
-
-                    fullSizeImage.Save(helper.GetFilePath(fullSizeTargetFileName));
-                    thumbNailImage.Save(helper.GetFilePath(thumbNailTargetFileName));
+                    using (Image originalSizeImage = Image.FromFile(file)) {
+                        using (Image fullSizeImage = ImageHelper.ResizeImage(originalSizeImage, data.FullSize)) {
+                            fullSizeImage.Save(helper.GetFilePath(fullSizeTargetFileName));
+                        }
+                        using (Image thumbNailImage = ImageHelper.ResizeImage(originalSizeImage, data.ThumbnailSize)) {
+                            thumbNailImage.Save(helper.GetFilePath(thumbNailTargetFileName));
+                        }
+                    }
 
                     IHtmlElement a = helper.CreateHtmlElement("a");
-                    a.SetAttribute("href", "#");
+                    a.SetAttribute("target", "_blank");
+                    a.SetAttribute("href", fullSizeTargetFileName);
 
                     IHtmlElement img = helper.CreateHtmlElement("img");
                     img.SetAttribute("src", thumbNailTargetFileName);
@@ -46,8 +49,13 @@ namespace WebsiteBuilder.Modules.Gallery {
                     container.AppendChild(a);
                 }
 
-                helper.CreateLessFile(GalleryStyles.Styles);
-                
+                IHtmlElement full = helper.CreateHtmlElement("div");
+                full.SetAttribute("class", "full");
+                container.AppendChild(full);
+
+                helper.CreateLessFile(GalleryResources.Styles);
+                helper.CreateJavaScriptFile(GalleryResources.Script, true);
+
                 return helper.Compile(container);
             }
             catch {

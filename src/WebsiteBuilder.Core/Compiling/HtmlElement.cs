@@ -7,6 +7,7 @@ namespace WebsiteBuilder.Core.Compiling {
     class HtmlElement : IHtmlElement {
         
         private readonly List<IHtmlElement> _Children;
+        private readonly List<IHtmlElement> _DelayedChildren;
         private readonly String _Name;
         private readonly Dictionary<String, String> _Attributes;
         
@@ -14,12 +15,17 @@ namespace WebsiteBuilder.Core.Compiling {
 
         public HtmlElement(String name) {
             _Children = new List<IHtmlElement>();
+            _DelayedChildren = new List<IHtmlElement>();
             _Attributes = new Dictionary<String, String>();
             _Name = name;
         }
 
         public void AppendChild(IHtmlElement element) {
             _Children.Add(element);
+        }
+
+        public void AppendDelayedChild(IHtmlElement element) {
+            _DelayedChildren.Add(element);
         }
 
         public void SetAttribute(String name, String value) {
@@ -41,6 +47,10 @@ namespace WebsiteBuilder.Core.Compiling {
 
             if (!String.IsNullOrWhiteSpace(Content)) {
                 writer.Write(Content);
+            }
+
+            foreach (var child in _DelayedChildren) {
+                child.Compile(writer);
             }
 
             WriteTag(writer, true);

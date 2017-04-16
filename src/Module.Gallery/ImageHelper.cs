@@ -22,11 +22,13 @@ namespace WebsiteBuilder.Modules.Gallery {
             if (preserveRatio) {
                 Double dbl = (Double)image.Width / (Double)image.Height;
 
-                if ((int)((Double)height * dbl) >= width) {
-                    imageHeight = (int)((Double)height / dbl);
+                if (image.Width > image.Height) {
+                    imageWidth = width;
+                    imageHeight = (int)(width / dbl);
                 }
                 else {
-                    imageWidth = (int)((Double)width * dbl);
+                    imageWidth = (int)(height * dbl);
+                    imageHeight = height;
                 }
             }
 

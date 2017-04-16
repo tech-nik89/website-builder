@@ -11,6 +11,10 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         void CreateLessFile(String less);
 
+        void CreateJavaScriptFile(String javaScript);
+
+        void CreateJavaScriptFile(String javaScript, bool runAfterLoad);
+
         String GetFilePath(String targetFileName);
 
     }

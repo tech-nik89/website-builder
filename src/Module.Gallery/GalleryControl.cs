@@ -104,9 +104,10 @@ namespace WebsiteBuilder.Modules.Gallery {
             Size thumbSize = lvwImages.TileSize;
 
             foreach(String path in _Data.Files) {
-                Image image = Image.FromFile(path);
-                int height = image.Height * ImageSize / image.Width;
-                _ImageList.Images.Add(image.GetThumbnailImage(ImageSize, height, () => false, IntPtr.Zero));
+                using (Image image = Image.FromFile(path)) {
+                    int height = image.Height * ImageSize / image.Width;
+                    _ImageList.Images.Add(ImageHelper.ResizeImage(image, new Size(ImageSize, ImageSize)));
+                }
             }
 
             lvwImages.VirtualListSize = _Data.Files.Count;

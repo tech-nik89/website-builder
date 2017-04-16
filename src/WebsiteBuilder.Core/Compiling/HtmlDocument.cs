@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using WebsiteBuilder.Core.Tools;
@@ -71,11 +72,21 @@ namespace WebsiteBuilder.Core.Compiling {
             return element;
         }
 
-		public void AddScript(String script) {
+        public void AddScript(String script) {
+            AddScript(script, false);
+        }
+        
+        public void AddScript(String script, bool runAfterLoad) {
             var tag = new HtmlElement(TagScript);
 			tag.SetAttribute(AttributeType, TypeJavascript);
             tag.Content = Utilities.JavaScriptMinifier.Compile(script);
-            _Head.AppendChild(tag);
+
+            if (runAfterLoad) {
+                _Body.AppendDelayedChild(tag);
+            }
+            else {
+                _Head.AppendChild(tag);
+            }
 		}
 
 		public void AddStyle(String css) {
@@ -92,8 +103,25 @@ namespace WebsiteBuilder.Core.Compiling {
 			tag.SetAttribute(AttributeReference, path);
 			_Head.AppendChild(tag);
 		}
-        
-		public String Body {
+
+        public void AddScriptLink(String path) {
+            AddScriptLink(path, false);
+        }
+
+        public void AddScriptLink(String path, bool runAfterLoad) {
+            var tag = new HtmlElement(TagScript);
+            tag.SetAttribute(AttributeType, TypeJavascript);
+            tag.SetAttribute(AttributeSource, path);
+
+            if (runAfterLoad) {
+                _Body.AppendDelayedChild(tag);
+            }
+            else {
+                _Head.AppendChild(tag);
+            }
+        }
+
+        public String Body {
 			get {
 				return _Body.Content;
 			}

@@ -30,7 +30,9 @@ namespace WebsiteBuilder.Core.Compiling {
             String fileName = String.Concat(Guid.NewGuid().ToString(), ".css");
             String path = Path.Combine(_File.Directory.FullName, fileName);
 
+            css = Utilities.CssMinifier.Compile(css);
             File.WriteAllText(path, css);
+
             _Document.AddStyleLink(fileName);
         }
 
@@ -42,6 +44,20 @@ namespace WebsiteBuilder.Core.Compiling {
         public String GetFilePath(String targetFileName) {
             String path = Path.Combine(_File.Directory.FullName, targetFileName);
             return path;
+        }
+
+        public void CreateJavaScriptFile(String javaScript) {
+            CreateJavaScriptFile(javaScript, false);
+        }
+
+        public void CreateJavaScriptFile(String javaScript, bool runAfterLoad) {
+            String fileName = String.Concat(Guid.NewGuid().ToString(), ".js");
+            String path = Path.Combine(_File.Directory.FullName, fileName);
+
+            javaScript = Utilities.JavaScriptMinifier.Compile(javaScript);
+            File.WriteAllText(path, javaScript);
+
+            _Document.AddScriptLink(fileName, runAfterLoad);
         }
 
         public IHtmlElement CreateHtmlElement(String name) {
