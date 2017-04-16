@@ -29,6 +29,8 @@ namespace WebsiteBuilder.Core.Compiling {
         public bool IsBusy => _Worker.IsBusy;
 
 		public bool Error { get; private set; }
+
+        public String ErrorMessage { get; private set; }
         
         private readonly List<String> _StyleSheetFiles;
 
@@ -128,7 +130,7 @@ namespace WebsiteBuilder.Core.Compiling {
             }
             catch (Exception ex) {
 				Error = true;
-                ReportProgress(0, 0, Environment.NewLine + ex.Message);
+                ErrorMessage = ex.Message;
             }
         }
 

@@ -47,6 +47,7 @@
             this.sfdProject = new System.Windows.Forms.SaveFileDialog();
             this.ofdProject = new System.Windows.Forms.OpenFileDialog();
             this.sstMain = new System.Windows.Forms.StatusStrip();
+            this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
@@ -59,7 +60,7 @@
             this.mnuBuild});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(662, 24);
+            this.mnuMain.Size = new System.Drawing.Size(861, 24);
             this.mnuMain.TabIndex = 1;
             this.mnuMain.Text = "menuStrip1";
             // 
@@ -177,29 +178,38 @@
             this.ptvwPages.Location = new System.Drawing.Point(0, 24);
             this.ptvwPages.Name = "ptvwPages";
             this.ptvwPages.Project = null;
-            this.ptvwPages.Size = new System.Drawing.Size(662, 398);
+            this.ptvwPages.Size = new System.Drawing.Size(861, 457);
             this.ptvwPages.TabIndex = 0;
             // 
             // sstMain
             // 
             this.sstMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslStatus,
             this.tspProgress});
-            this.sstMain.Location = new System.Drawing.Point(0, 400);
+            this.sstMain.Location = new System.Drawing.Point(0, 459);
             this.sstMain.Name = "sstMain";
-            this.sstMain.Size = new System.Drawing.Size(662, 22);
+            this.sstMain.Size = new System.Drawing.Size(861, 22);
             this.sstMain.TabIndex = 2;
             this.sstMain.Text = "statusStrip1";
+            // 
+            // tslStatus
+            // 
+            this.tslStatus.Name = "tslStatus";
+            this.tslStatus.Size = new System.Drawing.Size(704, 17);
+            this.tslStatus.Spring = true;
+            this.tslStatus.Text = "[...]";
+            this.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tspProgress
             // 
             this.tspProgress.Name = "tspProgress";
-            this.tspProgress.Size = new System.Drawing.Size(100, 16);
+            this.tspProgress.Size = new System.Drawing.Size(140, 16);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 422);
+            this.ClientSize = new System.Drawing.Size(861, 481);
             this.Controls.Add(this.sstMain);
             this.Controls.Add(this.ptvwPages);
             this.Controls.Add(this.mnuMain);
@@ -238,6 +248,7 @@
         private System.Windows.Forms.StatusStrip sstMain;
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
         private System.Windows.Forms.ToolStripMenuItem mnuProjectMedia;
+        private System.Windows.Forms.ToolStripStatusLabel tslStatus;
     }
 }
 

@@ -124,6 +124,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build Error.
+        /// </summary>
+        internal static string BuildError {
+            get {
+                return ResourceManager.GetString("BuildError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Build Project.
         /// </summary>
         internal static string BuildProject {

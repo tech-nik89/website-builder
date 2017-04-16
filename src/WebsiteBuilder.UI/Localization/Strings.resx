@@ -138,6 +138,9 @@
   <data name="BuildAndOpenProject" xml:space="preserve">
     <value>Build and open Project</value>
   </data>
+  <data name="BuildError" xml:space="preserve">
+    <value>Build Error</value>
+  </data>
   <data name="BuildProject" xml:space="preserve">
     <value>Build Project</value>
   </data>

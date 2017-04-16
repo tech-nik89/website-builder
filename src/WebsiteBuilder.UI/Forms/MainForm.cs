@@ -17,6 +17,7 @@ namespace WebsiteBuilder.UI.Forms {
             ofdProject.Filter = _ProjectFilesFilter;
             sfdProject.Filter = _ProjectFilesFilter;
 
+            tslStatus.Text = StatusText.Ready;
             CurrentProject = new Project();
         }
 

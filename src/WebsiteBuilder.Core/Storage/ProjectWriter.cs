@@ -72,7 +72,6 @@ namespace WebsiteBuilder.Core.Storage {
 
         private XElement GetSettings() {
             return new XElement(ProjectStorageConstants.Settings,
-                new XElement(ProjectStorageConstants.AutoCloseCompileDialog, _Project.AutoCloseCompileDialog),
                 new XElement(ProjectStorageConstants.OutputPath, _Project.OutputPath),
                 new XElement(ProjectStorageConstants.ThemePath, _Project.ThemePath)
             );

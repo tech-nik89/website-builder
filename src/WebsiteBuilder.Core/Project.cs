@@ -19,8 +19,6 @@ namespace WebsiteBuilder.Core {
         public String Id => null;
 
         public IPage Parent => null;
-
-        public bool AutoCloseCompileDialog { get; set; }
         
         public String ProjectFilePath { get; set; }
         

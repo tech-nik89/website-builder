@@ -99,7 +99,6 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private void GetSettings(XElement element) {
-            _Project.AutoCloseCompileDialog = Convert.ToBoolean(element.Element(ProjectStorageConstants.AutoCloseCompileDialog).Value);
             _Project.OutputPath = element.Element(ProjectStorageConstants.OutputPath).Value;
             _Project.ThemePath = element.Element(ProjectStorageConstants.ThemePath).Value;
         }

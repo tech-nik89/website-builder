@@ -8,6 +8,7 @@ using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Compiling;
 using WebsiteBuilder.Core.Exceptions;
 using WebsiteBuilder.UI.Localization;
+using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class MainForm {
@@ -100,8 +101,9 @@ namespace WebsiteBuilder.UI.Forms {
 
             _CompilerRunning = true;
 
-            CompilerSetControls(true);
-            CompilingForm form = new CompilingForm(CurrentProject);
+
+            UpdateStatus(StatusText.BuildStarted);
+            CompilerSetControls(false);
 
             try {
                 Compiler compiler = new Compiler(CurrentProject);
@@ -111,18 +113,22 @@ namespace WebsiteBuilder.UI.Forms {
                         OpenProjectInDefaultBrowser(CurrentProject);
                     }
 
-                    form.Done(compiler.Error);
+                    if (compiler.Error) {
+                        CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
+                        form.ShowDialog();
+                    }
+
                     _CompilerRunning = false;
                     CompilerSetControls(true);
+                    UpdateStatus(StatusText.BuildSucceeded);
                 };
 
                 compiler.ProgressChanged += (sender, e) => {
                     tspProgress.Value = e.Percentage;
-                    form.Push(e);
+                    UpdateStatus(e.Message);
                 };
 
                 compiler.StartAsync();
-                form.ShowDialog();
             }
             catch (OutputPathMissingException) {
                 _CompilerRunning = false;
@@ -149,13 +155,17 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         public void OpenProjectInDefaultBrowser(Project project) {
-            String path = System.IO.Path.Combine(project.OutputPath, Project.FileIndex);
+            String path = Path.Combine(project.OutputPath, Project.FileIndex);
 
             if (!File.Exists(path)) {
                 return;
             }
 
             Process.Start(path);
+        }
+
+        private void UpdateStatus(String status) {
+            tslStatus.Text = status;
         }
     }
 }
