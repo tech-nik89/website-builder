@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteBuilder.Interface.Compiling;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Editors.Avalon {

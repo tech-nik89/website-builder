@@ -5,6 +5,8 @@ using WebsiteBuilder.Interface.Plugins;
 namespace WebsiteBuilder.Modules.StaticPage {
     public partial class StaticPageControl : UserControl, IUserInterface {
 
+        public Boolean SupportsMediaLinks => EditorControl?.SupportsMediaLinks ?? false;
+
         private readonly IEditor _Editor;
 
         private IUserInterface _EditorControl;
@@ -47,12 +49,12 @@ namespace WebsiteBuilder.Modules.StaticPage {
             Controls.Add(control);
         }
 
-        public void Insert(String str) {
-            if (_EditorControl == null) {
+        public void ApplyMediaLink(String str) {
+            if (_EditorControl == null || !_EditorControl.SupportsMediaLinks) {
                 return;
             }
 
-            _EditorControl.Insert(str);
+            _EditorControl.ApplyMediaLink(str);
         }
     }
 }

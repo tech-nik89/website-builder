@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Compiling;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -27,9 +28,9 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            Icon = IconPack.Current.GetIcon(IconPack.Icon.Build);
-            tsbClose.Image = IconPack.Current.GetImage(IconPack.Icon.Close);
-            tsbAutoClose.Image = IconPack.Current.GetImage(IconPack.Icon.AutoClose);
+            Icon = IconPack.Current.GetIcon(IconPackIcon.Build);
+            tsbClose.Image = IconPack.Current.GetImage(IconPackIcon.Close);
+            tsbAutoClose.Image = IconPack.Current.GetImage(IconPackIcon.AutoClose);
         }
 
         public void LocalizeComponent() {

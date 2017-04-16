@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using WebsiteBuilder.Core.Pages;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Core.Plugins {
@@ -76,11 +77,15 @@ namespace WebsiteBuilder.Core.Plugins {
         }
 
         public static IModule LoadModule(PageContent content) {
+            return LoadModule(content, null);
+        }
+
+        public static IModule LoadModule(PageContent content, IIconPack iconPack) {
             if (content == null || content.ModuleType == null || content.EditorType == null) {
                 return null;
             }
 
-            PluginHelper helper = new PluginHelper(content.EditorType);
+            PluginHelper helper = new PluginHelper(content.EditorType, iconPack);
             return Activator.CreateInstance(content.ModuleType, helper) as IModule;
         }
     }

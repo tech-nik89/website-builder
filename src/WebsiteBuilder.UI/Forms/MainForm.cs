@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -24,12 +25,11 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            mnuProjectSave.Image = IconPack.Current.GetImage(IconPack.Icon.Save);
-            mnuProjectOpen.Image = IconPack.Current.GetImage(IconPack.Icon.Open);
-            mnuProjectSettings.Image = IconPack.Current.GetImage(IconPack.Icon.Settings);
+            mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+            mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
+            mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
 
-            mnuBuildProject.Image = IconPack.Current.GetImage(IconPack.Icon.Build);
-            mnuBuildAndRunProject.Image = IconPack.Current.GetImage(IconPack.Icon.BuildAndRun);
+            mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
         }
 
         private void LocalizeComponent() {
@@ -44,6 +44,7 @@ namespace WebsiteBuilder.UI.Forms {
 
             mnuBuild.Text  = Strings.Build;
             mnuBuildProject.Text = Strings.BuildProject;
+            mnuBuildAndRunProject.Text = Strings.BuildAndOpenProject;
         }
 
         private void mnuProjectExit_Click(object sender, EventArgs e) {

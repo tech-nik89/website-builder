@@ -5,6 +5,7 @@ using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -31,7 +32,7 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            Icon = IconPack.Current.GetIcon(IconPack.Icon.Edit);
+            Icon = IconPack.Current.GetIcon(IconPackIcon.Edit);
         }
 
         private void LocalizeComponent() {

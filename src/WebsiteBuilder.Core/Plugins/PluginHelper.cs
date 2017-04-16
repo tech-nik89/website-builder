@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Core.Plugins {
@@ -6,13 +7,19 @@ namespace WebsiteBuilder.Core.Plugins {
 
         private readonly Type _EditorType;
 
-        public PluginHelper(Type editorType) {
+        private readonly IIconPack _IconPack;
+
+        public PluginHelper(Type editorType, IIconPack iconPack) {
             _EditorType = editorType;
+            _IconPack = iconPack;
         }
 
         public IEditor CreateEditor() {
             return Activator.CreateInstance(_EditorType, this) as IEditor;
         }
 
+        public IIconPack GetIconPack() {
+            return _IconPack;
+        }
     }
 }

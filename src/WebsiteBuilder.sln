@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editors", "Editors", "{C9E9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor.Avalon", "Editor.Avalon\Editor.Avalon.csproj", "{B194B39B-FA74-4154-8808-CFD1877D8649}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Gallery", "Module.Gallery\Module.Gallery.csproj", "{F8E78B84-2403-45B8-B344-516646849589}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{B194B39B-FA74-4154-8808-CFD1877D8649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B194B39B-FA74-4154-8808-CFD1877D8649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B194B39B-FA74-4154-8808-CFD1877D8649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E78B84-2403-45B8-B344-516646849589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E78B84-2403-45B8-B344-516646849589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E78B84-2403-45B8-B344-516646849589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E78B84-2403-45B8-B344-516646849589}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +56,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{62AECC0E-A75D-4491-948B-683AF516B273} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 		{B194B39B-FA74-4154-8808-CFD1877D8649} = {C9E91C9B-CA1F-46D6-9916-8F5324DD61CE}
+		{F8E78B84-2403-45B8-B344-516646849589} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 	EndGlobalSection
 EndGlobal

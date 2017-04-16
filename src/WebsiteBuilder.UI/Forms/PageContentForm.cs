@@ -2,6 +2,7 @@
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Plugins;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
@@ -27,6 +28,8 @@ namespace WebsiteBuilder.UI.Forms {
             _Page = page;
             _Language = language;
             _LayoutSection = layoutSection;
+
+            LoadModule();
         }
 
         private void ApplyIcons() {
@@ -34,23 +37,23 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            Icon = IconPack.Current.GetIcon(IconPack.Icon.EditContent);
-            tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPack.Icon.Save);
-            tsbSave.Image = IconPack.Current.GetImage(IconPack.Icon.Save);
-            tsbInsertLink.Image = IconPack.Current.GetImage(IconPack.Icon.InsertLink);
-            tsbSettings.Image = IconPack.Current.GetImage(IconPack.Icon.Settings);
+            Icon = IconPack.Current.GetIcon(IconPackIcon.EditContent);
+            tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+            tsbSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+            tsbMediaLink.Image = IconPack.Current.GetImage(IconPackIcon.InsertLink);
+            tsbSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
         }
 
         private void LocalizeComponent() {
             Text = Strings.EditContent;
             tsbSaveAndClose.Text = Strings.SaveAndClose;
             tsbSave.Text = Strings.Save;
-            tsbInsertLink.Text = Strings.InsertLink;
+            tsbMediaLink.Text = Strings.InsertLink;
             tsbSettings.Text = Strings.ContentSettings;
         }
 
         private void LoadModule() {
-            IModule module = PluginManager.LoadModule(Content);
+            IModule module = PluginManager.LoadModule(Content, IconPack.Current);
             if (module == null) {
                 ShowSettings(true);
                 return;
@@ -68,6 +71,8 @@ namespace WebsiteBuilder.UI.Forms {
 
             pnlModuleContainer.Controls.Clear();
             pnlModuleContainer.Controls.Add(control);
+
+            tsbMediaLink.Enabled = _Control.SupportsMediaLinks;
 
             LoadData();
         }
@@ -100,11 +105,7 @@ namespace WebsiteBuilder.UI.Forms {
             Save();
         }
 
-        private void PageContentForm_Activated(object sender, System.EventArgs e) {
-            LoadModule();
-        }
-
-        private void tsbInsertLink_Click(object sender, System.EventArgs e) {
+        private void tsbMediaLink_Click(object sender, System.EventArgs e) {
             InsertLinkForm form = new InsertLinkForm(_Page.Project);
             var result = form.ShowDialog();
 
@@ -112,7 +113,7 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            _Control.Insert(form.Link);
+            _Control.ApplyMediaLink(form.Link);
         }
 
         private void tsbSaveAndClose_Click(object sender, System.EventArgs e) {

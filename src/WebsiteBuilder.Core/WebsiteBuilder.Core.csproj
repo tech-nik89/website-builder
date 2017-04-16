@@ -56,6 +56,7 @@
     <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Compiling\CompileHelper.cs" />
     <Compile Include="Compiling\Compiler.cs" />
     <Compile Include="Compiling\CompilerConstants.cs" />
     <Compile Include="Compiling\HtmlDocument.cs" />

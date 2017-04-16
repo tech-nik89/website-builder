@@ -7,6 +7,7 @@ using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Forms;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
@@ -73,10 +74,10 @@ namespace WebsiteBuilder.UI.Controls {
                 return;
             }
 
-            tsbAdd.Image = IconPack.Current.GetImage(IconPack.Icon.Add);
-            tsbEdit.Image = IconPack.Current.GetImage(IconPack.Icon.Edit);
-            tsbDelete.Image = IconPack.Current.GetImage(IconPack.Icon.Delete);
-            tsbEditContent.Image = IconPack.Current.GetImage(IconPack.Icon.EditContent);
+            tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+            tsbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
+            tsbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
+            tsbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
         }
 
         private void LocalizeComponent() {

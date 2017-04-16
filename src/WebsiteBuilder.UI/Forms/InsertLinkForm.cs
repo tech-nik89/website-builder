@@ -5,6 +5,7 @@ using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Compiling;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -25,7 +26,7 @@ namespace WebsiteBuilder.UI.Forms {
             _Project = project;
 
             _ImageList = new ImageList();
-            _ImageList.Images.Add(IconPack.Current.GetImage(IconPack.Icon.Page));
+            _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
             tvwPages.ImageList = _ImageList;
 
             FillProjectTree(tvwPages.Nodes, _Project.Pages);

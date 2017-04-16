@@ -4,29 +4,30 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
+using WebsiteBuilder.Interface.Icons;
 
 namespace WebsiteBuilder.UI.Resources {
-    class IconPack {
+    class IconPack : IIconPack {
 
-        public static IconPack Current { get; private set; }
+        public static IIconPack Current { get; private set; }
 
-        private readonly Dictionary<Icon, Image> _Images;
+        private readonly Dictionary<IconPackIcon, Image> _Images;
 
-        private readonly Dictionary<Icon, System.Drawing.Icon> _Icons;
+        private readonly Dictionary<IconPackIcon, Icon> _Icons;
 
         private IconPack() {
-            _Images = new Dictionary<Icon, Image>();
-            _Icons = new Dictionary<Icon, System.Drawing.Icon>();
+            _Images = new Dictionary<IconPackIcon, Image>();
+            _Icons = new Dictionary<IconPackIcon, Icon>();
         }
 
-        public Image GetImage(Icon icon) {
+        public Image GetImage(IconPackIcon icon) {
             Image image = null;
             _Images.TryGetValue(icon, out image);
             return image;
         }
 
-        public System.Drawing.Icon GetIcon(Icon icon) {
-            System.Drawing.Icon image = null;
+        public Icon GetIcon(IconPackIcon icon) {
+            Icon image = null;
             _Icons.TryGetValue(icon, out image);
             return image;
         }
@@ -43,7 +44,7 @@ namespace WebsiteBuilder.UI.Resources {
             ZipArchive archive = ZipFile.OpenRead(path);
 
             foreach (ZipArchiveEntry entry in archive.Entries) {
-                Icon icon;
+                IconPackIcon icon;
                 String name = Path.GetFileNameWithoutExtension(entry.Name);
 
                 if (Enum.TryParse(name, true, out icon)) {
@@ -57,26 +58,10 @@ namespace WebsiteBuilder.UI.Resources {
             return pack;
         }
 
-        private static System.Drawing.Icon GetIcon(Image image) {
+        private static Icon GetIcon(Image image) {
             Bitmap bitmap = (Bitmap)image;
-            System.Drawing.Icon icon = System.Drawing.Icon.FromHandle(bitmap.GetHicon());
+            Icon icon = Icon.FromHandle(bitmap.GetHicon());
             return icon;
-        }
-
-        public enum Icon {
-            Add,
-            Edit,
-            Delete,
-            Save,
-            EditContent,
-            Settings,
-            Open,
-            Page,
-            Build,
-            BuildAndRun,
-            Close,
-            AutoClose,
-            InsertLink
         }
     }
 }

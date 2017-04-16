@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using WebsiteBuilder.Interface.Compiling;
 
 namespace WebsiteBuilder.Core.Compiling {
-    class HtmlElement {
+    class HtmlElement : IHtmlElement {
         
-        private readonly List<HtmlElement> _Children;
+        private readonly List<IHtmlElement> _Children;
         private readonly String _Name;
         private readonly Dictionary<String, String> _Attributes;
         
         public String Content { get; set; }
 
         public HtmlElement(String name) {
-            _Children = new List<HtmlElement>();
+            _Children = new List<IHtmlElement>();
             _Attributes = new Dictionary<String, String>();
             _Name = name;
         }
 
-        public void AppendChild(HtmlElement element) {
+        public void AppendChild(IHtmlElement element) {
             _Children.Add(element);
         }
 

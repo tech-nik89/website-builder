@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,7 +44,12 @@
     <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Compiling\ICompileHelper.cs" />
     <Compile Include="Compiling\ICompiler.cs" />
+    <Compile Include="Compiling\IHtmlElement.cs" />
+    <Compile Include="Compiling\IModuleCompiler.cs" />
+    <Compile Include="Icons\IconPackIcon.cs" />
+    <Compile Include="Icons\IIconPack.cs" />
     <Compile Include="Plugins\IEditor.cs" />
     <Compile Include="Plugins\IUserInterface.cs" />
     <Compile Include="Plugins\IModule.cs" />

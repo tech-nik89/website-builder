@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteBuilder.Interface.Compiling;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Modules.StaticPage {
@@ -12,7 +13,7 @@ namespace WebsiteBuilder.Modules.StaticPage {
             _PluginHelper = pluginHelper;
         }
 
-        public String Compile(String source) {
+        public String Compile(String source, ICompileHelper helper) {
             IEditor editor = _PluginHelper.CreateEditor();
             return editor.Compile(source);
         }

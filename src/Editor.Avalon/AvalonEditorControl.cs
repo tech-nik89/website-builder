@@ -7,6 +7,8 @@ using WebsiteBuilder.Interface.Plugins;
 namespace WebsiteBuilder.Editors.Avalon {
     public partial class AvalonEditorControl : UserControl, IUserInterface {
 
+        public Boolean SupportsMediaLinks => true;
+
         private readonly TextEditor _Editor;
 
         public String Data {
@@ -29,7 +31,7 @@ namespace WebsiteBuilder.Editors.Avalon {
             wpfHost.Child = _Editor;
         }
 
-        public void Insert(String str) {
+        public void ApplyMediaLink(String str) {
             _Editor.Document.Insert(_Editor.TextArea.Caret.Offset, str);
         }
     }

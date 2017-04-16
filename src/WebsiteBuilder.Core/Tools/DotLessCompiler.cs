@@ -1,5 +1,6 @@
 ﻿using dotless.Core;
 using dotless.Core.configuration;
+using System;
 using WebsiteBuilder.Interface.Compiling;
 
 namespace WebsiteBuilder.Core.Tools {
@@ -13,8 +14,8 @@ namespace WebsiteBuilder.Core.Tools {
 			LogLevel = dotless.Core.Loggers.LogLevel.Debug
 		};
 
-		public string Compile(string source) {
-			string css = LessWeb.Parse(source, _Config);
+		public String Compile(String source) {
+			String css = LessWeb.Parse(source, _Config);
 			return css;
 		}
 

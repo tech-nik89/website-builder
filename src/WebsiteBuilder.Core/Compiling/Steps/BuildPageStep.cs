@@ -39,7 +39,9 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
         public void Run() {
             _File.Directory.Create();
+
             HtmlDocument htmlFile = new HtmlDocument();
+            CompileHelper helper = new CompileHelper(htmlFile, _File);
 
             int level = GetLevel();
             String path = CreatePath();
@@ -60,7 +62,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                     continue;
                 }
 
-                sections[i] = ResolveUrls(module.Compile(data), _Page.Project, level);
+                sections[i] = ResolveUrls(module.Compile(data, helper), _Page.Project, level);
             }
 
             htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {

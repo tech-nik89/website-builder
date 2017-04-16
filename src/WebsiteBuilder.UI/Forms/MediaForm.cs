@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Tools;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -29,8 +30,8 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            tsbAdd.Image = IconPack.Current.GetImage(IconPack.Icon.Add);
-            tsbRemove.Image = IconPack.Current.GetImage(IconPack.Icon.Delete);
+            tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+            tsbRemove.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
         }
 
         public void LocalizeComponent() {

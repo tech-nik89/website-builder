@@ -5,7 +5,9 @@ namespace WebsiteBuilder.Interface.Plugins {
 
         String Data { get; set; }
 
-        void Insert(String str);
+        void ApplyMediaLink(String str);
+
+        Boolean SupportsMediaLinks { get; }
 
     }
 }
