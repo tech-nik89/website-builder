@@ -17,7 +17,7 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         public String Compile(String source, ICompileHelper helper) {
             try {
-                GalleryData data = GalleryData.Deserialize(source);
+                GalleryData data = GalleryData.Deserialize(source, _PluginHelper);
 
                 IHtmlElement container = helper.CreateHtmlElement("div");
                 container.SetAttribute("class", "gallery");

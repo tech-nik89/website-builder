@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
+using WebsiteBuilder.Core.Tools;
 
 namespace WebsiteBuilder.Core.Storage {
     class ProjectWriter : IDisposable {
@@ -72,8 +73,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         private XElement GetSettings() {
             return new XElement(ProjectStorageConstants.Settings,
-                new XElement(ProjectStorageConstants.OutputPath, _Project.OutputPath),
-                new XElement(ProjectStorageConstants.ThemePath, _Project.ThemePath)
+                new XElement(ProjectStorageConstants.OutputPath, GetRelativePath(_Project.OutputPath)),
+                new XElement(ProjectStorageConstants.ThemePath, GetRelativePath(_Project.ThemePath))
             );
         }
 
@@ -98,12 +99,16 @@ namespace WebsiteBuilder.Core.Storage {
             else if (referenceFile != null) {
                 return new XElement(ProjectStorageConstants.Reference,
                     new XAttribute(ProjectStorageConstants.Id, referenceFile.Id),
-                    new XAttribute(ProjectStorageConstants.Path, referenceFile.FilePath),
+                    new XAttribute(ProjectStorageConstants.Path, GetRelativePath(referenceFile.FilePath)),
                     new XAttribute(ProjectStorageConstants.AutoSave, referenceFile.AutoSave)
                 );
             }
 
             return null;
+        }
+
+        private String GetRelativePath(String fullPath) {
+            return Utilities.FullToRelativePath(fullPath, _Project);
         }
 
         public void Dispose() {

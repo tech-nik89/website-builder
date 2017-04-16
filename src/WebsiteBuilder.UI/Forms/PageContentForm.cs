@@ -53,7 +53,8 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void LoadModule() {
-            IModule module = PluginManager.LoadModule(Content, IconPack.Current);
+            IModule module = PluginManager.LoadModule(Content, IconPack.Current, _Page.Project);
+
             if (module == null) {
                 ShowSettings(true);
                 return;

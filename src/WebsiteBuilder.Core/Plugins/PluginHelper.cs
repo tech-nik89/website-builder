@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteBuilder.Core.Tools;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 
@@ -9,7 +10,10 @@ namespace WebsiteBuilder.Core.Plugins {
 
         private readonly IIconPack _IconPack;
 
-        public PluginHelper(Type editorType, IIconPack iconPack) {
+        private readonly Project _Project;
+
+        public PluginHelper(Project project, Type editorType, IIconPack iconPack) {
+            _Project = project;
             _EditorType = editorType;
             _IconPack = iconPack;
         }
@@ -17,9 +21,17 @@ namespace WebsiteBuilder.Core.Plugins {
         public IEditor CreateEditor() {
             return Activator.CreateInstance(_EditorType, this) as IEditor;
         }
-
+        
         public IIconPack GetIconPack() {
             return _IconPack;
+        }
+
+        public String GetFullPath(String relativePath) {
+            return Utilities.RelativeToFullPath(relativePath, _Project);
+        }
+
+        public String GetRelativePath(String fullPath) {
+            return Utilities.FullToRelativePath(fullPath, _Project);
         }
     }
 }

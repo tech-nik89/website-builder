@@ -7,6 +7,7 @@ using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Plugins;
+using WebsiteBuilder.Core.Tools;
 
 namespace WebsiteBuilder.Core.Storage {
     class ProjectReader : IDisposable {
@@ -22,6 +23,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         public Project Read() {
             try {
+                _Project.ProjectFilePath = _File.FullName;
+
                 String xml = File.ReadAllText(_File.FullName);
                 XDocument document = XDocument.Parse(xml);
                 XElement root = document.Element(ProjectStorageConstants.Root);
@@ -31,8 +34,6 @@ namespace WebsiteBuilder.Core.Storage {
                 GetMedia(root.Element(ProjectStorageConstants.Media));
 
                 _Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
-
-                _Project.ProjectFilePath = _File.FullName;
 
                 return _Project;
             }
@@ -90,7 +91,7 @@ namespace WebsiteBuilder.Core.Storage {
                 case ProjectStorageConstants.Reference:
                     return new MediaReference() {
                         Id = element.Attribute(ProjectStorageConstants.Id).Value,
-                        FilePath = element.Attribute(ProjectStorageConstants.Path).Value,
+                        FilePath = GetFullPath(element.Attribute(ProjectStorageConstants.Path).Value),
                         AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value)
                     };
             }
@@ -99,8 +100,8 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private void GetSettings(XElement element) {
-            _Project.OutputPath = element.Element(ProjectStorageConstants.OutputPath).Value;
-            _Project.ThemePath = element.Element(ProjectStorageConstants.ThemePath).Value;
+            _Project.OutputPath = GetFullPath(element.Element(ProjectStorageConstants.OutputPath).Value);
+            _Project.ThemePath = GetFullPath(element.Element(ProjectStorageConstants.ThemePath).Value);
         }
 
         private void GetLanguages(XElement element) {
@@ -116,6 +117,10 @@ namespace WebsiteBuilder.Core.Storage {
             foreach(Page page in project.AllPages) {
                 page.Project = project;
             }
+        }
+
+        private String GetFullPath(String relativePath) {
+            return Utilities.RelativeToFullPath(relativePath, _Project);
         }
 
         public void Dispose() {

@@ -1,4 +1,5 @@
-﻿using WebsiteBuilder.Interface.Icons;
+﻿using System;
+using WebsiteBuilder.Interface.Icons;
 
 namespace WebsiteBuilder.Interface.Plugins {
     public interface IPluginHelper {
@@ -6,6 +7,10 @@ namespace WebsiteBuilder.Interface.Plugins {
         IEditor CreateEditor();
 
         IIconPack GetIconPack();
+
+        String GetFullPath(String relativePath);
+
+        String GetRelativePath(String fullPath);
 
     }
 }

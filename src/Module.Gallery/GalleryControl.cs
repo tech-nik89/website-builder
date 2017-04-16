@@ -48,10 +48,10 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         public String Data {
             get {
-                return GalleryData.Serialize(_Data);
+                return GalleryData.Serialize(_Data, _PluginHelper);
             }
             set {
-                _Data = GalleryData.Deserialize(value);
+                _Data = GalleryData.Deserialize(value, _PluginHelper);
                 RefreshList();
             }
         }

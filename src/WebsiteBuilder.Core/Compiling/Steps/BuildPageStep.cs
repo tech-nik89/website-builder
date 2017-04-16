@@ -55,7 +55,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                     continue;
                 }
 
-                IModule module = PluginManager.LoadModule(content);
+                IModule module = PluginManager.LoadModule(content, _Page.Project);
                 String data = content.LoadData(_Language);
 
                 if (module == null || String.IsNullOrWhiteSpace(data)) {

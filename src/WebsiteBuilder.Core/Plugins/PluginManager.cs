@@ -76,16 +76,16 @@ namespace WebsiteBuilder.Core.Plugins {
             return dict;
         }
 
-        public static IModule LoadModule(PageContent content) {
-            return LoadModule(content, null);
+        public static IModule LoadModule(PageContent content, Project project) {
+            return LoadModule(content, null, project);
         }
 
-        public static IModule LoadModule(PageContent content, IIconPack iconPack) {
+        public static IModule LoadModule(PageContent content, IIconPack iconPack, Project project) {
             if (content == null || content.ModuleType == null || content.EditorType == null) {
                 return null;
             }
 
-            PluginHelper helper = new PluginHelper(content.EditorType, iconPack);
+            PluginHelper helper = new PluginHelper(project, content.EditorType, iconPack);
             return Activator.CreateInstance(content.ModuleType, helper) as IModule;
         }
     }
