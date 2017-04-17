@@ -12,5 +12,7 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         void Compile(TextWriter writer);
 
+        String Content { get; set; }
+
     }
 }

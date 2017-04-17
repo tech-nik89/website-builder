@@ -11,9 +11,13 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         public Size FullSize { get; private set; }
 
-        public SettingsForm(IIconPack iconPack, Size thumbnailSize, Size fullSize) {
+        public String Title { get; private set; }
+
+        public SettingsForm(IIconPack iconPack, Size thumbnailSize, Size fullSize, String title) {
             InitializeComponent();
             LocalizeComponent();
+
+            txtTitle.Text = title;
 
             numThumbnailHeight.Maximum = decimal.MaxValue;
             numThumbnailWidth.Maximum = decimal.MaxValue;
@@ -32,6 +36,7 @@ namespace WebsiteBuilder.Modules.Gallery {
         private void LocalizeComponent() {
             Text = Strings.GallerySettings;
 
+            gbxTitle.Text = Strings.Title;
             gbxThumbnailSize.Text = Strings.ThumbnailSize;
             gbxFullSize.Text = Strings.FullSize;
 
@@ -52,6 +57,7 @@ namespace WebsiteBuilder.Modules.Gallery {
         private void btnAccept_Click(object sender, EventArgs e) {
             ThumbnailSize = new Size((int)numThumbnailWidth.Value, (int)numThumbnailHeight.Value);
             FullSize = new Size((int)numFullWidth.Value, (int)numFullHeight.Value);
+            Title = txtTitle.Text;
 
             DialogResult = DialogResult.OK;
             Close();

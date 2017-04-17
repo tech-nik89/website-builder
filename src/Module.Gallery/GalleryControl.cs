@@ -156,11 +156,12 @@ namespace WebsiteBuilder.Modules.Gallery {
         }
 
         private void tsbSettings_Click(object sender, EventArgs e) {
-            SettingsForm form = new SettingsForm(_PluginHelper.GetIconPack(), _Data.ThumbnailSize, _Data.FullSize);
+            SettingsForm form = new SettingsForm(_PluginHelper.GetIconPack(), _Data.ThumbnailSize, _Data.FullSize, _Data.Title);
             if (form.ShowDialog() != DialogResult.OK) {
                 return;
             }
 
+            _Data.Title = form.Title;
             _Data.FullSize = form.FullSize;
             _Data.ThumbnailSize = form.ThumbnailSize;
         }

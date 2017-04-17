@@ -10,6 +10,8 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private const String RootTag = "gallery";
 
+        private const String TitleTag = "title";
+
         private const String FileTag = "file";
 
         private const String ThumbnailSizeTag = "thumbnailSize";
@@ -24,6 +26,8 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         public Size FullSize { get; set; }
 
+        public String Title { get; set; }
+
         public List<String> Files { get; set; }
 
         public GalleryData() {
@@ -34,6 +38,7 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         public static String Serialize(GalleryData data, IPluginHelper helper) {
             XDocument doc = new XDocument(new XElement(RootTag,
+                new XElement(TitleTag, data.Title),
                 new XElement(ThumbnailSizeTag, new XAttribute(HeightAttribute, data.ThumbnailSize.Height), new XAttribute(WidthAttribute, data.ThumbnailSize.Width)),
                 new XElement(FullSizeTag, new XAttribute(HeightAttribute, data.FullSize.Height), new XAttribute(WidthAttribute, data.FullSize.Width)),
                 data.Files.Select(x => new XElement(FileTag, helper.GetRelativePath(x)))
@@ -49,6 +54,7 @@ namespace WebsiteBuilder.Modules.Gallery {
                 XDocument doc = XDocument.Parse(input);
                 XElement root = doc.Element(RootTag);
 
+                data.Title = root.Element(TitleTag)?.Value ?? String.Empty;
                 data.Files = root.Elements(FileTag).Select(x => helper.GetFullPath(x.Value)).ToList();
 
                 XElement thumbnailSize = root.Element(ThumbnailSizeTag);

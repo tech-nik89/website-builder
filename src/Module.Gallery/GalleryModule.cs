@@ -23,6 +23,12 @@ namespace WebsiteBuilder.Modules.Gallery {
                 IHtmlElement container = helper.CreateHtmlElement("div");
                 container.SetAttribute("class", "gallery");
 
+                if (!String.IsNullOrWhiteSpace(data.Title)) {
+                    IHtmlElement title = helper.CreateHtmlElement("h1");
+                    title.Content = data.Title;
+                    container.AppendChild(title);
+                }
+
                 foreach (String file in data.Files) {
                     Guid guid = Guid.NewGuid();
                     String extension = Path.GetExtension(file);

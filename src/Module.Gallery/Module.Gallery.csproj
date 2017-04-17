@@ -95,10 +95,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GalleryStyles.less" />
+    <None Include="ClientResources\GalleryStyles.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GalleryCode.js" />
+    <Content Include="ClientResources\GalleryCode.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

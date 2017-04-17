@@ -79,7 +79,7 @@ namespace WebsiteBuilder.Modules.Gallery.Properties {
         ///
         ///        var img = document.createElement(&apos;img&apos;);
         ///        img.src = this.href;
-        ///        img.addEventListener [rest of string was truncated]&quot;;.
+        ///        container.appendChil [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GalleryCode {
             get {
@@ -93,8 +93,9 @@ namespace WebsiteBuilder.Modules.Gallery.Properties {
         ///        border: 0;
         ///    }
         ///
-        ///    a {
+        ///    a:not(.close) {
         ///        display: inline-block;
+        ///        vertical-align:middle;
         ///        border: 1px solid #DDD;
         ///        padding: 10px;
         ///        margin: 8px;
@@ -106,16 +107,12 @@ namespace WebsiteBuilder.Modules.Gallery.Properties {
         ///
         ///    .full {
         ///        position: fixed;
-        ///        top: 30px;
-        ///        left: 30px;
-        ///        right: 30px;
-        ///        bottom: 30px;
+        ///        top: 0;
+        ///        left: 0;
+        ///        right: 0;
+        ///        bottom: 0;
         ///        display: none;
-        ///
-        ///        img {
-        ///            max-width: 100%;
-        ///            max-height: 100%;
-        ///            border: 2px solid #666; [rest of string was truncated]&quot;;.
+        ///        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAY [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GalleryStyles {
             get {
