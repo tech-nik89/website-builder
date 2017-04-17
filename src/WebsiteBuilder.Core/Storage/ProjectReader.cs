@@ -28,12 +28,13 @@ namespace WebsiteBuilder.Core.Storage {
                 String xml = File.ReadAllText(_File.FullName);
                 XDocument document = XDocument.Parse(xml);
                 XElement root = document.Element(ProjectStorageConstants.Root);
-
-                GetSettings(root.Element(ProjectStorageConstants.Settings));
+                
                 GetLanguages(root.Element(ProjectStorageConstants.Languages));
                 GetMedia(root.Element(ProjectStorageConstants.Media));
 
                 _Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
+
+                GetSettings(root.Element(ProjectStorageConstants.Settings));
 
                 return _Project;
             }
@@ -102,6 +103,11 @@ namespace WebsiteBuilder.Core.Storage {
         private void GetSettings(XElement element) {
             _Project.OutputPath = GetFullPath(element.Element(ProjectStorageConstants.OutputPath).Value);
             _Project.ThemePath = GetFullPath(element.Element(ProjectStorageConstants.ThemePath).Value);
+
+            String startPageId = element.Element(ProjectStorageConstants.StartPage)?.Value ?? String.Empty;
+            if (!String.IsNullOrWhiteSpace(startPageId)) {
+                _Project.StartPage = _Project.AllPages.SingleOrDefault(x => x.Id == startPageId);
+            }
         }
 
         private void GetLanguages(XElement element) {

@@ -78,6 +78,10 @@ namespace WebsiteBuilder.UI.Controls {
             tsbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
             tsbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
             tsbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
+
+            cmbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
+            cmbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
+            cmbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
         }
 
         private void LocalizeComponent() {
@@ -169,6 +173,7 @@ namespace WebsiteBuilder.UI.Controls {
 
         private void lvwPages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
             TreeItem item = _FlatList[e.ItemIndex];
+
             e.Item = new ListViewItem(new String[] {
                 GetItemText(item),
                 item.Page.Title.Get(SelectedLanguage),
@@ -182,6 +187,10 @@ namespace WebsiteBuilder.UI.Controls {
 
         private static String GetItemText(TreeItem item) {
             StringBuilder builder = new StringBuilder();
+
+            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
+                builder.Append("* ");
+            }
 
             for (int i = 0; i < item.Level; i++) {
                 builder.Append("-- ");
@@ -240,9 +249,15 @@ namespace WebsiteBuilder.UI.Controls {
         
         private void EnableControls() {
             Boolean canEdit = lvwPages.SelectedIndices.Count > 0;
+
             tsbEdit.Enabled = canEdit;
             tsbDelete.Enabled = canEdit;
             tsbEditContent.Enabled = canEdit;
+
+            cmbEdit.Enabled = canEdit;
+            cmbDelete.Enabled = canEdit;
+            cmbEditContent.Enabled = canEdit;
+            cmbStartPage.Enabled = canEdit;
         }
 
         private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
@@ -371,6 +386,16 @@ namespace WebsiteBuilder.UI.Controls {
             draggedItem.Remove();
             droppedOnItem.Pages.Add(draggedItem);
 
+            RefreshTree();
+        }
+
+        private void tsbStartPage_Click(object sender, EventArgs e) {
+            TreeItem item = SelectedItem;
+            if (item == null) {
+                return;
+            }
+
+            Project.StartPage = item.Page;
             RefreshTree();
         }
     }

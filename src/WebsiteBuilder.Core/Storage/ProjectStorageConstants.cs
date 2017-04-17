@@ -49,5 +49,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String AutoSave = "autoSave";
 
+        public const String StartPage = "startPage";
+
     }
 }
