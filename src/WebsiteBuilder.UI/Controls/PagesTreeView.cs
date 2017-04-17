@@ -89,6 +89,10 @@ namespace WebsiteBuilder.UI.Controls {
             clnPathName.Text = Strings.PathName;
             clnTitle.Text = Strings.Title;
             clnLayout.Text = Strings.Layout;
+
+            cmsDragDropMoveAfter.Text = Strings.InsertBelow;
+            cmsDragDropMoveBefore.Text = Strings.InsertAbove;
+            cmsDragDropMoveAsChild.Text = Strings.InsertAsChild;
         }
 
         public void RefreshLanguageList() {

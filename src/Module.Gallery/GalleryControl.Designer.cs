@@ -28,14 +28,15 @@
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.ofdImages = new System.Windows.Forms.OpenFileDialog();
-            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
+            this.ofdImages = new System.Windows.Forms.OpenFileDialog();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvwImages
             // 
+            this.lvwImages.AllowDrop = true;
             this.lvwImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwImages.Location = new System.Drawing.Point(0, 25);
             this.lvwImages.Name = "lvwImages";
@@ -45,6 +46,7 @@
             this.lvwImages.VirtualMode = true;
             this.lvwImages.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvwImages_RetrieveVirtualItem);
             this.lvwImages.SelectedIndexChanged += new System.EventHandler(this.lvwImages_SelectedIndexChanged);
+            this.lvwImages.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvwImages_DragDrop);
             this.lvwImages.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvwImages_DragEnter);
             this.lvwImages.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lvwImages_KeyUp);
             // 
@@ -80,9 +82,10 @@
             this.tsbDelete.Text = "[Remove]";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
-            // ofdImages
+            // toolStripSeparator1
             // 
-            this.ofdImages.Multiselect = true;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbSettings
             // 
@@ -93,10 +96,9 @@
             this.tsbSettings.Text = "[Settings]";
             this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
             // 
-            // toolStripSeparator1
+            // ofdImages
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.ofdImages.Multiselect = true;
             // 
             // GalleryControl
             // 

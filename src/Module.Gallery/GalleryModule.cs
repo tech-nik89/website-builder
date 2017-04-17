@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using WebsiteBuilder.Interface.Compiling;
 using WebsiteBuilder.Interface.Plugins;
+using WebsiteBuilder.Modules.Gallery.Properties;
 
 namespace WebsiteBuilder.Modules.Gallery {
 
@@ -29,13 +30,11 @@ namespace WebsiteBuilder.Modules.Gallery {
                     String fullSizeTargetFileName = String.Concat(guid, extension);
                     String thumbNailTargetFileName = String.Format("{0}-s{1}", guid, extension);
 
-                    using (Image originalSizeImage = Image.FromFile(file)) {
-                        using (Image fullSizeImage = ImageHelper.ResizeImage(originalSizeImage, data.FullSize)) {
-                            fullSizeImage.Save(helper.GetFilePath(fullSizeTargetFileName));
-                        }
-                        using (Image thumbNailImage = ImageHelper.ResizeImage(originalSizeImage, data.ThumbnailSize)) {
-                            thumbNailImage.Save(helper.GetFilePath(thumbNailTargetFileName));
-                        }
+                    using (Image originalSizeImage = Image.FromFile(file))
+                    using (Image thumbNailImage = ImageHelper.ResizeImage(originalSizeImage, data.ThumbnailSize))
+                    using (Image fullSizeImage = ImageHelper.ResizeImage(originalSizeImage, data.FullSize)) {
+                        fullSizeImage.Save(helper.GetFilePath(fullSizeTargetFileName));
+                        thumbNailImage.Save(helper.GetFilePath(thumbNailTargetFileName));
                     }
 
                     IHtmlElement a = helper.CreateHtmlElement("a");
@@ -52,14 +51,14 @@ namespace WebsiteBuilder.Modules.Gallery {
                 IHtmlElement full = helper.CreateHtmlElement("div");
                 full.SetAttribute("class", "full");
                 container.AppendChild(full);
-
-                helper.CreateLessFile(GalleryResources.Styles);
-                helper.CreateJavaScriptFile(GalleryResources.Script, true);
+                
+                helper.CreateLessFile(Resources.GalleryStyles);
+                helper.CreateJavaScriptFile(Resources.GalleryCode, true);
 
                 return helper.Compile(container);
             }
             catch {
-                return String.Empty;
+                throw;
             }
         }
 

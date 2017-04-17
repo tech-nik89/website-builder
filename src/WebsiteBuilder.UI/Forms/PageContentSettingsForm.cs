@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Plugins;
+using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class PageContentSettingsForm : Form {
@@ -32,6 +33,8 @@ namespace WebsiteBuilder.UI.Forms {
 
             btnAccept.Text = Strings.Accept;
             btnCancel.Text = Strings.Cancel;
+
+            Icon = IconPack.Current.GetIcon(Interface.Icons.IconPackIcon.Settings);
         }
 
         private void btnCancel_Click(object sender, EventArgs e) {

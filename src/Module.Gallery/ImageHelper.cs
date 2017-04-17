@@ -6,6 +6,28 @@ using System.Drawing.Imaging;
 namespace WebsiteBuilder.Modules.Gallery {
     static class ImageHelper {
 
+        public static Image ResizeImageToSquare(Image image, int size) {
+            Bitmap targetImage = new Bitmap(size, size);
+            int x = 0;
+            int y = 0;
+
+            using (Graphics graphics = Graphics.FromImage(targetImage))
+            using (Image resizedImage = ResizeImage(image, size, size, true)) {
+                
+                if (resizedImage.Width > resizedImage.Height) {
+                    y = (size - resizedImage.Height) / 2;
+                }
+                else {
+                    x = (size - resizedImage.Width) / 2;
+                }
+
+                graphics.FillRectangle(Brushes.White, 0, 0, size, size);
+                graphics.DrawImage(resizedImage, x, y);
+            }
+
+            return targetImage;
+        }
+
         public static Image ResizeImage(Image image, Size size) {
             return ResizeImage(image, size.Width, size.Height, true);
         }

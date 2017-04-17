@@ -28,7 +28,7 @@ namespace WebsiteBuilder.Modules.Gallery {
             LocalizeComponent();
 
             _Data = new GalleryData();
-            _ImageList = new ImageList() { ImageSize = new Size(ImageSize, ImageSize) };
+            _ImageList = new ImageList() { ImageSize = new Size(ImageSize, ImageSize), ColorDepth = ColorDepth.Depth32Bit };
             
             lvwImages.LargeImageList = _ImageList;
 
@@ -56,8 +56,8 @@ namespace WebsiteBuilder.Modules.Gallery {
             }
         }
 
-        public void ApplyMediaLink(string str) {
-            throw new NotSupportedException();
+        public void ApplyMediaLink(String str) {
+            
         }
 
         private void tsbAdd_Click(object sender, EventArgs e) {
@@ -65,15 +65,7 @@ namespace WebsiteBuilder.Modules.Gallery {
                 return;
             }
 
-            foreach (String path in ofdImages.FileNames) {
-                if (!File.Exists(path) || Array.IndexOf(SupportedExtensions, Path.GetExtension(path).ToLower()) == -1) {
-                    continue;
-                }
-
-                _Data.Files.Add(path);
-            }
-
-            RefreshList();
+            Add(ofdImages.FileNames);
         }
 
         private void tsbDelete_Click(object sender, EventArgs e) {
@@ -106,7 +98,7 @@ namespace WebsiteBuilder.Modules.Gallery {
             foreach(String path in _Data.Files) {
                 using (Image image = Image.FromFile(path)) {
                     int height = image.Height * ImageSize / image.Width;
-                    _ImageList.Images.Add(ImageHelper.ResizeImage(image, new Size(ImageSize, ImageSize)));
+                    _ImageList.Images.Add(ImageHelper.ResizeImageToSquare(image, ImageSize));
                 }
             }
 
@@ -133,7 +125,34 @@ namespace WebsiteBuilder.Modules.Gallery {
         }
 
         private void lvwImages_DragEnter(object sender, DragEventArgs e) {
-            e.Effect = DragDropEffects.Link;
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                e.Effect = DragDropEffects.Link;
+            }
+        }
+
+        private void lvwImages_DragDrop(object sender, DragEventArgs e) {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                return;
+            }
+
+            Add((String[])e.Data.GetData(DataFormats.FileDrop));
+        }
+
+        private void Add(String[] fileNames) {
+            Boolean fileAdded = false;
+
+            foreach (String path in fileNames) {
+                if (!File.Exists(path) || Array.IndexOf(SupportedExtensions, Path.GetExtension(path).ToLower()) == -1) {
+                    continue;
+                }
+
+                _Data.Files.Add(path);
+                fileAdded = true;
+            }
+
+            if (fileAdded) {
+                RefreshList();
+            }
         }
 
         private void tsbSettings_Click(object sender, EventArgs e) {

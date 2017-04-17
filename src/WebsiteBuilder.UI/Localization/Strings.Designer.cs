@@ -295,6 +295,33 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert Above.
+        /// </summary>
+        internal static string InsertAbove {
+            get {
+                return ResourceManager.GetString("InsertAbove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert as Child.
+        /// </summary>
+        internal static string InsertAsChild {
+            get {
+                return ResourceManager.GetString("InsertAsChild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert Below.
+        /// </summary>
+        internal static string InsertBelow {
+            get {
+                return ResourceManager.GetString("InsertBelow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert Link.
         /// </summary>
         internal static string InsertLink {

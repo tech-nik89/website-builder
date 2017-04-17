@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using WebsiteBuilder.Core.Properties;
 
 namespace WebsiteBuilder.Core.Compiling.Steps {
     class BuildIndexFile : ICompilerStep {
@@ -12,35 +13,6 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         private readonly String _Path;
 
         public String Output { get; private set; }
-
-        private const String LanguageRedirectScript = @"
-            var WebsiteBuilder = WebsiteBuilder || {};
-
-            WebsiteBuilder.LanguageRedirect = function (supportedLanguages, startPage) {
-                supportedLanguages = supportedLanguages || [];
-
-                var language = navigator.language || navigator.userLanguage;
-                var index = supportedLanguages.indexOf(language);
-
-                if (index == -1) {
-                    language = supportedLanguages[0];
-                }
-
-                var file = 'index.html';
-                var url = location.href;
-                var fileIndex = url.lastIndexOf(file);
-
-                if (fileIndex > -1) url = url.substr(0, fileIndex);
-
-                if (url.indexOf('/', url.length - 1) === -1) url += '/';
-
-                url += language;
-                if (startPage) {
-                    url += '/' + startPage;
-                }
-
-                location.href = url;
-            }";
 
         public BuildIndexFile(Project project) {
             _Project = project;
@@ -65,7 +37,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
             script.Append(");");
 
-            file.AddScript(LanguageRedirectScript);
+            file.AddScript(Resources.IndexPageScript);
             file.AddScript(script.ToString());
 
             file.Compile(_Path);

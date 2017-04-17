@@ -87,6 +87,11 @@
     <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Storage\ProjectReader.cs" />
     <Compile Include="Storage\ProjectStorageConstants.cs" />
     <Compile Include="Storage\ProjectWriter.cs" />
@@ -102,12 +107,20 @@
     <Compile Include="Tools\MicrosoftMinifier.cs" />
     <Compile Include="Tools\Utilities.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
       <Name>WebsiteBuilder.Interface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\IndexPageScript.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
