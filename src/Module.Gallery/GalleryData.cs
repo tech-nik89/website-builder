@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using WebsiteBuilder.Interface.Plugins;
@@ -55,7 +56,7 @@ namespace WebsiteBuilder.Modules.Gallery {
                 XElement root = doc.Element(RootTag);
 
                 data.Title = root.Element(TitleTag)?.Value ?? String.Empty;
-                data.Files = root.Elements(FileTag).Select(x => helper.GetFullPath(x.Value)).ToList();
+                data.Files = root.Elements(FileTag).Select(x => helper.GetFullPath(x.Value)).Where(x => File.Exists(x)).ToList();
 
                 XElement thumbnailSize = root.Element(ThumbnailSizeTag);
                 data.ThumbnailSize = new Size(Convert.ToInt32(thumbnailSize.Attribute(WidthAttribute).Value), Convert.ToInt32(thumbnailSize.Attribute(HeightAttribute).Value));

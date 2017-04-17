@@ -128,7 +128,7 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private void lvwImages_DragEnter(object sender, DragEventArgs e) {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
-                e.Effect = DragDropEffects.Link;
+                e.Effect = DragDropEffects.Copy;
             }
         }
 

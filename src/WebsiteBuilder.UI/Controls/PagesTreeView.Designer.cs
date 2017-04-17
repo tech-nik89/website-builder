@@ -53,19 +53,17 @@
             // lvwPages
             // 
             this.lvwPages.AllowDrop = true;
-            this.lvwPages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwPages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clnPathName,
             this.clnTitle,
             this.clnLayout});
+            this.lvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwPages.FullRowSelect = true;
             this.lvwPages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvwPages.Location = new System.Drawing.Point(0, 28);
+            this.lvwPages.Location = new System.Drawing.Point(0, 25);
             this.lvwPages.MultiSelect = false;
             this.lvwPages.Name = "lvwPages";
-            this.lvwPages.Size = new System.Drawing.Size(635, 339);
+            this.lvwPages.Size = new System.Drawing.Size(635, 342);
             this.lvwPages.TabIndex = 0;
             this.lvwPages.UseCompatibleStateImageBehavior = false;
             this.lvwPages.View = System.Windows.Forms.View.Details;
@@ -202,8 +200,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.lvwPages);
+            this.Controls.Add(this.tsMain);
             this.DoubleBuffered = true;
             this.Name = "PagesTreeView";
             this.Size = new System.Drawing.Size(635, 367);
