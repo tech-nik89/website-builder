@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using WebsiteBuilder.Core.Tools;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
@@ -32,6 +33,18 @@ namespace WebsiteBuilder.Core.Plugins {
 
         public String GetRelativePath(String fullPath) {
             return Utilities.FullToRelativePath(fullPath, _Project);
+        }
+
+        public bool CanSuggestCopyToProjectDirectory(String fullFilePath) {
+            if (!Path.IsPathRooted(fullFilePath) || _Project.ProjectFile == null || !_Project.ProjectFile.Exists) {
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(fullFilePath) || !File.Exists(fullFilePath)) {
+                return false;
+            }
+
+            return !fullFilePath.StartsWith(_Project.ProjectFile.Directory.FullName);
         }
     }
 }

@@ -11,6 +11,8 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private static readonly String[] SupportedExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
 
+        private const String AutoCopyGalleryDirectoryName = "gallery";
+
         private const int ImageSize = 64;
 
         public Boolean SupportsMediaLinks => false;
@@ -140,19 +142,42 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private void Add(String[] fileNames) {
             Boolean fileAdded = false;
+            Boolean copyToProjectDirectory = false;
+            Boolean alreadyAskedForCopyToProjectDirectory = false;
 
             foreach (String path in fileNames) {
-                if (!File.Exists(path) || Array.IndexOf(SupportedExtensions, Path.GetExtension(path).ToLower()) == -1) {
+                String filePath = path;
+
+                if (!File.Exists(filePath) || Array.IndexOf(SupportedExtensions, Path.GetExtension(filePath).ToLower()) == -1) {
                     continue;
                 }
 
-                _Data.Files.Add(path);
+                if (!alreadyAskedForCopyToProjectDirectory && _PluginHelper.CanSuggestCopyToProjectDirectory(filePath)) {
+                    alreadyAskedForCopyToProjectDirectory = true;
+                    copyToProjectDirectory = AskUserWantsFilesToBeCopiedToProjectDirectory();
+                }
+
+                if (copyToProjectDirectory) {
+                    String newPath = _PluginHelper.GetFullPath(Path.Combine(AutoCopyGalleryDirectoryName, Guid.NewGuid().ToString() + Path.GetExtension(filePath)));
+                    FileInfo newFile = new FileInfo(newPath);
+                    newFile.Directory.Create();
+
+                    File.Copy(filePath, newFile.FullName);
+                    filePath = newFile.FullName;
+                }
+
+                _Data.Files.Add(filePath);
                 fileAdded = true;
             }
 
             if (fileAdded) {
                 RefreshList();
             }
+        }
+
+        private static bool AskUserWantsFilesToBeCopiedToProjectDirectory() {
+            DialogResult result = MessageBox.Show(Strings.SuggestCopyToProjectDirectoryMessage, Strings.SuggestCopyToProjectDirectoryTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return result == DialogResult.Yes;
         }
 
         private void tsbSettings_Click(object sender, EventArgs e) {

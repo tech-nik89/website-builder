@@ -138,6 +138,12 @@
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="SuggestCopyToProjectDirectoryMessage" xml:space="preserve">
+    <value>Do you want the selected files to be copied to your project directory now?</value>
+  </data>
+  <data name="SuggestCopyToProjectDirectoryTitle" xml:space="preserve">
+    <value>Copy to project directory</value>
+  </data>
   <data name="ThumbnailSize" xml:space="preserve">
     <value>Thumbnail Size</value>
   </data>

@@ -124,6 +124,24 @@ namespace WebsiteBuilder.Modules.Gallery.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want the selected files to be copied to your project directory now?.
+        /// </summary>
+        internal static string SuggestCopyToProjectDirectoryMessage {
+            get {
+                return ResourceManager.GetString("SuggestCopyToProjectDirectoryMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy to project directory.
+        /// </summary>
+        internal static string SuggestCopyToProjectDirectoryTitle {
+            get {
+                return ResourceManager.GetString("SuggestCopyToProjectDirectoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thumbnail Size.
         /// </summary>
         internal static string ThumbnailSize {

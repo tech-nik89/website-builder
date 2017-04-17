@@ -12,5 +12,7 @@ namespace WebsiteBuilder.Interface.Plugins {
 
         String GetRelativePath(String fullPath);
 
+        bool CanSuggestCopyToProjectDirectory(String fullFilePath);
+
     }
 }
