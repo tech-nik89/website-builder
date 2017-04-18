@@ -39,6 +39,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String ThemePath = "themePath";
 
+        public const String UglyURLs = "uglyURLs";
+
         public const String Media = "media";
 
         public const String File = "file";

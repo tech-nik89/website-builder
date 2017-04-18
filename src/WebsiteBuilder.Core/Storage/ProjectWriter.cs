@@ -73,6 +73,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         private XElement GetSettings() {
             return new XElement(ProjectStorageConstants.Settings,
+                new XElement(ProjectStorageConstants.UglyURLs, _Project.UglyURLs),
                 new XElement(ProjectStorageConstants.OutputPath, GetRelativePath(_Project.OutputPath)),
                 new XElement(ProjectStorageConstants.ThemePath, GetRelativePath(_Project.ThemePath)),
                 new XElement(ProjectStorageConstants.StartPage, _Project.StartPage?.Id ?? String.Empty)

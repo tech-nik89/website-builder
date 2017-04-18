@@ -29,6 +29,24 @@ namespace WebsiteBuilder.Core.Pages {
         private Dictionary<int, PageContent> _Content;
 
         public IReadOnlyDictionary<int, PageContent> Content => new ReadOnlyDictionary<int, PageContent>(_Content);
+
+        public int Level {
+            get {
+                int level = 0;
+
+                Page parent = Parent as Page;
+                while (parent != null) {
+                    level++;
+                    parent = parent.Parent as Page;
+                }
+
+                if (!Project.UglyURLs) {
+                    level++;
+                }
+
+                return level;
+            }
+        }
         
         internal Page() : this(null) {
         }

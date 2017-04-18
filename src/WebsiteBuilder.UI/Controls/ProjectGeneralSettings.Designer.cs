@@ -37,6 +37,7 @@
             this.lblThemePath = new System.Windows.Forms.Label();
             this.ofdFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdDirectory = new System.Windows.Forms.FolderBrowserDialog();
+            this.chkUglyURLs = new System.Windows.Forms.CheckBox();
             this.gbxOutput.SuspendLayout();
             this.gbxTheme.SuspendLayout();
             this.SuspendLayout();
@@ -45,12 +46,13 @@
             // 
             this.gbxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxOutput.Controls.Add(this.chkUglyURLs);
             this.gbxOutput.Controls.Add(this.btnOutputBrowse);
             this.gbxOutput.Controls.Add(this.txtOutputPath);
             this.gbxOutput.Controls.Add(this.lblOutputPath);
             this.gbxOutput.Location = new System.Drawing.Point(3, 3);
             this.gbxOutput.Name = "gbxOutput";
-            this.gbxOutput.Size = new System.Drawing.Size(421, 73);
+            this.gbxOutput.Size = new System.Drawing.Size(421, 104);
             this.gbxOutput.TabIndex = 0;
             this.gbxOutput.TabStop = false;
             this.gbxOutput.Text = "[Output directory]";
@@ -91,7 +93,7 @@
             this.gbxTheme.Controls.Add(this.btnThemeBrowse);
             this.gbxTheme.Controls.Add(this.txtThemePath);
             this.gbxTheme.Controls.Add(this.lblThemePath);
-            this.gbxTheme.Location = new System.Drawing.Point(3, 82);
+            this.gbxTheme.Location = new System.Drawing.Point(3, 113);
             this.gbxTheme.Name = "gbxTheme";
             this.gbxTheme.Size = new System.Drawing.Size(421, 73);
             this.gbxTheme.TabIndex = 3;
@@ -127,6 +129,16 @@
             this.lblThemePath.TabIndex = 0;
             this.lblThemePath.Text = "[Path:]";
             // 
+            // chkUglyURLs
+            // 
+            this.chkUglyURLs.AutoSize = true;
+            this.chkUglyURLs.Location = new System.Drawing.Point(21, 68);
+            this.chkUglyURLs.Name = "chkUglyURLs";
+            this.chkUglyURLs.Size = new System.Drawing.Size(83, 17);
+            this.chkUglyURLs.TabIndex = 3;
+            this.chkUglyURLs.Text = "[Ugly URLs]";
+            this.chkUglyURLs.UseVisualStyleBackColor = true;
+            // 
             // ProjectGeneralSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,7 +146,7 @@
             this.Controls.Add(this.gbxTheme);
             this.Controls.Add(this.gbxOutput);
             this.Name = "ProjectGeneralSettings";
-            this.Size = new System.Drawing.Size(427, 169);
+            this.Size = new System.Drawing.Size(427, 223);
             this.gbxOutput.ResumeLayout(false);
             this.gbxOutput.PerformLayout();
             this.gbxTheme.ResumeLayout(false);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.Label lblThemePath;
         private System.Windows.Forms.OpenFileDialog ofdFile;
         private System.Windows.Forms.FolderBrowserDialog fbdDirectory;
+        private System.Windows.Forms.CheckBox chkUglyURLs;
     }
 }

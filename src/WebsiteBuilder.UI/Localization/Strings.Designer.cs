@@ -412,11 +412,11 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output Directory.
+        ///   Looks up a localized string similar to Output.
         /// </summary>
-        internal static string OutputDirectory {
+        internal static string Output {
             get {
-                return ResourceManager.GetString("OutputDirectory", resourceCulture);
+                return ResourceManager.GetString("Output", resourceCulture);
             }
         }
         
@@ -579,6 +579,15 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ugly URLs.
+        /// </summary>
+        internal static string UglyURLs {
+            get {
+                return ResourceManager.GetString("UglyURLs", resourceCulture);
             }
         }
         

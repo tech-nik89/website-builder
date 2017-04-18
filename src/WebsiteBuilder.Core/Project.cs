@@ -16,6 +16,8 @@ namespace WebsiteBuilder.Core {
 
         public const String FileIndex = "index.html";
 
+        public Boolean UglyURLs { get; set; }
+
         public String Id => null;
 
         public IPage Parent => null;

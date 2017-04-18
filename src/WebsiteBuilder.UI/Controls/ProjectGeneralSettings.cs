@@ -15,21 +15,24 @@ namespace WebsiteBuilder.UI.Controls {
         }
 
         private void LocalizeComponent() {
-            gbxOutput.Text = Strings.OutputDirectory;
+            gbxOutput.Text = Strings.Output;
             gbxTheme.Text = Strings.Theme;
 
             lblOutputPath.Text = Strings.Path + ":";
             lblThemePath.Text = Strings.Path + ":";
+            chkUglyURLs.Text = Strings.UglyURLs;
         }
 
         public void FillFromProject(Project project) {
             txtOutputPath.Text = project.OutputPath;
             txtThemePath.Text = project.ThemePath;
+            chkUglyURLs.Checked = project.UglyURLs;
         }
 
         public void FillProjectFrom(Project project) {
             project.OutputPath = txtOutputPath.Text;
             project.ThemePath = txtThemePath.Text;
+            project.UglyURLs = chkUglyURLs.Checked;
         }
 
         private void btnThemeBrowse_Click(object sender, EventArgs e) {

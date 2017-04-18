@@ -31,7 +31,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
             if (_Project.StartPage != null) {
                 script.Append(", \"");
-                script.Append(Compiler.CreateUrl(_Project.StartPage, 0));
+                script.Append(Compiler.CreateUrl(_Project.StartPage));
                 script.Append("\"");
             }
 

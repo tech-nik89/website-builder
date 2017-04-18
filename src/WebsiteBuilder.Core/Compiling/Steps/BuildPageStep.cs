@@ -43,7 +43,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             HtmlDocument htmlFile = new HtmlDocument();
             CompileHelper helper = new CompileHelper(htmlFile, _File);
 
-            int level = GetLevel();
+            int level = _Page.Level;
             String path = CreatePath();
 
             Layout layout = _Page.Layout;
@@ -69,7 +69,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 Content = RenderTemplate(layout.Template, new { Content = sections }),
                 Navigation = RenderNavigation(_Language, level),
                 Title = _Page.Title.Get(_Language),
-				Languages = RenderLanguageSwitcher(level),
+				Languages = RenderLanguageSwitcher(),
                 Path = path
             });
 
@@ -106,7 +106,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             return builder.ToString();
         }
 
-		private String RenderLanguageSwitcher(int pageLevel) {
+		private String RenderLanguageSwitcher() {
 			if (_Page.Project.Languages.Length > 1) {
 				return String.Empty;
 			}
@@ -114,25 +114,13 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 			StringBuilder builder = new StringBuilder();
 			foreach (Language language in _Page.Project.Languages) {
 				builder.Append(RenderTemplate(_Theme.TemplateLanguageItem, new {
-					Url = Compiler.CreateUrl(_Page, pageLevel, language),
+					Url = Compiler.CreateUrl(_Page, language),
 					Text = language.Description
 				}));
 			}
 
 			return RenderTemplate(_Theme.TemplateLanguageItems, new { Items = builder.ToString() });
 		}
-
-        private int GetLevel() {
-            int level = 0;
-
-            Page parent = _Page.Parent as Page;
-            while (parent != null) {
-                level++;
-                parent = parent.Parent as Page;
-            }
-
-            return level;
-        }
 
         private String CreatePath() {
             List<String> path = new List<String>();
@@ -152,18 +140,34 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         private FileInfo GetFileInfo() {
             var parts = new List<String>();
 
-            Page parent = _Page.Parent as Page;
-            while (parent != null) {
-                parts.Insert(0, parent.PathName);
-                parent = parent.Parent as Page;
+            if (_Page.Project.UglyURLs) {
+                Page parent = _Page.Parent as Page;
+
+                while (parent != null) {
+                    parts.Insert(0, parent.PathName);
+                    parent = parent.Parent as Page;
+                }
+
+                parts.Insert(0, _Language.Id);
+                parts.Insert(0, _OutputDirectory.FullName);
+
+                parts.Add(String.Format("{0}.{1}", _Page.PathName, Compiler.FileExtensionHtml));
+            }
+            else {
+                Page parent = _Page as Page;
+
+                while (parent != null) {
+                    parts.Insert(0, parent.PathName);
+                    parent = parent.Parent as Page;
+                }
+
+                parts.Insert(0, _Language.Id);
+                parts.Insert(0, _OutputDirectory.FullName);
+
+                parts.Add(Project.FileIndex);
             }
 
-            parts.Insert(0, _Language.Id);
-            parts.Insert(0, _OutputDirectory.FullName);
-
-            parts.Add(String.Format("{0}.{1}", _Page.PathName, Compiler.FileExtensionHtml));
-
-            var path = Path.Combine(parts.ToArray());
+            String path = Path.Combine(parts.ToArray());
             return new FileInfo(path);
         }
 
@@ -217,7 +221,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             foreach (var page in pages) {
                 builder.Append(RenderTemplate(_Theme.TemplateNavItem, new {
                     Text = page.Title.Get(language),
-                    Url = Compiler.CreateUrl(page, pageLevel),
+                    Url = Compiler.CreateUrl(page, _Page),
                     Children = RenderNavigation(language, page.Pages, pageLevel)
                 }));
             }
@@ -225,7 +229,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             return RenderTemplate(_Theme.TemplateNavItems, new { Children = builder.ToString() });
         }
 
-		private static String ResolveUrls(String html, Project project, int level) {
+		private String ResolveUrls(String html, Project project, int level) {
 			html = CompilerConstants.MediaLinkRegex.Replace(html, match => {
 
                 String id = match.Groups[1].Value;
@@ -242,13 +246,13 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             html = CompilerConstants.PageLinkRegex.Replace(html, match => {
 
                 String id = match.Groups[1].Value;
-                var page = project.AllPages.SingleOrDefault(p => p.Id == id);
+                var targetPage = project.AllPages.SingleOrDefault(p => p.Id == id);
 
-                if (page == null) {
+                if (targetPage == null) {
                     return String.Empty;
                 }
 
-                return Compiler.CreateUrl(page, level);
+                return Compiler.CreateUrl(targetPage, _Page);
             });
 
 			return html;

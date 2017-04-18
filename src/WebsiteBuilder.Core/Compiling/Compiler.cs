@@ -134,7 +134,7 @@ namespace WebsiteBuilder.Core.Compiling {
             }
         }
 
-		internal static String CreateUrl(Page page, int navLevel, Language language) {
+		internal static String CreateUrl(Page page, Language language) {
 			List<String> path = new List<String>();
 			Page parent = page.Parent as Page;
 
@@ -150,35 +150,44 @@ namespace WebsiteBuilder.Core.Compiling {
 				path.Insert(0, DirectoryUp);
 			}
 
-			path.Add(String.Concat(page.PathName, ".", FileExtensionHtml));
+            if (page.Project.UglyURLs) {
+                path.Add(String.Concat(page.PathName, ".", FileExtensionHtml));
+            }
+            else {
+                path.Add(String.Concat(page.PathName, "/"));
+            }
 
 			return String.Join("/", path);
 		}
 
-		internal static String CreateUrl(Page page, int navLevel) {
+        internal static String CreateUrl(Page targetPage) {
+            return CreateUrl(targetPage, (Page)null);
+        }
+
+        internal static String CreateUrl(Page targetPage, Page currentPage) {
             List<String> path = new List<String>();
-            Page parent = page.Parent as Page;
+            Page parent = targetPage.Parent as Page;
 
             while (parent != null) {
                 path.Insert(0, parent.PathName);
                 parent = parent.Parent as Page;
             }
 
-            if (path.Count >= navLevel) {
-                path.RemoveRange(0, navLevel);
+            if (targetPage.Project.UglyURLs) {
+                path.Add(String.Concat(targetPage.PathName, ".", FileExtensionHtml));
             }
             else {
-                for(int i = 0; i < navLevel; i++) {
-                    path.Add(DirectoryUp);
-                }
+                path.Add(String.Concat(targetPage.PathName, "/"));
             }
-
-            path.Add(String.Concat(page.PathName, ".", FileExtensionHtml));
+            
+            for (int i = 0; i < (currentPage?.Level ?? 0); i++) {
+                path.Insert(0, DirectoryUp);
+            }
 
             return String.Join("/", path);
         }
-
-		private DirectoryInfo GetChildDirectory(DirectoryInfo currentDirectory, Page page) {
+        
+        private DirectoryInfo GetChildDirectory(DirectoryInfo currentDirectory, Page page) {
 			String path = Path.Combine(currentDirectory.FullName, page.PathName);
 			DirectoryInfo info = new DirectoryInfo(path);
 			info.Create();
