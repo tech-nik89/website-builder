@@ -132,6 +132,7 @@
             this.Controls.Add(this.tabCtrl);
             this.MinimizeBox = false;
             this.Name = "InsertLinkForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InsertLinkForm";
             this.tabCtrl.ResumeLayout(false);

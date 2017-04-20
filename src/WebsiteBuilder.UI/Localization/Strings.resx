@@ -195,6 +195,9 @@
   <data name="Included" xml:space="preserve">
     <value>Included</value>
   </data>
+  <data name="IncludeInMenu" xml:space="preserve">
+    <value>Include in Menu</value>
+  </data>
   <data name="InsertAbove" xml:space="preserve">
     <value>Insert Above</value>
   </data>
@@ -276,6 +279,9 @@
   <data name="SectionListItem" xml:space="preserve">
     <value>Section {0}</value>
   </data>
+  <data name="SetStartPage" xml:space="preserve">
+    <value>Set as Start Page</value>
+  </data>
   <data name="Size" xml:space="preserve">
     <value>Size</value>
   </data>
@@ -296,5 +302,8 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="PageDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to remove the selected page? All sub-pages will be removed as well.</value>
   </data>
 </root>

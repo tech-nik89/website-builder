@@ -23,6 +23,8 @@ namespace WebsiteBuilder.UI.Controls {
 
         private Project _Project;
 
+        private readonly ImageList _ImageList;
+
         public Project Project {
             get {
                 return _Project;
@@ -67,6 +69,12 @@ namespace WebsiteBuilder.UI.Controls {
 
             _HighlightingIndex = -1;
             _FlatList = new List<TreeItem>();
+
+            if (IconPack.Current != null) {
+                _ImageList = new ImageList() { ColorDepth = ColorDepth.Depth32Bit, ImageSize = new Size(16, 16) };
+                _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
+                lvwPages.SmallImageList = _ImageList;
+            }
         }
 
         private void ApplyIcons() {
@@ -97,6 +105,11 @@ namespace WebsiteBuilder.UI.Controls {
             cmsDragDropMoveAfter.Text = Strings.InsertBelow;
             cmsDragDropMoveBefore.Text = Strings.InsertAbove;
             cmsDragDropMoveAsChild.Text = Strings.InsertAsChild;
+
+            cmbDelete.Text = Strings.Delete;
+            cmbEdit.Text = Strings.Edit;
+            cmbEditContent.Text = Strings.EditContent;
+            cmbStartPage.Text = Strings.SetStartPage;
         }
 
         public void RefreshLanguageList() {
@@ -180,6 +193,8 @@ namespace WebsiteBuilder.UI.Controls {
                 item.Page.Layout?.Title ?? String.Empty
             });
 
+            e.Item.ImageIndex = 0;
+
             if (e.ItemIndex == _HighlightingIndex) {
                 e.Item.BackColor = Color.LightGray;
             }
@@ -188,15 +203,15 @@ namespace WebsiteBuilder.UI.Controls {
         private static String GetItemText(TreeItem item) {
             StringBuilder builder = new StringBuilder();
 
-            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
-                builder.Append("* ");
-            }
-
             for (int i = 0; i < item.Level; i++) {
                 builder.Append("-- ");
             }
 
             builder.Append(item.Page.PathName);
+
+            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
+                builder.Append(" *");
+            }
 
             return builder.ToString();
         }
@@ -235,6 +250,11 @@ namespace WebsiteBuilder.UI.Controls {
         private void tsbDelete_Click(object sender, EventArgs e) {
             TreeItem item = SelectedItem;
             if (item == null) {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(Strings.PageDeleteConfirmMessage, Strings.Delete, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes) {
                 return;
             }
 

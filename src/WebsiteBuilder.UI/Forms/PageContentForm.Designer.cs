@@ -107,6 +107,7 @@
             this.Controls.Add(this.toolStrip1);
             this.MinimizeBox = false;
             this.Name = "PageContentForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Page Content]";
             this.toolStrip1.ResumeLayout(false);

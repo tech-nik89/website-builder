@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDetails = new System.Windows.Forms.TabPage();
+            this.chkIncludeInMenu = new System.Windows.Forms.CheckBox();
             this.lblLayout = new System.Windows.Forms.Label();
             this.cbxLayout = new System.Windows.Forms.ComboBox();
             this.txtPathName = new System.Windows.Forms.TextBox();
@@ -55,6 +56,7 @@
             // 
             // tabDetails
             // 
+            this.tabDetails.Controls.Add(this.chkIncludeInMenu);
             this.tabDetails.Controls.Add(this.lblLayout);
             this.tabDetails.Controls.Add(this.cbxLayout);
             this.tabDetails.Controls.Add(this.txtPathName);
@@ -66,6 +68,16 @@
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "[Details]";
             this.tabDetails.UseVisualStyleBackColor = true;
+            // 
+            // chkIncludeInMenu
+            // 
+            this.chkIncludeInMenu.AutoSize = true;
+            this.chkIncludeInMenu.Location = new System.Drawing.Point(113, 84);
+            this.chkIncludeInMenu.Name = "chkIncludeInMenu";
+            this.chkIncludeInMenu.Size = new System.Drawing.Size(103, 17);
+            this.chkIncludeInMenu.TabIndex = 4;
+            this.chkIncludeInMenu.Text = "[IncludeInMenu]";
+            this.chkIncludeInMenu.UseVisualStyleBackColor = true;
             // 
             // lblLayout
             // 
@@ -180,6 +192,7 @@
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.tabMain);
             this.Name = "PagePropertiesForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Page]";
             this.tabMain.ResumeLayout(false);
@@ -204,5 +217,6 @@
         private System.Windows.Forms.ListView lvwTitle;
         private System.Windows.Forms.ColumnHeader clnTitle;
         private System.Windows.Forms.ColumnHeader clnLanguage;
+        private System.Windows.Forms.CheckBox chkIncludeInMenu;
     }
 }

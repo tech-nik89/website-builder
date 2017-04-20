@@ -53,6 +53,7 @@ namespace WebsiteBuilder.Core.Storage {
                 new XAttribute(ProjectStorageConstants.Id, page.Id),
                 new XAttribute(ProjectStorageConstants.Path, page.PathName),
                 new XAttribute(ProjectStorageConstants.Layout, page.LayoutClassName),
+                new XAttribute(ProjectStorageConstants.IncludeInMenu, page.IncludeInMenu),
                 new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
                 new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
                 GetPages(page.Pages)

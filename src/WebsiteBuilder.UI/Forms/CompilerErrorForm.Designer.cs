@@ -47,6 +47,7 @@
             this.Controls.Add(this.txtError);
             this.MinimizeBox = false;
             this.Name = "CompilerErrorForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Compiling";
             this.ResumeLayout(false);

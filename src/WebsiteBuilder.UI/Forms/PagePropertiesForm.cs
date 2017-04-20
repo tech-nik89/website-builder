@@ -46,6 +46,8 @@ namespace WebsiteBuilder.UI.Forms {
 
             lblPathName.Text = Strings.PathName + ":";
             lblLayout.Text = Strings.Layout + ":";
+
+            chkIncludeInMenu.Text = Strings.IncludeInMenu;
         }
 
         private void FillForm() {
@@ -53,6 +55,7 @@ namespace WebsiteBuilder.UI.Forms {
             FillTitleList();
 
             txtPathName.Text = Page.PathName;
+            chkIncludeInMenu.Checked = Page.IncludeInMenu;
 
             int layoutIndex = -1;
             if (Page.Layout != null && Page.Project.Theme != null) {
@@ -99,12 +102,12 @@ namespace WebsiteBuilder.UI.Forms {
                 Page.Title.Set(Page.Project.Languages[i], lvwTitle.Items[i].Text);
             }
 
-            if (cbxLayout.SelectedIndex > -1) {
-                Page.LayoutClassName = Page.Project.Theme.Layouts.ElementAt(cbxLayout.SelectedIndex).ClassName;
-            }
-            else {
-                Page.LayoutClassName = null;
-            }
+            Page.LayoutClassName
+                = cbxLayout.SelectedIndex > -1
+                ? Page.Project.Theme.Layouts.ElementAt(cbxLayout.SelectedIndex).ClassName
+                : null;
+
+            Page.IncludeInMenu = chkIncludeInMenu.Checked;
 
             DialogResult = DialogResult.OK;
             Close();

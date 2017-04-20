@@ -51,7 +51,8 @@ namespace WebsiteBuilder.Core.Storage {
             Page page = new Page(_Project) {
                 Id = element.Attribute(ProjectStorageConstants.Id).Value,
                 PathName = element.Attribute(ProjectStorageConstants.Path).Value,
-                LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value
+                LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value,
+                IncludeInMenu = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.IncludeInMenu)?.Value)
             };
 
             page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
@@ -103,7 +104,7 @@ namespace WebsiteBuilder.Core.Storage {
         private void GetSettings(XElement element) {
             _Project.OutputPath = GetFullPath(element.Element(ProjectStorageConstants.OutputPath).Value);
             _Project.ThemePath = GetFullPath(element.Element(ProjectStorageConstants.ThemePath).Value);
-            _Project.UglyURLs = Convert.ToBoolean(element.Element(ProjectStorageConstants.UglyURLs)?.Value ?? false.ToString());
+            _Project.UglyURLs = Convert.ToBoolean(element.Element(ProjectStorageConstants.UglyURLs)?.Value);
 
             String startPageId = element.Element(ProjectStorageConstants.StartPage)?.Value ?? String.Empty;
             if (!String.IsNullOrWhiteSpace(startPageId)) {

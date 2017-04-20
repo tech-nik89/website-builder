@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.gbxOutput = new System.Windows.Forms.GroupBox();
+            this.chkUglyURLs = new System.Windows.Forms.CheckBox();
             this.btnOutputBrowse = new System.Windows.Forms.Button();
             this.txtOutputPath = new System.Windows.Forms.TextBox();
             this.lblOutputPath = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.lblThemePath = new System.Windows.Forms.Label();
             this.ofdFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdDirectory = new System.Windows.Forms.FolderBrowserDialog();
-            this.chkUglyURLs = new System.Windows.Forms.CheckBox();
             this.gbxOutput.SuspendLayout();
             this.gbxTheme.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +56,16 @@
             this.gbxOutput.TabIndex = 0;
             this.gbxOutput.TabStop = false;
             this.gbxOutput.Text = "[Output directory]";
+            // 
+            // chkUglyURLs
+            // 
+            this.chkUglyURLs.AutoSize = true;
+            this.chkUglyURLs.Location = new System.Drawing.Point(71, 64);
+            this.chkUglyURLs.Name = "chkUglyURLs";
+            this.chkUglyURLs.Size = new System.Drawing.Size(83, 17);
+            this.chkUglyURLs.TabIndex = 3;
+            this.chkUglyURLs.Text = "[Ugly URLs]";
+            this.chkUglyURLs.UseVisualStyleBackColor = true;
             // 
             // btnOutputBrowse
             // 
@@ -128,16 +138,6 @@
             this.lblThemePath.Size = new System.Drawing.Size(38, 13);
             this.lblThemePath.TabIndex = 0;
             this.lblThemePath.Text = "[Path:]";
-            // 
-            // chkUglyURLs
-            // 
-            this.chkUglyURLs.AutoSize = true;
-            this.chkUglyURLs.Location = new System.Drawing.Point(21, 68);
-            this.chkUglyURLs.Name = "chkUglyURLs";
-            this.chkUglyURLs.Size = new System.Drawing.Size(83, 17);
-            this.chkUglyURLs.TabIndex = 3;
-            this.chkUglyURLs.Text = "[Ugly URLs]";
-            this.chkUglyURLs.UseVisualStyleBackColor = true;
             // 
             // ProjectGeneralSettings
             // 

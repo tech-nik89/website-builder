@@ -109,6 +109,7 @@
             this.Controls.Add(this.lblModule);
             this.MinimizeBox = false;
             this.Name = "PageContentSettingsForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Page content settings]";
             this.ResumeLayout(false);

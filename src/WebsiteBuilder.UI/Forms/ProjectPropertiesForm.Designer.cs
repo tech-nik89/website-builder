@@ -125,6 +125,7 @@
             this.Controls.Add(this.tabMain);
             this.MinimizeBox = false;
             this.Name = "ProjectPropertiesForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Project]";
             this.tabMain.ResumeLayout(false);

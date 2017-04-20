@@ -157,6 +157,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 270);
             this.Name = "MediaForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Media";
             this.tsMain.ResumeLayout(false);

@@ -105,6 +105,7 @@
             this.Controls.Add(this.lblId);
             this.MinimizeBox = false;
             this.Name = "LanguageForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Language]";
             this.ResumeLayout(false);

@@ -219,6 +219,10 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             StringBuilder builder = new StringBuilder();
 
             foreach (var page in pages) {
+                if (!page.IncludeInMenu) {
+                    continue;
+                }
+
                 builder.Append(RenderTemplate(_Theme.TemplateNavItem, new {
                     Text = page.Title.Get(language),
                     Url = Compiler.CreateUrl(page, _Page),

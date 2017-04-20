@@ -53,5 +53,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String StartPage = "startPage";
 
+        public const String IncludeInMenu = "includeInMenu";
+
     }
 }

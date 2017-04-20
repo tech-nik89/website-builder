@@ -30,6 +30,8 @@ namespace WebsiteBuilder.Core.Pages {
 
         public IReadOnlyDictionary<int, PageContent> Content => new ReadOnlyDictionary<int, PageContent>(_Content);
 
+        public Boolean IncludeInMenu { get; set; }
+
         public int Level {
             get {
                 int level = 0;
@@ -55,6 +57,7 @@ namespace WebsiteBuilder.Core.Pages {
             Pages = new PageCollection(this);
             Title = new LocalizedString();
             _Content = new Dictionary<int, PageContent>();
+            IncludeInMenu = true;
             Project = project;
         }
         

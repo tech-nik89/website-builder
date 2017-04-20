@@ -295,6 +295,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include in Menu.
+        /// </summary>
+        internal static string IncludeInMenu {
+            get {
+                return ResourceManager.GetString("IncludeInMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert Above.
         /// </summary>
         internal static string InsertAbove {
@@ -430,6 +439,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to remove the selected page? All sub-pages will be removed as well..
+        /// </summary>
+        internal static string PageDeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("PageDeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page Properties.
         /// </summary>
         internal static string PageProperties {
@@ -534,6 +552,15 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string SectionListItem {
             get {
                 return ResourceManager.GetString("SectionListItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set as Start Page.
+        /// </summary>
+        internal static string SetStartPage {
+            get {
+                return ResourceManager.GetString("SetStartPage", resourceCulture);
             }
         }
         
