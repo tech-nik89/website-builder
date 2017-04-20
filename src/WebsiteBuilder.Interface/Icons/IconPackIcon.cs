@@ -4,14 +4,15 @@
         Edit,
         Delete,
         Save,
+        SaveClose,
         EditContent,
         Settings,
         Open,
         Page,
         Build,
-        BuildAndRun,
         Close,
-        AutoClose,
-        InsertLink
+        InsertLink,
+        Media,
+        New
     }
 }

@@ -38,7 +38,7 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             Icon = IconPack.Current.GetIcon(IconPackIcon.EditContent);
-            tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+            tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPackIcon.SaveClose);
             tsbSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
             tsbMediaLink.Image = IconPack.Current.GetImage(IconPackIcon.InsertLink);
             tsbSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);

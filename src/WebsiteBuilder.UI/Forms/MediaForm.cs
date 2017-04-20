@@ -30,6 +30,8 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
+            Icon = IconPack.Current.GetIcon(IconPackIcon.Media);
+
             tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
             tsbRemove.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
         }

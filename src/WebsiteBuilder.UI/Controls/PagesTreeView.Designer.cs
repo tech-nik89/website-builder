@@ -33,6 +33,13 @@
             this.clnPathName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnLayout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmsTree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmbEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmbEditContent = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmbStartPage = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -46,16 +53,9 @@
             this.cmsDragDropMoveAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsDragDropMoveAsChild = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsTree = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmbEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmbEditContent = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmbStartPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsTree.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.cmsDragDrop.SuspendLayout();
-            this.cmsTree.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvwPages
@@ -99,9 +99,58 @@
             this.clnLayout.Text = "[Layout]";
             this.clnLayout.Width = 140;
             // 
+            // cmsTree
+            // 
+            this.cmsTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmbEdit,
+            this.cmbDelete,
+            this.toolStripSeparator3,
+            this.cmbEditContent,
+            this.toolStripSeparator4,
+            this.cmbStartPage});
+            this.cmsTree.Name = "cmsTree";
+            this.cmsTree.Size = new System.Drawing.Size(168, 104);
+            // 
+            // cmbEdit
+            // 
+            this.cmbEdit.Name = "cmbEdit";
+            this.cmbEdit.Size = new System.Drawing.Size(167, 22);
+            this.cmbEdit.Text = "[Edit]";
+            this.cmbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
+            // 
+            // cmbDelete
+            // 
+            this.cmbDelete.Name = "cmbDelete";
+            this.cmbDelete.Size = new System.Drawing.Size(167, 22);
+            this.cmbDelete.Text = "[Delete]";
+            this.cmbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(164, 6);
+            // 
+            // cmbEditContent
+            // 
+            this.cmbEditContent.Name = "cmbEditContent";
+            this.cmbEditContent.Size = new System.Drawing.Size(167, 22);
+            this.cmbEditContent.Text = "[Edit Content]";
+            this.cmbEditContent.Click += new System.EventHandler(this.tsbEditContent_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
+            // 
+            // cmbStartPage
+            // 
+            this.cmbStartPage.Name = "cmbStartPage";
+            this.cmbStartPage.Size = new System.Drawing.Size(167, 22);
+            this.cmbStartPage.Text = "[Set As StartPage]";
+            this.cmbStartPage.Click += new System.EventHandler(this.tsbStartPage_Click);
+            // 
             // tsMain
             // 
-            this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
             this.tsbEdit,
@@ -205,56 +254,6 @@
             this.cmsDragDropMoveAsChild.Text = "[Move as Child]";
             this.cmsDragDropMoveAsChild.Click += new System.EventHandler(this.cmsDragDropMoveAsChild_Click);
             // 
-            // cmsTree
-            // 
-            this.cmsTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmbEdit,
-            this.cmbDelete,
-            this.toolStripSeparator3,
-            this.cmbEditContent,
-            this.toolStripSeparator4,
-            this.cmbStartPage});
-            this.cmsTree.Name = "cmsTree";
-            this.cmsTree.Size = new System.Drawing.Size(168, 104);
-            // 
-            // cmbEdit
-            // 
-            this.cmbEdit.Name = "cmbEdit";
-            this.cmbEdit.Size = new System.Drawing.Size(167, 22);
-            this.cmbEdit.Text = "[Edit]";
-            this.cmbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // cmbDelete
-            // 
-            this.cmbDelete.Name = "cmbDelete";
-            this.cmbDelete.Size = new System.Drawing.Size(167, 22);
-            this.cmbDelete.Text = "[Delete]";
-            this.cmbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(164, 6);
-            // 
-            // cmbEditContent
-            // 
-            this.cmbEditContent.Name = "cmbEditContent";
-            this.cmbEditContent.Size = new System.Drawing.Size(167, 22);
-            this.cmbEditContent.Text = "[Edit Content]";
-            this.cmbEditContent.Click += new System.EventHandler(this.tsbEditContent_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
-            // 
-            // cmbStartPage
-            // 
-            this.cmbStartPage.Name = "cmbStartPage";
-            this.cmbStartPage.Size = new System.Drawing.Size(167, 22);
-            this.cmbStartPage.Text = "[Set As StartPage]";
-            this.cmbStartPage.Click += new System.EventHandler(this.tsbStartPage_Click);
-            // 
             // PagesTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,10 +263,10 @@
             this.DoubleBuffered = true;
             this.Name = "PagesTreeView";
             this.Size = new System.Drawing.Size(635, 367);
+            this.cmsTree.ResumeLayout(false);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
             this.cmsDragDrop.ResumeLayout(false);
-            this.cmsTree.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

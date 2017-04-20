@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.mnuProject = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +50,15 @@
             this.sstMain = new System.Windows.Forms.StatusStrip();
             this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
+            this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -175,10 +183,10 @@
             // ptvwPages
             // 
             this.ptvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ptvwPages.Location = new System.Drawing.Point(0, 24);
+            this.ptvwPages.Location = new System.Drawing.Point(0, 49);
             this.ptvwPages.Name = "ptvwPages";
             this.ptvwPages.Project = null;
-            this.ptvwPages.Size = new System.Drawing.Size(861, 457);
+            this.ptvwPages.Size = new System.Drawing.Size(861, 410);
             this.ptvwPages.TabIndex = 0;
             // 
             // sstMain
@@ -205,13 +213,73 @@
             this.tspProgress.Name = "tspProgress";
             this.tspProgress.Size = new System.Drawing.Size(140, 16);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbProjectNew,
+            this.tsbProjectOpen,
+            this.tsbProjectSave,
+            this.toolStripSeparator4,
+            this.tsbBuildProject});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(861, 25);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbProjectNew
+            // 
+            this.tsbProjectNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectNew.Image")));
+            this.tsbProjectNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectNew.Name = "tsbProjectNew";
+            this.tsbProjectNew.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectNew.Text = "[New]";
+            this.tsbProjectNew.Click += new System.EventHandler(this.mnuProjectNew_Click);
+            // 
+            // tsbProjectOpen
+            // 
+            this.tsbProjectOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectOpen.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectOpen.Image")));
+            this.tsbProjectOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectOpen.Name = "tsbProjectOpen";
+            this.tsbProjectOpen.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectOpen.Text = "[Open]";
+            this.tsbProjectOpen.Click += new System.EventHandler(this.mnuProjectOpen_Click);
+            // 
+            // tsbProjectSave
+            // 
+            this.tsbProjectSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectSave.Image")));
+            this.tsbProjectSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectSave.Name = "tsbProjectSave";
+            this.tsbProjectSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectSave.Text = "[Save]";
+            this.tsbProjectSave.Click += new System.EventHandler(this.mnuProjectSave_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbBuildProject
+            // 
+            this.tsbBuildProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuildProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuildProject.Image")));
+            this.tsbBuildProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuildProject.Name = "tsbBuildProject";
+            this.tsbBuildProject.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuildProject.Text = "toolStripButton1";
+            this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 481);
-            this.Controls.Add(this.sstMain);
             this.Controls.Add(this.ptvwPages);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.sstMain);
             this.Controls.Add(this.mnuMain);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.mnuMain;
@@ -222,6 +290,8 @@
             this.mnuMain.PerformLayout();
             this.sstMain.ResumeLayout(false);
             this.sstMain.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +319,12 @@
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
         private System.Windows.Forms.ToolStripMenuItem mnuProjectMedia;
         private System.Windows.Forms.ToolStripStatusLabel tslStatus;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbProjectNew;
+        private System.Windows.Forms.ToolStripButton tsbProjectOpen;
+        private System.Windows.Forms.ToolStripButton tsbProjectSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton tsbBuildProject;
     }
 }
 

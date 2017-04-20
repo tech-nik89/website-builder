@@ -42,19 +42,17 @@
             // 
             // lvwFiles
             // 
-            this.lvwFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clnName,
             this.clnSize,
             this.clnType,
             this.clnAutoSave});
+            this.lvwFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwFiles.FullRowSelect = true;
             this.lvwFiles.HideSelection = false;
-            this.lvwFiles.Location = new System.Drawing.Point(0, 28);
+            this.lvwFiles.Location = new System.Drawing.Point(0, 25);
             this.lvwFiles.Name = "lvwFiles";
-            this.lvwFiles.Size = new System.Drawing.Size(568, 329);
+            this.lvwFiles.Size = new System.Drawing.Size(568, 332);
             this.lvwFiles.TabIndex = 0;
             this.lvwFiles.UseCompatibleStateImageBehavior = false;
             this.lvwFiles.View = System.Windows.Forms.View.Details;
@@ -152,8 +150,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 357);
-            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.lvwFiles);
+            this.Controls.Add(this.tsMain);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 270);
             this.Name = "MediaForm";
@@ -183,5 +181,5 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripLabel tslAutoSave;
 		private System.Windows.Forms.ToolStripComboBox tscAutoSave;
-	}
+    }
 }

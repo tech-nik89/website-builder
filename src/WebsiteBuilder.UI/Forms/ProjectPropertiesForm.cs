@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.UI.Localization;
+using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class ProjectPropertiesForm : Form {
@@ -22,6 +23,7 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void LocalizeComponent() {
             Text = Strings.ProjectSettings;
+            Icon = IconPack.Current.GetIcon(Interface.Icons.IconPackIcon.Settings);
 
             tabGeneral.Text = Strings.General;
             tabLanguages.Text = Strings.Languages;

@@ -29,8 +29,16 @@ namespace WebsiteBuilder.UI.Forms {
             mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
             mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
-
+            mnuProjectMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
+            mnuProjectExit.Image = IconPack.Current.GetImage(IconPackIcon.Close);
+            
             mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
+
+            tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
+            tsbProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
+            tsbProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+
+            tsbBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
         }
 
         private void LocalizeComponent() {
@@ -46,6 +54,12 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuild.Text  = Strings.Build;
             mnuBuildProject.Text = Strings.BuildProject;
             mnuBuildAndRunProject.Text = Strings.BuildAndOpenProject;
+
+            tsbProjectNew.Text = Strings.New;
+            tsbProjectOpen.Text = Strings.Open;
+            tsbProjectSave.Text = Strings.Save;
+
+            tsbBuildProject.Text = Strings.Build;
         }
 
         private void mnuProjectExit_Click(object sender, EventArgs e) {
