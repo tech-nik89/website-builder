@@ -32,7 +32,11 @@ namespace WebsiteBuilder.Core.Theming {
 
 		private const String NodeLanguageItem = "languageItem";
 
-		private const String NodeImage = "image";
+        private const String NodeFooterItem = "footerItem";
+
+        private const String NodeFooterSection = "footerSection";
+
+        private const String NodeImage = "image";
 
         private const String NodeBody = "body";
 
@@ -60,7 +64,11 @@ namespace WebsiteBuilder.Core.Theming {
 
 		private static readonly String QueryLanguageItem = String.Concat("/", NodeRoot, "/", NodeLanguageItem);
 
-		private static readonly String QueryBody = String.Concat("/", NodeRoot, "/", NodeBody);
+        private static readonly String QueryFooterItem = String.Concat("/", NodeRoot, "/", NodeFooterItem);
+
+        private static readonly String QueryFooterSection = String.Concat("/", NodeRoot, "/", NodeFooterSection);
+
+        private static readonly String QueryBody = String.Concat("/", NodeRoot, "/", NodeBody);
 
 		private static readonly String QuerySettings = String.Concat("/", NodeRoot, "/", NodeSettings);
 
@@ -94,7 +102,13 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public String TemplateBody { get; private set; }
 
-		public ThemeSettings Settings { get; private set; }
+        public String TemplateFooterItem { get; private set; }
+
+        public String TemplateFooterSection { get; private set; }
+
+        public ThemeSettings Settings { get; private set; }
+
+        public String Description { get; private set; }
 
         internal Theme() {
 			_Styles = new List<ThemeStyle>();
@@ -198,7 +212,9 @@ namespace WebsiteBuilder.Core.Theming {
 			theme.TemplateNavItem = document.SelectSingleNode(QueryNavItem)?.InnerXml ?? String.Empty;
 			theme.TemplateLanguageItems = document.SelectSingleNode(QueryLanguageItems)?.InnerXml ?? String.Empty;
 			theme.TemplateLanguageItem = document.SelectSingleNode(QueryLanguageItem)?.InnerXml ?? String.Empty;
-		}
+            theme.TemplateFooterItem = document.SelectSingleNode(QueryFooterItem)?.InnerXml ?? String.Empty;
+            theme.TemplateFooterSection = document.SelectSingleNode(QueryFooterSection)?.InnerXml ?? String.Empty;
+        }
 
 		private static void LoadStyles(Theme theme, XmlDocument document) {
 			var xStyles = document.SelectNodes(QueryStyles);

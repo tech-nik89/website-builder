@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
@@ -78,12 +79,15 @@ namespace WebsiteBuilder.Core {
         
         public Page StartPage { get; set; }
 
-        public List<MediaItem> Media { get; set; }
+        public List<MediaItem> Media { get; private set; }
+
+        public List<FooterSection> Footer { get; private set; }
 
         public Project() {
             Pages = new PageCollection(this);
             Languages = new Language[0];
             Media = new List<MediaItem>();
+            Footer = new List<FooterSection>();
         }
 
         public void ReloadTheme() {

@@ -113,7 +113,7 @@ namespace WebsiteBuilder.UI.Controls {
         }
 
         public void RefreshLanguageList() {
-            int previousIndex = tscLayoutSection.SelectedIndex;
+            int previousIndex = tscLanguage.SelectedIndex;
             tscLanguage.Items.Clear();
             
             foreach(var language in _Project.Languages) {

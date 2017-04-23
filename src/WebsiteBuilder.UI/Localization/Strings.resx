@@ -306,4 +306,31 @@
   <data name="PageDeleteConfirmMessage" xml:space="preserve">
     <value>Do you really want to remove the selected page? All sub-pages will be removed as well.</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="FooterLinkDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to remove the selected link?</value>
+  </data>
+  <data name="FooterSectionDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to remove the selected footer section?</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value>URL</value>
+  </data>
 </root>

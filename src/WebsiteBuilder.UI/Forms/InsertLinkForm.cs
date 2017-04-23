@@ -16,14 +16,30 @@ namespace WebsiteBuilder.UI.Forms {
 
         private readonly ImageList _ImageList;
 
-        public string Link { get; private set; }
+        public String Link { get; private set; }
 
-        public InsertLinkForm(Project project) {
+        public String MediaId { get; private set; }
+
+        public String PageId { get; private set; }
+
+        public InsertLinkForm(Project project)
+            : this(project, Tabs.Media | Tabs.Page) {
+        }
+
+        public InsertLinkForm(Project project, Tabs tabs) {
             InitializeComponent();
             LocalizeComponent();
 
             DialogResult = DialogResult.Cancel;
             _Project = project;
+
+            if (!tabs.HasFlag(Tabs.Media)) {
+                tabMedia.Hide();
+            }
+
+            if (!tabs.HasFlag(Tabs.Page)) {
+                tabPage.Hide();
+            }
 
             _ImageList = new ImageList();
             _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
@@ -67,10 +83,12 @@ namespace WebsiteBuilder.UI.Forms {
                 }
 
                 Link = String.Format(CompilerConstants.PageLinkFormat, page.Id);
+                PageId = page.Id;
             }
             else if (tabCtrl.SelectedTab == tabMedia && lvwMedia.SelectedIndices.Count == 1) {
                 MediaItem item = _Project.Media[lvwMedia.SelectedIndices[0]];
                 Link = String.Format(CompilerConstants.MediaLinkFormat, item.Id);
+                MediaId = item.Id;
             }
             else {
                 return;
@@ -86,6 +104,12 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void lvwMedia_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
             e.Item = new ListViewItem(_Project.Media[e.ItemIndex].Name);
+        }
+
+        [Flags]
+        public enum Tabs {
+            Media = 1,
+            Page = 2
         }
     }
 }

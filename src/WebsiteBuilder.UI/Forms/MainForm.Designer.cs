@@ -38,9 +38,10 @@
             this.mnuProjectSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProjectMedia = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuContent = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuContentFooter = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuild = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuildProject = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuildAndRunProject = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +57,7 @@
             this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
+            this.mnuContentMedia = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -65,6 +67,7 @@
             // 
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProject,
+            this.mnuContent,
             this.mnuBuild});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
@@ -82,7 +85,6 @@
             this.mnuProjectSaveAs,
             this.toolStripSeparator2,
             this.mnuProjectSettings,
-            this.mnuProjectMedia,
             this.toolStripSeparator1,
             this.mnuProjectExit});
             this.mnuProject.Name = "mnuProject";
@@ -136,13 +138,6 @@
             this.mnuProjectSettings.Text = "[Project settings]";
             this.mnuProjectSettings.Click += new System.EventHandler(this.mnuProjectSettings_Click);
             // 
-            // mnuProjectMedia
-            // 
-            this.mnuProjectMedia.Name = "mnuProjectMedia";
-            this.mnuProjectMedia.Size = new System.Drawing.Size(163, 22);
-            this.mnuProjectMedia.Text = "[Media]";
-            this.mnuProjectMedia.Click += new System.EventHandler(this.mnuProjectMedia_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -154,6 +149,22 @@
             this.mnuProjectExit.Size = new System.Drawing.Size(163, 22);
             this.mnuProjectExit.Text = "[Exit]";
             this.mnuProjectExit.Click += new System.EventHandler(this.mnuProjectExit_Click);
+            // 
+            // mnuContent
+            // 
+            this.mnuContent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuContentMedia,
+            this.mnuContentFooter});
+            this.mnuContent.Name = "mnuContent";
+            this.mnuContent.Size = new System.Drawing.Size(70, 20);
+            this.mnuContent.Text = "[Content]";
+            // 
+            // mnuContentFooter
+            // 
+            this.mnuContentFooter.Name = "mnuContentFooter";
+            this.mnuContentFooter.Size = new System.Drawing.Size(152, 22);
+            this.mnuContentFooter.Text = "[Footer]";
+            this.mnuContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
             // 
             // mnuBuild
             // 
@@ -272,6 +283,13 @@
             this.tsbBuildProject.Text = "toolStripButton1";
             this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
+            // mnuContentMedia
+            // 
+            this.mnuContentMedia.Name = "mnuContentMedia";
+            this.mnuContentMedia.Size = new System.Drawing.Size(152, 22);
+            this.mnuContentMedia.Text = "[Media]";
+            this.mnuContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,7 +335,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBuildAndRunProject;
         private System.Windows.Forms.StatusStrip sstMain;
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
-        private System.Windows.Forms.ToolStripMenuItem mnuProjectMedia;
         private System.Windows.Forms.ToolStripStatusLabel tslStatus;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbProjectNew;
@@ -325,6 +342,9 @@
         private System.Windows.Forms.ToolStripButton tsbProjectSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbBuildProject;
+        private System.Windows.Forms.ToolStripMenuItem mnuContent;
+        private System.Windows.Forms.ToolStripMenuItem mnuContentFooter;
+        private System.Windows.Forms.ToolStripMenuItem mnuContentMedia;
     }
 }
 

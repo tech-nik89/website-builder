@@ -73,6 +73,9 @@
     <Compile Include="Compiling\Steps\PrepareDirectoryStep.cs" />
     <Compile Include="Exceptions\BadFileExtensionException.cs" />
     <Compile Include="Exceptions\OutputPathMissingException.cs" />
+    <Compile Include="Footer\FooterLink.cs" />
+    <Compile Include="Footer\FooterLinkType.cs" />
+    <Compile Include="Footer\FooterSection.cs" />
     <Compile Include="Localization\Language.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
     <Compile Include="Media\MediaFile.cs" />

@@ -29,9 +29,9 @@ namespace WebsiteBuilder.UI.Forms {
             mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
             mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
-            mnuProjectMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
+            mnuContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
             mnuProjectExit.Image = IconPack.Current.GetImage(IconPackIcon.Close);
-            
+
             mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
 
             tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
@@ -48,8 +48,11 @@ namespace WebsiteBuilder.UI.Forms {
             mnuProjectSave.Text = Strings.Save;
             mnuProjectSaveAs.Text = Strings.SaveAs;
             mnuProjectSettings.Text = Strings.ProjectSettings;
-            mnuProjectMedia.Text = Strings.Media;
             mnuProjectExit.Text = Strings.Exit;
+
+            mnuContent.Text = Strings.Content;
+            mnuContentMedia.Text = Strings.Media;
+            mnuContentFooter.Text = Strings.Footer;
 
             mnuBuild.Text  = Strings.Build;
             mnuBuildProject.Text = Strings.BuildProject;
@@ -99,12 +102,21 @@ namespace WebsiteBuilder.UI.Forms {
             CompileProject(true);
         }
 
-        private void mnuProjectMedia_Click(object sender, EventArgs e) {
+        private void mnuContentMedia_Click(object sender, EventArgs e) {
             if (CurrentProject == null) {
                 return;
             }
 
             MediaForm form = new MediaForm(CurrentProject);
+            form.ShowDialog();
+        }
+
+        private void mnuContentFooter_Click(object sender, EventArgs e) {
+            if (CurrentProject == null) {
+                return;
+            }
+
+            FooterContentForm form = new FooterContentForm(CurrentProject);
             form.ShowDialog();
         }
     }

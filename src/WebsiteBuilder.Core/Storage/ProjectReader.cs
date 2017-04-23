@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
@@ -33,6 +34,7 @@ namespace WebsiteBuilder.Core.Storage {
                 GetMedia(root.Element(ProjectStorageConstants.Media));
 
                 _Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
+                _Project.Footer.AddRange(root.Element(ProjectStorageConstants.Footer).Elements(ProjectStorageConstants.Section).Select(x => GetFooterSection(x)));
 
                 GetSettings(root.Element(ProjectStorageConstants.Settings));
 
@@ -41,6 +43,30 @@ namespace WebsiteBuilder.Core.Storage {
             catch {
                 return null;
             }
+        }
+
+        private FooterSection GetFooterSection(XElement element) {
+            FooterSection section = new FooterSection();
+
+            GetLocalizedString(element.Element(ProjectStorageConstants.Title), section.Title);
+            section.Items = element.Elements(ProjectStorageConstants.Link).Select(x => GetFooterLink(x)).ToList();
+
+            return section;
+        }
+
+        private FooterLink GetFooterLink(XElement element) {
+            FooterLink link = new FooterLink();
+
+            GetLocalizedString(element, link.Text);
+
+            link.Data = element.Attribute(ProjectStorageConstants.Data)?.Value;
+            link.Target = element.Attribute(ProjectStorageConstants.Target)?.Value;
+
+            FooterLinkType type = FooterLinkType.External;
+            Enum.TryParse(element.Attribute(ProjectStorageConstants.Type)?.Value ?? String.Empty, out type);
+            link.Type = type;
+
+            return link;
         }
 
         private IEnumerable<Page> GetPages(XElement element) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
@@ -26,12 +27,30 @@ namespace WebsiteBuilder.Core.Storage {
                     GetSettings(),
                     GetLanguages(),
                     GetMedia(),
+                    GetFooter(),
                     GetPages(_Project.Pages)
                 )
             );
 
             String xml = document.ToString();
             File.WriteAllText(_File.FullName, xml);
+        }
+
+        private XElement GetFooter() {
+            return new XElement(ProjectStorageConstants.Footer,
+                _Project.Footer.Select(x => new XElement(ProjectStorageConstants.Section,
+                    new XElement(ProjectStorageConstants.Title, GetLocalizedString(x.Title)),
+                    GetFooterSectionItems(x.Items)
+            )));
+        }
+
+        private IEnumerable<XElement> GetFooterSectionItems(IEnumerable<FooterLink> links) {
+            return links.Select(x => new XElement(ProjectStorageConstants.Link,
+                new XAttribute(ProjectStorageConstants.Type, x.Type.ToString()),
+                new XAttribute(ProjectStorageConstants.Data, x.Data),
+                new XAttribute(ProjectStorageConstants.Target, x.Target),
+                GetLocalizedString(x.Text)
+            ));
         }
 
         private XElement GetLanguages() {

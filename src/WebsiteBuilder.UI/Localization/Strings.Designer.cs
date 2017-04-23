@@ -169,6 +169,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        internal static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content Settings.
         /// </summary>
         internal static string ContentSettings {
@@ -255,6 +264,33 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string File {
             get {
                 return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer.
+        /// </summary>
+        internal static string Footer {
+            get {
+                return ResourceManager.GetString("Footer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to remove the selected link?.
+        /// </summary>
+        internal static string FooterLinkDeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("FooterLinkDeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to remove the selected footer section?.
+        /// </summary>
+        internal static string FooterSectionDeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("FooterSectionDeleteConfirmMessage", resourceCulture);
             }
         }
         
@@ -363,6 +399,24 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string Layout {
             get {
                 return ResourceManager.GetString("Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link.
+        /// </summary>
+        internal static string Link {
+            get {
+                return ResourceManager.GetString("Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Links.
+        /// </summary>
+        internal static string Links {
+            get {
+                return ResourceManager.GetString("Links", resourceCulture);
             }
         }
         
@@ -574,6 +628,24 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target.
+        /// </summary>
+        internal static string Target {
+            get {
+                return ResourceManager.GetString("Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        internal static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         internal static string Theme {
@@ -615,6 +687,15 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string UglyURLs {
             get {
                 return ResourceManager.GetString("UglyURLs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL.
+        /// </summary>
+        internal static string URL {
+            get {
+                return ResourceManager.GetString("URL", resourceCulture);
             }
         }
         

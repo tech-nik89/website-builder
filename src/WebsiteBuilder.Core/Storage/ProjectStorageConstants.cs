@@ -55,5 +55,17 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String IncludeInMenu = "includeInMenu";
 
+        public const String Footer = "footer";
+
+        public const String Link = "link";
+
+        public const String Type = "type";
+
+        public const String Text = "text";
+
+        public const String Data = "data";
+
+        public const String Target = "target";
+
     }
 }

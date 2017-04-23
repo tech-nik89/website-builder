@@ -317,6 +317,19 @@
 	</languageItems>
 	<languageItem>
 	</languageItem>
+	<footerSection>
+		<div>
+			@Model.Title
+			<ul>
+				@Model.Items
+			</ul>
+		</div>
+	</footerSection>
+	<footerItem>
+		<li>
+			<a href="@Model.Url">@Model.Text</a>
+		</li>
+	</footerItem>
 	<body>
 		<header class="img-header-bg">
 			<div class="inner">
@@ -336,5 +349,8 @@
 		<main>
 			@Model.Content
 		</main>
+		<footer>
+			@Model.Footer
+		</footer>
 	</body>
 </theme>

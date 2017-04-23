@@ -56,6 +56,18 @@
     <Compile Include="Forms\CompilerErrorForm.Designer.cs">
       <DependentUpon>CompilerErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FooterContentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FooterContentForm.Designer.cs">
+      <DependentUpon>FooterContentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FooterLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FooterLinkForm.Designer.cs">
+      <DependentUpon>FooterLinkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InsertLinkForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +149,12 @@
     <Compile Include="Resources\StatusText.cs" />
     <EmbeddedResource Include="Forms\CompilerErrorForm.resx">
       <DependentUpon>CompilerErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FooterContentForm.resx">
+      <DependentUpon>FooterContentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FooterLinkForm.resx">
+      <DependentUpon>FooterLinkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InsertLinkForm.resx">
       <DependentUpon>InsertLinkForm.cs</DependentUpon>
