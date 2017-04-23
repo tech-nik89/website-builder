@@ -34,7 +34,7 @@ namespace WebsiteBuilder.Core.Storage {
                 GetMedia(root.Element(ProjectStorageConstants.Media));
 
                 _Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
-                _Project.Footer.AddRange(root.Element(ProjectStorageConstants.Footer).Elements(ProjectStorageConstants.Section).Select(x => GetFooterSection(x)));
+                _Project.Footer.AddRange(GetFooter(root.Element(ProjectStorageConstants.Footer)));
 
                 GetSettings(root.Element(ProjectStorageConstants.Settings));
 
@@ -43,6 +43,16 @@ namespace WebsiteBuilder.Core.Storage {
             catch {
                 return null;
             }
+        }
+
+        private IEnumerable<FooterSection> GetFooter(XElement element) {
+            List<FooterSection> sections = new List<FooterSection>();
+            if (element == null) {
+                return sections;
+            }
+
+            sections.AddRange(element.Elements(ProjectStorageConstants.Section).Select(x => GetFooterSection(x)));
+            return sections;
         }
 
         private FooterSection GetFooterSection(XElement element) {

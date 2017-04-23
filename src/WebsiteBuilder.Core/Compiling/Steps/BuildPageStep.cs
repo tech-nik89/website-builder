@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
+using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Plugins;
 using WebsiteBuilder.Core.Theming;
@@ -24,6 +26,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         
         private readonly FileInfo _File;
 
+        private readonly int _Level;
+
         public String Output { get; private set; }
 
         public BuildPageStep(Language language, Page page, Theme theme, DirectoryInfo outputDirectory, IReadOnlyCollection<String> styleSheetFiles) {
@@ -32,6 +36,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             _Theme = theme;
             _OutputDirectory = outputDirectory;
             _StyleSheetFiles = styleSheetFiles;
+            _Level = page.Level;
 
             _File = GetFileInfo();
             Output = String.Format("Building page: {0}", _File.FullName);
@@ -42,8 +47,6 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
             HtmlDocument htmlFile = new HtmlDocument();
             CompileHelper helper = new CompileHelper(htmlFile, _File);
-
-            int level = _Page.Level;
             String path = CreatePath();
 
             Layout layout = _Page.Layout;
@@ -62,25 +65,73 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                     continue;
                 }
 
-                sections[i] = ResolveUrls(module.Compile(data, helper), _Page.Project, level);
+                sections[i] = ResolveUrls(module.Compile(data, helper), _Page.Project, _Level);
             }
 
             htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
                 Content = RenderTemplate(layout.Template, new { Content = sections }),
-                Navigation = RenderNavigation(_Language, level),
+                Navigation = RenderNavigation(_Language, _Level),
                 Title = _Page.Title.Get(_Language),
-				Languages = RenderLanguageSwitcher(),
+                Languages = RenderLanguageSwitcher(),
+                Footer = RenderFooter(),
                 Path = path
             });
 
             foreach (String fileName in _StyleSheetFiles) {
-                var sheetPath = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", fileName), level);
+                var sheetPath = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", fileName), _Level);
                 htmlFile.AddStyleLink(sheetPath);
             }
 
-            htmlFile.AddStyle(GenerateFontsCSS(_Theme.Fonts, level));
+            htmlFile.AddStyle(GenerateFontsCSS(_Theme.Fonts, _Level));
 
             htmlFile.Compile(_File.FullName);
+        }
+
+        private String RenderFooter() {
+            StringBuilder builder = new StringBuilder();
+
+            foreach(FooterSection section in _Page.Project.Footer) {
+                RenderFooterSection(section, builder);
+            }
+
+            return builder.ToString();
+        }
+
+        private void RenderFooterSection(FooterSection section, StringBuilder builder) {
+            String str = RenderTemplate(_Theme.TemplateFooterSection, new {
+                Title = section.Title.Get(_Language),
+                Items = RenderFooterItems(section)
+            });
+
+            builder.Append(str);
+        }
+
+        private String RenderFooterItems(FooterSection section) {
+            StringBuilder builder = new StringBuilder();
+
+            foreach(FooterLink link in section.Items) {
+                builder.Append(RenderTemplate(_Theme.TemplateFooterItem, new {
+                    Url = GetFooterLinkUrl(link),
+                    Text = link.Text.Get(_Language)
+                }));
+            }
+
+            return builder.ToString();
+        }
+
+        private String GetFooterLinkUrl(FooterLink link) {
+            switch(link.Type) {
+                case FooterLinkType.External:
+                    return link.Data;
+                case FooterLinkType.Internal:
+                    Page page = _Page.Project.AllPages.SingleOrDefault(x => x.Id == link.Data);
+                    return Compiler.CreateUrl(page, _Page);
+                case FooterLinkType.Media:
+                    MediaItem media = _Page.Project.Media.SingleOrDefault(x => x.Id == link.Data);
+                    return GetMediaUrl(media, _Level);
+            }
+
+            return null;
         }
 
         private static String GenerateFontsCSS(IEnumerable<Font> fonts, int level) {
@@ -237,14 +288,13 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 			html = CompilerConstants.MediaLinkRegex.Replace(html, match => {
 
                 String id = match.Groups[1].Value;
-                var media = project.Media.SingleOrDefault(m => m.Id == id);
+                MediaItem media = project.Media.SingleOrDefault(m => m.Id == id);
 
 				if (media == null) {
 					return String.Empty;
 				}
 
-				String path = String.Concat(Compiler.MediaDirectoryName, "/", media.Id, Path.GetExtension(media.Name));
-				return GetRelativePath(path, level);
+                return GetMediaUrl(media, level);
 			});
 
             html = CompilerConstants.PageLinkRegex.Replace(html, match => {
@@ -261,5 +311,10 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
 			return html;
 		}
+
+        private static String GetMediaUrl(MediaItem media, int level) {
+            String path = String.Concat(Compiler.MediaDirectoryName, "/", media.Id, Path.GetExtension(media.Name));
+            return GetRelativePath(path, level);
+        }
     }
 }
