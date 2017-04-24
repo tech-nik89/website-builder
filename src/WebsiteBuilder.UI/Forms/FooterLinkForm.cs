@@ -3,7 +3,9 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
+using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class FooterLinkForm : Form {
@@ -23,6 +25,10 @@ namespace WebsiteBuilder.UI.Forms {
         public FooterLinkForm(Project project, Language language, FooterLink link) {
             InitializeComponent();
             LocalizeComponent();
+
+            if (IconPack.Current != null) {
+                Icon = IconPack.Current.GetIcon(IconPackIcon.Footer);
+            }
 
             _Project = project;
             _Language = language;

@@ -29,14 +29,19 @@ namespace WebsiteBuilder.UI.Forms {
             mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
             mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
-            mnuContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
             mnuProjectExit.Image = IconPack.Current.GetImage(IconPackIcon.Close);
+
+            mnuContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
+            mnuContentFooter.Image = IconPack.Current.GetImage(IconPackIcon.Footer);
 
             mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
 
             tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
             tsbProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             tsbProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
+
+            tsbContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
+            tsbContentFooter.Image = IconPack.Current.GetImage(IconPackIcon.Footer);
 
             tsbBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
         }
@@ -61,6 +66,9 @@ namespace WebsiteBuilder.UI.Forms {
             tsbProjectNew.Text = Strings.New;
             tsbProjectOpen.Text = Strings.Open;
             tsbProjectSave.Text = Strings.Save;
+
+            tsbContentMedia.Text = Strings.Media;
+            tsbContentFooter.Text = Strings.Footer;
 
             tsbBuildProject.Text = Strings.Build;
         }

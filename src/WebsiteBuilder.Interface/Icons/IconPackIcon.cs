@@ -13,6 +13,7 @@
         Close,
         InsertLink,
         Media,
-        New
+        New,
+        Footer
     }
 }

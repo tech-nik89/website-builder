@@ -17,6 +17,8 @@ namespace WebsiteBuilder.Core {
 
         public const String FileIndex = "index.html";
 
+        public const String ContentDirectoryName = "content";
+
         public Boolean UglyURLs { get; set; }
 
         public String Id => null;
@@ -34,7 +36,7 @@ namespace WebsiteBuilder.Core {
 
         public FileInfo ProjectFile => new FileInfo(ProjectFilePath);
 
-        public DirectoryInfo ProjectContentDirectory => new DirectoryInfo(Path.Combine(ProjectFile.DirectoryName, ProjectFileName));
+        public DirectoryInfo ProjectContentDirectory => new DirectoryInfo(Path.Combine(ProjectFile.DirectoryName, ContentDirectoryName));
 
         public PageCollection Pages { get; private set; }
 

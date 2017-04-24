@@ -41,6 +41,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuContent = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuContentMedia = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuContentFooter = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuild = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuildProject = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,9 @@
             this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
-            this.mnuContentMedia = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbContentMedia = new System.Windows.Forms.ToolStripButton();
+            this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -159,10 +162,17 @@
             this.mnuContent.Size = new System.Drawing.Size(70, 20);
             this.mnuContent.Text = "[Content]";
             // 
+            // mnuContentMedia
+            // 
+            this.mnuContentMedia.Name = "mnuContentMedia";
+            this.mnuContentMedia.Size = new System.Drawing.Size(116, 22);
+            this.mnuContentMedia.Text = "[Media]";
+            this.mnuContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
+            // 
             // mnuContentFooter
             // 
             this.mnuContentFooter.Name = "mnuContentFooter";
-            this.mnuContentFooter.Size = new System.Drawing.Size(152, 22);
+            this.mnuContentFooter.Size = new System.Drawing.Size(116, 22);
             this.mnuContentFooter.Text = "[Footer]";
             this.mnuContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
             // 
@@ -231,6 +241,9 @@
             this.tsbProjectOpen,
             this.tsbProjectSave,
             this.toolStripSeparator4,
+            this.tsbContentMedia,
+            this.tsbContentFooter,
+            this.toolStripSeparator5,
             this.tsbBuildProject});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -283,12 +296,30 @@
             this.tsbBuildProject.Text = "toolStripButton1";
             this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
-            // mnuContentMedia
+            // tsbContentMedia
             // 
-            this.mnuContentMedia.Name = "mnuContentMedia";
-            this.mnuContentMedia.Size = new System.Drawing.Size(152, 22);
-            this.mnuContentMedia.Text = "[Media]";
-            this.mnuContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
+            this.tsbContentMedia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbContentMedia.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentMedia.Image")));
+            this.tsbContentMedia.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbContentMedia.Name = "tsbContentMedia";
+            this.tsbContentMedia.Size = new System.Drawing.Size(23, 22);
+            this.tsbContentMedia.Text = "[Media]";
+            this.tsbContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
+            // 
+            // tsbContentFooter
+            // 
+            this.tsbContentFooter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbContentFooter.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentFooter.Image")));
+            this.tsbContentFooter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbContentFooter.Name = "tsbContentFooter";
+            this.tsbContentFooter.Size = new System.Drawing.Size(23, 22);
+            this.tsbContentFooter.Text = "[Footer]";
+            this.tsbContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // MainForm
             // 
@@ -345,6 +376,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuContent;
         private System.Windows.Forms.ToolStripMenuItem mnuContentFooter;
         private System.Windows.Forms.ToolStripMenuItem mnuContentMedia;
+        private System.Windows.Forms.ToolStripButton tsbContentMedia;
+        private System.Windows.Forms.ToolStripButton tsbContentFooter;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 
