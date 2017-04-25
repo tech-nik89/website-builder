@@ -14,6 +14,10 @@ namespace WebsiteBuilder.UI.Forms {
 
         private Language SelectedLanguage => _Project.Languages[tscLanguage.SelectedIndex];
 
+        private Boolean _RefreshingSection;
+
+        private Boolean _RefreshingSectionList;
+
         private FooterSection SelectedSection 
             => lvwSections.SelectedIndices.Count > 0
             ?_Project.Footer[lvwSections.SelectedIndices[0]]
@@ -76,6 +80,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void RefreshSectionList() {
+            _RefreshingSectionList = true;
             int index = lvwSections.SelectedIndices.Count > 0 ? lvwSections.SelectedIndices[0] : -1;
 
             lvwSections.VirtualListSize = 0;
@@ -84,23 +89,31 @@ namespace WebsiteBuilder.UI.Forms {
             if (index > -1 && index < lvwSections.VirtualListSize) {
                 lvwSections.SelectedIndices.Add(index);
             }
+
+            _RefreshingSectionList = false;
         }
 
         private void RefreshSection() {
+            _RefreshingSection = true;
+            txtTitle.Text = String.Empty;
+            lvwLinks.VirtualListSize = 0;
+
             FooterSection section = SelectedSection;
             if (section == null) {
+                _RefreshingSection = false;
                 return;
             }
 
             txtTitle.Text = section.Title.Get(SelectedLanguage);
             int index = lvwLinks.SelectedIndices.Count > 0 ? lvwLinks.SelectedIndices[0] : -1;
-
-            lvwLinks.VirtualListSize = 0;
+            
             lvwLinks.VirtualListSize = section.Items.Count;
 
             if (index > -1 && index < lvwLinks.VirtualListSize) {
                 lvwLinks.SelectedIndices.Add(index);
             }
+
+            _RefreshingSection = false;
         }
 
         private void EditLink() {
@@ -154,7 +167,17 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void btnLinkDelete_Click(object sender, EventArgs e) {
+            if (SelectedSection == null || lvwLinks.SelectedIndices.Count == 0) {
+                return;
+            }
 
+            DialogResult result = MessageBox.Show(Strings.FooterLinkDeleteConfirmMessage, Strings.Delete, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.OK) {
+                return;
+            }
+
+            SelectedSection.Items.RemoveAt(lvwLinks.SelectedIndices[0]);
+            RefreshSection();
         }
 
         private void lvwSections_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
@@ -164,6 +187,10 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void lvwLinks_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+            if (SelectedSection == null) {
+                return;
+            }
+
             FooterLink link = SelectedSection.Items[e.ItemIndex];
             e.Item = new ListViewItem(new String[] {
                 link.Text.Get(SelectedLanguage),
@@ -178,7 +205,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void txtTitle_TextChanged(object sender, EventArgs e) {
-            if (lvwSections.SelectedIndices.Count == 0) {
+            if (lvwSections.SelectedIndices.Count == 0 || _RefreshingSection) {
                 return;
             }
 
@@ -187,6 +214,10 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void lvwSections_SelectedIndexChanged(object sender, EventArgs e) {
+            if (_RefreshingSectionList) {
+                return;
+            }
+
             RefreshSection();
         }
 
