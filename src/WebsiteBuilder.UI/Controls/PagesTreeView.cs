@@ -73,6 +73,7 @@ namespace WebsiteBuilder.UI.Controls {
             if (IconPack.Current != null) {
                 _ImageList = new ImageList() { ColorDepth = ColorDepth.Depth32Bit, ImageSize = new Size(16, 16) };
                 _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
+                _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.PageStart));
                 lvwPages.SmallImageList = _ImageList;
             }
         }
@@ -193,7 +194,12 @@ namespace WebsiteBuilder.UI.Controls {
                 item.Page.Layout?.Title ?? String.Empty
             });
 
-            e.Item.ImageIndex = 0;
+            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
+                e.Item.ImageIndex = 1;
+            }
+            else {
+                e.Item.ImageIndex = 0;
+            }
 
             if (e.ItemIndex == _HighlightingIndex) {
                 e.Item.BackColor = Color.LightGray;
@@ -208,10 +214,6 @@ namespace WebsiteBuilder.UI.Controls {
             }
 
             builder.Append(item.Page.PathName);
-
-            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
-                builder.Append(" *");
-            }
 
             return builder.ToString();
         }

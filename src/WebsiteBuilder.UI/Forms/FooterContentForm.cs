@@ -150,7 +150,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void btnLinkEdit_Click(object sender, EventArgs e) {
-
+            EditLink();
         }
 
         private void btnLinkDelete_Click(object sender, EventArgs e) {
@@ -183,10 +183,15 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             SelectedSection.Title.Set(SelectedLanguage, txtTitle.Text);
+            RefreshSectionList();
         }
 
         private void lvwSections_SelectedIndexChanged(object sender, EventArgs e) {
             RefreshSection();
+        }
+
+        private void lvwLinks_DoubleClick(object sender, EventArgs e) {
+            EditLink();
         }
     }
 }

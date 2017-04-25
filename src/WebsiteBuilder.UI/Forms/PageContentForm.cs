@@ -28,8 +28,6 @@ namespace WebsiteBuilder.UI.Forms {
             _Page = page;
             _Language = language;
             _LayoutSection = layoutSection;
-
-            LoadModule();
         }
 
         private void ApplyIcons() {
@@ -128,6 +126,10 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             Content.WriteData(_Language, _Control.Data);
+        }
+
+        private void PageContentForm_Shown(object sender, System.EventArgs e) {
+            LoadModule();
         }
     }
 }

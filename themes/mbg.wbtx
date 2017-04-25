@@ -133,9 +133,14 @@
 	<style type="less" name="default">
 		@acentColor: #DD5533;
 		
-		html, body {
+		body {
 			margin:0;
 			background-color:#EFEFEF;
+		}
+		
+		html {
+			margin:0;
+			background-color:#FFF;
 		}
 		
 		body {
@@ -275,9 +280,21 @@
 			}
 		}
 		
+		a:link, a:visited {
+			text-decoration:none;
+			color:@acentColor;
+		}
+		
+		a:hover, a:active {
+			text-decoration:underline;
+		}
+		
 		footer {
 			margin-top:40px;
-			margin-bottom:40px;
+			margin-bottom:20px;
+			padding:20px;
+			background-color:#FFF;
+			border-top:1px solid #CCC;
 			
 			.footer-inner {
 				max-width:850px;
@@ -295,6 +312,10 @@
 				list-style-type:none;
 				padding:12px 0;
 				margin:0;
+				
+				li {
+					margin:5px 0;
+				}
 			}
 			
 			a:link, a:visited {

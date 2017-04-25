@@ -9,6 +9,7 @@
         Settings,
         Open,
         Page,
+        PageStart,
         Build,
         Close,
         InsertLink,

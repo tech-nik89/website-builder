@@ -202,6 +202,7 @@
             this.lvwLinks.View = System.Windows.Forms.View.Details;
             this.lvwLinks.VirtualMode = true;
             this.lvwLinks.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvwLinks_RetrieveVirtualItem);
+            this.lvwLinks.DoubleClick += new System.EventHandler(this.lvwLinks_DoubleClick);
             // 
             // clnLinkText
             // 
@@ -216,6 +217,7 @@
             // clnLinkTarget
             // 
             this.clnLinkTarget.Text = "[Target]";
+            this.clnLinkTarget.Width = 90;
             // 
             // gbxTitle
             // 
