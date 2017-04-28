@@ -30,6 +30,8 @@ namespace WebsiteBuilder.Core {
 
         public IPage Parent => null;
 
+        public String PathName => null;
+
         private String _ProjectFilePath;
 
         public String ProjectFilePath {

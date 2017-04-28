@@ -194,7 +194,7 @@ namespace WebsiteBuilder.UI.Forms {
             FooterLink link = SelectedSection.Items[e.ItemIndex];
             e.Item = new ListViewItem(new String[] {
                 link.Text.Get(SelectedLanguage),
-                link.Data,
+                link.DisplayUrl,
                 link.Target
             });
         }

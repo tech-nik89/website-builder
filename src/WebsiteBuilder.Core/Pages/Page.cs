@@ -65,6 +65,20 @@ namespace WebsiteBuilder.Core.Pages {
             }
         }
         
+        public String DisplayPath {
+            get {
+                List<String> name = new List<String>();
+                IPage parent = this;
+
+                while (parent != null) {
+                    name.Insert(0, parent.PathName);
+                    parent = parent.Parent;
+                }
+
+                return String.Join("/", name);
+            }
+        }
+        
         internal Page() : this(null) {
         }
 

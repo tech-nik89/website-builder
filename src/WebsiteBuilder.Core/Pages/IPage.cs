@@ -5,6 +5,8 @@ namespace WebsiteBuilder.Core.Pages {
 
         String Id { get; }
 
+        String PathName { get; }
+
         PageCollection Pages { get; }
 
         IPage Parent { get; }
