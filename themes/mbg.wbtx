@@ -384,7 +384,7 @@
 	</footerSection>
 	<footerItem>
 		<li>
-			<a href="@Model.Url">@Model.Text</a>
+			<a href="@Model.Url" target="@Model.Target">@Model.Text</a>
 		</li>
 	</footerItem>
 	<body>

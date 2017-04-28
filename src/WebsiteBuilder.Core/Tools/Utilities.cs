@@ -42,5 +42,17 @@ namespace WebsiteBuilder.Core.Tools {
 
             return Path.Combine(directoryPath, relativePath);
         }
+
+        public static String NewGuid() {
+            String guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+
+            guid = guid.Substring(0, 22);
+            guid = guid.Replace("\\", "_");
+            guid = guid.Replace("/", "_");
+            guid = guid.Replace("+", "-");
+            guid = guid.ToLower();
+
+            return guid;
+        }
     }
 }

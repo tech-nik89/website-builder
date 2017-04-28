@@ -14,5 +14,7 @@ namespace WebsiteBuilder.Interface.Plugins {
 
         bool CanSuggestCopyToProjectDirectory(String fullFilePath);
 
+        String NewGuid();
+
     }
 }

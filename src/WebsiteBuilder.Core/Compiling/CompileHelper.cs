@@ -27,7 +27,7 @@ namespace WebsiteBuilder.Core.Compiling {
         }
         
         public void CreateCssFile(String css) {
-            String fileName = String.Concat(Guid.NewGuid().ToString(), ".css");
+            String fileName = String.Concat(Utilities.NewGuid(), ".css");
             String path = Path.Combine(_File.Directory.FullName, fileName);
 
             css = Utilities.CssMinifier.Compile(css);
@@ -51,7 +51,7 @@ namespace WebsiteBuilder.Core.Compiling {
         }
 
         public void CreateJavaScriptFile(String javaScript, bool runAfterLoad) {
-            String fileName = String.Concat(Guid.NewGuid().ToString(), ".js");
+            String fileName = String.Concat(Utilities.NewGuid(), ".js");
             String path = Path.Combine(_File.Directory.FullName, fileName);
 
             javaScript = Utilities.JavaScriptMinifier.Compile(javaScript);

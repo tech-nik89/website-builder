@@ -112,7 +112,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             foreach(FooterLink link in section.Items) {
                 builder.Append(RenderTemplate(_Theme.TemplateFooterItem, new {
                     Url = GetFooterLinkUrl(link),
-                    Text = link.Text.Get(_Language)
+                    Text = link.Text.Get(_Language),
+                    Target = link.Target
                 }));
             }
 

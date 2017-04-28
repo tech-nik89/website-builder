@@ -33,8 +33,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                     continue;
                 }
 
-                var fileName = String.Concat(style.Name, ".", FileExtensionCss);
-                var path = Path.Combine(_MetaDirectory.FullName, fileName);
+                String fileName = String.Concat(Utilities.NewGuid(), ".", FileExtensionCss);
+                String path = Path.Combine(_MetaDirectory.FullName, fileName);
                 File.WriteAllText(path, css);
 
                 _StyleSheetFiles.Add(fileName);

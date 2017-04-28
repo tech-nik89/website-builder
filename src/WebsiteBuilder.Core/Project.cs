@@ -8,6 +8,7 @@ using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Storage;
 using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.Core.Tools;
 
 namespace WebsiteBuilder.Core {
 
@@ -128,7 +129,7 @@ namespace WebsiteBuilder.Core {
         }
 
         public Page CreatePage() {
-            return new Page(this) { Id = Guid.NewGuid().ToString() };
+            return new Page(this) { Id = Utilities.NewGuid() };
         }
 
         public FooterLink CreateFooterLink() {
@@ -140,11 +141,11 @@ namespace WebsiteBuilder.Core {
         }
 
         public MediaFile CreateMediaFile() {
-            return new MediaFile(this);
+            return new MediaFile(this) { Id = Utilities.NewGuid() };
         }
 
         public MediaReference CreateMediaReference() {
-            return new MediaReference(this);
+            return new MediaReference(this) { Id = Utilities.NewGuid() };
         }
 
         private void FillAllPagesList(PageCollection pages, List<Page> allPages) {

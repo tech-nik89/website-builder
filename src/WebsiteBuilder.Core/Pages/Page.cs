@@ -79,9 +79,6 @@ namespace WebsiteBuilder.Core.Pages {
             }
         }
         
-        internal Page() : this(null) {
-        }
-
         internal Page(Project project) {
             Project = project;
             Pages = new PageCollection(this);

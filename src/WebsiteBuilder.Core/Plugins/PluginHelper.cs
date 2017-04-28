@@ -46,5 +46,9 @@ namespace WebsiteBuilder.Core.Plugins {
 
             return !fullFilePath.StartsWith(_Project.ProjectFile.Directory.FullName);
         }
+
+        public String NewGuid() {
+            return Utilities.NewGuid();
+        }
     }
 }

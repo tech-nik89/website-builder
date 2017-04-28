@@ -30,7 +30,7 @@ namespace WebsiteBuilder.Modules.Gallery {
                 }
 
                 foreach (String file in data.Files) {
-                    Guid guid = Guid.NewGuid();
+                    String guid = _PluginHelper.NewGuid();
                     String extension = Path.GetExtension(file);
 
                     String fullSizeTargetFileName = String.Concat(guid, extension);

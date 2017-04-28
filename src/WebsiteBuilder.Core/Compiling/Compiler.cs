@@ -118,7 +118,7 @@ namespace WebsiteBuilder.Core.Compiling {
             try {
                 int steps = _Steps.Count;
 
-                for(int i = 0; i < _Steps.Count; i++) {
+                for(int i = 0; i < steps; i++) {
                     var step = _Steps[i];
                     ReportProgress(i, steps, step.Output);
 

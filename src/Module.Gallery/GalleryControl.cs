@@ -158,7 +158,7 @@ namespace WebsiteBuilder.Modules.Gallery {
                 }
 
                 if (copyToProjectDirectory) {
-                    String newPath = _PluginHelper.GetFullPath(Path.Combine(AutoCopyGalleryDirectoryName, Guid.NewGuid().ToString() + Path.GetExtension(filePath)));
+                    String newPath = _PluginHelper.GetFullPath(Path.Combine(AutoCopyGalleryDirectoryName, _PluginHelper.NewGuid() + Path.GetExtension(filePath)));
                     FileInfo newFile = new FileInfo(newPath);
                     newFile.Directory.Create();
 

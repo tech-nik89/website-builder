@@ -104,13 +104,11 @@ namespace WebsiteBuilder.UI.Forms {
             MediaItem file;
             if (reference) {
                 MediaReference mediaReference = _Project.CreateMediaReference();
-                mediaReference.Id = Guid.NewGuid().ToString();
                 mediaReference.FilePath = info.FullName;
                 file = mediaReference;
             }
             else {
                 MediaFile mediaFile = _Project.CreateMediaFile();
-                mediaFile.Id = Guid.NewGuid().ToString();
                 mediaFile.FileName = info.Name;
                 mediaFile.Data = File.ReadAllBytes(info.FullName);
                 file = mediaFile;
