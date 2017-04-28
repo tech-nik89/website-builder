@@ -110,6 +110,7 @@
     <Compile Include="Tools\FileSizeFormatter.cs" />
     <Compile Include="Tools\MicrosoftMinifier.cs" />
     <Compile Include="Tools\Utilities.cs" />
+    <Compile Include="Validation\LanguageValidator.cs" />
     <Compile Include="Validation\PageValidator.cs" />
     <Compile Include="Validation\ProjectValidator.cs" />
     <Compile Include="Validation\ValidatorBase.cs" />

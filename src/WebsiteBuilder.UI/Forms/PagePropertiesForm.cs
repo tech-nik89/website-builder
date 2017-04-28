@@ -5,6 +5,7 @@ using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.Core.Validation;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
@@ -108,6 +109,12 @@ namespace WebsiteBuilder.UI.Forms {
                 : null;
 
             Page.IncludeInMenu = chkIncludeInMenu.Checked;
+
+            ValidationHelper<Page> validator = new ValidationHelper<Page>(new PageValidator(Page));
+            if (!validator.Valid) {
+                validator.ShowMessage();
+                return;
+            }
 
             DialogResult = DialogResult.OK;
             Close();

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace WebsiteBuilder.Core.Validation {
     public class ProjectValidator : ValidatorBase<Project> {
@@ -12,7 +13,10 @@ namespace WebsiteBuilder.Core.Validation {
 
         public bool ThemePath => File.Exists(Object.ThemePath);
 
-        public bool Languages => Object.Languages != null && Object.Languages.Length > 0;
+        public bool Languages
+            => Object.Languages != null 
+            && Object.Languages.Length > 0
+            && Object.Languages.All(x => new LanguageValidator(x).Valid);
 
         public ProjectValidator(Project project)
             : base(project) {

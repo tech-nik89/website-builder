@@ -124,6 +124,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Localization\ValidationStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Plugins\PluginExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Controls\ProjectGeneralSettings.cs">
@@ -147,6 +152,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\IconPack.cs" />
     <Compile Include="Resources\StatusText.cs" />
+    <Compile Include="Resources\ValidationHelper.cs" />
     <EmbeddedResource Include="Forms\CompilerErrorForm.resx">
       <DependentUpon>CompilerErrorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +198,10 @@
     <EmbeddedResource Include="Localization\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\ValidationStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

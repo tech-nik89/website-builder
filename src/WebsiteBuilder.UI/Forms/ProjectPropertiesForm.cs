@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
+using WebsiteBuilder.Core.Validation;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -39,6 +40,12 @@ namespace WebsiteBuilder.UI.Forms {
         private void btnAccept_Click(object sender, EventArgs e) {
             _Project.Languages = plsLanguages.Languages;
             pgsGeneral.FillProjectFrom(_Project);
+
+            ValidationHelper<Project> validator = new ValidationHelper<Project>(new ProjectValidator(_Project));
+            if (!validator.Valid) {
+                validator.ShowMessage();
+                return;
+            }
 
             DialogResult = DialogResult.OK;
             Close();
