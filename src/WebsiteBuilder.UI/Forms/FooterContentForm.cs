@@ -132,7 +132,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void tsbSectionAdd_Click(object sender, EventArgs e) {
-            _Project.Footer.Add(new FooterSection());
+            _Project.Footer.Add(_Project.CreateFooterSection());
             RefreshSectionList();
         }
 

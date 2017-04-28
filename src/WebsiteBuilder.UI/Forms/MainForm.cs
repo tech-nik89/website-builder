@@ -83,11 +83,13 @@ namespace WebsiteBuilder.UI.Forms {
 
             if (result == DialogResult.OK) {
                 ptvwPages.RefreshLanguageList();
+                UpdateFormText();
             }
         }
 
         private void mnuProjectNew_Click(object sender, EventArgs e) {
             CurrentProject = new Project();
+            UpdateFormText();
         }
 
         private void mnuProjectOpen_Click(object sender, EventArgs e) {
@@ -117,6 +119,8 @@ namespace WebsiteBuilder.UI.Forms {
 
             MediaForm form = new MediaForm(CurrentProject);
             form.ShowDialog();
+
+            UpdateFormText();
         }
 
         private void mnuContentFooter_Click(object sender, EventArgs e) {
@@ -126,6 +130,12 @@ namespace WebsiteBuilder.UI.Forms {
 
             FooterContentForm form = new FooterContentForm(CurrentProject);
             form.ShowDialog();
+
+            UpdateFormText();
+        }
+
+        private void ptvwPages_ContentUpdated(object sender, EventArgs e) {
+            UpdateFormText();
         }
     }
 }

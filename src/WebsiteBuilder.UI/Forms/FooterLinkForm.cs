@@ -19,7 +19,7 @@ namespace WebsiteBuilder.UI.Forms {
         private FooterLinkType SelectedType => (FooterLinkType)Enum.Parse(typeof(FooterLinkType), cbxType.Text);
 
         public FooterLinkForm(Project project, Language language)
-            : this(project, language, new FooterLink()) {
+            : this(project, language, project.CreateFooterLink()) {
         }
 
         public FooterLinkForm(Project project, Language language, FooterLink link) {

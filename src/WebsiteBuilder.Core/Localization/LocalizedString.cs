@@ -11,7 +11,10 @@ namespace WebsiteBuilder.Core.Localization {
 
         public IReadOnlyDictionary<String, String> Data => new ReadOnlyDictionary<String, String>(_Data);
 
-        public LocalizedString() {
+        private readonly Project _Project;
+
+        public LocalizedString(Project project) {
+            _Project = project;
             _Data = new Dictionary<String, String>();
         }
 
@@ -40,6 +43,7 @@ namespace WebsiteBuilder.Core.Localization {
             }
 
             Set(language.Id, value);
+            _Project.Dirty = true;
         }
 
         public void Set(String id, String value) {

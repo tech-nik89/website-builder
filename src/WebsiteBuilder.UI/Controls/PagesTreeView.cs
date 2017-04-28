@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -24,6 +25,9 @@ namespace WebsiteBuilder.UI.Controls {
         private Project _Project;
 
         private readonly ImageList _ImageList;
+
+        [Browsable(true)]
+        public event EventHandler ContentUpdated;
 
         public Project Project {
             get {
@@ -176,6 +180,7 @@ namespace WebsiteBuilder.UI.Controls {
             }
 
             EnableControls();
+            ContentUpdated?.Invoke(this, new EventArgs());
         }
 
         private void FillFlatList(PageCollection pages, int level) {

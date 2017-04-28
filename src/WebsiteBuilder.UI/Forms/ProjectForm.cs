@@ -44,13 +44,17 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            if (String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)) {
+            if (String.IsNullOrWhiteSpace(CurrentProject.ProjectFilePath)) {
                 Text = _ProductName;
                 return;
             }
 
             StringBuilder builder = new StringBuilder();
             builder.Append(_CurrentProject.ProjectFileName);
+
+            if (CurrentProject.Dirty) {
+                builder.Append("*");
+            }
 
             builder.Append(" - ");
             builder.Append(_ProductName);
@@ -63,7 +67,7 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            if (saveAs || string.IsNullOrEmpty(CurrentProject.ProjectFilePath)) {
+            if (saveAs || String.IsNullOrEmpty(CurrentProject.ProjectFilePath)) {
                 DialogResult result = sfdProject.ShowDialog();
 
                 if (result == DialogResult.OK) {
@@ -88,6 +92,7 @@ namespace WebsiteBuilder.UI.Forms {
 
             if (project != null) {
                 CurrentProject = project;
+                UpdateFormText();
             }
             else {
                 HandleError(Strings.ProjectLoadErrorMessage);
@@ -100,8 +105,7 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             _CompilerRunning = true;
-
-
+            
             UpdateStatus(StatusText.BuildStarted);
             CompilerSetControls(false);
 

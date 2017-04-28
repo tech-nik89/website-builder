@@ -19,15 +19,30 @@ namespace WebsiteBuilder.Core {
 
         public const String ContentDirectoryName = "content";
 
-        public Boolean UglyURLs { get; set; }
+        private Boolean _UglyURLs;
+
+        public Boolean UglyURLs {
+            get => _UglyURLs;
+            set { _UglyURLs = value; Dirty = true; }
+        }
 
         public String Id => null;
 
         public IPage Parent => null;
-        
-        public String ProjectFilePath { get; set; }
-        
-        public String OutputPath { get; set; }
+
+        private String _ProjectFilePath;
+
+        public String ProjectFilePath {
+            get => _ProjectFilePath;
+            set { _ProjectFilePath = value; Dirty = true; }
+        }
+
+        private String _OutputPath;
+
+        public String OutputPath {
+            get => _OutputPath;
+            set { _OutputPath = value; Dirty = true; }
+        }
         
         public String ProjectFileName 
             => (ProjectFilePath != null && File.Exists(ProjectFilePath))
@@ -40,7 +55,12 @@ namespace WebsiteBuilder.Core {
 
         public PageCollection Pages { get; private set; }
 
-        public Language[] Languages { get; set; }
+        private Language[] _Languages;
+
+        public Language[] Languages {
+            get => _Languages;
+            set { _Languages = value; Dirty = true; }
+        }
 
         private String _ThemePath;
         
@@ -51,6 +71,7 @@ namespace WebsiteBuilder.Core {
             set {
                 _ThemePath = value;
                 _Theme = null;
+                Dirty = true;
             }
         }
         
@@ -78,18 +99,26 @@ namespace WebsiteBuilder.Core {
                 return allPages.AsReadOnly();
             }
         }
-        
-        public Page StartPage { get; set; }
 
-        public List<MediaItem> Media { get; private set; }
+        private Page _StartPage;
 
-        public List<FooterSection> Footer { get; private set; }
+        public Page StartPage {
+            get => _StartPage;
+            set { _StartPage = value; Dirty = true; }
+        }
+
+        public CustomCollection<MediaItem> Media { get; private set; }
+
+        public CustomCollection<FooterSection> Footer { get; private set; }
+
+        public Boolean Dirty { get; internal set; }
 
         public Project() {
             Pages = new PageCollection(this);
             Languages = new Language[0];
-            Media = new List<MediaItem>();
-            Footer = new List<FooterSection>();
+            Media = new CustomCollection<MediaItem>(this);
+            Footer = new CustomCollection<FooterSection>(this);
+            Dirty = true;
         }
 
         public void ReloadTheme() {
@@ -98,6 +127,22 @@ namespace WebsiteBuilder.Core {
 
         public Page CreatePage() {
             return new Page(this) { Id = Guid.NewGuid().ToString() };
+        }
+
+        public FooterLink CreateFooterLink() {
+            return new FooterLink(this);
+        }
+
+        public FooterSection CreateFooterSection() {
+            return new FooterSection(this);
+        }
+
+        public MediaFile CreateMediaFile() {
+            return new MediaFile(this);
+        }
+
+        public MediaReference CreateMediaReference() {
+            return new MediaReference(this);
         }
 
         private void FillAllPagesList(PageCollection pages, List<Page> allPages) {
@@ -114,12 +159,14 @@ namespace WebsiteBuilder.Core {
         public static void Save(Project project, String path) {
             using(ProjectWriter writer = new ProjectWriter(project, path)) {
                 writer.Write();
+                project.Dirty = false;
             }
         }
 
         public static Project Load(string path) {
             using (var reader = new ProjectReader(path)) {
                 Project project = reader.Read();
+                project.Dirty = false;
                 return project;
             }
         }

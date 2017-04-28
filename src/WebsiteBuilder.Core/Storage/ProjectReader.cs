@@ -56,16 +56,17 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private FooterSection GetFooterSection(XElement element) {
-            FooterSection section = new FooterSection();
+            FooterSection section = _Project.CreateFooterSection();
 
             GetLocalizedString(element.Element(ProjectStorageConstants.Title), section.Title);
-            section.Items = element.Elements(ProjectStorageConstants.Link).Select(x => GetFooterLink(x)).ToList();
+            section.Items = new CustomCollection<FooterLink>(_Project);
+            section.Items.AddRange(element.Elements(ProjectStorageConstants.Link).Select(x => GetFooterLink(x)));
 
             return section;
         }
 
         private FooterLink GetFooterLink(XElement element) {
-            FooterLink link = new FooterLink();
+            FooterLink link = _Project.CreateFooterLink();
 
             GetLocalizedString(element, link.Text);
 
@@ -84,12 +85,12 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private Page GetPage(XElement element) {
-            Page page = new Page(_Project) {
-                Id = element.Attribute(ProjectStorageConstants.Id).Value,
-                PathName = element.Attribute(ProjectStorageConstants.Path).Value,
-                LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value,
-                IncludeInMenu = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.IncludeInMenu)?.Value)
-            };
+            Page page = new Page(_Project);
+
+            page.Id = element.Attribute(ProjectStorageConstants.Id).Value;
+            page.PathName = element.Attribute(ProjectStorageConstants.Path).Value;
+            page.LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value;
+            page.IncludeInMenu = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.IncludeInMenu)?.Value);
 
             page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
             GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);
@@ -121,17 +122,18 @@ namespace WebsiteBuilder.Core.Storage {
         private MediaItem GetMediaItem(XElement element) {
             switch (element.Name.ToString()) {
                 case ProjectStorageConstants.File:
-                    return new MediaFile() {
-                        Id = element.Attribute(ProjectStorageConstants.Id).Value,
-                        FileName = element.Attribute(ProjectStorageConstants.Name).Value,
-                        AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value)
-                    };
+                    MediaFile mediaFile = _Project.CreateMediaFile();
+                    mediaFile.Id = element.Attribute(ProjectStorageConstants.Id).Value;
+                    mediaFile.FileName = element.Attribute(ProjectStorageConstants.Name).Value;
+                    mediaFile.AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value);
+                    return mediaFile;
+
                 case ProjectStorageConstants.Reference:
-                    return new MediaReference() {
-                        Id = element.Attribute(ProjectStorageConstants.Id).Value,
-                        FilePath = GetFullPath(element.Attribute(ProjectStorageConstants.Path).Value),
-                        AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value)
-                    };
+                    MediaReference mediaReference = _Project.CreateMediaReference();
+                    mediaReference.Id = element.Attribute(ProjectStorageConstants.Id).Value;
+                    mediaReference.FilePath = GetFullPath(element.Attribute(ProjectStorageConstants.Path).Value);
+                    mediaReference.AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value);
+                    return mediaReference;
             }
 
             return null;

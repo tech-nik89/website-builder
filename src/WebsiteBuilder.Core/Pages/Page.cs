@@ -17,12 +17,22 @@ namespace WebsiteBuilder.Core.Pages {
         public Project Project { get; internal set; }
         
         public IPage Parent { get; internal set; }
-        
-        public String PathName { get; set; }
+
+        private String _PathName;
+
+        public String PathName {
+            get => _PathName;
+            set { _PathName = value; Project.Dirty = true; }
+        }
 
         public LocalizedString Title { get; private set; }
-        
-        public String LayoutClassName { get; set; }
+
+        private String _LayoutClassName;
+
+        public String LayoutClassName {
+            get => _LayoutClassName;
+            set { _LayoutClassName = value; Project.Dirty = true; }
+        }
         
         public Layout Layout => Project.Theme?.Layouts.FirstOrDefault(x => x.ClassName == LayoutClassName);
 
@@ -30,7 +40,12 @@ namespace WebsiteBuilder.Core.Pages {
 
         public IReadOnlyDictionary<int, PageContent> Content => new ReadOnlyDictionary<int, PageContent>(_Content);
 
-        public Boolean IncludeInMenu { get; set; }
+        private Boolean _IncludeInMenu;
+
+        public Boolean IncludeInMenu {
+            get => _IncludeInMenu;
+            set { _IncludeInMenu = value; Project.Dirty = true; }
+        }
 
         public int Level {
             get {
@@ -54,11 +69,11 @@ namespace WebsiteBuilder.Core.Pages {
         }
 
         internal Page(Project project) {
+            Project = project;
             Pages = new PageCollection(this);
-            Title = new LocalizedString();
+            Title = new LocalizedString(project);
             _Content = new Dictionary<int, PageContent>();
             IncludeInMenu = true;
-            Project = project;
         }
         
         public PageContent this[int index] {

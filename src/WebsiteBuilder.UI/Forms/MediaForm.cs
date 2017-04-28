@@ -103,17 +103,17 @@ namespace WebsiteBuilder.UI.Forms {
 
             MediaItem file;
             if (reference) {
-                file = new MediaReference() {
-                    Id = Guid.NewGuid().ToString(),
-                    FilePath = info.FullName
-                };
+                MediaReference mediaReference = _Project.CreateMediaReference();
+                mediaReference.Id = Guid.NewGuid().ToString();
+                mediaReference.FilePath = info.FullName;
+                file = mediaReference;
             }
             else {
-                file = new MediaFile() {
-                    Id = Guid.NewGuid().ToString(),
-                    FileName = info.Name,
-                    Data = File.ReadAllBytes(info.FullName)
-                };
+                MediaFile mediaFile = _Project.CreateMediaFile();
+                mediaFile.Id = Guid.NewGuid().ToString();
+                mediaFile.FileName = info.Name;
+                mediaFile.Data = File.ReadAllBytes(info.FullName);
+                file = mediaFile;
             }
 
             _Project.Media.Add(file);

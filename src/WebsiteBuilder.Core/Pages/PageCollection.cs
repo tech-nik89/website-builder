@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace WebsiteBuilder.Core.Pages {
-
-    [Serializable]
+    
     public class PageCollection : IEnumerable<Page> {
         
         private readonly List<Page> _Pages;
@@ -25,18 +24,22 @@ namespace WebsiteBuilder.Core.Pages {
         public void Add(Page page) {
             _Pages.Add(page);
             page.Parent = _Parent;
+            page.Project.Dirty = true;
         }
 
         public void Insert(int index, Page page) {
             _Pages.Insert(index, page);
             page.Parent = _Parent;
+            page.Project.Dirty = true;
         }
 
         public void RemoveAt(int index) {
-            _Pages.RemoveAt(index);
+            Page page = _Pages[index];
+            Remove(page);
         }
 
         public void Remove(Page page) {
+            page.Project.Dirty = true;
             _Pages.Remove(page);
         }
 

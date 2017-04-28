@@ -57,10 +57,10 @@
             this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
             this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
             this.tsbContentMedia = new System.Windows.Forms.ToolStripButton();
             this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -209,6 +209,7 @@
             this.ptvwPages.Project = null;
             this.ptvwPages.Size = new System.Drawing.Size(861, 410);
             this.ptvwPages.TabIndex = 0;
+            this.ptvwPages.ContentUpdated += new System.EventHandler(this.ptvwPages_ContentUpdated);
             // 
             // sstMain
             // 
@@ -286,16 +287,6 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsbBuildProject
-            // 
-            this.tsbBuildProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuildProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuildProject.Image")));
-            this.tsbBuildProject.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuildProject.Name = "tsbBuildProject";
-            this.tsbBuildProject.Size = new System.Drawing.Size(23, 22);
-            this.tsbBuildProject.Text = "toolStripButton1";
-            this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
-            // 
             // tsbContentMedia
             // 
             this.tsbContentMedia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -320,6 +311,16 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbBuildProject
+            // 
+            this.tsbBuildProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuildProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuildProject.Image")));
+            this.tsbBuildProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuildProject.Name = "tsbBuildProject";
+            this.tsbBuildProject.Size = new System.Drawing.Size(23, 22);
+            this.tsbBuildProject.Text = "toolStripButton1";
+            this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
             // MainForm
             // 

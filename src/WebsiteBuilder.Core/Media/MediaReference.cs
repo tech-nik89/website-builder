@@ -4,8 +4,17 @@ using System.IO;
 namespace WebsiteBuilder.Core.Media {
 
     public class MediaReference : MediaItem {
-        
-        public String FilePath { get; set; }
+
+        internal MediaReference(Project project)
+            : base(project) {
+        }
+
+        private String _FilePath;
+
+        public String FilePath {
+            get => _FilePath;
+            set { _FilePath = value; _Project.Dirty = true; }
+        }
         
         public FileInfo FileInfo => new FileInfo(FilePath);
         

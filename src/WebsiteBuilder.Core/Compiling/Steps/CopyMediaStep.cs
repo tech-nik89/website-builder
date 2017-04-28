@@ -8,11 +8,11 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
 		public String Output { get; private set; }
 
-        private readonly List<MediaItem> _Media;
+        private readonly IEnumerable<MediaItem> _Media;
 
         private readonly DirectoryInfo _Directory;
 
-        public CopyMediaStep(List<MediaItem> media, DirectoryInfo mediaDirectory) {
+        public CopyMediaStep(IEnumerable<MediaItem> media, DirectoryInfo mediaDirectory) {
             Output = "Copying media";
             _Media = media;
             _Directory = mediaDirectory;
@@ -20,7 +20,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
         public void Run() {
             foreach (MediaItem item in _Media) {
-                string path = Path.Combine(_Directory.FullName, String.Concat(item.Id, Path.GetExtension(item.Name)));
+                String path = Path.Combine(_Directory.FullName, String.Concat(item.Id, Path.GetExtension(item.Name)));
                 item.SaveTo(path);
             }
         }

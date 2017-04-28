@@ -6,14 +6,32 @@ namespace WebsiteBuilder.Core.Footer {
 
         public LocalizedString Text { get; set; }
 
-        public String Data { get; set; }
+        private String _Data;
 
-        public FooterLinkType Type { get; set; }
+        public String Data {
+            get => _Data;
+            set { _Data = value; _Project.Dirty = true; }
+        }
 
-        public String Target { get; set; }
+        private FooterLinkType _Type;
 
-        public FooterLink() {
-            Text = new LocalizedString();
+        public FooterLinkType Type {
+            get => _Type;
+            set { _Type = value; _Project.Dirty = true; }
+        }
+
+        private String _Target;
+
+        public String Target {
+            get => _Target;
+            set { _Target = value; _Project.Dirty = true; }
+        }
+
+        private readonly Project _Project;
+
+        internal FooterLink(Project project) {
+            _Project = project;
+            Text = new LocalizedString(project);
         }
     }
 }
