@@ -15,6 +15,8 @@
         InsertLink,
         Media,
         New,
-        Footer
+        Footer,
+        OrderUp,
+        OrderDown
     }
 }

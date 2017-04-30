@@ -95,6 +95,10 @@ namespace WebsiteBuilder.UI.Controls {
             cmbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
             cmbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
             cmbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
+            cmbStartPage.Image = IconPack.Current.GetImage(IconPackIcon.PageStart);
+
+            cmsDragDropMoveAfter.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
+            cmsDragDropMoveBefore.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
         }
 
         private void LocalizeComponent() {

@@ -214,6 +214,24 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The current project has unsaved changes. Do you want so save them before exit?.
+        /// </summary>
+        internal static string DirtyProjectConfirmSaveMessage {
+            get {
+                return ResourceManager.GetString("DirtyProjectConfirmSaveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm save.
+        /// </summary>
+        internal static string DirtyProjectConfirmSaveTitle {
+            get {
+                return ResourceManager.GetString("DirtyProjectConfirmSaveTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit {

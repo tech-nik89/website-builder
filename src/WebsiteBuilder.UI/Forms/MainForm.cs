@@ -137,5 +137,9 @@ namespace WebsiteBuilder.UI.Forms {
         private void ptvwPages_ContentUpdated(object sender, EventArgs e) {
             UpdateFormText();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            e.Cancel = ConfirmCloseDirtyProject();
+        }
     }
 }

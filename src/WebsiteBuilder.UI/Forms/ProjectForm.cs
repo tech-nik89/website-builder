@@ -171,5 +171,28 @@ namespace WebsiteBuilder.UI.Forms {
         private void UpdateStatus(String status) {
             tslStatus.Text = status;
         }
+
+        private bool ConfirmCloseDirtyProject() {
+            if (!CurrentProject.Dirty) {
+                return false;
+            }
+
+            DialogResult result = MessageBox.Show(
+                Strings.DirtyProjectConfirmSaveMessage,
+                Strings.DirtyProjectConfirmSaveTitle,
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question);
+
+            switch (result) {
+                case DialogResult.Yes:
+                    SaveProject(false);
+                    return false;
+                case DialogResult.No:
+                    return false;
+                default:
+                case DialogResult.Cancel:
+                    return true;
+            }
+        }
     }
 }
