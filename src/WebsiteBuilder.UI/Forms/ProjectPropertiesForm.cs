@@ -38,17 +38,25 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void btnAccept_Click(object sender, EventArgs e) {
-            _Project.Languages = plsLanguages.Languages;
-            pgsGeneral.FillProjectFrom(_Project);
 
-            ValidationHelper<Project> validator = new ValidationHelper<Project>(new ProjectValidator(_Project));
+            Project validationProject = new Project();
+            ApplyToProject(validationProject);
+
+            ValidationHelper<Project> validator = new ValidationHelper<Project>(new ProjectValidator(validationProject));
             if (!validator.Valid) {
                 validator.ShowMessage();
                 return;
             }
 
+            ApplyToProject(_Project);
+
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void ApplyToProject(Project project) {
+            project.Languages = plsLanguages.Languages;
+            pgsGeneral.FillProjectFrom(project);
         }
     }
 }

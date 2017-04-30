@@ -97,27 +97,34 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void btnAccept_Click(object sender, EventArgs e) {
-            Page.PathName = txtPathName.Text;
+            Page validationPage = Page.Project.CreatePage();
+            ApplyToPage(validationPage);
 
-            for(int i = 0; i < Page.Project.Languages.Length; i++) {
-                Page.Title.Set(Page.Project.Languages[i], lvwTitle.Items[i].Text);
-            }
-
-            Page.LayoutClassName
-                = cbxLayout.SelectedIndex > -1
-                ? Page.Project.Theme.Layouts.ElementAt(cbxLayout.SelectedIndex).ClassName
-                : null;
-
-            Page.IncludeInMenu = chkIncludeInMenu.Checked;
-
-            ValidationHelper<Page> validator = new ValidationHelper<Page>(new PageValidator(Page));
+            ValidationHelper<Page> validator = new ValidationHelper<Page>(new PageValidator(validationPage));
             if (!validator.Valid) {
                 validator.ShowMessage();
                 return;
             }
 
+            ApplyToPage(Page);
+
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void ApplyToPage(Page page) {
+            page.PathName = txtPathName.Text;
+
+            for (int i = 0; i < page.Project.Languages.Length; i++) {
+                page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);
+            }
+
+            page.LayoutClassName
+                = cbxLayout.SelectedIndex > -1
+                ? page.Project.Theme.Layouts.ElementAt(cbxLayout.SelectedIndex).ClassName
+                : null;
+
+            page.IncludeInMenu = chkIncludeInMenu.Checked;
         }
 
         private void lvwTitle_MouseUp(object sender, MouseEventArgs e) {
