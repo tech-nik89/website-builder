@@ -46,7 +46,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             _File.Directory.Create();
 
             HtmlDocument htmlFile = new HtmlDocument();
-            CompileHelper helper = new CompileHelper(htmlFile, _File);
+            CompileHelper helper = new CompileHelper(htmlFile, _File, CreateSubPage);
             String path = CreatePath();
 
             Layout layout = _Page.Layout;
@@ -77,14 +77,41 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 Path = path
             });
 
+            AddStyles(htmlFile);
+
+            htmlFile.Compile(_File.FullName);
+        }
+
+        private String CreateSubPage(String pathName, String content) {
+            HtmlDocument htmlFile = new HtmlDocument();
+            Layout layout = _Page.Layout;
+            String path = CreatePath();
+
+            htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
+                Content = RenderTemplate(layout.Template, new { Content = new String[1] { content } }),
+                Navigation = RenderNavigation(_Language, _Level),
+                Title = _Page.Title.Get(_Language),
+                Languages = RenderLanguageSwitcher(),
+                Footer = RenderFooter(),
+                Path = path
+            });
+
+            AddStyles(htmlFile);
+
+            String fileName = pathName + "." + Compiler.FileExtensionHtml;
+            String filePath = Path.Combine(_File.DirectoryName, fileName);
+            htmlFile.Compile(filePath);
+            
+            return fileName;
+        }
+
+        private void AddStyles(HtmlDocument htmlFile) {
             foreach (String fileName in _StyleSheetFiles) {
                 var sheetPath = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", fileName), _Level);
                 htmlFile.AddStyleLink(sheetPath);
             }
 
             htmlFile.AddStyle(GenerateFontsCSS(_Theme.Fonts, _Level));
-
-            htmlFile.Compile(_File.FullName);
         }
 
         private String RenderFooter() {

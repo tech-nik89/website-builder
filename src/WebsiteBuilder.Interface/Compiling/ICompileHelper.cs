@@ -17,5 +17,7 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         String GetFilePath(String targetFileName);
 
+        String CreateSubPage(String pathName, String content);
+
     }
 }

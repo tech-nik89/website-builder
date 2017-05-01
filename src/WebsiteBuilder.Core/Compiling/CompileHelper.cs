@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using WebsiteBuilder.Core.Tools;
@@ -11,9 +12,12 @@ namespace WebsiteBuilder.Core.Compiling {
 
         private readonly FileInfo _File;
         
-        public CompileHelper(HtmlDocument document, FileInfo file) {
+        private Func<String, String, String> _CreateSubPage;
+
+        public CompileHelper(HtmlDocument document, FileInfo file, Func<String, String, String> createSubPage) {
             _Document = document;
             _File = file;
+            _CreateSubPage = createSubPage;
         }
 
         public String Compile(IHtmlElement element) {
@@ -62,6 +66,10 @@ namespace WebsiteBuilder.Core.Compiling {
 
         public IHtmlElement CreateHtmlElement(String name) {
             return new HtmlElement(name);
+        }
+
+        public String CreateSubPage(String pathName, String content) {
+            return _CreateSubPage(pathName, content);
         }
 
     }

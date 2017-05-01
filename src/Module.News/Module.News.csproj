@@ -85,6 +85,9 @@
       <DependentUpon>NewsItemForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientResources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)WebsiteBuilder.UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
