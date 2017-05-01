@@ -7,7 +7,7 @@ using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.Gallery.Localization;
 
 namespace WebsiteBuilder.Modules.Gallery {
-    public partial class GalleryControl : UserControl, IUserInterface {
+    internal partial class GalleryControl : UserControl, IUserInterface {
 
         private static readonly String[] SupportedExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
 
