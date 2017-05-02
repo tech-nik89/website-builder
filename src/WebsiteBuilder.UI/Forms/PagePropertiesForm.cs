@@ -134,5 +134,11 @@ namespace WebsiteBuilder.UI.Forms {
 
             lvwTitle.SelectedItems[0].BeginEdit();
         }
+
+        private void txtPathName_KeyPress(object sender, KeyPressEventArgs e) {
+            KeysConverter converter = new KeysConverter();
+            String character = converter.ConvertToString(e.KeyChar);
+            e.Handled = !PageValidator.ValidatePathNameInput(character);
+        }
     }
 }

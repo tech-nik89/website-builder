@@ -107,6 +107,7 @@
             this.txtPathName.Name = "txtPathName";
             this.txtPathName.Size = new System.Drawing.Size(251, 20);
             this.txtPathName.TabIndex = 1;
+            this.txtPathName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPathName_KeyPress);
             // 
             // lblPathName
             // 
