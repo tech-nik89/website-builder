@@ -13,5 +13,9 @@ namespace WebsiteBuilder.Modules.News {
 
         public String Author { get; set; }
 
+        public NewsItem() {
+            Created = DateTime.Now;
+        }
+
     }
 }

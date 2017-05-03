@@ -32,6 +32,7 @@ namespace WebsiteBuilder.Modules.News {
             Item = item;
             txtTitle.Text = Item.Title;
             txtAuthor.Text = Item.Author;
+            dtpCreated.Value = Item.Created;
             _Editor.Data = Item.Data;
         }
 
@@ -40,6 +41,7 @@ namespace WebsiteBuilder.Modules.News {
 
             lblTitle.Text = Strings.Title;
             lblAuthor.Text = Strings.Author;
+            lblCreated.Text = Strings.Created;
 
             btnAccept.Text = Strings.Accept;
             btnCancel.Text = Strings.Cancel;
@@ -49,13 +51,10 @@ namespace WebsiteBuilder.Modules.News {
             Item.Title = txtTitle.Text;
             Item.Author = txtAuthor.Text;
             Item.Data = _Editor.Data;
+            Item.Created = dtpCreated.Value;
 
             if (String.IsNullOrWhiteSpace(Item.Id)) {
                 Item.Id = _PluginHelper.NewGuid();
-            }
-
-            if (Item.Created == null || Item.Created == DateTime.MinValue) {
-                Item.Created = DateTime.Now;
             }
 
             DialogResult = DialogResult.OK;

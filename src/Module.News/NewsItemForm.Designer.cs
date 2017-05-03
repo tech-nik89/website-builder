@@ -30,6 +30,8 @@
             this.txtAuthor = new System.Windows.Forms.TextBox();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.pnlEditor = new System.Windows.Forms.Panel();
+            this.lblCreated = new System.Windows.Forms.Label();
+            this.dtpCreated = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -97,10 +99,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlEditor.Location = new System.Drawing.Point(0, 83);
+            this.pnlEditor.Location = new System.Drawing.Point(0, 98);
             this.pnlEditor.Name = "pnlEditor";
-            this.pnlEditor.Size = new System.Drawing.Size(517, 221);
+            this.pnlEditor.Size = new System.Drawing.Size(517, 216);
             this.pnlEditor.TabIndex = 6;
+            // 
+            // lblCreated
+            // 
+            this.lblCreated.AutoSize = true;
+            this.lblCreated.Location = new System.Drawing.Point(12, 78);
+            this.lblCreated.Name = "lblCreated";
+            this.lblCreated.Size = new System.Drawing.Size(50, 13);
+            this.lblCreated.TabIndex = 7;
+            this.lblCreated.Text = "[Created]";
+            // 
+            // dtpCreated
+            // 
+            this.dtpCreated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpCreated.Location = new System.Drawing.Point(92, 72);
+            this.dtpCreated.Name = "dtpCreated";
+            this.dtpCreated.Size = new System.Drawing.Size(413, 20);
+            this.dtpCreated.TabIndex = 8;
             // 
             // NewsItemForm
             // 
@@ -109,6 +129,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(517, 357);
+            this.Controls.Add(this.dtpCreated);
+            this.Controls.Add(this.lblCreated);
             this.Controls.Add(this.pnlEditor);
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.lblAuthor);
@@ -134,5 +156,7 @@
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.Label lblAuthor;
         private System.Windows.Forms.Panel pnlEditor;
+        private System.Windows.Forms.Label lblCreated;
+        private System.Windows.Forms.DateTimePicker dtpCreated;
     }
 }
