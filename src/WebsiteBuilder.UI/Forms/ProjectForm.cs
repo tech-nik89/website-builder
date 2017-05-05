@@ -194,5 +194,13 @@ namespace WebsiteBuilder.UI.Forms {
                     return true;
             }
         }
+
+        private void ClearOutputDirectory() {
+            if (CurrentProject == null) {
+                return;
+            }
+
+            Compiler.ClearOutputDirectory(CurrentProject);
+        }
     }
 }

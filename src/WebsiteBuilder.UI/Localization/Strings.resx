@@ -339,4 +339,7 @@
   <data name="DirtyProjectConfirmSaveTitle" xml:space="preserve">
     <value>Confirm save</value>
   </data>
+  <data name="ClearOutputDirectory" xml:space="preserve">
+    <value>Clear output directory</value>
+  </data>
 </root>

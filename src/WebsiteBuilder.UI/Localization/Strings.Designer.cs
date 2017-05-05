@@ -160,6 +160,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear output directory.
+        /// </summary>
+        internal static string ClearOutputDirectory {
+            get {
+                return ResourceManager.GetString("ClearOutputDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string Close {

@@ -61,6 +61,8 @@
             this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
+            this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -165,14 +167,14 @@
             // mnuContentMedia
             // 
             this.mnuContentMedia.Name = "mnuContentMedia";
-            this.mnuContentMedia.Size = new System.Drawing.Size(116, 22);
+            this.mnuContentMedia.Size = new System.Drawing.Size(152, 22);
             this.mnuContentMedia.Text = "[Media]";
             this.mnuContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
             // 
             // mnuContentFooter
             // 
             this.mnuContentFooter.Name = "mnuContentFooter";
-            this.mnuContentFooter.Size = new System.Drawing.Size(116, 22);
+            this.mnuContentFooter.Size = new System.Drawing.Size(152, 22);
             this.mnuContentFooter.Text = "[Footer]";
             this.mnuContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
             // 
@@ -180,7 +182,9 @@
             // 
             this.mnuBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBuildProject,
-            this.mnuBuildAndRunProject});
+            this.mnuBuildAndRunProject,
+            this.toolStripSeparator6,
+            this.mnuBuildCleanOutput});
             this.mnuBuild.Name = "mnuBuild";
             this.mnuBuild.Size = new System.Drawing.Size(54, 20);
             this.mnuBuild.Text = "[Build]";
@@ -322,6 +326,18 @@
             this.tsbBuildProject.Text = "toolStripButton1";
             this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
+            // mnuBuildCleanOutput
+            // 
+            this.mnuBuildCleanOutput.Name = "mnuBuildCleanOutput";
+            this.mnuBuildCleanOutput.Size = new System.Drawing.Size(221, 22);
+            this.mnuBuildCleanOutput.Text = "[Clear output directory]";
+            this.mnuBuildCleanOutput.Click += new System.EventHandler(this.mnuBuildCleanOutput_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(218, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +397,8 @@
         private System.Windows.Forms.ToolStripButton tsbContentMedia;
         private System.Windows.Forms.ToolStripButton tsbContentFooter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem mnuBuildCleanOutput;
     }
 }
 

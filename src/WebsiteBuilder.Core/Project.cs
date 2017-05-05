@@ -121,7 +121,7 @@ namespace WebsiteBuilder.Core {
             Languages = new Language[0];
             Media = new CustomCollection<MediaItem>(this);
             Footer = new CustomCollection<FooterSection>(this);
-            Dirty = true;
+            Dirty = false;
         }
 
         public void ReloadTheme() {

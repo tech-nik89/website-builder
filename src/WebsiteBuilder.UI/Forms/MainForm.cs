@@ -62,6 +62,7 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuild.Text  = Strings.Build;
             mnuBuildProject.Text = Strings.BuildProject;
             mnuBuildAndRunProject.Text = Strings.BuildAndOpenProject;
+            mnuBuildCleanOutput.Text = Strings.ClearOutputDirectory;
 
             tsbProjectNew.Text = Strings.New;
             tsbProjectOpen.Text = Strings.Open;
@@ -140,6 +141,10 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = ConfirmCloseDirtyProject();
+        }
+
+        private void mnuBuildCleanOutput_Click(object sender, EventArgs e) {
+            ClearOutputDirectory();
         }
     }
 }

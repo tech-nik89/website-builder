@@ -78,6 +78,16 @@ namespace WebsiteBuilder.Core.Compiling {
             }
         }
 
+        public static void ClearOutputDirectory(Project project) {
+            DirectoryInfo directory = new DirectoryInfo(project.OutputPath);
+            if (!directory.Exists) {
+                return;
+            }
+
+            PrepareDirectoryStep step = new PrepareDirectoryStep(directory);
+            step.Run();
+        }
+
         private void ValidateProject(Project project) {
             if (String.IsNullOrWhiteSpace(project.OutputPath) || !Directory.Exists(project.OutputPath)) {
                 throw new Exception("Output directory not found.");
