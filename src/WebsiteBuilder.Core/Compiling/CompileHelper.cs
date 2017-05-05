@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using WebsiteBuilder.Core.Compiling.Links;
 using WebsiteBuilder.Core.Tools;
 using WebsiteBuilder.Interface.Compiling;
 
@@ -14,10 +15,25 @@ namespace WebsiteBuilder.Core.Compiling {
         
         private Func<String, String, String> _CreateSubPage;
 
+        private readonly List<StyleLink> _StyleLinks;
+
+        private readonly List<ScriptLink> _ScriptLinks;
+
+        private readonly List<String> _PageStyleClasses;
+
+        internal IReadOnlyList<StyleLink> StyleLinks => _StyleLinks.AsReadOnly();
+
+        internal IReadOnlyList<ScriptLink> ScriptLinks => _ScriptLinks.AsReadOnly();
+
+        internal IReadOnlyList<String> PageStyleClasses => _PageStyleClasses.AsReadOnly();
+
         public CompileHelper(HtmlDocument document, FileInfo file, Func<String, String, String> createSubPage) {
             _Document = document;
             _File = file;
             _CreateSubPage = createSubPage;
+            _StyleLinks = new List<StyleLink>();
+            _ScriptLinks = new List<ScriptLink>();
+            _PageStyleClasses = new List<String>();
         }
 
         public String Compile(IHtmlElement element) {
@@ -29,6 +45,10 @@ namespace WebsiteBuilder.Core.Compiling {
 
             return builder.ToString();
         }
+
+        public void AddPageStyleClass(String className) {
+            _PageStyleClasses.Add(className);
+        }
         
         public void CreateCssFile(String css) {
             String fileName = String.Concat(Utilities.NewGuid(), ".css");
@@ -36,8 +56,8 @@ namespace WebsiteBuilder.Core.Compiling {
 
             css = Utilities.CssMinifier.Compile(css);
             File.WriteAllText(path, css);
-
-            _Document.AddStyleLink(fileName);
+            
+            _StyleLinks.Add(new StyleLink(fileName));
         }
 
         public void CreateLessFile(String less) {
@@ -60,8 +80,8 @@ namespace WebsiteBuilder.Core.Compiling {
 
             javaScript = Utilities.JavaScriptMinifier.Compile(javaScript);
             File.WriteAllText(path, javaScript);
-
-            _Document.AddScriptLink(fileName, runAfterLoad);
+            
+            _ScriptLinks.Add(new ScriptLink(fileName, runAfterLoad));
         }
 
         public IHtmlElement CreateHtmlElement(String name) {

@@ -7,7 +7,7 @@ using WebsiteBuilder.Interface.Plugins;
 namespace WebsiteBuilder.Editors.Avalon {
     public partial class AvalonEditorControl : UserControl, IUserInterface {
 
-        public Boolean SupportsMediaLinks => true;
+        public bool SupportsMediaLinks => true;
 
         private readonly TextEditor _Editor;
 

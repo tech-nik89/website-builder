@@ -14,9 +14,9 @@ namespace WebsiteBuilder.UI.Forms {
 
         private Language SelectedLanguage => _Project.Languages[tscLanguage.SelectedIndex];
 
-        private Boolean _RefreshingSection;
+        private bool _RefreshingSection;
 
-        private Boolean _RefreshingSectionList;
+        private bool _RefreshingSectionList;
 
         private FooterSection SelectedSection 
             => lvwSections.SelectedIndices.Count > 0

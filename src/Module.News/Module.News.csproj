@@ -65,7 +65,18 @@
       <DependentUpon>NewsItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NewsModule.cs" />
+    <Compile Include="NewsSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewsSettingsForm.Designer.cs">
+      <DependentUpon>NewsSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
@@ -84,9 +95,19 @@
     <EmbeddedResource Include="NewsItemForm.resx">
       <DependentUpon>NewsItemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewsSettingsForm.resx">
+      <DependentUpon>NewsSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientResources\" />
+    <Content Include="ClientResources\NewsScript.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClientResources\NewsStyles.less" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

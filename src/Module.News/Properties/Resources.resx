@@ -117,49 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Accept" xml:space="preserve">
-    <value>OK</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NewsScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ClientResources\NewsScript.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="Author" xml:space="preserve">
-    <value>Author</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Content</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Created</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="DeleteConfirmMessage" xml:space="preserve">
-    <value>Do you really want to remove the selected news?</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="LargeItemsCount" xml:space="preserve">
-    <value>Large items count</value>
-  </data>
-  <data name="LargeItemsMaxHeight" xml:space="preserve">
-    <value>Large items max height</value>
-  </data>
-  <data name="News" xml:space="preserve">
-    <value>News</value>
-  </data>
-  <data name="NewsSettings" xml:space="preserve">
-    <value>News settings</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
+  <data name="NewsStyles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ClientResources\NewsStyles.less;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

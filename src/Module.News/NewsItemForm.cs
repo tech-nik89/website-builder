@@ -39,6 +39,9 @@ namespace WebsiteBuilder.Modules.News {
         private void ApplyLocalization() {
             Text = Strings.News;
 
+            gbxDetails.Text = Strings.Details;
+            gbxContent.Text = Strings.Content;
+
             lblTitle.Text = Strings.Title;
             lblAuthor.Text = Strings.Author;
             lblCreated.Text = Strings.Created;

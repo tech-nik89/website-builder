@@ -28,6 +28,8 @@
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.lvwItems = new System.Windows.Forms.ListView();
             this.clnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnAuthor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,7 +42,9 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
             this.tsbEdit,
-            this.tsbDelete});
+            this.tsbDelete,
+            this.toolStripSeparator1,
+            this.tsbSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(683, 25);
@@ -73,6 +77,20 @@
             this.tsbDelete.Size = new System.Drawing.Size(68, 22);
             this.tsbDelete.Text = "[Delete]";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbSettings
+            // 
+            this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
+            this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSettings.Name = "tsbSettings";
+            this.tsbSettings.Size = new System.Drawing.Size(77, 22);
+            this.tsbSettings.Text = "[Settings]";
+            this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
             // 
             // lvwItems
             // 
@@ -133,5 +151,7 @@
         private System.Windows.Forms.ColumnHeader clnTitle;
         private System.Windows.Forms.ColumnHeader clnAuthor;
         private System.Windows.Forms.ColumnHeader clnCreated;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbSettings;
     }
 }

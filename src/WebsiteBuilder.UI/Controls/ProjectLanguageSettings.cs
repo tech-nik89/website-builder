@@ -103,7 +103,7 @@ namespace WebsiteBuilder.UI.Controls {
         }
 
         private void EnableControls() {
-            Boolean enabled = lvwLanguages.SelectedIndices.Count > 0;
+            bool enabled = lvwLanguages.SelectedIndices.Count > 0;
             tsbEdit.Enabled = enabled;
             tsbDelete.Enabled = enabled;
         }

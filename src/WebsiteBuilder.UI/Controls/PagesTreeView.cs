@@ -279,7 +279,7 @@ namespace WebsiteBuilder.UI.Controls {
         }
         
         private void EnableControls() {
-            Boolean canEdit = lvwPages.SelectedIndices.Count > 0;
+            bool canEdit = lvwPages.SelectedIndices.Count > 0;
 
             tsbEdit.Enabled = canEdit;
             tsbDelete.Enabled = canEdit;

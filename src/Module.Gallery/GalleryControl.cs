@@ -15,7 +15,7 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private const int ImageSize = 64;
 
-        public Boolean SupportsMediaLinks => false;
+        public bool SupportsMediaLinks => false;
 
         private readonly IPluginHelper _PluginHelper;
 
@@ -141,9 +141,9 @@ namespace WebsiteBuilder.Modules.Gallery {
         }
 
         private void Add(String[] fileNames) {
-            Boolean fileAdded = false;
-            Boolean copyToProjectDirectory = false;
-            Boolean alreadyAskedForCopyToProjectDirectory = false;
+            bool fileAdded = false;
+            bool copyToProjectDirectory = false;
+            bool alreadyAskedForCopyToProjectDirectory = false;
 
             foreach (String path in fileNames) {
                 String filePath = path;

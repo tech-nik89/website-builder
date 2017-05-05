@@ -20,9 +20,9 @@ namespace WebsiteBuilder.Core {
 
         public const String ContentDirectoryName = "content";
 
-        private Boolean _UglyURLs;
+        private bool _UglyURLs;
 
-        public Boolean UglyURLs {
+        public bool UglyURLs {
             get => _UglyURLs;
             set { _UglyURLs = value; Dirty = true; }
         }
@@ -114,7 +114,7 @@ namespace WebsiteBuilder.Core {
 
         public CustomCollection<FooterSection> Footer { get; private set; }
 
-        public Boolean Dirty { get; internal set; }
+        public bool Dirty { get; internal set; }
 
         public Project() {
             Pages = new PageCollection(this);

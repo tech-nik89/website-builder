@@ -5,9 +5,17 @@ using System.Linq;
 using System.Xml.Linq;
 
 namespace WebsiteBuilder.Modules.News {
-    class NewsData : IEnumerable<NewsItem>, IList<NewsItem> {
+    class NewsData : IEnumerable<NewsItem>, IList<NewsItem>, ICollection<NewsItem> {
 
         private const String TagRoot = "news";
+
+        private const String TagSettings = "settings";
+
+        private const String TagSettingsLargeItemsCount = "largeItemsCount";
+
+        private const String TagSettingsLargeItemsMaxHeight = "largeItemsMaxHeight";
+
+        private const String TagSettingsExpanderText = "expanderText";
 
         private const String TagItem = "item";
 
@@ -25,6 +33,12 @@ namespace WebsiteBuilder.Modules.News {
 
         public bool IsReadOnly => false;
 
+        public int LargeItemsCount { get; set; }
+
+        public int LargeItemsMaxHeight { get; set; }
+
+        public String ExpanderText { get; set; }
+
         public NewsItem this[int index] {
             get => _Items[index];
             set => _Items[index] = value;
@@ -39,14 +53,20 @@ namespace WebsiteBuilder.Modules.News {
 
             try {
                 XDocument document = XDocument.Parse(str);
-                
-                data._Items.AddRange(document.Element(TagRoot).Elements(TagItem).Select(x => new NewsItem() {
+                XElement root = document.Element(TagRoot);
+
+                data._Items.AddRange(root.Elements(TagItem).Select(x => new NewsItem() {
                     Id = x.Attribute(AttributeId).Value,
                     Author = x.Attribute(AttributeAuthor).Value,
                     Title = x.Attribute(AttributeTitle).Value,
                     Created = Convert.ToDateTime(x.Attribute(AttributeCreated).Value),
                     Data = x.Value
                 }));
+
+                XElement settings = root.Element(TagSettings);
+                data.LargeItemsCount = Convert.ToInt32(settings.Attribute(TagSettingsLargeItemsCount)?.Value ?? "3");
+                data.LargeItemsMaxHeight = Convert.ToInt32(settings.Attribute(TagSettingsLargeItemsMaxHeight)?.Value ?? "300");
+                data.ExpanderText = settings.Attribute(TagSettingsExpanderText)?.Value ?? "More";
 
                 return data;
             }
@@ -60,15 +80,21 @@ namespace WebsiteBuilder.Modules.News {
         public static String Serialize(NewsData data) {
             XDocument document = new XDocument();
 
-            document.Add(new XElement(TagRoot,
+            XElement root = new XElement(TagRoot,
+                new XElement(TagSettings,
+                    new XAttribute(TagSettingsLargeItemsCount, data.LargeItemsCount),
+                    new XAttribute(TagSettingsLargeItemsMaxHeight, data.LargeItemsMaxHeight),
+                    new XAttribute(TagSettingsExpanderText, data.ExpanderText)
+                ),
                 data.Select(x => new XElement(TagItem,
                     new XAttribute(AttributeId, x.Id),
                     new XAttribute(AttributeAuthor, x.Author),
                     new XAttribute(AttributeCreated, x.Created),
                     new XAttribute(AttributeTitle, x.Title),
                     x.Data
-                ))));
-            
+                )));
+
+            document.Add(root);
             return document.ToString();
         }
 

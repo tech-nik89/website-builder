@@ -97,6 +97,15 @@ namespace WebsiteBuilder.Modules.News.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        internal static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created.
         /// </summary>
         internal static string Created {
@@ -124,6 +133,15 @@ namespace WebsiteBuilder.Modules.News.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit {
@@ -133,11 +151,38 @@ namespace WebsiteBuilder.Modules.News.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Large items count.
+        /// </summary>
+        internal static string LargeItemsCount {
+            get {
+                return ResourceManager.GetString("LargeItemsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large items max height.
+        /// </summary>
+        internal static string LargeItemsMaxHeight {
+            get {
+                return ResourceManager.GetString("LargeItemsMaxHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News.
         /// </summary>
         internal static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News settings.
+        /// </summary>
+        internal static string NewsSettings {
+            get {
+                return ResourceManager.GetString("NewsSettings", resourceCulture);
             }
         }
         

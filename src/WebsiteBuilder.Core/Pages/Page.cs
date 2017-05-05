@@ -40,9 +40,9 @@ namespace WebsiteBuilder.Core.Pages {
 
         public IReadOnlyDictionary<int, PageContent> Content => new ReadOnlyDictionary<int, PageContent>(_Content);
 
-        private Boolean _IncludeInMenu;
+        private bool _IncludeInMenu;
 
-        public Boolean IncludeInMenu {
+        public bool IncludeInMenu {
             get => _IncludeInMenu;
             set { _IncludeInMenu = value; Project.Dirty = true; }
         }

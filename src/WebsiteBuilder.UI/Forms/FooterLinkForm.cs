@@ -84,7 +84,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e) {
-            Boolean enable = SelectedType != FooterLinkType.External;
+            bool enable = SelectedType != FooterLinkType.External;
             btnBrowse.Enabled = enable;
             txtURL.Enabled = !enable;
         }

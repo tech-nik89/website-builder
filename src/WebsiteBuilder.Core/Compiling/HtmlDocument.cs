@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using WebsiteBuilder.Core.Compiling.Links;
 using WebsiteBuilder.Core.Tools;
 
 namespace WebsiteBuilder.Core.Compiling {
-	class HtmlDocument {
+    class HtmlDocument {
 
 		private const String HtmlDoctype = "<!DOCTYPE html>";
 
@@ -106,6 +106,10 @@ namespace WebsiteBuilder.Core.Compiling {
 
         public void AddScriptLink(String path) {
             AddScriptLink(path, false);
+        }
+
+        public void AddScriptLink(ScriptLink link) {
+            AddScriptLink(link.FileName, link.RunAfterLoad);
         }
 
         public void AddScriptLink(String path, bool runAfterLoad) {

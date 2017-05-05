@@ -32,13 +32,17 @@
             this.pnlEditor = new System.Windows.Forms.Panel();
             this.lblCreated = new System.Windows.Forms.Label();
             this.dtpCreated = new System.Windows.Forms.DateTimePicker();
+            this.gbxDetails = new System.Windows.Forms.GroupBox();
+            this.gbxContent = new System.Windows.Forms.GroupBox();
+            this.gbxDetails.SuspendLayout();
+            this.gbxContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(405, 320);
+            this.btnCancel.Location = new System.Drawing.Point(405, 369);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 0;
@@ -49,7 +53,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(299, 320);
+            this.btnAccept.Location = new System.Drawing.Point(299, 369);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 1;
@@ -60,7 +64,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(12, 23);
+            this.lblTitle.Location = new System.Drawing.Point(21, 29);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(33, 13);
             this.lblTitle.TabIndex = 2;
@@ -70,24 +74,24 @@
             // 
             this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitle.Location = new System.Drawing.Point(92, 20);
+            this.txtTitle.Location = new System.Drawing.Point(101, 26);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(413, 20);
+            this.txtTitle.Size = new System.Drawing.Size(368, 20);
             this.txtTitle.TabIndex = 3;
             // 
             // txtAuthor
             // 
             this.txtAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAuthor.Location = new System.Drawing.Point(92, 46);
+            this.txtAuthor.Location = new System.Drawing.Point(101, 52);
             this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(413, 20);
+            this.txtAuthor.Size = new System.Drawing.Size(368, 20);
             this.txtAuthor.TabIndex = 5;
             // 
             // lblAuthor
             // 
             this.lblAuthor.AutoSize = true;
-            this.lblAuthor.Location = new System.Drawing.Point(12, 49);
+            this.lblAuthor.Location = new System.Drawing.Point(21, 55);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(44, 13);
             this.lblAuthor.TabIndex = 4;
@@ -99,15 +103,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlEditor.Location = new System.Drawing.Point(0, 98);
+            this.pnlEditor.Location = new System.Drawing.Point(6, 19);
             this.pnlEditor.Name = "pnlEditor";
-            this.pnlEditor.Size = new System.Drawing.Size(517, 216);
+            this.pnlEditor.Size = new System.Drawing.Size(481, 202);
             this.pnlEditor.TabIndex = 6;
             // 
             // lblCreated
             // 
             this.lblCreated.AutoSize = true;
-            this.lblCreated.Location = new System.Drawing.Point(12, 78);
+            this.lblCreated.Location = new System.Drawing.Point(21, 84);
             this.lblCreated.Name = "lblCreated";
             this.lblCreated.Size = new System.Drawing.Size(50, 13);
             this.lblCreated.TabIndex = 7;
@@ -117,10 +121,40 @@
             // 
             this.dtpCreated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpCreated.Location = new System.Drawing.Point(92, 72);
+            this.dtpCreated.Location = new System.Drawing.Point(101, 78);
             this.dtpCreated.Name = "dtpCreated";
-            this.dtpCreated.Size = new System.Drawing.Size(413, 20);
+            this.dtpCreated.Size = new System.Drawing.Size(368, 20);
             this.dtpCreated.TabIndex = 8;
+            // 
+            // gbxDetails
+            // 
+            this.gbxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxDetails.Controls.Add(this.lblTitle);
+            this.gbxDetails.Controls.Add(this.dtpCreated);
+            this.gbxDetails.Controls.Add(this.txtTitle);
+            this.gbxDetails.Controls.Add(this.lblCreated);
+            this.gbxDetails.Controls.Add(this.lblAuthor);
+            this.gbxDetails.Controls.Add(this.txtAuthor);
+            this.gbxDetails.Location = new System.Drawing.Point(12, 12);
+            this.gbxDetails.Name = "gbxDetails";
+            this.gbxDetails.Size = new System.Drawing.Size(493, 118);
+            this.gbxDetails.TabIndex = 9;
+            this.gbxDetails.TabStop = false;
+            this.gbxDetails.Text = "[Details]";
+            // 
+            // gbxContent
+            // 
+            this.gbxContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxContent.Controls.Add(this.pnlEditor);
+            this.gbxContent.Location = new System.Drawing.Point(12, 136);
+            this.gbxContent.Name = "gbxContent";
+            this.gbxContent.Size = new System.Drawing.Size(493, 227);
+            this.gbxContent.TabIndex = 10;
+            this.gbxContent.TabStop = false;
+            this.gbxContent.Text = "[Content]";
             // 
             // NewsItemForm
             // 
@@ -128,22 +162,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(517, 357);
-            this.Controls.Add(this.dtpCreated);
-            this.Controls.Add(this.lblCreated);
-            this.Controls.Add(this.pnlEditor);
-            this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.lblAuthor);
-            this.Controls.Add(this.txtTitle);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(517, 406);
+            this.Controls.Add(this.gbxContent);
+            this.Controls.Add(this.gbxDetails);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.MinimizeBox = false;
             this.Name = "NewsItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[NewsItem]";
+            this.gbxDetails.ResumeLayout(false);
+            this.gbxDetails.PerformLayout();
+            this.gbxContent.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -158,5 +189,7 @@
         private System.Windows.Forms.Panel pnlEditor;
         private System.Windows.Forms.Label lblCreated;
         private System.Windows.Forms.DateTimePicker dtpCreated;
+        private System.Windows.Forms.GroupBox gbxDetails;
+        private System.Windows.Forms.GroupBox gbxContent;
     }
 }

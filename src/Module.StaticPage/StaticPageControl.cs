@@ -5,7 +5,7 @@ using WebsiteBuilder.Interface.Plugins;
 namespace WebsiteBuilder.Modules.StaticPage {
     public partial class StaticPageControl : UserControl, IUserInterface {
 
-        public Boolean SupportsMediaLinks => EditorControl?.SupportsMediaLinks ?? false;
+        public bool SupportsMediaLinks => EditorControl?.SupportsMediaLinks ?? false;
 
         private readonly IEditor _Editor;
 

@@ -19,5 +19,7 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         String CreateSubPage(String pathName, String content);
 
+        void AddPageStyleClass(String className);
+
     }
 }

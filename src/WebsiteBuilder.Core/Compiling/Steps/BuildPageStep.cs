@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using WebsiteBuilder.Core.Compiling.Links;
 using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
@@ -30,6 +31,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
         public String Output { get; private set; }
 
+        private CompileHelper _CompileHelper;
+
         public BuildPageStep(Language language, Page page, Theme theme, DirectoryInfo outputDirectory, IReadOnlyCollection<String> styleSheetFiles) {
             _Language = language;
             _Page = page;
@@ -46,7 +49,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             _File.Directory.Create();
 
             HtmlDocument htmlFile = new HtmlDocument();
-            CompileHelper helper = new CompileHelper(htmlFile, _File, CreateSubPage);
+            _CompileHelper = new CompileHelper(htmlFile, _File, CreateSubPage);
+
             String path = CreatePath();
 
             Layout layout = _Page.Layout;
@@ -65,7 +69,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                     continue;
                 }
 
-                sections[i] = ResolveUrls(module.Compile(data, helper), _Page.Project, _Level);
+                sections[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Page.Project, _Level);
             }
 
             htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
@@ -78,6 +82,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             });
 
             AddStyles(htmlFile);
+            AddScripts(htmlFile);
 
             htmlFile.Compile(_File.FullName);
         }
@@ -97,6 +102,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             });
 
             AddStyles(htmlFile);
+            AddScripts(htmlFile);
 
             String fileName = pathName + "." + Compiler.FileExtensionHtml;
             String filePath = Path.Combine(_File.DirectoryName, fileName);
@@ -111,7 +117,17 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 htmlFile.AddStyleLink(sheetPath);
             }
 
+            foreach (StyleLink link in _CompileHelper.StyleLinks) {
+                htmlFile.AddStyleLink(link.FileName);
+            }
+
             htmlFile.AddStyle(GenerateFontsCSS(_Theme.Fonts, _Level));
+        }
+
+        private void AddScripts(HtmlDocument htmlFile) {
+            foreach (ScriptLink link in _CompileHelper.ScriptLinks) {
+                htmlFile.AddScriptLink(link);
+            }
         }
 
         private String RenderFooter() {

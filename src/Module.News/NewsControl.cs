@@ -37,12 +37,14 @@ namespace WebsiteBuilder.Modules.News {
             tsbAdd.Image = iconPack.GetImage(IconPackIcon.Add);
             tsbEdit.Image = iconPack.GetImage(IconPackIcon.Edit);
             tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
+            tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
         }
 
         private void ApplyLocalization() {
             tsbAdd.Text = Strings.Add;
             tsbEdit.Text = Strings.Edit;
             tsbDelete.Text = Strings.Delete;
+            tsbSettings.Text = Strings.NewsSettings;
 
             clnAuthor.Text = Strings.Author;
             clnTitle.Text = Strings.Title;
@@ -109,6 +111,17 @@ namespace WebsiteBuilder.Modules.News {
             }
 
             RefreshList();
+        }
+
+        private void tsbSettings_Click(object sender, EventArgs e) {
+            NewsSettingsForm form = new NewsSettingsForm(_PluginHelper.GetIconPack(), _Data.LargeItemsCount, _Data.LargeItemsMaxHeight, _Data.ExpanderText);
+            if (form.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            _Data.LargeItemsCount = form.LargeItemsCount;
+            _Data.LargeItemsMaxHeight = form.LargeItemsMaxHeight;
+            _Data.ExpanderText = form.ExpanderText;
         }
     }
 }
