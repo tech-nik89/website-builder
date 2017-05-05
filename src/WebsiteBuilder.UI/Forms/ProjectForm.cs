@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Compiling;
 using WebsiteBuilder.Core.Exceptions;
+using WebsiteBuilder.Core.Localization;
+using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -99,7 +101,19 @@ namespace WebsiteBuilder.UI.Forms {
             }
         }
 
-        private void CompileProject(bool runAfterCompile = false) {
+        private void CompileProject() {
+            CompileProject(false, null, null);
+        }
+
+        private void CompileProject(bool runAfterCompile) {
+            CompileProject(runAfterCompile, null, null);
+        }
+
+        private void CompileProject(Page previewPage, Language previewLanguage) {
+            CompileProject(false, previewPage, previewLanguage);
+        }
+
+        private void CompileProject(bool runAfterCompile, Page previewPage, Language previewLanguage) {
             if (CurrentProject == null || _CompilerRunning) {
                 return;
             }
@@ -110,7 +124,10 @@ namespace WebsiteBuilder.UI.Forms {
             CompilerSetControls(false);
 
             try {
-                Compiler compiler = new Compiler(CurrentProject);
+                Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
+                    PreviewPage = previewPage,
+                    PreviewLanguage = previewLanguage
+                });
 
                 compiler.Completed += (sender, e) => {
                     if (runAfterCompile) {
@@ -147,6 +164,7 @@ namespace WebsiteBuilder.UI.Forms {
         private void CompilerSetControls(bool enabled) {
             mnuBuildProject.Enabled = enabled;
             mnuBuildAndRunProject.Enabled = enabled;
+            mnuBuildPage.Enabled = enabled;
             tspProgress.Value = 0;
         }
 

@@ -29,6 +29,11 @@ namespace WebsiteBuilder.UI.Controls {
         [Browsable(true)]
         public event EventHandler ContentUpdated;
 
+        [Browsable(true)]
+        public event EventHandler<BuildPageEventArgs> BuildPageRequested;
+
+        public Page SelectedPage => SelectedItem?.Page;
+
         public Project Project {
             get {
                 return _Project;
@@ -53,7 +58,7 @@ namespace WebsiteBuilder.UI.Controls {
             }
         }
 
-        private Language SelectedLanguage {
+        public Language SelectedLanguage {
             get {
                 if (tscLanguage.SelectedIndex == -1) {
                     return null;
@@ -96,6 +101,7 @@ namespace WebsiteBuilder.UI.Controls {
             cmbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
             cmbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
             cmbStartPage.Image = IconPack.Current.GetImage(IconPackIcon.PageStart);
+            cmbBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
 
             cmsDragDropMoveAfter.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
             cmsDragDropMoveBefore.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
@@ -110,6 +116,7 @@ namespace WebsiteBuilder.UI.Controls {
             clnPathName.Text = Strings.PathName;
             clnTitle.Text = Strings.Title;
             clnLayout.Text = Strings.Layout;
+            clnInMenu.Text = Strings.IncludeInMenu;
 
             cmsDragDropMoveAfter.Text = Strings.InsertBelow;
             cmsDragDropMoveBefore.Text = Strings.InsertAbove;
@@ -119,6 +126,7 @@ namespace WebsiteBuilder.UI.Controls {
             cmbEdit.Text = Strings.Edit;
             cmbEditContent.Text = Strings.EditContent;
             cmbStartPage.Text = Strings.SetStartPage;
+            cmbBuildPage.Text = Strings.BuildThisPageOnly;
         }
 
         public void RefreshLanguageList() {
@@ -197,11 +205,14 @@ namespace WebsiteBuilder.UI.Controls {
         private void lvwPages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
             TreeItem item = _FlatList[e.ItemIndex];
 
-            e.Item = new ListViewItem(new String[] {
+            String[] columns = {
                 GetItemText(item),
                 item.Page.Title.Get(SelectedLanguage),
-                item.Page.Layout?.Title ?? String.Empty
-            });
+                item.Page.Layout?.Title ?? String.Empty,
+                item.Page.IncludeInMenu ? Strings.Yes : String.Empty
+            };
+
+            e.Item = new ListViewItem(columns);
 
             if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
                 e.Item.ImageIndex = 1;
@@ -289,6 +300,7 @@ namespace WebsiteBuilder.UI.Controls {
             cmbDelete.Enabled = canEdit;
             cmbEditContent.Enabled = canEdit;
             cmbStartPage.Enabled = canEdit;
+            cmbBuildPage.Enabled = canEdit;
         }
 
         private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
@@ -429,6 +441,13 @@ namespace WebsiteBuilder.UI.Controls {
             Project.StartPage = item.Page;
             RefreshTree();
         }
+
+        private void cmbBuildPage_Click(object sender, EventArgs e) {
+            BuildPageRequested?.Invoke(this, new BuildPageEventArgs() {
+                Page = SelectedItem.Page,
+                Language = SelectedLanguage
+            });
+        }
     }
 
     class DragDropInfo {
@@ -472,6 +491,14 @@ namespace WebsiteBuilder.UI.Controls {
             _Page = page;
             _Level = level;
         }
+
+    }
+
+    public class BuildPageEventArgs : EventArgs {
+
+        public Page Page { get; set; }
+
+        public Language Language { get; set; }
 
     }
 }

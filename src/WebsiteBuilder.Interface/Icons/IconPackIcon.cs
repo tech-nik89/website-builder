@@ -11,6 +11,7 @@
         Page,
         PageStart,
         Build,
+        BuildPage,
         Close,
         InsertLink,
         Media,

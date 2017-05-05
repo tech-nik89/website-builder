@@ -38,8 +38,9 @@
             this.cmbDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cmbEditContent = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.cmbStartPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmbBuildPage = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -53,6 +54,7 @@
             this.cmsDragDropMoveAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsDragDropMoveAsChild = new System.Windows.Forms.ToolStripMenuItem();
+            this.clnInMenu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmsTree.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.cmsDragDrop.SuspendLayout();
@@ -64,7 +66,8 @@
             this.lvwPages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clnPathName,
             this.clnTitle,
-            this.clnLayout});
+            this.clnLayout,
+            this.clnInMenu});
             this.lvwPages.ContextMenuStrip = this.cmsTree;
             this.lvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwPages.FullRowSelect = true;
@@ -72,7 +75,7 @@
             this.lvwPages.Location = new System.Drawing.Point(0, 25);
             this.lvwPages.MultiSelect = false;
             this.lvwPages.Name = "lvwPages";
-            this.lvwPages.Size = new System.Drawing.Size(635, 342);
+            this.lvwPages.Size = new System.Drawing.Size(801, 371);
             this.lvwPages.TabIndex = 0;
             this.lvwPages.UseCompatibleStateImageBehavior = false;
             this.lvwPages.View = System.Windows.Forms.View.Details;
@@ -106,10 +109,11 @@
             this.cmbDelete,
             this.toolStripSeparator3,
             this.cmbEditContent,
+            this.cmbStartPage,
             this.toolStripSeparator4,
-            this.cmbStartPage});
+            this.cmbBuildPage});
             this.cmsTree.Name = "cmsTree";
-            this.cmsTree.Size = new System.Drawing.Size(168, 104);
+            this.cmsTree.Size = new System.Drawing.Size(168, 126);
             // 
             // cmbEdit
             // 
@@ -137,17 +141,24 @@
             this.cmbEditContent.Text = "[Edit Content]";
             this.cmbEditContent.Click += new System.EventHandler(this.tsbEditContent_Click);
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
-            // 
             // cmbStartPage
             // 
             this.cmbStartPage.Name = "cmbStartPage";
             this.cmbStartPage.Size = new System.Drawing.Size(167, 22);
             this.cmbStartPage.Text = "[Set As StartPage]";
             this.cmbStartPage.Click += new System.EventHandler(this.tsbStartPage_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(164, 6);
+            // 
+            // cmbBuildPage
+            // 
+            this.cmbBuildPage.Name = "cmbBuildPage";
+            this.cmbBuildPage.Size = new System.Drawing.Size(167, 22);
+            this.cmbBuildPage.Text = "[Build this page]";
+            this.cmbBuildPage.Click += new System.EventHandler(this.cmbBuildPage_Click);
             // 
             // tsMain
             // 
@@ -161,7 +172,7 @@
             this.tsbEditContent});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(635, 25);
+            this.tsMain.Size = new System.Drawing.Size(801, 25);
             this.tsMain.TabIndex = 1;
             // 
             // tsbAdd
@@ -254,6 +265,11 @@
             this.cmsDragDropMoveAsChild.Text = "[Move as Child]";
             this.cmsDragDropMoveAsChild.Click += new System.EventHandler(this.cmsDragDropMoveAsChild_Click);
             // 
+            // clnInMenu
+            // 
+            this.clnInMenu.Text = "[In Menu]";
+            this.clnInMenu.Width = 140;
+            // 
             // PagesTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,7 +278,7 @@
             this.Controls.Add(this.tsMain);
             this.DoubleBuffered = true;
             this.Name = "PagesTreeView";
-            this.Size = new System.Drawing.Size(635, 367);
+            this.Size = new System.Drawing.Size(801, 396);
             this.cmsTree.ResumeLayout(false);
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
@@ -298,5 +314,7 @@
         private System.Windows.Forms.ToolStripMenuItem cmbEditContent;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem cmbStartPage;
+        private System.Windows.Forms.ToolStripMenuItem cmbBuildPage;
+        private System.Windows.Forms.ColumnHeader clnInMenu;
     }
 }

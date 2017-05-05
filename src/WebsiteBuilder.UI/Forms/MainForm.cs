@@ -35,6 +35,7 @@ namespace WebsiteBuilder.UI.Forms {
             mnuContentFooter.Image = IconPack.Current.GetImage(IconPackIcon.Footer);
 
             mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
+            mnuBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
 
             tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
             tsbProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
@@ -62,6 +63,7 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuild.Text  = Strings.Build;
             mnuBuildProject.Text = Strings.BuildProject;
             mnuBuildAndRunProject.Text = Strings.BuildAndOpenProject;
+            mnuBuildPage.Text = Strings.BuildSelectedPageOnly;
             mnuBuildCleanOutput.Text = Strings.ClearOutputDirectory;
 
             tsbProjectNew.Text = Strings.New;
@@ -145,6 +147,18 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void mnuBuildCleanOutput_Click(object sender, EventArgs e) {
             ClearOutputDirectory();
+        }
+
+        private void ptvwPages_BuildPageRequested(object sender, Controls.BuildPageEventArgs e) {
+            CompileProject(e.Page, e.Language);
+        }
+
+        private void mnuBuildPage_Click(object sender, EventArgs e) {
+            if (ptvwPages.SelectedPage == null || ptvwPages.SelectedLanguage == null) {
+                return;
+            }
+
+            CompileProject(ptvwPages.SelectedPage, ptvwPages.SelectedLanguage);
         }
     }
 }

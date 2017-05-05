@@ -36,7 +36,11 @@ namespace WebsiteBuilder.Core.Compiling {
 
         private readonly List<ICompilerStep> _Steps;
         
-		public Compiler(Project project) {
+        public Compiler(Project project)
+            : this(project, new CompilerSettings()) {
+        }
+
+		public Compiler(Project project, CompilerSettings settings) {
             ValidateProject(project);
 
 			Error = false;
@@ -71,14 +75,26 @@ namespace WebsiteBuilder.Core.Compiling {
 			_Steps.Add(new CopyMediaStep(_Project.Media, mediaDirectory));
 
             ReadOnlyCollection<String> styleSheetFiles = _StyleSheetFiles.AsReadOnly();
-            foreach (var language in _Project.Languages) {
+            foreach (Language language in _Project.Languages) {
+                if (settings.PreviewLanguage != null && language.Id != settings.PreviewLanguage.Id) {
+                    continue;
+                }
+
                 foreach (Page page in _Project.AllPages) {
+                    if (settings.PreviewPage != null && page.Id != settings.PreviewPage.Id) {
+                        continue;
+                    }
+
                     _Steps.Add(new BuildPageStep(language, page, _Project.Theme, outputDirectory, styleSheetFiles));
                 }
             }
         }
 
         public static void ClearOutputDirectory(Project project) {
+            if (project == null || project.OutputPath == null) {
+                return;
+            }
+
             DirectoryInfo directory = new DirectoryInfo(project.OutputPath);
             if (!directory.Exists) {
                 return;

@@ -142,11 +142,29 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build selected page only.
+        /// </summary>
+        internal static string BuildSelectedPageOnly {
+            get {
+                return ResourceManager.GetString("BuildSelectedPageOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Build started ....
         /// </summary>
         internal static string BuildStarted {
             get {
                 return ResourceManager.GetString("BuildStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build this page only.
+        /// </summary>
+        internal static string BuildThisPageOnly {
+            get {
+                return ResourceManager.GetString("BuildThisPageOnly", resourceCulture);
             }
         }
         

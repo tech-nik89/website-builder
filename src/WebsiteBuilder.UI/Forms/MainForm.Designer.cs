@@ -46,13 +46,15 @@
             this.mnuBuild = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuildProject = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBuildAndRunProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.ptvwPages = new WebsiteBuilder.UI.Controls.PagesTreeView();
             this.sfdProject = new System.Windows.Forms.SaveFileDialog();
             this.ofdProject = new System.Windows.Forms.OpenFileDialog();
             this.sstMain = new System.Windows.Forms.StatusStrip();
             this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
             this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
             this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
@@ -61,11 +63,10 @@
             this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
-            this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuBuildPage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tsMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -167,14 +168,14 @@
             // mnuContentMedia
             // 
             this.mnuContentMedia.Name = "mnuContentMedia";
-            this.mnuContentMedia.Size = new System.Drawing.Size(152, 22);
+            this.mnuContentMedia.Size = new System.Drawing.Size(116, 22);
             this.mnuContentMedia.Text = "[Media]";
             this.mnuContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
             // 
             // mnuContentFooter
             // 
             this.mnuContentFooter.Name = "mnuContentFooter";
-            this.mnuContentFooter.Size = new System.Drawing.Size(152, 22);
+            this.mnuContentFooter.Size = new System.Drawing.Size(116, 22);
             this.mnuContentFooter.Text = "[Footer]";
             this.mnuContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
             // 
@@ -183,6 +184,7 @@
             this.mnuBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuBuildProject,
             this.mnuBuildAndRunProject,
+            this.mnuBuildPage,
             this.toolStripSeparator6,
             this.mnuBuildCleanOutput});
             this.mnuBuild.Name = "mnuBuild";
@@ -205,6 +207,18 @@
             this.mnuBuildAndRunProject.Text = "[Build and open project]";
             this.mnuBuildAndRunProject.Click += new System.EventHandler(this.mnuBuildAndRunProject_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(218, 6);
+            // 
+            // mnuBuildCleanOutput
+            // 
+            this.mnuBuildCleanOutput.Name = "mnuBuildCleanOutput";
+            this.mnuBuildCleanOutput.Size = new System.Drawing.Size(221, 22);
+            this.mnuBuildCleanOutput.Text = "[Clear output directory]";
+            this.mnuBuildCleanOutput.Click += new System.EventHandler(this.mnuBuildCleanOutput_Click);
+            // 
             // ptvwPages
             // 
             this.ptvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -214,6 +228,7 @@
             this.ptvwPages.Size = new System.Drawing.Size(861, 410);
             this.ptvwPages.TabIndex = 0;
             this.ptvwPages.ContentUpdated += new System.EventHandler(this.ptvwPages_ContentUpdated);
+            this.ptvwPages.BuildPageRequested += new System.EventHandler<WebsiteBuilder.UI.Controls.BuildPageEventArgs>(this.ptvwPages_BuildPageRequested);
             // 
             // sstMain
             // 
@@ -239,9 +254,9 @@
             this.tspProgress.Name = "tspProgress";
             this.tspProgress.Size = new System.Drawing.Size(140, 16);
             // 
-            // toolStrip1
+            // tsMain
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbProjectNew,
             this.tsbProjectOpen,
             this.tsbProjectSave,
@@ -250,11 +265,11 @@
             this.tsbContentFooter,
             this.toolStripSeparator5,
             this.tsbBuildProject});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(861, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tsMain.Location = new System.Drawing.Point(0, 24);
+            this.tsMain.Name = "tsMain";
+            this.tsMain.Size = new System.Drawing.Size(861, 25);
+            this.tsMain.TabIndex = 3;
+            this.tsMain.Text = "toolStrip1";
             // 
             // tsbProjectNew
             // 
@@ -326,17 +341,12 @@
             this.tsbBuildProject.Text = "toolStripButton1";
             this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
-            // mnuBuildCleanOutput
+            // mnuBuildPage
             // 
-            this.mnuBuildCleanOutput.Name = "mnuBuildCleanOutput";
-            this.mnuBuildCleanOutput.Size = new System.Drawing.Size(221, 22);
-            this.mnuBuildCleanOutput.Text = "[Clear output directory]";
-            this.mnuBuildCleanOutput.Click += new System.EventHandler(this.mnuBuildCleanOutput_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(218, 6);
+            this.mnuBuildPage.Name = "mnuBuildPage";
+            this.mnuBuildPage.Size = new System.Drawing.Size(221, 22);
+            this.mnuBuildPage.Text = "[Build page]";
+            this.mnuBuildPage.Click += new System.EventHandler(this.mnuBuildPage_Click);
             // 
             // MainForm
             // 
@@ -344,7 +354,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 481);
             this.Controls.Add(this.ptvwPages);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.sstMain);
             this.Controls.Add(this.mnuMain);
             this.DoubleBuffered = true;
@@ -357,8 +367,8 @@
             this.mnuMain.PerformLayout();
             this.sstMain.ResumeLayout(false);
             this.sstMain.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsMain.ResumeLayout(false);
+            this.tsMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,7 +395,7 @@
         private System.Windows.Forms.StatusStrip sstMain;
         private System.Windows.Forms.ToolStripProgressBar tspProgress;
         private System.Windows.Forms.ToolStripStatusLabel tslStatus;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.ToolStripButton tsbProjectNew;
         private System.Windows.Forms.ToolStripButton tsbProjectOpen;
         private System.Windows.Forms.ToolStripButton tsbProjectSave;
@@ -399,6 +409,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem mnuBuildCleanOutput;
+        private System.Windows.Forms.ToolStripMenuItem mnuBuildPage;
     }
 }
 

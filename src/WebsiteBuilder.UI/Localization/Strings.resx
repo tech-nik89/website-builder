@@ -339,6 +339,12 @@
   <data name="DirtyProjectConfirmSaveTitle" xml:space="preserve">
     <value>Confirm save</value>
   </data>
+  <data name="BuildSelectedPageOnly" xml:space="preserve">
+    <value>Build selected page only</value>
+  </data>
+  <data name="BuildThisPageOnly" xml:space="preserve">
+    <value>Build this page only</value>
+  </data>
   <data name="ClearOutputDirectory" xml:space="preserve">
     <value>Clear output directory</value>
   </data>
