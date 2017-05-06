@@ -99,6 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StaticResources.cs" />
     <Compile Include="Storage\ProjectReader.cs" />
     <Compile Include="Storage\ProjectStorageConstants.cs" />
     <Compile Include="Storage\ProjectWriter.cs" />
@@ -131,6 +132,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ThirdpartyLicenses.txt" />
     <Content Include="Scripts\IndexPageScript.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

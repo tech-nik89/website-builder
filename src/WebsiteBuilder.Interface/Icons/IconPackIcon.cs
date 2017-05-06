@@ -18,6 +18,7 @@
         New,
         Footer,
         OrderUp,
-        OrderDown
+        OrderDown,
+        About
     }
 }

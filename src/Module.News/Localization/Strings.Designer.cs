@@ -178,7 +178,7 @@ namespace WebsiteBuilder.Modules.News.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to News settings.
+        ///   Looks up a localized string similar to News Settings.
         /// </summary>
         internal static string NewsSettings {
             get {

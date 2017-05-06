@@ -348,4 +348,16 @@
   <data name="ClearOutputDirectory" xml:space="preserve">
     <value>Clear output directory</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutFormat" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="VersionFormat" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="WrittenByFormat" xml:space="preserve">
+    <value>Written by {0}</value>
+  </data>
 </root>

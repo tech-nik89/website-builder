@@ -12,7 +12,7 @@ namespace WebsiteBuilder.UI.Forms {
 
         private readonly Project _Project;
 
-        private Language SelectedLanguage => _Project.Languages[tscLanguage.SelectedIndex];
+        private Language SelectedLanguage => tscLanguage.SelectedIndex > -1 ? _Project.Languages[tscLanguage.SelectedIndex] : null;
 
         private bool _RefreshingSection;
 

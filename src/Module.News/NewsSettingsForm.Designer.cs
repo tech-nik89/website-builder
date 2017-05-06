@@ -39,7 +39,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(249, 116);
+            this.btnCancel.Location = new System.Drawing.Point(252, 104);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAccept.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAccept.Location = new System.Drawing.Point(143, 116);
+            this.btnAccept.Location = new System.Drawing.Point(146, 104);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 1;
@@ -74,7 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numLargeItemsCount.Location = new System.Drawing.Point(162, 16);
             this.numLargeItemsCount.Name = "numLargeItemsCount";
-            this.numLargeItemsCount.Size = new System.Drawing.Size(187, 20);
+            this.numLargeItemsCount.Size = new System.Drawing.Size(190, 20);
             this.numLargeItemsCount.TabIndex = 3;
             // 
             // numLargeItemsMaxHeight
@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numLargeItemsMaxHeight.Location = new System.Drawing.Point(162, 42);
             this.numLargeItemsMaxHeight.Name = "numLargeItemsMaxHeight";
-            this.numLargeItemsMaxHeight.Size = new System.Drawing.Size(187, 20);
+            this.numLargeItemsMaxHeight.Size = new System.Drawing.Size(190, 20);
             this.numLargeItemsMaxHeight.TabIndex = 5;
             // 
             // lblLargeItemsMaxHeight
@@ -110,7 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExpanderText.Location = new System.Drawing.Point(162, 68);
             this.txtExpanderText.Name = "txtExpanderText";
-            this.txtExpanderText.Size = new System.Drawing.Size(187, 20);
+            this.txtExpanderText.Size = new System.Drawing.Size(190, 20);
             this.txtExpanderText.TabIndex = 7;
             // 
             // NewsSettingsForm
@@ -119,7 +119,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(361, 153);
+            this.ClientSize = new System.Drawing.Size(364, 141);
             this.Controls.Add(this.txtExpanderText);
             this.Controls.Add(this.lblExpanderText);
             this.Controls.Add(this.numLargeItemsMaxHeight);
@@ -129,6 +129,7 @@
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(380, 180);
             this.Name = "NewsSettingsForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

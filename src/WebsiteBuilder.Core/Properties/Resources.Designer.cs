@@ -84,5 +84,24 @@ namespace WebsiteBuilder.Core.Properties {
                 return ResourceManager.GetString("IndexPageScript", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LICENSES
+        ///This project uses the following libraries.
+        ///
+        ///---------------
+        ///
+        ///MICROSOFT VISUAL STUDIO 2015 IMAGE LIBRARY
+        ///https://www.microsoft.com/en-us/download/details.aspx?id=35825
+        ///
+        ///MICROSOFT SOFTWARE LICENSE TERMS
+        ///MICROSOFT VISUAL STUDIO 2015 IMAGE LIBRARY
+        ///These license terms are an agreement between Microsoft Corporation (or based on where you live, one of its affiliates) and you. They apply to the software named above. The terms also apply to any Microsoft services or updates for the software, excep [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ThirdpartyLicenses {
+            get {
+                return ResourceManager.GetString("ThirdpartyLicenses", resourceCulture);
+            }
+        }
     }
 }

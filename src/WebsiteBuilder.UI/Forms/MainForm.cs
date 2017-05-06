@@ -26,6 +26,7 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
+            // Menus
             mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
             mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
@@ -37,6 +38,9 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
             mnuBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
 
+            mnuHelpAbout.Image = IconPack.Current.GetImage(IconPackIcon.About);
+
+            // Toolstrip
             tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
             tsbProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
             tsbProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
@@ -48,6 +52,8 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void LocalizeComponent() {
+
+            // Menus
             mnuProject.Text = Strings.Project;
             mnuProjectNew.Text = Strings.New;
             mnuProjectOpen.Text = Strings.Open;
@@ -66,6 +72,9 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuildPage.Text = Strings.BuildSelectedPageOnly;
             mnuBuildCleanOutput.Text = Strings.ClearOutputDirectory;
 
+            mnuHelpAbout.Text = Strings.About;
+
+            // Toolstrip
             tsbProjectNew.Text = Strings.New;
             tsbProjectOpen.Text = Strings.Open;
             tsbProjectSave.Text = Strings.Save;
@@ -159,6 +168,11 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             CompileProject(ptvwPages.SelectedPage, ptvwPages.SelectedLanguage);
+        }
+
+        private void mnuHelpAbout_Click(object sender, EventArgs e) {
+            AboutForm form = new AboutForm();
+            form.ShowDialog();
         }
     }
 }

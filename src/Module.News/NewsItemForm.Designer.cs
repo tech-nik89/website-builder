@@ -42,7 +42,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(405, 369);
+            this.btnCancel.Location = new System.Drawing.Point(402, 396);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 0;
@@ -53,7 +53,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(299, 369);
+            this.btnAccept.Location = new System.Drawing.Point(296, 396);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 1;
@@ -76,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTitle.Location = new System.Drawing.Point(101, 26);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(368, 20);
+            this.txtTitle.Size = new System.Drawing.Size(365, 20);
             this.txtTitle.TabIndex = 3;
             // 
             // txtAuthor
@@ -85,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAuthor.Location = new System.Drawing.Point(101, 52);
             this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(368, 20);
+            this.txtAuthor.Size = new System.Drawing.Size(365, 20);
             this.txtAuthor.TabIndex = 5;
             // 
             // lblAuthor
@@ -105,7 +105,7 @@
             this.pnlEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEditor.Location = new System.Drawing.Point(6, 19);
             this.pnlEditor.Name = "pnlEditor";
-            this.pnlEditor.Size = new System.Drawing.Size(481, 202);
+            this.pnlEditor.Size = new System.Drawing.Size(478, 229);
             this.pnlEditor.TabIndex = 6;
             // 
             // lblCreated
@@ -123,7 +123,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpCreated.Location = new System.Drawing.Point(101, 78);
             this.dtpCreated.Name = "dtpCreated";
-            this.dtpCreated.Size = new System.Drawing.Size(368, 20);
+            this.dtpCreated.Size = new System.Drawing.Size(365, 20);
             this.dtpCreated.TabIndex = 8;
             // 
             // gbxDetails
@@ -138,7 +138,7 @@
             this.gbxDetails.Controls.Add(this.txtAuthor);
             this.gbxDetails.Location = new System.Drawing.Point(12, 12);
             this.gbxDetails.Name = "gbxDetails";
-            this.gbxDetails.Size = new System.Drawing.Size(493, 118);
+            this.gbxDetails.Size = new System.Drawing.Size(490, 118);
             this.gbxDetails.TabIndex = 9;
             this.gbxDetails.TabStop = false;
             this.gbxDetails.Text = "[Details]";
@@ -151,7 +151,7 @@
             this.gbxContent.Controls.Add(this.pnlEditor);
             this.gbxContent.Location = new System.Drawing.Point(12, 136);
             this.gbxContent.Name = "gbxContent";
-            this.gbxContent.Size = new System.Drawing.Size(493, 227);
+            this.gbxContent.Size = new System.Drawing.Size(490, 254);
             this.gbxContent.TabIndex = 10;
             this.gbxContent.TabStop = false;
             this.gbxContent.Text = "[Content]";
@@ -162,12 +162,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(517, 406);
+            this.ClientSize = new System.Drawing.Size(514, 433);
             this.Controls.Add(this.gbxContent);
             this.Controls.Add(this.gbxDetails);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(390, 310);
             this.Name = "NewsItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[NewsItem]";
