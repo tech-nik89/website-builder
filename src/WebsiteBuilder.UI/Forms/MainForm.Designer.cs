@@ -50,6 +50,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ptvwPages = new WebsiteBuilder.UI.Controls.PagesTreeView();
             this.sfdProject = new System.Windows.Forms.SaveFileDialog();
             this.ofdProject = new System.Windows.Forms.OpenFileDialog();
@@ -65,7 +66,8 @@
             this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
-            this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tscLanguage = new System.Windows.Forms.ToolStripComboBox();
             this.mnuMain.SuspendLayout();
             this.sstMain.SuspendLayout();
             this.tsMain.SuspendLayout();
@@ -237,6 +239,13 @@
             this.mnuHelp.Size = new System.Drawing.Size(24, 20);
             this.mnuHelp.Text = "?";
             // 
+            // mnuHelpAbout
+            // 
+            this.mnuHelpAbout.Name = "mnuHelpAbout";
+            this.mnuHelpAbout.Size = new System.Drawing.Size(115, 22);
+            this.mnuHelpAbout.Text = "[About]";
+            this.mnuHelpAbout.Click += new System.EventHandler(this.mnuHelpAbout_Click);
+            // 
             // ptvwPages
             // 
             this.ptvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -282,7 +291,9 @@
             this.tsbContentMedia,
             this.tsbContentFooter,
             this.toolStripSeparator5,
-            this.tsbBuildProject});
+            this.tsbBuildProject,
+            this.toolStripSeparator7,
+            this.tscLanguage});
             this.tsMain.Location = new System.Drawing.Point(0, 24);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(861, 25);
@@ -359,12 +370,17 @@
             this.tsbBuildProject.Text = "toolStripButton1";
             this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildProject_Click);
             // 
-            // mnuHelpAbout
+            // toolStripSeparator7
             // 
-            this.mnuHelpAbout.Name = "mnuHelpAbout";
-            this.mnuHelpAbout.Size = new System.Drawing.Size(152, 22);
-            this.mnuHelpAbout.Text = "[About]";
-            this.mnuHelpAbout.Click += new System.EventHandler(this.mnuHelpAbout_Click);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tscLanguage
+            // 
+            this.tscLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscLanguage.Name = "tscLanguage";
+            this.tscLanguage.Size = new System.Drawing.Size(121, 25);
+            this.tscLanguage.SelectedIndexChanged += new System.EventHandler(this.tscLanguage_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -430,6 +446,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBuildPage;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuHelpAbout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripComboBox tscLanguage;
     }
 }
 

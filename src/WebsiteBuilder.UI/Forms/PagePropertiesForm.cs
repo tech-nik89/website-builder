@@ -46,29 +46,15 @@ namespace WebsiteBuilder.UI.Forms {
             tabTitle.Text = Strings.Title;
 
             lblPathName.Text = Strings.PathName + ":";
-            lblLayout.Text = Strings.Layout + ":";
-
+            
             chkIncludeInMenu.Text = Strings.IncludeInMenu;
         }
 
         private void FillForm() {
-            FillLayoutDropDown();
             FillTitleList();
 
             txtPathName.Text = Page.PathName;
             chkIncludeInMenu.Checked = Page.IncludeInMenu;
-
-            int layoutIndex = -1;
-            if (Page.Layout != null && Page.Project.Theme != null) {
-                for (int i = 0; i < Page.Project.Theme.Layouts.Count(); i++) {
-                    if (Page.Project.Theme.Layouts.ElementAt(i).ClassName == Page.Layout.ClassName) {
-                        layoutIndex = i;
-                        break;
-                    }
-                }
-            }
-
-            cbxLayout.SelectedIndex = layoutIndex;
         }
 
         private void FillTitleList() {
@@ -81,17 +67,7 @@ namespace WebsiteBuilder.UI.Forms {
                 }));
             }
         }
-
-        private void FillLayoutDropDown() {
-            cbxLayout.Items.Clear();
-
-            if (Page.Project.Theme != null) {
-                foreach (Layout layout in Page.Project.Theme.Layouts) {
-                    cbxLayout.Items.Add(layout.Title);
-                }
-            }
-        }
-
+        
         private void btnCancel_Click(object sender, EventArgs e) {
             Close();
         }
@@ -114,17 +90,11 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void ApplyToPage(Page page) {
             page.PathName = txtPathName.Text;
+            page.IncludeInMenu = chkIncludeInMenu.Checked;
 
             for (int i = 0; i < page.Project.Languages.Length; i++) {
                 page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);
             }
-
-            page.LayoutClassName
-                = cbxLayout.SelectedIndex > -1
-                ? page.Project.Theme.Layouts.ElementAt(cbxLayout.SelectedIndex).ClassName
-                : null;
-
-            page.IncludeInMenu = chkIncludeInMenu.Checked;
         }
 
         private void lvwTitle_MouseUp(object sender, MouseEventArgs e) {

@@ -13,21 +13,19 @@ namespace WebsiteBuilder.UI.Forms {
         private readonly Page _Page;
 
         private readonly Language _Language;
-
-        private readonly int _LayoutSection;
-
-        private PageContent Content => _Page[_LayoutSection];
+        
+        private readonly PageContent _Content;
 
         private IUserInterface _Control;
 
-        public PageContentForm(Page page, Language language, int layoutSection) {
+        public PageContentForm(Page page, Language language, PageContent content) {
             InitializeComponent();
             LocalizeComponent();
             ApplyIcons();
 
             _Page = page;
             _Language = language;
-            _LayoutSection = layoutSection;
+            _Content = content;
         }
 
         private void ApplyIcons() {
@@ -51,7 +49,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void LoadModule() {
-            IModule module = PluginManager.LoadModule(Content, IconPack.Current, _Page.Project);
+            IModule module = PluginManager.LoadModule(_Content, IconPack.Current, _Page.Project);
 
             if (module == null) {
                 ShowSettings(true);
@@ -81,11 +79,11 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            _Control.Data = Content.LoadData(_Language);
+            _Control.Data = _Content.LoadData(_Language);
         }
 
         private void ShowSettings(bool hideFormOnCancel) {
-            PageContentSettingsForm form = new PageContentSettingsForm(Content);
+            PageContentSettingsForm form = new PageContentSettingsForm(_Content);
             DialogResult result = form.ShowDialog();
 
             if (result == DialogResult.OK) {
@@ -125,7 +123,7 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            Content.WriteData(_Language, _Control.Data);
+            _Content.WriteData(_Language, _Control.Data);
         }
 
         private void PageContentForm_Shown(object sender, System.EventArgs e) {

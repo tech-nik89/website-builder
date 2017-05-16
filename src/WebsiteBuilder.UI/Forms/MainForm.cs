@@ -94,7 +94,7 @@ namespace WebsiteBuilder.UI.Forms {
             DialogResult result = form.ShowDialog();
 
             if (result == DialogResult.OK) {
-                ptvwPages.RefreshLanguageList();
+                RefreshLanguageList();
                 UpdateFormText();
             }
         }
@@ -173,6 +173,14 @@ namespace WebsiteBuilder.UI.Forms {
         private void mnuHelpAbout_Click(object sender, EventArgs e) {
             AboutForm form = new AboutForm();
             form.ShowDialog();
+        }
+
+        private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
+            if (CurrentProject == null || tscLanguage.SelectedIndex >= CurrentProject.Languages.Length) {
+                return;
+            }
+
+            ptvwPages.SelectedLanguage = CurrentProject.Languages[tscLanguage.SelectedIndex];
         }
     }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Pages\PageCollection.cs" />
     <Compile Include="Pages\PageContent.cs" />
     <Compile Include="Pages\PageContentItem.cs" />
+    <Compile Include="Pages\PageMoveDirection.cs" />
     <Compile Include="Plugins\PluginHelper.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Project.cs" />
@@ -104,7 +105,6 @@
     <Compile Include="Storage\ProjectStorageConstants.cs" />
     <Compile Include="Storage\ProjectWriter.cs" />
     <Compile Include="Theming\Font.cs" />
-    <Compile Include="Theming\Layout.cs" />
     <Compile Include="Theming\Theme.cs" />
     <Compile Include="Theming\ThemeSettings.cs" />
     <Compile Include="Theming\ThemeStyle.cs" />

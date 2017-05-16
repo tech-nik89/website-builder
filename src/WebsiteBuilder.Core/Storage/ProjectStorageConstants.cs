@@ -27,6 +27,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String Index = "index";
 
+        public const String Order = "order";
+
         public const String Editor = "editor";
 
         public const String Module = "module";

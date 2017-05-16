@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.Core.Plugins;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Forms;
 using WebsiteBuilder.UI.Localization;
@@ -43,7 +43,6 @@ namespace WebsiteBuilder.UI.Controls {
 
                 if (_Project != null) {
                     RefreshTree();
-                    RefreshLanguageList();
                 }
             }
         }
@@ -58,15 +57,7 @@ namespace WebsiteBuilder.UI.Controls {
             }
         }
 
-        public Language SelectedLanguage {
-            get {
-                if (tscLanguage.SelectedIndex == -1) {
-                    return null;
-                }
-
-                return Project.Languages[tscLanguage.SelectedIndex];
-            }
-        }
+        public Language SelectedLanguage { get; set; }
 
         private DragDropInfo _DropInfo;
 
@@ -74,7 +65,7 @@ namespace WebsiteBuilder.UI.Controls {
             InitializeComponent();
             LocalizeComponent();
             ApplyIcons();
-            EnableControls();
+            EnableTreeControls();
 
             _HighlightingIndex = -1;
             _FlatList = new List<TreeItem>();
@@ -95,7 +86,13 @@ namespace WebsiteBuilder.UI.Controls {
             tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
             tsbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
             tsbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-            tsbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
+
+            tsbContentAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+            tsbContentEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
+            tsbContentDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
+
+            tsbContentUp.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
+            tsbContentDown.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
 
             cmbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
             cmbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
@@ -111,12 +108,17 @@ namespace WebsiteBuilder.UI.Controls {
             tsbAdd.Text = Strings.Add;
             tsbEdit.Text = Strings.Edit;
             tsbDelete.Text = Strings.Delete;
-            tsbEditContent.Text = Strings.EditContent;
+
+            tsbContentAdd.Text = Strings.Add;
+            tsbContentEdit.Text = Strings.Edit;
+            tsbContentDelete.Text = Strings.Delete;
+
+            tsbContentUp.Text = Strings.Up;
+            tsbContentDown.Text = Strings.Down;
 
             clnPathName.Text = Strings.PathName;
-            clnTitle.Text = Strings.Title;
-            clnLayout.Text = Strings.Layout;
-            clnInMenu.Text = Strings.IncludeInMenu;
+            clnContentType.Text = Strings.Type;
+            clnContentEditor.Text = Strings.Editor;
 
             cmsDragDropMoveAfter.Text = Strings.InsertBelow;
             cmsDragDropMoveBefore.Text = Strings.InsertAbove;
@@ -128,48 +130,17 @@ namespace WebsiteBuilder.UI.Controls {
             cmbStartPage.Text = Strings.SetStartPage;
             cmbBuildPage.Text = Strings.BuildThisPageOnly;
         }
+        
+        private void RefreshContentList() {
+            int index = lvwContent.SelectedIndices.Count > 0 ? lvwContent.SelectedIndices[0] : -1;
+            lvwContent.VirtualListSize = 0;
 
-        public void RefreshLanguageList() {
-            int previousIndex = tscLanguage.SelectedIndex;
-            tscLanguage.Items.Clear();
-            
-            foreach(var language in _Project.Languages) {
-                tscLanguage.Items.Add(language.Description);
+            if (SelectedPage != null) {
+                lvwContent.VirtualListSize = SelectedPage.ContentCount;
             }
 
-            if (_Project.Languages.Length > 0) {
-                if (previousIndex > -1 && previousIndex < _Project.Languages.Length) {
-                    tscLanguage.SelectedIndex = previousIndex;
-                }
-                else {
-                    tscLanguage.SelectedIndex = 0;
-                }
-            }
-        }
-
-        private void RefreshLayoutSectionList() {
-
-            TreeItem item = SelectedItem;
-
-            tscLayoutSection.Enabled = false;
-            tscLayoutSection.Items.Clear();
-
-            if (item == null) {
-                return;
-            }
-
-            Layout layout = item.Page.Layout;
-            if (layout == null) {
-                return;
-            }
-
-            for(int i = 0; i < layout.SectionCount; i++) {
-                tscLayoutSection.Items.Add(String.Format(Strings.SectionListItem, i + 1));
-            }
-
-            if (layout.SectionCount > 0) {
-                tscLayoutSection.SelectedIndex = 0;
-                tscLayoutSection.Enabled = true;
+            if (index > -1 && index < lvwContent.VirtualListSize) {
+                lvwContent.SelectedIndices.Add(index);
             }
         }
 
@@ -191,7 +162,7 @@ namespace WebsiteBuilder.UI.Controls {
                 lvwPages.SelectedIndices.Add(index);
             }
 
-            EnableControls();
+            EnableTreeControls();
             ContentUpdated?.Invoke(this, new EventArgs());
         }
 
@@ -205,12 +176,7 @@ namespace WebsiteBuilder.UI.Controls {
         private void lvwPages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
             TreeItem item = _FlatList[e.ItemIndex];
 
-            String[] columns = {
-                GetItemText(item),
-                item.Page.Title.Get(SelectedLanguage),
-                item.Page.Layout?.Title ?? String.Empty,
-                item.Page.IncludeInMenu ? Strings.Yes : String.Empty
-            };
+            String[] columns = { GetItemText(item) };
 
             e.Item = new ListViewItem(columns);
 
@@ -256,6 +222,14 @@ namespace WebsiteBuilder.UI.Controls {
         }
 
         private void tsbEdit_Click(object sender, EventArgs e) {
+            EditPage();
+        }
+
+        private void lvwPages_DoubleClick(object sender, EventArgs e) {
+            EditPage();
+        }
+
+        private void EditPage() {
             TreeItem item = SelectedItem;
             if (item == null) {
                 return;
@@ -285,50 +259,26 @@ namespace WebsiteBuilder.UI.Controls {
         }
 
         private void lvwPages_SelectedIndexChanged(object sender, EventArgs e) {
-            EnableControls();
-            RefreshLayoutSectionList();
+            EnableTreeControls();
+            RefreshContentList();
         }
         
-        private void EnableControls() {
+        private void EnableTreeControls() {
             bool canEdit = lvwPages.SelectedIndices.Count > 0;
 
             tsbEdit.Enabled = canEdit;
             tsbDelete.Enabled = canEdit;
-            tsbEditContent.Enabled = canEdit;
 
             cmbEdit.Enabled = canEdit;
             cmbDelete.Enabled = canEdit;
-            cmbEditContent.Enabled = canEdit;
             cmbStartPage.Enabled = canEdit;
             cmbBuildPage.Enabled = canEdit;
         }
 
         private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
             lvwPages.Refresh();
-            RefreshLayoutSectionList();
         }
-
-        private void lvwPages_MouseDoubleClick(object sender, MouseEventArgs e) {
-            EditContent();
-        }
-
-        private void tsbEditContent_Click(object sender, EventArgs e) {
-            EditContent();
-        }
-
-        private void EditContent() {
-            TreeItem item = SelectedItem;
-            Language language = SelectedLanguage;
-            int layoutSection = tscLayoutSection.SelectedIndex;
-
-            if (item == null || language == null || layoutSection == -1) {
-                return;
-            }
-
-            PageContentForm form = new PageContentForm(SelectedItem.Page, SelectedLanguage, layoutSection);
-            form.ShowDialog();
-        }
-
+        
         private void lvwPages_ItemDrag(object sender, ItemDragEventArgs e) {
             ListViewItem item = e.Item as ListViewItem;
             if (item == null) {
@@ -447,6 +397,127 @@ namespace WebsiteBuilder.UI.Controls {
                 Page = SelectedItem.Page,
                 Language = SelectedLanguage
             });
+        }
+
+        private void lvwContent_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+            if (SelectedPage == null) {
+                return;
+            }
+
+            PageContent content = SelectedPage[e.ItemIndex];
+            if (content == null) {
+                return;
+            }
+
+            String[] columns = {
+                content.ModuleType != null ? PluginManager.Modules[content.ModuleType] : "-",
+                content.EditorType != null ? PluginManager.Editors[content.EditorType] : "-",
+            };
+
+            e.Item = new ListViewItem(columns);
+        }
+
+        private void tsbContentAdd_Click(object sender, EventArgs e) {
+            Page page = SelectedPage;
+            if (page == null) {
+                return;
+            }
+
+            PageContent content = page.AddContent();
+            RefreshContentList();
+            EditContent(page, content);
+        }
+
+        private void tsbContentEdit_Click(object sender, EventArgs e) {
+            EditContent();
+        }
+
+        private void tsbContentDelete_Click(object sender, EventArgs e) {
+            if (lvwContent.SelectedIndices.Count == 0) {
+                return;
+            }
+
+            SelectedPage?.RemoveContent(lvwContent.SelectedIndices[0]);
+            RefreshContentList();
+        }
+
+        private void lvwContent_DoubleClick(object sender, EventArgs e) {
+            EditContent();
+        }
+
+        private void EditContent() {
+            if (lvwContent.SelectedIndices.Count == 0) {
+                return;
+            }
+
+            TreeItem item = SelectedItem;
+            if (item == null) {
+                return;
+            }
+
+            PageContent content = item.Page[lvwContent.SelectedIndices[0]];
+            if (content == null) {
+                return;
+            }
+
+            EditContent(item.Page, content);
+        }
+
+        private void EditContent(Page page, PageContent content) {
+            Language language = SelectedLanguage;
+            if (language == null) {
+                return;
+            }
+
+            PageContentForm form = new PageContentForm(page, SelectedLanguage, content);
+            form.ShowDialog();
+
+            RefreshContentList();
+        }
+
+        private void lvwContent_SelectedIndexChanged(object sender, EventArgs e) {
+            EnableContentControls();
+        }
+
+        private void EnableContentControls() {
+            bool enable = lvwContent.SelectedIndices.Count > 0;
+
+            tsbContentEdit.Enabled = enable;
+            tsbContentDelete.Enabled = enable;
+
+            bool canMoveUp = enable && lvwContent.SelectedIndices[0] > 0;
+            bool canMoveDown = enable && lvwContent.SelectedIndices[0] < (SelectedPage?.ContentCount - 1);
+
+            tsbContentUp.Enabled = canMoveUp;
+            tsbContentDown.Enabled = canMoveDown;
+        }
+
+        private void tsbContentUp_Click(object sender, EventArgs e) {
+            MoveContentUp();
+        }
+
+        private void tsbContentDown_Click(object sender, EventArgs e) {
+            MoveContentDown();
+        }
+
+        private void MoveContentUp() {
+            if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] <= 0) {
+                return;
+            }
+
+            SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Up);
+            RefreshContentList();
+            EnableContentControls();
+        }
+
+        private void MoveContentDown() {
+            if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] >= SelectedPage?.ContentCount - 1) {
+                return;
+            }
+
+            SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Down);
+            RefreshContentList();
+            EnableContentControls();
         }
     }
 

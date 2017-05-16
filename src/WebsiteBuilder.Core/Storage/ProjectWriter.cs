@@ -71,7 +71,6 @@ namespace WebsiteBuilder.Core.Storage {
             return new XElement(ProjectStorageConstants.Page,
                 new XAttribute(ProjectStorageConstants.Id, page.Id),
                 new XAttribute(ProjectStorageConstants.Path, page.PathName),
-                new XAttribute(ProjectStorageConstants.Layout, page.LayoutClassName),
                 new XAttribute(ProjectStorageConstants.IncludeInMenu, page.IncludeInMenu),
                 new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
                 new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
@@ -79,11 +78,11 @@ namespace WebsiteBuilder.Core.Storage {
             );
         }
 
-        private IEnumerable<XElement> GetContent(IReadOnlyDictionary<int, PageContent> content) {
+        private IEnumerable<XElement> GetContent(IReadOnlyList<PageContent> content) {
             return content.Select(x => new XElement(ProjectStorageConstants.Section,
-                new XAttribute(ProjectStorageConstants.Index, x.Key),
-                new XAttribute(ProjectStorageConstants.Editor, x.Value.EditorType?.FullName ?? String.Empty),
-                new XAttribute(ProjectStorageConstants.Module, x.Value.ModuleType?.FullName ?? String.Empty)
+                new XAttribute(ProjectStorageConstants.Id, x.Id),
+                new XAttribute(ProjectStorageConstants.Editor, x.EditorType?.FullName ?? String.Empty),
+                new XAttribute(ProjectStorageConstants.Module, x.ModuleType?.FullName ?? String.Empty)
             ));
         }
 

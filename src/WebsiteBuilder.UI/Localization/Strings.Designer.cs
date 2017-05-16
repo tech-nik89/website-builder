@@ -277,6 +277,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Down.
+        /// </summary>
+        internal static string Down {
+            get {
+                return ResourceManager.GetString("Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit {
@@ -750,6 +759,15 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string UglyURLs {
             get {
                 return ResourceManager.GetString("UglyURLs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up.
+        /// </summary>
+        internal static string Up {
+            get {
+                return ResourceManager.GetString("Up", resourceCulture);
             }
         }
         

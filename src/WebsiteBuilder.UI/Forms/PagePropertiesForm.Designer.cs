@@ -26,8 +26,6 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDetails = new System.Windows.Forms.TabPage();
             this.chkIncludeInMenu = new System.Windows.Forms.CheckBox();
-            this.lblLayout = new System.Windows.Forms.Label();
-            this.cbxLayout = new System.Windows.Forms.ComboBox();
             this.txtPathName = new System.Windows.Forms.TextBox();
             this.lblPathName = new System.Windows.Forms.Label();
             this.tabTitle = new System.Windows.Forms.TabPage();
@@ -57,8 +55,6 @@
             // tabDetails
             // 
             this.tabDetails.Controls.Add(this.chkIncludeInMenu);
-            this.tabDetails.Controls.Add(this.lblLayout);
-            this.tabDetails.Controls.Add(this.cbxLayout);
             this.tabDetails.Controls.Add(this.txtPathName);
             this.tabDetails.Controls.Add(this.lblPathName);
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
@@ -72,32 +68,12 @@
             // chkIncludeInMenu
             // 
             this.chkIncludeInMenu.AutoSize = true;
-            this.chkIncludeInMenu.Location = new System.Drawing.Point(113, 84);
+            this.chkIncludeInMenu.Location = new System.Drawing.Point(113, 49);
             this.chkIncludeInMenu.Name = "chkIncludeInMenu";
             this.chkIncludeInMenu.Size = new System.Drawing.Size(103, 17);
             this.chkIncludeInMenu.TabIndex = 4;
             this.chkIncludeInMenu.Text = "[IncludeInMenu]";
             this.chkIncludeInMenu.UseVisualStyleBackColor = true;
-            // 
-            // lblLayout
-            // 
-            this.lblLayout.AutoSize = true;
-            this.lblLayout.Location = new System.Drawing.Point(16, 51);
-            this.lblLayout.Name = "lblLayout";
-            this.lblLayout.Size = new System.Drawing.Size(48, 13);
-            this.lblLayout.TabIndex = 3;
-            this.lblLayout.Text = "[Layout:]";
-            // 
-            // cbxLayout
-            // 
-            this.cbxLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbxLayout.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxLayout.FormattingEnabled = true;
-            this.cbxLayout.Location = new System.Drawing.Point(113, 48);
-            this.cbxLayout.Name = "cbxLayout";
-            this.cbxLayout.Size = new System.Drawing.Size(251, 21);
-            this.cbxLayout.TabIndex = 2;
             // 
             // txtPathName
             // 
@@ -213,8 +189,6 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.TextBox txtPathName;
         private System.Windows.Forms.Label lblPathName;
-        private System.Windows.Forms.Label lblLayout;
-        private System.Windows.Forms.ComboBox cbxLayout;
         private System.Windows.Forms.ListView lvwTitle;
         private System.Windows.Forms.ColumnHeader clnTitle;
         private System.Windows.Forms.ColumnHeader clnLanguage;

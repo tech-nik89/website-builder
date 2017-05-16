@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Theming;
 
 namespace WebsiteBuilder.Core.Pages {
 
@@ -26,19 +23,12 @@ namespace WebsiteBuilder.Core.Pages {
         }
 
         public LocalizedString Title { get; private set; }
-
-        private String _LayoutClassName;
-
-        public String LayoutClassName {
-            get => _LayoutClassName;
-            set { _LayoutClassName = value; Project.Dirty = true; }
-        }
         
-        public Layout Layout => Project.Theme?.Layouts.FirstOrDefault(x => x.ClassName == LayoutClassName);
+        private List<PageContent> _Content;
 
-        private Dictionary<int, PageContent> _Content;
+        public IReadOnlyList<PageContent> Content => _Content.AsReadOnly();
 
-        public IReadOnlyDictionary<int, PageContent> Content => new ReadOnlyDictionary<int, PageContent>(_Content);
+        public int ContentCount => _Content.Count;
 
         private bool _IncludeInMenu;
 
@@ -83,7 +73,7 @@ namespace WebsiteBuilder.Core.Pages {
             Project = project;
             Pages = new PageCollection(this);
             Title = new LocalizedString(project);
-            _Content = new Dictionary<int, PageContent>();
+            _Content = new List<PageContent>();
             IncludeInMenu = true;
         }
         
@@ -91,16 +81,44 @@ namespace WebsiteBuilder.Core.Pages {
             get {
                 PageContent content = null;
 
-                if (!_Content.TryGetValue(index, out content)) {
-                    content = new PageContent() {
-                        Page = this,
-                        Index = index
-                    };
-
-                    _Content.Add(index, content);
+                if (index < _Content.Count) {
+                    content = _Content[index];
                 }
 
                 return content;
+            }
+        }
+
+        public PageContent AddContent() {
+            PageContent content = new PageContent(this);
+            _Content.Add(content);
+            return content;
+        }
+
+        internal PageContent AddContent(int index, String id) {
+            PageContent content = new PageContent(id, this);
+            _Content.Insert(index, content);
+            return content;
+        }
+
+        public void RemoveContent(int index) {
+            _Content.RemoveAt(index);
+        }
+        
+        public void MoveContent(int index, PageMoveDirection direction) {
+            if (index < 0 || index > _Content.Count - 1) {
+                return;
+            }
+
+            PageContent content = _Content[index];
+
+            if (direction == PageMoveDirection.Up && index > 0) {
+                _Content.Remove(content);
+                _Content.Insert(index - 1, content);
+            }
+            else if (direction == PageMoveDirection.Down && index < _Content.Count - 1) {
+                _Content.Remove(content);
+                _Content.Insert(index + 1, content);
             }
         }
 

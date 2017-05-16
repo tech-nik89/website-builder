@@ -189,17 +189,6 @@
 	<image name="languages">
 		iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACj0lEQVQ4T42TS0wTURiFz0xfgzOFMFOGwmBIpZWHFcXIQyXq1oUmEFmJC1dGVpogEhaiLgwSEl2JujO6kmiiC01INDFBICzUCJYCAVJCC/QFQksfTmfMXNOJNmiY3fz3v9899z/nUsj5bj//8jGxnWiUZcWSXaJpg8JambHeC3XNuf1UttA/NNUVCm/20TQoUDRq3A5Mfp0Dx5chvrECmlKhKKpaZCvo7mpz92f3EUDf0Oz9UCh4leF4ZFIx8PZSNNVLePPqE0qdbgj5P+GbX4bRkodoMAxbkfigu23/NW0vAXQOjqqqopA/XVKuVgCqVlMBiqYxcOU4aaVuPvvmTcRjlWJ5DeTtVZjMLGhLPqpdLN6/G8e51hMENTfrx9LyJrjCUgR9HuSx3Mydi7VV1I3H4xkLx9NWXkTEP498mwSThYHLsQcjHyZ0wMTnFYQDAQiSE1vRIFKxqHLvcpOB6nw4ogpSFYxmI9YWp1DbcAR20QLGTJMZaApWgyn4/EmyXuxwQ07LiPi9GOhopghgh+vuqqQDJGc1Dh0oxNvXo7pkjaApOHa6Hgu+BAHuqKD7yVhSEHlLcdlezE/PoLpmH0S7FUYDRQANzUeJ/HQyjq3IKgSpAhuhAOTE5u8ZaMlLJlInz5xtxPCwByYzA5tdJC5kFSXTCryeZQSDMRQUScQFluO+32qvdRMvrz8aVZSMQv0vB/qgcnOgAe6+9J6ProWHCm0CfqxvwSqUgGGt5M6aCyuBKGaml2AwMVgPR8CXFHf0tLgG9STqkFD0BaWC0k5zOMuxOLeIg4dd8EwukITKqqryonCpp7Xy6V9v4U/PtGSm4vGKjJIxZutGgyGdxzLjve11p/75Gndl/A5NvwAcxxIgGjS4iQAAAABJRU5ErkJggg==
 	</image>
-	<layout title="Simple" class="" sections="1">
-		@Model.Content[0]
-	</layout>
-	<layout title="Two Columns" class="two-columns" sections="2">
-		<section>
-			@Model.Content[0]
-		</section>
-		<section>
-			@Model.Content[1]
-		</section>
-	</layout>
 	<navItems>
 		<ul>
 			@Model.Children

@@ -41,9 +41,7 @@ namespace WebsiteBuilder.Core.Theming {
         private const String NodeBody = "body";
 
 		private const String NodeSettings = "settings";
-
-        private const String NodeLayout = "layout";
-
+        
         private const String NodeSettingsImageCssClass = "imageCssClass";
 
         private const String NodeFont = "font";
@@ -53,9 +51,7 @@ namespace WebsiteBuilder.Core.Theming {
         private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
 
         private static readonly String QueryImages = String.Concat("/", NodeRoot, "/", NodeImage);
-
-        private static readonly String QueryLayouts = String.Concat("/", NodeRoot, "/", NodeLayout);
-
+        
         private static readonly String QueryNavItems = String.Concat("/", NodeRoot, "/", NodeNavItems);
 
 		private static readonly String QueryNavItem = String.Concat("/", NodeRoot, "/", NodeNavItem);
@@ -81,13 +77,9 @@ namespace WebsiteBuilder.Core.Theming {
         private List<ThemeStyle> _Styles;
 
         private Dictionary<String, Image> _Images;
-
-        private List<Layout> _Layouts;
-
+        
 		public IEnumerable<ThemeStyle> Styles => _Styles.AsReadOnly();
-
-        public IEnumerable<Layout> Layouts => _Layouts.AsReadOnly();
-
+        
         public IReadOnlyDictionary<String, Image> Images => _Images;
 
         public IEnumerable<Font> Fonts => _Fonts.AsReadOnly();
@@ -113,7 +105,6 @@ namespace WebsiteBuilder.Core.Theming {
         internal Theme() {
 			_Styles = new List<ThemeStyle>();
             _Images = new Dictionary<String, Image>();
-            _Layouts = new List<Layout>();
             _Fonts = new List<Font>();
 			Settings = new ThemeSettings();
 		}
@@ -130,7 +121,6 @@ namespace WebsiteBuilder.Core.Theming {
 			LoadStyles(theme, document);
             LoadTemplates(theme, document);
             LoadImages(theme, document);
-            LoadLayouts(theme, document);
             LoadFonts(theme, document);
 
             return theme;
@@ -159,29 +149,7 @@ namespace WebsiteBuilder.Core.Theming {
                 }
             }
         }
-
-        private static void LoadLayouts(Theme theme, XmlDocument document) {
-            var xLayouts = document.SelectNodes(QueryLayouts);
-
-            foreach (XmlNode xLayout in xLayouts) {
-                if (xLayout.Attributes[AttributeClassName] == null ||
-                    xLayout.Attributes[AttributeTitle] == null ||
-                    xLayout.Attributes[AttributeSectionCount] == null) {
-
-                    continue;
-                }
-
-                Layout layout = new Layout();
-
-                layout.ClassName = xLayout.Attributes[AttributeClassName].InnerText;
-                layout.Title = xLayout.Attributes[AttributeTitle].InnerText;
-                layout.SectionCount = Convert.ToInt32(xLayout.Attributes[AttributeSectionCount].InnerText);
-                layout.Template = xLayout.InnerXml;
-
-                theme._Layouts.Add(layout);
-            }
-        }
-
+        
 		private static void LoadSettings(ThemeSettings settings, XmlDocument document) {
 			settings.ImageCssClass = document.SelectSingleNode(QuerySettingImageCssClass)?.InnerText;
 		}

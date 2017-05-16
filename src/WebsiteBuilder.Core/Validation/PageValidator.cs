@@ -14,16 +14,13 @@ namespace WebsiteBuilder.Core.Validation {
 
         public override bool Valid
             => PathName
-            && Title
-            && Layout;
+            && Title;
 
         public bool PathName => PathNameRegex.IsMatch(Object.PathName);
 
         public bool Title
             => Object.Title != null
             && !Object.Project.Languages.Any(x => String.IsNullOrWhiteSpace(Object.Title.Get(x.Id)));
-
-        public bool Layout => Object.Layout != null;
 
         public PageValidator(Page page)
             : base(page) {

@@ -89,7 +89,6 @@ namespace WebsiteBuilder.Core.Storage {
 
             page.Id = element.Attribute(ProjectStorageConstants.Id).Value;
             page.PathName = element.Attribute(ProjectStorageConstants.Path).Value;
-            page.LayoutClassName = element.Attribute(ProjectStorageConstants.Layout).Value;
             page.IncludeInMenu = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.IncludeInMenu)?.Value);
 
             page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
@@ -100,12 +99,15 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private void GetContent(XElement element, Page page) {
+            int index = 0;
+
             foreach (XElement item in element.Elements(ProjectStorageConstants.Section)) {
-                int index = Convert.ToInt32(item.Attribute(ProjectStorageConstants.Index).Value);
-                PageContent content = page[index];
-                content.Index = index;
+                String id = item.Attribute(ProjectStorageConstants.Id)?.Value ?? index.ToString();
+                PageContent content = page.AddContent(index, id);
                 content.EditorType = PluginManager.GetEditor(item.Attribute(ProjectStorageConstants.Editor).Value);
                 content.ModuleType = PluginManager.GetModule(item.Attribute(ProjectStorageConstants.Module).Value);
+
+                index++;
             }
         }
 

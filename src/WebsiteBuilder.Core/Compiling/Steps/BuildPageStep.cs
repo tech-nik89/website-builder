@@ -53,10 +53,9 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
             String path = CreatePath();
 
-            Layout layout = _Page.Layout;
-            String[] sections = new String[layout.SectionCount];
+            String[] pageContent = new String[_Page.ContentCount];
 
-            for(int i = 0; i < layout.SectionCount; i++) {
+            for(int i = 0; i < _Page.ContentCount; i++) {
                 PageContent content = _Page[i];
                 if (content == null) {
                     continue;
@@ -68,12 +67,12 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 if (module == null || String.IsNullOrWhiteSpace(data)) {
                     continue;
                 }
-
-                sections[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Page.Project, _Level);
+                
+                pageContent[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Page.Project, _Level);
             }
 
             htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
-                Content = RenderTemplate(layout.Template, new { Content = sections }),
+                Content = String.Join(Environment.NewLine, pageContent),
                 Navigation = RenderNavigation(_Language, _Level),
                 Title = _Page.Title.Get(_Language),
                 Languages = RenderLanguageSwitcher(),
@@ -89,11 +88,10 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
         private String CreateSubPage(String pathName, String content) {
             HtmlDocument htmlFile = new HtmlDocument();
-            Layout layout = _Page.Layout;
             String path = CreatePath();
 
             htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
-                Content = RenderTemplate(layout.Template, new { Content = new String[1] { content } }),
+                Content = content,
                 Navigation = RenderNavigation(_Language, _Level),
                 Title = _Page.Title.Get(_Language),
                 Languages = RenderLanguageSwitcher(),

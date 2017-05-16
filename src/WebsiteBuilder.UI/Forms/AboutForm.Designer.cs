@@ -58,8 +58,8 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 221F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 206F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(602, 333);
             this.tableLayoutPanel.TabIndex = 0;
@@ -124,18 +124,19 @@
             this.txtLicenses.Name = "txtLicenses";
             this.txtLicenses.ReadOnly = true;
             this.txtLicenses.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLicenses.Size = new System.Drawing.Size(395, 215);
+            this.txtLicenses.Size = new System.Drawing.Size(395, 200);
             this.txtLicenses.TabIndex = 23;
             this.txtLicenses.TabStop = false;
             this.txtLicenses.Text = "Licenses";
             // 
             // okButton
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(524, 323);
+            this.okButton.Location = new System.Drawing.Point(524, 308);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 7);
+            this.okButton.Size = new System.Drawing.Size(75, 22);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
             // 

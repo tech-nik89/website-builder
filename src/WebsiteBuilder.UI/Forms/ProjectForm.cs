@@ -30,6 +30,7 @@ namespace WebsiteBuilder.UI.Forms {
             set {
                 _CurrentProject = value;
                 UpdateFormText();
+                RefreshLanguageList();
                 ptvwPages.Project = _CurrentProject;
             }
         }
@@ -165,6 +166,7 @@ namespace WebsiteBuilder.UI.Forms {
             mnuBuildProject.Enabled = enabled;
             mnuBuildAndRunProject.Enabled = enabled;
             mnuBuildPage.Enabled = enabled;
+            mnuBuildCleanOutput.Enabled = enabled;
             tspProgress.Value = 0;
         }
 
@@ -219,6 +221,26 @@ namespace WebsiteBuilder.UI.Forms {
             }
 
             Compiler.ClearOutputDirectory(CurrentProject);
+        }
+
+        private void RefreshLanguageList() {
+            int previousIndex = tscLanguage.SelectedIndex;
+            tscLanguage.Items.Clear();
+
+            if (CurrentProject == null) {
+                return;
+            }
+
+            foreach(Language language in CurrentProject.Languages) {
+                tscLanguage.Items.Add(language.Description);
+            }
+
+            if (previousIndex > 0 && previousIndex < tscLanguage.Items.Count) {
+                tscLanguage.SelectedIndex = previousIndex;
+            }
+            else if (tscLanguage.Items.Count > 0 ){
+                tscLanguage.SelectedIndex = 0;
+            }
         }
     }
 }
