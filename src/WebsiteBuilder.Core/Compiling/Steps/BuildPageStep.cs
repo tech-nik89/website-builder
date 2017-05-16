@@ -67,7 +67,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
                 if (module == null || String.IsNullOrWhiteSpace(data)) {
                     continue;
                 }
-                
+
+                _CompileHelper.ModuleType = content.ModuleType;
                 pageContent[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Page.Project, _Level);
             }
 

@@ -27,6 +27,10 @@ namespace WebsiteBuilder.Core.Compiling {
 
         internal IReadOnlyList<String> PageStyleClasses => _PageStyleClasses.AsReadOnly();
 
+        private readonly Dictionary<Type, int> _ModuleCompilerFlags;
+
+        public Type ModuleType { get; set; }
+
         public CompileHelper(HtmlDocument document, FileInfo file, Func<String, String, String> createSubPage) {
             _Document = document;
             _File = file;
@@ -34,6 +38,7 @@ namespace WebsiteBuilder.Core.Compiling {
             _StyleLinks = new List<StyleLink>();
             _ScriptLinks = new List<ScriptLink>();
             _PageStyleClasses = new List<String>();
+            _ModuleCompilerFlags = new Dictionary<Type, int>();
         }
 
         public String Compile(IHtmlElement element) {
@@ -92,5 +97,33 @@ namespace WebsiteBuilder.Core.Compiling {
             return _CreateSubPage(pathName, content);
         }
 
+        public void SetPageFlag(int flag, bool value) {
+            if (ModuleType == null) {
+                return;
+            }
+            
+            if (!_ModuleCompilerFlags.ContainsKey(ModuleType)) {
+                _ModuleCompilerFlags.Add(ModuleType, 0);
+            }
+
+            if (value) {
+                _ModuleCompilerFlags[ModuleType] = (_ModuleCompilerFlags[ModuleType] | flag);
+            }
+            else {
+                _ModuleCompilerFlags[ModuleType] = (_ModuleCompilerFlags[ModuleType] & (~flag));
+            }
+        }
+
+        public bool HasPageFlag(int flag) {
+            if (ModuleType == null) {
+                return false;
+            }
+            
+            if (!_ModuleCompilerFlags.ContainsKey(ModuleType)) {
+                return false;
+            }
+
+            return (_ModuleCompilerFlags[ModuleType] & flag) != 0;
+        }
     }
 }

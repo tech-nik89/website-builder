@@ -105,21 +105,27 @@ namespace WebsiteBuilder.Core.Pages {
             _Content.RemoveAt(index);
         }
         
-        public void MoveContent(int index, PageMoveDirection direction) {
+        public int MoveContent(int index, PageMoveDirection direction) {
             if (index < 0 || index > _Content.Count - 1) {
-                return;
+                return -1;
             }
 
             PageContent content = _Content[index];
 
             if (direction == PageMoveDirection.Up && index > 0) {
+                int newIndex = index - 1;
                 _Content.Remove(content);
-                _Content.Insert(index - 1, content);
+                _Content.Insert(newIndex, content);
+                return newIndex;
             }
             else if (direction == PageMoveDirection.Down && index < _Content.Count - 1) {
+                int newIndex = index + 1;
                 _Content.Remove(content);
-                _Content.Insert(index + 1, content);
+                _Content.Insert(newIndex, content);
+                return newIndex;
             }
+
+            return -1;
         }
 
         public bool IsChildOf(Page otherPage) {

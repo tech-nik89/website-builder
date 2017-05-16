@@ -66,6 +66,7 @@ namespace WebsiteBuilder.UI.Controls {
             LocalizeComponent();
             ApplyIcons();
             EnableTreeControls();
+            EnableContentControls();
 
             _HighlightingIndex = -1;
             _FlatList = new List<TreeItem>();
@@ -131,16 +132,19 @@ namespace WebsiteBuilder.UI.Controls {
             cmbBuildPage.Text = Strings.BuildThisPageOnly;
         }
         
-        private void RefreshContentList() {
-            int index = lvwContent.SelectedIndices.Count > 0 ? lvwContent.SelectedIndices[0] : -1;
+        private void RefreshContentList(int selectedIndex = -1) {
+            if (selectedIndex == -1) {
+                selectedIndex = lvwContent.SelectedIndices.Count > 0 ? lvwContent.SelectedIndices[0] : -1;
+            }
+
             lvwContent.VirtualListSize = 0;
 
             if (SelectedPage != null) {
                 lvwContent.VirtualListSize = SelectedPage.ContentCount;
             }
 
-            if (index > -1 && index < lvwContent.VirtualListSize) {
-                lvwContent.SelectedIndices.Add(index);
+            if (selectedIndex > -1 && selectedIndex < lvwContent.VirtualListSize) {
+                lvwContent.SelectedIndices.Add(selectedIndex);
             }
         }
 
@@ -261,6 +265,7 @@ namespace WebsiteBuilder.UI.Controls {
         private void lvwPages_SelectedIndexChanged(object sender, EventArgs e) {
             EnableTreeControls();
             RefreshContentList();
+            EnableContentControls();
         }
         
         private void EnableTreeControls() {
@@ -482,6 +487,7 @@ namespace WebsiteBuilder.UI.Controls {
         private void EnableContentControls() {
             bool enable = lvwContent.SelectedIndices.Count > 0;
 
+            tsbContentAdd.Enabled = lvwContent.VirtualListSize > 0;
             tsbContentEdit.Enabled = enable;
             tsbContentDelete.Enabled = enable;
 
@@ -505,8 +511,8 @@ namespace WebsiteBuilder.UI.Controls {
                 return;
             }
 
-            SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Up);
-            RefreshContentList();
+            int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Up) ?? -1;
+            RefreshContentList(newIndex);
             EnableContentControls();
         }
 
@@ -515,8 +521,8 @@ namespace WebsiteBuilder.UI.Controls {
                 return;
             }
 
-            SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Down);
-            RefreshContentList();
+            int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Down) ?? -1;
+            RefreshContentList(newIndex);
             EnableContentControls();
         }
     }

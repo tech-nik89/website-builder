@@ -21,5 +21,9 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         void AddPageStyleClass(String className);
 
+        void SetPageFlag(int flag, bool value);
+
+        bool HasPageFlag(int flag);
+
     }
 }

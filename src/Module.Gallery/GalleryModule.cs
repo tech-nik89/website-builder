@@ -12,6 +12,8 @@ namespace WebsiteBuilder.Modules.Gallery {
 
         private IPluginHelper _PluginHelper;
 
+        private const int ResourceFilesAlreadyAddedFlag = 1;
+
         public GalleryModule(IPluginHelper pluginHelper) {
             _PluginHelper = pluginHelper;
         }
@@ -57,9 +59,12 @@ namespace WebsiteBuilder.Modules.Gallery {
                 IHtmlElement full = helper.CreateHtmlElement("div");
                 full.SetAttribute("class", "full");
                 container.AppendChild(full);
-                
-                helper.CreateLessFile(Resources.GalleryStyles);
-                helper.CreateJavaScriptFile(Resources.GalleryCode, true);
+
+                if (!helper.HasPageFlag(ResourceFilesAlreadyAddedFlag)) {
+                    helper.CreateLessFile(Resources.GalleryStyles);
+                    helper.CreateJavaScriptFile(Resources.GalleryCode, true);
+                    helper.SetPageFlag(ResourceFilesAlreadyAddedFlag, true);
+                }
 
                 return helper.Compile(container);
             }

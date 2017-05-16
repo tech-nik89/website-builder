@@ -35,6 +35,10 @@ namespace WebsiteBuilder.Core.Compiling {
         private readonly List<String> _StyleSheetFiles;
 
         private readonly List<ICompilerStep> _Steps;
+
+        private readonly Dictionary<Type, int> _ModuleCompilerFlags;
+
+        internal IDictionary<Type, int> ModuleCompilerFlags => _ModuleCompilerFlags;
         
         public Compiler(Project project)
             : this(project, new CompilerSettings()) {
@@ -46,6 +50,7 @@ namespace WebsiteBuilder.Core.Compiling {
 			Error = false;
             _Project = project;
             _StyleSheetFiles = new List<String>();
+            _ModuleCompilerFlags = new Dictionary<Type, int>();
 
             _Worker = new BackgroundWorker();
             _Worker.WorkerReportsProgress = true;
