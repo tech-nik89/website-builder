@@ -31,7 +31,7 @@
             this.wpfHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wpfHost.Location = new System.Drawing.Point(0, 0);
             this.wpfHost.Name = "wpfHost";
-            this.wpfHost.Size = new System.Drawing.Size(376, 240);
+            this.wpfHost.Size = new System.Drawing.Size(372, 236);
             this.wpfHost.TabIndex = 0;
             this.wpfHost.Child = null;
             // 
@@ -39,9 +39,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.wpfHost);
             this.Name = "AvalonEditorControl";
-            this.Size = new System.Drawing.Size(376, 240);
+            this.Size = new System.Drawing.Size(372, 236);
             this.ResumeLayout(false);
 
         }

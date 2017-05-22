@@ -118,16 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="IndexPageScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Scripts\IndexPageScript.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="QuotesScript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Quotes\Quotes.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="jQuery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Scripts\jquery-3.2.1.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="jQuerySlim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Scripts\jquery-3.2.1.slim.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ThirdpartyLicenses" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ThirdpartyLicenses.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="QuotesStyle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Quotes\Quotes.less;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

@@ -1,0 +1,41 @@
+﻿.quotes {
+    position: relative;
+
+    blockquote > .footer {
+        font-style: italic;
+
+        &::before {
+            content: '\2013  ';
+        }
+    }
+
+    .progress {
+        margin: 20px;
+        height: 1px;
+        background-color: #EEE;
+        position: relative;
+
+        > span {
+            background-color: #009;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            &.run {
+                animation-name: quotesMakeProgress;
+                animation-timing-function: linear;
+            }
+        }
+    }
+}
+
+@keyframes quotesMakeProgress {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Gallery", "Module.Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.News", "Module.News\Module.News.csproj", "{7280B680-C16C-41AA-98EA-BDAA10D2EF55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Toolbox", "Module.Toolbox\Module.Toolbox.csproj", "{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{7280B680-C16C-41AA-98EA-BDAA10D2EF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7280B680-C16C-41AA-98EA-BDAA10D2EF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7280B680-C16C-41AA-98EA-BDAA10D2EF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{B194B39B-FA74-4154-8808-CFD1877D8649} = {C9E91C9B-CA1F-46D6-9916-8F5324DD61CE}
 		{F8E78B84-2403-45B8-B344-516646849589} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 		{7280B680-C16C-41AA-98EA-BDAA10D2EF55} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
+		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 	EndGlobalSection
 EndGlobal

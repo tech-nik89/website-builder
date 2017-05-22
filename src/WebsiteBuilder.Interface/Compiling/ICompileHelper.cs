@@ -25,5 +25,7 @@ namespace WebsiteBuilder.Interface.Compiling {
 
         bool HasPageFlag(int flag);
 
+        void RequireLibrary(Library library);
+
     }
 }

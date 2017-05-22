@@ -8,7 +8,7 @@ using WebsiteBuilder.Modules.News.Properties;
 
 namespace WebsiteBuilder.Modules.News {
 
-    [PluginInfo("News", SupportsMultiSectionLayout = false)]
+    [PluginInfo("News")]
     public class NewsModule : IModule {
         
         private readonly IPluginHelper _PluginHelper;

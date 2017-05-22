@@ -132,6 +132,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="ThirdpartyLicenses.txt" />
     <Content Include="Scripts\IndexPageScript.js" />
   </ItemGroup>

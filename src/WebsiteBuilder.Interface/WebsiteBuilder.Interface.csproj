@@ -48,6 +48,7 @@
     <Compile Include="Compiling\ICompiler.cs" />
     <Compile Include="Compiling\IHtmlElement.cs" />
     <Compile Include="Compiling\IModuleCompiler.cs" />
+    <Compile Include="Compiling\Library.cs" />
     <Compile Include="Icons\IconPackIcon.cs" />
     <Compile Include="Icons\IIconPack.cs" />
     <Compile Include="Plugins\IEditor.cs" />

@@ -86,8 +86,28 @@ namespace WebsiteBuilder.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LICENSES
-        ///This project uses the following libraries.
+        ///   Looks up a localized string similar to /*! jQuery v3.2.1 | (c) JS Foundation and other contributors | jquery.org/license */
+        ///!function(a,b){&quot;use strict&quot;;&quot;object&quot;==typeof module&amp;&amp;&quot;object&quot;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&quot;jQuery requires a window with a document&quot;);return b(a)}:b(a)}(&quot;undefined&quot;!=typeof window?window:this,function(a,b){&quot;use strict&quot;;var c=[],d=a.document,e=Object.getPrototypeOf,f=c.slice,g=c.concat,h=c.push,i=c.indexOf,j={},k=j.toString,l=j.hasOwnProperty,m=l.toStrin [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string jQuery {
+            get {
+                return ResourceManager.GetString("jQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*! jQuery v3.2.1 -ajax,-ajax/jsonp,-ajax/load,-ajax/parseXML,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-event/ajax,-effects,-effects/Tween,-effects/animatedSelector | (c) JS Foundation and other contributors | jquery.org/license */
+        ///!function(a,b){&quot;use strict&quot;;&quot;object&quot;==typeof module&amp;&amp;&quot;object&quot;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&quot;jQuery requires a window with a document&quot;);return b(a)}:b(a) [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string jQuerySlim {
+            get {
+                return ResourceManager.GetString("jQuerySlim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THIRDPARTY LICENSES
+        ///This project uses the following thirdparty libraries.
         ///
         ///---------------
         ///
@@ -96,7 +116,7 @@ namespace WebsiteBuilder.Core.Properties {
         ///
         ///MICROSOFT SOFTWARE LICENSE TERMS
         ///MICROSOFT VISUAL STUDIO 2015 IMAGE LIBRARY
-        ///These license terms are an agreement between Microsoft Corporation (or based on where you live, one of its affiliates) and you. They apply to the software named above. The terms also apply to any Microsoft services or updates for the software, excep [rest of string was truncated]&quot;;.
+        ///These license terms are an agreement between Microsoft Corporation (or based on where you live, one of its affiliates) and you. They apply to the software named above. The terms also apply to any Microsoft services or updates f [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ThirdpartyLicenses {
             get {

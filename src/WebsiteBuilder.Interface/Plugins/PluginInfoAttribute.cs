@@ -5,8 +5,6 @@ namespace WebsiteBuilder.Interface.Plugins {
 	public class PluginInfoAttribute : Attribute {
 
         public String Name { get; private set; }
-
-        public bool SupportsMultiSectionLayout { get; set; }
         
 		public PluginInfoAttribute(String name) {
             Name = name;

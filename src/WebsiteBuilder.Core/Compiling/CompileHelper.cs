@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using WebsiteBuilder.Core.Compiling.Links;
+using WebsiteBuilder.Core.Properties;
 using WebsiteBuilder.Core.Tools;
 using WebsiteBuilder.Interface.Compiling;
 
@@ -29,6 +30,8 @@ namespace WebsiteBuilder.Core.Compiling {
 
         private readonly Dictionary<Type, int> _ModuleCompilerFlags;
 
+        private readonly Dictionary<Library, bool> _Libraries;
+
         public Type ModuleType { get; set; }
 
         public CompileHelper(HtmlDocument document, FileInfo file, Func<String, String, String> createSubPage) {
@@ -39,6 +42,7 @@ namespace WebsiteBuilder.Core.Compiling {
             _ScriptLinks = new List<ScriptLink>();
             _PageStyleClasses = new List<String>();
             _ModuleCompilerFlags = new Dictionary<Type, int>();
+            _Libraries = new Dictionary<Library, bool>();
         }
 
         public String Compile(IHtmlElement element) {
@@ -81,11 +85,19 @@ namespace WebsiteBuilder.Core.Compiling {
 
         public void CreateJavaScriptFile(String javaScript, bool runAfterLoad) {
             String fileName = String.Concat(Utilities.NewGuid(), ".js");
+            CreateJavaScriptFile(fileName, javaScript, runAfterLoad);
+        }
+
+        private void CreateJavaScriptFile(String fileName, String javaScript) {
+            CreateJavaScriptFile(fileName, javaScript, false);
+        }
+
+        private void CreateJavaScriptFile(String fileName, String javaScript, bool runAfterLoad) {
             String path = Path.Combine(_File.Directory.FullName, fileName);
 
             javaScript = Utilities.JavaScriptMinifier.Compile(javaScript);
             File.WriteAllText(path, javaScript);
-            
+
             _ScriptLinks.Add(new ScriptLink(fileName, runAfterLoad));
         }
 
@@ -124,6 +136,25 @@ namespace WebsiteBuilder.Core.Compiling {
             }
 
             return (_ModuleCompilerFlags[ModuleType] & flag) != 0;
+        }
+
+        public void RequireLibrary(Library library) {
+            if (_Libraries.ContainsKey(library)) {
+                return;
+            }
+
+            switch(library) {
+                case Library.jQuery:
+                    CreateJavaScriptFile("jquery.min.js", Resources.jQuery);
+                    break;
+                case Library.jQuerySlim:
+                    CreateJavaScriptFile("jquery.slim.min.js", Resources.jQuerySlim);
+                    break;
+                default:
+                    return;
+            }
+
+            _Libraries.Add(library, true);
         }
     }
 }
