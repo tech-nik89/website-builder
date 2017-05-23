@@ -78,6 +78,8 @@
       <DependentUpon>GenericControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Quotes\QuotesModule.cs" />
+    <Compile Include="Timeline\TimelineItem.cs" />
+    <Compile Include="Timeline\TimelineModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
@@ -104,6 +106,7 @@
   <ItemGroup>
     <None Include="Quotes\Quotes.less" />
     <Content Include="Quotes\Quotes.js" />
+    <None Include="Timeline\Timeline.less" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

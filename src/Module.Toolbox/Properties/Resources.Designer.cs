@@ -61,7 +61,20 @@ namespace WebsiteBuilder.Modules.Toolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to (function () {
+        ///    function instance(container) {
+        ///        var _Quotes = container.querySelectorAll(&apos;.quotes &gt; blockquote&apos;);
+        ///        var _Progress = container.querySelector(&apos;.quotes &gt; .progress &gt; span&apos;);
+        ///        var _Index = 0;
+        ///        var _Interval = 10;
+        ///
+        ///        function hideAllExcept(except) {
+        ///            for (var i = 0; i &lt; _Quotes.length; i++) {
+        ///                if (i == except) {
+        ///                    _Quotes[i].style.display = &apos;block&apos;;
+        ///                }
+        ///                else {
+        ///                [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string QuotesScript {
             get {
@@ -70,11 +83,70 @@ namespace WebsiteBuilder.Modules.Toolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to .quotes {
+        ///    position: relative;
+        ///
+        ///    blockquote &gt; .footer {
+        ///        font-style: italic;
+        ///
+        ///        &amp;::before {
+        ///            content: &apos;\2013  &apos;;
+        ///        }
+        ///    }
+        ///
+        ///    .progress {
+        ///        margin: 20px;
+        ///        height: 1px;
+        ///        background-color: #EEE;
+        ///        position: relative;
+        ///
+        ///        &gt; span {
+        ///            background-color: #009;
+        ///            position: absolute;
+        ///            left: 0;
+        ///            top: 0;
+        ///            bottom: 0;
+        ///
+        ///            &amp;.run {
+        ///                animation-name: quote [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string QuotesStyle {
             get {
                 return ResourceManager.GetString("QuotesStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .timeline {
+        ///    position: relative;
+        ///    max-width: 800px;
+        ///    padding-top: 4px;
+        ///    padding-bottom: 4px;
+        ///    margin: auto;
+        ///
+        ///    &amp;::before {
+        ///        content: &apos;&apos;;
+        ///        position: absolute;
+        ///        top: 0;
+        ///        left: 18px;
+        ///        height: 100%;
+        ///        width: 4px;
+        ///        background: #DDD;
+        ///    }
+        ///
+        ///    &gt; ul {
+        ///        list-style: none;
+        ///        margin: 10px;
+        ///        padding-left: 35px;
+        ///
+        ///        &gt; li {
+        ///            position: relative;
+        ///            background-color: #F3F3F3;
+        ///            p [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TimelineStyle {
+            get {
+                return ResourceManager.GetString("TimelineStyle", resourceCulture);
             }
         }
     }
