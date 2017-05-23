@@ -1,10 +1,9 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Core.Localization {
+    public class LocalizedStringArray : LocalizedBase<String[]> {
 
-    public class LocalizedString : LocalizedBase<String> {
-        
-        public LocalizedString(Project project)
+        public LocalizedStringArray(Project project)
             : base (project) {
         }
 

@@ -369,4 +369,13 @@
   <data name="Disable" xml:space="preserve">
     <value>Disable</value>
   </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>Keywords</value>
+  </data>
+  <data name="KeywordsDescription" xml:space="preserve">
+    <value>One keyword per line.</value>
+  </data>
+  <data name="Meta" xml:space="preserve">
+    <value>Meta</value>
+  </data>
 </root>

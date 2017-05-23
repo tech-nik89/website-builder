@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabDetails = new System.Windows.Forms.TabPage();
+            this.chkDisable = new System.Windows.Forms.CheckBox();
             this.chkIncludeInMenu = new System.Windows.Forms.CheckBox();
             this.txtPathName = new System.Windows.Forms.TextBox();
             this.lblPathName = new System.Windows.Forms.Label();
@@ -32,12 +33,15 @@
             this.lvwTitle = new System.Windows.Forms.ListView();
             this.clnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabMeta = new System.Windows.Forms.TabPage();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
-            this.chkDisable = new System.Windows.Forms.CheckBox();
+            this.lvwMeta = new System.Windows.Forms.ListView();
+            this.clnMetaLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMain.SuspendLayout();
             this.tabDetails.SuspendLayout();
             this.tabTitle.SuspendLayout();
+            this.tabMeta.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -47,10 +51,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMain.Controls.Add(this.tabDetails);
             this.tabMain.Controls.Add(this.tabTitle);
+            this.tabMain.Controls.Add(this.tabMeta);
             this.tabMain.Location = new System.Drawing.Point(12, 12);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(390, 217);
+            this.tabMain.Size = new System.Drawing.Size(460, 266);
             this.tabMain.TabIndex = 0;
             // 
             // tabDetails
@@ -62,10 +67,20 @@
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
             this.tabDetails.Name = "tabDetails";
             this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(382, 191);
+            this.tabDetails.Size = new System.Drawing.Size(412, 240);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "[Details]";
             this.tabDetails.UseVisualStyleBackColor = true;
+            // 
+            // chkDisable
+            // 
+            this.chkDisable.AutoSize = true;
+            this.chkDisable.Location = new System.Drawing.Point(113, 72);
+            this.chkDisable.Name = "chkDisable";
+            this.chkDisable.Size = new System.Drawing.Size(67, 17);
+            this.chkDisable.TabIndex = 5;
+            this.chkDisable.Text = "[Disable]";
+            this.chkDisable.UseVisualStyleBackColor = true;
             // 
             // chkIncludeInMenu
             // 
@@ -83,7 +98,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPathName.Location = new System.Drawing.Point(113, 13);
             this.txtPathName.Name = "txtPathName";
-            this.txtPathName.Size = new System.Drawing.Size(251, 20);
+            this.txtPathName.Size = new System.Drawing.Size(281, 20);
             this.txtPathName.TabIndex = 1;
             this.txtPathName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPathName_KeyPress);
             // 
@@ -102,7 +117,7 @@
             this.tabTitle.Location = new System.Drawing.Point(4, 22);
             this.tabTitle.Name = "tabTitle";
             this.tabTitle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTitle.Size = new System.Drawing.Size(382, 191);
+            this.tabTitle.Size = new System.Drawing.Size(452, 240);
             this.tabTitle.TabIndex = 1;
             this.tabTitle.Text = "[Title]";
             this.tabTitle.UseVisualStyleBackColor = true;
@@ -121,7 +136,7 @@
             this.lvwTitle.Location = new System.Drawing.Point(3, 3);
             this.lvwTitle.MultiSelect = false;
             this.lvwTitle.Name = "lvwTitle";
-            this.lvwTitle.Size = new System.Drawing.Size(376, 185);
+            this.lvwTitle.Size = new System.Drawing.Size(446, 234);
             this.lvwTitle.TabIndex = 0;
             this.lvwTitle.UseCompatibleStateImageBehavior = false;
             this.lvwTitle.View = System.Windows.Forms.View.Details;
@@ -129,19 +144,30 @@
             // 
             // clnTitle
             // 
-            this.clnTitle.Text = "Title";
+            this.clnTitle.Text = "[Title]";
             this.clnTitle.Width = 140;
             // 
             // clnLanguage
             // 
-            this.clnLanguage.Text = "Language";
+            this.clnLanguage.Text = "[Language]";
             this.clnLanguage.Width = 160;
+            // 
+            // tabMeta
+            // 
+            this.tabMeta.Controls.Add(this.lvwMeta);
+            this.tabMeta.Location = new System.Drawing.Point(4, 22);
+            this.tabMeta.Name = "tabMeta";
+            this.tabMeta.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMeta.Size = new System.Drawing.Size(452, 240);
+            this.tabMeta.TabIndex = 2;
+            this.tabMeta.Text = "[Meta]";
+            this.tabMeta.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(298, 235);
+            this.btnCancel.Location = new System.Drawing.Point(368, 284);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 4;
@@ -152,7 +178,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(192, 235);
+            this.btnAccept.Location = new System.Drawing.Point(262, 284);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 3;
@@ -160,15 +186,25 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
-            // chkDisable
+            // lvwMeta
             // 
-            this.chkDisable.AutoSize = true;
-            this.chkDisable.Location = new System.Drawing.Point(113, 72);
-            this.chkDisable.Name = "chkDisable";
-            this.chkDisable.Size = new System.Drawing.Size(67, 17);
-            this.chkDisable.TabIndex = 5;
-            this.chkDisable.Text = "[Disable]";
-            this.chkDisable.UseVisualStyleBackColor = true;
+            this.lvwMeta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnMetaLanguage});
+            this.lvwMeta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwMeta.FullRowSelect = true;
+            this.lvwMeta.GridLines = true;
+            this.lvwMeta.Location = new System.Drawing.Point(3, 3);
+            this.lvwMeta.Name = "lvwMeta";
+            this.lvwMeta.Size = new System.Drawing.Size(446, 234);
+            this.lvwMeta.TabIndex = 0;
+            this.lvwMeta.UseCompatibleStateImageBehavior = false;
+            this.lvwMeta.View = System.Windows.Forms.View.Details;
+            this.lvwMeta.DoubleClick += new System.EventHandler(this.lvwMeta_DoubleClick);
+            // 
+            // clnMetaLanguage
+            // 
+            this.clnMetaLanguage.Text = "[Language]";
+            this.clnMetaLanguage.Width = 180;
             // 
             // PagePropertiesForm
             // 
@@ -176,10 +212,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(414, 272);
+            this.ClientSize = new System.Drawing.Size(484, 321);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.tabMain);
+            this.MinimumSize = new System.Drawing.Size(500, 360);
             this.Name = "PagePropertiesForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -188,6 +225,7 @@
             this.tabDetails.ResumeLayout(false);
             this.tabDetails.PerformLayout();
             this.tabTitle.ResumeLayout(false);
+            this.tabMeta.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -206,5 +244,8 @@
         private System.Windows.Forms.ColumnHeader clnLanguage;
         private System.Windows.Forms.CheckBox chkIncludeInMenu;
         private System.Windows.Forms.CheckBox chkDisable;
+        private System.Windows.Forms.TabPage tabMeta;
+        private System.Windows.Forms.ListView lvwMeta;
+        private System.Windows.Forms.ColumnHeader clnMetaLanguage;
     }
 }

@@ -44,6 +44,10 @@ namespace WebsiteBuilder.Core.Pages {
             set { _Disable = value; Project.Dirty = true; }
         }
 
+        public LocalizedStringArray MetaKeywords { get; private set; }
+
+        public LocalizedString MetaDescription { get; private set; }
+
         public int Level {
             get {
                 int level = 0;
@@ -80,6 +84,8 @@ namespace WebsiteBuilder.Core.Pages {
             Project = project;
             Pages = new PageCollection(this);
             Title = new LocalizedString(project);
+            MetaDescription = new LocalizedString(project);
+            MetaKeywords = new LocalizedStringArray(project);
             _Content = new List<PageContent>();
             IncludeInMenu = true;
         }

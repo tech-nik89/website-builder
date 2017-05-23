@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -94,6 +95,8 @@ namespace WebsiteBuilder.Core.Storage {
 
             page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
             GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);
+            GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), page.MetaDescription);
+            GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), page.MetaKeywords);
             GetContent(element.Element(ProjectStorageConstants.Content), page);
 
             return page;
@@ -113,8 +116,22 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private void GetLocalizedString(XElement element, LocalizedString str) {
+            if (element == null) {
+                return;
+            }
+
             foreach (XElement item in element.Elements()) {
                 str.Set(item.Name.ToString(), item.Value);
+            }
+        }
+
+        private void GetLocalizedStringArray(XElement element, LocalizedStringArray str) {
+            if (element == null) {
+                return;
+            }
+
+            foreach (XElement item in element.Elements()) {
+                str.Set(item.Name.ToString(), JsonConvert.DeserializeObject<String[]>(item.Value));
             }
         }
 

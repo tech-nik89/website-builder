@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,10 +75,14 @@ namespace WebsiteBuilder.Core.Storage {
                 new XAttribute(ProjectStorageConstants.IncludeInMenu, page.IncludeInMenu),
                 new XAttribute(ProjectStorageConstants.Disable, page.Disable),
                 new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
+                new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(page.MetaDescription)),
+                new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(page.MetaKeywords)),
                 new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
                 GetPages(page.Pages)
             );
         }
+
+        
 
         private IEnumerable<XElement> GetContent(IReadOnlyList<PageContent> content) {
             return content.Select(x => new XElement(ProjectStorageConstants.Section,
@@ -85,6 +90,10 @@ namespace WebsiteBuilder.Core.Storage {
                 new XAttribute(ProjectStorageConstants.Editor, x.EditorType?.FullName ?? String.Empty),
                 new XAttribute(ProjectStorageConstants.Module, x.ModuleType?.FullName ?? String.Empty)
             ));
+        }
+
+        private IEnumerable<XElement> GetLocalizedStringArray(LocalizedStringArray str) {
+            return str.Data.Select(x => new XElement(x.Key, JsonConvert.SerializeObject(x.Value)));
         }
 
         private IEnumerable<XElement> GetLocalizedString(LocalizedString str) {

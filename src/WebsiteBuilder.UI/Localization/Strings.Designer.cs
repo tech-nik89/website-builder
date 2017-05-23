@@ -457,6 +457,24 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keywords.
+        /// </summary>
+        internal static string Keywords {
+            get {
+                return ResourceManager.GetString("Keywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One keyword per line..
+        /// </summary>
+        internal static string KeywordsDescription {
+            get {
+                return ResourceManager.GetString("KeywordsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string Language {
@@ -516,6 +534,15 @@ namespace WebsiteBuilder.UI.Localization {
         internal static string MessageOutputPathRequired {
             get {
                 return ResourceManager.GetString("MessageOutputPathRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meta.
+        /// </summary>
+        internal static string Meta {
+            get {
+                return ResourceManager.GetString("Meta", resourceCulture);
             }
         }
         

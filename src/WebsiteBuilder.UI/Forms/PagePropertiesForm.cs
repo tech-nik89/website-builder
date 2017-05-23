@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Theming;
 using WebsiteBuilder.Core.Validation;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
@@ -44,7 +42,13 @@ namespace WebsiteBuilder.UI.Forms {
 
             tabDetails.Text = Strings.Details;
             tabTitle.Text = Strings.Title;
+            tabMeta.Text = Strings.Meta;
 
+            clnLanguage.Text = Strings.Language;
+            clnTitle.Text = Strings.Title;
+            
+            clnMetaLanguage.Text = Strings.Language;
+            
             lblPathName.Text = Strings.PathName + ":";
             
             chkIncludeInMenu.Text = Strings.IncludeInMenu;
@@ -53,6 +57,7 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void FillForm() {
             FillTitleList();
+            FillMetaList();
 
             txtPathName.Text = Page.PathName;
             chkIncludeInMenu.Checked = Page.IncludeInMenu;
@@ -67,6 +72,14 @@ namespace WebsiteBuilder.UI.Forms {
                     Page.Title.Get(language),
                     language.Description
                 }));
+            }
+        }
+
+        private void FillMetaList() {
+            lvwMeta.Items.Clear();
+
+            foreach (Language language in Page.Project.Languages) {
+                lvwMeta.Items.Add(new ListViewItem(language.Description));
             }
         }
         
@@ -112,6 +125,24 @@ namespace WebsiteBuilder.UI.Forms {
             KeysConverter converter = new KeysConverter();
             String character = converter.ConvertToString(e.KeyChar);
             e.Handled = !PageValidator.ValidatePathNameInput(character);
+        }
+
+        private void lvwMeta_DoubleClick(object sender, EventArgs e) {
+            if (lvwMeta.SelectedIndices.Count == 0) {
+                return;
+            }
+
+            Language language = Page.Project.Languages[lvwMeta.SelectedIndices[0]];
+            String description = Page.MetaDescription.Get(language);
+            String[] keywords = Page.MetaKeywords.Get(language);
+
+            PageMetaForm form = new PageMetaForm(description, keywords);
+            if (form.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            Page.MetaDescription.Set(language, form.Description);
+            Page.MetaKeywords.Set(language, form.Keywords);
         }
     }
 }
