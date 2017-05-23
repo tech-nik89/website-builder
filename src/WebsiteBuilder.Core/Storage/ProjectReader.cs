@@ -90,6 +90,7 @@ namespace WebsiteBuilder.Core.Storage {
             page.Id = element.Attribute(ProjectStorageConstants.Id).Value;
             page.PathName = element.Attribute(ProjectStorageConstants.Path).Value;
             page.IncludeInMenu = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.IncludeInMenu)?.Value);
+            page.Disable = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.Disable)?.Value);
 
             page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
             GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);

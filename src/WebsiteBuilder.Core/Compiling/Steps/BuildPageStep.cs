@@ -313,7 +313,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             StringBuilder builder = new StringBuilder();
 
             foreach (var page in pages) {
-                if (!page.IncludeInMenu) {
+                if (!page.IncludeInMenu || page.Disable) {
                     continue;
                 }
 

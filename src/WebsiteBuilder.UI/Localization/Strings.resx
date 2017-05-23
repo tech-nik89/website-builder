@@ -366,4 +366,7 @@
   <data name="Up" xml:space="preserve">
     <value>Up</value>
   </data>
+  <data name="Disable" xml:space="preserve">
+    <value>Disable</value>
+  </data>
 </root>

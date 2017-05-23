@@ -37,6 +37,13 @@ namespace WebsiteBuilder.Core.Pages {
             set { _IncludeInMenu = value; Project.Dirty = true; }
         }
 
+        private bool _Disable;
+
+        public bool Disable {
+            get => _Disable;
+            set { _Disable = value; Project.Dirty = true; }
+        }
+
         public int Level {
             get {
                 int level = 0;
@@ -92,17 +99,20 @@ namespace WebsiteBuilder.Core.Pages {
         public PageContent AddContent() {
             PageContent content = new PageContent(this);
             _Content.Add(content);
+            Project.Dirty = true;
             return content;
         }
 
         internal PageContent AddContent(int index, String id) {
             PageContent content = new PageContent(id, this);
             _Content.Insert(index, content);
+            Project.Dirty = true;
             return content;
         }
 
         public void RemoveContent(int index) {
             _Content.RemoveAt(index);
+            Project.Dirty = true;
         }
         
         public int MoveContent(int index, PageMoveDirection direction) {
@@ -116,12 +126,14 @@ namespace WebsiteBuilder.Core.Pages {
                 int newIndex = index - 1;
                 _Content.Remove(content);
                 _Content.Insert(newIndex, content);
+                Project.Dirty = true;
                 return newIndex;
             }
             else if (direction == PageMoveDirection.Down && index < _Content.Count - 1) {
                 int newIndex = index + 1;
                 _Content.Remove(content);
                 _Content.Insert(newIndex, content);
+                Project.Dirty = true;
                 return newIndex;
             }
 
@@ -144,6 +156,7 @@ namespace WebsiteBuilder.Core.Pages {
 
         public void Remove() {
             Parent.Pages.Remove(this);
+            Project.Dirty = true;
         }
     }
 }

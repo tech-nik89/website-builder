@@ -10,6 +10,8 @@
         Open,
         Page,
         PageStart,
+        PageDisabled,
+        PageStartDisabled,
         Build,
         BuildPage,
         Close,

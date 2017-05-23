@@ -57,6 +57,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String IncludeInMenu = "includeInMenu";
 
+        public const String Disable = "disable";
+
         public const String Footer = "footer";
 
         public const String Link = "link";

@@ -48,6 +48,7 @@ namespace WebsiteBuilder.UI.Forms {
             lblPathName.Text = Strings.PathName + ":";
             
             chkIncludeInMenu.Text = Strings.IncludeInMenu;
+            chkDisable.Text = Strings.Disable;
         }
 
         private void FillForm() {
@@ -55,6 +56,7 @@ namespace WebsiteBuilder.UI.Forms {
 
             txtPathName.Text = Page.PathName;
             chkIncludeInMenu.Checked = Page.IncludeInMenu;
+            chkDisable.Checked = Page.Disable;
         }
 
         private void FillTitleList() {
@@ -91,6 +93,7 @@ namespace WebsiteBuilder.UI.Forms {
         private void ApplyToPage(Page page) {
             page.PathName = txtPathName.Text;
             page.IncludeInMenu = chkIncludeInMenu.Checked;
+            page.Disable = chkDisable.Checked;
 
             for (int i = 0; i < page.Project.Languages.Length; i++) {
                 page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);

@@ -75,8 +75,18 @@ namespace WebsiteBuilder.UI.Controls {
                 _ImageList = new ImageList() { ColorDepth = ColorDepth.Depth32Bit, ImageSize = new Size(16, 16) };
                 _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
                 _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.PageStart));
+                _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.PageDisabled));
+                _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.PageStartDisabled));
                 lvwPages.SmallImageList = _ImageList;
             }
+        }
+
+        private static int ResolveImageIndex(Page page) {
+            if (page.Project.StartPage != null && page.Project.StartPage.Id == page.Id) {
+                return page.Disable ? 3 : 1;
+            }
+
+            return page.Disable ? 2 : 0;
         }
 
         private void ApplyIcons() {
@@ -167,6 +177,10 @@ namespace WebsiteBuilder.UI.Controls {
             }
 
             EnableTreeControls();
+            FireContentUpdated();
+        }
+
+        private void FireContentUpdated() {
             ContentUpdated?.Invoke(this, new EventArgs());
         }
 
@@ -183,12 +197,10 @@ namespace WebsiteBuilder.UI.Controls {
             String[] columns = { GetItemText(item) };
 
             e.Item = new ListViewItem(columns);
-
-            if (item.Page.Project.StartPage != null && item.Page.Project.StartPage.Id == item.Page.Id) {
-                e.Item.ImageIndex = 1;
-            }
-            else {
-                e.Item.ImageIndex = 0;
+            e.Item.ImageIndex = ResolveImageIndex(item.Page);
+            
+            if (item.Page.Disable) {
+                e.Item.ForeColor = Color.Gray;
             }
 
             if (e.ItemIndex == _HighlightingIndex) {
@@ -444,6 +456,7 @@ namespace WebsiteBuilder.UI.Controls {
 
             SelectedPage?.RemoveContent(lvwContent.SelectedIndices[0]);
             RefreshContentList();
+            FireContentUpdated();
         }
 
         private void lvwContent_DoubleClick(object sender, EventArgs e) {
@@ -478,6 +491,7 @@ namespace WebsiteBuilder.UI.Controls {
             form.ShowDialog();
 
             RefreshContentList();
+            FireContentUpdated();
         }
 
         private void lvwContent_SelectedIndexChanged(object sender, EventArgs e) {
@@ -514,6 +528,7 @@ namespace WebsiteBuilder.UI.Controls {
             int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Up) ?? -1;
             RefreshContentList(newIndex);
             EnableContentControls();
+            FireContentUpdated();
         }
 
         private void MoveContentDown() {
@@ -524,6 +539,7 @@ namespace WebsiteBuilder.UI.Controls {
             int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Down) ?? -1;
             RefreshContentList(newIndex);
             EnableContentControls();
+            FireContentUpdated();
         }
     }
 

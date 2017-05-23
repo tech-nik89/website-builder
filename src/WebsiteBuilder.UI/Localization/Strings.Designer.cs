@@ -277,6 +277,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable.
+        /// </summary>
+        internal static string Disable {
+            get {
+                return ResourceManager.GetString("Disable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Down.
         /// </summary>
         internal static string Down {

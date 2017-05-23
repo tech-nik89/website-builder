@@ -34,6 +34,7 @@
             this.clnLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.chkDisable = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabDetails.SuspendLayout();
             this.tabTitle.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // tabDetails
             // 
+            this.tabDetails.Controls.Add(this.chkDisable);
             this.tabDetails.Controls.Add(this.chkIncludeInMenu);
             this.tabDetails.Controls.Add(this.txtPathName);
             this.tabDetails.Controls.Add(this.lblPathName);
@@ -158,6 +160,16 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
+            // chkDisable
+            // 
+            this.chkDisable.AutoSize = true;
+            this.chkDisable.Location = new System.Drawing.Point(113, 72);
+            this.chkDisable.Name = "chkDisable";
+            this.chkDisable.Size = new System.Drawing.Size(67, 17);
+            this.chkDisable.TabIndex = 5;
+            this.chkDisable.Text = "[Disable]";
+            this.chkDisable.UseVisualStyleBackColor = true;
+            // 
             // PagePropertiesForm
             // 
             this.AcceptButton = this.btnAccept;
@@ -193,5 +205,6 @@
         private System.Windows.Forms.ColumnHeader clnTitle;
         private System.Windows.Forms.ColumnHeader clnLanguage;
         private System.Windows.Forms.CheckBox chkIncludeInMenu;
+        private System.Windows.Forms.CheckBox chkDisable;
     }
 }

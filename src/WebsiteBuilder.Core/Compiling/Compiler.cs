@@ -86,7 +86,7 @@ namespace WebsiteBuilder.Core.Compiling {
                 }
 
                 foreach (Page page in _Project.AllPages) {
-                    if (settings.PreviewPage != null && page.Id != settings.PreviewPage.Id) {
+                    if (settings.PreviewPage != null && page.Id != settings.PreviewPage.Id || page.Disable) {
                         continue;
                     }
 
