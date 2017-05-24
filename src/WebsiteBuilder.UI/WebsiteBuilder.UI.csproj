@@ -116,11 +116,11 @@
     <Compile Include="Forms\PageContentSettingsForm.Designer.cs">
       <DependentUpon>PageContentSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PageMetaForm.cs">
+    <Compile Include="Forms\MetaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PageMetaForm.Designer.cs">
-      <DependentUpon>PageMetaForm.cs</DependentUpon>
+    <Compile Include="Forms\MetaForm.Designer.cs">
+      <DependentUpon>MetaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PagePropertiesForm.cs">
       <SubType>Form</SubType>
@@ -204,8 +204,8 @@
     <EmbeddedResource Include="Forms\PageContentSettingsForm.resx">
       <DependentUpon>PageContentSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PageMetaForm.resx">
-      <DependentUpon>PageMetaForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MetaForm.resx">
+      <DependentUpon>MetaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PagePropertiesForm.resx">
       <DependentUpon>PagePropertiesForm.cs</DependentUpon>

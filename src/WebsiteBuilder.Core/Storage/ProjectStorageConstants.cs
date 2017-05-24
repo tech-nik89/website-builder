@@ -59,6 +59,10 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String Disable = "disable";
 
+        public const String RobotsNoIndex = "robotsNoIndex";
+
+        public const String RobotsNoFollow = "robotsNoFollow";
+
         public const String Footer = "footer";
 
         public const String Link = "link";

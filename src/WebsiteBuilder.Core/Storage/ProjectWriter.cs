@@ -73,6 +73,8 @@ namespace WebsiteBuilder.Core.Storage {
                 new XAttribute(ProjectStorageConstants.Path, page.PathName),
                 new XAttribute(ProjectStorageConstants.IncludeInMenu, page.IncludeInMenu),
                 new XAttribute(ProjectStorageConstants.Disable, page.Disable),
+                new XAttribute(ProjectStorageConstants.RobotsNoIndex, page.RobotsNoIndex),
+                new XAttribute(ProjectStorageConstants.RobotsNoFollow, page.RobotsNoFollow),
                 new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
                 new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(page.MetaDescription)),
                 new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(page.MetaKeywords)),

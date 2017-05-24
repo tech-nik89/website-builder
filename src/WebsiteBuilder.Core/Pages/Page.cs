@@ -48,6 +48,20 @@ namespace WebsiteBuilder.Core.Pages {
 
         public LocalizedString MetaDescription { get; private set; }
 
+        private bool _RobotsNoIndex;
+
+        public bool RobotsNoIndex {
+            get => _RobotsNoIndex;
+            set { _RobotsNoIndex = value; Project.Dirty = true; }
+        }
+
+        private bool _RobotsNoFollow;
+
+        public bool RobotsNoFollow {
+            get => _RobotsNoFollow;
+            set { _RobotsNoFollow = value; Project.Dirty = true; }
+        }
+
         public int Level {
             get {
                 int level = 0;

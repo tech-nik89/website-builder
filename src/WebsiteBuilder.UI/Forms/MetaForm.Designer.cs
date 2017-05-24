@@ -1,5 +1,5 @@
 ﻿namespace WebsiteBuilder.UI.Forms {
-    partial class PageMetaForm {
+    partial class MetaForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -41,7 +41,7 @@
             this.gbxDescription.Controls.Add(this.txtDescription);
             this.gbxDescription.Location = new System.Drawing.Point(12, 12);
             this.gbxDescription.Name = "gbxDescription";
-            this.gbxDescription.Size = new System.Drawing.Size(503, 138);
+            this.gbxDescription.Size = new System.Drawing.Size(516, 138);
             this.gbxDescription.TabIndex = 0;
             this.gbxDescription.TabStop = false;
             this.gbxDescription.Text = "[Description]";
@@ -55,7 +55,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(491, 113);
+            this.txtDescription.Size = new System.Drawing.Size(504, 113);
             this.txtDescription.TabIndex = 0;
             // 
             // gbxKeywords
@@ -67,7 +67,7 @@
             this.gbxKeywords.Controls.Add(this.txtKeywords);
             this.gbxKeywords.Location = new System.Drawing.Point(12, 156);
             this.gbxKeywords.Name = "gbxKeywords";
-            this.gbxKeywords.Size = new System.Drawing.Size(503, 159);
+            this.gbxKeywords.Size = new System.Drawing.Size(516, 170);
             this.gbxKeywords.TabIndex = 1;
             this.gbxKeywords.TabStop = false;
             this.gbxKeywords.Text = "[Keywords]";
@@ -76,7 +76,7 @@
             // 
             this.lblKeywordsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblKeywordsDescription.AutoSize = true;
-            this.lblKeywordsDescription.Location = new System.Drawing.Point(6, 135);
+            this.lblKeywordsDescription.Location = new System.Drawing.Point(6, 146);
             this.lblKeywordsDescription.Name = "lblKeywordsDescription";
             this.lblKeywordsDescription.Size = new System.Drawing.Size(112, 13);
             this.lblKeywordsDescription.TabIndex = 2;
@@ -91,14 +91,14 @@
             this.txtKeywords.Multiline = true;
             this.txtKeywords.Name = "txtKeywords";
             this.txtKeywords.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtKeywords.Size = new System.Drawing.Size(491, 103);
+            this.txtKeywords.Size = new System.Drawing.Size(504, 114);
             this.txtKeywords.TabIndex = 1;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(415, 321);
+            this.btnCancel.Location = new System.Drawing.Point(428, 332);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 2;
@@ -109,7 +109,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(309, 321);
+            this.btnAccept.Location = new System.Drawing.Point(322, 332);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 3;
@@ -122,13 +122,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(527, 358);
+            this.ClientSize = new System.Drawing.Size(540, 369);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbxKeywords);
             this.Controls.Add(this.gbxDescription);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(450, 370);
             this.Name = "PageMetaForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

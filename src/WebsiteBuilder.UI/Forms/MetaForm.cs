@@ -5,7 +5,7 @@ using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class PageMetaForm : Form {
+    public partial class MetaForm : Form {
 
         private static String[] KeywordSeparator = { Environment.NewLine };
 
@@ -13,7 +13,7 @@ namespace WebsiteBuilder.UI.Forms {
 
         public String Description => txtDescription.Text;
 
-        public PageMetaForm(String description, String[] keywords) {
+        public MetaForm(String description, String[] keywords) {
             InitializeComponent();
             LocalizeComponent();
             ApplyIcons();

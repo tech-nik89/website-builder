@@ -682,6 +682,42 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Robots.
+        /// </summary>
+        internal static string Robots {
+            get {
+                return ResourceManager.GetString("Robots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The desired behavior of search engine&apos;s crawlers can be defined. Usually, they comply with the defined rules, but they don&apos;t have to. This is no guarantee, that the page can&apos;t be found..
+        /// </summary>
+        internal static string RobotsDescription {
+            get {
+                return ResourceManager.GetString("RobotsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t follow links on this page (nofollow).
+        /// </summary>
+        internal static string RobotsNoFollow {
+            get {
+                return ResourceManager.GetString("RobotsNoFollow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t add this page to the index (noindex).
+        /// </summary>
+        internal static string RobotsNoIndex {
+            get {
+                return ResourceManager.GetString("RobotsNoIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save {

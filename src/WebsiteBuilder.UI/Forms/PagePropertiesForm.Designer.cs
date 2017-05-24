@@ -34,14 +34,19 @@
             this.clnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clnLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMeta = new System.Windows.Forms.TabPage();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.lvwMeta = new System.Windows.Forms.ListView();
             this.clnMetaLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.tabRobots = new System.Windows.Forms.TabPage();
+            this.chkRobotsNoIndex = new System.Windows.Forms.CheckBox();
+            this.chkRobotsNoFollow = new System.Windows.Forms.CheckBox();
+            this.lblRobotsDescription = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabDetails.SuspendLayout();
             this.tabTitle.SuspendLayout();
             this.tabMeta.SuspendLayout();
+            this.tabRobots.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -52,6 +57,7 @@
             this.tabMain.Controls.Add(this.tabDetails);
             this.tabMain.Controls.Add(this.tabTitle);
             this.tabMain.Controls.Add(this.tabMeta);
+            this.tabMain.Controls.Add(this.tabRobots);
             this.tabMain.Location = new System.Drawing.Point(12, 12);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
@@ -67,7 +73,7 @@
             this.tabDetails.Location = new System.Drawing.Point(4, 22);
             this.tabDetails.Name = "tabDetails";
             this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(412, 240);
+            this.tabDetails.Size = new System.Drawing.Size(452, 240);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "[Details]";
             this.tabDetails.UseVisualStyleBackColor = true;
@@ -75,7 +81,7 @@
             // chkDisable
             // 
             this.chkDisable.AutoSize = true;
-            this.chkDisable.Location = new System.Drawing.Point(113, 72);
+            this.chkDisable.Location = new System.Drawing.Point(19, 62);
             this.chkDisable.Name = "chkDisable";
             this.chkDisable.Size = new System.Drawing.Size(67, 17);
             this.chkDisable.TabIndex = 5;
@@ -85,7 +91,7 @@
             // chkIncludeInMenu
             // 
             this.chkIncludeInMenu.AutoSize = true;
-            this.chkIncludeInMenu.Location = new System.Drawing.Point(113, 49);
+            this.chkIncludeInMenu.Location = new System.Drawing.Point(19, 39);
             this.chkIncludeInMenu.Name = "chkIncludeInMenu";
             this.chkIncludeInMenu.Size = new System.Drawing.Size(103, 17);
             this.chkIncludeInMenu.TabIndex = 4;
@@ -163,6 +169,26 @@
             this.tabMeta.Text = "[Meta]";
             this.tabMeta.UseVisualStyleBackColor = true;
             // 
+            // lvwMeta
+            // 
+            this.lvwMeta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnMetaLanguage});
+            this.lvwMeta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwMeta.FullRowSelect = true;
+            this.lvwMeta.GridLines = true;
+            this.lvwMeta.Location = new System.Drawing.Point(3, 3);
+            this.lvwMeta.Name = "lvwMeta";
+            this.lvwMeta.Size = new System.Drawing.Size(446, 234);
+            this.lvwMeta.TabIndex = 0;
+            this.lvwMeta.UseCompatibleStateImageBehavior = false;
+            this.lvwMeta.View = System.Windows.Forms.View.Details;
+            this.lvwMeta.DoubleClick += new System.EventHandler(this.lvwMeta_DoubleClick);
+            // 
+            // clnMetaLanguage
+            // 
+            this.clnMetaLanguage.Text = "[Language]";
+            this.clnMetaLanguage.Width = 180;
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -186,25 +212,49 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
-            // lvwMeta
+            // tabRobots
             // 
-            this.lvwMeta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clnMetaLanguage});
-            this.lvwMeta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvwMeta.FullRowSelect = true;
-            this.lvwMeta.GridLines = true;
-            this.lvwMeta.Location = new System.Drawing.Point(3, 3);
-            this.lvwMeta.Name = "lvwMeta";
-            this.lvwMeta.Size = new System.Drawing.Size(446, 234);
-            this.lvwMeta.TabIndex = 0;
-            this.lvwMeta.UseCompatibleStateImageBehavior = false;
-            this.lvwMeta.View = System.Windows.Forms.View.Details;
-            this.lvwMeta.DoubleClick += new System.EventHandler(this.lvwMeta_DoubleClick);
+            this.tabRobots.Controls.Add(this.lblRobotsDescription);
+            this.tabRobots.Controls.Add(this.chkRobotsNoFollow);
+            this.tabRobots.Controls.Add(this.chkRobotsNoIndex);
+            this.tabRobots.Location = new System.Drawing.Point(4, 22);
+            this.tabRobots.Name = "tabRobots";
+            this.tabRobots.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRobots.Size = new System.Drawing.Size(452, 240);
+            this.tabRobots.TabIndex = 3;
+            this.tabRobots.Text = "[Robots]";
+            this.tabRobots.UseVisualStyleBackColor = true;
             // 
-            // clnMetaLanguage
+            // chkRobotsNoIndex
             // 
-            this.clnMetaLanguage.Text = "[Language]";
-            this.clnMetaLanguage.Width = 180;
+            this.chkRobotsNoIndex.AutoSize = true;
+            this.chkRobotsNoIndex.Location = new System.Drawing.Point(20, 21);
+            this.chkRobotsNoIndex.Name = "chkRobotsNoIndex";
+            this.chkRobotsNoIndex.Size = new System.Drawing.Size(72, 17);
+            this.chkRobotsNoIndex.TabIndex = 0;
+            this.chkRobotsNoIndex.Text = "[NoIndex]";
+            this.chkRobotsNoIndex.UseVisualStyleBackColor = true;
+            // 
+            // chkRobotsNoFollow
+            // 
+            this.chkRobotsNoFollow.AutoSize = true;
+            this.chkRobotsNoFollow.Location = new System.Drawing.Point(20, 44);
+            this.chkRobotsNoFollow.Name = "chkRobotsNoFollow";
+            this.chkRobotsNoFollow.Size = new System.Drawing.Size(76, 17);
+            this.chkRobotsNoFollow.TabIndex = 1;
+            this.chkRobotsNoFollow.Text = "[NoFollow]";
+            this.chkRobotsNoFollow.UseVisualStyleBackColor = true;
+            // 
+            // lblRobotsDescription
+            // 
+            this.lblRobotsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRobotsDescription.Location = new System.Drawing.Point(17, 121);
+            this.lblRobotsDescription.Name = "lblRobotsDescription";
+            this.lblRobotsDescription.Size = new System.Drawing.Size(413, 99);
+            this.lblRobotsDescription.TabIndex = 2;
+            this.lblRobotsDescription.Text = "[Description]";
+            this.lblRobotsDescription.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // PagePropertiesForm
             // 
@@ -212,7 +262,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(484, 321);
+            this.ClientSize = new System.Drawing.Size(484, 322);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.tabMain);
@@ -226,6 +276,8 @@
             this.tabDetails.PerformLayout();
             this.tabTitle.ResumeLayout(false);
             this.tabMeta.ResumeLayout(false);
+            this.tabRobots.ResumeLayout(false);
+            this.tabRobots.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +299,9 @@
         private System.Windows.Forms.TabPage tabMeta;
         private System.Windows.Forms.ListView lvwMeta;
         private System.Windows.Forms.ColumnHeader clnMetaLanguage;
+        private System.Windows.Forms.TabPage tabRobots;
+        private System.Windows.Forms.CheckBox chkRobotsNoIndex;
+        private System.Windows.Forms.CheckBox chkRobotsNoFollow;
+        private System.Windows.Forms.Label lblRobotsDescription;
     }
 }

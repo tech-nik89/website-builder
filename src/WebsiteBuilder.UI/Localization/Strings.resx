@@ -378,4 +378,16 @@
   <data name="Meta" xml:space="preserve">
     <value>Meta</value>
   </data>
+  <data name="Robots" xml:space="preserve">
+    <value>Robots</value>
+  </data>
+  <data name="RobotsDescription" xml:space="preserve">
+    <value>The desired behavior of search engine's crawlers can be defined. Usually, they comply with the defined rules, but they don't have to. This is no guarantee, that the page can't be found.</value>
+  </data>
+  <data name="RobotsNoFollow" xml:space="preserve">
+    <value>Don't follow links on this page (nofollow)</value>
+  </data>
+  <data name="RobotsNoIndex" xml:space="preserve">
+    <value>Don't add this page to the index (noindex)</value>
+  </data>
 </root>

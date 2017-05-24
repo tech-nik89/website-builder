@@ -43,6 +43,7 @@ namespace WebsiteBuilder.UI.Forms {
             tabDetails.Text = Strings.Details;
             tabTitle.Text = Strings.Title;
             tabMeta.Text = Strings.Meta;
+            tabRobots.Text = Strings.Robots;
 
             clnLanguage.Text = Strings.Language;
             clnTitle.Text = Strings.Title;
@@ -50,9 +51,12 @@ namespace WebsiteBuilder.UI.Forms {
             clnMetaLanguage.Text = Strings.Language;
             
             lblPathName.Text = Strings.PathName + ":";
+            lblRobotsDescription.Text = Strings.RobotsDescription;
             
             chkIncludeInMenu.Text = Strings.IncludeInMenu;
             chkDisable.Text = Strings.Disable;
+            chkRobotsNoFollow.Text = Strings.RobotsNoFollow;
+            chkRobotsNoIndex.Text = Strings.RobotsNoIndex;
         }
 
         private void FillForm() {
@@ -62,6 +66,8 @@ namespace WebsiteBuilder.UI.Forms {
             txtPathName.Text = Page.PathName;
             chkIncludeInMenu.Checked = Page.IncludeInMenu;
             chkDisable.Checked = Page.Disable;
+            chkRobotsNoFollow.Checked = Page.RobotsNoFollow;
+            chkRobotsNoIndex.Checked = Page.RobotsNoIndex;
         }
 
         private void FillTitleList() {
@@ -107,6 +113,8 @@ namespace WebsiteBuilder.UI.Forms {
             page.PathName = txtPathName.Text;
             page.IncludeInMenu = chkIncludeInMenu.Checked;
             page.Disable = chkDisable.Checked;
+            page.RobotsNoFollow = chkRobotsNoFollow.Checked;
+            page.RobotsNoIndex = chkRobotsNoIndex.Checked;
 
             for (int i = 0; i < page.Project.Languages.Length; i++) {
                 page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);
@@ -136,7 +144,7 @@ namespace WebsiteBuilder.UI.Forms {
             String description = Page.MetaDescription.Get(language);
             String[] keywords = Page.MetaKeywords.Get(language);
 
-            PageMetaForm form = new PageMetaForm(description, keywords);
+            MetaForm form = new MetaForm(description, keywords);
             if (form.ShowDialog() != DialogResult.OK) {
                 return;
             }

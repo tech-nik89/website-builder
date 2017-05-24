@@ -90,14 +90,32 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
         }
 
         private void AddMeta(HtmlDocument document) {
+
+            // Description
             String description = _Page.MetaDescription.Get(_Language);
             if (!String.IsNullOrWhiteSpace(description)) {
                 document.AddMetaTag("description", description);
             }
 
+            // Keywords
             String[] keywords = _Page.MetaKeywords.Get(_Language);
             if (keywords != null && keywords.Length > 0) {
                 document.AddMetaTag("keywords", String.Join(", ", keywords));
+            }
+
+            // Robots
+            List<String> robots = new List<String>();
+
+            if (_Page.RobotsNoIndex) {
+                robots.Add("noindex");
+            }
+
+            if (_Page.RobotsNoFollow) {
+                robots.Add("nofollow");
+            }
+
+            if (robots.Any()) {
+                document.AddMetaTag("robots", String.Join(",", robots));
             }
         }
 
