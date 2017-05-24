@@ -164,6 +164,8 @@ namespace WebsiteBuilder.Core.Storage {
             _Project.OutputPath = GetFullPath(element.Element(ProjectStorageConstants.OutputPath).Value);
             _Project.ThemePath = GetFullPath(element.Element(ProjectStorageConstants.ThemePath).Value);
             _Project.UglyURLs = Convert.ToBoolean(element.Element(ProjectStorageConstants.UglyURLs)?.Value);
+            GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), _Project.MetaDescription);
+            GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), _Project.MetaKeywords);
 
             String startPageId = element.Element(ProjectStorageConstants.StartPage)?.Value ?? String.Empty;
             if (!String.IsNullOrWhiteSpace(startPageId)) {

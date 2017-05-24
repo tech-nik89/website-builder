@@ -106,7 +106,9 @@ namespace WebsiteBuilder.Core.Storage {
                 new XElement(ProjectStorageConstants.UglyURLs, _Project.UglyURLs),
                 new XElement(ProjectStorageConstants.OutputPath, GetRelativePath(_Project.OutputPath)),
                 new XElement(ProjectStorageConstants.ThemePath, GetRelativePath(_Project.ThemePath)),
-                new XElement(ProjectStorageConstants.StartPage, _Project.StartPage?.Id ?? String.Empty)
+                new XElement(ProjectStorageConstants.StartPage, _Project.StartPage?.Id ?? String.Empty),
+                new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(_Project.MetaDescription)),
+                new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(_Project.MetaKeywords))
             );
         }
 

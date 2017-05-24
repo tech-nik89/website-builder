@@ -34,9 +34,13 @@
             this.plsLanguages = new WebsiteBuilder.UI.Controls.ProjectLanguageSettings();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tabMeta = new System.Windows.Forms.TabPage();
+            this.lvwMeta = new System.Windows.Forms.ListView();
+            this.clnLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMain.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabLanguages.SuspendLayout();
+            this.tabMeta.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -45,11 +49,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMain.Controls.Add(this.tabGeneral);
             this.tabMain.Controls.Add(this.tabLanguages);
+            this.tabMain.Controls.Add(this.tabMeta);
             this.tabMain.Location = new System.Drawing.Point(12, 12);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(484, 251);
             this.tabMain.TabIndex = 0;
+            this.tabMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabMain_Selected);
             // 
             // tabGeneral
             // 
@@ -113,6 +119,38 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // tabMeta
+            // 
+            this.tabMeta.Controls.Add(this.lvwMeta);
+            this.tabMeta.Location = new System.Drawing.Point(4, 22);
+            this.tabMeta.Name = "tabMeta";
+            this.tabMeta.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMeta.Size = new System.Drawing.Size(476, 225);
+            this.tabMeta.TabIndex = 2;
+            this.tabMeta.Text = "[Meta]";
+            this.tabMeta.UseVisualStyleBackColor = true;
+            // 
+            // lvwMeta
+            // 
+            this.lvwMeta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnLanguage});
+            this.lvwMeta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwMeta.FullRowSelect = true;
+            this.lvwMeta.GridLines = true;
+            this.lvwMeta.Location = new System.Drawing.Point(3, 3);
+            this.lvwMeta.MultiSelect = false;
+            this.lvwMeta.Name = "lvwMeta";
+            this.lvwMeta.Size = new System.Drawing.Size(470, 219);
+            this.lvwMeta.TabIndex = 0;
+            this.lvwMeta.UseCompatibleStateImageBehavior = false;
+            this.lvwMeta.View = System.Windows.Forms.View.Details;
+            this.lvwMeta.DoubleClick += new System.EventHandler(this.lvwMeta_DoubleClick);
+            // 
+            // clnLanguage
+            // 
+            this.clnLanguage.Text = "[Language]";
+            this.clnLanguage.Width = 180;
+            // 
             // ProjectPropertiesForm
             // 
             this.AcceptButton = this.btnAccept;
@@ -131,6 +169,7 @@
             this.tabMain.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
             this.tabLanguages.ResumeLayout(false);
+            this.tabMeta.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -144,5 +183,8 @@
         private System.Windows.Forms.Button btnCancel;
         private Controls.ProjectGeneralSettings pgsGeneral;
         private Controls.ProjectLanguageSettings plsLanguages;
+        private System.Windows.Forms.TabPage tabMeta;
+        private System.Windows.Forms.ListView lvwMeta;
+        private System.Windows.Forms.ColumnHeader clnLanguage;
     }
 }

@@ -114,6 +114,10 @@ namespace WebsiteBuilder.Core {
 
         public CustomCollection<FooterSection> Footer { get; private set; }
 
+        public LocalizedString MetaDescription { get; private set; }
+
+        public LocalizedStringArray MetaKeywords { get; private set; }
+
         public bool Dirty { get; internal set; }
 
         public Project() {
@@ -121,6 +125,8 @@ namespace WebsiteBuilder.Core {
             Languages = new Language[0];
             Media = new CustomCollection<MediaItem>(this);
             Footer = new CustomCollection<FooterSection>(this);
+            MetaDescription = new LocalizedString(this);
+            MetaKeywords = new LocalizedStringArray(this);
             Dirty = false;
         }
 

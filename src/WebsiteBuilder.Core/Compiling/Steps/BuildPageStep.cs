@@ -94,13 +94,29 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             // Description
             String description = _Page.MetaDescription.Get(_Language);
             if (!String.IsNullOrWhiteSpace(description)) {
+                // Use page description
                 document.AddMetaTag("description", description);
+            }
+            else {
+                // Use project description
+                description = _Page.Project.MetaDescription.Get(_Language);
+                if (!String.IsNullOrWhiteSpace(description)) {
+                    document.AddMetaTag("description", description);
+                }
             }
 
             // Keywords
             String[] keywords = _Page.MetaKeywords.Get(_Language);
             if (keywords != null && keywords.Length > 0) {
+                // Use page keywords
                 document.AddMetaTag("keywords", String.Join(", ", keywords));
+            }
+            else {
+                // Use project keywords
+                keywords = _Page.Project.MetaKeywords.Get(_Language);
+                if (keywords != null && keywords.Length > 0) {
+                    document.AddMetaTag("keywords", String.Join(", ", keywords));
+                }
             }
 
             // Robots
