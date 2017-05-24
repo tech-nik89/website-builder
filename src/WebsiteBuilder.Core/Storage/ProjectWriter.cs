@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -93,7 +92,7 @@ namespace WebsiteBuilder.Core.Storage {
         }
 
         private IEnumerable<XElement> GetLocalizedStringArray(LocalizedStringArray str) {
-            return str.Data.Select(x => new XElement(x.Key, JsonConvert.SerializeObject(x.Value)));
+            return str.Data.Select(x => new XElement(x.Key, x.Value.Select(y => new XElement(ProjectStorageConstants.Item, y))));
         }
 
         private IEnumerable<XElement> GetLocalizedString(LocalizedString str) {

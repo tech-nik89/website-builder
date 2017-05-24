@@ -51,6 +51,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             HtmlDocument htmlFile = new HtmlDocument();
             _CompileHelper = new CompileHelper(htmlFile, _File, CreateSubPage);
 
+            AddMeta(htmlFile);
+
             String path = CreatePath();
 
             String[] pageContent = new String[_Page.ContentCount];
@@ -85,6 +87,18 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
             AddScripts(htmlFile);
 
             htmlFile.Compile(_File.FullName);
+        }
+
+        private void AddMeta(HtmlDocument document) {
+            String description = _Page.MetaDescription.Get(_Language);
+            if (!String.IsNullOrWhiteSpace(description)) {
+                document.AddMetaTag("description", description);
+            }
+
+            String[] keywords = _Page.MetaKeywords.Get(_Language);
+            if (keywords != null && keywords.Length > 0) {
+                document.AddMetaTag("keywords", String.Join(", ", keywords));
+            }
         }
 
         private String CreateSubPage(String pathName, String content) {

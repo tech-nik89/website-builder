@@ -75,5 +75,7 @@ namespace WebsiteBuilder.Core.Storage {
 
         public const String MetaKeywords = "metaKeywords";
 
+        public const String Item = "item";
+
     }
 }

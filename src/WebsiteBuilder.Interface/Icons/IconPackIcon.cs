@@ -21,6 +21,7 @@
         Footer,
         OrderUp,
         OrderDown,
-        About
+        About,
+        MetaTag
     }
 }

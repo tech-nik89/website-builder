@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Localization;
+using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class PageMetaForm : Form {
@@ -14,6 +16,7 @@ namespace WebsiteBuilder.UI.Forms {
         public PageMetaForm(String description, String[] keywords) {
             InitializeComponent();
             LocalizeComponent();
+            ApplyIcons();
             DialogResult = DialogResult.Cancel;
 
             if (!String.IsNullOrWhiteSpace(description)) {
@@ -23,6 +26,15 @@ namespace WebsiteBuilder.UI.Forms {
             if (keywords != null && keywords.Length > 0) {
                 txtKeywords.Text = String.Join(Environment.NewLine, keywords);
             }
+        }
+
+        private void ApplyIcons() {
+            IIconPack iconPack = IconPack.Current;
+            if (iconPack == null) {
+                return;
+            }
+
+            Icon = iconPack.GetIcon(IconPackIcon.MetaTag);
         }
 
         private void LocalizeComponent() {

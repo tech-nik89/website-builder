@@ -125,6 +125,13 @@ namespace WebsiteBuilder.Core.Compiling {
             }
         }
 
+        public void AddMetaTag(String name, String content) {
+            HtmlElement tag = new HtmlElement(TagMeta);
+            tag.SetAttribute(AttributeName, name);
+            tag.SetAttribute(AttributeContent, content);
+            _Head.AppendChild(tag);
+        }
+
         public String Body {
 			get {
 				return _Body.Content;

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -131,7 +130,7 @@ namespace WebsiteBuilder.Core.Storage {
             }
 
             foreach (XElement item in element.Elements()) {
-                str.Set(item.Name.ToString(), JsonConvert.DeserializeObject<String[]>(item.Value));
+                str.Set(item.Name.ToString(), item.Elements(ProjectStorageConstants.Item).Select(x => x.Value).ToArray());
             }
         }
 

@@ -24,12 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             this.gbxDescription = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.gbxKeywords = new System.Windows.Forms.GroupBox();
+            this.lblKeywordsDescription = new System.Windows.Forms.Label();
+            this.txtKeywords = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtKeywords = new System.Windows.Forms.TextBox();
-            this.lblKeywordsDescription = new System.Windows.Forms.Label();
             this.gbxDescription.SuspendLayout();
             this.gbxKeywords.SuspendLayout();
             this.SuspendLayout();
@@ -41,47 +41,10 @@
             this.gbxDescription.Controls.Add(this.txtDescription);
             this.gbxDescription.Location = new System.Drawing.Point(12, 12);
             this.gbxDescription.Name = "gbxDescription";
-            this.gbxDescription.Size = new System.Drawing.Size(439, 138);
+            this.gbxDescription.Size = new System.Drawing.Size(503, 138);
             this.gbxDescription.TabIndex = 0;
             this.gbxDescription.TabStop = false;
             this.gbxDescription.Text = "[Description]";
-            // 
-            // gbxKeywords
-            // 
-            this.gbxKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxKeywords.Controls.Add(this.lblKeywordsDescription);
-            this.gbxKeywords.Controls.Add(this.txtKeywords);
-            this.gbxKeywords.Location = new System.Drawing.Point(12, 156);
-            this.gbxKeywords.Name = "gbxKeywords";
-            this.gbxKeywords.Size = new System.Drawing.Size(439, 198);
-            this.gbxKeywords.TabIndex = 1;
-            this.gbxKeywords.TabStop = false;
-            this.gbxKeywords.Text = "[Keywords]";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(351, 360);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 25);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "[Cancel]";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(245, 360);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(100, 25);
-            this.btnAccept.TabIndex = 3;
-            this.btnAccept.Text = "[OK]";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // txtDescription
             // 
@@ -92,8 +55,32 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(427, 113);
+            this.txtDescription.Size = new System.Drawing.Size(491, 113);
             this.txtDescription.TabIndex = 0;
+            // 
+            // gbxKeywords
+            // 
+            this.gbxKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxKeywords.Controls.Add(this.lblKeywordsDescription);
+            this.gbxKeywords.Controls.Add(this.txtKeywords);
+            this.gbxKeywords.Location = new System.Drawing.Point(12, 156);
+            this.gbxKeywords.Name = "gbxKeywords";
+            this.gbxKeywords.Size = new System.Drawing.Size(503, 159);
+            this.gbxKeywords.TabIndex = 1;
+            this.gbxKeywords.TabStop = false;
+            this.gbxKeywords.Text = "[Keywords]";
+            // 
+            // lblKeywordsDescription
+            // 
+            this.lblKeywordsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblKeywordsDescription.AutoSize = true;
+            this.lblKeywordsDescription.Location = new System.Drawing.Point(6, 135);
+            this.lblKeywordsDescription.Name = "lblKeywordsDescription";
+            this.lblKeywordsDescription.Size = new System.Drawing.Size(112, 13);
+            this.lblKeywordsDescription.TabIndex = 2;
+            this.lblKeywordsDescription.Text = "[KeywordsDescription]";
             // 
             // txtKeywords
             // 
@@ -104,26 +91,38 @@
             this.txtKeywords.Multiline = true;
             this.txtKeywords.Name = "txtKeywords";
             this.txtKeywords.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtKeywords.Size = new System.Drawing.Size(427, 142);
+            this.txtKeywords.Size = new System.Drawing.Size(491, 103);
             this.txtKeywords.TabIndex = 1;
             // 
-            // lblKeywordsDescription
+            // btnCancel
             // 
-            this.lblKeywordsDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblKeywordsDescription.AutoSize = true;
-            this.lblKeywordsDescription.Location = new System.Drawing.Point(6, 174);
-            this.lblKeywordsDescription.Name = "lblKeywordsDescription";
-            this.lblKeywordsDescription.Size = new System.Drawing.Size(112, 13);
-            this.lblKeywordsDescription.TabIndex = 2;
-            this.lblKeywordsDescription.Text = "[KeywordsDescription]";
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(415, 321);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 25);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "[Cancel]";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAccept.Location = new System.Drawing.Point(309, 321);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(100, 25);
+            this.btnAccept.TabIndex = 3;
+            this.btnAccept.Text = "[OK]";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // PageMetaForm
             // 
-            this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(463, 397);
+            this.ClientSize = new System.Drawing.Size(527, 358);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbxKeywords);
@@ -131,7 +130,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PageMetaForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Meta]";
