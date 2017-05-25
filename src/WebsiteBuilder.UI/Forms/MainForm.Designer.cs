@@ -252,6 +252,7 @@
             this.ptvwPages.Location = new System.Drawing.Point(0, 49);
             this.ptvwPages.Name = "ptvwPages";
             this.ptvwPages.Project = null;
+            this.ptvwPages.SelectedLanguage = null;
             this.ptvwPages.Size = new System.Drawing.Size(861, 410);
             this.ptvwPages.TabIndex = 0;
             this.ptvwPages.ContentUpdated += new System.EventHandler(this.ptvwPages_ContentUpdated);
@@ -392,6 +393,7 @@
             this.Controls.Add(this.sstMain);
             this.Controls.Add(this.mnuMain);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

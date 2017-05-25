@@ -7,7 +7,7 @@
     <ProjectGuid>{27727468-3DA1-45EE-AA93-2E6CBF9220E1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WebsiteBuilder.UI</RootNamespace>
-    <AssemblyName>WebsiteBuilder.UI</AssemblyName>
+    <AssemblyName>WebsiteBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -30,6 +30,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -256,6 +263,9 @@
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
       <Name>WebsiteBuilder.Interface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
