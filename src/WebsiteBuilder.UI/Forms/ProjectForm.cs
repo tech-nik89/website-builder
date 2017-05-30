@@ -91,14 +91,14 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
-            Project project = Project.Load(ofdProject.FileName);
-
-            if (project != null) {
+            try {
+                Project project = Project.Load(ofdProject.FileName);
+                
                 CurrentProject = project;
                 UpdateFormText();
             }
-            else {
-                HandleError(Strings.ProjectLoadErrorMessage);
+            catch (Exception e) {
+                HandleError(Strings.ProjectLoadErrorMessage, e);
             }
         }
 
@@ -170,12 +170,27 @@ namespace WebsiteBuilder.UI.Forms {
             tspProgress.Value = 0;
         }
 
-        private void HandleError(Exception e) {
-            HandleError(e.Message);
+        private void HandleError(String message) {
+            HandleError(message, null);
         }
 
-        private void HandleError(String message) {
-            MessageBox.Show(message, Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        private void HandleError(Exception e) {
+            HandleError(e.Message, null);
+        }
+        
+        private void HandleError(String message, Exception e) {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(message);
+
+            if (e != null) {
+                builder.AppendLine();
+                builder.AppendLine();
+                builder.Append(Strings.Details);
+                builder.Append(": ");
+                builder.Append(e.Message);
+            }
+
+            MessageBox.Show(builder.ToString(), Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void OpenProjectInDefaultBrowser(Project project) {

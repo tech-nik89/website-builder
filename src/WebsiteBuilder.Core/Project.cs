@@ -166,16 +166,24 @@ namespace WebsiteBuilder.Core {
         }
 
         public static void Save(Project project, String path) {
-            using(ProjectWriter writer = new ProjectWriter(project, path)) {
+            if (project == null) {
+                return;
+            }
+
+            using (ProjectWriter writer = new ProjectWriter(project, path)) {
                 writer.Write();
                 project.Dirty = false;
             }
         }
 
-        public static Project Load(string path) {
+        public static Project Load(String path) {
             using (var reader = new ProjectReader(path)) {
                 Project project = reader.Read();
-                project.Dirty = false;
+
+                if (project == null) {
+                    throw reader.Exception ?? new Exception();
+                }
+
                 return project;
             }
         }

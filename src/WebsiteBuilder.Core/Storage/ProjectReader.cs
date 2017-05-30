@@ -17,6 +17,8 @@ namespace WebsiteBuilder.Core.Storage {
 
         private readonly Project _Project;
 
+        public Exception Exception { get; private set; }
+
         public ProjectReader(String path) {
             _File = new FileInfo(path);
             _Project = new Project();
@@ -38,9 +40,11 @@ namespace WebsiteBuilder.Core.Storage {
 
                 GetSettings(root.Element(ProjectStorageConstants.Settings));
 
+                _Project.Dirty = false;
                 return _Project;
             }
-            catch {
+            catch (Exception e) {
+                Exception = e;
                 return null;
             }
         }
