@@ -18,11 +18,11 @@ OutputBaseFilename=WebsiteBuilderSetup_{#ApplicationVersion}
 UninstallDisplayIcon={app}\WebsiteBuilder.exe
 
 [Files]
-Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{app}"; Components: Core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: Core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\*.dll"; DestDir: "{app}"; Components: Core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: Core
-Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: Themes
+Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{app}"; Components: core
+Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: core
+Source: "..\src\WebsiteBuilder.UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
+Source: "..\src\WebsiteBuilder.UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
+Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
 
 [Icons]
