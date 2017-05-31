@@ -126,6 +126,9 @@
   <data name="HeaderPosition" xml:space="preserve">
     <value>Header Position</value>
   </data>
+  <data name="InsertLink" xml:space="preserve">
+    <value>Insert Link</value>
+  </data>
   <data name="Left" xml:space="preserve">
     <value>Left</value>
   </data>

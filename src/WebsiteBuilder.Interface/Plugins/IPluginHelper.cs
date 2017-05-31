@@ -16,5 +16,7 @@ namespace WebsiteBuilder.Interface.Plugins {
 
         String NewGuid();
 
+        String GetLink();
+
     }
 }

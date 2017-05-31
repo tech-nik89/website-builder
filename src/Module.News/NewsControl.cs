@@ -16,9 +16,7 @@ namespace WebsiteBuilder.Modules.News {
                 RefreshList();
             }
         }
-
-        public bool SupportsMediaLinks => false;
-
+        
         private readonly IPluginHelper _PluginHelper;
 
         public NewsControl(IPluginHelper pluginHelper) {
@@ -51,8 +49,8 @@ namespace WebsiteBuilder.Modules.News {
             clnCreated.Text = Strings.Created;
         }
 
-        public void ApplyMediaLink(String str) {
-            
+        public void Insert(String str) {
+            // ignore
         }
 
         private void RefreshList() {

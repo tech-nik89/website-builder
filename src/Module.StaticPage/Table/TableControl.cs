@@ -39,9 +39,7 @@ namespace WebsiteBuilder.Modules.Table {
                 tscHeaderPosition.SelectedIndex = (int)_Data.HeaderPosition;
             }
         }
-
-        public bool SupportsMediaLinks => true;
-
+        
         public TableControl(IPluginHelper pluginHelper) {
             InitializeComponent();
             LocalizeComponent();
@@ -75,7 +73,7 @@ namespace WebsiteBuilder.Modules.Table {
             tslHeaderPosition.Text = Strings.HeaderPosition + ":";
         }
 
-        public void ApplyMediaLink(String str) {
+        public void Insert(String str) {
             int selectionIndex = txtData.SelectionStart;
             txtData.Text = txtData.Text.Insert(selectionIndex, str);
             txtData.SelectionStart = selectionIndex + str.Length;

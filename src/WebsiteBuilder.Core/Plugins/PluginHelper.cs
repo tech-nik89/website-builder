@@ -13,10 +13,17 @@ namespace WebsiteBuilder.Core.Plugins {
 
         private readonly Project _Project;
 
-        public PluginHelper(Project project, Type editorType, IIconPack iconPack) {
+        private readonly Func<String> _GetLink;
+        
+        public PluginHelper(Project project, Type editorType, IIconPack iconPack)
+            : this (project, editorType, iconPack, null) {
+        }
+
+        public PluginHelper(Project project, Type editorType, IIconPack iconPack, Func<String> getLink) {
             _Project = project;
             _EditorType = editorType;
             _IconPack = iconPack;
+            _GetLink = getLink;
         }
 
         public IEditor CreateEditor() {
@@ -49,6 +56,10 @@ namespace WebsiteBuilder.Core.Plugins {
 
         public String NewGuid() {
             return Utilities.NewGuid();
+        }
+
+        public String GetLink() {
+            return _GetLink?.Invoke();
         }
     }
 }

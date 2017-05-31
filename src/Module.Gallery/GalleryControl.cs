@@ -14,14 +14,22 @@ namespace WebsiteBuilder.Modules.Gallery {
         private const String AutoCopyGalleryDirectoryName = "gallery";
 
         private const int ImageSize = 64;
-
-        public bool SupportsMediaLinks => false;
-
+        
         private readonly IPluginHelper _PluginHelper;
 
         private GalleryData _Data;
 
         private readonly ImageList _ImageList;
+
+        public String Data {
+            get {
+                return GalleryData.Serialize(_Data, _PluginHelper);
+            }
+            set {
+                _Data = GalleryData.Deserialize(value, _PluginHelper);
+                RefreshList();
+            }
+        }
 
         public GalleryControl(IPluginHelper pluginHelper) {
             InitializeComponent();
@@ -47,19 +55,9 @@ namespace WebsiteBuilder.Modules.Gallery {
             tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
             tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
         }
-
-        public String Data {
-            get {
-                return GalleryData.Serialize(_Data, _PluginHelper);
-            }
-            set {
-                _Data = GalleryData.Deserialize(value, _PluginHelper);
-                RefreshList();
-            }
-        }
-
-        public void ApplyMediaLink(String str) {
-            
+        
+        public void Insert(String str) {
+            // ignore
         }
 
         private void tsbAdd_Click(object sender, EventArgs e) {

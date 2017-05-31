@@ -28,7 +28,6 @@
             this.tsbSaveAndClose = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbMediaLink = new System.Windows.Forms.ToolStripButton();
             this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.pnlModuleContainer = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
@@ -40,7 +39,6 @@
             this.tsbSaveAndClose,
             this.tsbSave,
             this.toolStripSeparator1,
-            this.tsbMediaLink,
             this.tsbSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -70,15 +68,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbMediaLink
-            // 
-            this.tsbMediaLink.Image = ((System.Drawing.Image)(resources.GetObject("tsbMediaLink.Image")));
-            this.tsbMediaLink.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbMediaLink.Name = "tsbMediaLink";
-            this.tsbMediaLink.Size = new System.Drawing.Size(89, 22);
-            this.tsbMediaLink.Text = "{Insert Link]";
-            this.tsbMediaLink.Click += new System.EventHandler(this.tsbMediaLink_Click);
             // 
             // tsbSettings
             // 
@@ -124,7 +113,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbSettings;
         private System.Windows.Forms.Panel pnlModuleContainer;
-        private System.Windows.Forms.ToolStripButton tsbMediaLink;
         private System.Windows.Forms.ToolStripButton tsbSave;
     }
 }

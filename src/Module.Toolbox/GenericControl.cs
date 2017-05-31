@@ -21,9 +21,7 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
         private readonly List<T> _Data;
 
         private readonly GenericField<T>[] _Fields;
-
-        public bool SupportsMediaLinks => false;
-
+        
         private readonly IPluginHelper _PluginHelper;
         
         public GenericControl(IPluginHelper pluginHelper) {
@@ -74,7 +72,8 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
             lvwData.VirtualListSize = _Data.Count;
         }
         
-        public void ApplyMediaLink(string str) {
+        public void Insert(String str) {
+            // ignore
         }
 
         private void tsbAdd_Click(object sender, EventArgs e) {

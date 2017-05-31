@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Plugins;
@@ -36,7 +37,6 @@ namespace WebsiteBuilder.UI.Forms {
             Icon = IconPack.Current.GetIcon(IconPackIcon.EditContent);
             tsbSaveAndClose.Image = IconPack.Current.GetImage(IconPackIcon.SaveClose);
             tsbSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
-            tsbMediaLink.Image = IconPack.Current.GetImage(IconPackIcon.InsertLink);
             tsbSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
         }
 
@@ -44,12 +44,22 @@ namespace WebsiteBuilder.UI.Forms {
             Text = Strings.EditContent;
             tsbSaveAndClose.Text = Strings.SaveAndClose;
             tsbSave.Text = Strings.Save;
-            tsbMediaLink.Text = Strings.InsertLink;
             tsbSettings.Text = Strings.ContentSettings;
         }
 
+        private String GetLink() {
+            InsertLinkForm form = new InsertLinkForm(_Page.Project);
+            var result = form.ShowDialog();
+
+            if (result != DialogResult.OK) {
+                return String.Empty;
+            }
+
+            return form.Link;
+        }
+
         private void LoadModule() {
-            IModule module = PluginManager.LoadModule(_Content, IconPack.Current, _Page.Project);
+            IModule module = PluginManager.LoadModule(_Content, IconPack.Current, _Page.Project, GetLink);
 
             if (module == null) {
                 ShowSettings(true);
@@ -68,9 +78,7 @@ namespace WebsiteBuilder.UI.Forms {
 
             pnlModuleContainer.Controls.Clear();
             pnlModuleContainer.Controls.Add(control);
-
-            tsbMediaLink.Enabled = _Control.SupportsMediaLinks;
-
+            
             LoadData();
         }
 
@@ -101,18 +109,7 @@ namespace WebsiteBuilder.UI.Forms {
         private void tsbSave_Click(object sender, System.EventArgs e) {
             Save();
         }
-
-        private void tsbMediaLink_Click(object sender, System.EventArgs e) {
-            InsertLinkForm form = new InsertLinkForm(_Page.Project);
-            var result = form.ShowDialog();
-
-            if (result != DialogResult.OK) {
-                return;
-            }
-
-            _Control.ApplyMediaLink(form.Link);
-        }
-
+        
         private void tsbSaveAndClose_Click(object sender, System.EventArgs e) {
             Save();
             Close();

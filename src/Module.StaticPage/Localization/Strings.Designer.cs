@@ -88,6 +88,15 @@ namespace WebsiteBuilder.Modules.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert Link.
+        /// </summary>
+        internal static string InsertLink {
+            get {
+                return ResourceManager.GetString("InsertLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Left.
         /// </summary>
         internal static string Left {
