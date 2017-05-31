@@ -60,7 +60,7 @@
             this.tscLanguage});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(708, 25);
+            this.tsMain.Size = new System.Drawing.Size(752, 25);
             this.tsMain.TabIndex = 0;
             this.tsMain.Text = "toolStrip1";
             // 
@@ -103,7 +103,7 @@
             this.lvwSections.Location = new System.Drawing.Point(0, 0);
             this.lvwSections.MultiSelect = false;
             this.lvwSections.Name = "lvwSections";
-            this.lvwSections.Size = new System.Drawing.Size(275, 356);
+            this.lvwSections.Size = new System.Drawing.Size(292, 397);
             this.lvwSections.TabIndex = 1;
             this.lvwSections.UseCompatibleStateImageBehavior = false;
             this.lvwSections.View = System.Windows.Forms.View.Details;
@@ -130,8 +130,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gbxLinks);
             this.splitContainer1.Panel2.Controls.Add(this.gbxTitle);
-            this.splitContainer1.Size = new System.Drawing.Size(708, 356);
-            this.splitContainer1.SplitterDistance = 275;
+            this.splitContainer1.Size = new System.Drawing.Size(752, 397);
+            this.splitContainer1.SplitterDistance = 292;
             this.splitContainer1.TabIndex = 2;
             // 
             // gbxLinks
@@ -145,7 +145,7 @@
             this.gbxLinks.Controls.Add(this.lvwLinks);
             this.gbxLinks.Location = new System.Drawing.Point(3, 60);
             this.gbxLinks.Name = "gbxLinks";
-            this.gbxLinks.Size = new System.Drawing.Size(423, 293);
+            this.gbxLinks.Size = new System.Drawing.Size(450, 334);
             this.gbxLinks.TabIndex = 1;
             this.gbxLinks.TabStop = false;
             this.gbxLinks.Text = "[Links]";
@@ -153,7 +153,7 @@
             // btnLinkDelete
             // 
             this.btnLinkDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLinkDelete.Location = new System.Drawing.Point(218, 259);
+            this.btnLinkDelete.Location = new System.Drawing.Point(218, 300);
             this.btnLinkDelete.Name = "btnLinkDelete";
             this.btnLinkDelete.Size = new System.Drawing.Size(100, 25);
             this.btnLinkDelete.TabIndex = 3;
@@ -164,7 +164,7 @@
             // btnLinkEdit
             // 
             this.btnLinkEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLinkEdit.Location = new System.Drawing.Point(112, 259);
+            this.btnLinkEdit.Location = new System.Drawing.Point(112, 300);
             this.btnLinkEdit.Name = "btnLinkEdit";
             this.btnLinkEdit.Size = new System.Drawing.Size(100, 25);
             this.btnLinkEdit.TabIndex = 2;
@@ -175,7 +175,7 @@
             // btnLinkAdd
             // 
             this.btnLinkAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLinkAdd.Location = new System.Drawing.Point(6, 259);
+            this.btnLinkAdd.Location = new System.Drawing.Point(6, 300);
             this.btnLinkAdd.Name = "btnLinkAdd";
             this.btnLinkAdd.Size = new System.Drawing.Size(100, 25);
             this.btnLinkAdd.TabIndex = 1;
@@ -196,7 +196,7 @@
             this.lvwLinks.Location = new System.Drawing.Point(6, 19);
             this.lvwLinks.MultiSelect = false;
             this.lvwLinks.Name = "lvwLinks";
-            this.lvwLinks.Size = new System.Drawing.Size(411, 234);
+            this.lvwLinks.Size = new System.Drawing.Size(438, 275);
             this.lvwLinks.TabIndex = 0;
             this.lvwLinks.UseCompatibleStateImageBehavior = false;
             this.lvwLinks.View = System.Windows.Forms.View.Details;
@@ -226,7 +226,7 @@
             this.gbxTitle.Controls.Add(this.txtTitle);
             this.gbxTitle.Location = new System.Drawing.Point(3, 3);
             this.gbxTitle.Name = "gbxTitle";
-            this.gbxTitle.Size = new System.Drawing.Size(423, 51);
+            this.gbxTitle.Size = new System.Drawing.Size(450, 51);
             this.gbxTitle.TabIndex = 0;
             this.gbxTitle.TabStop = false;
             this.gbxTitle.Text = "[Title]";
@@ -237,7 +237,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTitle.Location = new System.Drawing.Point(6, 19);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(411, 20);
+            this.txtTitle.Size = new System.Drawing.Size(438, 20);
             this.txtTitle.TabIndex = 0;
             this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
@@ -245,10 +245,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 381);
+            this.ClientSize = new System.Drawing.Size(752, 422);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.tsMain);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(650, 300);
             this.Name = "FooterContentForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -36,16 +36,17 @@
             this.txtError.Name = "txtError";
             this.txtError.ReadOnly = true;
             this.txtError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtError.Size = new System.Drawing.Size(625, 324);
+            this.txtError.Size = new System.Drawing.Size(534, 311);
             this.txtError.TabIndex = 0;
             // 
             // CompilerErrorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 324);
+            this.ClientSize = new System.Drawing.Size(534, 311);
             this.Controls.Add(this.txtError);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(350, 200);
             this.Name = "CompilerErrorForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

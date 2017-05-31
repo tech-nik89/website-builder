@@ -82,7 +82,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(861, 24);
+            this.mnuMain.Size = new System.Drawing.Size(833, 24);
             this.mnuMain.TabIndex = 1;
             this.mnuMain.Text = "menuStrip1";
             // 
@@ -253,7 +253,7 @@
             this.ptvwPages.Name = "ptvwPages";
             this.ptvwPages.Project = null;
             this.ptvwPages.SelectedLanguage = null;
-            this.ptvwPages.Size = new System.Drawing.Size(861, 410);
+            this.ptvwPages.Size = new System.Drawing.Size(833, 420);
             this.ptvwPages.TabIndex = 0;
             this.ptvwPages.ContentUpdated += new System.EventHandler(this.ptvwPages_ContentUpdated);
             this.ptvwPages.BuildPageRequested += new System.EventHandler<WebsiteBuilder.UI.Controls.BuildPageEventArgs>(this.ptvwPages_BuildPageRequested);
@@ -263,16 +263,16 @@
             this.sstMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslStatus,
             this.tspProgress});
-            this.sstMain.Location = new System.Drawing.Point(0, 459);
+            this.sstMain.Location = new System.Drawing.Point(0, 469);
             this.sstMain.Name = "sstMain";
-            this.sstMain.Size = new System.Drawing.Size(861, 22);
+            this.sstMain.Size = new System.Drawing.Size(833, 22);
             this.sstMain.TabIndex = 2;
             this.sstMain.Text = "statusStrip1";
             // 
             // tslStatus
             // 
             this.tslStatus.Name = "tslStatus";
-            this.tslStatus.Size = new System.Drawing.Size(704, 17);
+            this.tslStatus.Size = new System.Drawing.Size(676, 17);
             this.tslStatus.Spring = true;
             this.tslStatus.Text = "[...]";
             this.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -297,7 +297,7 @@
             this.tscLanguage});
             this.tsMain.Location = new System.Drawing.Point(0, 24);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(861, 25);
+            this.tsMain.Size = new System.Drawing.Size(833, 25);
             this.tsMain.TabIndex = 3;
             this.tsMain.Text = "toolStrip1";
             // 
@@ -387,7 +387,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 481);
+            this.ClientSize = new System.Drawing.Size(833, 491);
             this.Controls.Add(this.ptvwPages);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.sstMain);
@@ -395,6 +395,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
+            this.MinimumSize = new System.Drawing.Size(580, 300);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[Open Website Builder]";

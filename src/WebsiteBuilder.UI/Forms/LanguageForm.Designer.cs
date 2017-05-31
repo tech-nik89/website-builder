@@ -46,7 +46,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtID.Location = new System.Drawing.Point(96, 19);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(228, 20);
+            this.txtID.Size = new System.Drawing.Size(229, 20);
             this.txtID.TabIndex = 1;
             // 
             // txtDescription
@@ -55,7 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Location = new System.Drawing.Point(96, 45);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(228, 20);
+            this.txtDescription.Size = new System.Drawing.Size(229, 20);
             this.txtDescription.TabIndex = 3;
             // 
             // lblDescription
@@ -71,7 +71,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(251, 92);
+            this.btnCancel.Location = new System.Drawing.Point(252, 94);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 4;
@@ -82,7 +82,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(145, 92);
+            this.btnAccept.Location = new System.Drawing.Point(146, 94);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 5;
@@ -96,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(363, 129);
+            this.ClientSize = new System.Drawing.Size(364, 131);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtDescription);
@@ -104,6 +104,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblId);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(380, 170);
             this.Name = "LanguageForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

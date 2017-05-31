@@ -22,8 +22,9 @@ Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{ap
 Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: core
 Source: "..\src\WebsiteBuilder.UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
 Source: "..\src\WebsiteBuilder.UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
-Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
+Source: "..\src\WebsiteBuilder.UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
+Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
 
 [Icons]
 Name: "{group}\Website Builder"; Filename: "{app}\WebsiteBuilder.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2

@@ -42,7 +42,7 @@
             this.tsbSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(582, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(384, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -83,17 +83,18 @@
             this.pnlModuleContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlModuleContainer.Location = new System.Drawing.Point(0, 25);
             this.pnlModuleContainer.Name = "pnlModuleContainer";
-            this.pnlModuleContainer.Size = new System.Drawing.Size(582, 384);
+            this.pnlModuleContainer.Size = new System.Drawing.Size(384, 186);
             this.pnlModuleContainer.TabIndex = 1;
             // 
             // PageContentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 409);
+            this.ClientSize = new System.Drawing.Size(384, 211);
             this.Controls.Add(this.pnlModuleContainer);
             this.Controls.Add(this.toolStrip1);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 250);
             this.Name = "PageContentForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

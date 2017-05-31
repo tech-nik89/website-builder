@@ -53,7 +53,7 @@
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Location = new System.Drawing.Point(101, 38);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(305, 21);
+            this.cbxType.Size = new System.Drawing.Size(308, 21);
             this.cbxType.TabIndex = 1;
             this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
             // 
@@ -66,7 +66,7 @@
             "_blank"});
             this.cbxTarget.Location = new System.Drawing.Point(101, 65);
             this.cbxTarget.Name = "cbxTarget";
-            this.cbxTarget.Size = new System.Drawing.Size(305, 21);
+            this.cbxTarget.Size = new System.Drawing.Size(308, 21);
             this.cbxTarget.TabIndex = 3;
             // 
             // lblTarget
@@ -93,13 +93,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtURL.Location = new System.Drawing.Point(101, 92);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(237, 20);
+            this.txtURL.Size = new System.Drawing.Size(240, 20);
             this.txtURL.TabIndex = 5;
             // 
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.Location = new System.Drawing.Point(344, 90);
+            this.btnBrowse.Location = new System.Drawing.Point(347, 90);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(62, 23);
             this.btnBrowse.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(306, 131);
+            this.btnCancel.Location = new System.Drawing.Point(309, 124);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 7;
@@ -122,7 +122,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(200, 131);
+            this.btnAccept.Location = new System.Drawing.Point(203, 124);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 8;
@@ -136,7 +136,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtText.Location = new System.Drawing.Point(101, 12);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(305, 20);
+            this.txtText.Size = new System.Drawing.Size(308, 20);
             this.txtText.TabIndex = 10;
             // 
             // lblText
@@ -154,7 +154,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(431, 168);
+            this.ClientSize = new System.Drawing.Size(434, 161);
             this.Controls.Add(this.txtText);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.btnAccept);
@@ -167,6 +167,7 @@
             this.Controls.Add(this.cbxType);
             this.Controls.Add(this.lblType);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(450, 200);
             this.Name = "FooterLinkForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

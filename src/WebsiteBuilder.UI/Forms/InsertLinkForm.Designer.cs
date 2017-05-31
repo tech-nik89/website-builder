@@ -46,7 +46,7 @@
             this.tabCtrl.Location = new System.Drawing.Point(12, 12);
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(550, 312);
+            this.tabCtrl.Size = new System.Drawing.Size(340, 176);
             this.tabCtrl.TabIndex = 0;
             // 
             // tabPage
@@ -55,7 +55,7 @@
             this.tabPage.Location = new System.Drawing.Point(4, 22);
             this.tabPage.Name = "tabPage";
             this.tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage.Size = new System.Drawing.Size(542, 286);
+            this.tabPage.Size = new System.Drawing.Size(332, 150);
             this.tabPage.TabIndex = 0;
             this.tabPage.Text = "[Page]";
             this.tabPage.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@
             this.tvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvwPages.Location = new System.Drawing.Point(3, 3);
             this.tvwPages.Name = "tvwPages";
-            this.tvwPages.Size = new System.Drawing.Size(536, 280);
+            this.tvwPages.Size = new System.Drawing.Size(326, 144);
             this.tvwPages.TabIndex = 0;
             // 
             // tabMedia
@@ -103,7 +103,7 @@
             // btnAccept
             // 
             this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(352, 330);
+            this.btnAccept.Location = new System.Drawing.Point(142, 194);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(100, 25);
             this.btnAccept.TabIndex = 1;
@@ -114,7 +114,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(458, 330);
+            this.btnCancel.Location = new System.Drawing.Point(248, 194);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 2;
@@ -126,11 +126,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 367);
+            this.ClientSize = new System.Drawing.Size(364, 231);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.tabCtrl);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(380, 270);
             this.Name = "InsertLinkForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
