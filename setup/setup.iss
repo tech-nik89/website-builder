@@ -30,8 +30,8 @@ Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
 Name: "{group}\Website Builder"; Filename: "{app}\WebsiteBuilder.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2
 
 [Languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"; LicenseFile: "D:\Projekte\wsb\trunk\LICENSE"
-Name: "de"; MessagesFile: "compiler:Languages\German.isl"; LicenseFile: "D:\Projekte\wsb\trunk\LICENSE"
+Name: "en"; MessagesFile: "compiler:Default.isl"; LicenseFile: "..\LICENSE"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"; LicenseFile: "..\LICENSE"
 
 [Components]
 Name: "core"; Description: "Core application"; Types: compact full
