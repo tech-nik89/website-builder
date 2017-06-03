@@ -673,6 +673,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recent Projects.
+        /// </summary>
+        internal static string RecentProjects {
+            get {
+                return ResourceManager.GetString("RecentProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reference.
         /// </summary>
         internal static string Reference {

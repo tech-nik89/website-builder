@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -14,7 +15,7 @@ using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
     public partial class MainForm {
-
+        
         private bool _CompilerRunning = false;
 
         private static readonly String _ProjectFilesFilter = String.Format(Strings.ProjectFilesFilter, Project.FileExtension);
@@ -29,16 +30,33 @@ namespace WebsiteBuilder.UI.Forms {
             }
             set {
                 _CurrentProject = value;
+
                 UpdateFormText();
                 RefreshLanguageList();
                 ptvwPages.Project = _CurrentProject;
+
+                if (!String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)
+                    && File.Exists(_CurrentProject.ProjectFilePath)) {
+
+                    ConfigHelper.AddRecentProject(_CurrentProject.ProjectFilePath);
+                    ConfigHelper.UpdateRecents(mnuProjectRecents, mnuProjectRecentItem_Click);
+                }
             }
         }
-        
+
+        private void mnuProjectRecentItem_Click(String path) {
+            OpenProject(path);
+        }
+
         private String GetProductName() {
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             return versionInfo.ProductName;
+        }
+
+        private void mnuProjectRecentItem_Click(object sender, EventArgs e) {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            OpenProject((String)item.Tag);
         }
 
         private void UpdateFormText() {
@@ -63,6 +81,16 @@ namespace WebsiteBuilder.UI.Forms {
             builder.Append(_ProductName);
 
             Text = builder.ToString();
+        }
+
+        private void NewProject() {
+            if (ConfirmCloseDirtyProject()) {
+                // cancel
+                return;
+            }
+
+            CurrentProject = new Project();
+            UpdateFormText();
         }
 
         private void SaveProject(bool saveAs) {
@@ -91,9 +119,18 @@ namespace WebsiteBuilder.UI.Forms {
                 return;
             }
 
+            OpenProject(ofdProject.FileName);
+        }
+
+        private void OpenProject(String path) {
+            if (ConfirmCloseDirtyProject()) {
+                // cancel
+                return;
+            }
+
             try {
-                Project project = Project.Load(ofdProject.FileName);
-                
+                Project project = Project.Load(path);
+
                 CurrentProject = project;
                 UpdateFormText();
             }

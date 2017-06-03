@@ -12,7 +12,7 @@ namespace WebsiteBuilder.UI.Forms {
             InitializeComponent();
             LocalizeComponent();
             ApplyIcons();
-
+            
             _ProductName = GetProductName();
             ofdProject.Filter = _ProjectFilesFilter;
             sfdProject.Filter = _ProjectFilesFilter;
@@ -20,7 +20,7 @@ namespace WebsiteBuilder.UI.Forms {
             tslStatus.Text = StatusText.Ready;
             CurrentProject = new Project();
         }
-
+        
         private void ApplyIcons() {
             if (IconPack.Current == null) {
                 return;
@@ -57,6 +57,7 @@ namespace WebsiteBuilder.UI.Forms {
             mnuProject.Text = Strings.Project;
             mnuProjectNew.Text = Strings.New;
             mnuProjectOpen.Text = Strings.Open;
+            mnuProjectRecents.Text = Strings.RecentProjects;
             mnuProjectSave.Text = Strings.Save;
             mnuProjectSaveAs.Text = Strings.SaveAs;
             mnuProjectSettings.Text = Strings.ProjectSettings;
@@ -100,8 +101,7 @@ namespace WebsiteBuilder.UI.Forms {
         }
 
         private void mnuProjectNew_Click(object sender, EventArgs e) {
-            CurrentProject = new Project();
-            UpdateFormText();
+            NewProject();
         }
 
         private void mnuProjectOpen_Click(object sender, EventArgs e) {
@@ -152,6 +152,15 @@ namespace WebsiteBuilder.UI.Forms {
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = ConfirmCloseDirtyProject();
+
+            if (!e.Cancel) {
+                ConfigHelper.StoreMainForm(this);
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+            ConfigHelper.RestoreMainForm(this);
+            ConfigHelper.UpdateRecents(mnuProjectRecents, mnuProjectRecentItem_Click);
         }
 
         private void mnuBuildCleanOutput_Click(object sender, EventArgs e) {

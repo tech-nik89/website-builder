@@ -33,6 +33,7 @@
             this.mnuProject = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectRecents = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectSaveAs = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +92,7 @@
             this.mnuProject.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProjectNew,
             this.mnuProjectOpen,
+            this.mnuProjectRecents,
             this.toolStripSeparator3,
             this.mnuProjectSave,
             this.mnuProjectSaveAs,
@@ -116,6 +118,12 @@
             this.mnuProjectOpen.Size = new System.Drawing.Size(163, 22);
             this.mnuProjectOpen.Text = "[Open]";
             this.mnuProjectOpen.Click += new System.EventHandler(this.mnuProjectOpen_Click);
+            // 
+            // mnuProjectRecents
+            // 
+            this.mnuProjectRecents.Name = "mnuProjectRecents";
+            this.mnuProjectRecents.Size = new System.Drawing.Size(163, 22);
+            this.mnuProjectRecents.Text = "[Recents]";
             // 
             // toolStripSeparator3
             // 
@@ -400,6 +408,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[Open Website Builder]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.sstMain.ResumeLayout(false);
@@ -451,6 +460,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuHelpAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripComboBox tscLanguage;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectRecents;
     }
 }
 

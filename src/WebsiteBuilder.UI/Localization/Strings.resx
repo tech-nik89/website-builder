@@ -390,4 +390,7 @@
   <data name="RobotsNoIndex" xml:space="preserve">
     <value>Don't add this page to the index (noindex)</value>
   </data>
+  <data name="RecentProjects" xml:space="preserve">
+    <value>Recent Projects</value>
+  </data>
 </root>
