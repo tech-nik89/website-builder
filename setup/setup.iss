@@ -25,6 +25,8 @@ Source: "..\src\WebsiteBuilder.UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Pl
 Source: "..\src\WebsiteBuilder.UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
 Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
+Source: "..\src\WebsiteBuilder.Compiler\bin\Release\WebsiteBuilder.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
+Source: "..\src\WebsiteBuilder.Compiler\bin\Release\WebsiteBuilder.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
 
 [Icons]
 Name: "{group}\Website Builder"; Filename: "{app}\WebsiteBuilder.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2
@@ -36,6 +38,7 @@ Name: "de"; MessagesFile: "compiler:Languages\German.isl"; LicenseFile: "..\LICE
 [Components]
 Name: "core"; Description: "Core application"; Types: compact full
 Name: "themes"; Description: "Sample Themes"; Types: full
+Name: "compilerconsole"; Description: "Compiler Console"; Types: full
 
 [Code]
 // ##### .NET Framework detection  ##### //
