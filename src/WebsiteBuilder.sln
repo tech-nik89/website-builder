@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.News", "Module.News\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Toolbox", "Module.Toolbox\Module.Toolbox.csproj", "{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.Compiler", "WebsiteBuilder.Compiler\WebsiteBuilder.Compiler.csproj", "{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
