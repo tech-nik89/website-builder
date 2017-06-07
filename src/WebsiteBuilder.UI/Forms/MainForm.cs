@@ -155,6 +155,7 @@ namespace WebsiteBuilder.UI.Forms {
 
             if (!e.Cancel) {
                 ConfigHelper.StoreMainForm(this);
+                ConfigHelper.Save();
             }
         }
 

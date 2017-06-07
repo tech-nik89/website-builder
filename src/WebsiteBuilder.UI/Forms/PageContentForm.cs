@@ -126,5 +126,13 @@ namespace WebsiteBuilder.UI.Forms {
         private void PageContentForm_Shown(object sender, System.EventArgs e) {
             LoadModule();
         }
+
+        private void PageContentForm_Load(object sender, EventArgs e) {
+            ConfigHelper.RestoreContentForm(this);
+        }
+
+        private void PageContentForm_FormClosing(object sender, FormClosingEventArgs e) {
+            ConfigHelper.StoreContentForm(this);
+        }
     }
 }

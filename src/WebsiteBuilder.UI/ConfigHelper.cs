@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
+using WebsiteBuilder.UI.Forms;
 
 namespace WebsiteBuilder.UI {
     static class ConfigHelper {
@@ -12,37 +13,52 @@ namespace WebsiteBuilder.UI {
 
         private const int RecentListMaxLength = 6;
 
-        public static void RestoreMainForm(Form form) {
-            if (Settings.MainFormState > -1) {
-                form.WindowState = (FormWindowState)Settings.MainFormState;
+        public static void RestoreMainForm(MainForm form) {
+            RestoreForm(form, Settings.MainFormState, Settings.MainFormX, Settings.MainFormY, Settings.MainFormWidth, Settings.MainFormHeight);
+        }
+
+        public static void RestoreContentForm(PageContentForm form) {
+            RestoreForm(form, Settings.ContentFormState, Settings.ContentFormX, Settings.ContentFormY, Settings.ContentFormWidth, Settings.ContentFormHeight);
+        }
+
+        private static void RestoreForm(Form form, int state, int x, int y, int width, int height) {
+            if (state > -1) {
+                form.WindowState = (FormWindowState)state;
             }
 
             if (form.WindowState == FormWindowState.Normal) {
-                if (Settings.MainFormHeight > -1) {
-                    form.Height = Settings.MainFormHeight;
+                if (height > -1) {
+                    form.Height = height;
                 }
 
-                if (Settings.MainFormWidth > -1) {
-                    form.Width = Settings.MainFormWidth;
+                if (width > -1) {
+                    form.Width = width;
                 }
 
-                if (Settings.MainFormX > -1) {
-                    form.Left = Settings.MainFormX;
+                if (x > -1) {
+                    form.Left = x;
                 }
 
-                if (Settings.MainFormY > -1) {
-                    form.Top = Settings.MainFormY;
+                if (y > -1) {
+                    form.Top = y;
                 }
             }
         }
 
-        public static void StoreMainForm(Form form) {
+        public static void StoreMainForm(MainForm form) {
             Settings.MainFormState = (int)form.WindowState;
             Settings.MainFormHeight = form.Height;
             Settings.MainFormWidth = form.Width;
             Settings.MainFormX = form.Left;
             Settings.MainFormY = form.Top;
-            Settings.Save();
+        }
+
+        public static void StoreContentForm(PageContentForm form) {
+            Settings.ContentFormState = (int)form.WindowState;
+            Settings.ContentFormHeight = form.Height;
+            Settings.ContentFormWidth = form.Width;
+            Settings.ContentFormX = form.Left;
+            Settings.ContentFormY = form.Top;
         }
 
         public static void AddRecentProject(String path) {
@@ -84,6 +100,10 @@ namespace WebsiteBuilder.UI {
             menuItem.Enabled = projects.Any();
             Settings.RecentProjects.Clear();
             Settings.RecentProjects.AddRange(projects);
+        }
+
+        public static void Save() {
+            Settings.Save();
         }
     }
 }

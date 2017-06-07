@@ -83,14 +83,14 @@
             this.pnlModuleContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlModuleContainer.Location = new System.Drawing.Point(0, 25);
             this.pnlModuleContainer.Name = "pnlModuleContainer";
-            this.pnlModuleContainer.Size = new System.Drawing.Size(384, 186);
+            this.pnlModuleContainer.Size = new System.Drawing.Size(384, 187);
             this.pnlModuleContainer.TabIndex = 1;
             // 
             // PageContentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 211);
+            this.ClientSize = new System.Drawing.Size(384, 212);
             this.Controls.Add(this.pnlModuleContainer);
             this.Controls.Add(this.toolStrip1);
             this.MinimizeBox = false;
@@ -99,6 +99,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "[Page Content]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PageContentForm_FormClosing);
+            this.Load += new System.EventHandler(this.PageContentForm_Load);
             this.Shown += new System.EventHandler(this.PageContentForm_Shown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

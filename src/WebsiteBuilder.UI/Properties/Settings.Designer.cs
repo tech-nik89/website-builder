@@ -93,5 +93,65 @@ namespace WebsiteBuilder.UI.Properties {
                 this["RecentProjects"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int ContentFormHeight {
+            get {
+                return ((int)(this["ContentFormHeight"]));
+            }
+            set {
+                this["ContentFormHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int ContentFormWidth {
+            get {
+                return ((int)(this["ContentFormWidth"]));
+            }
+            set {
+                this["ContentFormWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int ContentFormState {
+            get {
+                return ((int)(this["ContentFormState"]));
+            }
+            set {
+                this["ContentFormState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int ContentFormX {
+            get {
+                return ((int)(this["ContentFormX"]));
+            }
+            set {
+                this["ContentFormX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int ContentFormY {
+            get {
+                return ((int)(this["ContentFormY"]));
+            }
+            set {
+                this["ContentFormY"] = value;
+            }
+        }
     }
 }
