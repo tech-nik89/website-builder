@@ -8,19 +8,19 @@ using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Core.Plugins {
-    public static class PluginManager {
+	public static class PluginManager {
 
 		private const String PluginDirectoryName = "Plugins";
 		private const String PluginLibraryPattern = "*.Plugin.dll";
-        
-        private static readonly Type _ModuleInterface = typeof(IModule);
-        private static readonly Type _EditorInterface = typeof(IEditor);
+		
+		private static readonly Type _ModuleInterface = typeof(IModule);
+		private static readonly Type _EditorInterface = typeof(IEditor);
 
 		private static Type[] _ModuleTypes;
 		private static Type[] _EditorTypes;
 
 		public static Dictionary<Type, String> Modules { get; private set; }
-        public static Dictionary<Type, String> Editors { get; private set; }
+		public static Dictionary<Type, String> Editors { get; private set; }
 
 		public static Type[] ModuleTypes => _ModuleTypes;
 		public static Type[] EditorTypes => _EditorTypes;
@@ -48,9 +48,9 @@ namespace WebsiteBuilder.Core.Plugins {
 				return;
 			}
 
-            AppDomain.CurrentDomain.AppendPrivatePath(PluginDirectoryName);
+			AppDomain.CurrentDomain.AppendPrivatePath(PluginDirectoryName);
 
-            FileInfo[] files = info.GetFiles(PluginLibraryPattern);
+			FileInfo[] files = info.GetFiles(PluginLibraryPattern);
 			foreach(var file in files) {
 				try {
 					Assembly.LoadFile(file.FullName);
@@ -61,32 +61,32 @@ namespace WebsiteBuilder.Core.Plugins {
 		}
 
 		private static Dictionary<Type, String> LoadModules(Type interfaceType, out Type[] types) {
-            var dict = new Dictionary<Type, String>();
+			var dict = new Dictionary<Type, String>();
 			var list = new List<Type>();
-            var plugins = AppDomain.CurrentDomain.GetAssemblies()
-                        .SelectMany(s => s.GetTypes())
-                        .Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass);
-            
-            foreach (var plugin in plugins) {
-                dict.Add(plugin, PluginInfoAttribute.GetPluginName(plugin));
+			var plugins = AppDomain.CurrentDomain.GetAssemblies()
+						.SelectMany(s => s.GetTypes())
+						.Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass);
+			
+			foreach (var plugin in plugins) {
+				dict.Add(plugin, PluginInfoAttribute.GetPluginName(plugin));
 				list.Add(plugin);
-            }
+			}
 
 			types = list.ToArray();
-            return dict;
-        }
+			return dict;
+		}
 
-        public static IModule LoadModule(PageContent content, Project project) {
-            return LoadModule(content, null, project, null);
-        }
+		public static IModule LoadModule(PageContent content, Project project) {
+			return LoadModule(content, null, project, null);
+		}
 
-        public static IModule LoadModule(PageContent content, IIconPack iconPack, Project project, Func<String> getLink) {
-            if (content == null || content.ModuleType == null || content.EditorType == null) {
-                return null;
-            }
+		public static IModule LoadModule(PageContent content, IIconPack iconPack, Project project, Func<String> getLink) {
+			if (content == null || content.ModuleType == null || content.EditorType == null) {
+				return null;
+			}
 
-            PluginHelper helper = new PluginHelper(project, content.EditorType, iconPack, getLink);
-            return Activator.CreateInstance(content.ModuleType, helper) as IModule;
-        }
-    }
+			PluginHelper helper = new PluginHelper(project, content.EditorType, iconPack, getLink);
+			return Activator.CreateInstance(content.ModuleType, helper) as IModule;
+		}
+	}
 }

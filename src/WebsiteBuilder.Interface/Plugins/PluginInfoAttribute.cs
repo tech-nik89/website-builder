@@ -4,11 +4,11 @@ using System.Linq;
 namespace WebsiteBuilder.Interface.Plugins {
 	public class PluginInfoAttribute : Attribute {
 
-        public String Name { get; private set; }
-        
+		public String Name { get; private set; }
+		
 		public PluginInfoAttribute(String name) {
-            Name = name;
-        }
+			Name = name;
+		}
 
 		public static String GetPluginName(Type pluginType) {
 			var attribute = GetPluginInfoAttribute(pluginType);
@@ -19,7 +19,7 @@ namespace WebsiteBuilder.Interface.Plugins {
 
 			return pluginType.Name;
 		}
-        
+		
 		private static PluginInfoAttribute GetPluginInfoAttribute(Type pluginType) {
 			if (pluginType == null) {
 				throw new ArgumentNullException(nameof(pluginType));

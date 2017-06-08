@@ -4,57 +4,57 @@ using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Modules.News.Localization;
 
 namespace WebsiteBuilder.Modules.News {
-    public partial class NewsSettingsForm : Form {
+	public partial class NewsSettingsForm : Form {
 
-        public int LargeItemsCount => (int)numLargeItemsCount.Value;
+		public int LargeItemsCount => (int)numLargeItemsCount.Value;
 
-        public int LargeItemsMaxHeight => (int)numLargeItemsMaxHeight.Value;
+		public int LargeItemsMaxHeight => (int)numLargeItemsMaxHeight.Value;
 
-        public String ExpanderText => txtExpanderText.Text;
+		public String ExpanderText => txtExpanderText.Text;
 
-        public NewsSettingsForm(IIconPack iconPack, int largeItemsCount, int largeItemsMaxHeight, String expanderText) {
-            InitializeComponent();
-            LocalizeComponent();
-            ApplyIcons(iconPack);
+		public NewsSettingsForm(IIconPack iconPack, int largeItemsCount, int largeItemsMaxHeight, String expanderText) {
+			InitializeComponent();
+			LocalizeComponent();
+			ApplyIcons(iconPack);
 
-            DialogResult = DialogResult.Cancel;
+			DialogResult = DialogResult.Cancel;
 
-            numLargeItemsCount.Minimum = 1;
-            numLargeItemsCount.Maximum = 50;
+			numLargeItemsCount.Minimum = 1;
+			numLargeItemsCount.Maximum = 50;
 
-            numLargeItemsMaxHeight.Minimum = 50;
-            numLargeItemsMaxHeight.Maximum = decimal.MaxValue;
+			numLargeItemsMaxHeight.Minimum = 50;
+			numLargeItemsMaxHeight.Maximum = decimal.MaxValue;
 
-            numLargeItemsCount.Value = largeItemsCount;
-            numLargeItemsMaxHeight.Value = largeItemsMaxHeight;
-            txtExpanderText.Text = expanderText;
-        }
+			numLargeItemsCount.Value = largeItemsCount;
+			numLargeItemsMaxHeight.Value = largeItemsMaxHeight;
+			txtExpanderText.Text = expanderText;
+		}
 
-        private void ApplyIcons(IIconPack iconPack) {
-            if (iconPack == null) {
-                return;
-            }
+		private void ApplyIcons(IIconPack iconPack) {
+			if (iconPack == null) {
+				return;
+			}
 
-            Icon = iconPack.GetIcon(IconPackIcon.Settings);
-        }
+			Icon = iconPack.GetIcon(IconPackIcon.Settings);
+		}
 
-        private void LocalizeComponent() {
-            Text = Strings.NewsSettings;
+		private void LocalizeComponent() {
+			Text = Strings.NewsSettings;
 
-            btnAccept.Text = Strings.Accept;
-            btnCancel.Text = Strings.Cancel;
+			btnAccept.Text = Strings.Accept;
+			btnCancel.Text = Strings.Cancel;
 
-            lblLargeItemsCount.Text = Strings.LargeItemsCount + ":";
-            lblLargeItemsMaxHeight.Text = Strings.LargeItemsMaxHeight + ":";
-        }
+			lblLargeItemsCount.Text = Strings.LargeItemsCount + ":";
+			lblLargeItemsMaxHeight.Text = Strings.LargeItemsMaxHeight + ":";
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+		private void btnCancel_Click(object sender, EventArgs e) {
+			Close();
+		}
 
-        private void btnAccept_Click(object sender, EventArgs e) {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-    }
+		private void btnAccept_Click(object sender, EventArgs e) {
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+	}
 }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core.Plugins;
 
 namespace WebsiteBuilder.UI.Plugins {
-    public static class PluginExtensions {
+	public static class PluginExtensions {
 
 		public static void FillWithEditorPlugins(this ComboBox control) {
 			control.Items.Clear();
@@ -18,33 +18,33 @@ namespace WebsiteBuilder.UI.Plugins {
 			control.SelectedIndex = index > -1 ? index : 0;
 		}
 
-        public static Type GetEditorPlugin(this ComboBox control) {
-            if (control.SelectedIndex == -1) {
-                return null;
-            }
+		public static Type GetEditorPlugin(this ComboBox control) {
+			if (control.SelectedIndex == -1) {
+				return null;
+			}
 
-            return PluginManager.EditorTypes[control.SelectedIndex];
-        }
+			return PluginManager.EditorTypes[control.SelectedIndex];
+		}
 
-        public static void FillWithModulePlugins(this ComboBox control) {
-            control.Items.Clear();
+		public static void FillWithModulePlugins(this ComboBox control) {
+			control.Items.Clear();
 
-            foreach (var item in PluginManager.Modules) {
-                control.Items.Add(item.Value);
-            }
-        }
+			foreach (var item in PluginManager.Modules) {
+				control.Items.Add(item.Value);
+			}
+		}
 
-        public static void SelectModulePlugin(this ComboBox control, Type moduleType) {
-            int index = Array.IndexOf(PluginManager.ModuleTypes, moduleType);
-            control.SelectedIndex = index > -1 ? index : 0;
-        }
+		public static void SelectModulePlugin(this ComboBox control, Type moduleType) {
+			int index = Array.IndexOf(PluginManager.ModuleTypes, moduleType);
+			control.SelectedIndex = index > -1 ? index : 0;
+		}
 
-        public static Type GetModulePlugin(this ComboBox control) {
-            if (control.SelectedIndex == -1) {
-                return null;
-            }
+		public static Type GetModulePlugin(this ComboBox control) {
+			if (control.SelectedIndex == -1) {
+				return null;
+			}
 
-            return PluginManager.ModuleTypes[control.SelectedIndex];
-        }
-    }
+			return PluginManager.ModuleTypes[control.SelectedIndex];
+		}
+	}
 }

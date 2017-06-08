@@ -10,106 +10,106 @@ using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class InsertLinkForm : Form {
+	public partial class InsertLinkForm : Form {
 
-        private readonly Project _Project;
+		private readonly Project _Project;
 
-        private readonly ImageList _ImageList;
+		private readonly ImageList _ImageList;
 
-        public String Link { get; private set; }
+		public String Link { get; private set; }
 
-        public String MediaId { get; private set; }
+		public String MediaId { get; private set; }
 
-        public String PageId { get; private set; }
+		public String PageId { get; private set; }
 
-        public InsertLinkForm(Project project)
-            : this(project, Tabs.Media | Tabs.Page) {
-        }
+		public InsertLinkForm(Project project)
+			: this(project, Tabs.Media | Tabs.Page) {
+		}
 
-        public InsertLinkForm(Project project, Tabs tabs) {
-            InitializeComponent();
-            LocalizeComponent();
+		public InsertLinkForm(Project project, Tabs tabs) {
+			InitializeComponent();
+			LocalizeComponent();
 
-            DialogResult = DialogResult.Cancel;
-            _Project = project;
+			DialogResult = DialogResult.Cancel;
+			_Project = project;
 
-            if (!tabs.HasFlag(Tabs.Media)) {
-                tabMedia.Hide();
-            }
+			if (!tabs.HasFlag(Tabs.Media)) {
+				tabMedia.Hide();
+			}
 
-            if (!tabs.HasFlag(Tabs.Page)) {
-                tabPage.Hide();
-            }
+			if (!tabs.HasFlag(Tabs.Page)) {
+				tabPage.Hide();
+			}
 
-            _ImageList = new ImageList();
-            _ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
-            tvwPages.ImageList = _ImageList;
+			_ImageList = new ImageList();
+			_ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.Page));
+			tvwPages.ImageList = _ImageList;
 
-            FillProjectTree(tvwPages.Nodes, _Project.Pages);
-            FillMediaList();
-        }
-        
-        private void FillProjectTree(TreeNodeCollection nodes, IEnumerable<Page> pages) {
-            foreach (Page page in pages) {
-                TreeNode node = nodes.Add(page.PathName);
-                node.Tag = page;
-                node.ImageIndex = 0;
+			FillProjectTree(tvwPages.Nodes, _Project.Pages);
+			FillMediaList();
+		}
+		
+		private void FillProjectTree(TreeNodeCollection nodes, IEnumerable<Page> pages) {
+			foreach (Page page in pages) {
+				TreeNode node = nodes.Add(page.PathName);
+				node.Tag = page;
+				node.ImageIndex = 0;
 
-                FillProjectTree(node.Nodes, page.Pages);
-            }
-        }
+				FillProjectTree(node.Nodes, page.Pages);
+			}
+		}
 
-        private void FillMediaList() {
-            lvwMedia.VirtualListSize = _Project.Media.Count;
-        }
+		private void FillMediaList() {
+			lvwMedia.VirtualListSize = _Project.Media.Count;
+		}
 
-        public void LocalizeComponent() {
-            Text = Strings.InsertLink;
+		public void LocalizeComponent() {
+			Text = Strings.InsertLink;
 
-            tabPage.Text = Strings.Page;
-            tabMedia.Text = Strings.Media;
+			tabPage.Text = Strings.Page;
+			tabMedia.Text = Strings.Media;
 
-            btnAccept.Text = Strings.Accept;
-            btnCancel.Text = Strings.Cancel;
+			btnAccept.Text = Strings.Accept;
+			btnCancel.Text = Strings.Cancel;
 
-            clnFile.Text = Strings.File;
-        }
+			clnFile.Text = Strings.File;
+		}
 
-        private void btnAccept_Click(object sender, EventArgs e) {
-            if (tabCtrl.SelectedTab == tabPage && tvwPages.SelectedNode != null) {
-                Page page = tvwPages.SelectedNode.Tag as Page;
-                if (page == null) {
-                    return;
-                }
+		private void btnAccept_Click(object sender, EventArgs e) {
+			if (tabCtrl.SelectedTab == tabPage && tvwPages.SelectedNode != null) {
+				Page page = tvwPages.SelectedNode.Tag as Page;
+				if (page == null) {
+					return;
+				}
 
-                Link = String.Format(CompilerConstants.PageLinkFormat, page.Id);
-                PageId = page.Id;
-            }
-            else if (tabCtrl.SelectedTab == tabMedia && lvwMedia.SelectedIndices.Count == 1) {
-                MediaItem item = _Project.Media[lvwMedia.SelectedIndices[0]];
-                Link = String.Format(CompilerConstants.MediaLinkFormat, item.Id);
-                MediaId = item.Id;
-            }
-            else {
-                return;
-            }
+				Link = String.Format(CompilerConstants.PageLinkFormat, page.Id);
+				PageId = page.Id;
+			}
+			else if (tabCtrl.SelectedTab == tabMedia && lvwMedia.SelectedIndices.Count == 1) {
+				MediaItem item = _Project.Media[lvwMedia.SelectedIndices[0]];
+				Link = String.Format(CompilerConstants.MediaLinkFormat, item.Id);
+				MediaId = item.Id;
+			}
+			else {
+				return;
+			}
 
-            DialogResult = DialogResult.OK;
-            Close();
-        }
+			DialogResult = DialogResult.OK;
+			Close();
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+		private void btnCancel_Click(object sender, EventArgs e) {
+			Close();
+		}
 
-        private void lvwMedia_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
-            e.Item = new ListViewItem(_Project.Media[e.ItemIndex].Name);
-        }
+		private void lvwMedia_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+			e.Item = new ListViewItem(_Project.Media[e.ItemIndex].Name);
+		}
 
-        [Flags]
-        public enum Tabs {
-            Media = 1,
-            Page = 2
-        }
-    }
+		[Flags]
+		public enum Tabs {
+			Media = 1,
+			Page = 2
+		}
+	}
 }

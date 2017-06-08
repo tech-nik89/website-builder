@@ -5,9 +5,9 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public String Data { get; private set; }
 
-        public String Name { get; private set; }
+		public String Name { get; private set; }
 
-        public abstract String Css { get; }
+		public abstract String Css { get; }
 
 		public enum Types {
 			Css,
@@ -16,7 +16,7 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public ThemeStyle(String data, String name) {
 			Data = data;
-            Name = name;
+			Name = name;
 		}
 	}
 }

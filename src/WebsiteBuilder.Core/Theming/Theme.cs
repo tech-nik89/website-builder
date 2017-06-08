@@ -6,21 +6,21 @@ using System.Xml;
 using WebsiteBuilder.Core.Exceptions;
 
 namespace WebsiteBuilder.Core.Theming {
-    public class Theme {
+	public class Theme {
 
 		public const String FileExtension = ".wbtx";
 
 		private const String AttributeType = "type";
 
-        private const String AttributeName = "name";
+		private const String AttributeName = "name";
 
-        private const String AttributeTitle = "title";
+		private const String AttributeTitle = "title";
 
-        private const String AttributeClassName = "class";
+		private const String AttributeClassName = "class";
 
-        private const String AttributeSectionCount = "sections";
+		private const String AttributeSectionCount = "sections";
 
-        private const String NodeRoot = "theme";
+		private const String NodeRoot = "theme";
 
 		private const String NodeStyle = "style";
 
@@ -32,27 +32,27 @@ namespace WebsiteBuilder.Core.Theming {
 
 		private const String NodeLanguageItem = "languageItem";
 
-        private const String NodeFooterItem = "footerItem";
+		private const String NodeFooterItem = "footerItem";
 
-        private const String NodeFooterSection = "footerSection";
+		private const String NodeFooterSection = "footerSection";
 
-        private const String NodeImage = "image";
+		private const String NodeImage = "image";
 
-        private const String NodeBody = "body";
+		private const String NodeBody = "body";
 
 		private const String NodeSettings = "settings";
-        
-        private const String NodeSettingsImageCssClass = "imageCssClass";
+		
+		private const String NodeSettingsImageCssClass = "imageCssClass";
 
-        private const String NodeFont = "font";
+		private const String NodeFont = "font";
 
-        private static readonly String QueryFonts = String.Concat("/", NodeRoot, "/", NodeFont);
+		private static readonly String QueryFonts = String.Concat("/", NodeRoot, "/", NodeFont);
 
-        private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
+		private static readonly String QueryStyles = String.Concat("/", NodeRoot, "/", NodeStyle);
 
-        private static readonly String QueryImages = String.Concat("/", NodeRoot, "/", NodeImage);
-        
-        private static readonly String QueryNavItems = String.Concat("/", NodeRoot, "/", NodeNavItems);
+		private static readonly String QueryImages = String.Concat("/", NodeRoot, "/", NodeImage);
+		
+		private static readonly String QueryNavItems = String.Concat("/", NodeRoot, "/", NodeNavItems);
 
 		private static readonly String QueryNavItem = String.Concat("/", NodeRoot, "/", NodeNavItem);
 
@@ -60,29 +60,29 @@ namespace WebsiteBuilder.Core.Theming {
 
 		private static readonly String QueryLanguageItem = String.Concat("/", NodeRoot, "/", NodeLanguageItem);
 
-        private static readonly String QueryFooterItem = String.Concat("/", NodeRoot, "/", NodeFooterItem);
+		private static readonly String QueryFooterItem = String.Concat("/", NodeRoot, "/", NodeFooterItem);
 
-        private static readonly String QueryFooterSection = String.Concat("/", NodeRoot, "/", NodeFooterSection);
+		private static readonly String QueryFooterSection = String.Concat("/", NodeRoot, "/", NodeFooterSection);
 
-        private static readonly String QueryBody = String.Concat("/", NodeRoot, "/", NodeBody);
+		private static readonly String QueryBody = String.Concat("/", NodeRoot, "/", NodeBody);
 
 		private static readonly String QuerySettings = String.Concat("/", NodeRoot, "/", NodeSettings);
 
 		private static readonly String QuerySettingImageCssClass = String.Concat(QuerySettings, "/", NodeSettingsImageCssClass);
 
-        private const String FormatNoNameStyle = "style-{0}";
+		private const String FormatNoNameStyle = "style-{0}";
 
-        private List<Font> _Fonts;
+		private List<Font> _Fonts;
 
-        private List<ThemeStyle> _Styles;
+		private List<ThemeStyle> _Styles;
 
-        private Dictionary<String, Image> _Images;
-        
+		private Dictionary<String, Image> _Images;
+		
 		public IEnumerable<ThemeStyle> Styles => _Styles.AsReadOnly();
-        
-        public IReadOnlyDictionary<String, Image> Images => _Images;
+		
+		public IReadOnlyDictionary<String, Image> Images => _Images;
 
-        public IEnumerable<Font> Fonts => _Fonts.AsReadOnly();
+		public IEnumerable<Font> Fonts => _Fonts.AsReadOnly();
 
 		public String TemplateNavItem { get; private set; }
 
@@ -94,18 +94,18 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public String TemplateBody { get; private set; }
 
-        public String TemplateFooterItem { get; private set; }
+		public String TemplateFooterItem { get; private set; }
 
-        public String TemplateFooterSection { get; private set; }
+		public String TemplateFooterSection { get; private set; }
 
-        public ThemeSettings Settings { get; private set; }
+		public ThemeSettings Settings { get; private set; }
 
-        public String Description { get; private set; }
+		public String Description { get; private set; }
 
-        internal Theme() {
+		internal Theme() {
 			_Styles = new List<ThemeStyle>();
-            _Images = new Dictionary<String, Image>();
-            _Fonts = new List<Font>();
+			_Images = new Dictionary<String, Image>();
+			_Fonts = new List<Font>();
 			Settings = new ThemeSettings();
 		}
 
@@ -119,60 +119,60 @@ namespace WebsiteBuilder.Core.Theming {
 
 			LoadSettings(theme.Settings, document);
 			LoadStyles(theme, document);
-            LoadTemplates(theme, document);
-            LoadImages(theme, document);
-            LoadFonts(theme, document);
+			LoadTemplates(theme, document);
+			LoadImages(theme, document);
+			LoadFonts(theme, document);
 
-            return theme;
+			return theme;
 		}
 
-        private static void LoadFonts(Theme theme, XmlDocument document) {
-            var xFonts = document.SelectNodes(QueryFonts);
+		private static void LoadFonts(Theme theme, XmlDocument document) {
+			var xFonts = document.SelectNodes(QueryFonts);
 
-            foreach(XmlNode xFont in xFonts) {
-                if (xFont.Attributes[AttributeName] == null
-                    || String.IsNullOrWhiteSpace(xFont.Attributes[AttributeName].InnerText)
-                    || xFont.Attributes[AttributeType] == null
-                    || String.IsNullOrWhiteSpace(xFont.Attributes[AttributeType].InnerText)
-                    || String.IsNullOrWhiteSpace(xFont.InnerText)) {
-                    continue;
-                }
+			foreach(XmlNode xFont in xFonts) {
+				if (xFont.Attributes[AttributeName] == null
+					|| String.IsNullOrWhiteSpace(xFont.Attributes[AttributeName].InnerText)
+					|| xFont.Attributes[AttributeType] == null
+					|| String.IsNullOrWhiteSpace(xFont.Attributes[AttributeType].InnerText)
+					|| String.IsNullOrWhiteSpace(xFont.InnerText)) {
+					continue;
+				}
 
-                try {
-                    Font font = new Font();
-                    font.Name = xFont.Attributes[AttributeName].InnerText.ToLower().Trim();
-                    font.Type = xFont.Attributes[AttributeType].InnerText.ToLower().Trim();
-                    font.Data = Convert.FromBase64String(xFont.InnerText.Trim());
-                    theme._Fonts.Add(font);
-                }
-                catch {
-                }
-            }
-        }
-        
+				try {
+					Font font = new Font();
+					font.Name = xFont.Attributes[AttributeName].InnerText.ToLower().Trim();
+					font.Type = xFont.Attributes[AttributeType].InnerText.ToLower().Trim();
+					font.Data = Convert.FromBase64String(xFont.InnerText.Trim());
+					theme._Fonts.Add(font);
+				}
+				catch {
+				}
+			}
+		}
+		
 		private static void LoadSettings(ThemeSettings settings, XmlDocument document) {
 			settings.ImageCssClass = document.SelectSingleNode(QuerySettingImageCssClass)?.InnerText;
 		}
 
-        private static void LoadImages(Theme theme, XmlDocument document) {
-            var xImages = document.SelectNodes(QueryImages);
+		private static void LoadImages(Theme theme, XmlDocument document) {
+			var xImages = document.SelectNodes(QueryImages);
 
-            foreach (XmlNode xImage in xImages) {
-                String name = xImage.Attributes[AttributeName]?.InnerText;
-                if (String.IsNullOrWhiteSpace(name)) {
-                    continue;
-                }
+			foreach (XmlNode xImage in xImages) {
+				String name = xImage.Attributes[AttributeName]?.InnerText;
+				if (String.IsNullOrWhiteSpace(name)) {
+					continue;
+				}
 
-                try {
-                    byte[] buffer = Convert.FromBase64String(xImage.InnerText.Trim());
-                    using (Stream stream = new MemoryStream(buffer)) {
-                        theme._Images[name] = Image.FromStream(stream);
-                    }
-                }
-                catch {
-                }
-            }
-        }
+				try {
+					byte[] buffer = Convert.FromBase64String(xImage.InnerText.Trim());
+					using (Stream stream = new MemoryStream(buffer)) {
+						theme._Images[name] = Image.FromStream(stream);
+					}
+				}
+				catch {
+				}
+			}
+		}
 
 		private static void LoadTemplates(Theme theme, XmlDocument document) {
 			theme.TemplateBody = document.SelectSingleNode(QueryBody)?.InnerXml ?? String.Empty;
@@ -180,13 +180,13 @@ namespace WebsiteBuilder.Core.Theming {
 			theme.TemplateNavItem = document.SelectSingleNode(QueryNavItem)?.InnerXml ?? String.Empty;
 			theme.TemplateLanguageItems = document.SelectSingleNode(QueryLanguageItems)?.InnerXml ?? String.Empty;
 			theme.TemplateLanguageItem = document.SelectSingleNode(QueryLanguageItem)?.InnerXml ?? String.Empty;
-            theme.TemplateFooterItem = document.SelectSingleNode(QueryFooterItem)?.InnerXml ?? String.Empty;
-            theme.TemplateFooterSection = document.SelectSingleNode(QueryFooterSection)?.InnerXml ?? String.Empty;
-        }
+			theme.TemplateFooterItem = document.SelectSingleNode(QueryFooterItem)?.InnerXml ?? String.Empty;
+			theme.TemplateFooterSection = document.SelectSingleNode(QueryFooterSection)?.InnerXml ?? String.Empty;
+		}
 
 		private static void LoadStyles(Theme theme, XmlDocument document) {
 			var xStyles = document.SelectNodes(QueryStyles);
-            int noNamecount = 0;
+			int noNamecount = 0;
 
 			foreach (XmlNode xStyle in xStyles) {
 				var type = ThemeStyle.Types.Css;
@@ -195,7 +195,7 @@ namespace WebsiteBuilder.Core.Theming {
 					continue;
 				}
 
-                String name = xStyle.Attributes[AttributeName]?.InnerText ?? String.Format(FormatNoNameStyle, noNamecount++);
+				String name = xStyle.Attributes[AttributeName]?.InnerText ?? String.Format(FormatNoNameStyle, noNamecount++);
 
 				switch (type) {
 					case ThemeStyle.Types.Css:

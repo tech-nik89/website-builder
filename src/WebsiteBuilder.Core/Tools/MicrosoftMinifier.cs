@@ -2,23 +2,23 @@
 using WebsiteBuilder.Interface.Compiling;
 
 namespace WebsiteBuilder.Core.Tools {
-    class MicrosoftMinifier : ICompiler {
+	class MicrosoftMinifier : ICompiler {
 
 		public enum Mode {
 			CSS,
 			JavaScript
 		}
 
-        private readonly Minifier _Minifier;
+		private readonly Minifier _Minifier;
 
 		private readonly Mode _Mode;
 
-        public MicrosoftMinifier(Mode mode) {
-            _Minifier = new Minifier();
+		public MicrosoftMinifier(Mode mode) {
+			_Minifier = new Minifier();
 			_Mode = mode;
-        }
+		}
 
-        public string Compile(string source) {
+		public string Compile(string source) {
 			switch(_Mode) {
 				case Mode.CSS:
 					return _Minifier.MinifyStyleSheet(source);
@@ -27,7 +27,7 @@ namespace WebsiteBuilder.Core.Tools {
 			}
 
 			return null;
-        }
+		}
 
-    }
+	}
 }

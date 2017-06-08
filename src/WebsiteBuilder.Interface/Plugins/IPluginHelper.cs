@@ -2,21 +2,21 @@
 using WebsiteBuilder.Interface.Icons;
 
 namespace WebsiteBuilder.Interface.Plugins {
-    public interface IPluginHelper {
+	public interface IPluginHelper {
 
-        IEditor CreateEditor();
+		IEditor CreateEditor();
 
-        IIconPack GetIconPack();
+		IIconPack GetIconPack();
 
-        String GetFullPath(String relativePath);
+		String GetFullPath(String relativePath);
 
-        String GetRelativePath(String fullPath);
+		String GetRelativePath(String fullPath);
 
-        bool CanSuggestCopyToProjectDirectory(String fullFilePath);
+		bool CanSuggestCopyToProjectDirectory(String fullFilePath);
 
-        String NewGuid();
+		String NewGuid();
 
-        String GetLink();
+		String GetLink();
 
-    }
+	}
 }

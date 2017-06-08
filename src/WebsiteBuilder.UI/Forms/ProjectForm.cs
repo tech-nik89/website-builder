@@ -13,285 +13,285 @@ using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class MainForm {
-        
-        private bool _CompilerRunning = false;
+	public partial class MainForm {
+		
+		private bool _CompilerRunning = false;
 
-        private static readonly String _ProjectFilesFilter = String.Format(Strings.ProjectFilesFilter, Project.FileExtension);
+		private static readonly String _ProjectFilesFilter = String.Format(Strings.ProjectFilesFilter, Project.FileExtension);
 
-        private readonly String _ProductName;
+		private readonly String _ProductName;
 
-        private Project _CurrentProject;
+		private Project _CurrentProject;
 
-        private Project CurrentProject {
-            get {
-                return _CurrentProject;
-            }
-            set {
-                _CurrentProject = value;
+		private Project CurrentProject {
+			get {
+				return _CurrentProject;
+			}
+			set {
+				_CurrentProject = value;
 
-                UpdateFormText();
-                RefreshLanguageList();
-                ptvwPages.Project = _CurrentProject;
+				UpdateFormText();
+				RefreshLanguageList();
+				ptvwPages.Project = _CurrentProject;
 
-                if (!String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)
-                    && File.Exists(_CurrentProject.ProjectFilePath)) {
+				if (!String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)
+					&& File.Exists(_CurrentProject.ProjectFilePath)) {
 
-                    ConfigHelper.AddRecentProject(_CurrentProject.ProjectFilePath);
-                    ConfigHelper.UpdateRecents(mnuProjectRecents, mnuProjectRecentItem_Click);
-                }
-            }
-        }
+					ConfigHelper.AddRecentProject(_CurrentProject.ProjectFilePath);
+					ConfigHelper.UpdateRecents(mnuProjectRecents, mnuProjectRecentItem_Click);
+				}
+			}
+		}
 
-        private void mnuProjectRecentItem_Click(String path) {
-            OpenProject(path);
-        }
+		private void mnuProjectRecentItem_Click(String path) {
+			OpenProject(path);
+		}
 
-        private String GetProductName() {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-            return versionInfo.ProductName;
-        }
+		private String GetProductName() {
+			Assembly assembly = Assembly.GetExecutingAssembly();
+			FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+			return versionInfo.ProductName;
+		}
 
-        private void mnuProjectRecentItem_Click(object sender, EventArgs e) {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            OpenProject((String)item.Tag);
-        }
+		private void mnuProjectRecentItem_Click(object sender, EventArgs e) {
+			ToolStripMenuItem item = (ToolStripMenuItem)sender;
+			OpenProject((String)item.Tag);
+		}
 
-        private void UpdateFormText() {
-            if (_CurrentProject == null) {
-                Text = _ProductName;
-                return;
-            }
+		private void UpdateFormText() {
+			if (_CurrentProject == null) {
+				Text = _ProductName;
+				return;
+			}
 
-            if (String.IsNullOrWhiteSpace(CurrentProject.ProjectFilePath)) {
-                Text = _ProductName;
-                return;
-            }
+			if (String.IsNullOrWhiteSpace(CurrentProject.ProjectFilePath)) {
+				Text = _ProductName;
+				return;
+			}
 
-            StringBuilder builder = new StringBuilder();
-            builder.Append(_CurrentProject.ProjectFileName);
+			StringBuilder builder = new StringBuilder();
+			builder.Append(_CurrentProject.ProjectFileName);
 
-            if (CurrentProject.Dirty) {
-                builder.Append("*");
-            }
+			if (CurrentProject.Dirty) {
+				builder.Append("*");
+			}
 
-            builder.Append(" - ");
-            builder.Append(_ProductName);
+			builder.Append(" - ");
+			builder.Append(_ProductName);
 
-            Text = builder.ToString();
-        }
+			Text = builder.ToString();
+		}
 
-        private void NewProject() {
-            if (ConfirmCloseDirtyProject()) {
-                // cancel
-                return;
-            }
+		private void NewProject() {
+			if (ConfirmCloseDirtyProject()) {
+				// cancel
+				return;
+			}
 
-            CurrentProject = new Project();
-            UpdateFormText();
-        }
+			CurrentProject = new Project();
+			UpdateFormText();
+		}
 
-        private void SaveProject(bool saveAs) {
-            if (CurrentProject == null) {
-                return;
-            }
+		private void SaveProject(bool saveAs) {
+			if (CurrentProject == null) {
+				return;
+			}
 
-            if (saveAs || String.IsNullOrEmpty(CurrentProject.ProjectFilePath)) {
-                DialogResult result = sfdProject.ShowDialog();
+			if (saveAs || String.IsNullOrEmpty(CurrentProject.ProjectFilePath)) {
+				DialogResult result = sfdProject.ShowDialog();
 
-                if (result == DialogResult.OK) {
-                    CurrentProject.ProjectFilePath = sfdProject.FileName;
-                }
-                else {
-                    return;
-                }
-            }
-            
-            CurrentProject.Save();
-            UpdateFormText();
-        }
+				if (result == DialogResult.OK) {
+					CurrentProject.ProjectFilePath = sfdProject.FileName;
+				}
+				else {
+					return;
+				}
+			}
+			
+			CurrentProject.Save();
+			UpdateFormText();
+		}
 
-        private void OpenProject() {
-            DialogResult result = ofdProject.ShowDialog();
-            if (result != DialogResult.OK) {
-                return;
-            }
+		private void OpenProject() {
+			DialogResult result = ofdProject.ShowDialog();
+			if (result != DialogResult.OK) {
+				return;
+			}
 
-            OpenProject(ofdProject.FileName);
-        }
+			OpenProject(ofdProject.FileName);
+		}
 
-        private void OpenProject(String path) {
-            if (ConfirmCloseDirtyProject()) {
-                // cancel
-                return;
-            }
+		private void OpenProject(String path) {
+			if (ConfirmCloseDirtyProject()) {
+				// cancel
+				return;
+			}
 
-            try {
-                Project project = Project.Load(path);
+			try {
+				Project project = Project.Load(path);
 
-                CurrentProject = project;
-                UpdateFormText();
-            }
-            catch (Exception e) {
-                HandleError(Strings.ProjectLoadErrorMessage, e);
-            }
-        }
+				CurrentProject = project;
+				UpdateFormText();
+			}
+			catch (Exception e) {
+				HandleError(Strings.ProjectLoadErrorMessage, e);
+			}
+		}
 
-        private void CompileProject() {
-            CompileProject(false, null, null);
-        }
+		private void CompileProject() {
+			CompileProject(false, null, null);
+		}
 
-        private void CompileProject(bool runAfterCompile) {
-            CompileProject(runAfterCompile, null, null);
-        }
+		private void CompileProject(bool runAfterCompile) {
+			CompileProject(runAfterCompile, null, null);
+		}
 
-        private void CompileProject(Page previewPage, Language previewLanguage) {
-            CompileProject(false, previewPage, previewLanguage);
-        }
+		private void CompileProject(Page previewPage, Language previewLanguage) {
+			CompileProject(false, previewPage, previewLanguage);
+		}
 
-        private void CompileProject(bool runAfterCompile, Page previewPage, Language previewLanguage) {
-            if (CurrentProject == null || _CompilerRunning) {
-                return;
-            }
+		private void CompileProject(bool runAfterCompile, Page previewPage, Language previewLanguage) {
+			if (CurrentProject == null || _CompilerRunning) {
+				return;
+			}
 
-            _CompilerRunning = true;
-            
-            UpdateStatus(StatusText.BuildStarted);
-            CompilerSetControls(false);
+			_CompilerRunning = true;
+			
+			UpdateStatus(StatusText.BuildStarted);
+			CompilerSetControls(false);
 
-            try {
-                Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
-                    PreviewPage = previewPage,
-                    PreviewLanguage = previewLanguage
-                });
+			try {
+				Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
+					PreviewPage = previewPage,
+					PreviewLanguage = previewLanguage
+				});
 
-                compiler.Completed += (sender, e) => {
-                    if (runAfterCompile) {
-                        OpenProjectInDefaultBrowser(CurrentProject);
-                    }
+				compiler.Completed += (sender, e) => {
+					if (runAfterCompile) {
+						OpenProjectInDefaultBrowser(CurrentProject);
+					}
 
-                    if (compiler.Error) {
-                        CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
-                        form.ShowDialog();
-                    }
+					if (compiler.Error) {
+						CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
+						form.ShowDialog();
+					}
 
-                    _CompilerRunning = false;
-                    CompilerSetControls(true);
-                    UpdateStatus(StatusText.BuildSucceeded);
-                };
+					_CompilerRunning = false;
+					CompilerSetControls(true);
+					UpdateStatus(StatusText.BuildSucceeded);
+				};
 
-                compiler.ProgressChanged += (sender, e) => {
-                    tspProgress.Value = e.Percentage;
-                    UpdateStatus(e.Message);
-                };
+				compiler.ProgressChanged += (sender, e) => {
+					tspProgress.Value = e.Percentage;
+					UpdateStatus(e.Message);
+				};
 
-                compiler.StartAsync();
-            }
-            catch (OutputPathMissingException) {
-                _CompilerRunning = false;
-                HandleError(Strings.MessageOutputPathRequired);
-            }
-            catch (Exception e) {
-                _CompilerRunning = false;
-                HandleError(e);
-            }
-        }
+				compiler.StartAsync();
+			}
+			catch (OutputPathMissingException) {
+				_CompilerRunning = false;
+				HandleError(Strings.MessageOutputPathRequired);
+			}
+			catch (Exception e) {
+				_CompilerRunning = false;
+				HandleError(e);
+			}
+		}
 
-        private void CompilerSetControls(bool enabled) {
-            mnuBuildProject.Enabled = enabled;
-            mnuBuildAndRunProject.Enabled = enabled;
-            mnuBuildPage.Enabled = enabled;
-            mnuBuildCleanOutput.Enabled = enabled;
-            tspProgress.Value = 0;
-        }
+		private void CompilerSetControls(bool enabled) {
+			mnuBuildProject.Enabled = enabled;
+			mnuBuildAndRunProject.Enabled = enabled;
+			mnuBuildPage.Enabled = enabled;
+			mnuBuildCleanOutput.Enabled = enabled;
+			tspProgress.Value = 0;
+		}
 
-        private void HandleError(String message) {
-            HandleError(message, null);
-        }
+		private void HandleError(String message) {
+			HandleError(message, null);
+		}
 
-        private void HandleError(Exception e) {
-            HandleError(e.Message, null);
-        }
-        
-        private void HandleError(String message, Exception e) {
-            StringBuilder builder = new StringBuilder();
-            builder.Append(message);
+		private void HandleError(Exception e) {
+			HandleError(e.Message, null);
+		}
+		
+		private void HandleError(String message, Exception e) {
+			StringBuilder builder = new StringBuilder();
+			builder.Append(message);
 
-            if (e != null) {
-                builder.AppendLine();
-                builder.AppendLine();
-                builder.Append(Strings.Details);
-                builder.Append(": ");
-                builder.Append(e.Message);
-            }
+			if (e != null) {
+				builder.AppendLine();
+				builder.AppendLine();
+				builder.Append(Strings.Details);
+				builder.Append(": ");
+				builder.Append(e.Message);
+			}
 
-            MessageBox.Show(builder.ToString(), Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+			MessageBox.Show(builder.ToString(), Strings.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
 
-        public void OpenProjectInDefaultBrowser(Project project) {
-            String path = Path.Combine(project.OutputPath, Project.FileIndex);
+		public void OpenProjectInDefaultBrowser(Project project) {
+			String path = Path.Combine(project.OutputPath, Project.FileIndex);
 
-            if (!File.Exists(path)) {
-                return;
-            }
+			if (!File.Exists(path)) {
+				return;
+			}
 
-            Process.Start(path);
-        }
+			Process.Start(path);
+		}
 
-        private void UpdateStatus(String status) {
-            tslStatus.Text = status;
-        }
+		private void UpdateStatus(String status) {
+			tslStatus.Text = status;
+		}
 
-        private bool ConfirmCloseDirtyProject() {
-            if (!CurrentProject.Dirty) {
-                return false;
-            }
+		private bool ConfirmCloseDirtyProject() {
+			if (!CurrentProject.Dirty) {
+				return false;
+			}
 
-            DialogResult result = MessageBox.Show(
-                Strings.DirtyProjectConfirmSaveMessage,
-                Strings.DirtyProjectConfirmSaveTitle,
-                MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Question);
+			DialogResult result = MessageBox.Show(
+				Strings.DirtyProjectConfirmSaveMessage,
+				Strings.DirtyProjectConfirmSaveTitle,
+				MessageBoxButtons.YesNoCancel,
+				MessageBoxIcon.Question);
 
-            switch (result) {
-                case DialogResult.Yes:
-                    SaveProject(false);
-                    return false;
-                case DialogResult.No:
-                    return false;
-                default:
-                case DialogResult.Cancel:
-                    return true;
-            }
-        }
+			switch (result) {
+				case DialogResult.Yes:
+					SaveProject(false);
+					return false;
+				case DialogResult.No:
+					return false;
+				default:
+				case DialogResult.Cancel:
+					return true;
+			}
+		}
 
-        private void ClearOutputDirectory() {
-            if (CurrentProject == null) {
-                return;
-            }
+		private void ClearOutputDirectory() {
+			if (CurrentProject == null) {
+				return;
+			}
 
-            Compiler.ClearOutputDirectory(CurrentProject);
-        }
+			Compiler.ClearOutputDirectory(CurrentProject);
+		}
 
-        private void RefreshLanguageList() {
-            int previousIndex = tscLanguage.SelectedIndex;
-            tscLanguage.Items.Clear();
+		private void RefreshLanguageList() {
+			int previousIndex = tscLanguage.SelectedIndex;
+			tscLanguage.Items.Clear();
 
-            if (CurrentProject == null) {
-                return;
-            }
+			if (CurrentProject == null) {
+				return;
+			}
 
-            foreach(Language language in CurrentProject.Languages) {
-                tscLanguage.Items.Add(language.Description);
-            }
+			foreach(Language language in CurrentProject.Languages) {
+				tscLanguage.Items.Add(language.Description);
+			}
 
-            if (previousIndex > 0 && previousIndex < tscLanguage.Items.Count) {
-                tscLanguage.SelectedIndex = previousIndex;
-            }
-            else if (tscLanguage.Items.Count > 0 ){
-                tscLanguage.SelectedIndex = 0;
-            }
-        }
-    }
+			if (previousIndex > 0 && previousIndex < tscLanguage.Items.Count) {
+				tscLanguage.SelectedIndex = previousIndex;
+			}
+			else if (tscLanguage.Items.Count > 0 ){
+				tscLanguage.SelectedIndex = 0;
+			}
+		}
+	}
 }

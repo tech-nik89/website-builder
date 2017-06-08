@@ -1,11 +1,11 @@
 ﻿using System.Drawing;
 
 namespace WebsiteBuilder.Interface.Icons {
-    public interface IIconPack {
+	public interface IIconPack {
 
-        Icon GetIcon(IconPackIcon icon);
+		Icon GetIcon(IconPackIcon icon);
 
-        Image GetImage(IconPackIcon icon);
+		Image GetImage(IconPackIcon icon);
 
-    }
+	}
 }

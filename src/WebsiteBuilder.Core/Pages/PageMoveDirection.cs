@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WebsiteBuilder.Core.Pages {
-    public enum PageMoveDirection {
-        Up,
-        Down
-    }
+	public enum PageMoveDirection {
+		Up,
+		Down
+	}
 }

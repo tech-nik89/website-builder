@@ -5,26 +5,26 @@ using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class CompilerErrorForm : Form {
-        
-        public CompilerErrorForm(String errorMessage) {
-            InitializeComponent();
+	public partial class CompilerErrorForm : Form {
+		
+		public CompilerErrorForm(String errorMessage) {
+			InitializeComponent();
 			LocalizeComponent();
-            ApplyIcons();
+			ApplyIcons();
 
-            txtError.Text = errorMessage;
-        }
+			txtError.Text = errorMessage;
+		}
 
-        private void ApplyIcons() {
-            if (IconPack.Current == null) {
-                return;
-            }
+		private void ApplyIcons() {
+			if (IconPack.Current == null) {
+				return;
+			}
 
-            Icon = IconPack.Current.GetIcon(IconPackIcon.Build);
-        }
+			Icon = IconPack.Current.GetIcon(IconPackIcon.Build);
+		}
 
-        public void LocalizeComponent() {
-            Text = Strings.BuildError;
-        }
-    }
+		public void LocalizeComponent() {
+			Text = Strings.BuildError;
+		}
+	}
 }

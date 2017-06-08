@@ -1,8 +1,8 @@
 ﻿using WebsiteBuilder.Interface.Compiling;
 
 namespace WebsiteBuilder.Interface.Plugins {
-    public interface IModule : IPlugin, IModuleCompiler {
-        
+	public interface IModule : IPlugin, IModuleCompiler {
+		
 
-    }
+	}
 }

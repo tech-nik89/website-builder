@@ -1,11 +1,11 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Core.Compiling {
-    interface ICompilerStep {
+	interface ICompilerStep {
 
-        void Run();
+		void Run();
 
-        String Output { get; }
+		String Output { get; }
 
-    }
+	}
 }

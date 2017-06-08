@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WebsiteBuilder.Modules.Toolbox {
-    enum GenericFieldType {
-        TextBox,
-        CheckBox,
-        Editor,
-        NumericTextBox
-    }
+	enum GenericFieldType {
+		TextBox,
+		CheckBox,
+		Editor,
+		NumericTextBox
+	}
 }

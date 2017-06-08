@@ -5,32 +5,32 @@ using System.Windows.Forms;
 using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Editors.Avalon {
-    public partial class AvalonEditorControl : UserControl, IUserInterface {
-        
-        private readonly TextEditor _Editor;
+	public partial class AvalonEditorControl : UserControl, IUserInterface {
+		
+		private readonly TextEditor _Editor;
 
-        public String Data {
-            get {
-                return _Editor.Text;
-            }
-            set {
-                _Editor.Text = value;
-            }
-        }
+		public String Data {
+			get {
+				return _Editor.Text;
+			}
+			set {
+				_Editor.Text = value;
+			}
+		}
 
-        public AvalonEditorControl(String highlightingMode) {
-            InitializeComponent();
+		public AvalonEditorControl(String highlightingMode) {
+			InitializeComponent();
 
-            _Editor = new TextEditor();
-            _Editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition(highlightingMode);
-            _Editor.FontFamily = new System.Windows.Media.FontFamily("Consolas");
-            _Editor.ShowLineNumbers = true;
+			_Editor = new TextEditor();
+			_Editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition(highlightingMode);
+			_Editor.FontFamily = new System.Windows.Media.FontFamily("Consolas");
+			_Editor.ShowLineNumbers = true;
 
-            wpfHost.Child = _Editor;
-        }
+			wpfHost.Child = _Editor;
+		}
 
-        public void Insert(String str) {
-            _Editor.Document.Insert(_Editor.TextArea.Caret.Offset, str);
-        }
-    }
+		public void Insert(String str) {
+			_Editor.Document.Insert(_Editor.TextArea.Caret.Offset, str);
+		}
+	}
 }

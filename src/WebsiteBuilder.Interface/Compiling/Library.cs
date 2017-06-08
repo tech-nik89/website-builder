@@ -1,6 +1,6 @@
 ﻿namespace WebsiteBuilder.Interface.Compiling {
-    public enum Library {
-        jQuery,
-        jQuerySlim
-    }
+	public enum Library {
+		jQuery,
+		jQuerySlim
+	}
 }

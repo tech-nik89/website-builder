@@ -2,17 +2,17 @@
 using System.IO;
 
 namespace WebsiteBuilder.Interface.Compiling {
-    public interface IHtmlElement {
+	public interface IHtmlElement {
 
-        void AppendChild(IHtmlElement element);
+		void AppendChild(IHtmlElement element);
 
-        void SetAttribute(String name, String value);
+		void SetAttribute(String name, String value);
 
-        String GetAttribute(String name);
+		String GetAttribute(String name);
 
-        void Compile(TextWriter writer);
+		void Compile(TextWriter writer);
 
-        String Content { get; set; }
+		String Content { get; set; }
 
-    }
+	}
 }

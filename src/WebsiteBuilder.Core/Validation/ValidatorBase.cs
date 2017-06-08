@@ -1,15 +1,15 @@
 ﻿namespace WebsiteBuilder.Core.Validation {
-    public abstract class ValidatorBase<T> {
+	public abstract class ValidatorBase<T> {
 
-        private readonly T _Object;
+		private readonly T _Object;
 
-        protected T Object => _Object;
+		protected T Object => _Object;
 
-        public abstract bool Valid { get; }
+		public abstract bool Valid { get; }
 
-        public ValidatorBase(T obj) {
-            _Object = obj;
-        }
+		public ValidatorBase(T obj) {
+			_Object = obj;
+		}
 
-    }
+	}
 }

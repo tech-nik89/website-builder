@@ -11,47 +11,47 @@ using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.UI.Localization;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class LanguageForm : Form {
+	public partial class LanguageForm : Form {
 
-        public Language Language { get; private set; }
+		public Language Language { get; private set; }
 
-        public LanguageForm(Language language) {
-            InitializeComponent();
-            LocalizeComponent();
+		public LanguageForm(Language language) {
+			InitializeComponent();
+			LocalizeComponent();
 
-            DialogResult = DialogResult.Cancel;
-            Language = language;
-            FillForm();
-        }
+			DialogResult = DialogResult.Cancel;
+			Language = language;
+			FillForm();
+		}
 
-        private void LocalizeComponent() {
-            Text = Strings.Language;
+		private void LocalizeComponent() {
+			Text = Strings.Language;
 
-            lblId.Text = Strings.Id + ":";
-            lblDescription.Text = Strings.Description + ":";
+			lblId.Text = Strings.Id + ":";
+			lblDescription.Text = Strings.Description + ":";
 
-            btnAccept.Text = Strings.Accept;
-            btnCancel.Text = Strings.Cancel;
-        }
+			btnAccept.Text = Strings.Accept;
+			btnCancel.Text = Strings.Cancel;
+		}
 
-        private void FillForm() {
-            txtID.Text = Language.Id;
-            txtDescription.Text = Language.Description;
-        }
+		private void FillForm() {
+			txtID.Text = Language.Id;
+			txtDescription.Text = Language.Description;
+		}
 
-        private void FillLanguage() {
-            Language.Id = txtID.Text;
-            Language.Description = txtDescription.Text;
-        }
+		private void FillLanguage() {
+			Language.Id = txtID.Text;
+			Language.Description = txtDescription.Text;
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+		private void btnCancel_Click(object sender, EventArgs e) {
+			Close();
+		}
 
-        private void btnAccept_Click(object sender, EventArgs e) {
-            FillLanguage();
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-    }
+		private void btnAccept_Click(object sender, EventArgs e) {
+			FillLanguage();
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+	}
 }

@@ -1,7 +1,7 @@
 ﻿namespace WebsiteBuilder.Modules.Table {
-    enum HeaderPosition {
-        NoHeader,
-        Top,
-        Left
-    }
+	enum HeaderPosition {
+		NoHeader,
+		Top,
+		Left
+	}
 }

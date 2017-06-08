@@ -7,186 +7,186 @@ using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.Gallery.Localization;
 
 namespace WebsiteBuilder.Modules.Gallery {
-    internal partial class GalleryControl : UserControl, IUserInterface {
+	internal partial class GalleryControl : UserControl, IUserInterface {
 
-        private static readonly String[] SupportedExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
+		private static readonly String[] SupportedExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
 
-        private const String AutoCopyGalleryDirectoryName = "gallery";
+		private const String AutoCopyGalleryDirectoryName = "gallery";
 
-        private const int ImageSize = 64;
-        
-        private readonly IPluginHelper _PluginHelper;
+		private const int ImageSize = 64;
+		
+		private readonly IPluginHelper _PluginHelper;
 
-        private GalleryData _Data;
+		private GalleryData _Data;
 
-        private readonly ImageList _ImageList;
+		private readonly ImageList _ImageList;
 
-        public String Data {
-            get {
-                return GalleryData.Serialize(_Data, _PluginHelper);
-            }
-            set {
-                _Data = GalleryData.Deserialize(value, _PluginHelper);
-                RefreshList();
-            }
-        }
+		public String Data {
+			get {
+				return GalleryData.Serialize(_Data, _PluginHelper);
+			}
+			set {
+				_Data = GalleryData.Deserialize(value, _PluginHelper);
+				RefreshList();
+			}
+		}
 
-        public GalleryControl(IPluginHelper pluginHelper) {
-            InitializeComponent();
+		public GalleryControl(IPluginHelper pluginHelper) {
+			InitializeComponent();
 
-            _PluginHelper = pluginHelper;
-            LocalizeComponent();
+			_PluginHelper = pluginHelper;
+			LocalizeComponent();
 
-            _Data = new GalleryData();
-            _ImageList = new ImageList() { ImageSize = new Size(ImageSize, ImageSize), ColorDepth = ColorDepth.Depth32Bit };
-            
-            lvwImages.LargeImageList = _ImageList;
+			_Data = new GalleryData();
+			_ImageList = new ImageList() { ImageSize = new Size(ImageSize, ImageSize), ColorDepth = ColorDepth.Depth32Bit };
+			
+			lvwImages.LargeImageList = _ImageList;
 
-            EnableControls();
-        }
+			EnableControls();
+		}
 
-        private void LocalizeComponent() {
-            tsbAdd.Text = Strings.Add;
-            tsbDelete.Text = Strings.Remove;
-            tsbSettings.Text = Strings.GallerySettings;
+		private void LocalizeComponent() {
+			tsbAdd.Text = Strings.Add;
+			tsbDelete.Text = Strings.Remove;
+			tsbSettings.Text = Strings.GallerySettings;
 
-            IIconPack iconPack = _PluginHelper.GetIconPack();
-            tsbAdd.Image = iconPack.GetImage(IconPackIcon.Add);
-            tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
-            tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
-        }
-        
-        public void Insert(String str) {
-            // ignore
-        }
+			IIconPack iconPack = _PluginHelper.GetIconPack();
+			tsbAdd.Image = iconPack.GetImage(IconPackIcon.Add);
+			tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
+			tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
+		}
+		
+		public void Insert(String str) {
+			// ignore
+		}
 
-        private void tsbAdd_Click(object sender, EventArgs e) {
-            if (ofdImages.ShowDialog() != DialogResult.OK) {
-                return;
-            }
+		private void tsbAdd_Click(object sender, EventArgs e) {
+			if (ofdImages.ShowDialog() != DialogResult.OK) {
+				return;
+			}
 
-            Add(ofdImages.FileNames);
-        }
+			Add(ofdImages.FileNames);
+		}
 
-        private void tsbDelete_Click(object sender, EventArgs e) {
-            Delete();
-        }
+		private void tsbDelete_Click(object sender, EventArgs e) {
+			Delete();
+		}
 
-        private void EnableControls() {
-            bool enabled = lvwImages.SelectedIndices.Count > 0;
-            tsbDelete.Enabled = enabled;
-        }
+		private void EnableControls() {
+			bool enabled = lvwImages.SelectedIndices.Count > 0;
+			tsbDelete.Enabled = enabled;
+		}
 
-        private void Delete() {
-            if (lvwImages.SelectedIndices.Count == 0) {
-                return;
-            }
+		private void Delete() {
+			if (lvwImages.SelectedIndices.Count == 0) {
+				return;
+			}
 
-            for (int i = lvwImages.SelectedIndices.Count - 1; i >= 0; i--) {
-                _Data.Files.RemoveAt(lvwImages.SelectedIndices[i]);
-            }
+			for (int i = lvwImages.SelectedIndices.Count - 1; i >= 0; i--) {
+				_Data.Files.RemoveAt(lvwImages.SelectedIndices[i]);
+			}
 
-            RefreshList();
-        }
+			RefreshList();
+		}
 
-        private void RefreshList() {
-            lvwImages.VirtualListSize = 0;
-            _ImageList.Images.Clear();
+		private void RefreshList() {
+			lvwImages.VirtualListSize = 0;
+			_ImageList.Images.Clear();
 
-            Size thumbSize = lvwImages.TileSize;
+			Size thumbSize = lvwImages.TileSize;
 
-            foreach(String path in _Data.Files) {
-                using (Image image = Image.FromFile(path)) {
-                    int height = image.Height * ImageSize / image.Width;
-                    _ImageList.Images.Add(ImageHelper.ResizeImageToSquare(image, ImageSize));
-                }
-            }
+			foreach(String path in _Data.Files) {
+				using (Image image = Image.FromFile(path)) {
+					int height = image.Height * ImageSize / image.Width;
+					_ImageList.Images.Add(ImageHelper.ResizeImageToSquare(image, ImageSize));
+				}
+			}
 
-            lvwImages.VirtualListSize = _Data.Files.Count;
-        }
+			lvwImages.VirtualListSize = _Data.Files.Count;
+		}
 
-        private void lvwImages_SelectedIndexChanged(object sender, EventArgs e) {
-            EnableControls();
-        }
+		private void lvwImages_SelectedIndexChanged(object sender, EventArgs e) {
+			EnableControls();
+		}
 
-        private void lvwImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
-            String path = _Data.Files[e.ItemIndex];
-            String name = Path.GetFileNameWithoutExtension(path);
-            ListViewItem item = new ListViewItem(name);
-            item.ImageIndex = e.ItemIndex;
+		private void lvwImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+			String path = _Data.Files[e.ItemIndex];
+			String name = Path.GetFileNameWithoutExtension(path);
+			ListViewItem item = new ListViewItem(name);
+			item.ImageIndex = e.ItemIndex;
 
-            e.Item = item;
-        }
+			e.Item = item;
+		}
 
-        private void lvwImages_KeyUp(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Delete) {
-                Delete();
-            }
-        }
+		private void lvwImages_KeyUp(object sender, KeyEventArgs e) {
+			if (e.KeyCode == Keys.Delete) {
+				Delete();
+			}
+		}
 
-        private void lvwImages_DragEnter(object sender, DragEventArgs e) {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
-                e.Effect = DragDropEffects.Copy;
-            }
-        }
+		private void lvwImages_DragEnter(object sender, DragEventArgs e) {
+			if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+				e.Effect = DragDropEffects.Copy;
+			}
+		}
 
-        private void lvwImages_DragDrop(object sender, DragEventArgs e) {
-            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) {
-                return;
-            }
+		private void lvwImages_DragDrop(object sender, DragEventArgs e) {
+			if (!e.Data.GetDataPresent(DataFormats.FileDrop)) {
+				return;
+			}
 
-            Add((String[])e.Data.GetData(DataFormats.FileDrop));
-        }
+			Add((String[])e.Data.GetData(DataFormats.FileDrop));
+		}
 
-        private void Add(String[] fileNames) {
-            bool fileAdded = false;
-            bool copyToProjectDirectory = false;
-            bool alreadyAskedForCopyToProjectDirectory = false;
+		private void Add(String[] fileNames) {
+			bool fileAdded = false;
+			bool copyToProjectDirectory = false;
+			bool alreadyAskedForCopyToProjectDirectory = false;
 
-            foreach (String path in fileNames) {
-                String filePath = path;
+			foreach (String path in fileNames) {
+				String filePath = path;
 
-                if (!File.Exists(filePath) || Array.IndexOf(SupportedExtensions, Path.GetExtension(filePath).ToLower()) == -1) {
-                    continue;
-                }
+				if (!File.Exists(filePath) || Array.IndexOf(SupportedExtensions, Path.GetExtension(filePath).ToLower()) == -1) {
+					continue;
+				}
 
-                if (!alreadyAskedForCopyToProjectDirectory && _PluginHelper.CanSuggestCopyToProjectDirectory(filePath)) {
-                    alreadyAskedForCopyToProjectDirectory = true;
-                    copyToProjectDirectory = AskUserWantsFilesToBeCopiedToProjectDirectory();
-                }
+				if (!alreadyAskedForCopyToProjectDirectory && _PluginHelper.CanSuggestCopyToProjectDirectory(filePath)) {
+					alreadyAskedForCopyToProjectDirectory = true;
+					copyToProjectDirectory = AskUserWantsFilesToBeCopiedToProjectDirectory();
+				}
 
-                if (copyToProjectDirectory) {
-                    String newPath = _PluginHelper.GetFullPath(Path.Combine(AutoCopyGalleryDirectoryName, _PluginHelper.NewGuid() + Path.GetExtension(filePath)));
-                    FileInfo newFile = new FileInfo(newPath);
-                    newFile.Directory.Create();
+				if (copyToProjectDirectory) {
+					String newPath = _PluginHelper.GetFullPath(Path.Combine(AutoCopyGalleryDirectoryName, _PluginHelper.NewGuid() + Path.GetExtension(filePath)));
+					FileInfo newFile = new FileInfo(newPath);
+					newFile.Directory.Create();
 
-                    File.Copy(filePath, newFile.FullName);
-                    filePath = newFile.FullName;
-                }
+					File.Copy(filePath, newFile.FullName);
+					filePath = newFile.FullName;
+				}
 
-                _Data.Files.Add(filePath);
-                fileAdded = true;
-            }
+				_Data.Files.Add(filePath);
+				fileAdded = true;
+			}
 
-            if (fileAdded) {
-                RefreshList();
-            }
-        }
+			if (fileAdded) {
+				RefreshList();
+			}
+		}
 
-        private static bool AskUserWantsFilesToBeCopiedToProjectDirectory() {
-            DialogResult result = MessageBox.Show(Strings.SuggestCopyToProjectDirectoryMessage, Strings.SuggestCopyToProjectDirectoryTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            return result == DialogResult.Yes;
-        }
+		private static bool AskUserWantsFilesToBeCopiedToProjectDirectory() {
+			DialogResult result = MessageBox.Show(Strings.SuggestCopyToProjectDirectoryMessage, Strings.SuggestCopyToProjectDirectoryTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			return result == DialogResult.Yes;
+		}
 
-        private void tsbSettings_Click(object sender, EventArgs e) {
-            SettingsForm form = new SettingsForm(_PluginHelper.GetIconPack(), _Data.ThumbnailSize, _Data.FullSize, _Data.Title);
-            if (form.ShowDialog() != DialogResult.OK) {
-                return;
-            }
+		private void tsbSettings_Click(object sender, EventArgs e) {
+			SettingsForm form = new SettingsForm(_PluginHelper.GetIconPack(), _Data.ThumbnailSize, _Data.FullSize, _Data.Title);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
 
-            _Data.Title = form.Title;
-            _Data.FullSize = form.FullSize;
-            _Data.ThumbnailSize = form.ThumbnailSize;
-        }
-    }
+			_Data.Title = form.Title;
+			_Data.FullSize = form.FullSize;
+			_Data.ThumbnailSize = form.ThumbnailSize;
+		}
+	}
 }

@@ -6,47 +6,47 @@ using WebsiteBuilder.UI.Plugins;
 using WebsiteBuilder.UI.Resources;
 
 namespace WebsiteBuilder.UI.Forms {
-    public partial class PageContentSettingsForm : Form {
+	public partial class PageContentSettingsForm : Form {
 
-        private readonly PageContent _PageContent;
+		private readonly PageContent _PageContent;
 
-        public PageContentSettingsForm(PageContent content) {
-            InitializeComponent();
-            LocalizeComponent();
+		public PageContentSettingsForm(PageContent content) {
+			InitializeComponent();
+			LocalizeComponent();
 
-            DialogResult = DialogResult.Cancel;
+			DialogResult = DialogResult.Cancel;
 
-            cbxModule.FillWithModulePlugins();
-            cbxEditor.FillWithEditorPlugins();
+			cbxModule.FillWithModulePlugins();
+			cbxEditor.FillWithEditorPlugins();
 
-            cbxModule.SelectModulePlugin(content.ModuleType);
-            cbxEditor.SelectEditorPlugin(content.EditorType);
+			cbxModule.SelectModulePlugin(content.ModuleType);
+			cbxEditor.SelectEditorPlugin(content.EditorType);
 
-            _PageContent = content;
-        }
+			_PageContent = content;
+		}
 
-        private void LocalizeComponent() {
-            Text = Strings.ContentSettings;
+		private void LocalizeComponent() {
+			Text = Strings.ContentSettings;
 
-            lblModule.Text = Strings.Module + ":";
-            lblEditor.Text = Strings.Editor + ":";
+			lblModule.Text = Strings.Module + ":";
+			lblEditor.Text = Strings.Editor + ":";
 
-            btnAccept.Text = Strings.Accept;
-            btnCancel.Text = Strings.Cancel;
+			btnAccept.Text = Strings.Accept;
+			btnCancel.Text = Strings.Cancel;
 
-            Icon = IconPack.Current.GetIcon(Interface.Icons.IconPackIcon.Settings);
-        }
+			Icon = IconPack.Current.GetIcon(Interface.Icons.IconPackIcon.Settings);
+		}
 
-        private void btnCancel_Click(object sender, EventArgs e) {
-            Close();
-        }
+		private void btnCancel_Click(object sender, EventArgs e) {
+			Close();
+		}
 
-        private void btnAccept_Click(object sender, EventArgs e) {
-            _PageContent.ModuleType = cbxModule.GetModulePlugin();
-            _PageContent.EditorType = cbxEditor.GetEditorPlugin();
+		private void btnAccept_Click(object sender, EventArgs e) {
+			_PageContent.ModuleType = cbxModule.GetModulePlugin();
+			_PageContent.EditorType = cbxEditor.GetEditorPlugin();
 
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-    }
+			DialogResult = DialogResult.OK;
+			Close();
+		}
+	}
 }

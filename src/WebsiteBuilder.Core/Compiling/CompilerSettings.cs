@@ -2,11 +2,11 @@
 using WebsiteBuilder.Core.Pages;
 
 namespace WebsiteBuilder.Core.Compiling {
-    public class CompilerSettings {
+	public class CompilerSettings {
 
-        public Page PreviewPage { get; set; }
+		public Page PreviewPage { get; set; }
 
-        public Language PreviewLanguage { get; set; }
+		public Language PreviewLanguage { get; set; }
 
-    }
+	}
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Interface.Plugins {
-    public interface IUserInterface {
+	public interface IUserInterface {
 
-        String Data { get; set; }
+		String Data { get; set; }
 
-        void Insert(String str);
+		void Insert(String str);
 
-    }
+	}
 }

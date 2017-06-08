@@ -1,9 +1,9 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Modules.Toolbox {
-    interface IItem {
+	interface IItem {
 
-        String[] Columns { get; }
+		String[] Columns { get; }
 
-    }
+	}
 }

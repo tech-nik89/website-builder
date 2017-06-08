@@ -1,15 +1,15 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Core.Pages {
-    public interface IPage {
+	public interface IPage {
 
-        String Id { get; }
+		String Id { get; }
 
-        String PathName { get; }
+		String PathName { get; }
 
-        PageCollection Pages { get; }
+		PageCollection Pages { get; }
 
-        IPage Parent { get; }
+		IPage Parent { get; }
 
-    }
+	}
 }

@@ -1,31 +1,31 @@
 ﻿using System;
 
 namespace WebsiteBuilder.Interface.Compiling {
-    public interface ICompileHelper {
+	public interface ICompileHelper {
 
-        IHtmlElement CreateHtmlElement(String name);
+		IHtmlElement CreateHtmlElement(String name);
 
-        String Compile(IHtmlElement element);
+		String Compile(IHtmlElement element);
 
-        void CreateCssFile(String css);
+		void CreateCssFile(String css);
 
-        void CreateLessFile(String less);
+		void CreateLessFile(String less);
 
-        void CreateJavaScriptFile(String javaScript);
+		void CreateJavaScriptFile(String javaScript);
 
-        void CreateJavaScriptFile(String javaScript, bool runAfterLoad);
+		void CreateJavaScriptFile(String javaScript, bool runAfterLoad);
 
-        String GetFilePath(String targetFileName);
+		String GetFilePath(String targetFileName);
 
-        String CreateSubPage(String pathName, String content);
+		String CreateSubPage(String pathName, String content);
 
-        void AddPageStyleClass(String className);
+		void AddPageStyleClass(String className);
 
-        void SetPageFlag(int flag, bool value);
+		void SetPageFlag(int flag, bool value);
 
-        bool HasPageFlag(int flag);
+		bool HasPageFlag(int flag);
 
-        void RequireLibrary(Library library);
+		void RequireLibrary(Library library);
 
-    }
+	}
 }
