@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Localization\Strings.Designer.cs">
@@ -72,9 +72,9 @@
     <Compile Include="Table\TableModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
+    <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
-      <Name>WebsiteBuilder.Interface</Name>
+      <Name>Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)WebsiteBuilder.UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>WebsiteBuilder.CompilerConsole</RootNamespace>
-    <AssemblyName>WebsiteBuilder.Compiler</AssemblyName>
+    <ProjectGuid>{31F631E4-BF07-4E05-B2CC-57C6B64F87EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebsiteBuilder.Interface</RootNamespace>
+    <AssemblyName>WebsiteBuilder.Interface</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,11 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommandLine">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\CommandLine.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,25 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Options.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Compiling\ICompileHelper.cs" />
+    <Compile Include="Compiling\ICompiler.cs" />
+    <Compile Include="Compiling\IHtmlElement.cs" />
+    <Compile Include="Compiling\IModuleCompiler.cs" />
+    <Compile Include="Compiling\Library.cs" />
+    <Compile Include="Icons\IconPackIcon.cs" />
+    <Compile Include="Icons\IIconPack.cs" />
+    <Compile Include="Plugins\IEditor.cs" />
+    <Compile Include="Plugins\IUserInterface.cs" />
+    <Compile Include="Plugins\IModule.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IPluginHelper.cs" />
+    <Compile Include="Plugins\PluginInfoAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WebsiteBuilder.Core\WebsiteBuilder.Core.csproj">
-      <Project>{2c19c463-3117-4255-976b-135bf0b48bdc}</Project>
-      <Name>WebsiteBuilder.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
-      <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
-      <Name>WebsiteBuilder.Interface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

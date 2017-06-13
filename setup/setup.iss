@@ -1,4 +1,4 @@
-#define ApplicationVersion GetStringFileInfo("..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe", "FileVersion")
+#define ApplicationVersion GetStringFileInfo("..\src\UI\bin\Release\WebsiteBuilder.exe", "FileVersion")
 
 [Setup]
 AppName=Website Builder
@@ -18,15 +18,15 @@ OutputBaseFilename=WebsiteBuilderSetup_{#ApplicationVersion}
 UninstallDisplayIcon={app}\WebsiteBuilder.exe
 
 [Files]
-Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{app}"; Components: core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
-Source: "..\src\WebsiteBuilder.UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
+Source: "..\src\UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{app}"; Components: core
+Source: "..\src\UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: core
+Source: "..\src\UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
+Source: "..\src\UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
+Source: "..\src\UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
 Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
-Source: "..\src\WebsiteBuilder.Compiler\bin\Release\WebsiteBuilder.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
-Source: "..\src\WebsiteBuilder.Compiler\bin\Release\WebsiteBuilder.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
+Source: "..\src\Compiler\bin\Release\WebsiteBuilder.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
+Source: "..\src\Compiler\bin\Release\WebsiteBuilder.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
 
 [Icons]
 Name: "{group}\Website Builder"; Filename: "{app}\WebsiteBuilder.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2

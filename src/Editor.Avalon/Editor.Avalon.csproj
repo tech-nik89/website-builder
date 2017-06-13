@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonMark">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\CommonMark.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\CommonMark.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\ICSharpCode.AvalonEdit.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -54,7 +54,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AvalonEditorControl.cs">
@@ -68,9 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
+    <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
-      <Name>WebsiteBuilder.Interface</Name>
+      <Name>Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +80,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)WebsiteBuilder.UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.UI", "WebsiteBuilder.UI\WebsiteBuilder.UI.csproj", "{27727468-3DA1-45EE-AA93-2E6CBF9220E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{27727468-3DA1-45EE-AA93-2E6CBF9220E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.Core", "WebsiteBuilder.Core\WebsiteBuilder.Core.csproj", "{2C19C463-3117-4255-976B-135BF0B48BDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2C19C463-3117-4255-976B-135BF0B48BDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.Interface", "WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj", "{31F631E4-BF07-4E05-B2CC-57C6B64F87EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{31F631E4-BF07-4E05-B2CC-57C6B64F87EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{785A34D5-BE04-435C-B39D-8BA68726CBDF}"
 EndProject
@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.News", "Module.News\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Toolbox", "Module.Toolbox\Module.Toolbox.csproj", "{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBuilder.Compiler", "WebsiteBuilder.Compiler\WebsiteBuilder.Compiler.csproj", "{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

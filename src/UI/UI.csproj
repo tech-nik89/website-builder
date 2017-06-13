@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ConfigHelper.cs" />
@@ -234,7 +234,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="..\WebsiteBuilder.IconPacks\Default.zip">
+    <None Include="..\IconPacks\Default.zip">
       <Link>Resources\IconPacks\Default.zip</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -257,13 +257,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebsiteBuilder.Core\WebsiteBuilder.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{2c19c463-3117-4255-976b-135bf0b48bdc}</Project>
-      <Name>WebsiteBuilder.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
+    <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
-      <Name>WebsiteBuilder.Interface</Name>
+      <Name>Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

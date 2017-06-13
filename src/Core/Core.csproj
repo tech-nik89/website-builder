@@ -31,16 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\AjaxMin.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="CommonMark">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\CommonMark.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\CommonMark.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\dotless.Core.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\WebsiteBuilder.ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Compiling\CompileHelper.cs" />
@@ -128,9 +128,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebsiteBuilder.Interface\WebsiteBuilder.Interface.csproj">
+    <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
-      <Name>WebsiteBuilder.Interface</Name>
+      <Name>Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
