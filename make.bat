@@ -5,7 +5,7 @@ set INNO_PATH="C:\Program Files (x86)\Inno Setup 5\Compil32.exe"
 
 rem UPDATE VERSION INFO
 echo Start Update Version Info
-SubWCRev %cd% %cd%\src\WebsiteBuilder.SharedSources\SharedAssemblyInfo.templ %cd%\src\WebsiteBuilder.SharedSources\SharedAssemblyInfo.cs
+SubWCRev %cd% %cd%\src\SharedSources\SharedAssemblyInfo.templ %cd%\src\SharedSources\SharedAssemblyInfo.cs
 echo End   Update Version Info
 
 rem BUILD SOLUTION
