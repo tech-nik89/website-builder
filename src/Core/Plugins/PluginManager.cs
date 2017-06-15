@@ -67,7 +67,7 @@ namespace WebsiteBuilder.Core.Plugins {
 						.SelectMany(s => s.GetTypes())
 						.Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass);
 			
-			foreach (var plugin in plugins) {
+			foreach (Type plugin in plugins) {
 				dict.Add(plugin, PluginInfoAttribute.GetPluginName(plugin));
 				list.Add(plugin);
 			}
