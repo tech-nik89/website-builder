@@ -61,6 +61,56 @@ namespace WebsiteBuilder.Modules.Toolbox.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (function () { 
+        ///    var items = document.getElementsByClassName(&quot;accordion&quot;);
+        ///
+        ///    for (var i = 0; i &lt; items.length; i++) {
+        ///        item[i].onclick = function () {
+        ///            this.classList.toggle(&quot;active&quot;);
+        ///        }
+        ///    }
+        ///})();.
+        /// </summary>
+        internal static string AccordionScript {
+            get {
+                return ResourceManager.GetString("AccordionScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .accordion {
+        ///    background-color: #eee;
+        ///    color: #444;
+        ///    cursor: pointer;
+        ///    padding: 18px;
+        ///    width: 100%;
+        ///    text-align: left;
+        ///    border: none;
+        ///    outline: none;
+        ///    transition: 0.2s;
+        ///
+        ///    + div {
+        ///        display: none;
+        ///        padding: 0 18px;
+        ///    }
+        ///
+        ///    &amp;.active, &amp;:hover {
+        ///        background-color: #ddd;
+        ///    }
+        ///
+        ///    &amp;.active + div {
+        ///        display: block;
+        ///    }
+        ///}
+        ///.
+        /// </summary>
+        internal static string AccordionStyle {
+            get {
+                return ResourceManager.GetString("AccordionStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (function () {
         ///    function instance(container) {
         ///        var _Quotes = container.querySelectorAll(&apos;.quotes &gt; blockquote&apos;);
@@ -123,6 +173,9 @@ namespace WebsiteBuilder.Modules.Toolbox.Properties {
         ///    padding-top: 4px;
         ///    padding-bottom: 4px;
         ///    margin: auto;
+        ///    list-style: none;
+        ///    margin: 10px;
+        ///    padding-left: 35px;
         ///
         ///    &amp;::before {
         ///        content: &apos;&apos;;
@@ -134,15 +187,11 @@ namespace WebsiteBuilder.Modules.Toolbox.Properties {
         ///        background: #DDD;
         ///    }
         ///
-        ///    &gt; ul {
-        ///        list-style: none;
-        ///        margin: 10px;
-        ///        padding-left: 35px;
-        ///
-        ///        &gt; li {
-        ///            position: relative;
-        ///            background-color: #F3F3F3;
-        ///            p [rest of string was truncated]&quot;;.
+        ///    &gt; li {
+        ///        position: relative;
+        ///        background-color: #F3F3F3;
+        ///        padding: 0;
+        ///        border: 1px solid #DDD [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TimelineStyle {
             get {
