@@ -58,6 +58,12 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Controls\PublishingSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PublishingSettings.Designer.cs">
+      <DependentUpon>PublishingSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,12 @@
     <Compile Include="Forms\ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\PublishItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PublishItemForm.Designer.cs">
+      <DependentUpon>PublishItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +186,9 @@
     <Compile Include="Resources\StatusText.cs" />
     <Compile Include="Resources\ValidationHelper.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Controls\PublishingSettings.resx">
+      <DependentUpon>PublishingSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProjectPropertiesForm.resx">
       <DependentUpon>ProjectPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PublishItemForm.resx">
+      <DependentUpon>PublishItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

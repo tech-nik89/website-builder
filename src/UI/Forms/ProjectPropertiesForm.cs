@@ -20,6 +20,9 @@ namespace WebsiteBuilder.UI.Forms {
 			plsLanguages.Languages = _Project.Languages;
 			pgsGeneral.FillFromProject(_Project);
 
+			psPublishingSettings.Project = _Project;
+			psPublishingSettings.Items = _Project.Publishing;
+
 			DialogResult = DialogResult.Cancel;
 		}
 
@@ -30,6 +33,7 @@ namespace WebsiteBuilder.UI.Forms {
 			tabGeneral.Text = Strings.General;
 			tabLanguages.Text = Strings.Languages;
 			tabMeta.Text = Strings.Meta;
+			tabPublish.Text = Strings.Publishing;
 
 			clnLanguage.Text = Strings.Language;
 
@@ -61,6 +65,9 @@ namespace WebsiteBuilder.UI.Forms {
 		private void ApplyToProject(Project project) {
 			project.Languages = plsLanguages.Languages;
 			pgsGeneral.FillProjectFrom(project);
+
+			project.Publishing.Clear();
+			project.Publishing.AddRange(psPublishingSettings.Items);
 		}
 
 		private void tabMain_Selected(object sender, TabControlEventArgs e) {

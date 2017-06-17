@@ -15,28 +15,37 @@ namespace WebsiteBuilder.Core.Plugins {
 		
 		private static readonly Type _ModuleInterface = typeof(IModule);
 		private static readonly Type _EditorInterface = typeof(IEditor);
+		private static readonly Type _PublishInterface = typeof(IPublish);
 
 		private static Type[] _ModuleTypes;
 		private static Type[] _EditorTypes;
+		private static Type[] _PublishTypes;
 
 		public static Dictionary<Type, String> Modules { get; private set; }
 		public static Dictionary<Type, String> Editors { get; private set; }
+		public static Dictionary<Type, String> Publishers { get; private set; }
 
 		public static Type[] ModuleTypes => _ModuleTypes;
 		public static Type[] EditorTypes => _EditorTypes;
+		public static Type[] PublishTypes => _PublishTypes;
 
 		public static void Init() {
 			LoadPluginLibraries();
 			Modules = LoadModules(_ModuleInterface, out _ModuleTypes);
 			Editors = LoadModules(_EditorInterface, out _EditorTypes);
+			Publishers = LoadModules(_PublishInterface, out _PublishTypes);
 		}
 
-		public static Type GetEditor(string type) {
+		public static Type GetEditor(String type) {
 			return _EditorTypes.FirstOrDefault(x => x.AssemblyQualifiedName == type || x.FullName == type);
 		}
 
-		public static Type GetModule(string type) {
+		public static Type GetModule(String type) {
 			return _ModuleTypes.FirstOrDefault(x => x.AssemblyQualifiedName == type || x.FullName == type);
+		}
+
+		public static Type GetPublisher(String type) {
+			return _PublishTypes.FirstOrDefault(x => x.AssemblyQualifiedName == type || x.FullName == type);
 		}
 
 		private static void LoadPluginLibraries() {
@@ -87,6 +96,15 @@ namespace WebsiteBuilder.Core.Plugins {
 
 			PluginHelper helper = new PluginHelper(project, content.EditorType, iconPack, getLink);
 			return Activator.CreateInstance(content.ModuleType, helper) as IModule;
+		}
+
+		public static IPublish LoadPublisher(Type type, Project project) {
+			if (type == null || project == null) {
+				return null;
+			}
+
+			PluginHelper helper = new PluginHelper(project, null, null);
+			return Activator.CreateInstance(type, helper) as IPublish;
 		}
 	}
 }

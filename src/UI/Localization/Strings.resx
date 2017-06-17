@@ -393,4 +393,13 @@
   <data name="RecentProjects" xml:space="preserve">
     <value>Recent Projects</value>
   </data>
+  <data name="Publishing" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="PublishingTarget" xml:space="preserve">
+    <value>Publishing Target</value>
+  </data>
+  <data name="PublishItemDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to delete this publishing target?</value>
+  </data>
 </root>

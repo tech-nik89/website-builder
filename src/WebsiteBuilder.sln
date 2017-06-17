@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{27727468-3DA1-45EE-AA93-2E6CBF9220E1}"
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module.Toolbox", "Module.Toolbox\Module.Toolbox.csproj", "{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Publishing", "Publishing", "{7F692E4B-5A14-4909-A634-32D141555FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publish.FTP", "Publish.FTP\Publish.FTP.csproj", "{ECF25565-4A1D-4E8B-BD79-9C49205679D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,10 @@ Global
 		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7EC8F90-D6BB-42B6-B663-65AEA7AA4D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF25565-4A1D-4E8B-BD79-9C49205679D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF25565-4A1D-4E8B-BD79-9C49205679D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF25565-4A1D-4E8B-BD79-9C49205679D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF25565-4A1D-4E8B-BD79-9C49205679D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +85,6 @@ Global
 		{F8E78B84-2403-45B8-B344-516646849589} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 		{7280B680-C16C-41AA-98EA-BDAA10D2EF55} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
 		{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9} = {785A34D5-BE04-435C-B39D-8BA68726CBDF}
+		{ECF25565-4A1D-4E8B-BD79-9C49205679D6} = {7F692E4B-5A14-4909-A634-32D141555FF2}
 	EndGlobalSection
 EndGlobal

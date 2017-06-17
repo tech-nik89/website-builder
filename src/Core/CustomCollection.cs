@@ -47,6 +47,11 @@ namespace WebsiteBuilder.Core {
 			return _Items.IndexOf(item);
 		}
 
+		public void Clear() {
+			_Items.Clear();
+			_Project.Dirty = true;
+		}
+
 		public IEnumerator<T> GetEnumerator() {
 			return _Items.GetEnumerator();
 		}

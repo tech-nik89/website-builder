@@ -81,5 +81,7 @@ namespace WebsiteBuilder.Core.Storage {
 
 		public const String Item = "item";
 
+		public const String Publishing = "publishing";
+
 	}
 }

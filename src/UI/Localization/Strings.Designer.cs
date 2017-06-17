@@ -673,6 +673,33 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Publishing.
+        /// </summary>
+        internal static string Publishing {
+            get {
+                return ResourceManager.GetString("Publishing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publishing Target.
+        /// </summary>
+        internal static string PublishingTarget {
+            get {
+                return ResourceManager.GetString("PublishingTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this publishing target?.
+        /// </summary>
+        internal static string PublishItemDeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("PublishItemDeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recent Projects.
         /// </summary>
         internal static string RecentProjects {

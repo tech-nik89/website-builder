@@ -28,12 +28,22 @@ namespace WebsiteBuilder.Core.Storage {
 					GetLanguages(),
 					GetMedia(),
 					GetFooter(),
+					GetPublishing(),
 					GetPages(_Project.Pages)
 				)
 			);
 
 			String xml = document.ToString();
 			File.WriteAllText(_File.FullName, xml);
+		}
+
+		private XElement GetPublishing() {
+			return new XElement(ProjectStorageConstants.Publishing,
+				_Project.Publishing.Select(x => new XElement(ProjectStorageConstants.Item,
+					new XAttribute(ProjectStorageConstants.Type, x.Type?.FullName ?? String.Empty),
+					x.Data
+				)
+			));
 		}
 
 		private XElement GetFooter() {

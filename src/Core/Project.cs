@@ -6,6 +6,7 @@ using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
+using WebsiteBuilder.Core.Publishing;
 using WebsiteBuilder.Core.Storage;
 using WebsiteBuilder.Core.Theming;
 using WebsiteBuilder.Core.Tools;
@@ -118,6 +119,8 @@ namespace WebsiteBuilder.Core {
 
 		public LocalizedStringArray MetaKeywords { get; private set; }
 
+		public CustomCollection<PublishItem> Publishing { get; private set; }
+
 		public bool Dirty { get; internal set; }
 
 		public Project() {
@@ -127,6 +130,7 @@ namespace WebsiteBuilder.Core {
 			Footer = new CustomCollection<FooterSection>(this);
 			MetaDescription = new LocalizedString(this);
 			MetaKeywords = new LocalizedStringArray(this);
+			Publishing = new CustomCollection<PublishItem>(this);
 			Dirty = false;
 		}
 

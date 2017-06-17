@@ -8,6 +8,7 @@ using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
 using WebsiteBuilder.Core.Pages;
 using WebsiteBuilder.Core.Plugins;
+using WebsiteBuilder.Core.Publishing;
 using WebsiteBuilder.Core.Tools;
 
 namespace WebsiteBuilder.Core.Storage {
@@ -34,6 +35,7 @@ namespace WebsiteBuilder.Core.Storage {
 				
 				GetLanguages(root.Element(ProjectStorageConstants.Languages));
 				GetMedia(root.Element(ProjectStorageConstants.Media));
+				GetPublishing(root.Element(ProjectStorageConstants.Publishing));
 
 				_Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
 				_Project.Footer.AddRange(GetFooter(root.Element(ProjectStorageConstants.Footer)));
@@ -47,6 +49,19 @@ namespace WebsiteBuilder.Core.Storage {
 				Exception = e;
 				return null;
 			}
+		}
+
+		private void GetPublishing(XElement element) {
+			if (element == null) {
+				return;
+			}
+
+			var items = element.Elements(ProjectStorageConstants.Item).Select(x => new PublishItem() {
+				Type = PluginManager.GetPublisher(x.Attribute(ProjectStorageConstants.Type).Value),
+				Data = x.Value
+			});
+
+			_Project.Publishing.AddRange(items);
 		}
 
 		private IEnumerable<FooterSection> GetFooter(XElement element) {

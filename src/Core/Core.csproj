@@ -102,6 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Publishing\PublishItem.cs" />
     <Compile Include="StaticResources.cs" />
     <Compile Include="Storage\ProjectReader.cs" />
     <Compile Include="Storage\ProjectStorageConstants.cs" />

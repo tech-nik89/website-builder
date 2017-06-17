@@ -22,6 +22,7 @@
 		OrderUp,
 		OrderDown,
 		About,
-		MetaTag
+		MetaTag,
+		Publish
 	}
 }
