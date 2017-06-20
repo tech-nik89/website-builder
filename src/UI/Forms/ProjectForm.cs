@@ -9,6 +9,9 @@ using WebsiteBuilder.Core.Compiling;
 using WebsiteBuilder.Core.Exceptions;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
+using WebsiteBuilder.Core.Plugins;
+using WebsiteBuilder.Core.Publishing;
+using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
 
@@ -32,6 +35,7 @@ namespace WebsiteBuilder.UI.Forms {
 
 				UpdateFormText();
 				RefreshLanguageList();
+				RefreshPublishMenu();
 				ptvwPages.Project = _CurrentProject;
 
 				if (!String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)
@@ -291,6 +295,43 @@ namespace WebsiteBuilder.UI.Forms {
 			}
 			else if (tscLanguage.Items.Count > 0 ){
 				tscLanguage.SelectedIndex = 0;
+			}
+		}
+
+		private void RefreshPublishMenu() {
+			if (CurrentProject == null) {
+				return;
+			}
+
+			mnuBuildPublish.Enabled = CurrentProject.Publishing.Count > 0;
+			mnuBuildPublish.DropDownItems.Clear();
+
+			for(int i = 0; i < CurrentProject.Publishing.Count; i++) {
+				ToolStripMenuItem item = new ToolStripMenuItem();
+
+				item.Text = PluginManager.Publishers[CurrentProject.Publishing[i].Type];
+				item.Tag = i;
+				item.Click += PublishMenuItem_Click;
+
+				mnuBuildPublish.DropDownItems.Add(item);
+			}
+		}
+
+		private async void PublishMenuItem_Click(Object sender, EventArgs e) {
+			if (CurrentProject == null) {
+				return;
+			}
+
+			mnuBuildPublish.Enabled = false;
+			int index = (int)((ToolStripMenuItem)sender).Tag;
+			PublishItem item = CurrentProject.Publishing[index];
+
+			try {
+				IPublish publisher = PluginManager.LoadPublisher(item.Type, CurrentProject);
+				await publisher.RunAsync(CurrentProject.OutputPath, item.Data);
+			}
+			finally {
+				mnuBuildPublish.Enabled = true;
 			}
 		}
 	}

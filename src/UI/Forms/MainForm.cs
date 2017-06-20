@@ -72,6 +72,7 @@ namespace WebsiteBuilder.UI.Forms {
 			mnuBuildAndRunProject.Text = Strings.BuildAndOpenProject;
 			mnuBuildPage.Text = Strings.BuildSelectedPageOnly;
 			mnuBuildCleanOutput.Text = Strings.ClearOutputDirectory;
+			mnuBuildPublish.Text = Strings.Publishing;
 
 			mnuHelpAbout.Text = Strings.About;
 
@@ -96,6 +97,7 @@ namespace WebsiteBuilder.UI.Forms {
 
 			if (result == DialogResult.OK) {
 				RefreshLanguageList();
+				RefreshPublishMenu();
 				UpdateFormText();
 			}
 		}
