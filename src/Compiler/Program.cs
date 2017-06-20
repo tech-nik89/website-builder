@@ -42,7 +42,7 @@ namespace WebsiteBuilder.CompilerConsole {
 					Console.WriteLine(message.ToString());
 				});
 
-				compiler.Compile();
+				compiler.Compile(progress);
 				wait.WaitOne();
 			}
 			catch (Exception e) {
