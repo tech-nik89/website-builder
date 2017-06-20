@@ -154,7 +154,7 @@ namespace WebsiteBuilder.UI.Forms {
 			CompileProject(false, previewPage, previewLanguage);
 		}
 
-		private void CompileProject(bool runAfterCompile, Page previewPage, Language previewLanguage) {
+		private async void CompileProject(bool runAfterCompile, Page previewPage, Language previewLanguage) {
 			if (CurrentProject == null || _CompilerRunning) {
 				return;
 			}
@@ -170,27 +170,25 @@ namespace WebsiteBuilder.UI.Forms {
 					PreviewLanguage = previewLanguage
 				});
 
-				compiler.Completed += (sender, e) => {
-					if (runAfterCompile) {
-						OpenProjectInDefaultBrowser(CurrentProject);
-					}
+				Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
+					tspProgress.Value = report.Percentage;
+					UpdateStatus(report.Message);
+				});
 
-					if (compiler.Error) {
-						CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
-						form.ShowDialog();
-					}
+				await compiler.CompileAsync(progress);
 
-					_CompilerRunning = false;
-					CompilerSetControls(true);
-					UpdateStatus(StatusText.BuildSucceeded);
-				};
+				if (compiler.Error) {
+					CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
+					form.ShowDialog();
+				}
 
-				compiler.ProgressChanged += (sender, e) => {
-					tspProgress.Value = e.Percentage;
-					UpdateStatus(e.Message);
-				};
-
-				compiler.StartAsync();
+				if (runAfterCompile) {
+					OpenProjectInDefaultBrowser(CurrentProject);
+				}
+				
+				_CompilerRunning = false;
+				CompilerSetControls(true);
+				UpdateStatus(StatusText.BuildSucceeded);
 			}
 			catch (OutputPathMissingException) {
 				_CompilerRunning = false;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using WebsiteBuilder.Core.Compiling.Steps;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
@@ -20,14 +20,6 @@ namespace WebsiteBuilder.Core.Compiling {
 
 		private readonly Project _Project;
 		
-		private readonly BackgroundWorker _Worker;
-
-		public event EventHandler<EventArgs> Completed;
-
-		public event EventHandler<ProgressEventArgs> ProgressChanged;
-
-		public bool IsBusy => _Worker.IsBusy;
-
 		public bool Error { get; private set; }
 
 		public String ErrorMessage { get; private set; }
@@ -51,13 +43,7 @@ namespace WebsiteBuilder.Core.Compiling {
 			_Project = project;
 			_StyleSheetFiles = new List<String>();
 			_ModuleCompilerFlags = new Dictionary<Type, int>();
-
-			_Worker = new BackgroundWorker();
-			_Worker.WorkerReportsProgress = true;
-			_Worker.DoWork += Worker_DoWork;
-			_Worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-			_Worker.ProgressChanged += Worker_ProgressChanged;
-
+			
 			DirectoryInfo outputDirectory = new DirectoryInfo(_Project.OutputPath);
 			DirectoryInfo metaDirectory = new DirectoryInfo(Path.Combine(_Project.OutputPath, MetaDirectoryName));
 			DirectoryInfo mediaDirectory = new DirectoryInfo(Path.Combine(_Project.OutputPath, MediaDirectoryName));
@@ -115,23 +101,17 @@ namespace WebsiteBuilder.Core.Compiling {
 			}
 		}
 
-		public void StartAsync() {
-			if (_Worker.IsBusy) {
-				return;
-			}
-
-			_Worker.RunWorkerAsync();
+		public async Task CompileAsync() {
+			await CompileAsync(null);
 		}
 
-		private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
-			ProgressChanged?.Invoke(this, new ProgressEventArgs(e.ProgressPercentage, e.UserState as String));
+		public async Task CompileAsync(IProgress<CompilerProgressReport> progress) {
+			await Task.Run(() => {
+				Compile(progress);
+			});
 		}
-
-		private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-			Completed?.Invoke(this, new EventArgs());
-		}
-
-		private void ReportProgress(int step, int steps, String message, bool newLine = false) {
+		
+		private CompilerProgressReport CreateProgressReport(int step, int steps, String message, bool newLine = false) {
 			int percentage = 0;
 
 			if (steps > 0) {
@@ -142,22 +122,26 @@ namespace WebsiteBuilder.Core.Compiling {
 				 message += Environment.NewLine;
 			}
 
-			_Worker.ReportProgress(percentage, message);
+			return new CompilerProgressReport(percentage, message);
 		}
-		
-		private void Worker_DoWork(object sender, DoWorkEventArgs e) {
+
+		public void Compile() {
+			Compile(null);
+		}
+
+		public void Compile(IProgress<CompilerProgressReport> progress) {
 			try {
 				int steps = _Steps.Count;
 
 				for(int i = 0; i < steps; i++) {
 					var step = _Steps[i];
-					ReportProgress(i, steps, step.Output);
+					progress?.Report(CreateProgressReport(i, steps, step.Output));
 
 					step.Run();
-					ReportProgress(i, steps, " ... Done.", true);
+					progress?.Report(CreateProgressReport(i, steps, " ... Done.", true));
 				}
 
-				ReportProgress(1, 1, "Build succeeded.");
+				progress?.Report(CreateProgressReport(1, 1, "Build succeeded."));
 			}
 			catch (Exception ex) {
 				Error = true;

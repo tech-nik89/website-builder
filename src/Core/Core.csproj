@@ -65,7 +65,7 @@
     <Compile Include="Compiling\ICompilerStep.cs" />
     <Compile Include="Compiling\Links\ScriptLink.cs" />
     <Compile Include="Compiling\Links\StyleLink.cs" />
-    <Compile Include="Compiling\ProgressEventArgs.cs" />
+    <Compile Include="Compiling\CompilerProgressReport.cs" />
     <Compile Include="Compiling\SpriteGenerator.cs" />
     <Compile Include="Compiling\Steps\BuildFontsStep.cs" />
     <Compile Include="Compiling\Steps\BuildImagesStep.cs" />

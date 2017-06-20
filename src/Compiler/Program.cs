@@ -8,56 +8,52 @@ using WebsiteBuilder.Core.Compiling;
 using WebsiteBuilder.Core.Plugins;
 
 namespace WebsiteBuilder.CompilerConsole {
-    class Program {
-        static void Main(string[] args) {
+	class Program {
+		static void Main(string[] args) {
 
-            Options options = new Options();
+			Options options = new Options();
 
-            if (!Parser.Default.ParseArguments(args, options)) {
-                Console.WriteLine(options.GetUsage());
-                return;
-            }
+			if (!Parser.Default.ParseArguments(args, options)) {
+				Console.WriteLine(options.GetUsage());
+				return;
+			}
 
-            if (String.IsNullOrWhiteSpace(options.ProjectFile)
-                || !File.Exists(options.ProjectFile)) {
+			if (String.IsNullOrWhiteSpace(options.ProjectFile)
+				|| !File.Exists(options.ProjectFile)) {
 
-                Console.WriteLine(options.GetUsage());
-                return;
-            }
+				Console.WriteLine(options.GetUsage());
+				return;
+			}
 
-            try {
-                PluginManager.Init();
+			try {
+				PluginManager.Init();
 
-                Project project = Project.Load(options.ProjectFile);
-                Compiler compiler = new Compiler(project);
-                AutoResetEvent wait = new AutoResetEvent(false);
+				Project project = Project.Load(options.ProjectFile);
+				Compiler compiler = new Compiler(project);
+				AutoResetEvent wait = new AutoResetEvent(false);
+				
+				Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
+					StringBuilder message = new StringBuilder();
 
-                compiler.Completed += (sender, e) => {
-                    wait.Set();
-                };
+					message.Append(report.Percentage.ToString().PadRight(3));
+					message.Append("% ");
+					message.Append(report.Message);
 
-                compiler.ProgressChanged += (sender, e) => {
-                    StringBuilder message = new StringBuilder();
+					Console.WriteLine(message.ToString());
+				});
 
-                    message.Append(e.Percentage.ToString().PadRight(3));
-                    message.Append("% ");
-                    message.Append(e.Message);
+				compiler.Compile();
+				wait.WaitOne();
+			}
+			catch (Exception e) {
+				Console.WriteLine(e.Message);
+			}
 
-                    Console.WriteLine(message.ToString());
-                };
-
-                compiler.StartAsync();
-                wait.WaitOne();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-            }
-
-            if (options.Wait) {
-                Console.WriteLine();
-                Console.WriteLine("Press any key to exit ...");
-                Console.ReadLine();
-            }
-        }
-    }
+			if (options.Wait) {
+				Console.WriteLine();
+				Console.WriteLine("Press any key to exit ...");
+				Console.ReadLine();
+			}
+		}
+	}
 }
