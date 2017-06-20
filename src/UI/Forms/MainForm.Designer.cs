@@ -50,6 +50,8 @@
 			this.mnuBuildPage = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuBuildPublish = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.ptvwPages = new WebsiteBuilder.UI.Controls.PagesTreeView();
@@ -69,8 +71,6 @@
 			this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.tscLanguage = new System.Windows.Forms.ToolStripComboBox();
-			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuBuildPublish = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain.SuspendLayout();
 			this.sstMain.SuspendLayout();
 			this.tsMain.SuspendLayout();
@@ -243,6 +243,17 @@
 			this.mnuBuildCleanOutput.Text = "[Clear output directory]";
 			this.mnuBuildCleanOutput.Click += new System.EventHandler(this.mnuBuildCleanOutput_Click);
 			// 
+			// toolStripSeparator8
+			// 
+			this.toolStripSeparator8.Name = "toolStripSeparator8";
+			this.toolStripSeparator8.Size = new System.Drawing.Size(218, 6);
+			// 
+			// mnuBuildPublish
+			// 
+			this.mnuBuildPublish.Name = "mnuBuildPublish";
+			this.mnuBuildPublish.Size = new System.Drawing.Size(221, 22);
+			this.mnuBuildPublish.Text = "[Publish]";
+			// 
 			// mnuHelp
 			// 
 			this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -284,13 +295,14 @@
 			// tslStatus
 			// 
 			this.tslStatus.Name = "tslStatus";
-			this.tslStatus.Size = new System.Drawing.Size(676, 17);
+			this.tslStatus.Size = new System.Drawing.Size(667, 17);
 			this.tslStatus.Spring = true;
 			this.tslStatus.Text = "[...]";
 			this.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// tspProgress
 			// 
+			this.tspProgress.Margin = new System.Windows.Forms.Padding(1, 3, 10, 3);
 			this.tspProgress.Name = "tspProgress";
 			this.tspProgress.Size = new System.Drawing.Size(140, 16);
 			// 
@@ -394,17 +406,6 @@
 			this.tscLanguage.Name = "tscLanguage";
 			this.tscLanguage.Size = new System.Drawing.Size(121, 25);
 			this.tscLanguage.SelectedIndexChanged += new System.EventHandler(this.tscLanguage_SelectedIndexChanged);
-			// 
-			// toolStripSeparator8
-			// 
-			this.toolStripSeparator8.Name = "toolStripSeparator8";
-			this.toolStripSeparator8.Size = new System.Drawing.Size(218, 6);
-			// 
-			// mnuBuildPublish
-			// 
-			this.mnuBuildPublish.Name = "mnuBuildPublish";
-			this.mnuBuildPublish.Size = new System.Drawing.Size(221, 22);
-			this.mnuBuildPublish.Text = "[Publish]";
 			// 
 			// MainForm
 			// 

@@ -9,5 +9,9 @@ namespace WebsiteBuilder.UI.Resources {
 
 		public const String BuildSucceeded = "Build succeeded";
 
+		public const String PublishingStarted = "Publishing started...";
+
+		public const String PublishingSucceeded = "Publishing succeeded";
+
 	}
 }

@@ -28,7 +28,17 @@ namespace WebsiteBuilder.Publish.FTP {
 			});
 		}
 
+		public async Task RunAsync(String outputhPath, String data, IProgress<String> progress) {
+			await Task.Run(() => {
+				Run(outputhPath, data, progress);
+			});
+		}
+
 		public void Run(String outputhPath, String data) {
+			Run(outputhPath, data, null);
+		}
+
+		public void Run(String outputhPath, String data, IProgress<String> progress) {
 			try {
 				Settings settings = Settings.Deserialize(data);
 				DirectoryInfo directory = new DirectoryInfo(outputhPath);
@@ -41,7 +51,7 @@ namespace WebsiteBuilder.Publish.FTP {
 					try {
 						client.RetryAttempts = 3;
 						client.Connect();
-						ProcessDirectory(directory, client, directory);
+						ProcessDirectory(directory, client, directory, progress);
 					}
 					finally {
 						client.Disconnect();
@@ -53,8 +63,9 @@ namespace WebsiteBuilder.Publish.FTP {
 			}
 		}
 
-		private void ProcessDirectory(DirectoryInfo rootDirectory, FtpClient client, DirectoryInfo currentDirectory) {
+		private void ProcessDirectory(DirectoryInfo rootDirectory, FtpClient client, DirectoryInfo currentDirectory, IProgress<String> progress) {
 			String remoteDirectoryPath = GetRemotePath(rootDirectory, currentDirectory);
+			progress?.Report("Processing directory " + remoteDirectoryPath);
 
 			FileInfo[] localFiles = currentDirectory.GetFiles();
 			DirectoryInfo[] localDirectories = currentDirectory.GetDirectories();
@@ -68,26 +79,36 @@ namespace WebsiteBuilder.Publish.FTP {
 
 			foreach (FileInfo file in tasks.FilesToUpload) {
 				String remotePath = GetRemotePath(rootDirectory, file);
+				progress?.Report("Uploading file " + remotePath);
 				client.UploadFile(file.FullName, remotePath);
+				progress?.Report("Uploaded file " + remotePath);
 			}
 
 			foreach (FtpListItem file in tasks.FilesToDelete) {
+				progress?.Report("Deleting file " + file.FullName);
 				client.DeleteFile(file.FullName);
+				progress?.Report("Deleted file " + file.FullName);
 			}
 
 			foreach (FtpListItem directory in tasks.DirectoriesToDelete) {
+				progress?.Report("Deleting directory " + directory.FullName);
 				client.DeleteDirectory(directory.FullName);
+				progress?.Report("Deleted directory " + directory.FullName);
 			}
 
 			foreach (DirectoryInfo directory in tasks.DirectoriesToProcess) {
 				String remotePath = GetRemotePath(rootDirectory, directory);
 
 				if (!client.DirectoryExists(remotePath)) {
+					progress?.Report("Creating directory " + directory.FullName);
 					client.CreateDirectory(remotePath);
+					progress?.Report("Created directory " + directory.FullName);
 				}
 
-				ProcessDirectory(rootDirectory, client, directory);
+				ProcessDirectory(rootDirectory, client, directory, progress);
 			}
+
+			progress?.Report("Processed directory " + remoteDirectoryPath);
 		}
 
 		private static String GetRemotePath(DirectoryInfo rootDirectory, DirectoryInfo directory) {

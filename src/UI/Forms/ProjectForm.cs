@@ -324,13 +324,21 @@ namespace WebsiteBuilder.UI.Forms {
 				return;
 			}
 
+			UpdateStatus(StatusText.PublishingSucceeded);
+
 			mnuBuildPublish.Enabled = false;
 			int index = (int)((ToolStripMenuItem)sender).Tag;
 			PublishItem item = CurrentProject.Publishing[index];
 
 			try {
+				Progress<String> progress = new Progress<String>((report) => {
+					UpdateStatus(report);
+				});
+
 				IPublish publisher = PluginManager.LoadPublisher(item.Type, CurrentProject);
-				await publisher.RunAsync(CurrentProject.OutputPath, item.Data);
+				await publisher.RunAsync(CurrentProject.OutputPath, item.Data, progress);
+
+				UpdateStatus(StatusText.PublishingSucceeded);
 			}
 			finally {
 				mnuBuildPublish.Enabled = true;

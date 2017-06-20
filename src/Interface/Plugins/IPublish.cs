@@ -6,7 +6,11 @@ namespace WebsiteBuilder.Interface.Plugins {
 
 		void Run(String outputhPath, String data);
 
+		void Run(String outputhPath, String data, IProgress<String> progress);
+
 		Task RunAsync(String outputPath, String data);
+
+		Task RunAsync(String outputPath, String data, IProgress<String> progress);
 
 	}
 }
