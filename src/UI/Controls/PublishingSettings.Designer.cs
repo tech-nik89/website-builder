@@ -28,6 +28,7 @@
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnEdit = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
+			this.clnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// lvwItems
@@ -36,6 +37,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.lvwItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnName,
             this.clnType});
 			this.lvwItems.FullRowSelect = true;
 			this.lvwItems.GridLines = true;
@@ -53,7 +55,7 @@
 			// clnType
 			// 
 			this.clnType.Text = "[Type]";
-			this.clnType.Width = 200;
+			this.clnType.Width = 140;
 			// 
 			// btnAdd
 			// 
@@ -88,6 +90,11 @@
 			this.btnDelete.UseVisualStyleBackColor = true;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
+			// clnName
+			// 
+			this.clnName.Text = "[Name]";
+			this.clnName.Width = 140;
+			// 
 			// PublishingSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,5 +116,6 @@
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.Button btnDelete;
+		private System.Windows.Forms.ColumnHeader clnName;
 	}
 }

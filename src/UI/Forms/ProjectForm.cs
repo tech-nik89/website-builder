@@ -307,13 +307,17 @@ namespace WebsiteBuilder.UI.Forms {
 			mnuBuildPublish.DropDownItems.Clear();
 
 			for(int i = 0; i < CurrentProject.Publishing.Count; i++) {
-				ToolStripMenuItem item = new ToolStripMenuItem();
+				PublishItem publishItem = CurrentProject.Publishing[i];
+				ToolStripMenuItem menuItem = new ToolStripMenuItem();
 
-				item.Text = PluginManager.Publishers[CurrentProject.Publishing[i].Type];
-				item.Tag = i;
-				item.Click += PublishMenuItem_Click;
+				menuItem.Text = !String.IsNullOrWhiteSpace(publishItem.Name)
+					? publishItem.Name
+					: PluginManager.Publishers[publishItem.Type];
 
-				mnuBuildPublish.DropDownItems.Add(item);
+				menuItem.Tag = i;
+				menuItem.Click += PublishMenuItem_Click;
+
+				mnuBuildPublish.DropDownItems.Add(menuItem);
 			}
 		}
 

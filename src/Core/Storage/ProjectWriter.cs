@@ -40,6 +40,7 @@ namespace WebsiteBuilder.Core.Storage {
 		private XElement GetPublishing() {
 			return new XElement(ProjectStorageConstants.Publishing,
 				_Project.Publishing.Select(x => new XElement(ProjectStorageConstants.Item,
+					new XAttribute(ProjectStorageConstants.Name, x.Name),
 					new XAttribute(ProjectStorageConstants.Type, x.Type?.FullName ?? String.Empty),
 					x.Data
 				)

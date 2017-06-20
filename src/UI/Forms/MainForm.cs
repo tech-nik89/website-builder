@@ -37,6 +37,7 @@ namespace WebsiteBuilder.UI.Forms {
 
 			mnuBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
 			mnuBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
+			mnuBuildPublish.Image = IconPack.Current.GetImage(IconPackIcon.Publish);
 
 			mnuHelpAbout.Image = IconPack.Current.GetImage(IconPackIcon.About);
 

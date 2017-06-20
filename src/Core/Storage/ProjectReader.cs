@@ -57,6 +57,7 @@ namespace WebsiteBuilder.Core.Storage {
 			}
 
 			var items = element.Elements(ProjectStorageConstants.Item).Select(x => new PublishItem() {
+				Name = x.Attribute(ProjectStorageConstants.Name)?.Value ?? String.Empty,
 				Type = PluginManager.GetPublisher(x.Attribute(ProjectStorageConstants.Type).Value),
 				Data = x.Value
 			});

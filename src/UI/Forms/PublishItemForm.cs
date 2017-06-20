@@ -34,6 +34,7 @@ namespace WebsiteBuilder.UI.Forms {
 			_Item = item;
 			_Project = project;
 
+			txtName.Text = item.Name;
 			cbxType.FillWithPublishPlugins();
 			cbxType.SelectPublishPlugin(item.Type);
 		}
@@ -44,8 +45,12 @@ namespace WebsiteBuilder.UI.Forms {
 
 		private void LocalizeComponent() {
 			Text = Strings.PublishingTarget;
+
 			btnAccept.Text = Strings.Accept;
 			btnCancel.Text = Strings.Cancel;
+
+			lblName.Text = Strings.Name + ":";
+			lblType.Text = Strings.Type + ":";
 		}
 
 		private void LoadSettings() {
@@ -71,6 +76,7 @@ namespace WebsiteBuilder.UI.Forms {
 		}
 
 		private void btnAccept_Click(object sender, EventArgs e) {
+			_Item.Name = txtName.Text;
 			_Item.Type = cbxType.GetPublishPlugin();
 			_Item.Data = _Control.Data;
 			DialogResult = DialogResult.OK;

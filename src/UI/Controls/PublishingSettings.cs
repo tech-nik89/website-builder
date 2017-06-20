@@ -38,6 +38,7 @@ namespace WebsiteBuilder.UI.Controls {
 			btnEdit.Text = Strings.Edit;
 			btnDelete.Text = Strings.Delete;
 
+			clnName.Text = Strings.Name;
 			clnType.Text = Strings.Type;
 		}
 
@@ -95,8 +96,8 @@ namespace WebsiteBuilder.UI.Controls {
 
 		private void lvwItems_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
 			PublishItem item = _Items[e.ItemIndex];
-			String name = PluginManager.Publishers[item.Type];
-			e.Item = new ListViewItem(new String[] { name });
+			String type = PluginManager.Publishers[item.Type];
+			e.Item = new ListViewItem(new String[] { item.Name, type });
 		}
 	}
 }
