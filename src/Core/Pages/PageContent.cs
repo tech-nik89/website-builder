@@ -28,7 +28,7 @@ namespace WebsiteBuilder.Core.Pages {
 			return String.Format("{0}_{1}_{2}.wbd", Page.Id, Id, language.Id);
 		}
 
-		private FileInfo GetFile(Language language) {
+		public FileInfo GetFile(Language language) {
 			String fileName = GetFileName(language);
 			String path = Path.Combine(Page.Project.ProjectContentDirectory.FullName, fileName);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using WebsiteBuilder.Core.Footer;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Media;
@@ -178,6 +179,8 @@ namespace WebsiteBuilder.Core {
 				writer.Write();
 				project.Dirty = false;
 			}
+
+			CleanUpOrphanedDataFiles(project);
 		}
 
 		public static Project Load(String path) {
@@ -192,5 +195,22 @@ namespace WebsiteBuilder.Core {
 			}
 		}
 
+		private static void CleanUpOrphanedDataFiles(Project project) {
+			Dictionary<String, FileInfo> existingFiles = project.ProjectContentDirectory
+				.GetFiles().ToDictionary(x => x.FullName, x => x);
+
+			foreach (Language language in project.Languages) {
+				foreach (Page page in project.AllPages) {
+					foreach (PageContent content in page.Content) {
+						FileInfo validFileInfo = content.GetFile(language);
+						existingFiles.Remove(validFileInfo.FullName);
+					}
+				}
+			}
+
+			foreach (var file in existingFiles) {
+				file.Value.Delete();
+			}
+		}
 	}
 }
