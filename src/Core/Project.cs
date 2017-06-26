@@ -122,6 +122,13 @@ namespace WebsiteBuilder.Core {
 
 		public CustomCollection<PublishItem> Publishing { get; private set; }
 
+		private Type _Webserver;
+
+		public Type Webserver {
+			get => _Webserver;
+			set { _Webserver = value; Dirty = true; }
+		}
+
 		public bool Dirty { get; internal set; }
 
 		public Project() {

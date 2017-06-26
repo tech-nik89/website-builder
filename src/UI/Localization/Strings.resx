@@ -405,4 +405,7 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Webserver" xml:space="preserve">
+    <value>Webserver</value>
+  </data>
 </root>

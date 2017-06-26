@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Plugins;
@@ -14,6 +15,7 @@ namespace WebsiteBuilder.UI.Controls {
 
 		private readonly List<PublishItem> _Items;
 
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public IEnumerable<PublishItem> Items {
 			get {
 				return _Items;

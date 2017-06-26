@@ -184,6 +184,7 @@ namespace WebsiteBuilder.Core.Storage {
 			_Project.OutputPath = GetFullPath(element.Element(ProjectStorageConstants.OutputPath).Value);
 			_Project.ThemePath = GetFullPath(element.Element(ProjectStorageConstants.ThemePath).Value);
 			_Project.UglyURLs = Convert.ToBoolean(element.Element(ProjectStorageConstants.UglyURLs)?.Value);
+			_Project.Webserver = PluginManager.GetWebserver(element.Element(ProjectStorageConstants.Webserver)?.Value);
 			GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), _Project.MetaDescription);
 			GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), _Project.MetaKeywords);
 

@@ -83,5 +83,7 @@ namespace WebsiteBuilder.Core.Storage {
 
 		public const String Publishing = "publishing";
 
+		public const String Webserver = "webserver";
+
 	}
 }
