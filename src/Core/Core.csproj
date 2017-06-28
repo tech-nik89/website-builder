@@ -93,6 +93,7 @@
     <Compile Include="Pages\PageContentItem.cs" />
     <Compile Include="Pages\PageMoveDirection.cs" />
     <Compile Include="Plugins\PluginHelper.cs" />
+    <Compile Include="Plugins\PluginInfo.cs" />
     <Compile Include="Plugins\PluginManager.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="CustomCollection.cs" />

@@ -5,22 +5,20 @@ namespace WebsiteBuilder.Interface.Plugins {
 	public class PluginInfoAttribute : Attribute {
 
 		public String Name { get; private set; }
-		
+
+		public String Author { get; set; }
+
+		public int VersionMajor { get; internal set; }
+
+		public int VersionMinor { get; internal set; }
+
+		public int VersionRevision { get; internal set; }
+
 		public PluginInfoAttribute(String name) {
 			Name = name;
 		}
-
-		public static String GetPluginName(Type pluginType) {
-			var attribute = GetPluginInfoAttribute(pluginType);
-
-			if (attribute != null) {
-				return attribute.Name;
-			}
-
-			return pluginType.Name;
-		}
 		
-		private static PluginInfoAttribute GetPluginInfoAttribute(Type pluginType) {
+		public static PluginInfoAttribute GetPluginInfoAttribute(Type pluginType) {
 			if (pluginType == null) {
 				throw new ArgumentNullException(nameof(pluginType));
 			}

@@ -6,7 +6,7 @@ using WebsiteBuilder.Modules.Toolbox.Properties;
 
 namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 
-	[PluginInfo("Quotes")]
+	[PluginInfo("Quotes", Author = "tech-nik89")]
 	public class QuotesModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;

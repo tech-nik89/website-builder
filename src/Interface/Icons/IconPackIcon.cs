@@ -23,6 +23,7 @@
 		OrderDown,
 		About,
 		MetaTag,
-		Publish
+		Publish,
+		Plugin
 	}
 }

@@ -3,7 +3,7 @@ using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Editors.Avalon {
 
-	[PluginInfo("Avalon HTML Editor")]
+	[PluginInfo("Avalon HTML Editor", Author = "tech-nik89")]
 	public class AvalonHtmlEditor : IEditor {
 		
 		public AvalonHtmlEditor(IPluginHelper pluginHelper) {

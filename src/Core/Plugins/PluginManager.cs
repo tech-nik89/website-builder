@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -32,6 +33,44 @@ namespace WebsiteBuilder.Core.Plugins {
 		public static Type[] EditorTypes => _EditorTypes;
 		public static Type[] PublishTypes => _PublishTypes;
 		public static Type[] WebserverTypes => _WebserverTypes;
+
+		private static IEnumerable<PluginInfo> _AllPlugins;
+
+		public static IEnumerable<PluginInfo> AllPlugins {
+			get {
+				if (_AllPlugins == null) {
+					List<PluginInfo> list = new List<PluginInfo>();
+
+					list.AddRange(GetPluginInfos(_ModuleTypes, "Module"));
+					list.AddRange(GetPluginInfos(_EditorTypes, "Editor"));
+					list.AddRange(GetPluginInfos(_PublishTypes, "Publish"));
+					list.AddRange(GetPluginInfos(_WebserverTypes, "Webserver"));
+
+					_AllPlugins = list;
+				}
+
+				return _AllPlugins;
+			}
+		}
+
+		private static IEnumerable<PluginInfo> GetPluginInfos(Type[] types, String category) {
+			foreach (Type type in types) {
+				PluginInfo info = new PluginInfo() { Type = type, Category = category };
+				PluginInfoAttribute attribute = PluginInfoAttribute.GetPluginInfoAttribute(type);
+
+				info.Name = attribute.Name;
+				info.Author = attribute.Author;
+
+				FileVersionInfo version = FileVersionInfo.GetVersionInfo(type.Assembly.Location);
+
+				info.VersionMajor = version.FileMajorPart;
+				info.VersionMinor = version.FileMinorPart;
+				info.VersionRevision = version.FileBuildPart;
+				info.VersionBuild = version.FilePrivatePart;
+
+				yield return info;
+			}
+		}
 
 		public static void Init() {
 			LoadPluginLibraries();
@@ -86,7 +125,7 @@ namespace WebsiteBuilder.Core.Plugins {
 						.Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass);
 			
 			foreach (Type plugin in plugins) {
-				dict.Add(plugin, PluginInfoAttribute.GetPluginName(plugin));
+				dict.Add(plugin, PluginInfoAttribute.GetPluginInfoAttribute(plugin)?.Name);
 				list.Add(plugin);
 			}
 

@@ -4,7 +4,7 @@ using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Editors.Avalon {
 
-	[PluginInfo("Avalon Markdown Editor")]
+	[PluginInfo("Avalon Markdown Editor", Author = "tech-nik89")]
 	public class AvalonMarkdownEditor : IEditor {
 		
 		public AvalonMarkdownEditor(IPluginHelper pluginHelper) {

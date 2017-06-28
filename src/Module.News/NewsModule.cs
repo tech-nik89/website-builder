@@ -8,7 +8,7 @@ using WebsiteBuilder.Modules.News.Properties;
 
 namespace WebsiteBuilder.Modules.News {
 
-	[PluginInfo("News")]
+	[PluginInfo("News", Author = "tech-nik89")]
 	public class NewsModule : IModule {
 		
 		private readonly IPluginHelper _PluginHelper;

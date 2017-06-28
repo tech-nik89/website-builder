@@ -39,6 +39,8 @@ namespace WebsiteBuilder.UI.Forms {
 			mnuBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
 			mnuBuildPublish.Image = IconPack.Current.GetImage(IconPackIcon.Publish);
 
+			mnuToolsPlugins.Image = IconPack.Current.GetImage(IconPackIcon.Plugin);
+
 			mnuHelpAbout.Image = IconPack.Current.GetImage(IconPackIcon.About);
 
 			// Toolstrip
@@ -74,6 +76,9 @@ namespace WebsiteBuilder.UI.Forms {
 			mnuBuildPage.Text = Strings.BuildSelectedPageOnly;
 			mnuBuildCleanOutput.Text = Strings.ClearOutputDirectory;
 			mnuBuildPublish.Text = Strings.Publishing;
+
+			mnuTools.Text = Strings.Tools;
+			mnuToolsPlugins.Text = Strings.Plugins;
 
 			mnuHelpAbout.Text = Strings.About;
 
@@ -194,6 +199,11 @@ namespace WebsiteBuilder.UI.Forms {
 			}
 
 			ptvwPages.SelectedLanguage = CurrentProject.Languages[tscLanguage.SelectedIndex];
+		}
+
+		private void mnuToolsPlugins_Click(object sender, EventArgs e) {
+			PluginsForm form = new PluginsForm();
+			form.ShowDialog();
 		}
 	}
 }

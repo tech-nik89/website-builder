@@ -9,7 +9,7 @@ using WebsiteBuilder.Modules.Toolbox.Quotes;
 
 namespace WebsiteBuilder.Modules.Toolbox.Accordion {
 
-	[PluginInfo("Accordion")]
+	[PluginInfo("Accordion", Author = "tech-nik89")]
 	public class AccordionModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;

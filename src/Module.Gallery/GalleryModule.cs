@@ -7,7 +7,7 @@ using WebsiteBuilder.Modules.Gallery.Properties;
 
 namespace WebsiteBuilder.Modules.Gallery {
 
-	[PluginInfo("Image Gallery")]
+	[PluginInfo("Image Gallery", Author = "tech-nik89")]
 	public class GalleryModule : IModule {
 
 		private IPluginHelper _PluginHelper;

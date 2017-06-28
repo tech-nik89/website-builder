@@ -3,7 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using WebsiteBuilder.Core.Plugins;
 using WebsiteBuilder.Core.Properties;
+using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Core.Compiling.Steps {
 	class BuildIndexFile : ICompilerStep {
@@ -12,22 +14,29 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
 		private readonly String _Path;
 
+		private readonly String[] _Languages;
+
 		public String Output { get; private set; }
 
 		public BuildIndexFile(Project project) {
 			_Project = project;
+			_Languages = _Project.Languages.Select(l => l.Id).ToArray();
 
 			_Path = Path.Combine(_Project.OutputPath, Project.FileIndex);
 			Output = String.Format("Building index file: {0}", _Path);
 		}
 
 		public void Run() {
-			var file = new HtmlDocument();
-			var languages = _Project.Languages.Select(l => l.Id).ToArray();
+			BuildIndexHtmlFile();
+			BuildWebserverLanguageRedirect();
+		}
 
-			var script = new StringBuilder();
+		private void BuildIndexHtmlFile() {
+			HtmlDocument file = new HtmlDocument();
+
+			StringBuilder script = new StringBuilder();
 			script.Append("WebsiteBuilder.LanguageRedirect(");
-			script.Append(JsonConvert.SerializeObject(languages));
+			script.Append(JsonConvert.SerializeObject(_Languages));
 
 			if (_Project.StartPage != null) {
 				script.Append(", \"");
@@ -41,6 +50,25 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 			file.AddScript(script.ToString());
 
 			file.Compile(_Path);
+		}
+
+		private void BuildWebserverLanguageRedirect() {
+			if (_Project.Webserver == null) {
+				return;
+			}
+
+			try {
+				IWebserver webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
+				if (webserver == null) {
+					return;
+				}
+
+				String startPage = _Project.StartPage != null ? Compiler.CreateUrl(_Project.StartPage) : null;
+				webserver.CreateLanguageRedirect(_Languages, _Project.OutputPath, startPage);
+			}
+			catch {
+				// ignore
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@ using WebsiteBuilder.Modules.Toolbox.Quotes;
 
 namespace WebsiteBuilder.Modules.Toolbox.Timeline {
 
-	[PluginInfo("Timeline")]
+	[PluginInfo("Timeline", Author = "tech-nik89")]
 	public class TimelineModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;

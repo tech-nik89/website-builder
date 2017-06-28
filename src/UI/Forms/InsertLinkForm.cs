@@ -29,6 +29,7 @@ namespace WebsiteBuilder.UI.Forms {
 		public InsertLinkForm(Project project, Tabs tabs) {
 			InitializeComponent();
 			LocalizeComponent();
+			ApplyIcons();
 
 			DialogResult = DialogResult.Cancel;
 			_Project = project;
@@ -48,7 +49,11 @@ namespace WebsiteBuilder.UI.Forms {
 			FillProjectTree(tvwPages.Nodes, _Project.Pages);
 			FillMediaList();
 		}
-		
+
+		private void ApplyIcons() {
+			Icon = IconPack.Current.GetIcon(IconPackIcon.InsertLink);
+		}
+
 		private void FillProjectTree(TreeNodeCollection nodes, IEnumerable<Page> pages) {
 			foreach (Page page in pages) {
 				TreeNode node = nodes.Add(page.PathName);

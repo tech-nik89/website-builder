@@ -52,6 +52,8 @@
 			this.mnuBuildCleanOutput = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuBuildPublish = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuToolsPlugins = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.ptvwPages = new WebsiteBuilder.UI.Controls.PagesTreeView();
@@ -82,6 +84,7 @@
             this.mnuProject,
             this.mnuContent,
             this.mnuBuild,
+            this.mnuTools,
             this.mnuHelp});
 			this.mnuMain.Location = new System.Drawing.Point(0, 0);
 			this.mnuMain.Name = "mnuMain";
@@ -253,6 +256,21 @@
 			this.mnuBuildPublish.Name = "mnuBuildPublish";
 			this.mnuBuildPublish.Size = new System.Drawing.Size(221, 22);
 			this.mnuBuildPublish.Text = "[Publish]";
+			// 
+			// mnuTools
+			// 
+			this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsPlugins});
+			this.mnuTools.Name = "mnuTools";
+			this.mnuTools.Size = new System.Drawing.Size(55, 20);
+			this.mnuTools.Text = "[Tools]";
+			// 
+			// mnuToolsPlugins
+			// 
+			this.mnuToolsPlugins.Name = "mnuToolsPlugins";
+			this.mnuToolsPlugins.Size = new System.Drawing.Size(152, 22);
+			this.mnuToolsPlugins.Text = "[Plugins]";
+			this.mnuToolsPlugins.Click += new System.EventHandler(this.mnuToolsPlugins_Click);
 			// 
 			// mnuHelp
 			// 
@@ -479,6 +497,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuProjectRecents;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripMenuItem mnuBuildPublish;
+		private System.Windows.Forms.ToolStripMenuItem mnuTools;
+		private System.Windows.Forms.ToolStripMenuItem mnuToolsPlugins;
 	}
 }
 

@@ -6,7 +6,7 @@ using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Modules.Table {
 
-	[PluginInfo("Table")]
+	[PluginInfo("Table", Author = "tech-nik89")]
 	public class TableModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;

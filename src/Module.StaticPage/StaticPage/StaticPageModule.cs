@@ -4,7 +4,7 @@ using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Modules.StaticPage {
 
-	[PluginInfo("Static Page")]
+	[PluginInfo("Static Page", Author = "tech-nik89")]
 	public class StaticPageModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;

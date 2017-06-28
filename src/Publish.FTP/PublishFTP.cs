@@ -7,7 +7,7 @@ using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Publish.FTP {
 
-	[PluginInfo("FTP")]
+	[PluginInfo("FTP", Author = "tech-nik89")]
 	public class PublishFTP : IPublish {
 
 		private IPluginHelper _PluginHelper;
