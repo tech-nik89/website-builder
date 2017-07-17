@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webservers", "Webservers", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webserver.Apache", "Webserver.Apache\Webserver.Apache.csproj", "{6B53FA6C-7281-408D-93BE-245EE4995A95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeEditor", "ThemeEditor\ThemeEditor.csproj", "{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{6B53FA6C-7281-408D-93BE-245EE4995A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B53FA6C-7281-408D-93BE-245EE4995A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B53FA6C-7281-408D-93BE-245EE4995A95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
