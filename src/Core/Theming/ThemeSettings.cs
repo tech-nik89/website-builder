@@ -5,5 +5,7 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public String ImageCssClass { get; internal set; }
 
+		public int MaxMenuDepth { get; internal set; }
+
 	}
 }

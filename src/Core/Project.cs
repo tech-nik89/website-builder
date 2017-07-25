@@ -129,6 +129,8 @@ namespace WebsiteBuilder.Core {
 			set { _Webserver = value; Dirty = true; }
 		}
 
+		public int PageDepth => AllPages.Max(x => x.ParentCount);
+
 		public bool Dirty { get; internal set; }
 
 		public Project() {

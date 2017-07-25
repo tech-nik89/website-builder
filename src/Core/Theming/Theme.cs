@@ -44,6 +44,8 @@ namespace WebsiteBuilder.Core.Theming {
 		
 		private const String NodeSettingsImageCssClass = "imageCssClass";
 
+		private const String NodeSettingsMaxMenuDepth = "maxMenuDepth";
+
 		private const String NodeFont = "font";
 
 		private static readonly String QueryFonts = String.Concat("/", NodeRoot, "/", NodeFont);
@@ -69,6 +71,8 @@ namespace WebsiteBuilder.Core.Theming {
 		private static readonly String QuerySettings = String.Concat("/", NodeRoot, "/", NodeSettings);
 
 		private static readonly String QuerySettingImageCssClass = String.Concat(QuerySettings, "/", NodeSettingsImageCssClass);
+
+		private static readonly String QuerySettingMaxMenuDepth = String.Concat(QuerySettings, "/", NodeSettingsMaxMenuDepth);
 
 		private const String FormatNoNameStyle = "style-{0}";
 
@@ -152,6 +156,7 @@ namespace WebsiteBuilder.Core.Theming {
 		
 		private static void LoadSettings(ThemeSettings settings, XmlDocument document) {
 			settings.ImageCssClass = document.SelectSingleNode(QuerySettingImageCssClass)?.InnerText;
+			settings.MaxMenuDepth = ParseInt(document.SelectSingleNode(QuerySettingMaxMenuDepth)?.InnerText);
 		}
 
 		private static void LoadImages(Theme theme, XmlDocument document) {
@@ -216,6 +221,17 @@ namespace WebsiteBuilder.Core.Theming {
 			if (file.Extension != FileExtension) {
 				throw new BadFileExtensionException();
 			}
+		}
+
+		private static int ParseInt(String value) {
+			int result = 0;
+
+			if (String.IsNullOrWhiteSpace(value)) {
+				return result;
+			}
+
+			int.TryParse(value, out result);
+			return result;
 		}
 	}
 }

@@ -501,7 +501,7 @@ namespace WebsiteBuilder.UI.Controls {
 		private void EnableContentControls() {
 			bool enable = lvwContent.SelectedIndices.Count > 0;
 
-			tsbContentAdd.Enabled = lvwContent.VirtualListSize > 0;
+			tsbContentAdd.Enabled = lvwPages.SelectedIndices.Count > 0;
 			tsbContentEdit.Enabled = enable;
 			tsbContentDelete.Enabled = enable;
 

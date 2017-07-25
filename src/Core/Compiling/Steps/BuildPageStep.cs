@@ -360,8 +360,8 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 
 			StringBuilder builder = new StringBuilder();
 
-			foreach (var page in pages) {
-				if (!page.IncludeInMenu || page.Disable) {
+			foreach (Page page in pages) {
+				if (!page.IncludeInMenu || page.Disable || (_Theme.Settings.MaxMenuDepth > 0 && page.ParentCount > _Theme.Settings.MaxMenuDepth - 1)) {
 					continue;
 				}
 

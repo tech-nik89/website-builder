@@ -62,7 +62,7 @@ namespace WebsiteBuilder.Core.Pages {
 			set { _RobotsNoFollow = value; Project.Dirty = true; }
 		}
 
-		public int Level {
+		public int ParentCount {
 			get {
 				int level = 0;
 
@@ -72,6 +72,14 @@ namespace WebsiteBuilder.Core.Pages {
 					parent = parent.Parent as Page;
 				}
 
+				return level;
+			}
+		}
+
+		public int Level {
+			get {
+				int level = ParentCount;
+				
 				if (!Project.UglyURLs) {
 					level++;
 				}
