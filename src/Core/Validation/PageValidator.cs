@@ -6,12 +6,10 @@ using WebsiteBuilder.Core.Pages;
 namespace WebsiteBuilder.Core.Validation {
 	public class PageValidator : ValidatorBase<Page> {
 
-		private static readonly Regex PathNameRegex = new Regex("^[a-z0-9]+$", RegexOptions.Compiled);
+		private static readonly Regex PathNameRegex = new Regex("^[a-z0-9\\-]+$", RegexOptions.Compiled);
 
-		private static readonly Regex PathNameCharRegex = new Regex("[a-z0-9\b]", RegexOptions.Compiled);
-
-		private static readonly int[] AllowedKeys = { 8, 35, 36, 37, 39, 46};
-
+		private static readonly Regex PathNameCharRegex = new Regex("[a-z0-9\b\\-]", RegexOptions.Compiled);
+		
 		public override bool Valid
 			=> PathName
 			&& Title;
