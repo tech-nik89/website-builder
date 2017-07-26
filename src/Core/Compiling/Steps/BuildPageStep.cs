@@ -249,7 +249,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 		}
 
 		private String RenderLanguageSwitcher() {
-			if (_Page.Project.Languages.Length > 1) {
+			if (_Page.Project.Languages.Length < 1) {
 				return String.Empty;
 			}
 

@@ -205,6 +205,10 @@ namespace WebsiteBuilder.Core {
 		}
 
 		private static void CleanUpOrphanedDataFiles(Project project) {
+			if (!project.ProjectContentDirectory.Exists) {
+				return;
+			}
+
 			Dictionary<String, FileInfo> existingFiles = project.ProjectContentDirectory
 				.GetFiles().ToDictionary(x => x.FullName, x => x);
 

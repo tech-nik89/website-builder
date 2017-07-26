@@ -20,7 +20,7 @@ namespace WebsiteBuilder.Core.Tools {
 		}
 
 		public static String FullToRelativePath(String fullPath, String directoryPath) {
-			if (!Path.IsPathRooted(fullPath) || !fullPath.StartsWith(directoryPath)) {
+			if (!Path.IsPathRooted(fullPath) || !fullPath.StartsWith(directoryPath) || fullPath == directoryPath) {
 				return fullPath;
 			}
 

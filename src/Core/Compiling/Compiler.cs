@@ -161,7 +161,7 @@ namespace WebsiteBuilder.Core.Compiling {
 			path.Insert(0, language.Id);
 
 			int count = path.Count;
-			for(int i = 0; i < count; i++) {
+			for(int i = 0; i < count + 1; i++) {
 				path.Insert(0, DirectoryUp);
 			}
 
