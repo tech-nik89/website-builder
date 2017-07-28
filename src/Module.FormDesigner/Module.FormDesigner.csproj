@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AA103C4-3561-4F25-A22D-81B6311AF754}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebsiteBuilder.Modules.FormDesigner</RootNamespace>
+    <AssemblyName>FormDesigner.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\ExternalAssemblies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Data\CheckBoxItem.cs" />
+    <Compile Include="Data\DropDownItem.cs" />
+    <Compile Include="FormData.cs" />
+    <Compile Include="Data\FormDataItem.cs" />
+    <Compile Include="Data\HeadlineItem.cs" />
+    <Compile Include="Data\HorizontalLineItem.cs" />
+    <Compile Include="Data\InputItem.cs" />
+    <Compile Include="Data\RadioButtonItem.cs" />
+    <Compile Include="Data\TextAreaItem.cs" />
+    <Compile Include="Data\TextBoxItem.cs" />
+    <Compile Include="Data\TextItem.cs" />
+    <Compile Include="FormDesignerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormDesignerControl.Designer.cs">
+      <DependentUpon>FormDesignerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDesignerModule.cs" />
+    <Compile Include="InputItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputItemForm.Designer.cs">
+      <DependentUpon>InputItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interface\Interface.csproj">
+      <Project>{31f631e4-bf07-4e05-b2cc-57c6b64f87eb}</Project>
+      <Name>Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormDesignerControl.resx">
+      <DependentUpon>FormDesignerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputItemForm.resx">
+      <DependentUpon>InputItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)UI\bin\$(ConfigurationName)\Plugins" /Y /i /s</PostBuildEvent>
+  </PropertyGroup>
+</Project>
