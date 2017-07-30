@@ -3,6 +3,7 @@ using System.Text;
 using WebsiteBuilder.Interface.Compiling;
 using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Data;
+using WebsiteBuilder.Modules.FormDesigner.Properties;
 
 namespace WebsiteBuilder.Modules.FormDesigner {
 
@@ -10,6 +11,8 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 	public class FormDesignerModule : IModule {
 
 		private readonly IPluginHelper _PluginHelper;
+
+		private const int ResourceFilesAlreadyAddedFlag = 1;
 
 		public FormDesignerModule(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
@@ -20,6 +23,8 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				FormData data = FormData.Deserialize(source);
 				StringBuilder innerHtml = new StringBuilder();
 				IHtmlElement form = compileHelper.CreateHtmlElement("form");
+
+				form.SetAttribute("class", "form-designer");
 				form.SetAttribute("action", "");
 				form.SetAttribute("method", "post");
 
@@ -32,6 +37,12 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				submit.SetAttribute("value", data.SubmitButtonText);
 
 				innerHtml.Append(compileHelper.Compile(submit));
+
+				if (!compileHelper.HasPageFlag(ResourceFilesAlreadyAddedFlag)) {
+					compileHelper.CreateLessFile(Resources.FormStyle);
+					compileHelper.CreateJavaScriptFile(Resources.FormCode, true);
+					compileHelper.SetPageFlag(ResourceFilesAlreadyAddedFlag, true);
+				}
 
 				form.Content = innerHtml.ToString();
 				return compileHelper.Compile(form);
