@@ -1,5 +1,6 @@
 ﻿using System;
 using WebsiteBuilder.Interface.Compiling;
+using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
@@ -11,7 +12,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 		public String Text { get; set; }
 
-		public override String Render(ICompileHelper compileHelper) {
+		public override String Render(IPluginHelper pluginHelper, ICompileHelper compileHelper) {
 			IHtmlElement p = compileHelper.CreateHtmlElement("p");
 			p.Content = Text;
 			return compileHelper.Compile(p);

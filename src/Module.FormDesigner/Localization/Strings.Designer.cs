@@ -79,6 +79,15 @@ namespace WebsiteBuilder.Modules.FormDesigner.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buttons.
+        /// </summary>
+        internal static string Buttons {
+            get {
+                return ResourceManager.GetString("Buttons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -196,11 +205,56 @@ namespace WebsiteBuilder.Modules.FormDesigner.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail.
+        /// </summary>
+        internal static string Mail {
+            get {
+                return ResourceManager.GetString("Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Radio Button.
         /// </summary>
         internal static string RadioButton {
             get {
                 return ResourceManager.GetString("RadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service.
+        /// </summary>
+        internal static string Service {
+            get {
+                return ResourceManager.GetString("Service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target Service.
+        /// </summary>
+        internal static string TargetService {
+            get {
+                return ResourceManager.GetString("TargetService", resourceCulture);
             }
         }
         

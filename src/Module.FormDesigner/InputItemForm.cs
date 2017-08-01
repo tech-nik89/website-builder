@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 
@@ -30,6 +23,11 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			}
 		}
 
+		public bool EnableId {
+			get => txtId.Enabled;
+			set => txtId.Enabled = value;
+		}
+
 		public String[] Items {
 			get => txtItems.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 			set {
@@ -48,6 +46,8 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		private void LocalizeComponent() {
 			gbxDetails.Text = Strings.Details;
+			gbxItems.Text = Strings.Items;
+
 			lblId.Text = Strings.Id + ":";
 			lblLabel.Text = Strings.Label + ":";
 

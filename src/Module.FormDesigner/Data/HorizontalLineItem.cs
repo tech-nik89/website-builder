@@ -1,5 +1,6 @@
 ﻿using System;
 using WebsiteBuilder.Interface.Compiling;
+using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
@@ -9,7 +10,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 		public override String Type => Strings.HorizontalLine;
 
-		public override String Render(ICompileHelper compileHelper) {
+		public override String Render(IPluginHelper pluginHelper, ICompileHelper compileHelper) {
 			return "<hr />";
 		}
 

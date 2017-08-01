@@ -5,7 +5,7 @@ using System.Text;
 using WebsiteBuilder.Modules.FormDesigner.Data;
 
 namespace WebsiteBuilder.Modules.FormDesigner {
-	class FormData : List<FormDataItem> {
+	class FormData {
 
 		private static readonly Encoding _Encoding = Encoding.UTF8;
 
@@ -16,6 +16,16 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		public String Id { get; set; }
 
 		public String SubmitButtonText { get; set; }
+
+		public String TargetMailAddress { get; set; }
+
+		public String TargetService { get; set; }
+
+		public List<FormDataItem> Items { get; private set; }
+
+		public FormData() {
+			Items = new List<FormDataItem>();
+		}
 
 		public static String Serialize(FormData data) {
 			String json = JsonConvert.SerializeObject(data, _Settings);
@@ -28,9 +38,14 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				return new FormData();
 			}
 
-			Byte[] buffer = Convert.FromBase64String(data);
-			String json = _Encoding.GetString(buffer);
-			return JsonConvert.DeserializeObject<FormData>(json, _Settings);
+			try {
+				Byte[] buffer = Convert.FromBase64String(data);
+				String json = _Encoding.GetString(buffer);
+				return JsonConvert.DeserializeObject<FormData>(json, _Settings);
+			}
+			catch {
+				return new FormData();
+			}
 		}
 
 	}

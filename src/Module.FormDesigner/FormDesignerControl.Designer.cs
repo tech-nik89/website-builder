@@ -42,6 +42,8 @@
 			this.lvwItems = new System.Windows.Forms.ListView();
 			this.clnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbSettings = new System.Windows.Forms.ToolStripButton();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,7 +55,9 @@
             this.tsbDelete,
             this.toolStripSeparator1,
             this.tsbUp,
-            this.tsbDown});
+            this.tsbDown,
+            this.toolStripSeparator2,
+            this.tsbSettings});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
 			this.tsMain.Size = new System.Drawing.Size(467, 25);
@@ -204,6 +208,20 @@
 			this.clnTitle.Text = "[Title]";
 			this.clnTitle.Width = 240;
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tsbSettings
+			// 
+			this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
+			this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbSettings.Name = "tsbSettings";
+			this.tsbSettings.Size = new System.Drawing.Size(77, 22);
+			this.tsbSettings.Text = "[Settings]";
+			this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
+			// 
 			// FormDesignerControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,5 +257,7 @@
 		private System.Windows.Forms.ToolStripMenuItem tsbAddCheckbox;
 		private System.Windows.Forms.ToolStripMenuItem tsbAddRadioButton;
 		private System.Windows.Forms.ToolStripMenuItem tsbAddDropDown;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripButton tsbSettings;
 	}
 }

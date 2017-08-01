@@ -41,6 +41,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
 			tsbUp.Image = iconPack.GetImage(IconPackIcon.OrderUp);
 			tsbDown.Image = iconPack.GetImage(IconPackIcon.OrderDown);
+			tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
 		}
 
 		private void LocalizeComponent() {
@@ -49,6 +50,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			tsbDelete.Text = Strings.Delete;
 			tsbUp.Text = Strings.Up;
 			tsbDown.Text = Strings.Down;
+			tsbSettings.Text = Strings.Settings;
 
 			tsbAddCheckbox.Text = Strings.CheckBox;
 			tsbAddDropDown.Text = Strings.DropDown;
@@ -72,20 +74,20 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		}
 
 		private void lvwItems_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
-			FormDataItem item = _Data[e.ItemIndex];
+			FormDataItem item = _Data.Items[e.ItemIndex];
 			String[] columns = { item.Type, item.Title };
 			e.Item = new ListViewItem(columns);
 		}
 
 		private void RefreshList() {
-			int count = _Data.Count;
+			int count = _Data.Items.Count;
 			int index = lvwItems.SelectedIndices.Count > 0
 				? lvwItems.SelectedIndices[0] : -1;
 
 			lvwItems.VirtualListSize = 0;
 			lvwItems.VirtualListSize = count;
 
-			if (index > -1 && index < _Data.Count) {
+			if (index > -1 && index < _Data.Items.Count) {
 				lvwItems.SelectedIndices.Clear();
 				lvwItems.SelectedIndices.Add(index);
 			}
@@ -97,7 +99,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			tsbDelete.Enabled = editEnabled;
 
 			tsbUp.Enabled = editEnabled && lvwItems.SelectedIndices[0] > 0;
-			tsbDown.Enabled = editEnabled && lvwItems.SelectedIndices[0] < _Data.Count - 1;
+			tsbDown.Enabled = editEnabled && lvwItems.SelectedIndices[0] < _Data.Items.Count - 1;
 		}
 
 		private void tsbAddHorizontalLine_Click(object sender, EventArgs e) {
@@ -137,7 +139,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				return;
 			}
 
-			Edit(_Data[lvwItems.SelectedIndices[0]]);
+			Edit(_Data.Items[lvwItems.SelectedIndices[0]]);
 			RefreshList();
 		}
 
@@ -150,13 +152,13 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				return;
 			}
 
-			_Data.RemoveAt(lvwItems.SelectedIndices[0]);
+			_Data.Items.RemoveAt(lvwItems.SelectedIndices[0]);
 			RefreshList();
 		}
 
 		private void Add(FormDataItem item) {
 			Edit(item);
-			_Data.Add(item);
+			_Data.Items.Add(item);
 			RefreshList();
 		}
 
@@ -198,6 +200,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		private Boolean ProcessHeadLine(HeadlineItem item) {
 			InputItemForm form = new InputItemForm();
+			form.EnableId = false;
 			form.Text = item.Type;
 			form.Id = item.Id;
 			form.Label = item.HeadlineText;
@@ -234,6 +237,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		private Boolean ProcessTextItem(TextItem item) {
 			InputItemForm form = new InputItemForm();
+			form.EnableId = false;
 			form.Text = item.Type;
 			form.Id = item.Id;
 			form.Label = item.Text;
@@ -270,11 +274,11 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			}
 
 			int index = lvwItems.SelectedIndices[0];
-			FormDataItem item = _Data[index];
+			FormDataItem item = _Data.Items[index];
 			index--;
 
-			_Data.Remove(item);
-			_Data.Insert(index, item);
+			_Data.Items.Remove(item);
+			_Data.Items.Insert(index, item);
 
 			RefreshList();
 
@@ -283,21 +287,37 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		}
 
 		private void tsbDown_Click(object sender, EventArgs e) {
-			if (lvwItems.SelectedIndices.Count == 0 || lvwItems.SelectedIndices[0] >= _Data.Count - 1) {
+			if (lvwItems.SelectedIndices.Count == 0 || lvwItems.SelectedIndices[0] >= _Data.Items.Count - 1) {
 				return;
 			}
 
 			int index = lvwItems.SelectedIndices[0];
-			FormDataItem item = _Data[index];
+			FormDataItem item = _Data.Items[index];
 			index++;
 
-			_Data.Remove(item);
-			_Data.Insert(index, item);
+			_Data.Items.Remove(item);
+			_Data.Items.Insert(index, item);
 
 			RefreshList();
 
 			lvwItems.SelectedIndices.Clear();
 			lvwItems.SelectedIndices.Add(index);
+		}
+
+		private void tsbSettings_Click(object sender, EventArgs e) {
+			FormSettingsForm form = new FormSettingsForm(_PluginHelper);
+
+			form.SubmitButtonText = _Data.SubmitButtonText;
+			form.TargetService = _Data.TargetService;
+			form.TargetMailAddress = _Data.TargetMailAddress;
+
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			_Data.SubmitButtonText = form.SubmitButtonText;
+			_Data.TargetService = form.TargetService;
+			_Data.TargetMailAddress = form.TargetMailAddress;
 		}
 	}
 }

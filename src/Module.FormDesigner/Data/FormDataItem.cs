@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using WebsiteBuilder.Interface.Compiling;
+using WebsiteBuilder.Interface.Plugins;
 
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
 	abstract class FormDataItem {
@@ -13,7 +14,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 		[JsonIgnore]
 		public abstract String Type { get; }
 
-		public abstract String Render(ICompileHelper compileHelper);
+		public abstract String Render(IPluginHelper pluginHelper, ICompileHelper compileHelper);
 
 	}
 }

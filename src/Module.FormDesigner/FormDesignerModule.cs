@@ -3,7 +3,9 @@ using System.Text;
 using WebsiteBuilder.Interface.Compiling;
 using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Data;
+using WebsiteBuilder.Modules.FormDesigner.Localization;
 using WebsiteBuilder.Modules.FormDesigner.Properties;
+using WebsiteBuilder.Modules.FormDesigner.Services;
 
 namespace WebsiteBuilder.Modules.FormDesigner {
 
@@ -21,20 +23,22 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		public String Compile(String source, ICompileHelper compileHelper) {
 			try {
 				FormData data = FormData.Deserialize(source);
+				Service service = Service.GetService(data.TargetService, data);
+
 				StringBuilder innerHtml = new StringBuilder();
 				IHtmlElement form = compileHelper.CreateHtmlElement("form");
 
 				form.SetAttribute("class", "form-designer");
-				form.SetAttribute("action", "");
+				form.SetAttribute("action", service.GetUrl());
 				form.SetAttribute("method", "post");
 
-				foreach(FormDataItem item in data) {
-					innerHtml.AppendLine(item.Render(compileHelper));
+				foreach(FormDataItem item in data.Items) {
+					innerHtml.AppendLine(item.Render(_PluginHelper, compileHelper));
 				}
 
 				IHtmlElement submit = compileHelper.CreateHtmlElement("input");
 				submit.SetAttribute("type", "submit");
-				submit.SetAttribute("value", data.SubmitButtonText);
+				submit.SetAttribute("value", !String.IsNullOrWhiteSpace(data.SubmitButtonText) ? data.SubmitButtonText : Strings.Submit);
 
 				innerHtml.Append(compileHelper.Compile(submit));
 

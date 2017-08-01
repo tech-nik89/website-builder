@@ -66,6 +66,12 @@
       <DependentUpon>FormDesignerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDesignerModule.cs" />
+    <Compile Include="FormSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSettingsForm.Designer.cs">
+      <DependentUpon>FormSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\FormSpreeService.cs" />
+    <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interface\Interface.csproj">
@@ -93,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormDesignerControl.resx">
       <DependentUpon>FormDesignerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSettingsForm.resx">
+      <DependentUpon>FormSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputItemForm.resx">
       <DependentUpon>InputItemForm.cs</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using System;
 using WebsiteBuilder.Interface.Compiling;
+using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
@@ -11,7 +12,9 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 		public String Label { get; set; }
 
-		public override String Render(ICompileHelper compileHelper) {
+		public override String Render(IPluginHelper pluginHelper, ICompileHelper compileHelper) {
+			String guid = pluginHelper.NewGuid();
+
 			IHtmlElement container = compileHelper.CreateHtmlElement("p");
 			IHtmlElement label = compileHelper.CreateHtmlElement("label");
 			IHtmlElement textarea = compileHelper.CreateHtmlElement("textarea");
@@ -19,10 +22,11 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 			container.AppendChild(label);
 			container.AppendChild(textarea);
 
-			label.SetAttribute("for", Id);
+			label.SetAttribute("for", guid);
 			label.Content = Label;
 
-			textarea.SetAttribute("id", Id);
+			textarea.SetAttribute("id", guid);
+			textarea.SetAttribute("name", Id);
 
 			return compileHelper.Compile(container);
 		}

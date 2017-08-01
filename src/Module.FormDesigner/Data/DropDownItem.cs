@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WebsiteBuilder.Interface.Compiling;
+using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
@@ -18,24 +19,32 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 			Items = new List<String>();
 		}
 
-		public override String Render(ICompileHelper compileHelper) {
+		public override String Render(IPluginHelper pluginHelper, ICompileHelper compileHelper) {
+			String guid = pluginHelper.NewGuid();
+
 			IHtmlElement container = compileHelper.CreateHtmlElement("p");
 			IHtmlElement label = compileHelper.CreateHtmlElement("label");
-			IHtmlElement input = compileHelper.CreateHtmlElement("input");
+			IHtmlElement select = compileHelper.CreateHtmlElement("select");
+			IHtmlElement wrapper = compileHelper.CreateHtmlElement("span");
 
-			container.AppendChild(input);
 			container.AppendChild(label);
+			container.AppendChild(wrapper);
+			wrapper.AppendChild(select);
 
-			label.SetAttribute("for", Id);
+			container.SetAttribute("class", "input");
+			wrapper.SetAttribute("class", "wrapper");
+
+			label.SetAttribute("for", guid);
 			label.Content = Label;
 
-			input.SetAttribute("type", "select");
-			input.SetAttribute("id", Id);
-			
+			select.SetAttribute("type", "select");
+			select.SetAttribute("id", guid);
+			select.SetAttribute("name", Id);
+
 			if (Items != null) {
 				foreach(String item in Items) {
 					IHtmlElement option = compileHelper.CreateHtmlElement("option");
-					input.AppendChild(option);
+					select.AppendChild(option);
 					option.Content = item;
 				}
 			}

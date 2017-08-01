@@ -8,6 +8,8 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 		public CheckBoxItem()
 			: base("checkbox") {
+
+			Value = true.ToString();
 		}
 
 	}
