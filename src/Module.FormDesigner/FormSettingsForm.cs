@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.FormDesigner.Localization;
 using WebsiteBuilder.Modules.FormDesigner.Services;
-using System.Linq;
 
 namespace WebsiteBuilder.Modules.FormDesigner {
 	public partial class FormSettingsForm : Form {
@@ -19,6 +19,11 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		public String SubmitButtonText {
 			get => txtSubmitButtonText.Text;
 			set => txtSubmitButtonText.Text = value;
+		}
+
+		public String SuccessMessage {
+			get => txtSuccessMessage.Text;
+			set => txtSuccessMessage.Text = value;
 		}
 
 		public String TargetService {
@@ -71,11 +76,12 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			btnCancel.Text = Strings.Cancel;
 
 			gbxTarget.Text = Strings.TargetService;
-			gbxButtons.Text = Strings.Buttons;
+			gbxStrings.Text = Strings.Text;
 
 			lblService.Text = Strings.Service + ":";
 			lblMail.Text = Strings.Mail + ":";
 			lblSubmit.Text = Strings.Submit + ":";
+			lblSuccessMessage.Text = Strings.SuccessMessage + ":";
 		}
 
 		private void btnCancel_Click(object sender, System.EventArgs e) {

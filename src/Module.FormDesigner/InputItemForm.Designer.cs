@@ -24,8 +24,8 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.gbxDetails = new System.Windows.Forms.GroupBox();
-			this.txtId = new System.Windows.Forms.TextBox();
-			this.lblId = new System.Windows.Forms.Label();
+			this.txtName = new System.Windows.Forms.TextBox();
+			this.lblName = new System.Windows.Forms.Label();
 			this.txtLabel = new System.Windows.Forms.TextBox();
 			this.lblLabel = new System.Windows.Forms.Label();
 			this.btnCancel = new System.Windows.Forms.Button();
@@ -40,8 +40,8 @@
 			// 
 			this.gbxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gbxDetails.Controls.Add(this.txtId);
-			this.gbxDetails.Controls.Add(this.lblId);
+			this.gbxDetails.Controls.Add(this.txtName);
+			this.gbxDetails.Controls.Add(this.lblName);
 			this.gbxDetails.Controls.Add(this.txtLabel);
 			this.gbxDetails.Controls.Add(this.lblLabel);
 			this.gbxDetails.Location = new System.Drawing.Point(12, 12);
@@ -51,23 +51,23 @@
 			this.gbxDetails.TabStop = false;
 			this.gbxDetails.Text = "[Details]";
 			// 
-			// txtId
+			// txtName
 			// 
-			this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtId.Location = new System.Drawing.Point(80, 30);
-			this.txtId.Name = "txtId";
-			this.txtId.Size = new System.Drawing.Size(283, 20);
-			this.txtId.TabIndex = 1;
+			this.txtName.Location = new System.Drawing.Point(80, 30);
+			this.txtName.Name = "txtName";
+			this.txtName.Size = new System.Drawing.Size(283, 20);
+			this.txtName.TabIndex = 1;
 			// 
-			// lblId
+			// lblName
 			// 
-			this.lblId.AutoSize = true;
-			this.lblId.Location = new System.Drawing.Point(17, 33);
-			this.lblId.Name = "lblId";
-			this.lblId.Size = new System.Drawing.Size(24, 13);
-			this.lblId.TabIndex = 2;
-			this.lblId.Text = "[ID]";
+			this.lblName.AutoSize = true;
+			this.lblName.Location = new System.Drawing.Point(17, 33);
+			this.lblName.Name = "lblName";
+			this.lblName.Size = new System.Drawing.Size(41, 13);
+			this.lblName.TabIndex = 2;
+			this.lblName.Text = "[Name]";
 			// 
 			// txtLabel
 			// 
@@ -94,7 +94,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(295, 296);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(100, 25);
-			this.btnCancel.TabIndex = 4;
+			this.btnCancel.TabIndex = 5;
 			this.btnCancel.Text = "[Cancel]";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -106,7 +106,7 @@
 			this.btnAccept.Location = new System.Drawing.Point(189, 296);
 			this.btnAccept.Name = "btnAccept";
 			this.btnAccept.Size = new System.Drawing.Size(100, 25);
-			this.btnAccept.TabIndex = 3;
+			this.btnAccept.TabIndex = 4;
 			this.btnAccept.Text = "[OK]";
 			this.btnAccept.UseVisualStyleBackColor = true;
 			this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -134,7 +134,7 @@
 			this.txtItems.Name = "txtItems";
 			this.txtItems.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtItems.Size = new System.Drawing.Size(371, 149);
-			this.txtItems.TabIndex = 0;
+			this.txtItems.TabIndex = 3;
 			// 
 			// InputItemForm
 			// 
@@ -170,8 +170,8 @@
 		private System.Windows.Forms.Label lblLabel;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnAccept;
-		private System.Windows.Forms.TextBox txtId;
-		private System.Windows.Forms.Label lblId;
+		private System.Windows.Forms.TextBox txtName;
+		private System.Windows.Forms.Label lblName;
 		private System.Windows.Forms.GroupBox gbxItems;
 		private System.Windows.Forms.TextBox txtItems;
 	}

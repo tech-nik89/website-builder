@@ -39,7 +39,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 			select.SetAttribute("type", "select");
 			select.SetAttribute("id", guid);
-			select.SetAttribute("name", Id);
+			select.SetAttribute("name", Name);
 
 			if (Items != null) {
 				foreach(String item in Items) {

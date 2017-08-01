@@ -10,7 +10,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 		private readonly String _InputType;
 
 		[JsonIgnore]
-		protected String Value { get; set; }
+		protected virtual String Value { get; }
 
 		public String Label { get; set; }
 		
@@ -40,7 +40,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 
 			input.SetAttribute("type", _InputType);
 			input.SetAttribute("id", guid);
-			input.SetAttribute("name", Id);
+			input.SetAttribute("name", Name);
 
 			if (!String.IsNullOrWhiteSpace(Value)) {
 				input.SetAttribute("value", Value);

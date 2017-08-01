@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>OK</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
@@ -168,6 +168,9 @@
   <data name="Mail" xml:space="preserve">
     <value>Mail</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="RadioButton" xml:space="preserve">
     <value>Radio Button</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>Success Message</value>
   </data>
   <data name="TargetService" xml:space="preserve">
     <value>Target Service</value>

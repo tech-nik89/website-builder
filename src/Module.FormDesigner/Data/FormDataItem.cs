@@ -6,7 +6,7 @@ using WebsiteBuilder.Interface.Plugins;
 namespace WebsiteBuilder.Modules.FormDesigner.Data {
 	abstract class FormDataItem {
 
-		public String Id { get; set; }
+		public String Name { get; set; }
 
 		[JsonIgnore]
 		public abstract String Title { get; }

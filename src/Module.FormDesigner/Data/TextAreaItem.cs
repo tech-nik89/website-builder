@@ -26,7 +26,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 			label.Content = Label;
 
 			textarea.SetAttribute("id", guid);
-			textarea.SetAttribute("name", Id);
+			textarea.SetAttribute("name", Name);
 
 			return compileHelper.Compile(container);
 		}

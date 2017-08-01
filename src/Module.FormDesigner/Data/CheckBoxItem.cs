@@ -6,10 +6,10 @@ namespace WebsiteBuilder.Modules.FormDesigner.Data {
 		
 		public override String Type => Strings.CheckBox;
 
+		protected override string Value => true.ToString().ToLower();
+
 		public CheckBoxItem()
 			: base("checkbox") {
-
-			Value = true.ToString();
 		}
 
 	}

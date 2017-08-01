@@ -185,32 +185,32 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		private Boolean ProcessTextArea(TextAreaItem item) {
 			InputItemForm form = new InputItemForm();
 			form.Text = item.Type;
-			form.Id = item.Id;
-			form.Label = item.Label;
+			form.ItemName = item.Name;
+			form.ItemLabel = item.Label;
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return false;
 			}
 
-			item.Id = form.Id;
-			item.Label = form.Label;
+			item.Name = form.ItemName;
+			item.Label = form.ItemLabel;
 
 			return true;
 		}
 
 		private Boolean ProcessHeadLine(HeadlineItem item) {
 			InputItemForm form = new InputItemForm();
-			form.EnableId = false;
+			form.EnableItemName = false;
 			form.Text = item.Type;
-			form.Id = item.Id;
-			form.Label = item.HeadlineText;
+			form.ItemName = item.Name;
+			form.ItemLabel = item.HeadlineText;
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return false;
 			}
 
-			item.Id = form.Id;
-			item.HeadlineText = form.Label;
+			item.Name = form.ItemName;
+			item.HeadlineText = form.ItemLabel;
 
 			return true;
 		}
@@ -218,16 +218,16 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		private Boolean ProcessDropDown(DropDownItem item) {
 			InputItemForm form = new InputItemForm();
 			form.Text = item.Type;
-			form.Id = item.Id;
-			form.Label = item.Label;
+			form.ItemName = item.Name;
+			form.ItemLabel = item.Label;
 			form.Items = item.Items.ToArray();
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return false;
 			}
 
-			item.Id = form.Id;
-			item.Label = form.Label;
+			item.Name = form.ItemName;
+			item.Label = form.ItemLabel;
 
 			item.Items.Clear();
 			item.Items.AddRange(form.Items);
@@ -237,17 +237,17 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		private Boolean ProcessTextItem(TextItem item) {
 			InputItemForm form = new InputItemForm();
-			form.EnableId = false;
+			form.EnableItemName = false;
 			form.Text = item.Type;
-			form.Id = item.Id;
-			form.Label = item.Text;
+			form.ItemName = item.Name;
+			form.ItemLabel = item.Text;
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return false;
 			}
 
-			item.Id = form.Id;
-			item.Text = form.Label;
+			item.Name = form.ItemName;
+			item.Text = form.ItemLabel;
 
 			return true;
 		}
@@ -255,15 +255,15 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 		private Boolean ProcessInputItem(InputItem item) {
 			InputItemForm form = new InputItemForm();
 			form.Text = item.Type;
-			form.Id = item.Id;
-			form.Label = item.Label;
+			form.ItemName = item.Name;
+			form.ItemLabel = item.Label;
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return false;
 			}
 
-			item.Id = form.Id;
-			item.Label = form.Label;
+			item.Name = form.ItemName;
+			item.Label = form.ItemLabel;
 
 			return true;
 		}
@@ -310,6 +310,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			form.SubmitButtonText = _Data.SubmitButtonText;
 			form.TargetService = _Data.TargetService;
 			form.TargetMailAddress = _Data.TargetMailAddress;
+			form.SuccessMessage = _Data.SuccessMessage;
 
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
@@ -318,6 +319,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			_Data.SubmitButtonText = form.SubmitButtonText;
 			_Data.TargetService = form.TargetService;
 			_Data.TargetMailAddress = form.TargetMailAddress;
+			_Data.SuccessMessage = form.SuccessMessage;
 		}
 	}
 }

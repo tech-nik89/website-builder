@@ -61,7 +61,7 @@ namespace WebsiteBuilder.Modules.FormDesigner.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accept.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Accept {
             get {
@@ -214,6 +214,15 @@ namespace WebsiteBuilder.Modules.FormDesigner.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Radio Button.
         /// </summary>
         internal static string RadioButton {
@@ -246,6 +255,15 @@ namespace WebsiteBuilder.Modules.FormDesigner.Localization {
         internal static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success Message.
+        /// </summary>
+        internal static string SuccessMessage {
+            get {
+                return ResourceManager.GetString("SuccessMessage", resourceCulture);
             }
         }
         

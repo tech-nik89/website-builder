@@ -32,6 +32,10 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				form.SetAttribute("action", service.GetUrl());
 				form.SetAttribute("method", "post");
 
+				if (!String.IsNullOrWhiteSpace(data.SuccessMessage)) {
+					form.SetAttribute("data-message", data.SuccessMessage);
+				}
+
 				foreach(FormDataItem item in data.Items) {
 					innerHtml.AppendLine(item.Render(_PluginHelper, compileHelper));
 				}
@@ -45,6 +49,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 				if (!compileHelper.HasPageFlag(ResourceFilesAlreadyAddedFlag)) {
 					compileHelper.CreateLessFile(Resources.FormStyle);
 					compileHelper.CreateJavaScriptFile(Resources.FormCode, true);
+					compileHelper.RequireLibrary(Library.jQuery);
 					compileHelper.SetPageFlag(ResourceFilesAlreadyAddedFlag, true);
 				}
 

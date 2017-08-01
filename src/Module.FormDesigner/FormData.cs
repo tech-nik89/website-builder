@@ -21,6 +21,8 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		public String TargetService { get; set; }
 
+		public String SuccessMessage { get; set; }
+
 		public List<FormDataItem> Items { get; private set; }
 
 		public FormData() {

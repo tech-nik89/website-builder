@@ -5,12 +5,12 @@ using WebsiteBuilder.Modules.FormDesigner.Localization;
 namespace WebsiteBuilder.Modules.FormDesigner {
 	public partial class InputItemForm : Form {
 
-		public String Id {
-			get => txtId.Text;
-			set => txtId.Text = value;
+		public String ItemName {
+			get => txtName.Text;
+			set => txtName.Text = value;
 		}
 
-		public String Label {
+		public String ItemLabel {
 			get => txtLabel.Text;
 			set => txtLabel.Text = value;
 		}
@@ -19,13 +19,14 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			get => gbxItems.Visible;
 			set {
 				gbxItems.Visible = value;
+				AcceptButton = value ? null : btnAccept;
 				Height = value ? 500 : 200;
 			}
 		}
 
-		public bool EnableId {
-			get => txtId.Enabled;
-			set => txtId.Enabled = value;
+		public bool EnableItemName {
+			get => txtName.Enabled;
+			set => txtName.Enabled = value;
 		}
 
 		public String[] Items {
@@ -48,7 +49,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			gbxDetails.Text = Strings.Details;
 			gbxItems.Text = Strings.Items;
 
-			lblId.Text = Strings.Id + ":";
+			lblName.Text = Strings.Name + ":";
 			lblLabel.Text = Strings.Label + ":";
 
 			btnAccept.Text = Strings.Accept;
