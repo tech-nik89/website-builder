@@ -96,16 +96,6 @@ namespace WebsiteBuilder.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /*! jQuery v3.2.1 -ajax,-ajax/jsonp,-ajax/load,-ajax/parseXML,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-event/ajax,-effects,-effects/Tween,-effects/animatedSelector | (c) JS Foundation and other contributors | jquery.org/license */
-        ///!function(a,b){&quot;use strict&quot;;&quot;object&quot;==typeof module&amp;&amp;&quot;object&quot;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&quot;jQuery requires a window with a document&quot;);return b(a)}:b(a) [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string jQuerySlim {
-            get {
-                return ResourceManager.GetString("jQuerySlim", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to THIRDPARTY LICENSES
         ///This project uses the following thirdparty libraries.
         ///

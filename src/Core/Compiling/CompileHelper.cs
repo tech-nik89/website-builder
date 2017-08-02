@@ -147,9 +147,6 @@ namespace WebsiteBuilder.Core.Compiling {
 				case Library.jQuery:
 					CreateJavaScriptFile("jquery.min.js", Resources.jQuery);
 					break;
-				case Library.jQuerySlim:
-					CreateJavaScriptFile("jquery.slim.min.js", Resources.jQuerySlim);
-					break;
 				default:
 					return;
 			}
