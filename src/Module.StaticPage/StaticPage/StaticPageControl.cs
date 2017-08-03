@@ -23,6 +23,8 @@ namespace WebsiteBuilder.Modules.StaticPage {
 			}
 		}
 
+		public bool Dirty => EditorControl?.Dirty ?? false;
+
 		public String Data {
 			get {
 				return EditorControl?.Data ?? String.Empty;

@@ -22,13 +22,18 @@ namespace WebsiteBuilder.Modules.Table {
 
 		private readonly IPluginHelper _PluginHelper;
 
+		public bool Dirty { get; private set; }
+
 		private TableData _Data;
 
 		public String Data {
 			get {
+				Dirty = false;
+
 				_Data.Data = txtData.Text;
 				_Data.ColumnDelimiter = _ColumnDelimiters.Keys.ElementAt(tscColumnDelimiter.SelectedIndex);
 				_Data.HeaderPosition = (HeaderPosition)tscHeaderPosition.SelectedIndex;
+
 				return TableData.Serialize(_Data);
 			}
 			set {
@@ -37,6 +42,8 @@ namespace WebsiteBuilder.Modules.Table {
 
 				tscColumnDelimiter.SelectedIndex = GetKeyIndex(_Data.ColumnDelimiter, _ColumnDelimiters);
 				tscHeaderPosition.SelectedIndex = (int)_Data.HeaderPosition;
+
+				Dirty = false;
 			}
 		}
 		
@@ -87,6 +94,10 @@ namespace WebsiteBuilder.Modules.Table {
 			}
 
 			return -1;
+		}
+
+		private void txtData_TextChanged(object sender, EventArgs e) {
+			Dirty = true;
 		}
 	}
 }

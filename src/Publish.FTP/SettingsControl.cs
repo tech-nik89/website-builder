@@ -8,9 +8,14 @@ namespace WebsiteBuilder.Publish.FTP {
 
 		private readonly IPluginHelper _PluginHelper;
 
+		public bool Dirty { get; private set; }
+
 		public String Data {
 			get => Settings.Serialize(Settings);
-			set => Settings = Settings.Deserialize(value);
+			set {
+				Settings = Settings.Deserialize(value);
+				Dirty = false;
+			}
 		}
 
 		private Settings Settings {

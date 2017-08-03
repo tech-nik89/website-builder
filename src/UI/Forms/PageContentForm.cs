@@ -132,6 +132,19 @@ namespace WebsiteBuilder.UI.Forms {
 		}
 
 		private void PageContentForm_FormClosing(object sender, FormClosingEventArgs e) {
+			if (_Control.Dirty) {
+				DialogResult result = MessageBox.Show(Strings.DirtyPageConfirmSaveMessage, Strings.DirtyProjectConfirmSaveTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+				switch(result) {
+					case DialogResult.Cancel:
+						e.Cancel = true;
+						return;
+					case DialogResult.Yes:
+						Save();
+						break;
+				}
+			}
+
 			ConfigHelper.StoreContentForm(this);
 		}
 	}

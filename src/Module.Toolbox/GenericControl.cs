@@ -8,13 +8,19 @@ using WebsiteBuilder.Modules.Toolbox.Localization;
 namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 	partial class GenericControl<T> : UserControl, IUserInterface where T : IItem {
 
+		public bool Dirty { get; private set; }
+
 		public String Data {
-			get => DataSerializer.Serialize(_Data);
+			get {
+				Dirty = false;
+				return DataSerializer.Serialize(_Data);
+			}
 			set {
 				_Data.Clear();
 				_Data.AddRange(DataSerializer.Deserialize<T>(value));
 				RefreshList();
 				EnableControls();
+				Dirty = false;
 			}
 		}
 
@@ -83,6 +89,7 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 			}
 
 			_Data.Add(form.Item);
+			Dirty = true;
 			RefreshList();
 		}
 
@@ -100,6 +107,7 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 			}
 
 			_Data.RemoveAt(lvwData.SelectedIndices[0]);
+			Dirty = true;
 			RefreshList();
 		}
 
@@ -115,6 +123,7 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 				return;
 			}
 
+			Dirty = true;
 			RefreshList();
 		}
 

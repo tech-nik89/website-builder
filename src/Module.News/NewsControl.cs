@@ -9,11 +9,17 @@ namespace WebsiteBuilder.Modules.News {
 
 		private NewsData _Data;
 
+		public bool Dirty { get; private set; }
+
 		public String Data {
-			get => NewsData.Serialize(_Data);
+			get {
+				Dirty = false;
+				return NewsData.Serialize(_Data);
+			}
 			set {
 				_Data = NewsData.Deserialize(value);
 				RefreshList();
+				Dirty = false;
 			}
 		}
 		
@@ -66,6 +72,7 @@ namespace WebsiteBuilder.Modules.News {
 
 			_Data.Add(form.Item);
 			RefreshList();
+			Dirty = true;
 		}
 
 		private void tsbDelete_Click(object sender, EventArgs e) {
@@ -80,6 +87,7 @@ namespace WebsiteBuilder.Modules.News {
 
 			_Data.RemoveAt(lvwItems.SelectedIndices[0]);
 			RefreshList();
+			Dirty = true;
 		}
 
 		private void tsbEdit_Click(object sender, EventArgs e) {
@@ -109,6 +117,7 @@ namespace WebsiteBuilder.Modules.News {
 			}
 
 			RefreshList();
+			Dirty = true;
 		}
 
 		private void tsbSettings_Click(object sender, EventArgs e) {

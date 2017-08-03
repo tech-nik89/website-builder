@@ -420,4 +420,7 @@
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="DirtyPageConfirmSaveMessage" xml:space="preserve">
+    <value>The current content has unsaved changes. Do you want so save them before exit?</value>
+  </data>
 </root>

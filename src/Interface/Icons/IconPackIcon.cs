@@ -24,6 +24,9 @@
 		About,
 		MetaTag,
 		Publish,
-		Plugin
+		Plugin,
+		Undo,
+		Redo,
+		Search
 	}
 }

@@ -268,6 +268,15 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The current content has unsaved changes. Do you want so save them before exit?.
+        /// </summary>
+        internal static string DirtyPageConfirmSaveMessage {
+            get {
+                return ResourceManager.GetString("DirtyPageConfirmSaveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The current project has unsaved changes. Do you want so save them before exit?.
         /// </summary>
         internal static string DirtyProjectConfirmSaveMessage {

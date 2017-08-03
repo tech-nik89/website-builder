@@ -5,6 +5,8 @@ namespace WebsiteBuilder.Interface.Plugins {
 
 		String Data { get; set; }
 
+		bool Dirty { get; }
+
 		void Insert(String str);
 
 	}

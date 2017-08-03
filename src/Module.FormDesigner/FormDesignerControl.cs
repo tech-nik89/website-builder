@@ -12,11 +12,17 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 
 		private FormData _Data;
 
+		public bool Dirty { get; private set; }
+
 		public String Data {
-			get => FormData.Serialize(_Data);
+			get {
+				Dirty = false;
+				return FormData.Serialize(_Data);
+			}
 			set {
 				_Data = FormData.Deserialize(value);
 				RefreshList();
+				Dirty = false;
 			}
 		}
 
@@ -140,6 +146,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			}
 
 			Edit(_Data.Items[lvwItems.SelectedIndices[0]]);
+			Dirty = true;
 			RefreshList();
 		}
 
@@ -153,12 +160,14 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			}
 
 			_Data.Items.RemoveAt(lvwItems.SelectedIndices[0]);
+			Dirty = true;
 			RefreshList();
 		}
 
 		private void Add(FormDataItem item) {
 			Edit(item);
 			_Data.Items.Add(item);
+			Dirty = true;
 			RefreshList();
 		}
 

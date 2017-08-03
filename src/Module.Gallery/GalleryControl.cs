@@ -21,13 +21,17 @@ namespace WebsiteBuilder.Modules.Gallery {
 
 		private readonly ImageList _ImageList;
 
+		public bool Dirty { get; private set; }
+
 		public String Data {
 			get {
+				Dirty = false;
 				return GalleryData.Serialize(_Data, _PluginHelper);
 			}
 			set {
 				_Data = GalleryData.Deserialize(value, _PluginHelper);
 				RefreshList();
+				Dirty = false;
 			}
 		}
 
@@ -82,11 +86,17 @@ namespace WebsiteBuilder.Modules.Gallery {
 				return;
 			}
 
+			bool itemsRemoved = false;
 			for (int i = lvwImages.SelectedIndices.Count - 1; i >= 0; i--) {
 				_Data.Files.RemoveAt(lvwImages.SelectedIndices[i]);
+				itemsRemoved = true;
 			}
 
 			RefreshList();
+
+			if (itemsRemoved) {
+				Dirty = true;
+			}
 		}
 
 		private void RefreshList() {
@@ -170,6 +180,7 @@ namespace WebsiteBuilder.Modules.Gallery {
 
 			if (fileAdded) {
 				RefreshList();
+				Dirty = true;
 			}
 		}
 
