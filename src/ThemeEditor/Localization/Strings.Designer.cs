@@ -169,6 +169,24 @@ namespace ThemeEditor.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Footer Item.
+        /// </summary>
+        internal static string FooterItem {
+            get {
+                return ResourceManager.GetString("FooterItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Section.
+        /// </summary>
+        internal static string FooterSection {
+            get {
+                return ResourceManager.GetString("FooterSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string General {
@@ -295,6 +313,15 @@ namespace ThemeEditor.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Preview.
+        /// </summary>
+        internal static string ShowPreview {
+            get {
+                return ResourceManager.GetString("ShowPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Style.
         /// </summary>
         internal static string Style {
@@ -354,6 +381,15 @@ namespace ThemeEditor.Localization {
         internal static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        internal static string View {
+            get {
+                return ResourceManager.GetString("View", resourceCulture);
             }
         }
     }

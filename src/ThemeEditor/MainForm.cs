@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Highlighting;
+using System;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using ThemeEditor.Localization;
-using System.Xml;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.Xml;
+using ThemeEditor.Localization;
 
 namespace ThemeEditor {
 	public partial class MainForm : Form {
@@ -19,12 +19,14 @@ namespace ThemeEditor {
 
 		private int _LastIndex = -1;
 
-		private Theme _Theme;
+		private TextEditor _HtmlEditor;
+
+		private ThemeDocument _Theme;
 		
-		private Theme Theme {
+		private ThemeDocument Theme {
 			get {
 				if (_Theme == null) {
-					_Theme = Theme.Create();
+					_Theme = ThemeDocument.Create();
 				}
 
 				return _Theme;
@@ -35,12 +37,21 @@ namespace ThemeEditor {
 			InitializeComponent();
 			LocalizeComponent();
 
+			spcMain.Panel2Collapsed = true;
+
 			String themeFilter = String.Format(Strings.ThemeFileFilter, ThemeFileExtension);
 			ofdTheme.Filter = themeFilter;
 			sfdTheme.Filter = themeFilter;
 
 			String imagesFilter = String.Format(Strings.ImageFileFilter, String.Join(";", SupportedFileTypes.Select(x => "*." + x)));
 			ofdImage.Filter = imagesFilter;
+
+			_HtmlEditor = new TextEditor() {
+				SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("HTML"),
+				FontFamily = new System.Windows.Media.FontFamily("Consolas"),
+				ShowLineNumbers = true
+			};
+			ehHtmlEditor.Child = _HtmlEditor;
 		}
 
 		private void LocalizeComponent() {
@@ -51,7 +62,10 @@ namespace ThemeEditor {
 			mnuFileSave.Text = Strings.Save;
 			mnuFileSaveAs.Text = Strings.SaveAs;
 			mnuFileExit.Text = Strings.Exit;
-			
+
+			mnuView.Text = Strings.View;
+			mnuViewPreview.Text = Strings.ShowPreview;
+
 			tabSettings.Text = Strings.Settings;
 			tabStyles.Text = Strings.Styles;
 			tabImages.Text = Strings.Images;
@@ -84,6 +98,8 @@ namespace ThemeEditor {
 			lvwTemplates.Items.Add(Strings.NavItem);
 			lvwTemplates.Items.Add(Strings.LanguageItems);
 			lvwTemplates.Items.Add(Strings.LanguageItem);
+			lvwTemplates.Items.Add(Strings.FooterSection);
+			lvwTemplates.Items.Add(Strings.FooterItem);
 		}
 
 		private void lvwTemplates_SelectedIndexChanged(object sender, EventArgs e) {
@@ -93,16 +109,16 @@ namespace ThemeEditor {
 
 			if (lvwTemplates.SelectedIndices.Count > 0) {
 				_LastIndex = lvwTemplates.SelectedIndices[0];
-				txtHTML.Text = GetTemplate(_LastIndex).InnerXml;
+				_HtmlEditor.Text = GetTemplate(_LastIndex).InnerXml;
 			}
 			else {
 				_LastIndex = -1;
-				txtHTML.Text = String.Empty;
+				_HtmlEditor.Text = String.Empty;
 			}
 		}
 
 		private void SaveCurrentTemplate() {
-			GetTemplate(_LastIndex).InnerXml = txtHTML.Text;
+			GetTemplate(_LastIndex).InnerXml = _HtmlEditor.Text;
 		}
 
 		private XmlElement GetTemplate(int index) {
@@ -112,6 +128,8 @@ namespace ThemeEditor {
 				case 2: return Theme.NavItem;
 				case 3: return Theme.LanguageItems;
 				case 4: return Theme.LanguageItem;
+				case 5: return Theme.FooterSection;
+				case 6: return Theme.FooterItem;
 			}
 
 			return null;
@@ -171,7 +189,7 @@ namespace ThemeEditor {
 			}
 
 			try {
-				_Theme = Theme.Load(ofdTheme.FileName);
+				_Theme = ThemeDocument.Load(ofdTheme.FileName);
 				FillFormFromDocument();
 			}
 			catch (Exception ex) {
@@ -216,7 +234,7 @@ namespace ThemeEditor {
 				SaveCurrentTemplate();
 			}
 
-			Theme.Save(Theme, path);
+			ThemeDocument.Save(Theme, path);
 		}
 
 		private void HandleError(Exception e) {
@@ -342,6 +360,17 @@ namespace ThemeEditor {
 					pbxImage.Image = Image.FromStream(stream);
 				}
 			}
+		}
+
+		private void mnuViewPreview_Click(object sender, EventArgs e) {
+			spcMain.Panel2Collapsed = !spcMain.Panel2Collapsed;
+			mnuViewPreview.Checked = !spcMain.Panel2Collapsed;
+			GeneratePreview();
+		}
+
+		private void GeneratePreview() {
+			PreviewRenderer renderer = new PreviewRenderer(Theme);
+			wbPreview.DocumentText = renderer.Render();
 		}
 	}
 }

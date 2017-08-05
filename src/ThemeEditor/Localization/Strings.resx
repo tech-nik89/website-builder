@@ -216,4 +216,16 @@
   <data name="ThemeFileFilter" xml:space="preserve">
     <value>Theme-File ({0})|{0}</value>
   </data>
+  <data name="ShowPreview" xml:space="preserve">
+    <value>Show Preview</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="FooterItem" xml:space="preserve">
+    <value>Footer Item</value>
+  </data>
+  <data name="FooterSection" xml:space="preserve">
+    <value>Footer Section</value>
+  </data>
 </root>
