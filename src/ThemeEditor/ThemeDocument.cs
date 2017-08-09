@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Compiling;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Theming;
 
-namespace ThemeEditor {
+namespace WebsiteBuilder.ThemeEditor {
 	class ThemeDocument {
 
 		private readonly XmlDocument _Document;
+
+		public XmlDocument Document => _Document;
 
 		public String Path { get; private set; }
 

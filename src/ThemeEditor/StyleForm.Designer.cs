@@ -1,4 +1,4 @@
-﻿namespace ThemeEditor {
+﻿namespace WebsiteBuilder.ThemeEditor {
 	partial class StyleForm {
 		/// <summary>
 		/// Required designer variable.
@@ -29,9 +29,9 @@
 			this.lblType = new System.Windows.Forms.Label();
 			this.lblName = new System.Windows.Forms.Label();
 			this.gbxStyle = new System.Windows.Forms.GroupBox();
-			this.txtData = new System.Windows.Forms.TextBox();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnAccept = new System.Windows.Forms.Button();
+			this.ehEditor = new System.Windows.Forms.Integration.ElementHost();
 			this.gbxGeneral.SuspendLayout();
 			this.gbxStyle.SuspendLayout();
 			this.SuspendLayout();
@@ -55,6 +55,7 @@
 			// 
 			this.cbxType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxType.FormattingEnabled = true;
 			this.cbxType.Location = new System.Drawing.Point(103, 54);
 			this.cbxType.Name = "cbxType";
@@ -93,25 +94,13 @@
 			this.gbxStyle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gbxStyle.Controls.Add(this.txtData);
+			this.gbxStyle.Controls.Add(this.ehEditor);
 			this.gbxStyle.Location = new System.Drawing.Point(12, 116);
 			this.gbxStyle.Name = "gbxStyle";
 			this.gbxStyle.Size = new System.Drawing.Size(629, 231);
 			this.gbxStyle.TabIndex = 1;
 			this.gbxStyle.TabStop = false;
 			this.gbxStyle.Text = "[Style]";
-			// 
-			// txtData
-			// 
-			this.txtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtData.Location = new System.Drawing.Point(6, 19);
-			this.txtData.Multiline = true;
-			this.txtData.Name = "txtData";
-			this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtData.Size = new System.Drawing.Size(617, 206);
-			this.txtData.TabIndex = 0;
 			// 
 			// btnCancel
 			// 
@@ -135,6 +124,18 @@
 			this.btnAccept.UseVisualStyleBackColor = true;
 			this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
 			// 
+			// ehEditor
+			// 
+			this.ehEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.ehEditor.Location = new System.Drawing.Point(6, 19);
+			this.ehEditor.Name = "ehEditor";
+			this.ehEditor.Size = new System.Drawing.Size(617, 206);
+			this.ehEditor.TabIndex = 0;
+			this.ehEditor.Text = "elementHost1";
+			this.ehEditor.Child = null;
+			// 
 			// StyleForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,7 +152,6 @@
 			this.gbxGeneral.ResumeLayout(false);
 			this.gbxGeneral.PerformLayout();
 			this.gbxStyle.ResumeLayout(false);
-			this.gbxStyle.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -164,8 +164,8 @@
 		private System.Windows.Forms.Label lblType;
 		private System.Windows.Forms.Label lblName;
 		private System.Windows.Forms.GroupBox gbxStyle;
-		private System.Windows.Forms.TextBox txtData;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnAccept;
+		private System.Windows.Forms.Integration.ElementHost ehEditor;
 	}
 }

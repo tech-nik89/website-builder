@@ -117,10 +117,15 @@ namespace WebsiteBuilder.Core.Theming {
 			FileInfo file = new FileInfo(path);
 			Validate(file);
 
-			Theme theme = new Theme();
 			XmlDocument document = new XmlDocument();
 			document.Load(path);
 
+			return Load(document);
+		}
+
+		public static Theme Load(XmlDocument document) {
+			Theme theme = new Theme();
+			
 			LoadSettings(theme.Settings, document);
 			LoadStyles(theme, document);
 			LoadTemplates(theme, document);
@@ -157,6 +162,14 @@ namespace WebsiteBuilder.Core.Theming {
 		private static void LoadSettings(ThemeSettings settings, XmlDocument document) {
 			settings.ImageCssClass = document.SelectSingleNode(QuerySettingImageCssClass)?.InnerText;
 			settings.MaxMenuDepth = ParseInt(document.SelectSingleNode(QuerySettingMaxMenuDepth)?.InnerText);
+
+			if (settings.MaxMenuDepth < ThemeSettings.MaxMenuDepthMinimum) {
+				settings.MaxMenuDepth = ThemeSettings.MaxMenuDepthMinimum;
+			}
+
+			if (settings.MaxMenuDepth > ThemeSettings.MaxMenuDepthMaximum) {
+				settings.MaxMenuDepth = ThemeSettings.MaxMenuDepthMaximum;
+			}
 		}
 
 		private static void LoadImages(Theme theme, XmlDocument document) {

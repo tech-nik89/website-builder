@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -19,8 +21,8 @@ namespace WebsiteBuilder.Core.Compiling {
 
 		private readonly String _ImageCssClass;
 
-		public SpriteGenerator(IReadOnlyDictionary<String, Image> images, String pngFileName)
-			: this(images, pngFileName, SpriteSelectorFormatDefault) {
+		public SpriteGenerator(IReadOnlyDictionary<String, Image> images)
+			: this(images, null, SpriteSelectorFormatDefault) {
 		}
 		
 		public SpriteGenerator(IReadOnlyDictionary<String, Image> images, String pngFileName, String imageCssClass) {
@@ -83,7 +85,18 @@ namespace WebsiteBuilder.Core.Compiling {
 			builder.StartSelector(selectorAll);
 			builder.AppendProperty("background-repeat", "no-repeat");
 			builder.AppendProperty("display", "inline-block");
-			builder.AppendProperty("background-image", "url({0})", _FileName);
+
+			if (!String.IsNullOrWhiteSpace(_FileName)) {
+				builder.AppendProperty("background-image", "url({0})", _FileName);
+			}
+			else {
+				using (MemoryStream stream = new MemoryStream()) {
+					Image.Save(stream, ImageFormat.Png);
+					String base64 = Convert.ToBase64String(stream.GetBuffer());
+					builder.AppendProperty("background-image", "url(data:image/gif;base64,{0})", base64);
+				}
+			}
+
 			builder.EndSelector();
 
 			foreach (var point in points) {

@@ -1,13 +1,19 @@
-﻿using System;
+﻿using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Highlighting;
+using System;
+using System.Linq;
 using System.Windows.Forms;
-using ThemeEditor.Localization;
+using WebsiteBuilder.Core.Theming;
+using WebsiteBuilder.ThemeEditor.Localization;
 
-namespace ThemeEditor {
+namespace WebsiteBuilder.ThemeEditor {
 	public partial class StyleForm : Form {
 
+		private TextEditor _TextEditor;
+
 		public String Style {
-			get => txtData.Text;
-			set => txtData.Text = value;
+			get => _TextEditor.Text;
+			set => _TextEditor.Text = value;
 		}
 
 		public String StyleName {
@@ -24,6 +30,17 @@ namespace ThemeEditor {
 			InitializeComponent();
 			LocalizeComponent();
 			DialogResult = DialogResult.Cancel;
+
+			_TextEditor = new TextEditor() {
+				SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("CSS"),
+				FontFamily = new System.Windows.Media.FontFamily("Consolas"),
+				ShowLineNumbers = true
+			};
+
+			ehEditor.Child = _TextEditor;
+
+			var types = Enum.GetNames(typeof(ThemeStyle.Types)).Select(x => x.ToLower());
+			cbxType.Items.AddRange(types.ToArray());
 		}
 
 		private void LocalizeComponent() {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ThemeEditor.Localization {
+namespace WebsiteBuilder.ThemeEditor.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ThemeEditor.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ThemeEditor.Localization.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteBuilder.ThemeEditor.Localization.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -160,6 +160,15 @@ namespace ThemeEditor.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        internal static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         internal static string File {
@@ -205,11 +214,29 @@ namespace ThemeEditor.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image-Files|{0}.
+        ///   Looks up a localized string similar to File Size: {0} bytes Image Size: {1}x{2} px.
+        /// </summary>
+        internal static string ImageDetails {
+            get {
+                return ResourceManager.GetString("ImageDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}-File|{1}.
         /// </summary>
         internal static string ImageFileFilter {
             get {
                 return ResourceManager.GetString("ImageFileFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image-Files|{0}.
+        /// </summary>
+        internal static string ImageFilesFilter {
+            get {
+                return ResourceManager.GetString("ImageFilesFilter", resourceCulture);
             }
         }
         
@@ -286,6 +313,24 @@ namespace ThemeEditor.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        internal static string Preview {
+            get {
+                return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string Refresh {
+            get {
+                return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save {
@@ -318,6 +363,15 @@ namespace ThemeEditor.Localization {
         internal static string ShowPreview {
             get {
                 return ResourceManager.GetString("ShowPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        internal static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
             }
         }
         

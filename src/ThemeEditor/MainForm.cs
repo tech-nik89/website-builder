@@ -2,24 +2,32 @@
 using ICSharpCode.AvalonEdit.Highlighting;
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
-using ThemeEditor.Localization;
+using WebsiteBuilder.Core.Compiling;
+using WebsiteBuilder.ThemeEditor.Localization;
 
-namespace ThemeEditor {
+namespace WebsiteBuilder.ThemeEditor {
 	public partial class MainForm : Form {
+		
+		private static readonly String ThemeFileExtension = String.Format("*{0}", Core.Theming.Theme.FileExtension);
 
-		private const String ThemeFileExtensionName = "wbtx";
-
-		private static readonly String ThemeFileExtension = String.Format("*.{0}", ThemeFileExtensionName);
-
-		public static readonly String[] SupportedFileTypes = { "png", "bmp", "gif", "jpg", "jpeg", "tiff" };
-
+		public static readonly ImageFormat[] SupportedImageFileTypes = {
+			ImageFormat.Png,
+			ImageFormat.Bmp,
+			ImageFormat.Gif,
+			ImageFormat.Jpeg,
+			ImageFormat.Tiff
+		};
+		
 		private int _LastIndex = -1;
 
-		private TextEditor _HtmlEditor;
+		private readonly TextEditor _HtmlEditor;
+
+		private readonly TextEditor _PreviewSource;
 
 		private ThemeDocument _Theme;
 		
@@ -42,9 +50,12 @@ namespace ThemeEditor {
 			String themeFilter = String.Format(Strings.ThemeFileFilter, ThemeFileExtension);
 			ofdTheme.Filter = themeFilter;
 			sfdTheme.Filter = themeFilter;
+			
+			ofdImage.Filter = String.Format(Strings.ImageFilesFilter, String.Join(";", SupportedImageFileTypes.Select(x => "*." + x)));
+			sfdImagesExport.Filter = String.Join("|", SupportedImageFileTypes.Select(x => String.Format(Strings.ImageFileFilter, x.ToString().ToUpper(), "*." + x)));
 
-			String imagesFilter = String.Format(Strings.ImageFileFilter, String.Join(";", SupportedFileTypes.Select(x => "*." + x)));
-			ofdImage.Filter = imagesFilter;
+			lvwImages_SelectedIndexChanged(this, null);
+			lvwStyles_SelectedIndexChanged(this, null);
 
 			_HtmlEditor = new TextEditor() {
 				SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("HTML"),
@@ -52,6 +63,14 @@ namespace ThemeEditor {
 				ShowLineNumbers = true
 			};
 			ehHtmlEditor.Child = _HtmlEditor;
+
+			_PreviewSource = new TextEditor() {
+				SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("HTML"),
+				FontFamily = new System.Windows.Media.FontFamily("Consolas"),
+				ShowLineNumbers = true,
+				HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto
+			};
+			ehPreviewSource.Child = _PreviewSource;
 		}
 
 		private void LocalizeComponent() {
@@ -70,6 +89,8 @@ namespace ThemeEditor {
 			tabStyles.Text = Strings.Styles;
 			tabImages.Text = Strings.Images;
 			tabTemplates.Text = Strings.Templates;
+			tabPreviewBrowser.Text = Strings.Preview;
+			tabPreviewSource.Text = Strings.Source;
 
 			gbxDescription.Text = Strings.Description;
 			gbxGeneral.Text = Strings.General;
@@ -87,9 +108,12 @@ namespace ThemeEditor {
 			tsbImagesAdd.Text = Strings.Add;
 			tsbImagesEdit.Text = Strings.Edit;
 			tsbImagesRemove.Text = Strings.Delete;
+			tsbImagesExport.Text = Strings.Export;
 
 			clnImagesName.Text = Strings.Name;
 			clnTemplate.Text = Strings.Template;
+
+			tsbPreviewRefresh.Text = Strings.Refresh;
 		}
 
 		private void MainForm_Load(object sender, EventArgs e) {
@@ -133,6 +157,16 @@ namespace ThemeEditor {
 			}
 
 			return null;
+		}
+
+		private void FillDocumentFromForm() {
+			Theme.Description.InnerText = txtDescription.Text;
+			Theme.ImageCssClass.InnerText = txtCssImageClass.Text;
+			Theme.MaxMenuDepth.InnerText = ((int)numMaxMenuDepth.Value).ToString();
+
+			if (_LastIndex > -1) {
+				SaveCurrentTemplate();
+			}
 		}
 
 		private void FillFormFromDocument() {
@@ -191,6 +225,7 @@ namespace ThemeEditor {
 			try {
 				_Theme = ThemeDocument.Load(ofdTheme.FileName);
 				FillFormFromDocument();
+				GeneratePreview();
 			}
 			catch (Exception ex) {
 				HandleError(ex);
@@ -226,13 +261,7 @@ namespace ThemeEditor {
 				path = sfdTheme.FileName;
 			}
 
-			Theme.Description.InnerText = txtDescription.Text;
-			Theme.ImageCssClass.InnerText = txtCssImageClass.Text;
-			Theme.MaxMenuDepth.InnerText = ((int)numMaxMenuDepth.Value).ToString();
-
-			if (_LastIndex > -1) {
-				SaveCurrentTemplate();
-			}
+			FillDocumentFromForm();
 
 			ThemeDocument.Save(Theme, path);
 		}
@@ -312,6 +341,7 @@ namespace ThemeEditor {
 			image.InnerText = Convert.ToBase64String(form.ImageData);
 
 			RefreshImageList();
+
 		}
 
 		private void tsbImagesEdit_Click(object sender, EventArgs e) {
@@ -353,12 +383,23 @@ namespace ThemeEditor {
 		private void lvwImages_SelectedIndexChanged(object sender, EventArgs e) {
 			if (lvwImages.SelectedIndices.Count == 0) {
 				pbxImage.Image = null;
+				tsbImagesEdit.Enabled = false;
+				tsbImagesRemove.Enabled = false;
+				tsbImagesExport.Enabled = false;
+				tslImageDetails.Text = String.Empty;
 			}
 			else {
-				Byte[] buffer = Convert.FromBase64String((String)lvwImages.SelectedItems[0].Tag);
+				XmlElement image = Theme.Images.ElementAt(lvwImages.SelectedIndices[0]);
+				Byte[] buffer = Convert.FromBase64String(image.InnerText);
 				using (MemoryStream stream = new MemoryStream(buffer)) {
 					pbxImage.Image = Image.FromStream(stream);
 				}
+
+				tsbImagesEdit.Enabled = true;
+				tsbImagesRemove.Enabled = true;
+				tsbImagesExport.Enabled = true;
+
+				tslImageDetails.Text = String.Format(Strings.ImageDetails, buffer.Length, pbxImage.Image.Width, pbxImage.Image.Height);
 			}
 		}
 
@@ -368,9 +409,48 @@ namespace ThemeEditor {
 			GeneratePreview();
 		}
 
-		private void GeneratePreview() {
-			PreviewRenderer renderer = new PreviewRenderer(Theme);
-			wbPreview.DocumentText = renderer.Render();
+		private void tsbPreviewRefresh_Click(object sender, EventArgs e) {
+			GeneratePreview();
+		}
+
+		private async void GeneratePreview() {
+			if (!mnuViewPreview.Checked) {
+				return;
+			}
+
+			mnuViewPreview.Enabled = false;
+			tsbPreviewRefresh.Enabled = false;
+			FillDocumentFromForm();
+
+			PreviewCompiler renderer = new PreviewCompiler(Theme.Document);
+			String html = await renderer.RenderAsync();
+
+			wbPreview.DocumentText = html;
+			_PreviewSource.Text = html;
+
+			mnuViewPreview.Enabled = true;
+			tsbPreviewRefresh.Enabled = true;
+		}
+
+		private void lvwStyles_SelectedIndexChanged(object sender, EventArgs e) {
+			bool enabled = lvwStyles.SelectedIndices.Count > 0;
+			tsbStylesEdit.Enabled = enabled;
+			tsbStylesDelete.Enabled = enabled;
+		}
+
+		private void tsbImagesExport_Click(object sender, EventArgs e) {
+			if (pbxImage.Image == null) {
+				return;
+			}
+			
+			if (sfdImagesExport.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			String extension = Path.GetExtension(sfdImagesExport.FileName).Substring(1);
+			ImageFormat format = SupportedImageFileTypes.FirstOrDefault(x => x.ToString() == extension);
+			
+			pbxImage.Image.Save(sfdImagesExport.FileName, format);
 		}
 	}
 }

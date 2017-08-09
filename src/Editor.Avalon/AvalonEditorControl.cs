@@ -2,6 +2,7 @@
 using ICSharpCode.AvalonEdit.Highlighting;
 using System;
 using System.Windows.Forms;
+using System.Windows.Input;
 using WebsiteBuilder.Editors.Avalon.Localization;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
@@ -42,6 +43,12 @@ namespace WebsiteBuilder.Editors.Avalon {
 				Dirty = true;
 				UpdateButtons();
 			};
+			_Editor.KeyDown += (s, args) => {
+				if (args.Key == Key.F && args.KeyboardDevice.IsKeyDown(Key.LeftCtrl)) {
+					args.Handled = true;
+					tsbSearch_Click(s, args);
+				}
+			};
 			
 			wpfHost.Child = _Editor;
 		}
@@ -78,6 +85,11 @@ namespace WebsiteBuilder.Editors.Avalon {
 
 		private void tsbRedo_Click(object sender, EventArgs e) {
 			_Editor.Redo();
+		}
+
+		private void tsbSearch_Click(object sender, EventArgs e) {
+			SearchForm form = new SearchForm(_Editor);
+			form.ShowDialog();
 		}
 	}
 }

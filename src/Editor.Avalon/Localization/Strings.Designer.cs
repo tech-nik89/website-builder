@@ -61,6 +61,15 @@ namespace WebsiteBuilder.Editors.Avalon.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find what:.
+        /// </summary>
+        internal static string FindWhat {
+            get {
+                return ResourceManager.GetString("FindWhat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redo.
         /// </summary>
         internal static string Redo {

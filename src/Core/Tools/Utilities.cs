@@ -3,7 +3,7 @@ using System.IO;
 using WebsiteBuilder.Interface.Compiling;
 
 namespace WebsiteBuilder.Core.Tools {
-	public static class Utilities {
+	static class Utilities {
 
 		public static readonly ICompiler JavaScriptMinifier = new MicrosoftMinifier(MicrosoftMinifier.Mode.JavaScript);
 

@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using ThemeEditor.Localization;
+using WebsiteBuilder.ThemeEditor.Localization;
 
-namespace ThemeEditor {
+namespace WebsiteBuilder.ThemeEditor {
 	public partial class ImageForm : Form {
 
 		public String ImageName {
@@ -32,10 +32,14 @@ namespace ThemeEditor {
 			LocalizeComponent();
 
 			DialogResult = DialogResult.Cancel;
-			ofdImage.Filter = String.Format(Strings.ImageFileFilter, String.Join(";", MainForm.SupportedFileTypes.Select(x => "*." + x)));
+			ofdImage.Filter = String.Format(Strings.ImageFilesFilter, String.Join(";", MainForm.SupportedImageFileTypes.Select(x => "*." + x)));
+
+			txtName.Text = name;
 		}
 
 		private void LocalizeComponent() {
+			Text = Strings.Images;
+
 			lblName.Text = Strings.Name + ":";
 			lblFile.Text = Strings.File + ":";
 

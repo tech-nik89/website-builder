@@ -25,12 +25,12 @@
         private void InitializeComponent() {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvalonEditorControl));
 			this.wpfHost = new System.Windows.Forms.Integration.ElementHost();
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.tsMain = new System.Windows.Forms.ToolStrip();
 			this.tsbUndo = new System.Windows.Forms.ToolStripButton();
 			this.tsbRedo = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbSearch = new System.Windows.Forms.ToolStripButton();
-			this.toolStrip1.SuspendLayout();
+			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// wpfHost
@@ -42,18 +42,18 @@
 			this.wpfHost.TabIndex = 0;
 			this.wpfHost.Child = null;
 			// 
-			// toolStrip1
+			// tsMain
 			// 
-			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbUndo,
             this.tsbRedo,
             this.toolStripSeparator1,
             this.tsbSearch});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(376, 25);
-			this.toolStrip1.TabIndex = 1;
-			this.toolStrip1.Text = "toolStrip1";
+			this.tsMain.Location = new System.Drawing.Point(0, 0);
+			this.tsMain.Name = "tsMain";
+			this.tsMain.Size = new System.Drawing.Size(376, 25);
+			this.tsMain.TabIndex = 1;
+			this.tsMain.Text = "toolStrip1";
 			// 
 			// tsbUndo
 			// 
@@ -83,23 +83,23 @@
 			// tsbSearch
 			// 
 			this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbSearch.Enabled = false;
 			this.tsbSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsbSearch.Image")));
 			this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbSearch.Name = "tsbSearch";
 			this.tsbSearch.Size = new System.Drawing.Size(23, 22);
 			this.tsbSearch.Text = "[Search]";
+			this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
 			// 
 			// AvalonEditorControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.wpfHost);
-			this.Controls.Add(this.toolStrip1);
+			this.Controls.Add(this.tsMain);
 			this.Name = "AvalonEditorControl";
 			this.Size = new System.Drawing.Size(376, 240);
-			this.toolStrip1.ResumeLayout(false);
-			this.toolStrip1.PerformLayout();
+			this.tsMain.ResumeLayout(false);
+			this.tsMain.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -108,7 +108,7 @@
         #endregion
 
         private System.Windows.Forms.Integration.ElementHost wpfHost;
-		private System.Windows.Forms.ToolStrip toolStrip1;
+		private System.Windows.Forms.ToolStrip tsMain;
 		private System.Windows.Forms.ToolStripButton tsbUndo;
 		private System.Windows.Forms.ToolStripButton tsbRedo;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

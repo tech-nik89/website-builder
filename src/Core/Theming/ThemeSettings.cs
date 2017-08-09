@@ -7,5 +7,9 @@ namespace WebsiteBuilder.Core.Theming {
 
 		public int MaxMenuDepth { get; internal set; }
 
+		public const int MaxMenuDepthMinimum = 1;
+
+		public const int MaxMenuDepthMaximum = 25;
+
 	}
 }

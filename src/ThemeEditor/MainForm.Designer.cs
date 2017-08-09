@@ -1,4 +1,4 @@
-﻿namespace ThemeEditor {
+﻿namespace WebsiteBuilder.ThemeEditor {
 	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.
@@ -60,16 +60,27 @@
 			this.tsbImagesAdd = new System.Windows.Forms.ToolStripButton();
 			this.tsbImagesEdit = new System.Windows.Forms.ToolStripButton();
 			this.tsbImagesRemove = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbImagesExport = new System.Windows.Forms.ToolStripButton();
 			this.tabTemplates = new System.Windows.Forms.TabPage();
 			this.scTemplates = new System.Windows.Forms.SplitContainer();
 			this.lvwTemplates = new System.Windows.Forms.ListView();
 			this.clnTemplate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ehHtmlEditor = new System.Windows.Forms.Integration.ElementHost();
 			this.ofdTheme = new System.Windows.Forms.OpenFileDialog();
 			this.sfdTheme = new System.Windows.Forms.SaveFileDialog();
 			this.ofdImage = new System.Windows.Forms.OpenFileDialog();
 			this.spcMain = new System.Windows.Forms.SplitContainer();
+			this.tabPreview = new System.Windows.Forms.TabControl();
+			this.tabPreviewBrowser = new System.Windows.Forms.TabPage();
 			this.wbPreview = new System.Windows.Forms.WebBrowser();
-			this.ehHtmlEditor = new System.Windows.Forms.Integration.ElementHost();
+			this.tabPreviewSource = new System.Windows.Forms.TabPage();
+			this.ehPreviewSource = new System.Windows.Forms.Integration.ElementHost();
+			this.tsPreview = new System.Windows.Forms.ToolStrip();
+			this.tsbPreviewRefresh = new System.Windows.Forms.ToolStripButton();
+			this.sfdImagesExport = new System.Windows.Forms.SaveFileDialog();
+			this.tslImageDetails = new System.Windows.Forms.ToolStripStatusLabel();
+			this.sspImage = new System.Windows.Forms.StatusStrip();
 			this.mnuMain.SuspendLayout();
 			this.tabMain.SuspendLayout();
 			this.tabSettings.SuspendLayout();
@@ -94,6 +105,11 @@
 			this.spcMain.Panel1.SuspendLayout();
 			this.spcMain.Panel2.SuspendLayout();
 			this.spcMain.SuspendLayout();
+			this.tabPreview.SuspendLayout();
+			this.tabPreviewBrowser.SuspendLayout();
+			this.tabPreviewSource.SuspendLayout();
+			this.tsPreview.SuspendLayout();
+			this.sspImage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mnuMain
@@ -314,6 +330,7 @@
 			this.lvwStyles.TabIndex = 1;
 			this.lvwStyles.UseCompatibleStateImageBehavior = false;
 			this.lvwStyles.View = System.Windows.Forms.View.Details;
+			this.lvwStyles.SelectedIndexChanged += new System.EventHandler(this.lvwStyles_SelectedIndexChanged);
 			this.lvwStyles.DoubleClick += new System.EventHandler(this.lvwStyles_DoubleClick);
 			// 
 			// clnStylesName
@@ -390,6 +407,7 @@
 			// scImages.Panel2
 			// 
 			this.scImages.Panel2.Controls.Add(this.pbxImage);
+			this.scImages.Panel2.Controls.Add(this.sspImage);
 			this.scImages.Size = new System.Drawing.Size(451, 368);
 			this.scImages.SplitterDistance = 189;
 			this.scImages.TabIndex = 4;
@@ -409,6 +427,7 @@
 			this.lvwImages.UseCompatibleStateImageBehavior = false;
 			this.lvwImages.View = System.Windows.Forms.View.Details;
 			this.lvwImages.SelectedIndexChanged += new System.EventHandler(this.lvwImages_SelectedIndexChanged);
+			this.lvwImages.DoubleClick += new System.EventHandler(this.tsbImagesEdit_Click);
 			// 
 			// clnImagesName
 			// 
@@ -420,7 +439,7 @@
 			this.pbxImage.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pbxImage.Location = new System.Drawing.Point(0, 0);
 			this.pbxImage.Name = "pbxImage";
-			this.pbxImage.Size = new System.Drawing.Size(258, 368);
+			this.pbxImage.Size = new System.Drawing.Size(258, 346);
 			this.pbxImage.TabIndex = 0;
 			this.pbxImage.TabStop = false;
 			// 
@@ -429,7 +448,9 @@
 			this.tsImages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbImagesAdd,
             this.tsbImagesEdit,
-            this.tsbImagesRemove});
+            this.tsbImagesRemove,
+            this.toolStripSeparator3,
+            this.tsbImagesExport});
 			this.tsImages.Location = new System.Drawing.Point(3, 3);
 			this.tsImages.Name = "tsImages";
 			this.tsImages.Size = new System.Drawing.Size(451, 25);
@@ -463,6 +484,20 @@
 			this.tsbImagesRemove.Text = "[Delete]";
 			this.tsbImagesRemove.Click += new System.EventHandler(this.tsbImagesRemove_Click);
 			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tsbImagesExport
+			// 
+			this.tsbImagesExport.Image = ((System.Drawing.Image)(resources.GetObject("tsbImagesExport.Image")));
+			this.tsbImagesExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbImagesExport.Name = "tsbImagesExport";
+			this.tsbImagesExport.Size = new System.Drawing.Size(68, 22);
+			this.tsbImagesExport.Text = "[Export]";
+			this.tsbImagesExport.Click += new System.EventHandler(this.tsbImagesExport_Click);
+			// 
 			// tabTemplates
 			// 
 			this.tabTemplates.Controls.Add(this.scTemplates);
@@ -477,6 +512,7 @@
 			// scTemplates
 			// 
 			this.scTemplates.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scTemplates.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
 			this.scTemplates.Location = new System.Drawing.Point(3, 3);
 			this.scTemplates.Name = "scTemplates";
 			// 
@@ -488,7 +524,7 @@
 			// 
 			this.scTemplates.Panel2.Controls.Add(this.ehHtmlEditor);
 			this.scTemplates.Size = new System.Drawing.Size(451, 393);
-			this.scTemplates.SplitterDistance = 150;
+			this.scTemplates.SplitterDistance = 236;
 			this.scTemplates.TabIndex = 0;
 			// 
 			// lvwTemplates
@@ -501,7 +537,7 @@
 			this.lvwTemplates.HideSelection = false;
 			this.lvwTemplates.Location = new System.Drawing.Point(0, 0);
 			this.lvwTemplates.Name = "lvwTemplates";
-			this.lvwTemplates.Size = new System.Drawing.Size(150, 393);
+			this.lvwTemplates.Size = new System.Drawing.Size(236, 393);
 			this.lvwTemplates.TabIndex = 0;
 			this.lvwTemplates.UseCompatibleStateImageBehavior = false;
 			this.lvwTemplates.View = System.Windows.Forms.View.Details;
@@ -512,9 +548,20 @@
 			this.clnTemplate.Text = "[Template]";
 			this.clnTemplate.Width = 200;
 			// 
+			// ehHtmlEditor
+			// 
+			this.ehHtmlEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ehHtmlEditor.Location = new System.Drawing.Point(0, 0);
+			this.ehHtmlEditor.Name = "ehHtmlEditor";
+			this.ehHtmlEditor.Size = new System.Drawing.Size(211, 393);
+			this.ehHtmlEditor.TabIndex = 0;
+			this.ehHtmlEditor.Text = "elementHost1";
+			this.ehHtmlEditor.Child = null;
+			// 
 			// spcMain
 			// 
 			this.spcMain.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.spcMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
 			this.spcMain.Location = new System.Drawing.Point(0, 24);
 			this.spcMain.Name = "spcMain";
 			// 
@@ -524,29 +571,97 @@
 			// 
 			// spcMain.Panel2
 			// 
-			this.spcMain.Panel2.Controls.Add(this.wbPreview);
+			this.spcMain.Panel2.Controls.Add(this.tabPreview);
+			this.spcMain.Panel2.Controls.Add(this.tsPreview);
 			this.spcMain.Size = new System.Drawing.Size(842, 425);
 			this.spcMain.SplitterDistance = 465;
 			this.spcMain.TabIndex = 2;
 			// 
+			// tabPreview
+			// 
+			this.tabPreview.Controls.Add(this.tabPreviewBrowser);
+			this.tabPreview.Controls.Add(this.tabPreviewSource);
+			this.tabPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabPreview.Location = new System.Drawing.Point(0, 25);
+			this.tabPreview.Name = "tabPreview";
+			this.tabPreview.SelectedIndex = 0;
+			this.tabPreview.Size = new System.Drawing.Size(373, 400);
+			this.tabPreview.TabIndex = 1;
+			// 
+			// tabPreviewBrowser
+			// 
+			this.tabPreviewBrowser.Controls.Add(this.wbPreview);
+			this.tabPreviewBrowser.Location = new System.Drawing.Point(4, 22);
+			this.tabPreviewBrowser.Name = "tabPreviewBrowser";
+			this.tabPreviewBrowser.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPreviewBrowser.Size = new System.Drawing.Size(365, 374);
+			this.tabPreviewBrowser.TabIndex = 0;
+			this.tabPreviewBrowser.Text = "[Preview]";
+			this.tabPreviewBrowser.UseVisualStyleBackColor = true;
+			// 
 			// wbPreview
 			// 
 			this.wbPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.wbPreview.Location = new System.Drawing.Point(0, 0);
+			this.wbPreview.Location = new System.Drawing.Point(3, 3);
 			this.wbPreview.MinimumSize = new System.Drawing.Size(20, 20);
 			this.wbPreview.Name = "wbPreview";
-			this.wbPreview.Size = new System.Drawing.Size(373, 425);
+			this.wbPreview.Size = new System.Drawing.Size(359, 368);
 			this.wbPreview.TabIndex = 0;
 			// 
-			// ehHtmlEditor
+			// tabPreviewSource
 			// 
-			this.ehHtmlEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ehHtmlEditor.Location = new System.Drawing.Point(0, 0);
-			this.ehHtmlEditor.Name = "ehHtmlEditor";
-			this.ehHtmlEditor.Size = new System.Drawing.Size(297, 393);
-			this.ehHtmlEditor.TabIndex = 0;
-			this.ehHtmlEditor.Text = "elementHost1";
-			this.ehHtmlEditor.Child = null;
+			this.tabPreviewSource.Controls.Add(this.ehPreviewSource);
+			this.tabPreviewSource.Location = new System.Drawing.Point(4, 22);
+			this.tabPreviewSource.Name = "tabPreviewSource";
+			this.tabPreviewSource.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPreviewSource.Size = new System.Drawing.Size(365, 374);
+			this.tabPreviewSource.TabIndex = 1;
+			this.tabPreviewSource.Text = "[Source]";
+			this.tabPreviewSource.UseVisualStyleBackColor = true;
+			// 
+			// ehPreviewSource
+			// 
+			this.ehPreviewSource.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ehPreviewSource.Location = new System.Drawing.Point(3, 3);
+			this.ehPreviewSource.Name = "ehPreviewSource";
+			this.ehPreviewSource.Size = new System.Drawing.Size(359, 368);
+			this.ehPreviewSource.TabIndex = 0;
+			this.ehPreviewSource.Text = "elementHost1";
+			this.ehPreviewSource.Child = null;
+			// 
+			// tsPreview
+			// 
+			this.tsPreview.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbPreviewRefresh});
+			this.tsPreview.Location = new System.Drawing.Point(0, 0);
+			this.tsPreview.Name = "tsPreview";
+			this.tsPreview.Size = new System.Drawing.Size(373, 25);
+			this.tsPreview.TabIndex = 2;
+			this.tsPreview.Text = "toolStrip1";
+			// 
+			// tsbPreviewRefresh
+			// 
+			this.tsbPreviewRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbPreviewRefresh.Image")));
+			this.tsbPreviewRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbPreviewRefresh.Name = "tsbPreviewRefresh";
+			this.tsbPreviewRefresh.Size = new System.Drawing.Size(74, 22);
+			this.tsbPreviewRefresh.Text = "[Refresh]";
+			this.tsbPreviewRefresh.Click += new System.EventHandler(this.tsbPreviewRefresh_Click);
+			// 
+			// tslImageDetails
+			// 
+			this.tslImageDetails.Name = "tslImageDetails";
+			this.tslImageDetails.Size = new System.Drawing.Size(0, 17);
+			// 
+			// sspImage
+			// 
+			this.sspImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslImageDetails});
+			this.sspImage.Location = new System.Drawing.Point(0, 346);
+			this.sspImage.Name = "sspImage";
+			this.sspImage.Size = new System.Drawing.Size(258, 22);
+			this.sspImage.TabIndex = 1;
+			this.sspImage.Text = "statusStrip1";
 			// 
 			// MainForm
 			// 
@@ -578,6 +693,7 @@
 			this.tabImages.PerformLayout();
 			this.scImages.Panel1.ResumeLayout(false);
 			this.scImages.Panel2.ResumeLayout(false);
+			this.scImages.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.scImages)).EndInit();
 			this.scImages.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
@@ -590,8 +706,16 @@
 			this.scTemplates.ResumeLayout(false);
 			this.spcMain.Panel1.ResumeLayout(false);
 			this.spcMain.Panel2.ResumeLayout(false);
+			this.spcMain.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.spcMain)).EndInit();
 			this.spcMain.ResumeLayout(false);
+			this.tabPreview.ResumeLayout(false);
+			this.tabPreviewBrowser.ResumeLayout(false);
+			this.tabPreviewSource.ResumeLayout(false);
+			this.tsPreview.ResumeLayout(false);
+			this.tsPreview.PerformLayout();
+			this.sspImage.ResumeLayout(false);
+			this.sspImage.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -645,6 +769,17 @@
 		private System.Windows.Forms.SplitContainer spcMain;
 		private System.Windows.Forms.WebBrowser wbPreview;
 		private System.Windows.Forms.Integration.ElementHost ehHtmlEditor;
+		private System.Windows.Forms.TabControl tabPreview;
+		private System.Windows.Forms.TabPage tabPreviewBrowser;
+		private System.Windows.Forms.TabPage tabPreviewSource;
+		private System.Windows.Forms.Integration.ElementHost ehPreviewSource;
+		private System.Windows.Forms.ToolStrip tsPreview;
+		private System.Windows.Forms.ToolStripButton tsbPreviewRefresh;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripButton tsbImagesExport;
+		private System.Windows.Forms.SaveFileDialog sfdImagesExport;
+		private System.Windows.Forms.StatusStrip sspImage;
+		private System.Windows.Forms.ToolStripStatusLabel tslImageDetails;
 	}
 }
 
