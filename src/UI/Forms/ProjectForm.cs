@@ -36,7 +36,7 @@ namespace WebsiteBuilder.UI.Forms {
 				UpdateFormText();
 				RefreshLanguageList();
 				RefreshPublishMenu();
-				ptvwPages.Project = _CurrentProject;
+				_Pages.Project = _CurrentProject;
 
 				if (!String.IsNullOrWhiteSpace(_CurrentProject.ProjectFilePath)
 					&& File.Exists(_CurrentProject.ProjectFilePath)) {

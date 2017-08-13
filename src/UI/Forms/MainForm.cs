@@ -2,20 +2,54 @@
 using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Interface.Icons;
+using WebsiteBuilder.UI.Controls;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteBuilder.UI.Forms {
 	public partial class MainForm : Form {
+
+		private readonly PagesTreeView _Pages;
+
+		private readonly PageContentList _Content;
+
+		private readonly DockPanel _DockPanel;
 
 		public MainForm() {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
 			
+			_Content = new PageContentList(EnableContentControls);
+			_Pages = new PagesTreeView(EnableContentControls, EnableTreeControls, _Content.RefreshContent);
+
+			_DockPanel = new DockPanel() {
+				Dock = DockStyle.Fill,
+				Theme = new VS2015LightTheme(),
+				DocumentStyle = DocumentStyle.DockingWindow
+			};
+
+			tscMain.ContentPanel.Controls.Add(_DockPanel);
+			_Pages.Show(_DockPanel, DockState.DockLeft);
+			_Content.Show(_DockPanel, DockState.Document);
+
 			_ProductName = GetProductName();
 			ofdProject.Filter = _ProjectFilesFilter;
 			sfdProject.Filter = _ProjectFilesFilter;
+
+			tscLanguage.SelectedIndexChanged += (sender, e) => { _Pages.RedrawTree(); };
+			tsbPageAdd.Click += (sender, e) => { _Pages.Add(); };
+			tsbPageEdit.Click += (sender, e) => { _Pages.Edit(); };
+			tsbPageDelete.Click += (sender, e) => { _Pages.Delete(); };
+
+			tsbContentAdd.Click += (sender, e) => { _Content.Add(); };
+			tsbContentEdit.Click += (sender, e) => { _Content.Edit(); };
+			tsbContentDelete.Click += (sender, e) => { _Content.Delete(); };
+			tsbContentUp.Click += (sender, e) => { _Content.MoveContentUp(); };
+			tsbContentDown.Click += (sender, e) => { _Content.MoveContentDown(); };
+
+			_Pages.BuildPageRequested += mnuBuildPage_Click;
 
 			tslStatus.Text = StatusText.Ready;
 			CurrentProject = new Project();
@@ -52,6 +86,17 @@ namespace WebsiteBuilder.UI.Forms {
 			tsbContentFooter.Image = IconPack.Current.GetImage(IconPackIcon.Footer);
 
 			tsbBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
+
+			tsbPageAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+			tsbPageEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
+			tsbPageDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
+
+			tsbContentAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+			tsbContentEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
+			tsbContentDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
+
+			tsbContentUp.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
+			tsbContentDown.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
 		}
 
 		private void LocalizeComponent() {
@@ -91,6 +136,17 @@ namespace WebsiteBuilder.UI.Forms {
 			tsbContentFooter.Text = Strings.Footer;
 
 			tsbBuildProject.Text = Strings.Build;
+
+			tsbPageAdd.Text = Strings.PageAdd;
+			tsbPageEdit.Text = Strings.PageEdit;
+			tsbPageDelete.Text = Strings.PageDelete;
+
+			tsbContentAdd.Text = Strings.ContentAdd;
+			tsbContentEdit.Text = Strings.ContentEdit;
+			tsbContentDelete.Text = Strings.ContentDelete;
+
+			tsbContentUp.Text = Strings.Up;
+			tsbContentDown.Text = Strings.Down;
 		}
 
 		private void mnuProjectExit_Click(object sender, EventArgs e) {
@@ -181,11 +237,11 @@ namespace WebsiteBuilder.UI.Forms {
 		}
 
 		private void mnuBuildPage_Click(object sender, EventArgs e) {
-			if (ptvwPages.SelectedPage == null || ptvwPages.SelectedLanguage == null) {
+			if (_Pages.SelectedPage == null || _Pages.SelectedLanguage == null) {
 				return;
 			}
 
-			CompileProject(ptvwPages.SelectedPage, ptvwPages.SelectedLanguage);
+			CompileProject(_Pages.SelectedPage, _Pages.SelectedLanguage);
 		}
 
 		private void mnuHelpAbout_Click(object sender, EventArgs e) {
@@ -198,12 +254,28 @@ namespace WebsiteBuilder.UI.Forms {
 				return;
 			}
 
-			ptvwPages.SelectedLanguage = CurrentProject.Languages[tscLanguage.SelectedIndex];
+			_Pages.SelectedLanguage 
+				= _Content.SelectedLanguage 
+				= CurrentProject.Languages[tscLanguage.SelectedIndex];
 		}
 
 		private void mnuToolsPlugins_Click(object sender, EventArgs e) {
 			PluginsForm form = new PluginsForm();
 			form.ShowDialog();
+		}
+
+		private void EnableContentControls() {
+			tsbContentAdd.Enabled = _Pages?.SelectedPage != null;
+			tsbContentEdit.Enabled = _Content.ContentSelected;
+			tsbContentDelete.Enabled = _Content.ContentSelected;
+			tsbContentUp.Enabled = _Content.CanMoveUp;
+			tsbContentDown.Enabled = _Content.CanMoveDown;
+		}
+
+		private void EnableTreeControls() {
+			tsbPageEdit.Enabled 
+				= tsbPageDelete.Enabled 
+				= _Pages?.SelectedPage != null;
 		}
 	}
 }

@@ -232,6 +232,33 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Content.
+        /// </summary>
+        internal static string ContentAdd {
+            get {
+                return ResourceManager.GetString("ContentAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Content.
+        /// </summary>
+        internal static string ContentDelete {
+            get {
+                return ResourceManager.GetString("ContentDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Content.
+        /// </summary>
+        internal static string ContentEdit {
+            get {
+                return ResourceManager.GetString("ContentEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content Settings.
         /// </summary>
         internal static string ContentSettings {
@@ -628,6 +655,24 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Page.
+        /// </summary>
+        internal static string PageAdd {
+            get {
+                return ResourceManager.GetString("PageAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Page.
+        /// </summary>
+        internal static string PageDelete {
+            get {
+                return ResourceManager.GetString("PageDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to remove the selected page? All sub-pages will be removed as well..
         /// </summary>
         internal static string PageDeleteConfirmMessage {
@@ -637,11 +682,29 @@ namespace WebsiteBuilder.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Page.
+        /// </summary>
+        internal static string PageEdit {
+            get {
+                return ResourceManager.GetString("PageEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page Properties.
         /// </summary>
         internal static string PageProperties {
             get {
                 return ResourceManager.GetString("PageProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Structure.
+        /// </summary>
+        internal static string PageStructure {
+            get {
+                return ResourceManager.GetString("PageStructure", resourceCulture);
             }
         }
         

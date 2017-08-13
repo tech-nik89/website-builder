@@ -423,4 +423,25 @@
   <data name="DirtyPageConfirmSaveMessage" xml:space="preserve">
     <value>The current content has unsaved changes. Do you want so save them before exit?</value>
   </data>
+  <data name="ContentAdd" xml:space="preserve">
+    <value>Add Content</value>
+  </data>
+  <data name="ContentDelete" xml:space="preserve">
+    <value>Delete Content</value>
+  </data>
+  <data name="ContentEdit" xml:space="preserve">
+    <value>Edit Content</value>
+  </data>
+  <data name="PageAdd" xml:space="preserve">
+    <value>Add Page</value>
+  </data>
+  <data name="PageDelete" xml:space="preserve">
+    <value>Delete Page</value>
+  </data>
+  <data name="PageEdit" xml:space="preserve">
+    <value>Edit Page</value>
+  </data>
+  <data name="PageStructure" xml:space="preserve">
+    <value>Page Structure</value>
+  </data>
 </root>

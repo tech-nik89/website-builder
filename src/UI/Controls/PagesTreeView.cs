@@ -7,14 +7,14 @@ using System.Windows.Forms;
 using WebsiteBuilder.Core;
 using WebsiteBuilder.Core.Localization;
 using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
 using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.UI.Forms;
 using WebsiteBuilder.UI.Localization;
 using WebsiteBuilder.UI.Resources;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteBuilder.UI.Controls {
-	public partial class PagesTreeView : UserControl {
+	public partial class PagesTreeView : DockContent {
 
 		private readonly List<TreeItem> _FlatList;
 
@@ -26,10 +26,14 @@ namespace WebsiteBuilder.UI.Controls {
 
 		private readonly ImageList _ImageList;
 
-		[Browsable(true)]
-		public event EventHandler ContentUpdated;
+		private readonly Action<Page> RefreshContent;
 
-		[Browsable(true)]
+		public readonly Action EnableContentControls;
+
+		public readonly Action EnableTreeControlsExternal;
+		
+		public event EventHandler TreeChanged;
+		
 		public event EventHandler<BuildPageEventArgs> BuildPageRequested;
 
 		public Page SelectedPage => SelectedItem?.Page;
@@ -61,9 +65,14 @@ namespace WebsiteBuilder.UI.Controls {
 
 		private DragDropInfo _DropInfo;
 
-		public PagesTreeView() {
+		public PagesTreeView(Action enableContentControls, Action enableTreeControlsExternal, Action<Page> refreshContent) {
 			InitializeComponent();
 			LocalizeComponent();
+
+			EnableContentControls = enableContentControls;
+			RefreshContent = refreshContent;
+			EnableTreeControlsExternal = enableTreeControlsExternal;
+
 			ApplyIcons();
 			EnableTreeControls();
 			EnableContentControls();
@@ -79,6 +88,11 @@ namespace WebsiteBuilder.UI.Controls {
 				_ImageList.Images.Add(IconPack.Current.GetImage(IconPackIcon.PageStartDisabled));
 				lvwPages.SmallImageList = _ImageList;
 			}
+
+			Text = Strings.PageStructure;
+			DockAreas = DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom;
+			CloseButton = false;
+			CloseButtonVisible = false;
 		}
 
 		private static int ResolveImageIndex(Page page) {
@@ -94,20 +108,8 @@ namespace WebsiteBuilder.UI.Controls {
 				return;
 			}
 
-			tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
-			tsbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
-			tsbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-
-			tsbContentAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
-			tsbContentEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
-			tsbContentDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-
-			tsbContentUp.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
-			tsbContentDown.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
-
 			cmbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
 			cmbDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-			cmbEditContent.Image = IconPack.Current.GetImage(IconPackIcon.EditContent);
 			cmbStartPage.Image = IconPack.Current.GetImage(IconPackIcon.PageStart);
 			cmbBuildPage.Image = IconPack.Current.GetImage(IconPackIcon.BuildPage);
 
@@ -116,46 +118,16 @@ namespace WebsiteBuilder.UI.Controls {
 		}
 
 		private void LocalizeComponent() {
-			tsbAdd.Text = Strings.Add;
-			tsbEdit.Text = Strings.Edit;
-			tsbDelete.Text = Strings.Delete;
-
-			tsbContentAdd.Text = Strings.Add;
-			tsbContentEdit.Text = Strings.Edit;
-			tsbContentDelete.Text = Strings.Delete;
-
-			tsbContentUp.Text = Strings.Up;
-			tsbContentDown.Text = Strings.Down;
-
-			clnPathName.Text = Strings.PathName;
-			clnContentType.Text = Strings.Type;
-			clnContentEditor.Text = Strings.Editor;
-
 			cmsDragDropMoveAfter.Text = Strings.InsertBelow;
 			cmsDragDropMoveBefore.Text = Strings.InsertAbove;
 			cmsDragDropMoveAsChild.Text = Strings.InsertAsChild;
 
 			cmbDelete.Text = Strings.Delete;
 			cmbEdit.Text = Strings.Edit;
-			cmbEditContent.Text = Strings.EditContent;
 			cmbStartPage.Text = Strings.SetStartPage;
 			cmbBuildPage.Text = Strings.BuildThisPageOnly;
-		}
-		
-		private void RefreshContentList(int selectedIndex = -1) {
-			if (selectedIndex == -1) {
-				selectedIndex = lvwContent.SelectedIndices.Count > 0 ? lvwContent.SelectedIndices[0] : -1;
-			}
 
-			lvwContent.VirtualListSize = 0;
-
-			if (SelectedPage != null) {
-				lvwContent.VirtualListSize = SelectedPage.ContentCount;
-			}
-
-			if (selectedIndex > -1 && selectedIndex < lvwContent.VirtualListSize) {
-				lvwContent.SelectedIndices.Add(selectedIndex);
-			}
+			clnPathName.Text = Strings.Page;
 		}
 
 		private void RefreshTree() {
@@ -177,11 +149,11 @@ namespace WebsiteBuilder.UI.Controls {
 			}
 
 			EnableTreeControls();
-			FireContentUpdated();
+			FireTreeChanged();
 		}
 
-		private void FireContentUpdated() {
-			ContentUpdated?.Invoke(this, new EventArgs());
+		private void FireTreeChanged() {
+			TreeChanged?.Invoke(this, new EventArgs());
 		}
 
 		private void FillFlatList(PageCollection pages, int level) {
@@ -220,7 +192,7 @@ namespace WebsiteBuilder.UI.Controls {
 			return builder.ToString();
 		}
 
-		private void tsbAdd_Click(object sender, EventArgs e) {
+		public void Add() {
 			PagePropertiesForm form = new PagePropertiesForm(_Project);
 			DialogResult result = form.ShowDialog();
 
@@ -236,16 +208,20 @@ namespace WebsiteBuilder.UI.Controls {
 				RefreshTree();
 			}
 		}
-
-		private void tsbEdit_Click(object sender, EventArgs e) {
-			EditPage();
-		}
-
+		
 		private void lvwPages_DoubleClick(object sender, EventArgs e) {
-			EditPage();
+			Edit();
 		}
 
-		private void EditPage() {
+		private void cmbDelete_Click(object sender, EventArgs e) {
+			Delete();
+		}
+
+		private void cmbEdit_Click(object sender, EventArgs e) {
+			Edit();
+		}
+
+		public void Edit() {
 			TreeItem item = SelectedItem;
 			if (item == null) {
 				return;
@@ -259,7 +235,7 @@ namespace WebsiteBuilder.UI.Controls {
 			}
 		}
 
-		private void tsbDelete_Click(object sender, EventArgs e) {
+		public void Delete() {
 			TreeItem item = SelectedItem;
 			if (item == null) {
 				return;
@@ -276,15 +252,14 @@ namespace WebsiteBuilder.UI.Controls {
 
 		private void lvwPages_SelectedIndexChanged(object sender, EventArgs e) {
 			EnableTreeControls();
-			RefreshContentList();
+			RefreshContent(SelectedItem?.Page);
 			EnableContentControls();
 		}
 		
 		private void EnableTreeControls() {
 			bool canEdit = lvwPages.SelectedIndices.Count > 0;
 
-			tsbEdit.Enabled = canEdit;
-			tsbDelete.Enabled = canEdit;
+			EnableTreeControlsExternal();
 
 			cmbEdit.Enabled = canEdit;
 			cmbDelete.Enabled = canEdit;
@@ -292,7 +267,7 @@ namespace WebsiteBuilder.UI.Controls {
 			cmbBuildPage.Enabled = canEdit;
 		}
 
-		private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
+		public void RedrawTree() {
 			lvwPages.Refresh();
 		}
 		
@@ -414,132 +389,6 @@ namespace WebsiteBuilder.UI.Controls {
 				Page = SelectedItem.Page,
 				Language = SelectedLanguage
 			});
-		}
-
-		private void lvwContent_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
-			if (SelectedPage == null) {
-				return;
-			}
-
-			PageContent content = SelectedPage[e.ItemIndex];
-			if (content == null) {
-				return;
-			}
-
-			String[] columns = {
-				content.ModuleType != null ? PluginManager.Modules[content.ModuleType] : "-",
-				content.EditorType != null ? PluginManager.Editors[content.EditorType] : "-",
-			};
-
-			e.Item = new ListViewItem(columns);
-		}
-
-		private void tsbContentAdd_Click(object sender, EventArgs e) {
-			Page page = SelectedPage;
-			if (page == null) {
-				return;
-			}
-
-			PageContent content = page.AddContent();
-			RefreshContentList();
-			EditContent(page, content);
-		}
-
-		private void tsbContentEdit_Click(object sender, EventArgs e) {
-			EditContent();
-		}
-
-		private void tsbContentDelete_Click(object sender, EventArgs e) {
-			if (lvwContent.SelectedIndices.Count == 0) {
-				return;
-			}
-
-			SelectedPage?.RemoveContent(lvwContent.SelectedIndices[0]);
-			RefreshContentList();
-			FireContentUpdated();
-		}
-
-		private void lvwContent_DoubleClick(object sender, EventArgs e) {
-			EditContent();
-		}
-
-		private void EditContent() {
-			if (lvwContent.SelectedIndices.Count == 0) {
-				return;
-			}
-
-			TreeItem item = SelectedItem;
-			if (item == null) {
-				return;
-			}
-
-			PageContent content = item.Page[lvwContent.SelectedIndices[0]];
-			if (content == null) {
-				return;
-			}
-
-			EditContent(item.Page, content);
-		}
-
-		private void EditContent(Page page, PageContent content) {
-			Language language = SelectedLanguage;
-			if (language == null) {
-				return;
-			}
-
-			PageContentForm form = new PageContentForm(page, SelectedLanguage, content);
-			form.ShowDialog();
-
-			RefreshContentList();
-			FireContentUpdated();
-		}
-
-		private void lvwContent_SelectedIndexChanged(object sender, EventArgs e) {
-			EnableContentControls();
-		}
-
-		private void EnableContentControls() {
-			bool enable = lvwContent.SelectedIndices.Count > 0;
-
-			tsbContentAdd.Enabled = lvwPages.SelectedIndices.Count > 0;
-			tsbContentEdit.Enabled = enable;
-			tsbContentDelete.Enabled = enable;
-
-			bool canMoveUp = enable && lvwContent.SelectedIndices[0] > 0;
-			bool canMoveDown = enable && lvwContent.SelectedIndices[0] < (SelectedPage?.ContentCount - 1);
-
-			tsbContentUp.Enabled = canMoveUp;
-			tsbContentDown.Enabled = canMoveDown;
-		}
-
-		private void tsbContentUp_Click(object sender, EventArgs e) {
-			MoveContentUp();
-		}
-
-		private void tsbContentDown_Click(object sender, EventArgs e) {
-			MoveContentDown();
-		}
-
-		private void MoveContentUp() {
-			if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] <= 0) {
-				return;
-			}
-
-			int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Up) ?? -1;
-			RefreshContentList(newIndex);
-			EnableContentControls();
-			FireContentUpdated();
-		}
-
-		private void MoveContentDown() {
-			if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] >= SelectedPage?.ContentCount - 1) {
-				return;
-			}
-
-			int newIndex = SelectedPage?.MoveContent(lvwContent.SelectedIndices[0], PageMoveDirection.Down) ?? -1;
-			RefreshContentList(newIndex);
-			EnableContentControls();
-			FireContentUpdated();
 		}
 	}
 
