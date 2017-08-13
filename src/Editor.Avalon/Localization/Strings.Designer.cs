@@ -61,11 +61,65 @@ namespace WebsiteBuilder.Editors.Avalon.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find what:.
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Line.
+        /// </summary>
+        internal static string CurrentLine {
+            get {
+                return ResourceManager.GetString("CurrentLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find what.
         /// </summary>
         internal static string FindWhat {
             get {
                 return ResourceManager.GetString("FindWhat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go To.
+        /// </summary>
+        internal static string GoTo {
+            get {
+                return ResourceManager.GetString("GoTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert Link.
+        /// </summary>
+        internal static string InsertLink {
+            get {
+                return ResourceManager.GetString("InsertLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line Count.
+        /// </summary>
+        internal static string LineCount {
+            get {
+                return ResourceManager.GetString("LineCount", resourceCulture);
             }
         }
         
@@ -79,11 +133,38 @@ namespace WebsiteBuilder.Editors.Avalon.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace.
+        /// </summary>
+        internal static string Replace {
+            get {
+                return ResourceManager.GetString("Replace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace with.
+        /// </summary>
+        internal static string ReplaceWith {
+            get {
+                return ResourceManager.GetString("ReplaceWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target Line.
+        /// </summary>
+        internal static string TargetLine {
+            get {
+                return ResourceManager.GetString("TargetLine", resourceCulture);
             }
         }
         

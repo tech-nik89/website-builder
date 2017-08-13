@@ -59,9 +59,6 @@ namespace WebsiteBuilder.Publish.FTP {
 			lblUserName.Text = Strings.UserName + ":";
 			lblPassword.Text = Strings.Password + ":";
 		}
-
-		public void Insert(string str) {
-		}
-
+		
 	}
 }

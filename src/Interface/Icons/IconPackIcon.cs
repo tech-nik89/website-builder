@@ -27,6 +27,7 @@
 		Plugin,
 		Undo,
 		Redo,
-		Search
+		Search,
+		Replace
 	}
 }

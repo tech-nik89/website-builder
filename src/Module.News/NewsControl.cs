@@ -54,11 +54,7 @@ namespace WebsiteBuilder.Modules.News {
 			clnTitle.Text = Strings.Title;
 			clnCreated.Text = Strings.Created;
 		}
-
-		public void Insert(String str) {
-			// ignore
-		}
-
+		
 		private void RefreshList() {
 			lvwItems.VirtualListSize = 0;
 			lvwItems.VirtualListSize = _Data.Count;

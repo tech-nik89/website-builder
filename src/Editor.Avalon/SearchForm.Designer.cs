@@ -43,14 +43,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSearch.Location = new System.Drawing.Point(12, 25);
 			this.txtSearch.Name = "txtSearch";
-			this.txtSearch.Size = new System.Drawing.Size(292, 20);
+			this.txtSearch.Size = new System.Drawing.Size(274, 20);
 			this.txtSearch.TabIndex = 1;
 			this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchForm_KeyDown);
 			// 
 			// btnSearch
 			// 
 			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSearch.Location = new System.Drawing.Point(204, 58);
+			this.btnSearch.Location = new System.Drawing.Point(186, 60);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(100, 25);
 			this.btnSearch.TabIndex = 2;
@@ -63,7 +63,7 @@
 			this.AcceptButton = this.btnSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(316, 95);
+			this.ClientSize = new System.Drawing.Size(298, 97);
 			this.Controls.Add(this.btnSearch);
 			this.Controls.Add(this.txtSearch);
 			this.Controls.Add(this.lblWhat);

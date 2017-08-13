@@ -20,7 +20,7 @@ namespace WebsiteBuilder.Editors.Avalon {
 
 		private void LocalizeComponent() {
 			Text = Strings.Search;
-			lblWhat.Text = Strings.FindWhat;
+			lblWhat.Text = Strings.FindWhat + ":";
 			btnSearch.Text = Strings.Search;
 		}
 

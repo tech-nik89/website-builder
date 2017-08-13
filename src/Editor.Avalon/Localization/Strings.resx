@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CurrentLine" xml:space="preserve">
+    <value>Current Line</value>
+  </data>
   <data name="FindWhat" xml:space="preserve">
-    <value>Find what:</value>
+    <value>Find what</value>
+  </data>
+  <data name="GoTo" xml:space="preserve">
+    <value>Go To</value>
+  </data>
+  <data name="InsertLink" xml:space="preserve">
+    <value>Insert Link</value>
+  </data>
+  <data name="LineCount" xml:space="preserve">
+    <value>Line Count</value>
   </data>
   <data name="Redo" xml:space="preserve">
     <value>Redo</value>
   </data>
+  <data name="Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="ReplaceWith" xml:space="preserve">
+    <value>Replace with</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="TargetLine" xml:space="preserve">
+    <value>Target Line</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Undo</value>

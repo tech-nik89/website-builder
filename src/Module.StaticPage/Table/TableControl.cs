@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
+using WebsiteBuilder.Interface.Icons;
 using WebsiteBuilder.Interface.Plugins;
 using WebsiteBuilder.Modules.Localization;
 
@@ -55,6 +56,17 @@ namespace WebsiteBuilder.Modules.Table {
 
 			_Data = new TableData();
 			_PluginHelper = pluginHelper;
+
+			ApplyIcons();
+		}
+
+		private void ApplyIcons() {
+			IIconPack iconPack = _PluginHelper.GetIconPack();
+			if (iconPack == null) {
+				return;
+			}
+
+			tsbInsertLink.Image = iconPack.GetImage(IconPackIcon.InsertLink);
 		}
 
 		private void FillColumnDelimiters() {
@@ -78,14 +90,9 @@ namespace WebsiteBuilder.Modules.Table {
 		private void LocalizeComponent() {
 			tslColumnDelimiter.Text = Strings.ColumnDelimiter + ":";
 			tslHeaderPosition.Text = Strings.HeaderPosition + ":";
+			tsbInsertLink.Text = Strings.InsertLink;
 		}
-
-		public void Insert(String str) {
-			int selectionIndex = txtData.SelectionStart;
-			txtData.Text = txtData.Text.Insert(selectionIndex, str);
-			txtData.SelectionStart = selectionIndex + str.Length;
-		}
-
+		
 		private static int GetKeyIndex<TKey, TValue>(TKey key, Dictionary<TKey, TValue> dictionary) {
 			for(int i = 0; i < dictionary.Count; i++) {
 				if (key.Equals(dictionary.Keys.ElementAt(i))) {
@@ -98,6 +105,17 @@ namespace WebsiteBuilder.Modules.Table {
 
 		private void txtData_TextChanged(object sender, EventArgs e) {
 			Dirty = true;
+		}
+
+		private void tsbInsertLink_Click(object sender, EventArgs e) {
+			String link = _PluginHelper.GetLink();
+			if (String.IsNullOrWhiteSpace(link)) {
+				return;
+			}
+
+			int selectionIndex = txtData.SelectionStart;
+			txtData.Text = txtData.Text.Insert(selectionIndex, link);
+			txtData.SelectionStart = selectionIndex + link.Length;
 		}
 	}
 }

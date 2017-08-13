@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableControl));
 			this.txtData = new System.Windows.Forms.TextBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.tslColumnDelimiter = new System.Windows.Forms.ToolStripLabel();
@@ -30,6 +31,8 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tslHeaderPosition = new System.Windows.Forms.ToolStripLabel();
 			this.tscHeaderPosition = new System.Windows.Forms.ToolStripComboBox();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbInsertLink = new System.Windows.Forms.ToolStripButton();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -52,7 +55,9 @@
             this.tscColumnDelimiter,
             this.toolStripSeparator1,
             this.tslHeaderPosition,
-            this.tscHeaderPosition});
+            this.tscHeaderPosition,
+            this.toolStripSeparator2,
+            this.tsbInsertLink});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(622, 25);
@@ -88,6 +93,20 @@
 			this.tscHeaderPosition.Name = "tscHeaderPosition";
 			this.tscHeaderPosition.Size = new System.Drawing.Size(121, 25);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tsbInsertLink
+			// 
+			this.tsbInsertLink.Image = ((System.Drawing.Image)(resources.GetObject("tsbInsertLink.Image")));
+			this.tsbInsertLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbInsertLink.Name = "tsbInsertLink";
+			this.tsbInsertLink.Size = new System.Drawing.Size(86, 22);
+			this.tsbInsertLink.Text = "[InsertLink]";
+			this.tsbInsertLink.Click += new System.EventHandler(this.tsbInsertLink_Click);
+			// 
 			// TableControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,5 +131,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel tslHeaderPosition;
         private System.Windows.Forms.ToolStripComboBox tscHeaderPosition;
-    }
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripButton tsbInsertLink;
+	}
 }

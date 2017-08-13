@@ -78,10 +78,6 @@ namespace WebsiteBuilder.Modules.Toolbox.Quotes {
 			lvwData.VirtualListSize = _Data.Count;
 		}
 		
-		public void Insert(String str) {
-			// ignore
-		}
-
 		private void tsbAdd_Click(object sender, EventArgs e) {
 			GenericItemForm<T> form = new GenericItemForm<T>(_PluginHelper);
 			if (form.ShowDialog() != DialogResult.OK) {

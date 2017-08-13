@@ -70,11 +70,7 @@ namespace WebsiteBuilder.Modules.FormDesigner {
 			clnTitle.Text = Strings.Title;
 			clnType.Text = Strings.Type;
 		}
-
-		public void Insert(String str) {
-			
-		}
-
+		
 		private void lvwItems_SelectedIndexChanged(object sender, EventArgs e) {
 			EnableControls();
 		}

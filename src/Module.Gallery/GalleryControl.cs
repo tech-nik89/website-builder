@@ -60,10 +60,6 @@ namespace WebsiteBuilder.Modules.Gallery {
 			tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
 		}
 		
-		public void Insert(String str) {
-			// ignore
-		}
-
 		private void tsbAdd_Click(object sender, EventArgs e) {
 			if (ofdImages.ShowDialog() != DialogResult.OK) {
 				return;
