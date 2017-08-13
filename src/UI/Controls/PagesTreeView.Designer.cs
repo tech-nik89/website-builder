@@ -141,6 +141,7 @@
 			this.lvwPages.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lvwPages.FullRowSelect = true;
 			this.lvwPages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lvwPages.HideSelection = false;
 			this.lvwPages.Location = new System.Drawing.Point(0, 0);
 			this.lvwPages.MultiSelect = false;
 			this.lvwPages.Name = "lvwPages";

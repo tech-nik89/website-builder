@@ -28,6 +28,9 @@
 		Undo,
 		Redo,
 		Search,
-		Replace
+		Replace,
+		Cut,
+		Copy,
+		Paste
 	}
 }

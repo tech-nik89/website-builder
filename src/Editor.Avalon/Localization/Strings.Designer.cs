@@ -79,11 +79,29 @@ namespace WebsiteBuilder.Editors.Avalon.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        internal static string Copy {
+            get {
+                return ResourceManager.GetString("Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Line.
         /// </summary>
         internal static string CurrentLine {
             get {
                 return ResourceManager.GetString("CurrentLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cut.
+        /// </summary>
+        internal static string Cut {
+            get {
+                return ResourceManager.GetString("Cut", resourceCulture);
             }
         }
         
@@ -120,6 +138,15 @@ namespace WebsiteBuilder.Editors.Avalon.Localization {
         internal static string LineCount {
             get {
                 return ResourceManager.GetString("LineCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste.
+        /// </summary>
+        internal static string Paste {
+            get {
+                return ResourceManager.GetString("Paste", resourceCulture);
             }
         }
         

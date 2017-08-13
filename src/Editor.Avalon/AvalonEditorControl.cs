@@ -73,6 +73,9 @@ namespace WebsiteBuilder.Editors.Avalon {
 			tsbRedo.Text = Strings.Redo;
 			tsbSearch.Text = Strings.Search;
 			tsbInsertLink.Text = Strings.InsertLink;
+			tsbCut.Text = Strings.Cut;
+			tsbCopy.Text = Strings.Copy;
+			tsbPaste.Text = Strings.Paste;
 		}
 
 		private void ApplyIcons() {
@@ -85,6 +88,9 @@ namespace WebsiteBuilder.Editors.Avalon {
 			tsbRedo.Image = iconPack.GetImage(IconPackIcon.Redo);
 			tsbSearch.Image = iconPack.GetImage(IconPackIcon.Search);
 			tsbInsertLink.Image = iconPack.GetImage(IconPackIcon.InsertLink);
+			tsbCut.Image = iconPack.GetImage(IconPackIcon.Cut);
+			tsbCopy.Image = iconPack.GetImage(IconPackIcon.Copy);
+			tsbPaste.Image = iconPack.GetImage(IconPackIcon.Paste);
 		}
 
 		public void UpdateButtons() {
@@ -171,6 +177,18 @@ namespace WebsiteBuilder.Editors.Avalon {
 			}
 
 			_Editor.Document.Insert(_Editor.TextArea.Caret.Offset, link);
+		}
+
+		private void tsbCut_Click(object sender, EventArgs e) {
+			_Editor.Cut();
+		}
+
+		private void tsbCopy_Click(object sender, EventArgs e) {
+			_Editor.Copy();
+		}
+
+		private void tsbPaste_Click(object sender, EventArgs e) {
+			_Editor.Paste();
 		}
 	}
 }
