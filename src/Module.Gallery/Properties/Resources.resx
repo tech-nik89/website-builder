@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="GalleryCode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ClientResources\GalleryCode.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="GalleryStyles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ClientResources\GalleryStyles.less;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="MagnificCSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ClientResources\magnific-popup.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="MagnificJS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ClientResources\jquery.magnific-popup.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

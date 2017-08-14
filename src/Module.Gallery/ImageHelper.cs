@@ -12,7 +12,7 @@ namespace WebsiteStudio.Modules.Gallery {
 			int y = 0;
 
 			using (Graphics graphics = Graphics.FromImage(targetImage))
-			using (Image resizedImage = ResizeImage(image, size, size, true)) {
+			using (Image resizedImage = ResizeImage(image, size, size, true, false)) {
 				
 				if (resizedImage.Width > resizedImage.Height) {
 					y = (size - resizedImage.Height) / 2;
@@ -29,10 +29,14 @@ namespace WebsiteStudio.Modules.Gallery {
 		}
 
 		public static Image ResizeImage(Image image, Size size) {
-			return ResizeImage(image, size.Width, size.Height, true);
+			return ResizeImage(image, size.Width, size.Height, true, false);
 		}
 
-		public static Image ResizeImage(Image image, int width, int height, bool preserveRatio) {
+		public static Image ResizeImage(Image image, Size size, bool crop) {
+			return ResizeImage(image, size.Width, size.Height, true, crop);
+		}
+
+		public static Image ResizeImage(Image image, int width, int height, bool preserveRatio, bool crop) {
 
 			if (image.Width < width || image.Height < height) {
 				return image;
@@ -40,22 +44,41 @@ namespace WebsiteStudio.Modules.Gallery {
 
 			int imageWidth = width;
 			int imageHeight = height;
+			int x = 0;
+			int y = 0;
 
 			if (preserveRatio) {
-				Double dbl = (Double)image.Width / (Double)image.Height;
+				Double ratio = (Double)image.Width / (Double)image.Height;
 
 				if (image.Width > image.Height) {
 					imageWidth = width;
-					imageHeight = (int)(width / dbl);
+					imageHeight = (int)(width / ratio);
 				}
 				else {
-					imageWidth = (int)(height * dbl);
+					imageWidth = (int)(height * ratio);
 					imageHeight = height;
 				}
 			}
 
-			Rectangle destRect = new Rectangle(0, 0, imageWidth, imageHeight);
-			Bitmap destImage = new Bitmap(imageWidth, imageHeight);
+			if (crop) {
+				if (imageHeight < height) {
+					Double dbl = ((Double)height - (Double)imageHeight) / (Double)height;
+					x = (height - imageHeight) / -2;
+					imageHeight = height;
+					imageWidth = (int)(width + width * dbl);
+				}
+				else {
+					Double dbl = ((Double)width - (Double)imageWidth) / (Double)width;
+					y = (width - imageWidth) / -2;
+					imageWidth = width;
+					imageHeight = (int)(height + height * dbl);
+				}
+			}
+
+			Rectangle destRect = new Rectangle(x, y, imageWidth, imageHeight);
+			Bitmap destImage = preserveRatio && crop
+				? new Bitmap(width, height)
+				: new Bitmap(imageWidth, imageHeight);
 
 			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 

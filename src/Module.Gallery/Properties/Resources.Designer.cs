@@ -61,33 +61,6 @@ namespace WebsiteStudio.Modules.Gallery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (function () {
-        ///
-        ///    var images = document.querySelectorAll(&apos;.gallery a&apos;);
-        ///    var container = document.querySelector(&apos;.gallery .full&apos;);
-        ///
-        ///    var hide = function (e) {
-        ///        e.preventDefault();
-        ///        e.cancel = true;
-        ///        container.style.display = &apos;none&apos;;
-        ///        container.innerHTML = &apos;&apos;;
-        ///    };
-        ///
-        ///    var show = function (e) {
-        ///        e.preventDefault();
-        ///        e.cancel = true;
-        ///
-        ///        var img = document.createElement(&apos;img&apos;);
-        ///        img.src = this.href;
-        ///        container.appendChil [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string GalleryCode {
-            get {
-                return ResourceManager.GetString("GalleryCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to .gallery {
         ///    img {
         ///        border: 0;
@@ -104,19 +77,63 @@ namespace WebsiteStudio.Modules.Gallery.Properties {
         ///            background-color: #EEE;
         ///        }
         ///    }
-        ///
-        ///    .full {
-        ///        position: fixed;
-        ///        top: 0;
-        ///        left: 0;
-        ///        right: 0;
-        ///        bottom: 0;
-        ///        display: none;
-        ///        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAY [rest of string was truncated]&quot;;.
+        ///}
+        ///.
         /// </summary>
         internal static string GalleryStyles {
             get {
                 return ResourceManager.GetString("GalleryStyles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /* Magnific Popup CSS */
+        ///.mfp-bg {
+        ///  top: 0;
+        ///  left: 0;
+        ///  width: 100%;
+        ///  height: 100%;
+        ///  z-index: 1042;
+        ///  overflow: hidden;
+        ///  position: fixed;
+        ///  background: #0b0b0b;
+        ///  opacity: 0.8; }
+        ///
+        ///.mfp-wrap {
+        ///  top: 0;
+        ///  left: 0;
+        ///  width: 100%;
+        ///  height: 100%;
+        ///  z-index: 1043;
+        ///  position: fixed;
+        ///  outline: none !important;
+        ///  -webkit-backface-visibility: hidden; }
+        ///
+        ///.mfp-container {
+        ///  text-align: center;
+        ///  position: absolute;
+        ///  width: 100%;
+        ///  height: 100%;
+        ///  left: 0;
+        ///  top: 0;
+        ///  padding: 0 8px;
+        ///  box-sizing: border-box;  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MagnificCSS {
+            get {
+                return ResourceManager.GetString("MagnificCSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*! Magnific Popup - v1.1.0 - 2016-02-20
+        ///* http://dimsemenov.com/plugins/magnific-popup/
+        ///* Copyright (c) 2016 Dmitry Semenov; */
+        ///!function(a){&quot;function&quot;==typeof define&amp;&amp;define.amd?define([&quot;jquery&quot;],a):a(&quot;object&quot;==typeof exports?require(&quot;jquery&quot;):window.jQuery||window.Zepto)}(function(a){var b,c,d,e,f,g,h=&quot;Close&quot;,i=&quot;BeforeClose&quot;,j=&quot;AfterClose&quot;,k=&quot;BeforeAppend&quot;,l=&quot;MarkupParse&quot;,m=&quot;Open&quot;,n=&quot;Change&quot;,o=&quot;mfp&quot;,p=&quot;.&quot;+o,q=&quot;mfp-ready&quot;,r=&quot;mfp-removing&quot;,s=&quot;mfp-prevent-close&quot;,t=function(){},u=!!window.jQuery,v=a(window), [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MagnificJS {
+            get {
+                return ResourceManager.GetString("MagnificJS", resourceCulture);
             }
         }
     }

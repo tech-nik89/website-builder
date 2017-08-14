@@ -95,10 +95,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClientResources\GalleryStyles.less" />
+    <Content Include="ClientResources\jquery.magnific-popup.min.js" />
+    <Content Include="ClientResources\magnific-popup.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientResources\GalleryCode.js" />
+    <None Include="ClientResources\GalleryStyles.less" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
