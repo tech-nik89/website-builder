@@ -8,7 +8,7 @@ using WebsiteStudio.Core.Exceptions;
 namespace WebsiteStudio.Core.Theming {
 	public class Theme {
 
-		public const String FileExtension = ".wbtx";
+		public const String FileExtension = ".wstx";
 
 		private const String AttributeType = "type";
 

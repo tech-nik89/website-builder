@@ -16,7 +16,7 @@ namespace WebsiteStudio.Core {
 
 	public class Project : IPage {
 
-		public const String FileExtension = ".wbproj";
+		public const String FileExtension = ".wsproj";
 
 		public const String FileIndex = "index.html";
 
