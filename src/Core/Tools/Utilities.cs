@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using WebsiteBuilder.Interface.Compiling;
+using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Core.Tools {
+namespace WebsiteStudio.Core.Tools {
 	static class Utilities {
 
 		public static readonly ICompiler JavaScriptMinifier = new MicrosoftMinifier(MicrosoftMinifier.Mode.JavaScript);

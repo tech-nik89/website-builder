@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Interface.Icons {
+﻿namespace WebsiteStudio.Interface.Icons {
 	public enum IconPackIcon {
 		Add,
 		Edit,

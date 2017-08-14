@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Core.Plugins {
+namespace WebsiteStudio.Core.Plugins {
 	public static class PluginManager {
 
 		private const String PluginDirectoryName = "Plugins";

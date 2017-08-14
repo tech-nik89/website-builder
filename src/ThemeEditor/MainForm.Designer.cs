@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.ThemeEditor {
+﻿namespace WebsiteStudio.ThemeEditor {
 	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.

@@ -1,9 +1,9 @@
 ﻿using ICSharpCode.AvalonEdit;
 using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Editors.Avalon.Localization;
+using WebsiteStudio.Editors.Avalon.Localization;
 
-namespace WebsiteBuilder.Editors.Avalon {
+namespace WebsiteStudio.Editors.Avalon {
 	public partial class SearchForm : Form {
 
 		private readonly TextEditor _Editor;

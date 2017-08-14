@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace WebsiteBuilder.Core.Validation {
+namespace WebsiteStudio.Core.Validation {
 	public class ProjectValidator : ValidatorBase<Project> {
 
 		public override bool Valid

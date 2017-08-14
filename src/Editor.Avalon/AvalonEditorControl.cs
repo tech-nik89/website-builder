@@ -4,11 +4,11 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using System;
 using System.Windows.Forms;
 using System.Windows.Input;
-using WebsiteBuilder.Editors.Avalon.Localization;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Editors.Avalon.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Editors.Avalon {
+namespace WebsiteStudio.Editors.Avalon {
 	public partial class AvalonEditorControl : UserControl, IUserInterface {
 		
 		private readonly TextEditor _Editor;

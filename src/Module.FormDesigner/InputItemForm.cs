@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
+using WebsiteStudio.Modules.FormDesigner.Localization;
 
-namespace WebsiteBuilder.Modules.FormDesigner {
+namespace WebsiteStudio.Modules.FormDesigner {
 	public partial class InputItemForm : Form {
 
 		public String ItemName {

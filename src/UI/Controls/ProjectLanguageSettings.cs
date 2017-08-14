@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.UI.Forms;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.UI.Forms;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Controls {
+namespace WebsiteStudio.UI.Controls {
 	public partial class ProjectLanguageSettings : UserControl {
 
 		private List<Language> _Languages;

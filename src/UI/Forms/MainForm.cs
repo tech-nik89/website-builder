@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.UI.Controls;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.UI.Controls;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class MainForm : Form {
 
 		private readonly PagesTreeView _Pages;

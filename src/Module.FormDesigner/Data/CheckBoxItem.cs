@@ -1,7 +1,7 @@
 ﻿using System;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
+using WebsiteStudio.Modules.FormDesigner.Localization;
 
-namespace WebsiteBuilder.Modules.FormDesigner.Data {
+namespace WebsiteStudio.Modules.FormDesigner.Data {
 	class CheckBoxItem : InputItem {
 		
 		public override String Type => Strings.CheckBox;

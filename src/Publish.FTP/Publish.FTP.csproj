@@ -7,7 +7,7 @@
     <ProjectGuid>{ECF25565-4A1D-4E8B-BD79-9C49205679D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Publish.FTP</RootNamespace>
+    <RootNamespace>WebsiteStudio.Publish.FTP</RootNamespace>
     <AssemblyName>FTP.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{27727468-3DA1-45EE-AA93-2E6CBF9220E1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WebsiteBuilder.UI</RootNamespace>
-    <AssemblyName>WebsiteBuilder</AssemblyName>
+    <RootNamespace>WebsiteStudio.UI</RootNamespace>
+    <AssemblyName>WebsiteStudio</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -3,10 +3,10 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.UI.Forms;
+using WebsiteStudio.Core;
+using WebsiteStudio.UI.Forms;
 
-namespace WebsiteBuilder.UI {
+namespace WebsiteStudio.UI {
 	static class ConfigHelper {
 
 		private static Properties.Settings Settings => Properties.Settings.Default;

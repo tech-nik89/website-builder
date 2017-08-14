@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.Gallery {
+﻿namespace WebsiteStudio.Modules.Gallery {
     partial class SettingsForm {
         /// <summary>
         /// Required designer variable.

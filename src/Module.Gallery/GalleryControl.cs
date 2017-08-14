@@ -2,11 +2,11 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Gallery.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Gallery.Localization;
 
-namespace WebsiteBuilder.Modules.Gallery {
+namespace WebsiteStudio.Modules.Gallery {
 	internal partial class GalleryControl : UserControl, IUserInterface {
 
 		private static readonly String[] SupportedExtensions = { ".jpg", ".jpeg", ".gif", ".png" };

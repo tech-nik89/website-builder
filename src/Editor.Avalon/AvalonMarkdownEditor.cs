@@ -1,8 +1,8 @@
 ﻿using CommonMark;
 using System;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Editors.Avalon {
+namespace WebsiteStudio.Editors.Avalon {
 
 	[PluginInfo("Avalon Markdown Editor", Author = "tech-nik89")]
 	public class AvalonMarkdownEditor : IEditor {

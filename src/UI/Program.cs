@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.UI.Forms;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI {
+namespace WebsiteStudio.UI {
 	static class Program
 	{
 		/// <summary>
@@ -18,7 +19,7 @@ namespace WebsiteBuilder.UI {
 			PluginManager.Init();
 			IconPack.LoadDefault();
 
-			Application.Run(new Forms.MainForm());
+			Application.Run(new MainForm());
 		}
 	}
 }

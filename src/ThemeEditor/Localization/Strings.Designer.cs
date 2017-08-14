@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebsiteBuilder.ThemeEditor.Localization {
+namespace WebsiteStudio.ThemeEditor.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WebsiteBuilder.ThemeEditor.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteBuilder.ThemeEditor.Localization.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteStudio.ThemeEditor.Localization.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

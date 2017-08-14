@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	interface ICompilerStep {
 
 		void Run();

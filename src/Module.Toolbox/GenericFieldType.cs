@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebsiteBuilder.Modules.Toolbox {
+namespace WebsiteStudio.Modules.Toolbox {
 	enum GenericFieldType {
 		TextBox,
 		CheckBox,

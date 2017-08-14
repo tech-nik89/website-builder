@@ -4,9 +4,9 @@ using dotless.Core.Loggers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebsiteBuilder.Interface.Compiling;
+using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Core.Tools {
+namespace WebsiteStudio.Core.Tools {
 	class DotLessCompiler : ICompiler {
 		
 		private static readonly DotlessConfiguration _Config = new DotlessConfiguration() {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace WebsiteBuilder.Core.Tools {
+namespace WebsiteStudio.Core.Tools {
 	public static class FileSizeFormatter {
 
 		private static readonly string[] _Units = new string[] { "bytes", "KB", "MB", "GB", "TB", "PB" };

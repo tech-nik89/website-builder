@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class PageContentForm : Form {
 
 		private readonly Page _Page;
@@ -132,7 +132,7 @@ namespace WebsiteBuilder.UI.Forms {
 		}
 
 		private void PageContentForm_FormClosing(object sender, FormClosingEventArgs e) {
-			if (_Control.Dirty) {
+			if (_Control!= null && _Control.Dirty) {
 				DialogResult result = MessageBox.Show(Strings.DirtyPageConfirmSaveMessage, Strings.DirtyProjectConfirmSaveTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
 				switch(result) {

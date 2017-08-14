@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Pages {
+namespace WebsiteStudio.Core.Pages {
 	public interface IPage {
 
 		String Id { get; }

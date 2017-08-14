@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.News.Properties;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.News.Properties;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 
 	[PluginInfo("News", Author = "tech-nik89")]
 	public class NewsModule : IModule {

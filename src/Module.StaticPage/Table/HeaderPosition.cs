@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.Table {
+﻿namespace WebsiteStudio.Modules.Table {
 	enum HeaderPosition {
 		NoHeader,
 		Top,

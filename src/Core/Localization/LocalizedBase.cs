@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace WebsiteBuilder.Core.Localization {
+namespace WebsiteStudio.Core.Localization {
 	public abstract class LocalizedBase<T> {
 
 		private readonly Dictionary<String, T> _Data;

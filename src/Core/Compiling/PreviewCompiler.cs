@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using WebsiteBuilder.Core.Theming;
+using WebsiteStudio.Core.Theming;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	public class PreviewCompiler {
 
 		private readonly Theme _Theme;

@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	partial class AboutForm : Form {
 		public AboutForm() {
 			InitializeComponent();

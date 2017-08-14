@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace WebsiteBuilder.Interface.Compiling {
+namespace WebsiteStudio.Interface.Compiling {
 	public interface IHtmlElement {
 
 		void AppendChild(IHtmlElement element);

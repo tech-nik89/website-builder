@@ -1,6 +1,6 @@
-﻿using WebsiteBuilder.Core.Tools;
+﻿using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public class ThemeStyleLess : ThemeStyle {
 
 		public override string Css => Utilities.LessCompiler.Compile(Data);

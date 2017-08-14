@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
-using WebsiteBuilder.Core.Compiling.Steps;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
+using WebsiteStudio.Core.Compiling.Steps;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	public class Compiler {
 		
 		internal const String FileExtensionHtml = "html";

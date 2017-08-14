@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 	class NewsData : IEnumerable<NewsItem>, IList<NewsItem>, ICollection<NewsItem> {
 
 		private const String TagRoot = "news";

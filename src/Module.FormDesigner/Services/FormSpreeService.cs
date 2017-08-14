@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Modules.FormDesigner.Services {
+namespace WebsiteStudio.Modules.FormDesigner.Services {
 	class FormSpreeService : Service {
 
 		public FormSpreeService(FormData data)

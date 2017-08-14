@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebsiteBuilder.Core.Pages {
+namespace WebsiteStudio.Core.Pages {
 	public enum PageMoveDirection {
 		Up,
 		Down

@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Publish.FTP {
+namespace WebsiteStudio.Publish.FTP {
 
 	[PluginInfo("FTP", Author = "tech-nik89")]
 	public class PublishFTP : IPublish {

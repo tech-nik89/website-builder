@@ -7,10 +7,10 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
-using WebsiteBuilder.Core.Compiling;
-using WebsiteBuilder.ThemeEditor.Localization;
+using WebsiteStudio.Core.Compiling;
+using WebsiteStudio.ThemeEditor.Localization;
 
-namespace WebsiteBuilder.ThemeEditor {
+namespace WebsiteStudio.ThemeEditor {
 	public partial class MainForm : Form {
 		
 		private static readonly String ThemeFileExtension = String.Format("*{0}", Core.Theming.Theme.FileExtension);

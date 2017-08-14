@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Gallery.Properties;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Gallery.Properties;
 
-namespace WebsiteBuilder.Modules.Gallery {
+namespace WebsiteStudio.Modules.Gallery {
 
 	[PluginInfo("Image Gallery", Author = "tech-nik89")]
 	public class GalleryModule : IModule {

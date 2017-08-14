@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	public class CompilerConstants {
 
 		private const String HexRegexPattern = "[0-9a-f]";

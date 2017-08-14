@@ -1,6 +1,6 @@
-﻿using WebsiteBuilder.Core.Localization;
+﻿using WebsiteStudio.Core.Localization;
 
-namespace WebsiteBuilder.Core.Footer {
+namespace WebsiteStudio.Core.Footer {
 	public class FooterSection {
 
 		public LocalizedString Title { get; set; }

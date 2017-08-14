@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Toolbox.Localization;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Toolbox.Localization;
 
-namespace WebsiteBuilder.Modules.Toolbox.Quotes {
+namespace WebsiteStudio.Modules.Toolbox.Quotes {
 	partial class GenericItemForm<T> : Form where T : IItem {
 
 		public T Item => _Item;

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using WebsiteBuilder.Core.Footer;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Media;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Publishing;
-using WebsiteBuilder.Core.Storage;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Footer;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Media;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Core.Storage;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core {
+namespace WebsiteStudio.Core {
 
 	public class Project : IPage {
 

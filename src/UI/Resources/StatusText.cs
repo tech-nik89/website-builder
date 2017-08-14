@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.UI.Resources {
+namespace WebsiteStudio.UI.Resources {
 	class StatusText {
 
 		public const String Ready = "Ready";

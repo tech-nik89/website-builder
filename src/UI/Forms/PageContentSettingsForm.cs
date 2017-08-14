@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Plugins;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Plugins;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class PageContentSettingsForm : Form {
 
 		private readonly PageContent _PageContent;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebsiteBuilder.Core.Localization;
+using WebsiteStudio.Core.Localization;
 
-namespace WebsiteBuilder.Core.Pages {
+namespace WebsiteStudio.Core.Pages {
 
 	[Serializable]
 	public class Page : IPage {

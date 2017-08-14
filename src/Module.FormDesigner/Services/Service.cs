@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebsiteBuilder.Modules.FormDesigner.Services {
+namespace WebsiteStudio.Modules.FormDesigner.Services {
 	abstract class Service {
 
 		private readonly FormData _Data;

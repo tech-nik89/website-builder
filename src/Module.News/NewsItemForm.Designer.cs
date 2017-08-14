@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.News {
+﻿namespace WebsiteStudio.Modules.News {
     partial class NewsItemForm {
         /// <summary>
         /// Required designer variable.

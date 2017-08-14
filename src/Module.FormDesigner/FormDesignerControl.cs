@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.FormDesigner.Data;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.FormDesigner.Data;
+using WebsiteStudio.Modules.FormDesigner.Localization;
 
-namespace WebsiteBuilder.Modules.FormDesigner {
+namespace WebsiteStudio.Modules.FormDesigner {
 	public partial class FormDesignerControl : UserControl, IUserInterface {
 
 		private readonly IPluginHelper _PluginHelper;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Interface.Compiling {
+namespace WebsiteStudio.Interface.Compiling {
 	public interface IModuleCompiler {
 
 		String Compile(String source, ICompileHelper compileHelper);

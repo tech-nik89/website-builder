@@ -1,6 +1,6 @@
-﻿var WebsiteBuilder = WebsiteBuilder || {};
+﻿var WebsiteStudio = WebsiteStudio || {};
 
-WebsiteBuilder.LanguageRedirect = function (supportedLanguages, startPage) {
+WebsiteStudio.LanguageRedirect = function (supportedLanguages, startPage) {
     supportedLanguages = supportedLanguages || [];
 
     var language = navigator.language || navigator.userLanguage;

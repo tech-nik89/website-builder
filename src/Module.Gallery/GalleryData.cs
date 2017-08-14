@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.Gallery {
+namespace WebsiteStudio.Modules.Gallery {
 	class GalleryData {
 
 		private const String RootTag = "gallery";

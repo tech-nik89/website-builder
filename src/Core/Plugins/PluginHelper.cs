@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using WebsiteBuilder.Core.Tools;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Core.Tools;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Core.Plugins {
+namespace WebsiteStudio.Core.Plugins {
 	class PluginHelper : IPluginHelper {
 
 		private readonly Type _EditorType;

@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.StaticPage {
+﻿namespace WebsiteStudio.Modules.StaticPage {
     partial class StaticPageControl {
         /// <summary> 
         /// Required designer variable.

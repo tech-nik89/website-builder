@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace WebsiteBuilder.Interface.Plugins {
+namespace WebsiteStudio.Interface.Plugins {
 	public interface IPublish : IPlugin {
 
 		void Run(String outputhPath, String data);

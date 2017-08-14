@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.FormDesigner.Data;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
-using WebsiteBuilder.Modules.FormDesigner.Properties;
-using WebsiteBuilder.Modules.FormDesigner.Services;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.FormDesigner.Data;
+using WebsiteStudio.Modules.FormDesigner.Localization;
+using WebsiteStudio.Modules.FormDesigner.Properties;
+using WebsiteStudio.Modules.FormDesigner.Services;
 
-namespace WebsiteBuilder.Modules.FormDesigner {
+namespace WebsiteStudio.Modules.FormDesigner {
 
 	[PluginInfo("Form Designer", Author = "tech-nik89")]
 	public class FormDesignerModule : IModule {

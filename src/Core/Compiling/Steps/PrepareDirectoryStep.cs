@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class PrepareDirectoryStep : ICompilerStep {
 
 		private readonly DirectoryInfo _Directory;

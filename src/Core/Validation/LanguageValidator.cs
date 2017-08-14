@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using WebsiteBuilder.Core.Localization;
+using WebsiteStudio.Core.Localization;
 
-namespace WebsiteBuilder.Core.Validation {
+namespace WebsiteStudio.Core.Validation {
 	public class LanguageValidator : ValidatorBase<Language> {
 
 		private static readonly IEnumerable<CultureInfo> _All = CultureInfo.GetCultures(CultureTypes.AllCultures);

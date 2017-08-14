@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.Toolbox.Quotes {
+﻿namespace WebsiteStudio.Modules.Toolbox.Quotes {
     partial class GenericItemForm<T> {
         /// <summary>
         /// Required designer variable.

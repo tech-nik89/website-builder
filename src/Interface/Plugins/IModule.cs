@@ -1,6 +1,6 @@
-﻿using WebsiteBuilder.Interface.Compiling;
+﻿using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Interface.Plugins {
+namespace WebsiteStudio.Interface.Plugins {
 	public interface IModule : IPlugin, IModuleCompiler {
 		
 

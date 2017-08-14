@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace WebsiteBuilder.Core.Pages {
+namespace WebsiteStudio.Core.Pages {
 	
 	public class PageCollection : IEnumerable<Page> {
 		

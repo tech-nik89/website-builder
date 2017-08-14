@@ -1,35 +1,35 @@
-#define ApplicationVersion GetStringFileInfo("..\src\UI\bin\Release\WebsiteBuilder.exe", "FileVersion")
+#define ApplicationVersion GetStringFileInfo("..\src\UI\bin\Release\WebsiteStudio.exe", "FileVersion")
 
 [Setup]
-AppName=Website Builder
+AppName=Website Studio
 AppVersion={#ApplicationVersion}
 AppCopyright=(c) 2017
 AppId={{0927E8F2-4E71-4092-84BB-BB0322EA965D}
-DefaultDirName={pf}\Website Builder
-DefaultGroupName=Website Builder
+DefaultDirName={pf}\Website Studio
+DefaultGroupName=Website Studio
 AppPublisher=tech-nik89
 AppPublisherURL=https://github.com/tech-nik89
-AppSupportURL=https://github.com/tech-nik89/website-builder
-AppUpdatesURL=https://github.com/tech-nik89/website-builder
-UninstallDisplayName=Website Builder
+AppSupportURL=https://github.com/tech-nik89/website-studio
+AppUpdatesURL=https://github.com/tech-nik89/website-studio
+UninstallDisplayName=Website Studio
 VersionInfoVersion={#ApplicationVersion}
 MinVersion=0,6.0sp2
-OutputBaseFilename=WebsiteBuilderSetup_{#ApplicationVersion}
-UninstallDisplayIcon={app}\WebsiteBuilder.exe
+OutputBaseFilename=WebsiteStudioSetup_{#ApplicationVersion}
+UninstallDisplayIcon={app}\WebsiteStudio.exe
 
 [Files]
-Source: "..\src\UI\bin\Release\WebsiteBuilder.exe"; DestDir: "{app}"; Components: core
-Source: "..\src\UI\bin\Release\WebsiteBuilder.exe.config"; DestDir: "{app}"; Components: core
+Source: "..\src\UI\bin\Release\WebsiteStudio.exe"; DestDir: "{app}"; Components: core
+Source: "..\src\UI\bin\Release\WebsiteStudio.exe.config"; DestDir: "{app}"; Components: core
 Source: "..\src\UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
 Source: "..\src\UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
 Source: "..\src\UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
 Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
-Source: "..\src\Compiler\bin\Release\WebsiteBuilder.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
-Source: "..\src\Compiler\bin\Release\WebsiteBuilder.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
+Source: "..\src\Compiler\bin\Release\WebsiteStudio.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
+Source: "..\src\Compiler\bin\Release\WebsiteStudio.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
 
 [Icons]
-Name: "{group}\Website Builder"; Filename: "{app}\WebsiteBuilder.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2
+Name: "{group}\Website Studio"; Filename: "{app}\WebsiteStudio.exe"; WorkingDir: "{app}"; MinVersion: 0,6.0sp2
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"; LicenseFile: "..\LICENSE"

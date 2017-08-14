@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 
-namespace WebsiteBuilder.ThemeEditor {
+namespace WebsiteStudio.ThemeEditor {
 	class ThemeDocument {
 
 		private readonly XmlDocument _Document;

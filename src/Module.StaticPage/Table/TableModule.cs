@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.Table {
+namespace WebsiteStudio.Modules.Table {
 
 	[PluginInfo("Table", Author = "tech-nik89")]
 	public class TableModule : IModule {

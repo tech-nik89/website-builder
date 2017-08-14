@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Media {
+namespace WebsiteStudio.Core.Media {
 
 	public abstract class MediaItem {
 

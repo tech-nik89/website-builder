@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Editors.Avalon {
+﻿namespace WebsiteStudio.Editors.Avalon {
 	partial class SearchForm {
 		/// <summary>
 		/// Required designer variable.

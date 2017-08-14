@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace WebsiteBuilder.Publish.FTP {
+namespace WebsiteStudio.Publish.FTP {
 	class Tasks {
 
 		public FileInfo[] FilesToUpload { get; set; }

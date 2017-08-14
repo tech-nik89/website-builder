@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.News.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.News.Localization;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 	internal partial class NewsControl : UserControl, IUserInterface {
 
 		private NewsData _Data;

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using WebsiteBuilder.Core.Compiling.Links;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Compiling.Links;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	class HtmlDocument {
 
 		private const String HtmlDoctype = "<!DOCTYPE html>";

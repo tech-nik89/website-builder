@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildImagesStep : ICompilerStep {
 
 		private const String FileSpritesPng = "sprites.png";

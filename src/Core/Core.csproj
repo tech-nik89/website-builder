@@ -7,8 +7,8 @@
     <ProjectGuid>{2C19C463-3117-4255-976B-135BF0B48BDC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Core</RootNamespace>
-    <AssemblyName>WebsiteBuilder.Core</AssemblyName>
+    <RootNamespace>WebsiteStudio.Core</RootNamespace>
+    <AssemblyName>WebsiteStudio.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

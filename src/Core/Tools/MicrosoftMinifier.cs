@@ -1,7 +1,7 @@
 ﻿using Microsoft.Ajax.Utilities;
-using WebsiteBuilder.Interface.Compiling;
+using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Core.Tools {
+namespace WebsiteStudio.Core.Tools {
 	class MicrosoftMinifier : ICompiler {
 
 		public enum Mode {

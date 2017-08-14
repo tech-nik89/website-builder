@@ -11,8 +11,8 @@ echo End   Update Version Info
 rem BUILD SOLUTION
 echo Start Build Solution
 
-call %MSBUILD_PATH% src/WebsiteBuilder.sln /t:Clean /p:Configuration=Release
-call %MSBUILD_PATH% src/WebsiteBuilder.sln /t:Rebuild /p:Configuration=Release
+call %MSBUILD_PATH% src/WebsiteStudio.sln /t:Clean /p:Configuration=Release
+call %MSBUILD_PATH% src/WebsiteStudio.sln /t:Rebuild /p:Configuration=Release
 
 echo End   Build Solution
 

@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Core.Validation {
+﻿namespace WebsiteStudio.Core.Validation {
 	public abstract class ValidatorBase<T> {
 
 		private readonly T _Object;

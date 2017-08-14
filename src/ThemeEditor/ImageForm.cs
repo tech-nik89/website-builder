@@ -2,9 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using WebsiteBuilder.ThemeEditor.Localization;
+using WebsiteStudio.ThemeEditor.Localization;
 
-namespace WebsiteBuilder.ThemeEditor {
+namespace WebsiteStudio.ThemeEditor {
 	public partial class ImageForm : Form {
 
 		public String ImageName {

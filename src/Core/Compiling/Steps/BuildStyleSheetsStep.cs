@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildStyleSheetsStep : ICompilerStep {
 
 		private const String FileExtensionCss = "css";

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace WebsiteBuilder.Core.Media {
+namespace WebsiteStudio.Core.Media {
 
 	public class MediaFile : MediaItem {
 

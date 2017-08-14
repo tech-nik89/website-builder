@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
-using WebsiteBuilder.Modules.FormDesigner.Services;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.FormDesigner.Localization;
+using WebsiteStudio.Modules.FormDesigner.Services;
 
-namespace WebsiteBuilder.Modules.FormDesigner {
+namespace WebsiteStudio.Modules.FormDesigner {
 	public partial class FormSettingsForm : Form {
 
 		private readonly IPluginHelper _PluginHelper;

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Toolbox.Properties;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Toolbox.Properties;
 
-namespace WebsiteBuilder.Modules.Toolbox.Quotes {
+namespace WebsiteStudio.Modules.Toolbox.Quotes {
 
 	[PluginInfo("Quotes", Author = "tech-nik89")]
 	public class QuotesModule : IModule {

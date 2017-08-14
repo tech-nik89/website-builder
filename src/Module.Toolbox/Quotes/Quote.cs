@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace WebsiteBuilder.Modules.Toolbox.Quotes {
+namespace WebsiteStudio.Modules.Toolbox.Quotes {
 	
 	class Quote : IItem {
 

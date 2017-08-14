@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Compiling.Links {
+namespace WebsiteStudio.Core.Compiling.Links {
 	class ScriptLink {
 
 		public String FileName { get; set; }

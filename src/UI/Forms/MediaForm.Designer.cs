@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Forms {
+﻿namespace WebsiteStudio.UI.Forms {
     partial class MediaForm {
         /// <summary>
         /// Required designer variable.

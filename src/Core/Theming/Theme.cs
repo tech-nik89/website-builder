@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Xml;
-using WebsiteBuilder.Core.Exceptions;
+using WebsiteStudio.Core.Exceptions;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public class Theme {
 
 		public const String FileExtension = ".wbtx";

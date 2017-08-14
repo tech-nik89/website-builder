@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
-using WebsiteBuilder.Interface.Icons;
+using WebsiteStudio.Interface.Icons;
 
-namespace WebsiteBuilder.UI.Resources {
+namespace WebsiteStudio.UI.Resources {
 	class IconPack : IIconPack {
 
 		public static IIconPack Current { get; private set; }

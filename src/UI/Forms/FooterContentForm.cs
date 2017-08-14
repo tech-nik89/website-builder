@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Footer;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Footer;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class FooterContentForm : Form {
 
 		private readonly Project _Project;

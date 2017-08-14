@@ -4,18 +4,18 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Compiling;
-using WebsiteBuilder.Core.Exceptions;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Publishing;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Compiling;
+using WebsiteStudio.Core.Exceptions;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class MainForm {
 		
 		private bool _CompilerRunning = false;

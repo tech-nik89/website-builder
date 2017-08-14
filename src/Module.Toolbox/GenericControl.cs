@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Toolbox.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Toolbox.Localization;
 
-namespace WebsiteBuilder.Modules.Toolbox.Quotes {
+namespace WebsiteStudio.Modules.Toolbox.Quotes {
 	partial class GenericControl<T> : UserControl, IUserInterface where T : IItem {
 
 		public bool Dirty { get; private set; }

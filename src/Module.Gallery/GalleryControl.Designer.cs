@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.Gallery {
+﻿namespace WebsiteStudio.Modules.Gallery {
     partial class GalleryControl {
         /// <summary> 
         /// Required designer variable.

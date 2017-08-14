@@ -7,7 +7,7 @@
     <ProjectGuid>{7280B680-C16C-41AA-98EA-BDAA10D2EF55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Modules.News</RootNamespace>
+    <RootNamespace>WebsiteStudio.Modules.News</RootNamespace>
     <AssemblyName>News.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

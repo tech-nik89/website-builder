@@ -3,9 +3,9 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.Toolbox {
+namespace WebsiteStudio.Modules.Toolbox {
 	class GenericField<T> {
 
 		private readonly GenericFieldAttribute _Attribute;
@@ -20,7 +20,7 @@ namespace WebsiteBuilder.Modules.Toolbox {
 
 		public int ColumnWidth => _Attribute.ColumnWidth;
 
-		private static readonly ResourceManager _ResourceManager = new ResourceManager("WebsiteBuilder.Modules.Toolbox.Localization.Strings", typeof(GenericField<T>).Assembly);
+		private static readonly ResourceManager _ResourceManager = new ResourceManager("WebsiteStudio.Modules.Toolbox.Localization.Strings", typeof(GenericField<T>).Assembly);
 		
 		private GenericField(PropertyInfo property, IEditor editor) {
 			_Property = property;

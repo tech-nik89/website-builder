@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Core.Pages {
+﻿namespace WebsiteStudio.Core.Pages {
 
 	public class PageContentItem {
 		

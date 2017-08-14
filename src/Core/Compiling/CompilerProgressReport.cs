@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	public class CompilerProgressReport : EventArgs {
 
 		public int Percentage { get; private set; }

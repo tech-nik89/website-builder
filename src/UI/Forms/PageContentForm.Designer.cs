@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Forms {
+﻿namespace WebsiteStudio.UI.Forms {
     partial class PageContentForm {
         /// <summary>
         /// Required designer variable.

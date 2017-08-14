@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Localization {
+namespace WebsiteStudio.Core.Localization {
 	public class LocalizedStringArray : LocalizedBase<String[]> {
 
 		public LocalizedStringArray(Project project)

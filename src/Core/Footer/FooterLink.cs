@@ -1,8 +1,8 @@
 ﻿using System;
-using WebsiteBuilder.Core.Localization;
+using WebsiteStudio.Core.Localization;
 using System.Linq;
 
-namespace WebsiteBuilder.Core.Footer {
+namespace WebsiteStudio.Core.Footer {
 	public class FooterLink {
 
 		public LocalizedString Text { get; set; }

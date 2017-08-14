@@ -1,9 +1,9 @@
 ﻿using System;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.FormDesigner.Localization;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.FormDesigner.Localization;
 
-namespace WebsiteBuilder.Modules.FormDesigner.Data {
+namespace WebsiteStudio.Modules.FormDesigner.Data {
 	class HorizontalLineItem : FormDataItem {
 
 		public override String Title => "-";

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Publish.FTP.Localization;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Publish.FTP.Localization;
 
-namespace WebsiteBuilder.Publish.FTP {
+namespace WebsiteStudio.Publish.FTP {
 	public partial class SettingsControl : UserControl, IUserInterface {
 
 		private readonly IPluginHelper _PluginHelper;

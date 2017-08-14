@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Controls {
+﻿namespace WebsiteStudio.UI.Controls {
 	partial class PublishingSettings {
 		/// <summary> 
 		/// Required designer variable.

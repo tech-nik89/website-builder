@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Properties {
+﻿namespace WebsiteStudio.UI.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

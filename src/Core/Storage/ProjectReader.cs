@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using WebsiteBuilder.Core.Footer;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Media;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Publishing;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Footer;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Media;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Storage {
+namespace WebsiteStudio.Core.Storage {
 	class ProjectReader : IDisposable {
 
 		private readonly FileInfo _File;

@@ -3,10 +3,10 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.ThemeEditor.Localization;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.ThemeEditor.Localization;
 
-namespace WebsiteBuilder.ThemeEditor {
+namespace WebsiteStudio.ThemeEditor {
 	public partial class StyleForm : Form {
 
 		private TextEditor _TextEditor;

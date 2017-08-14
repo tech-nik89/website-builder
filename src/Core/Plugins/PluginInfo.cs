@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Plugins {
+namespace WebsiteStudio.Core.Plugins {
 	public class PluginInfo {
 
 		public String Category { get; internal set; }

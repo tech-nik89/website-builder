@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Tools;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Tools;
 
-namespace WebsiteBuilder.Core.Pages {
+namespace WebsiteStudio.Core.Pages {
 
 	public class PageContent {
 

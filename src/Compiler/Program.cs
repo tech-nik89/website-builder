@@ -3,11 +3,11 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Compiling;
-using WebsiteBuilder.Core.Plugins;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Compiling;
+using WebsiteStudio.Core.Plugins;
 
-namespace WebsiteBuilder.CompilerConsole {
+namespace WebsiteStudio.CompilerConsole {
 	class Program {
 		static void Main(string[] args) {
 

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Validation;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Validation;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class PagePropertiesForm : Form {
 
 		public Page Page { get; private set; }

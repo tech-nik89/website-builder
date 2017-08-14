@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace WebsiteBuilder.Modules.Table {
+namespace WebsiteStudio.Modules.Table {
 	class TableData {
 
 		public String ColumnDelimiter { get; set; }

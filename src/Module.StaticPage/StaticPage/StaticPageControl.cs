@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.StaticPage {
+namespace WebsiteStudio.Modules.StaticPage {
 	public partial class StaticPageControl : UserControl, IUserInterface {
 		
 		private readonly IPluginHelper _PluginHelper;

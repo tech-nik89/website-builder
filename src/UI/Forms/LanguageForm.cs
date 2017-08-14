@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.UI.Localization;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.UI.Localization;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class LanguageForm : Form {
 
 		public Language Language { get; private set; }

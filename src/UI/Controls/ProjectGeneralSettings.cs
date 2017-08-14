@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Plugins;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Plugins;
 
-namespace WebsiteBuilder.UI.Controls {
+namespace WebsiteStudio.UI.Controls {
 	public partial class ProjectGeneralSettings : UserControl {
 		
 		private static String ThemeFileFilter => String.Format(Strings.ThemeFilesFilter, Theme.FileExtension);

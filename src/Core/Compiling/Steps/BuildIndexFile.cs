@@ -3,11 +3,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Properties;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Properties;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildIndexFile : ICompilerStep {
 
 		private readonly Project _Project;
@@ -35,7 +35,7 @@ namespace WebsiteBuilder.Core.Compiling.Steps {
 			HtmlDocument file = new HtmlDocument();
 
 			StringBuilder script = new StringBuilder();
-			script.Append("WebsiteBuilder.LanguageRedirect(");
+			script.Append("WebsiteStudio.LanguageRedirect(");
 			script.Append(JsonConvert.SerializeObject(_Languages));
 
 			if (_Project.StartPage != null) {

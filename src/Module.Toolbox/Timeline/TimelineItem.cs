@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Modules.Toolbox.Timeline {
+namespace WebsiteStudio.Modules.Toolbox.Timeline {
 	class TimelineItem : IItem {
 
 		[GenericField(CaptionResourceKey = "Time", Type = GenericFieldType.TextBox, ColumnWidth = 160)]

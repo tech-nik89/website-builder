@@ -7,7 +7,7 @@
     <ProjectGuid>{688EFBFC-8AF6-4B9D-A0B8-6221727AF9B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Modules.Toolbox</RootNamespace>
+    <RootNamespace>WebsiteStudio.Modules.Toolbox</RootNamespace>
     <AssemblyName>Toolbox.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

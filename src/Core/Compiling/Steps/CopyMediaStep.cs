@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using WebsiteBuilder.Core.Media;
+using WebsiteStudio.Core.Media;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class CopyMediaStep : ICompilerStep {
 
 		public String Output { get; private set; }

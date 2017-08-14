@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	class SpriteGenerator {
 
 		private const String SpriteSelectorFormatDefault = ".img-{0}";

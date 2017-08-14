@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using WebsiteBuilder.Interface.Compiling;
+using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	class HtmlElement : IHtmlElement {
 		
 		private readonly List<IHtmlElement> _Children;

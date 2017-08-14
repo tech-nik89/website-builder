@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace WebsiteBuilder.Core {
+namespace WebsiteStudio.Core {
 	public class CustomCollection<T> : IEnumerable<T> {
 
 		private readonly List<T> _Items;

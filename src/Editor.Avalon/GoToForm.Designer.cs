@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Editors.Avalon {
+﻿namespace WebsiteStudio.Editors.Avalon {
 	partial class GoToForm {
 		/// <summary>
 		/// Required designer variable.

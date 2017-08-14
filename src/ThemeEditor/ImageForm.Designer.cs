@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.ThemeEditor {
+﻿namespace WebsiteStudio.ThemeEditor {
 	partial class ImageForm {
 		/// <summary>
 		/// Required designer variable.

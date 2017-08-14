@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.FormDesigner {
+﻿namespace WebsiteStudio.Modules.FormDesigner {
 	partial class FormSettingsForm {
 		/// <summary>
 		/// Required designer variable.

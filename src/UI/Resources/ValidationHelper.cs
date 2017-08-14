@@ -3,10 +3,10 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Validation;
-using WebsiteBuilder.UI.Localization;
+using WebsiteStudio.Core.Validation;
+using WebsiteStudio.UI.Localization;
 
-namespace WebsiteBuilder.UI.Resources {
+namespace WebsiteStudio.UI.Resources {
 	class ValidationHelper<T> {
 		
 		private static readonly ResourceManager _ResourceManager = new ResourceManager(typeof(ValidationStrings));

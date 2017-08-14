@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Interface.Compiling {
+namespace WebsiteStudio.Interface.Compiling {
 	public interface ICompileHelper {
 
 		IHtmlElement CreateHtmlElement(String name);

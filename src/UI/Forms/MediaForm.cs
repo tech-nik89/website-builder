@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Media;
-using WebsiteBuilder.Core.Tools;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Media;
+using WebsiteStudio.Core.Tools;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class MediaForm : Form {
 
 		private readonly Project _Project;

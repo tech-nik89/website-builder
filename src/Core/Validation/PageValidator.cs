@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using WebsiteBuilder.Core.Pages;
+using WebsiteStudio.Core.Pages;
 
-namespace WebsiteBuilder.Core.Validation {
+namespace WebsiteStudio.Core.Validation {
 	public class PageValidator : ValidatorBase<Page> {
 
 		private static readonly Regex PathNameRegex = new Regex("^[a-z0-9\\-]+$", RegexOptions.Compiled);

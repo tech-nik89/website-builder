@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Modules.Toolbox {
+namespace WebsiteStudio.Modules.Toolbox {
 	class GenericFieldAttribute : Attribute {
 		
 		public String CaptionResourceKey { get; set; }

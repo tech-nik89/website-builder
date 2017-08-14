@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Publish.FTP {
+﻿namespace WebsiteStudio.Publish.FTP {
 	partial class SettingsControl {
 		/// <summary> 
 		/// Required designer variable.

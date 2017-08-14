@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebsiteBuilder.UI.Localization {
+namespace WebsiteStudio.UI.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WebsiteBuilder.UI.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteBuilder.UI.Localization.ValidationStrings", typeof(ValidationStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteStudio.UI.Localization.ValidationStrings", typeof(ValidationStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

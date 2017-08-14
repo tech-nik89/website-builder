@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.FormDesigner.Data {
+namespace WebsiteStudio.Modules.FormDesigner.Data {
 	abstract class InputItem : FormDataItem {
 
 		[JsonIgnore]

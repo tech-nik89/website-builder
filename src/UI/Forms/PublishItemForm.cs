@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Publishing;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.UI.Localization;
-using WebsiteBuilder.UI.Plugins;
-using WebsiteBuilder.UI.Resources;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Plugins;
+using WebsiteStudio.UI.Resources;
 
-namespace WebsiteBuilder.UI.Forms {
+namespace WebsiteStudio.UI.Forms {
 	public partial class PublishItemForm : Form {
 
 		private readonly Project _Project;

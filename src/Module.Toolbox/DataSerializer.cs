@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace WebsiteBuilder.Modules.Toolbox {
+namespace WebsiteStudio.Modules.Toolbox {
 	static class DataSerializer {
 
 		public static String Serialize<T>(IEnumerable<T> data) where T : IItem {

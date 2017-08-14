@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using WebsiteBuilder.Core.Theming;
+using WebsiteStudio.Core.Theming;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildFontsStep : ICompilerStep {
 
 		public String Output { get; private set; }

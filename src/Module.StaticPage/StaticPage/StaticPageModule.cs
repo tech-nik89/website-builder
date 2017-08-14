@@ -1,8 +1,8 @@
 ﻿using System;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Modules.StaticPage {
+namespace WebsiteStudio.Modules.StaticPage {
 
 	[PluginInfo("Static Page", Author = "tech-nik89")]
 	public class StaticPageModule : IModule {

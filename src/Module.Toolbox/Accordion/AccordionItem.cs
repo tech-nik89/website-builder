@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Modules.Toolbox.Accordion {
+namespace WebsiteStudio.Modules.Toolbox.Accordion {
 	public class AccordionItem : IItem {
 
 		[GenericField(CaptionResourceKey = "Title", Type = GenericFieldType.TextBox, ColumnWidth = 120)]

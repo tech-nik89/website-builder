@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.FormDesigner {
+﻿namespace WebsiteStudio.Modules.FormDesigner {
 	partial class InputItemForm {
 		/// <summary>
 		/// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public class Font {
 
 		public String Name { get; set; }

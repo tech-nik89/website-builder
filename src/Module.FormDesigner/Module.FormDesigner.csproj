@@ -7,7 +7,7 @@
     <ProjectGuid>{9AA103C4-3561-4F25-A22D-81B6311AF754}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Modules.FormDesigner</RootNamespace>
+    <RootNamespace>WebsiteStudio.Modules.FormDesigner</RootNamespace>
     <AssemblyName>FormDesigner.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

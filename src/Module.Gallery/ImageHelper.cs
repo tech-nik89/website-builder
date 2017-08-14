@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace WebsiteBuilder.Modules.Gallery {
+namespace WebsiteStudio.Modules.Gallery {
 	static class ImageHelper {
 
 		public static Image ResizeImageToSquare(Image image, int size) {

@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace WebsiteBuilder.Publish.FTP {
+namespace WebsiteStudio.Publish.FTP {
 	class Settings {
 
 		public String Host { get; set; }

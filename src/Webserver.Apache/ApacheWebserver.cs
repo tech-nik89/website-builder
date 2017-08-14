@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Webserver.Apache {
+namespace WebsiteStudio.Webserver.Apache {
 
 	[PluginInfo("Apache", Author = "tech-nik89")]
 	public class ApacheWebserver : IWebserver {

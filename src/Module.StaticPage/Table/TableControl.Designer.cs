@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.Modules.Table {
+﻿namespace WebsiteStudio.Modules.Table {
     partial class TableControl {
         /// <summary> 
         /// Required designer variable.

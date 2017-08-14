@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Forms {
+﻿namespace WebsiteStudio.UI.Forms {
     partial class ProjectPropertiesForm
     {
         /// <summary>
@@ -30,14 +30,14 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectPropertiesForm));
 			this.tabMain = new System.Windows.Forms.TabControl();
 			this.tabGeneral = new System.Windows.Forms.TabPage();
-			this.pgsGeneral = new WebsiteBuilder.UI.Controls.ProjectGeneralSettings();
+			this.pgsGeneral = new WebsiteStudio.UI.Controls.ProjectGeneralSettings();
 			this.tabLanguages = new System.Windows.Forms.TabPage();
-			this.plsLanguages = new WebsiteBuilder.UI.Controls.ProjectLanguageSettings();
+			this.plsLanguages = new WebsiteStudio.UI.Controls.ProjectLanguageSettings();
 			this.tabMeta = new System.Windows.Forms.TabPage();
 			this.lvwMeta = new System.Windows.Forms.ListView();
 			this.clnLanguage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tabPublish = new System.Windows.Forms.TabPage();
-			this.psPublishingSettings = new WebsiteBuilder.UI.Controls.PublishingSettings();
+			this.psPublishingSettings = new WebsiteStudio.UI.Controls.PublishingSettings();
 			this.btnAccept = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.tabMain.SuspendLayout();
@@ -96,7 +96,7 @@
 			// plsLanguages
 			// 
 			this.plsLanguages.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.plsLanguages.Languages = new WebsiteBuilder.Core.Localization.Language[0];
+			this.plsLanguages.Languages = new WebsiteStudio.Core.Localization.Language[0];
 			this.plsLanguages.Location = new System.Drawing.Point(3, 3);
 			this.plsLanguages.Name = "plsLanguages";
 			this.plsLanguages.Size = new System.Drawing.Size(470, 192);

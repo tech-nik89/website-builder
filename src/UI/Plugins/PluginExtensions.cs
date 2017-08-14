@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Plugins;
+using WebsiteStudio.Core.Plugins;
 
-namespace WebsiteBuilder.UI.Plugins {
+namespace WebsiteStudio.UI.Plugins {
 	public static class PluginExtensions {
 
 		#region Publishing

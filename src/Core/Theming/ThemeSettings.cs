@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public class ThemeSettings {
 
 		public String ImageCssClass { get; internal set; }

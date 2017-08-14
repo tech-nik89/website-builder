@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Publishing {
+namespace WebsiteStudio.Core.Publishing {
 	public class PublishItem {
 
 		public String Name { get; set; }

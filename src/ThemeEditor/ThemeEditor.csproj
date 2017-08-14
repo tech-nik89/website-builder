@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D2AD2A9D-4694-4C34-AC34-E33EFA8CA8EF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WebsiteBuilder.ThemeEditor</RootNamespace>
+    <RootNamespace>WebsiteStudio.ThemeEditor</RootNamespace>
     <AssemblyName>ThemeEditor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

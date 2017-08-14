@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace WebsiteBuilder.Interface.Plugins {
+namespace WebsiteStudio.Interface.Plugins {
 	public class PluginInfoAttribute : Attribute {
 
 		public String Name { get; private set; }

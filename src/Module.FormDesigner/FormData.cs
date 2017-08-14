@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebsiteBuilder.Modules.FormDesigner.Data;
+using WebsiteStudio.Modules.FormDesigner.Data;
 
-namespace WebsiteBuilder.Modules.FormDesigner {
+namespace WebsiteStudio.Modules.FormDesigner {
 	class FormData {
 
 		private static readonly Encoding _Encoding = Encoding.UTF8;

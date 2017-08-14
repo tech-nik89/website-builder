@@ -7,7 +7,7 @@
     <ProjectGuid>{F8E78B84-2403-45B8-B344-516646849589}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebsiteBuilder.Modules.Gallery</RootNamespace>
+    <RootNamespace>WebsiteStudio.Modules.Gallery</RootNamespace>
     <AssemblyName>Gallery.Plugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

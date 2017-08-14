@@ -1,7 +1,7 @@
-﻿using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
+﻿using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	public class CompilerSettings {
 
 		public Page PreviewPage { get; set; }

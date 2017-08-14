@@ -1,4 +1,4 @@
-﻿namespace WebsiteBuilder.UI.Controls {
+﻿namespace WebsiteStudio.UI.Controls {
 	partial class PageContentList {
 		/// <summary> 
 		/// Required designer variable.

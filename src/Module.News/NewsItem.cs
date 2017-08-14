@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 	class NewsItem {
 
 		public String Id { get; set; }

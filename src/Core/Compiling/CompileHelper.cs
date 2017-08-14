@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using WebsiteBuilder.Core.Compiling.Links;
-using WebsiteBuilder.Core.Properties;
-using WebsiteBuilder.Core.Tools;
-using WebsiteBuilder.Interface.Compiling;
+using WebsiteStudio.Core.Compiling.Links;
+using WebsiteStudio.Core.Properties;
+using WebsiteStudio.Core.Tools;
+using WebsiteStudio.Interface.Compiling;
 
-namespace WebsiteBuilder.Core.Compiling {
+namespace WebsiteStudio.Core.Compiling {
 	class CompileHelper : ICompileHelper {
 
 		private readonly HtmlDocument _Document;

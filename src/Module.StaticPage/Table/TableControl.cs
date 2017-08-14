@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Localization;
 
-namespace WebsiteBuilder.Modules.Table {
+namespace WebsiteStudio.Modules.Table {
 	public partial class TableControl : UserControl, IUserInterface {
 
-		private static readonly ResourceManager _ResourceManager = new ResourceManager("WebsiteBuilder.Modules.Localization.Strings", typeof(TableControl).Assembly);
+		private static readonly ResourceManager _ResourceManager = new ResourceManager("WebsiteStudio.Modules.Localization.Strings", typeof(TableControl).Assembly);
 
 		private static readonly Dictionary<String, String> _ColumnDelimiters = new Dictionary<String, String>() {
 			{ "|", "Pipe" },

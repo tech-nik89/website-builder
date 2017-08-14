@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WebsiteBuilder.Interface.Icons {
+namespace WebsiteStudio.Interface.Icons {
 	public interface IIconPack {
 
 		Icon GetIcon(IconPackIcon icon);

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.News.Localization;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.News.Localization;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 	internal partial class NewsItemForm : Form {
 
 		private readonly IPluginHelper _PluginHelper;

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Modules.Gallery.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Modules.Gallery.Localization;
 
-namespace WebsiteBuilder.Modules.Gallery {
+namespace WebsiteStudio.Modules.Gallery {
 	public partial class SettingsForm : Form {
 
 		public Size ThumbnailSize { get; private set; }

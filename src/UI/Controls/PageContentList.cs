@@ -1,14 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.UI.Forms;
-using WebsiteBuilder.UI.Localization;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.UI.Forms;
+using WebsiteStudio.UI.Localization;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace WebsiteBuilder.UI.Controls {
+namespace WebsiteStudio.UI.Controls {
 	public partial class PageContentList : DockContent {
 
 		[Browsable(true)]

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using WebsiteBuilder.Core.Compiling.Links;
-using WebsiteBuilder.Core.Footer;
-using WebsiteBuilder.Core.Localization;
-using WebsiteBuilder.Core.Media;
-using WebsiteBuilder.Core.Pages;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Theming;
-using WebsiteBuilder.Interface.Plugins;
+using WebsiteStudio.Core.Compiling.Links;
+using WebsiteStudio.Core.Footer;
+using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Media;
+using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Theming;
+using WebsiteStudio.Interface.Plugins;
 
-namespace WebsiteBuilder.Core.Compiling.Steps {
+namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildPageStep : ICompilerStep {
 
 		private readonly Page _Page;

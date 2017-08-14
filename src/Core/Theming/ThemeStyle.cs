@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public abstract class ThemeStyle {
 
 		public String Data { get; private set; }

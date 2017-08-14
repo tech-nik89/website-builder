@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Exceptions {
+namespace WebsiteStudio.Core.Exceptions {
 	public class BadFileExtensionException : Exception {
 
 	}

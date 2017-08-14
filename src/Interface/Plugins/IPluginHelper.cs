@@ -1,7 +1,7 @@
 ﻿using System;
-using WebsiteBuilder.Interface.Icons;
+using WebsiteStudio.Interface.Icons;
 
-namespace WebsiteBuilder.Interface.Plugins {
+namespace WebsiteStudio.Interface.Plugins {
 	public interface IPluginHelper {
 
 		IEditor CreateEditor();

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using WebsiteBuilder.Core;
-using WebsiteBuilder.Core.Plugins;
-using WebsiteBuilder.Core.Publishing;
-using WebsiteBuilder.UI.Forms;
-using WebsiteBuilder.UI.Localization;
+using WebsiteStudio.Core;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.UI.Forms;
+using WebsiteStudio.UI.Localization;
 
-namespace WebsiteBuilder.UI.Controls {
+namespace WebsiteStudio.UI.Controls {
 	public partial class PublishingSettings : UserControl {
 
 		public Project Project { get; set; }

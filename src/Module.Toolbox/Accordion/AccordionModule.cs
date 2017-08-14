@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Toolbox.Properties;
-using WebsiteBuilder.Modules.Toolbox.Quotes;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Toolbox.Properties;
+using WebsiteStudio.Modules.Toolbox.Quotes;
 
-namespace WebsiteBuilder.Modules.Toolbox.Accordion {
+namespace WebsiteStudio.Modules.Toolbox.Accordion {
 
 	[PluginInfo("Accordion", Author = "tech-nik89")]
 	public class AccordionModule : IModule {

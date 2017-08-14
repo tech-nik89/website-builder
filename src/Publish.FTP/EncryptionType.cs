@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebsiteBuilder.Publish.FTP {
+namespace WebsiteStudio.Publish.FTP {
 	public enum EncryptionType {
 		None,
 		Implicit,

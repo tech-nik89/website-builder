@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Theming {
+namespace WebsiteStudio.Core.Theming {
 	public class ThemeStyleCss : ThemeStyle {
 
 		public override String Css => Data;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebsiteBuilder.Core.Storage {
+namespace WebsiteStudio.Core.Storage {
 	class ProjectStorageConstants {
 
 		public const String Root = "project";

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebsiteBuilder.Interface.Compiling;
-using WebsiteBuilder.Interface.Plugins;
-using WebsiteBuilder.Modules.Toolbox.Properties;
-using WebsiteBuilder.Modules.Toolbox.Quotes;
+using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Toolbox.Properties;
+using WebsiteStudio.Modules.Toolbox.Quotes;
 
-namespace WebsiteBuilder.Modules.Toolbox.Timeline {
+namespace WebsiteStudio.Modules.Toolbox.Timeline {
 
 	[PluginInfo("Timeline", Author = "tech-nik89")]
 	public class TimelineModule : IModule {

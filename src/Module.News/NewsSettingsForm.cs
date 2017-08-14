@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using WebsiteBuilder.Interface.Icons;
-using WebsiteBuilder.Modules.News.Localization;
+using WebsiteStudio.Interface.Icons;
+using WebsiteStudio.Modules.News.Localization;
 
-namespace WebsiteBuilder.Modules.News {
+namespace WebsiteStudio.Modules.News {
 	public partial class NewsSettingsForm : Form {
 
 		public int LargeItemsCount => (int)numLargeItemsCount.Value;
