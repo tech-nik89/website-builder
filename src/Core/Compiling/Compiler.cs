@@ -111,18 +111,14 @@ namespace WebsiteStudio.Core.Compiling {
 			});
 		}
 		
-		private CompilerProgressReport CreateProgressReport(int step, int steps, String message, bool newLine = false) {
+		private CompilerProgressReport CreateProgressReport(int step, int steps, String message, params String[] args) {
 			int percentage = 0;
 
 			if (steps > 0) {
 				percentage = (int)(((decimal)step / (decimal)steps) * 100.0M);
 			}
-
-			if (newLine) {
-				 message += Environment.NewLine;
-			}
-
-			return new CompilerProgressReport(percentage, message);
+			
+			return new CompilerProgressReport(percentage, message, args);
 		}
 
 		public void Compile() {
@@ -130,18 +126,18 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		public void Compile(IProgress<CompilerProgressReport> progress) {
+			progress?.Report(CreateProgressReport(0, 1, "------ Build started: {0} ------", _Project.ProjectFileName));
+
 			try {
 				int steps = _Steps.Count;
 
 				for(int i = 0; i < steps; i++) {
 					var step = _Steps[i];
 					progress?.Report(CreateProgressReport(i, steps, step.Output));
-
 					step.Run();
-					progress?.Report(CreateProgressReport(i, steps, " ... Done.", true));
 				}
 
-				progress?.Report(CreateProgressReport(1, 1, "Build succeeded."));
+				progress?.Report(CreateProgressReport(1, 1, "========== Build succeeded =========="));
 			}
 			catch (Exception ex) {
 				Error = true;

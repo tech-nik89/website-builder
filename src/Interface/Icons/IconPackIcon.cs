@@ -31,6 +31,7 @@
 		Replace,
 		Cut,
 		Copy,
-		Paste
+		Paste,
+		Clear
 	}
 }

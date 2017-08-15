@@ -56,19 +56,14 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			if (_Project.Webserver == null) {
 				return;
 			}
-
-			try {
-				IWebserver webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
-				if (webserver == null) {
-					return;
-				}
-
-				String startPage = _Project.StartPage != null ? Compiler.CreateUrl(_Project.StartPage) : null;
-				webserver.CreateLanguageRedirect(_Languages, _Project.OutputPath, startPage);
+			
+			IWebserver webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
+			if (webserver == null) {
+				return;
 			}
-			catch {
-				// ignore
-			}
+
+			String startPage = _Project.StartPage != null ? Compiler.CreateUrl(_Project.StartPage) : null;
+			webserver.CreateLanguageRedirect(_Languages, _Project.OutputPath, startPage);
 		}
 	}
 }

@@ -14,6 +14,7 @@ using WebsiteStudio.Core.Publishing;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteStudio.UI.Forms {
 	public partial class MainForm {
@@ -172,7 +173,7 @@ namespace WebsiteStudio.UI.Forms {
 
 				Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
 					tspProgress.Value = report.Percentage;
-					UpdateStatus(report.Message);
+					_CompilerOutput?.Push(report);
 				});
 
 				await compiler.CompileAsync(progress);

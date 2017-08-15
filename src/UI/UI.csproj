@@ -66,6 +66,12 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Controls\CompilerOutput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\CompilerOutput.Designer.cs">
+      <DependentUpon>CompilerOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PageContentList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     <Compile Include="Resources\StatusText.cs" />
     <Compile Include="Resources\ValidationHelper.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Controls\CompilerOutput.resx">
+      <DependentUpon>CompilerOutput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PageContentList.resx">
       <DependentUpon>PageContentList.cs</DependentUpon>
     </EmbeddedResource>

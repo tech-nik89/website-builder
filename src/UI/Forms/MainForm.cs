@@ -16,6 +16,8 @@ namespace WebsiteStudio.UI.Forms {
 
 		private readonly DockPanel _DockPanel;
 
+		private readonly CompilerOutput _CompilerOutput;
+
 		public MainForm() {
 			InitializeComponent();
 			LocalizeComponent();
@@ -23,6 +25,7 @@ namespace WebsiteStudio.UI.Forms {
 			
 			_Content = new PageContentList(EnableContentControls);
 			_Pages = new PagesTreeView(EnableContentControls, EnableTreeControls, _Content.RefreshContent);
+			_CompilerOutput = new CompilerOutput();
 
 			_DockPanel = new DockPanel() {
 				Dock = DockStyle.Fill,
@@ -33,6 +36,7 @@ namespace WebsiteStudio.UI.Forms {
 			tscMain.ContentPanel.Controls.Add(_DockPanel);
 			_Pages.Show(_DockPanel, DockState.DockLeft);
 			_Content.Show(_DockPanel, DockState.Document);
+			_CompilerOutput.Show(_DockPanel, DockState.DockBottomAutoHide);
 
 			_ProductName = GetProductName();
 			ofdProject.Filter = _ProjectFilesFilter;
