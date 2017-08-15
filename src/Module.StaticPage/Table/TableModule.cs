@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Properties;
 
 namespace WebsiteStudio.Modules.Table {
 
@@ -90,5 +91,8 @@ namespace WebsiteStudio.Modules.Table {
 			return new TableControl(_PluginHelper);
 		}
 
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
 	}
 }

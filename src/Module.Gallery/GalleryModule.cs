@@ -91,5 +91,9 @@ namespace WebsiteStudio.Modules.Gallery {
 		public IUserInterface GetUserInterface() {
 			return new GalleryControl(_PluginHelper);
 		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
 	}
 }

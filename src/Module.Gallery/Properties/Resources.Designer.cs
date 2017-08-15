@@ -19,7 +19,7 @@ namespace WebsiteStudio.Modules.Gallery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -62,20 +62,27 @@ namespace WebsiteStudio.Modules.Gallery.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to .gallery {
-        ///    img {
-        ///        border: 0;
-        ///    }
+        ///	text-align:center;
+        ///	margin:20px;
         ///
-        ///    a:not(.close) {
+        ///    a {
+        ///		opacity:0.8;
         ///        display: inline-block;
         ///        vertical-align:middle;
-        ///        border: 1px solid #DDD;
-        ///        padding: 10px;
-        ///        margin: 8px;
+        ///		margin:10px;
+        ///		padding:0;
+        ///		cursor:zoom-in;
         ///
         ///        &amp;:hover {
-        ///            background-color: #EEE;
+        ///            opacity:1;
         ///        }
+        ///
+        ///		img {
+        ///			border:0;
+        ///			margin:0;
+        ///			padding:0;
+        ///			display:block;
+        ///		}
         ///    }
         ///}
         ///.
@@ -83,6 +90,26 @@ namespace WebsiteStudio.Modules.Gallery.Properties {
         internal static string GalleryStyles {
             get {
                 return ResourceManager.GetString("GalleryStyles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAGNIFIC POPUP
+        ///http://dimsemenov.com/plugins/magnific-popup
+        ///
+        ///The MIT License (MIT)
+        ///
+        ///Copyright (c) 2014-2016 Dmitry Semenov, http://dimsemenov.com
+        ///
+        ///Permission is hereby granted, free of charge, to any person obtaining a copy of
+        ///this software and associated documentation files (the &quot;Software&quot;), to deal in
+        ///the Software without restriction, including without limitation the rights to
+        ///use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+        ///the Software, and to permit persons to [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LicenseInfo {
+            get {
+                return ResourceManager.GetString("LicenseInfo", resourceCulture);
             }
         }
         

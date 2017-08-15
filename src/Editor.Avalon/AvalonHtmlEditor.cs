@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteStudio.Editors.Avalon.Properties;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Editors.Avalon {
@@ -19,5 +20,10 @@ namespace WebsiteStudio.Editors.Avalon {
 		public String Compile(String source) {
 			return source;
 		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
+
 	}
 }

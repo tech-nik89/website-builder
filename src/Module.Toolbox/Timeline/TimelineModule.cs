@@ -60,5 +60,9 @@ namespace WebsiteStudio.Modules.Toolbox.Timeline {
 			return new GenericControl<TimelineItem>(_PluginHelper);
 		}
 
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
+
 	}
 }

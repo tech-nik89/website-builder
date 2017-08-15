@@ -156,6 +156,12 @@
     <Compile Include="Forms\PagePropertiesForm.Designer.cs">
       <DependentUpon>PagePropertiesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PluginDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PluginDetailsForm.Designer.cs">
+      <DependentUpon>PluginDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PluginsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PagePropertiesForm.resx">
       <DependentUpon>PagePropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PluginDetailsForm.resx">
+      <DependentUpon>PluginDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PluginsForm.resx">
       <DependentUpon>PluginsForm.cs</DependentUpon>

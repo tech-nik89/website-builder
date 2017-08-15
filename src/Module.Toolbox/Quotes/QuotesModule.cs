@@ -62,5 +62,10 @@ namespace WebsiteStudio.Modules.Toolbox.Quotes {
 		public IUserInterface GetUserInterface() {
 			return new GenericControl<Quote>(_PluginHelper);
 		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
+
 	}
 }

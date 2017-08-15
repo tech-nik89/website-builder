@@ -21,5 +21,7 @@ namespace WebsiteStudio.Core.Plugins {
 
 		public String Version => String.Format("{0}.{1}.{2}.{3}", VersionMajor, VersionMinor, VersionRevision, VersionBuild);
 
+		public String LicenseInfo { get; internal set; }
+
 	}
 }

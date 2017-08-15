@@ -65,5 +65,8 @@ namespace WebsiteStudio.Modules.FormDesigner {
 			return new FormDesignerControl(_PluginHelper);
 		}
 
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
 	}
 }

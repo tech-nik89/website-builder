@@ -139,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.2.1.min.js" />
-    <Content Include="ThirdpartyLicenses.txt" />
+    <EmbeddedResource Include="ThirdpartyLicenses.txt" />
     <Content Include="Scripts\IndexPageScript.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

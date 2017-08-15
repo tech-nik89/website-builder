@@ -5,5 +5,7 @@ namespace WebsiteStudio.Interface.Plugins {
 
 		IUserInterface GetUserInterface();
 
+		String GetLicenseInformation();
+
 	}
 }

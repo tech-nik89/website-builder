@@ -55,5 +55,9 @@ namespace WebsiteStudio.Modules.Toolbox.Accordion {
 		public IUserInterface GetUserInterface() {
 			return new GenericControl<AccordionItem>(_PluginHelper);
 		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
+		}
 	}
 }

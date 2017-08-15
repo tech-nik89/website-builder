@@ -28,6 +28,8 @@ namespace WebsiteStudio.UI.Forms {
 			clnName.Text = Strings.Name;
 			clnVersion.Text = Strings.Version;
 			clnAuthor.Text = Strings.Author;
+
+			tslDoubleClickForDetails.Text = Strings.DoubleClickForDetails;
 		}
 
 		private void PluginsForm_Load(object sender, EventArgs e) {
@@ -46,6 +48,18 @@ namespace WebsiteStudio.UI.Forms {
 				item.Group = groups[info.Category];
 				lvwPlugins.Items.Add(item);
 			}
+		}
+
+		private void lvwPlugins_DoubleClick(object sender, EventArgs e) {
+			if (lvwPlugins.SelectedIndices.Count == 0) {
+				return;
+			}
+
+			PluginInfo info = _Plugins[lvwPlugins.SelectedIndices[0]];
+			PluginDetailsForm form = new PluginDetailsForm();
+
+			form.License = info.LicenseInfo;
+			form.ShowDialog();
 		}
 	}
 }

@@ -15,6 +15,10 @@ namespace WebsiteStudio.Core.Plugins {
 
 		private readonly Func<String> _GetLink;
 		
+		internal PluginHelper() {
+			;
+		}
+
 		public PluginHelper(Project project, Type editorType, IIconPack iconPack)
 			: this (project, editorType, iconPack, null) {
 		}

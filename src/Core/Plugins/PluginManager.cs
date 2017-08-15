@@ -54,6 +54,9 @@ namespace WebsiteStudio.Core.Plugins {
 		}
 
 		private static IEnumerable<PluginInfo> GetPluginInfos(Type[] types, String category) {
+			PluginHelper helper = new PluginHelper();
+			Object[] parameters = { helper };
+
 			foreach (Type type in types) {
 				PluginInfo info = new PluginInfo() { Type = type, Category = category };
 				PluginInfoAttribute attribute = PluginInfoAttribute.GetPluginInfoAttribute(type);
@@ -67,6 +70,12 @@ namespace WebsiteStudio.Core.Plugins {
 				info.VersionMinor = version.FileMinorPart;
 				info.VersionRevision = version.FileBuildPart;
 				info.VersionBuild = version.FilePrivatePart;
+
+
+				if (!typeof(IWebserver).IsAssignableFrom(type)) {
+					IPlugin instance = (IPlugin)Activator.CreateInstance(type, parameters);
+					info.LicenseInfo = instance.GetLicenseInformation();
+				}
 
 				yield return info;
 			}

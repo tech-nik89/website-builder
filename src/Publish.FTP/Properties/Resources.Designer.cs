@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebsiteStudio.Modules.FormDesigner.Properties {
+namespace WebsiteStudio.Publish.FTP.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WebsiteStudio.Modules.FormDesigner.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteStudio.Modules.FormDesigner.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebsiteStudio.Publish.FTP.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,81 +57,6 @@ namespace WebsiteStudio.Modules.FormDesigner.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (function() {
-        ///
-        ///	$(&apos;form.form-designer&apos;).on(&apos;submit&apos;, function(e) {
-        ///		e.preventDefault();
-        ///		
-        ///		var form = $(this);
-        ///		var url = form.attr(&apos;action&apos;);
-        ///		var data = form.serialize();
-        ///		var message = form.attr(&apos;data-message&apos;);
-        ///
-        ///		$.post(url, data, function(result) { });
-        ///		form.empty();
-        ///
-        ///		if (message) {
-        ///			var p = $(&apos;&lt;p /&gt;&apos;);
-        ///			p.text(message);
-        ///			form.append(p);
-        ///		}
-        ///
-        ///		return false;
-        ///	});
-        ///
-        ///})();.
-        /// </summary>
-        internal static string FormCode {
-            get {
-                return ResourceManager.GetString("FormCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .form-designer {
-        ///	@left-column-width:30%;
-        ///
-        ///	p.input {
-        ///		height:2em;
-        ///		margin:0;
-        ///		padding:0;
-        ///		position:relative;
-        ///
-        ///		label {
-        ///			position:absolute;
-        ///			left:0;
-        ///			top:0;
-        ///			width:@left-column-width;
-        ///		}
-        ///
-        ///		.wrapper, textarea {
-        ///			position:absolute;
-        ///			left:@left-column-width;
-        ///			right:0;
-        ///			top:0;
-        ///
-        ///			input:not([type=&quot;checkbox&quot;]):not([type=&quot;radio&quot;]), select {
-        ///				width:100%;
-        ///			}
-        ///		}
-        ///	}
-        ///
-        ///	p:not(.input) {
-        ///		textarea {
-        ///			width:100%;
-        ///			height:120px;
-        ///		}
-        ///	}
-        ///
-        ///	input[type=&quot;submi [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string FormStyle {
-            get {
-                return ResourceManager.GetString("FormStyle", resourceCulture);
             }
         }
         

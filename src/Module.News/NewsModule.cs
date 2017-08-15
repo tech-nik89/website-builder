@@ -138,5 +138,8 @@ namespace WebsiteStudio.Modules.News {
 			return new NewsControl(_PluginHelper);
 		}
 
+		public String GetLicenseInformation() {
+			return String.Empty;
+		}
 	}
 }

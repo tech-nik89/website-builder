@@ -1,6 +1,7 @@
 ﻿using System;
 using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Modules.Properties;
 
 namespace WebsiteStudio.Modules.StaticPage {
 
@@ -16,6 +17,10 @@ namespace WebsiteStudio.Modules.StaticPage {
 		public String Compile(String source, ICompileHelper helper) {
 			IEditor editor = _PluginHelper.CreateEditor();
 			return editor.Compile(source);
+		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
 		}
 
 		public IUserInterface GetUserInterface() {

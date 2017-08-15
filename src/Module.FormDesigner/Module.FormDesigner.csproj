@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\FormCode.js" />
+    <EmbeddedResource Include="LicenseInfo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

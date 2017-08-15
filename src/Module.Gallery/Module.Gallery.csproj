@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="ClientResources\jquery.magnific-popup.min.js" />
     <Content Include="ClientResources\magnific-popup.css" />
+    <EmbeddedResource Include="LicenseInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClientResources\GalleryStyles.less" />

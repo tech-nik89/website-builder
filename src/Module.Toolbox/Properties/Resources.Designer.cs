@@ -19,7 +19,7 @@ namespace WebsiteStudio.Modules.Toolbox.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,14 +61,16 @@ namespace WebsiteStudio.Modules.Toolbox.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (function () { 
+        ///   Looks up a localized string similar to (function () {
+        ///
         ///    var items = document.getElementsByClassName(&quot;accordion&quot;);
         ///
         ///    for (var i = 0; i &lt; items.length; i++) {
-        ///        item[i].onclick = function () {
+        ///        items[i].onclick = function () {
         ///            this.classList.toggle(&quot;active&quot;);
         ///        }
         ///    }
+        ///
         ///})();.
         /// </summary>
         internal static string AccordionScript {
@@ -79,34 +81,51 @@ namespace WebsiteStudio.Modules.Toolbox.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to .accordion {
-        ///    background-color: #eee;
+        ///    @normal-color: #EEE;
+        ///    @accent-color: #CCC;
+        ///
+        ///    background-color: @normal-color;
         ///    color: #444;
         ///    cursor: pointer;
-        ///    padding: 18px;
+        ///    padding: 15px;
         ///    width: 100%;
         ///    text-align: left;
         ///    border: none;
         ///    outline: none;
-        ///    transition: 0.2s;
+        ///    box-sizing: border-box;
+        ///    font-weight: bold;
         ///
         ///    + div {
         ///        display: none;
-        ///        padding: 0 18px;
+        ///        padding: 20px;
+        ///        border: 1px solid @accent-color;
         ///    }
         ///
         ///    &amp;.active, &amp;:hover {
-        ///        background-color: #ddd;
+        ///        background-color: @accent-color;
         ///    }
         ///
         ///    &amp;.active + div {
-        ///        display: block;
-        ///    }
-        ///}
-        ///.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AccordionStyle {
             get {
                 return ResourceManager.GetString("AccordionStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEWTONSOFT JSON
+        ///https://github.com/JamesNK/Newtonsoft.Json
+        ///
+        ///MIT-License
+        ///Copyright (c) 2007 James Newton-King
+        ///
+        ///Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string LicenseInfo {
+            get {
+                return ResourceManager.GetString("LicenseInfo", resourceCulture);
             }
         }
         

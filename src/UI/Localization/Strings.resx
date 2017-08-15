@@ -444,4 +444,7 @@
   <data name="PageStructure" xml:space="preserve">
     <value>Page Structure</value>
   </data>
+  <data name="DoubleClickForDetails" xml:space="preserve">
+    <value>Double click on a plugin to show details.</value>
+  </data>
 </root>

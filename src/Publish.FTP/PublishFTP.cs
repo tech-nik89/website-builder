@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebsiteStudio.Interface.Plugins;
+using WebsiteStudio.Publish.FTP.Properties;
 
 namespace WebsiteStudio.Publish.FTP {
 
@@ -128,6 +129,10 @@ namespace WebsiteStudio.Publish.FTP {
 			}
 
 			return path;
+		}
+
+		public String GetLicenseInformation() {
+			return Resources.LicenseInfo;
 		}
 	}
 }
