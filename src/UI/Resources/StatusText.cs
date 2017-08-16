@@ -9,6 +9,8 @@ namespace WebsiteStudio.UI.Resources {
 
 		public const String BuildSucceeded = "Build succeeded";
 
+		public const String BuildFailed = "Build failed";
+
 		public const String PublishingStarted = "Publishing started...";
 
 		public const String PublishingSucceeded = "Publishing succeeded";

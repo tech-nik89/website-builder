@@ -120,7 +120,9 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.StartPage, _Project.StartPage?.Id ?? String.Empty),
 				new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(_Project.MetaDescription)),
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(_Project.MetaKeywords)),
-				new XElement(ProjectStorageConstants.Webserver, _Project.Webserver?.FullName ?? String.Empty)
+				new XElement(ProjectStorageConstants.Webserver, _Project.Webserver?.FullName ?? String.Empty),
+				new XElement(ProjectStorageConstants.BaseURL, _Project.BaseURL),
+				new XElement(ProjectStorageConstants.Sitemap, _Project.GenerateSitemap)
 			);
 		}
 

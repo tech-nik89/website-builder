@@ -131,6 +131,10 @@ namespace WebsiteStudio.Core {
 
 		public int PageDepth => AllPages.Max(x => x.ParentCount);
 
+		public String BaseURL { get; set; }
+
+		public bool GenerateSitemap { get; set; }
+
 		public bool Dirty { get; internal set; }
 
 		public Project() {

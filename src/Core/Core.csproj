@@ -59,6 +59,8 @@
     <Compile Include="Compiling\CompileHelper.cs" />
     <Compile Include="Compiling\Compiler.cs" />
     <Compile Include="Compiling\CompilerConstants.cs" />
+    <Compile Include="Compiling\CompilerMessage.cs" />
+    <Compile Include="Compiling\CompilerMessageType.cs" />
     <Compile Include="Compiling\CompilerSettings.cs" />
     <Compile Include="Compiling\HtmlDocument.cs" />
     <Compile Include="Compiling\HtmlElement.cs" />
@@ -70,8 +72,9 @@
     <Compile Include="Compiling\SpriteGenerator.cs" />
     <Compile Include="Compiling\Steps\BuildFontsStep.cs" />
     <Compile Include="Compiling\Steps\BuildImagesStep.cs" />
-    <Compile Include="Compiling\Steps\BuildIndexFile.cs" />
+    <Compile Include="Compiling\Steps\BuildIndexFileStep.cs" />
     <Compile Include="Compiling\Steps\BuildPageStep.cs" />
+    <Compile Include="Compiling\Steps\BuildSitemapStep.cs" />
     <Compile Include="Compiling\Steps\BuildStyleSheetsStep.cs" />
     <Compile Include="Compiling\Steps\CopyMediaStep.cs" />
     <Compile Include="Compiling\Steps\PrepareDirectoryStep.cs" />

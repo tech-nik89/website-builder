@@ -8,7 +8,7 @@ using WebsiteStudio.Core.Properties;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildIndexFile : ICompilerStep {
+	class BuildIndexFileStep : ICompilerStep {
 
 		private readonly Project _Project;
 
@@ -18,7 +18,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		public String Output { get; private set; }
 
-		public BuildIndexFile(Project project) {
+		public BuildIndexFileStep(Project project) {
 			_Project = project;
 			_Languages = _Project.Languages.Select(l => l.Id).ToArray();
 

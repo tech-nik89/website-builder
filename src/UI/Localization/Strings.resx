@@ -450,4 +450,16 @@
   <data name="ClearAll" xml:space="preserve">
     <value>Clear All</value>
   </data>
+  <data name="BaseURL" xml:space="preserve">
+    <value>Base URL</value>
+  </data>
+  <data name="CompilerErrors" xml:space="preserve">
+    <value>Error List</value>
+  </data>
+  <data name="SitemapGenerate" xml:space="preserve">
+    <value>Generate Sitemap</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
 </root>

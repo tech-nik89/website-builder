@@ -85,5 +85,9 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String Webserver = "webserver";
 
+		public const String BaseURL = "baseURL";
+
+		public const String Sitemap = "sitemap";
+
 	}
 }

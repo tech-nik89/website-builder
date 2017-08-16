@@ -9,7 +9,10 @@ namespace WebsiteStudio.Core.Compiling {
 
 		public CompilerProgressReport(int percentage, String message, String[] args) {
 			Percentage = percentage;
-			Message = String.Format(message, args);
+
+			if (!String.IsNullOrWhiteSpace(message)) {
+				Message = String.Format(message, args);
+			}
 		}
 	}
 	

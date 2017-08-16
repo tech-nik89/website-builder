@@ -133,6 +133,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Base URL.
+        /// </summary>
+        internal static string BaseURL {
+            get {
+                return ResourceManager.GetString("BaseURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Build.
         /// </summary>
         internal static string Build {
@@ -228,6 +237,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error List.
+        /// </summary>
+        internal static string CompilerErrors {
+            get {
+                return ResourceManager.GetString("CompilerErrors", resourceCulture);
             }
         }
         
@@ -592,6 +610,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The output directory has to be configured..
         /// </summary>
         internal static string MessageOutputPathRequired {
@@ -912,6 +939,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string SetStartPage {
             get {
                 return ResourceManager.GetString("SetStartPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate Sitemap.
+        /// </summary>
+        internal static string SitemapGenerate {
+            get {
+                return ResourceManager.GetString("SitemapGenerate", resourceCulture);
             }
         }
         

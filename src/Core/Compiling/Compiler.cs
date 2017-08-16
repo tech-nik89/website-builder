@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using WebsiteStudio.Core.Compiling.Steps;
 using WebsiteStudio.Core.Localization;
@@ -22,7 +23,7 @@ namespace WebsiteStudio.Core.Compiling {
 		
 		public bool Error { get; private set; }
 
-		public String ErrorMessage { get; private set; }
+		public IEnumerable<CompilerMessage> Messages => _Exceptions.Select(x => new CompilerMessage(x));
 		
 		private readonly List<String> _StyleSheetFiles;
 
@@ -31,6 +32,8 @@ namespace WebsiteStudio.Core.Compiling {
 		private readonly Dictionary<Type, int> _ModuleCompilerFlags;
 
 		internal IDictionary<Type, int> ModuleCompilerFlags => _ModuleCompilerFlags;
+
+		private readonly List<Exception> _Exceptions;
 		
 		public Compiler(Project project)
 			: this(project, new CompilerSettings()) {
@@ -43,6 +46,7 @@ namespace WebsiteStudio.Core.Compiling {
 			_Project = project;
 			_StyleSheetFiles = new List<String>();
 			_ModuleCompilerFlags = new Dictionary<Type, int>();
+			_Exceptions = new List<Exception>();
 			
 			DirectoryInfo outputDirectory = new DirectoryInfo(_Project.OutputPath);
 			DirectoryInfo metaDirectory = new DirectoryInfo(Path.Combine(_Project.OutputPath, MetaDirectoryName));
@@ -59,10 +63,11 @@ namespace WebsiteStudio.Core.Compiling {
 			_Steps.Add(new PrepareDirectoryStep(outputDirectory));
 			_Steps.Add(new PrepareDirectoryStep(metaDirectory));
 			_Steps.Add(new PrepareDirectoryStep(mediaDirectory));
-			_Steps.Add(new BuildIndexFile(_Project));
+			_Steps.Add(new BuildIndexFileStep(_Project));
 			_Steps.Add(new BuildStyleSheetsStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
 			_Steps.Add(new BuildFontsStep(_Project.Theme, metaDirectory));
 			_Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
+			_Steps.Add(new BuildSitemapStep(_Project, outputDirectory));
 			_Steps.Add(new CopyMediaStep(_Project.Media, mediaDirectory));
 
 			ReadOnlyCollection<String> styleSheetFiles = _StyleSheetFiles.AsReadOnly();
@@ -128,20 +133,26 @@ namespace WebsiteStudio.Core.Compiling {
 		public void Compile(IProgress<CompilerProgressReport> progress) {
 			progress?.Report(CreateProgressReport(0, 1, "------ Build started: {0} ------", _Project.ProjectFileName));
 
-			try {
-				int steps = _Steps.Count;
+			int steps = _Steps.Count;
 
-				for(int i = 0; i < steps; i++) {
-					var step = _Steps[i];
-					progress?.Report(CreateProgressReport(i, steps, step.Output));
+			for(int i = 0; i < steps; i++) {
+				var step = _Steps[i];
+				progress?.Report(CreateProgressReport(i, steps, step.Output));
+
+				try {
 					step.Run();
 				}
+				catch (Exception ex) {
+					Error = true;
+					_Exceptions.Add(ex);
+				}
+			}
 
+			if (!Error) {
 				progress?.Report(CreateProgressReport(1, 1, "========== Build succeeded =========="));
 			}
-			catch (Exception ex) {
-				Error = true;
-				ErrorMessage = ex.Message;
+			else {
+				progress?.Report(CreateProgressReport(1, 1, "========== Build failed =========="));
 			}
 		}
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -177,19 +178,16 @@ namespace WebsiteStudio.UI.Forms {
 				});
 
 				await compiler.CompileAsync(progress);
-
-				if (compiler.Error) {
-					CompilerErrorForm form = new CompilerErrorForm(compiler.ErrorMessage);
-					form.ShowDialog();
-				}
-
-				if (runAfterCompile) {
+				
+				_CompilerError.Messages = compiler.Messages.ToArray();
+				
+				if (runAfterCompile && !compiler.Error) {
 					OpenProjectInDefaultBrowser(CurrentProject);
 				}
 				
 				_CompilerRunning = false;
 				CompilerSetControls(true);
-				UpdateStatus(StatusText.BuildSucceeded);
+				UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);
 			}
 			catch (OutputPathMissingException) {
 				_CompilerRunning = false;

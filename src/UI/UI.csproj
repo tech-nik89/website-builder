@@ -66,6 +66,12 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="Controls\CompilerError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\CompilerError.Designer.cs">
+      <DependentUpon>CompilerError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CompilerOutput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,12 +95,6 @@
     </Compile>
     <Compile Include="Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CompilerErrorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CompilerErrorForm.Designer.cs">
-      <DependentUpon>CompilerErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FooterContentForm.cs">
       <SubType>Form</SubType>
@@ -218,6 +218,9 @@
     <Compile Include="Resources\StatusText.cs" />
     <Compile Include="Resources\ValidationHelper.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Controls\CompilerError.resx">
+      <DependentUpon>CompilerError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CompilerOutput.resx">
       <DependentUpon>CompilerOutput.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,9 +232,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CompilerErrorForm.resx">
-      <DependentUpon>CompilerErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FooterContentForm.resx">
       <DependentUpon>FooterContentForm.cs</DependentUpon>
