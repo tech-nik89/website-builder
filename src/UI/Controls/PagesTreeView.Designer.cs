@@ -150,6 +150,7 @@
 			this.lvwPages.UseCompatibleStateImageBehavior = false;
 			this.lvwPages.View = System.Windows.Forms.View.Details;
 			this.lvwPages.VirtualMode = true;
+			this.lvwPages.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvwPages_ItemDrag);
 			this.lvwPages.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvwPages_RetrieveVirtualItem);
 			this.lvwPages.SelectedIndexChanged += new System.EventHandler(this.lvwPages_SelectedIndexChanged);
 			this.lvwPages.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvwPages_DragDrop);

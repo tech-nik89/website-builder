@@ -40,21 +40,21 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		public Compiler(Project project, CompilerSettings settings) {
-			ValidateProject(project);
-
 			Error = false;
 			_Project = project;
 			_StyleSheetFiles = new List<String>();
 			_ModuleCompilerFlags = new Dictionary<Type, int>();
 			_Exceptions = new List<Exception>();
 			
+			ValidateProject(project);
+
+			if (Error) {
+				return;
+			}
+
 			DirectoryInfo outputDirectory = new DirectoryInfo(_Project.OutputPath);
 			DirectoryInfo metaDirectory = new DirectoryInfo(Path.Combine(_Project.OutputPath, MetaDirectoryName));
 			DirectoryInfo mediaDirectory = new DirectoryInfo(Path.Combine(_Project.OutputPath, MediaDirectoryName));
-
-			if (_Project.Theme == null) {
-				throw new FileNotFoundException(_Project.ThemePath);
-			}
 
 			_Project.ReloadTheme();
 			
@@ -67,8 +67,11 @@ namespace WebsiteStudio.Core.Compiling {
 			_Steps.Add(new BuildStyleSheetsStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
 			_Steps.Add(new BuildFontsStep(_Project.Theme, metaDirectory));
 			_Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
-			_Steps.Add(new BuildSitemapStep(_Project, outputDirectory));
 			_Steps.Add(new CopyMediaStep(_Project.Media, mediaDirectory));
+
+			if (_Project.GenerateSitemap) {
+				_Steps.Add(new BuildSitemapStep(_Project, outputDirectory));
+			}
 
 			ReadOnlyCollection<String> styleSheetFiles = _StyleSheetFiles.AsReadOnly();
 			foreach (Language language in _Project.Languages) {
@@ -102,7 +105,11 @@ namespace WebsiteStudio.Core.Compiling {
 
 		private void ValidateProject(Project project) {
 			if (String.IsNullOrWhiteSpace(project.OutputPath) || !Directory.Exists(project.OutputPath)) {
-				throw new Exception("Output directory not found.");
+				HandleException(new DirectoryNotFoundException("The output directory could not be found."));
+			}
+
+			if (project.Theme == null) {
+				HandleException(new FileNotFoundException("The theme file could not be found.", project.ThemePath));
 			}
 		}
 
@@ -131,6 +138,10 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		public void Compile(IProgress<CompilerProgressReport> progress) {
+			if (Error) {
+				return;
+			}
+
 			progress?.Report(CreateProgressReport(0, 1, "------ Build started: {0} ------", _Project.ProjectFileName));
 
 			int steps = _Steps.Count;
@@ -214,6 +225,11 @@ namespace WebsiteStudio.Core.Compiling {
 			DirectoryInfo info = new DirectoryInfo(path);
 			info.Create();
 			return info;
+		}
+
+		private void HandleException(Exception ex) {
+			Error = true;
+			_Exceptions.Add(ex);
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace WebsiteStudio.UI.Controls {
 			LocalizeComponent();
 			ApplyIcons();
 
-			DockAreas = DockAreas.DockBottom | DockAreas.DockTop;
+			DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.Float;
 			CloseButton = false;
 			CloseButtonVisible = false;
 		}

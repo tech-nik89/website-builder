@@ -32,6 +32,9 @@
 		Cut,
 		Copy,
 		Paste,
-		Clear
+		Clear,
+		Error,
+		Warning,
+		Info
 	}
 }

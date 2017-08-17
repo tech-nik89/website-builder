@@ -165,38 +165,36 @@ namespace WebsiteStudio.UI.Forms {
 			
 			UpdateStatus(StatusText.BuildStarted);
 			CompilerSetControls(false);
+			_CompilerError.Messages = new CompilerMessage[0];
 
-			try {
-				Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
-					PreviewPage = previewPage,
-					PreviewLanguage = previewLanguage
-				});
+			_CompilerOutput.Pane.Activate();
+			_CompilerOutput.Focus();
+			
+			Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
+				PreviewPage = previewPage,
+				PreviewLanguage = previewLanguage
+			});
 
-				Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
-					tspProgress.Value = report.Percentage;
-					_CompilerOutput?.Push(report);
-				});
+			Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
+				tspProgress.Value = report.Percentage;
+				_CompilerOutput?.Push(report);
+			});
 
-				await compiler.CompileAsync(progress);
+			await compiler.CompileAsync(progress);
 				
-				_CompilerError.Messages = compiler.Messages.ToArray();
+			_CompilerError.Messages = compiler.Messages.ToArray();
+
+			if (compiler.Error) {
+				_CompilerError.Pane.Activate();
+				_CompilerError.Focus();
+			}
+			else if (!compiler.Error && runAfterCompile) {
+				OpenProjectInDefaultBrowser(CurrentProject);
+			}
 				
-				if (runAfterCompile && !compiler.Error) {
-					OpenProjectInDefaultBrowser(CurrentProject);
-				}
-				
-				_CompilerRunning = false;
-				CompilerSetControls(true);
-				UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);
-			}
-			catch (OutputPathMissingException) {
-				_CompilerRunning = false;
-				HandleError(Strings.MessageOutputPathRequired);
-			}
-			catch (Exception e) {
-				_CompilerRunning = false;
-				HandleError(e);
-			}
+			_CompilerRunning = false;
+			CompilerSetControls(true);
+			UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);
 		}
 
 		private void CompilerSetControls(bool enabled) {
