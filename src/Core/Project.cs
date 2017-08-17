@@ -55,9 +55,7 @@ namespace WebsiteStudio.Core {
 			: String.Empty;
 
 		public FileInfo ProjectFile => new FileInfo(ProjectFilePath);
-
-		public DirectoryInfo ProjectContentDirectory => new DirectoryInfo(Path.Combine(ProjectFile.DirectoryName, ContentDirectoryName));
-
+		
 		public PageCollection Pages { get; private set; }
 
 		private Language[] _Languages;
@@ -192,8 +190,6 @@ namespace WebsiteStudio.Core {
 				writer.Write();
 				project.Dirty = false;
 			}
-
-			CleanUpOrphanedDataFiles(project);
 		}
 
 		public static Project Load(String path) {
@@ -205,28 +201,6 @@ namespace WebsiteStudio.Core {
 				}
 
 				return project;
-			}
-		}
-
-		private static void CleanUpOrphanedDataFiles(Project project) {
-			if (!project.ProjectContentDirectory.Exists) {
-				return;
-			}
-
-			Dictionary<String, FileInfo> existingFiles = project.ProjectContentDirectory
-				.GetFiles().ToDictionary(x => x.FullName, x => x);
-
-			foreach (Language language in project.Languages) {
-				foreach (Page page in project.AllPages) {
-					foreach (PageContent content in page.Content) {
-						FileInfo validFileInfo = content.GetFile(language);
-						existingFiles.Remove(validFileInfo.FullName);
-					}
-				}
-			}
-
-			foreach (var file in existingFiles) {
-				file.Value.Delete();
 			}
 		}
 	}

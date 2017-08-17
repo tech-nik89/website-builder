@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Tools;
@@ -15,6 +16,8 @@ namespace WebsiteStudio.Core.Pages {
 		
 		public Type ModuleType { get; set; }
 
+		private readonly Dictionary<String, String> _Data;
+
 		internal PageContent(Page page)
 			: this(Utilities.NewGuid(), page) {
 		}
@@ -22,34 +25,21 @@ namespace WebsiteStudio.Core.Pages {
 		internal PageContent(String id, Page page) {
 			Id = id;
 			Page = page;
+			_Data = new Dictionary<String, String>();
 		}
 		
-		private String GetFileName(Language language) {
-			return String.Format("{0}_{1}_{2}.wbd", Page.Id, Id, language.Id);
-		}
-
-		public FileInfo GetFile(Language language) {
-			String fileName = GetFileName(language);
-			String path = Path.Combine(Page.Project.ProjectContentDirectory.FullName, fileName);
-
-			FileInfo fileInfo = new FileInfo(path);
-			fileInfo.Directory.Create();
-			return fileInfo;
-		}
-
 		public String LoadData(Language language) {
-			FileInfo file = GetFile(language);
+			String data;
 
-			if (!file.Exists) {
-				return String.Empty;
+			if (_Data.TryGetValue(language.Id, out data)) {
+				return data;
 			}
 
-			return File.ReadAllText(file.FullName);
+			return String.Empty;
 		}
 
 		public void WriteData(Language language, String data) {
-			FileInfo file = GetFile(language);
-			File.WriteAllText(file.FullName, data);
+			_Data[language.Id] = data;
 		}
 	}
 }

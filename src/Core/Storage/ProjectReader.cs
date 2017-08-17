@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using WebsiteStudio.Core.Footer;
 using WebsiteStudio.Core.Localization;
@@ -19,6 +20,8 @@ namespace WebsiteStudio.Core.Storage {
 		private readonly Project _Project;
 
 		public Exception Exception { get; private set; }
+
+		private readonly Encoding _Encoding = Encoding.UTF8;
 
 		public ProjectReader(String path) {
 			_File = new FileInfo(path);
@@ -131,8 +134,21 @@ namespace WebsiteStudio.Core.Storage {
 				PageContent content = page.AddContent(index, id);
 				content.EditorType = PluginManager.GetEditor(item.Attribute(ProjectStorageConstants.Editor).Value);
 				content.ModuleType = PluginManager.GetModule(item.Attribute(ProjectStorageConstants.Module).Value);
+				GetContentData(item, content);
 
 				index++;
+			}
+		}
+
+		private void GetContentData(XElement item, PageContent data) {
+			foreach (XElement element in item.Elements(ProjectStorageConstants.Data)) {
+				Language language = _Project.Languages.FirstOrDefault(x => x.Id == element.Attribute(ProjectStorageConstants.Language)?.Value);
+				if(language == null) {
+					continue;
+				}
+
+				Byte[] buffer = Convert.FromBase64String(element.Value);
+				data.WriteData(language, _Encoding.GetString(buffer));
 			}
 		}
 

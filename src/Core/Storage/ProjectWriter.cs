@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using WebsiteStudio.Core.Footer;
 using WebsiteStudio.Core.Localization;
@@ -15,6 +16,8 @@ namespace WebsiteStudio.Core.Storage {
 		private readonly Project _Project;
 
 		private readonly FileInfo _File;
+
+		private readonly Encoding _Encoding = Encoding.UTF8;
 
 		public ProjectWriter(Project project, String path) {
 			_Project = project;
@@ -93,15 +96,25 @@ namespace WebsiteStudio.Core.Storage {
 				GetPages(page.Pages)
 			);
 		}
-
 		
-
 		private IEnumerable<XElement> GetContent(IReadOnlyList<PageContent> content) {
 			return content.Select(x => new XElement(ProjectStorageConstants.Section,
 				new XAttribute(ProjectStorageConstants.Id, x.Id),
 				new XAttribute(ProjectStorageConstants.Editor, x.EditorType?.FullName ?? String.Empty),
-				new XAttribute(ProjectStorageConstants.Module, x.ModuleType?.FullName ?? String.Empty)
+				new XAttribute(ProjectStorageConstants.Module, x.ModuleType?.FullName ?? String.Empty),
+				GetContentData(x)
 			));
+		}
+
+		private IEnumerable<XElement> GetContentData(PageContent data) {
+			foreach(Language language in _Project.Languages) {
+				Byte[] buffer = _Encoding.GetBytes(data.LoadData(language));
+
+				yield return new XElement(ProjectStorageConstants.Data,
+					new XAttribute(ProjectStorageConstants.Language, language.Id),
+					Convert.ToBase64String(buffer)
+				);
+			}
 		}
 
 		private IEnumerable<XElement> GetLocalizedStringArray(LocalizedStringArray str) {
