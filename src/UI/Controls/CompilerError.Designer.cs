@@ -31,6 +31,8 @@
 			this.tsbError = new System.Windows.Forms.ToolStripButton();
 			this.tsbWarning = new System.Windows.Forms.ToolStripButton();
 			this.tsbInfo = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -69,7 +71,9 @@
 			this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbError,
+            this.toolStripSeparator1,
             this.tsbWarning,
+            this.toolStripSeparator2,
             this.tsbInfo});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
@@ -103,6 +107,16 @@
 			this.tsbInfo.Text = "[Info]";
 			this.tsbInfo.Click += new System.EventHandler(this.tsbFilter_Click);
 			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
 			// CompilerError
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,5 +142,7 @@
 		private System.Windows.Forms.ToolStripButton tsbError;
 		private System.Windows.Forms.ToolStripButton tsbWarning;
 		private System.Windows.Forms.ToolStripButton tsbInfo;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 	}
 }

@@ -117,6 +117,16 @@ namespace WebsiteStudio.Core.Storage {
 			page.RobotsNoFollow = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.RobotsNoFollow)?.Value);
 			page.RobotsNoIndex = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.RobotsNoIndex)?.Value);
 
+			PageChangeFrequency changeFrequency;
+			if (Enum.TryParse(element.Attribute(ProjectStorageConstants.ChangeFrequency)?.Value, out changeFrequency)) {
+				page.ChangeFrequency = changeFrequency;
+			}
+
+			DateTime lastModified;
+			if (DateTime.TryParse(element.Attribute(ProjectStorageConstants.LastModified)?.Value, out lastModified)) {
+				page.LastModified = lastModified;
+			}
+
 			page.Pages.AddRange(GetPages(element.Element(ProjectStorageConstants.Pages)));
 			GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);
 			GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), page.MetaDescription);

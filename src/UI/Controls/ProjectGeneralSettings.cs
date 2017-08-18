@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Theming;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Plugins;
+using WebsiteStudio.UI.Resources;
 
 namespace WebsiteStudio.UI.Controls {
 	public partial class ProjectGeneralSettings : UserControl {
 		
 		private static String ThemeFileFilter => String.Format(Strings.ThemeFilesFilter, Theme.FileExtension);
-
+		
 		public ProjectGeneralSettings() {
 			InitializeComponent();
 			LocalizeComponent();
-
+			
 			cbxWebserver.FillWithWebserverPlugins(true);
 		}
 
@@ -26,8 +28,11 @@ namespace WebsiteStudio.UI.Controls {
 			lblBaseURL.Text = Strings.BaseURL + ":";
 			lblOutputPath.Text = Strings.Path + ":";
 			lblThemePath.Text = Strings.Path + ":";
-			chkUglyURLs.Text = Strings.UglyURLs;
-			chkGenerateSitemap.Text = Strings.SitemapGenerate;
+
+			lblUglyURLs.Text = Strings.UglyURLs + ":";
+			lblGenerateSitemap.Text = Strings.SitemapGenerate + ":";
+			chkUglyURLs.Text = Strings.Enable;
+			chkGenerateSitemap.Text = Strings.Enable;
 		}
 
 		public void FillFromProject(Project project) {
@@ -37,6 +42,7 @@ namespace WebsiteStudio.UI.Controls {
 			chkUglyURLs.Checked = project.UglyURLs;
 			chkGenerateSitemap.Checked = project.GenerateSitemap;
 			cbxWebserver.SelectWebserverPlugin(project.Webserver);
+			txtBaseURL_TextChanged(null, null);
 		}
 
 		public void FillProjectFrom(Project project) {
@@ -69,6 +75,11 @@ namespace WebsiteStudio.UI.Controls {
 			}
 
 			txtOutputPath.Text = fbdDirectory.SelectedPath;
+		}
+
+		private void txtBaseURL_TextChanged(object sender, EventArgs e) {
+			txtBaseURL.BackColor = Uri.IsWellFormedUriString(txtBaseURL.Text, UriKind.Absolute)
+				? CommonColors.ValidBackground : CommonColors.InvalidBackground;
 		}
 	}
 }

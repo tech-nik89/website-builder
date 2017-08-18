@@ -62,17 +62,6 @@
 			this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tscMain = new System.Windows.Forms.ToolStripContainer();
-			this.tsContent = new System.Windows.Forms.ToolStrip();
-			this.tsbContentAdd = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentEdit = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentDelete = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbContentUp = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentDown = new System.Windows.Forms.ToolStripButton();
-			this.tsPage = new System.Windows.Forms.ToolStrip();
-			this.tsbPageAdd = new System.Windows.Forms.ToolStripButton();
-			this.tsbPageEdit = new System.Windows.Forms.ToolStripButton();
-			this.tsbPageDelete = new System.Windows.Forms.ToolStripButton();
 			this.tsMain = new System.Windows.Forms.ToolStrip();
 			this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
 			this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
@@ -84,13 +73,24 @@
 			this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.tscLanguage = new System.Windows.Forms.ToolStripComboBox();
+			this.tsPage = new System.Windows.Forms.ToolStrip();
+			this.tsbPageAdd = new System.Windows.Forms.ToolStripButton();
+			this.tsbPageEdit = new System.Windows.Forms.ToolStripButton();
+			this.tsbPageDelete = new System.Windows.Forms.ToolStripButton();
+			this.tsContent = new System.Windows.Forms.ToolStrip();
+			this.tsbContentAdd = new System.Windows.Forms.ToolStripButton();
+			this.tsbContentEdit = new System.Windows.Forms.ToolStripButton();
+			this.tsbContentDelete = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbContentUp = new System.Windows.Forms.ToolStripButton();
+			this.tsbContentDown = new System.Windows.Forms.ToolStripButton();
 			this.mnuMain.SuspendLayout();
 			this.sstMain.SuspendLayout();
 			this.tscMain.TopToolStripPanel.SuspendLayout();
 			this.tscMain.SuspendLayout();
-			this.tsContent.SuspendLayout();
-			this.tsPage.SuspendLayout();
 			this.tsMain.SuspendLayout();
+			this.tsPage.SuspendLayout();
+			this.tsContent.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mnuMain
@@ -103,7 +103,7 @@
             this.mnuHelp});
 			this.mnuMain.Location = new System.Drawing.Point(0, 0);
 			this.mnuMain.Name = "mnuMain";
-			this.mnuMain.Size = new System.Drawing.Size(823, 24);
+			this.mnuMain.Size = new System.Drawing.Size(1044, 24);
 			this.mnuMain.TabIndex = 1;
 			this.mnuMain.Text = "menuStrip1";
 			// 
@@ -309,14 +309,14 @@
             this.tspProgress});
 			this.sstMain.Location = new System.Drawing.Point(0, 469);
 			this.sstMain.Name = "sstMain";
-			this.sstMain.Size = new System.Drawing.Size(823, 22);
+			this.sstMain.Size = new System.Drawing.Size(1044, 22);
 			this.sstMain.TabIndex = 2;
 			this.sstMain.Text = "statusStrip1";
 			// 
 			// tslStatus
 			// 
 			this.tslStatus.Name = "tslStatus";
-			this.tslStatus.Size = new System.Drawing.Size(667, 17);
+			this.tslStatus.Size = new System.Drawing.Size(878, 17);
 			this.tslStatus.Spring = true;
 			this.tslStatus.Text = "[...]";
 			this.tslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,115 +332,18 @@
 			// 
 			// tscMain.ContentPanel
 			// 
-			this.tscMain.ContentPanel.Size = new System.Drawing.Size(823, 420);
+			this.tscMain.ContentPanel.Size = new System.Drawing.Size(1044, 420);
 			this.tscMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tscMain.Location = new System.Drawing.Point(0, 24);
 			this.tscMain.Name = "tscMain";
-			this.tscMain.Size = new System.Drawing.Size(823, 445);
+			this.tscMain.Size = new System.Drawing.Size(1044, 445);
 			this.tscMain.TabIndex = 4;
 			// 
 			// tscMain.TopToolStripPanel
 			// 
-			this.tscMain.TopToolStripPanel.Controls.Add(this.tsContent);
-			this.tscMain.TopToolStripPanel.Controls.Add(this.tsPage);
 			this.tscMain.TopToolStripPanel.Controls.Add(this.tsMain);
-			// 
-			// tsContent
-			// 
-			this.tsContent.Dock = System.Windows.Forms.DockStyle.None;
-			this.tsContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbContentAdd,
-            this.tsbContentEdit,
-            this.tsbContentDelete,
-            this.toolStripSeparator9,
-            this.tsbContentUp,
-            this.tsbContentDown});
-			this.tsContent.Location = new System.Drawing.Point(486, 0);
-			this.tsContent.Name = "tsContent";
-			this.tsContent.Size = new System.Drawing.Size(314, 25);
-			this.tsContent.TabIndex = 6;
-			this.tsContent.Text = "toolStrip1";
-			// 
-			// tsbContentAdd
-			// 
-			this.tsbContentAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentAdd.Image")));
-			this.tsbContentAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentAdd.Name = "tsbContentAdd";
-			this.tsbContentAdd.Size = new System.Drawing.Size(57, 22);
-			this.tsbContentAdd.Text = "[Add]";
-			// 
-			// tsbContentEdit
-			// 
-			this.tsbContentEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentEdit.Image")));
-			this.tsbContentEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentEdit.Name = "tsbContentEdit";
-			this.tsbContentEdit.Size = new System.Drawing.Size(55, 22);
-			this.tsbContentEdit.Text = "[Edit]";
-			// 
-			// tsbContentDelete
-			// 
-			this.tsbContentDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDelete.Image")));
-			this.tsbContentDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentDelete.Name = "tsbContentDelete";
-			this.tsbContentDelete.Size = new System.Drawing.Size(68, 22);
-			this.tsbContentDelete.Text = "[Delete]";
-			// 
-			// toolStripSeparator9
-			// 
-			this.toolStripSeparator9.Name = "toolStripSeparator9";
-			this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
-			// 
-			// tsbContentUp
-			// 
-			this.tsbContentUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentUp.Image")));
-			this.tsbContentUp.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentUp.Name = "tsbContentUp";
-			this.tsbContentUp.Size = new System.Drawing.Size(50, 22);
-			this.tsbContentUp.Text = "[Up]";
-			// 
-			// tsbContentDown
-			// 
-			this.tsbContentDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDown.Image")));
-			this.tsbContentDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentDown.Name = "tsbContentDown";
-			this.tsbContentDown.Size = new System.Drawing.Size(66, 22);
-			this.tsbContentDown.Text = "[Down]";
-			// 
-			// tsPage
-			// 
-			this.tsPage.Dock = System.Windows.Forms.DockStyle.None;
-			this.tsPage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbPageAdd,
-            this.tsbPageEdit,
-            this.tsbPageDelete});
-			this.tsPage.Location = new System.Drawing.Point(294, 0);
-			this.tsPage.Name = "tsPage";
-			this.tsPage.Size = new System.Drawing.Size(192, 25);
-			this.tsPage.TabIndex = 5;
-			// 
-			// tsbPageAdd
-			// 
-			this.tsbPageAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageAdd.Image")));
-			this.tsbPageAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageAdd.Name = "tsbPageAdd";
-			this.tsbPageAdd.Size = new System.Drawing.Size(57, 22);
-			this.tsbPageAdd.Text = "[Add]";
-			// 
-			// tsbPageEdit
-			// 
-			this.tsbPageEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageEdit.Image")));
-			this.tsbPageEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageEdit.Name = "tsbPageEdit";
-			this.tsbPageEdit.Size = new System.Drawing.Size(55, 22);
-			this.tsbPageEdit.Text = "[Edit]";
-			// 
-			// tsbPageDelete
-			// 
-			this.tsbPageDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageDelete.Image")));
-			this.tsbPageDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageDelete.Name = "tsbPageDelete";
-			this.tsbPageDelete.Size = new System.Drawing.Size(68, 22);
-			this.tsbPageDelete.Text = "[Delete]";
+			this.tscMain.TopToolStripPanel.Controls.Add(this.tsPage);
+			this.tscMain.TopToolStripPanel.Controls.Add(this.tsContent);
 			// 
 			// tsMain
 			// 
@@ -456,11 +359,10 @@
             this.tsbBuildProject,
             this.toolStripSeparator7,
             this.tscLanguage});
-			this.tsMain.Location = new System.Drawing.Point(3, 0);
+			this.tsMain.Location = new System.Drawing.Point(7, 0);
 			this.tsMain.Name = "tsMain";
 			this.tsMain.Size = new System.Drawing.Size(291, 25);
 			this.tsMain.TabIndex = 4;
-			this.tsMain.Text = "toolStrip1";
 			// 
 			// tsbProjectNew
 			// 
@@ -515,7 +417,7 @@
 			this.tsbContentFooter.Name = "tsbContentFooter";
 			this.tsbContentFooter.Size = new System.Drawing.Size(23, 22);
 			this.tsbContentFooter.Text = "[Footer]";
-			this.tsbContentFooter.CheckStateChanged += new System.EventHandler(this.mnuContentFooter_Click);
+			this.tsbContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
 			// 
 			// toolStripSeparator5
 			// 
@@ -530,7 +432,7 @@
 			this.tsbBuildProject.Name = "tsbBuildProject";
 			this.tsbBuildProject.Size = new System.Drawing.Size(23, 22);
 			this.tsbBuildProject.Text = "toolStripButton1";
-			this.tsbBuildProject.CheckStateChanged += new System.EventHandler(this.mnuBuildAndRunProject_Click);
+			this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildAndRunProject_Click);
 			// 
 			// toolStripSeparator7
 			// 
@@ -544,11 +446,107 @@
 			this.tscLanguage.Size = new System.Drawing.Size(121, 25);
 			this.tscLanguage.SelectedIndexChanged += new System.EventHandler(this.tscLanguage_SelectedIndexChanged);
 			// 
+			// tsPage
+			// 
+			this.tsPage.Dock = System.Windows.Forms.DockStyle.None;
+			this.tsPage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbPageAdd,
+            this.tsbPageEdit,
+            this.tsbPageDelete});
+			this.tsPage.Location = new System.Drawing.Point(298, 0);
+			this.tsPage.Name = "tsPage";
+			this.tsPage.Size = new System.Drawing.Size(192, 25);
+			this.tsPage.TabIndex = 5;
+			// 
+			// tsbPageAdd
+			// 
+			this.tsbPageAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageAdd.Image")));
+			this.tsbPageAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbPageAdd.Name = "tsbPageAdd";
+			this.tsbPageAdd.Size = new System.Drawing.Size(57, 22);
+			this.tsbPageAdd.Text = "[Add]";
+			// 
+			// tsbPageEdit
+			// 
+			this.tsbPageEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageEdit.Image")));
+			this.tsbPageEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbPageEdit.Name = "tsbPageEdit";
+			this.tsbPageEdit.Size = new System.Drawing.Size(55, 22);
+			this.tsbPageEdit.Text = "[Edit]";
+			// 
+			// tsbPageDelete
+			// 
+			this.tsbPageDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageDelete.Image")));
+			this.tsbPageDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbPageDelete.Name = "tsbPageDelete";
+			this.tsbPageDelete.Size = new System.Drawing.Size(68, 22);
+			this.tsbPageDelete.Text = "[Delete]";
+			// 
+			// tsContent
+			// 
+			this.tsContent.Dock = System.Windows.Forms.DockStyle.None;
+			this.tsContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbContentAdd,
+            this.tsbContentEdit,
+            this.tsbContentDelete,
+            this.toolStripSeparator9,
+            this.tsbContentUp,
+            this.tsbContentDown});
+			this.tsContent.Location = new System.Drawing.Point(490, 0);
+			this.tsContent.Name = "tsContent";
+			this.tsContent.Size = new System.Drawing.Size(345, 25);
+			this.tsContent.TabIndex = 6;
+			// 
+			// tsbContentAdd
+			// 
+			this.tsbContentAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentAdd.Image")));
+			this.tsbContentAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbContentAdd.Name = "tsbContentAdd";
+			this.tsbContentAdd.Size = new System.Drawing.Size(57, 22);
+			this.tsbContentAdd.Text = "[Add]";
+			// 
+			// tsbContentEdit
+			// 
+			this.tsbContentEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentEdit.Image")));
+			this.tsbContentEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbContentEdit.Name = "tsbContentEdit";
+			this.tsbContentEdit.Size = new System.Drawing.Size(55, 22);
+			this.tsbContentEdit.Text = "[Edit]";
+			// 
+			// tsbContentDelete
+			// 
+			this.tsbContentDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDelete.Image")));
+			this.tsbContentDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbContentDelete.Name = "tsbContentDelete";
+			this.tsbContentDelete.Size = new System.Drawing.Size(68, 22);
+			this.tsbContentDelete.Text = "[Delete]";
+			// 
+			// toolStripSeparator9
+			// 
+			this.toolStripSeparator9.Name = "toolStripSeparator9";
+			this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tsbContentUp
+			// 
+			this.tsbContentUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentUp.Image")));
+			this.tsbContentUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbContentUp.Name = "tsbContentUp";
+			this.tsbContentUp.Size = new System.Drawing.Size(50, 22);
+			this.tsbContentUp.Text = "[Up]";
+			// 
+			// tsbContentDown
+			// 
+			this.tsbContentDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDown.Image")));
+			this.tsbContentDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbContentDown.Name = "tsbContentDown";
+			this.tsbContentDown.Size = new System.Drawing.Size(66, 22);
+			this.tsbContentDown.Text = "[Down]";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(823, 491);
+			this.ClientSize = new System.Drawing.Size(1044, 491);
 			this.Controls.Add(this.tscMain);
 			this.Controls.Add(this.sstMain);
 			this.Controls.Add(this.mnuMain);
@@ -569,12 +567,12 @@
 			this.tscMain.TopToolStripPanel.PerformLayout();
 			this.tscMain.ResumeLayout(false);
 			this.tscMain.PerformLayout();
-			this.tsContent.ResumeLayout(false);
-			this.tsContent.PerformLayout();
-			this.tsPage.ResumeLayout(false);
-			this.tsPage.PerformLayout();
 			this.tsMain.ResumeLayout(false);
 			this.tsMain.PerformLayout();
+			this.tsPage.ResumeLayout(false);
+			this.tsPage.PerformLayout();
+			this.tsContent.ResumeLayout(false);
+			this.tsContent.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

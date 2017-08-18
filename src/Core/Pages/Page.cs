@@ -12,6 +12,10 @@ namespace WebsiteStudio.Core.Pages {
 		public PageCollection Pages { get; private set; }
 		
 		public Project Project { get; internal set; }
+
+		public PageChangeFrequency ChangeFrequency { get; set; }
+
+		public DateTime LastModified { get; set; }
 		
 		public IPage Parent { get; internal set; }
 

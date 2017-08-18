@@ -46,6 +46,7 @@
             this.clnContentEditor});
 			this.lvwContent.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lvwContent.FullRowSelect = true;
+			this.lvwContent.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.lvwContent.HideSelection = false;
 			this.lvwContent.Location = new System.Drawing.Point(0, 0);
 			this.lvwContent.MultiSelect = false;

@@ -121,6 +121,7 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			_Content.WriteData(_Language, _Control.Data);
+			_Content.Page.LastModified = DateTime.Now;
 		}
 
 		private void PageContentForm_Shown(object sender, System.EventArgs e) {

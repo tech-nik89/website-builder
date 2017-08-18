@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Resources;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Localization;
@@ -13,6 +14,10 @@ namespace WebsiteStudio.UI.Forms {
 
 		public Page Page { get; private set; }
 
+		private readonly PageChangeFrequency[] _ChangeFrequencies;
+
+		private readonly ResourceSet _ResourceSet;
+
 		public PagePropertiesForm(Project project)
 			: this(project.CreatePage()) {
 		}
@@ -22,7 +27,13 @@ namespace WebsiteStudio.UI.Forms {
 			LocalizeComponent();
 			ApplyIcons();
 
+			_ResourceSet = new ResourceManager("WebsiteStudio.UI.Localization.Strings", GetType().Assembly)
+				.GetResourceSet(System.Threading.Thread.CurrentThread.CurrentCulture, true, true);
+			_ChangeFrequencies = (PageChangeFrequency[])Enum.GetValues(typeof(PageChangeFrequency));
+			
 			Page = page;
+
+			FillChangeFrequency();
 			FillForm();
 		}
 
@@ -34,8 +45,17 @@ namespace WebsiteStudio.UI.Forms {
 			Icon = IconPack.Current.GetIcon(IconPackIcon.Edit);
 		}
 
+		private void FillChangeFrequency() {
+			foreach(PageChangeFrequency changeFrequency in _ChangeFrequencies) {
+				String item = _ResourceSet.GetString(changeFrequency.ToString());
+				cbxChangeFrequency.Items.Add(item);
+			}
+		}
+
 		private void LocalizeComponent() {
 			Text = Strings.PageProperties;
+
+			gbxGeneral.Text = Strings.General;
 
 			btnAccept.Text = Strings.Accept;
 			btnCancel.Text = Strings.Cancel;
@@ -52,9 +72,13 @@ namespace WebsiteStudio.UI.Forms {
 			
 			lblPathName.Text = Strings.PathName + ":";
 			lblRobotsDescription.Text = Strings.RobotsDescription;
-			
-			chkIncludeInMenu.Text = Strings.IncludeInMenu;
-			chkDisable.Text = Strings.Disable;
+			lblChangeFrequency.Text = Strings.ChangeFrequency + ":";
+
+			lblIncludeInMenu.Text = Strings.IncludeInMenu + ":";
+			lblDisable.Text = Strings.Disable + ":";
+
+			chkIncludeInMenu.Text = Strings.Enable;
+			chkDisable.Text = Strings.Yes;
 			chkRobotsNoFollow.Text = Strings.RobotsNoFollow;
 			chkRobotsNoIndex.Text = Strings.RobotsNoIndex;
 		}
@@ -68,6 +92,8 @@ namespace WebsiteStudio.UI.Forms {
 			chkDisable.Checked = Page.Disable;
 			chkRobotsNoFollow.Checked = Page.RobotsNoFollow;
 			chkRobotsNoIndex.Checked = Page.RobotsNoIndex;
+
+			cbxChangeFrequency.SelectedIndex = Array.IndexOf(_ChangeFrequencies, Page.ChangeFrequency);
 		}
 
 		private void FillTitleList() {
@@ -115,6 +141,7 @@ namespace WebsiteStudio.UI.Forms {
 			page.Disable = chkDisable.Checked;
 			page.RobotsNoFollow = chkRobotsNoFollow.Checked;
 			page.RobotsNoIndex = chkRobotsNoIndex.Checked;
+			page.ChangeFrequency = _ChangeFrequencies[cbxChangeFrequency.SelectedIndex];
 
 			for (int i = 0; i < page.Project.Languages.Length; i++) {
 				page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);

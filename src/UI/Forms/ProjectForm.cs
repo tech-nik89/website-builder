@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Compiling;
-using WebsiteStudio.Core.Exceptions;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
@@ -15,7 +14,6 @@ using WebsiteStudio.Core.Publishing;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
-using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteStudio.UI.Forms {
 	public partial class MainForm {
@@ -168,7 +166,7 @@ namespace WebsiteStudio.UI.Forms {
 			_CompilerError.Messages = new CompilerMessage[0];
 
 			_CompilerOutput.Pane.Activate();
-			_CompilerOutput.Focus();
+			_CompilerOutput.Activate();
 			
 			Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
 				PreviewPage = previewPage,

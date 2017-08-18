@@ -89,6 +89,8 @@ namespace WebsiteStudio.Core.Storage {
 				new XAttribute(ProjectStorageConstants.Disable, page.Disable),
 				new XAttribute(ProjectStorageConstants.RobotsNoIndex, page.RobotsNoIndex),
 				new XAttribute(ProjectStorageConstants.RobotsNoFollow, page.RobotsNoFollow),
+				new XAttribute(ProjectStorageConstants.ChangeFrequency, page.ChangeFrequency.ToString()),
+				new XAttribute(ProjectStorageConstants.LastModified, page.LastModified.ToString("yyyy-MM-dd")),
 				new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
 				new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(page.MetaDescription)),
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(page.MetaKeywords)),

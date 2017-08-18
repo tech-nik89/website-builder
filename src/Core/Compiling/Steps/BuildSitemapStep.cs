@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using WebsiteStudio.Core.Pages;
 
@@ -39,40 +35,22 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 				XElement xUrl = new XElement("url");
 				xRoot.Add(xUrl);
+
 				xUrl.Add(new XElement("loc", CreateUrl(page)));
+				xUrl.Add(new XElement("changefreq", page.ChangeFrequency.ToString().ToLower()));
+
+				if (page.LastModified != null && page.LastModified != DateTime.MinValue) {
+					xUrl.Add(new XElement("lastmod", page.LastModified.ToString("yyyy-MM-dd")));
+				}
 			}
 			
 			xSitemap.Save(_OutputPath);
 		}
 
 		private String CreateUrl(Page page) {
-			StringBuilder urlBuilder = new StringBuilder();
-
-			if (!_Project.BaseURL.StartsWith("http://") && !_Project.BaseURL.StartsWith("https://")) {
-				urlBuilder.Append("http://");
-			}
-
-			urlBuilder.Append(_Project.BaseURL);
-
-			if (!EndsWith(urlBuilder, "/")) {
-				urlBuilder.Append("/");
-			}
-
-			urlBuilder.Append(Compiler.CreateUrl(page));
-			
-			if (!_Project.UglyURLs && !EndsWith(urlBuilder, "/")) {
-				urlBuilder.Append("/");
-			}
-
-			return urlBuilder.ToString();
-		}
-
-		private static bool EndsWith(StringBuilder builder, String value) {
-			if (builder.Length < value.Length)
-				return false;
-
-			String endsWidth = builder.ToString(builder.Length - value.Length, value.Length);
-			return endsWidth.Equals(value);
+			UriBuilder builder = new UriBuilder(_Project.BaseURL);
+			builder.Path = Compiler.CreateUrl(page);
+			return builder.Uri.ToString();
 		}
 	}
 }

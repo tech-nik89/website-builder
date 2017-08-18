@@ -63,6 +63,10 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String RobotsNoFollow = "robotsNoFollow";
 
+		public const String ChangeFrequency = "changeFrequency";
+
+		public const String LastModified = "lastModified";
+
 		public const String Footer = "footer";
 
 		public const String Link = "link";

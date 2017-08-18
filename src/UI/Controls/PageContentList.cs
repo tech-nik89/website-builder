@@ -100,6 +100,10 @@ namespace WebsiteStudio.UI.Controls {
 				return;
 			}
 
+			if (MessageBox.Show(Strings.ContentDeleteConfirmMessage, Strings.ContentDelete, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) {
+				return;
+			}
+
 			SelectedPage?.RemoveContent(lvwContent.SelectedIndices[0]);
 			RefreshContentList();
 			FireContentUpdated();

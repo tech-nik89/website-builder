@@ -44,6 +44,8 @@
 			this.gbxGeneral = new System.Windows.Forms.GroupBox();
 			this.txtBaseURL = new System.Windows.Forms.TextBox();
 			this.lblBaseURL = new System.Windows.Forms.Label();
+			this.lblUglyURLs = new System.Windows.Forms.Label();
+			this.lblGenerateSitemap = new System.Windows.Forms.Label();
 			this.gbxOutput.SuspendLayout();
 			this.gbxTheme.SuspendLayout();
 			this.gbxWebserver.SuspendLayout();
@@ -98,9 +100,9 @@
 			this.chkUglyURLs.AutoSize = true;
 			this.chkUglyURLs.Location = new System.Drawing.Point(131, 49);
 			this.chkUglyURLs.Name = "chkUglyURLs";
-			this.chkUglyURLs.Size = new System.Drawing.Size(83, 17);
+			this.chkUglyURLs.Size = new System.Drawing.Size(65, 17);
 			this.chkUglyURLs.TabIndex = 3;
-			this.chkUglyURLs.Text = "[Ugly URLs]";
+			this.chkUglyURLs.Text = "[Enable]";
 			this.chkUglyURLs.UseVisualStyleBackColor = true;
 			// 
 			// gbxTheme
@@ -174,15 +176,17 @@
 			this.chkGenerateSitemap.AutoSize = true;
 			this.chkGenerateSitemap.Location = new System.Drawing.Point(131, 72);
 			this.chkGenerateSitemap.Name = "chkGenerateSitemap";
-			this.chkGenerateSitemap.Size = new System.Drawing.Size(114, 17);
+			this.chkGenerateSitemap.Size = new System.Drawing.Size(65, 17);
 			this.chkGenerateSitemap.TabIndex = 4;
-			this.chkGenerateSitemap.Text = "[GenerateSitemap]";
+			this.chkGenerateSitemap.Text = "[Enable]";
 			this.chkGenerateSitemap.UseVisualStyleBackColor = true;
 			// 
 			// gbxGeneral
 			// 
 			this.gbxGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxGeneral.Controls.Add(this.lblGenerateSitemap);
+			this.gbxGeneral.Controls.Add(this.lblUglyURLs);
 			this.gbxGeneral.Controls.Add(this.chkGenerateSitemap);
 			this.gbxGeneral.Controls.Add(this.txtBaseURL);
 			this.gbxGeneral.Controls.Add(this.chkUglyURLs);
@@ -202,6 +206,7 @@
 			this.txtBaseURL.Name = "txtBaseURL";
 			this.txtBaseURL.Size = new System.Drawing.Size(440, 20);
 			this.txtBaseURL.TabIndex = 2;
+			this.txtBaseURL.TextChanged += new System.EventHandler(this.txtBaseURL_TextChanged);
 			// 
 			// lblBaseURL
 			// 
@@ -211,6 +216,24 @@
 			this.lblBaseURL.Size = new System.Drawing.Size(62, 13);
 			this.lblBaseURL.TabIndex = 0;
 			this.lblBaseURL.Text = "[BaseURL:]";
+			// 
+			// lblUglyURLs
+			// 
+			this.lblUglyURLs.AutoSize = true;
+			this.lblUglyURLs.Location = new System.Drawing.Point(18, 50);
+			this.lblUglyURLs.Name = "lblUglyURLs";
+			this.lblUglyURLs.Size = new System.Drawing.Size(64, 13);
+			this.lblUglyURLs.TabIndex = 5;
+			this.lblUglyURLs.Text = "[UglyURLs:]";
+			// 
+			// lblGenerateSitemap
+			// 
+			this.lblGenerateSitemap.AutoSize = true;
+			this.lblGenerateSitemap.Location = new System.Drawing.Point(18, 73);
+			this.lblGenerateSitemap.Name = "lblGenerateSitemap";
+			this.lblGenerateSitemap.Size = new System.Drawing.Size(98, 13);
+			this.lblGenerateSitemap.TabIndex = 6;
+			this.lblGenerateSitemap.Text = "[GenerateSitemap:]";
 			// 
 			// ProjectGeneralSettings
 			// 
@@ -252,5 +275,7 @@
 		private System.Windows.Forms.GroupBox gbxGeneral;
 		private System.Windows.Forms.TextBox txtBaseURL;
 		private System.Windows.Forms.Label lblBaseURL;
+		private System.Windows.Forms.Label lblGenerateSitemap;
+		private System.Windows.Forms.Label lblUglyURLs;
 	}
 }
