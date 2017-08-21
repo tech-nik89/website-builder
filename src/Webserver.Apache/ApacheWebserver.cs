@@ -16,30 +16,46 @@ namespace WebsiteStudio.Webserver.Apache {
 
 		private readonly IPluginHelper _PluginHelper;
 
+		private readonly StringBuilder _File;
+
+		private readonly String _Path;
+
 		public ApacheWebserver(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
+			if (!_PluginHelper.OutputDirectory.Exists) {
+				throw new DirectoryNotFoundException(String.Format("The output directory {0} could not be found.", _PluginHelper.OutputDirectory.FullName));
+			}
+
+			_Path = Path.Combine(_PluginHelper.OutputDirectory.FullName, HtAccessFileName);
+			_File = new StringBuilder();
 		}
 
-		public void CreateLanguageRedirect(String[] languages, String outputDirectoryPath, String startPageUrl) {
-			StringBuilder file = new StringBuilder();
-
-			file.AppendLine(RewriteEngineOn);
+		public void CreateLanguageRedirect(String[] languages, String startPageUrl) {
+			_File.AppendLine(RewriteEngineOn);
 
 			foreach (String language in languages) {
-				file.AppendFormat(RewriteCondFormat, language);
-				file.AppendLine();
-				file.AppendFormat(RewriteRuleFormat, language, startPageUrl ?? String.Empty);
-				file.AppendLine();
+				_File.AppendFormat(RewriteCondFormat, language);
+				_File.AppendLine();
+				_File.AppendFormat(RewriteRuleFormat, language, startPageUrl ?? String.Empty);
+				_File.AppendLine();
 			}
 
 			if (languages.Length > 0) {
 				// the default language fallback
-				file.AppendFormat(RewriteRuleFormat, languages[0], startPageUrl ?? String.Empty);
+				_File.AppendFormat(RewriteRuleFormat, languages[0], startPageUrl ?? String.Empty);
+				_File.AppendLine();
 			}
-
-			String path = Path.Combine(outputDirectoryPath, HtAccessFileName);
-			File.WriteAllText(path, file.ToString());
 		}
 
+		public void CreateSSLRedirect() {
+			_File.AppendLine(@"RewriteCond %{HTTPS} off");
+			_File.AppendLine(@"RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]");
+			_File.AppendLine(@"RewriteCond %{HTTP_HOST} !^www\. [NC]");
+			_File.AppendLine(@"RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]");
+		}
+
+		public void Complete() {
+			File.WriteAllText(_Path, _File.ToString());
+		}
 	}
 }

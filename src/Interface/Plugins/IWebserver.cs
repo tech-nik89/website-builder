@@ -3,7 +3,11 @@
 namespace WebsiteStudio.Interface.Plugins {
 	public interface IWebserver {
 
-		void CreateLanguageRedirect(String[] languages, String outputDirectoryPath, String startPageUrl);
+		void CreateLanguageRedirect(String[] languages, String startPageUrl);
+
+		void CreateSSLRedirect();
+
+		void Complete();
 
 	}
 }

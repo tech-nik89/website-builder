@@ -213,6 +213,7 @@ namespace WebsiteStudio.Core.Storage {
 			_Project.Webserver = PluginManager.GetWebserver(element.Element(ProjectStorageConstants.Webserver)?.Value);
 			_Project.BaseURL = element.Element(ProjectStorageConstants.BaseURL)?.Value ?? String.Empty;
 			_Project.GenerateSitemap = Convert.ToBoolean(element.Element(ProjectStorageConstants.Sitemap)?.Value);
+			_Project.SSLRedirect = Convert.ToBoolean(element.Element(ProjectStorageConstants.SSLRedirect)?.Value);
 
 			GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), _Project.MetaDescription);
 			GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), _Project.MetaKeywords);

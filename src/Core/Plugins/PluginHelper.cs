@@ -14,9 +14,10 @@ namespace WebsiteStudio.Core.Plugins {
 		private readonly Project _Project;
 
 		private readonly Func<String> _GetLink;
+
+		public DirectoryInfo OutputDirectory => new DirectoryInfo(_Project.OutputPath);
 		
 		internal PluginHelper() {
-			;
 		}
 
 		public PluginHelper(Project project, Type editorType, IIconPack iconPack)

@@ -28,11 +28,13 @@ namespace WebsiteStudio.UI.Controls {
 			lblBaseURL.Text = Strings.BaseURL + ":";
 			lblOutputPath.Text = Strings.Path + ":";
 			lblThemePath.Text = Strings.Path + ":";
+			lblSSLRedirect.Text = Strings.SSLRedirect + ":";
 
 			lblUglyURLs.Text = Strings.UglyURLs + ":";
 			lblGenerateSitemap.Text = Strings.SitemapGenerate + ":";
 			chkUglyURLs.Text = Strings.Enable;
 			chkGenerateSitemap.Text = Strings.Enable;
+			chkSSLRedirect.Text = Strings.Enable;
 		}
 
 		public void FillFromProject(Project project) {
@@ -41,6 +43,7 @@ namespace WebsiteStudio.UI.Controls {
 			txtThemePath.Text = project.ThemePath;
 			chkUglyURLs.Checked = project.UglyURLs;
 			chkGenerateSitemap.Checked = project.GenerateSitemap;
+			chkSSLRedirect.Checked = project.SSLRedirect;
 			cbxWebserver.SelectWebserverPlugin(project.Webserver);
 			txtBaseURL_TextChanged(null, null);
 		}
@@ -51,6 +54,7 @@ namespace WebsiteStudio.UI.Controls {
 			project.ThemePath = txtThemePath.Text;
 			project.UglyURLs = chkUglyURLs.Checked;
 			project.GenerateSitemap = chkGenerateSitemap.Checked;
+			project.SSLRedirect = chkSSLRedirect.Checked;
 			project.Webserver = cbxWebserver.GetWebserverPlugin();
 		}
 

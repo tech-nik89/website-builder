@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using WebsiteStudio.Core.Compiling.Steps;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling {
 	public class Compiler {
@@ -34,6 +36,8 @@ namespace WebsiteStudio.Core.Compiling {
 		internal IDictionary<Type, int> ModuleCompilerFlags => _ModuleCompilerFlags;
 
 		private readonly List<Exception> _Exceptions;
+
+		private readonly IWebserver _Webserver;
 		
 		public Compiler(Project project)
 			: this(project, new CompilerSettings()) {
@@ -47,7 +51,7 @@ namespace WebsiteStudio.Core.Compiling {
 			_Exceptions = new List<Exception>();
 			
 			ValidateProject(project);
-
+			
 			if (Error) {
 				return;
 			}
@@ -63,7 +67,6 @@ namespace WebsiteStudio.Core.Compiling {
 			_Steps.Add(new PrepareDirectoryStep(outputDirectory));
 			_Steps.Add(new PrepareDirectoryStep(metaDirectory));
 			_Steps.Add(new PrepareDirectoryStep(mediaDirectory));
-			_Steps.Add(new BuildIndexFileStep(_Project));
 			_Steps.Add(new BuildStyleSheetsStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
 			_Steps.Add(new BuildFontsStep(_Project.Theme, metaDirectory));
 			_Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
@@ -86,6 +89,10 @@ namespace WebsiteStudio.Core.Compiling {
 
 					_Steps.Add(new BuildPageStep(language, page, _Project.Theme, outputDirectory, styleSheetFiles));
 				}
+			}
+
+			if (_Project.Webserver != null) {
+				_Steps.Add(new WebserverStep(_Project));
 			}
 		}
 

@@ -77,6 +77,7 @@
     <Compile Include="Compiling\Steps\BuildSitemapStep.cs" />
     <Compile Include="Compiling\Steps\BuildStyleSheetsStep.cs" />
     <Compile Include="Compiling\Steps\CopyMediaStep.cs" />
+    <Compile Include="Compiling\Steps\WebserverStep.cs" />
     <Compile Include="Compiling\Steps\PrepareDirectoryStep.cs" />
     <Compile Include="Exceptions\BadFileExtensionException.cs" />
     <Compile Include="Exceptions\OutputPathMissingException.cs" />

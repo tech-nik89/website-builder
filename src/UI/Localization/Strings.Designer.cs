@@ -1033,6 +1033,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SSL Redirect.
+        /// </summary>
+        internal static string SSLRedirect {
+            get {
+                return ResourceManager.GetString("SSLRedirect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Target.
         /// </summary>
         internal static string Target {

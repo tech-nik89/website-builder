@@ -137,6 +137,7 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(_Project.MetaKeywords)),
 				new XElement(ProjectStorageConstants.Webserver, _Project.Webserver?.FullName ?? String.Empty),
 				new XElement(ProjectStorageConstants.BaseURL, _Project.BaseURL),
+				new XElement(ProjectStorageConstants.SSLRedirect, _Project.SSLRedirect),
 				new XElement(ProjectStorageConstants.Sitemap, _Project.GenerateSitemap)
 			);
 		}

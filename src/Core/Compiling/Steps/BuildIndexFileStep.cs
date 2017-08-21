@@ -17,7 +17,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		private readonly String[] _Languages;
 
 		public String Output { get; private set; }
-
+		
 		public BuildIndexFileStep(Project project) {
 			_Project = project;
 			_Languages = _Project.Languages.Select(l => l.Id).ToArray();
@@ -28,7 +28,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		public void Run() {
 			BuildIndexHtmlFile();
-			BuildWebserverLanguageRedirect();
+			BuildJavaScriptLanguageRedirect();
 		}
 
 		private void BuildIndexHtmlFile() {
@@ -52,18 +52,8 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			file.Compile(_Path);
 		}
 
-		private void BuildWebserverLanguageRedirect() {
-			if (_Project.Webserver == null) {
-				return;
-			}
-			
-			IWebserver webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
-			if (webserver == null) {
-				return;
-			}
-
+		private void BuildJavaScriptLanguageRedirect() {
 			String startPage = _Project.StartPage != null ? Compiler.CreateUrl(_Project.StartPage) : null;
-			webserver.CreateLanguageRedirect(_Languages, _Project.OutputPath, startPage);
 		}
 	}
 }
