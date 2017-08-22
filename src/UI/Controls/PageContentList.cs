@@ -14,7 +14,7 @@ namespace WebsiteStudio.UI.Controls {
 		[Browsable(true)]
 		public event EventHandler ContentUpdated;
 
-		public readonly Action EnableContentControls;
+		private readonly Action EnableContentControls;
 
 		public Page SelectedPage { get; private set; }
 

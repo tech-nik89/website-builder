@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Tools;
 
@@ -39,6 +38,7 @@ namespace WebsiteStudio.Core.Pages {
 		}
 
 		public void WriteData(Language language, String data) {
+			Page.Project.Dirty = !_Data.ContainsKey(language.Id) || !_Data[language.Id].Equals(data);
 			_Data[language.Id] = data;
 		}
 	}

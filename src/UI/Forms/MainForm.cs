@@ -57,6 +57,7 @@ namespace WebsiteStudio.UI.Forms {
 			tsbContentDown.Click += (sender, e) => { _Content.MoveContentDown(); };
 
 			_Pages.BuildPageRequested += mnuBuildPage_Click;
+			_Content.ContentUpdated += ptvwPages_ContentUpdated;
 
 			tslStatus.Text = StatusText.Ready;
 			CurrentProject = new Project();
