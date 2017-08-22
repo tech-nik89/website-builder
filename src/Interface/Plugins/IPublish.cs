@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace WebsiteStudio.Interface.Plugins {
@@ -11,6 +12,8 @@ namespace WebsiteStudio.Interface.Plugins {
 		Task RunAsync(String outputPath, String data);
 
 		Task RunAsync(String outputPath, String data, IProgress<String> progress);
+
+		IEnumerable<Exception> Errors { get; }
 
 	}
 }

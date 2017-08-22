@@ -70,7 +70,7 @@ namespace WebsiteStudio.Publish.FTP {
 		private static bool ExistsAndIsEqual(FileInfo localFile, IEnumerable<FtpListItem> remoteFiles) {
 			foreach (FtpListItem remote in remoteFiles) {
 				if (remote.Name == localFile.Name) {
-					return remote.Size == localFile.Length;
+					return localFile.LastWriteTime <= remote.Modified;
 				}
 			}
 

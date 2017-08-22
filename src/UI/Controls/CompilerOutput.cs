@@ -29,10 +29,14 @@ namespace WebsiteStudio.UI.Controls {
 		}
 
 		public void Push(CompilerProgressReport report) {
+			Push(report.Message);
+		}
+
+		public void Push(String message) {
 			StringBuilder line = new StringBuilder();
 
 			line.Append("1> ");
-			line.Append(report.Message);
+			line.Append(message);
 			line.AppendLine();
 
 			txtOutput.AppendText(line.ToString());

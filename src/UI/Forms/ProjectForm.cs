@@ -328,12 +328,14 @@ namespace WebsiteStudio.UI.Forms {
 			try {
 				Progress<String> progress = new Progress<String>((report) => {
 					UpdateStatus(report);
+					_CompilerOutput?.Push(report);
 				});
 
 				IPublish publisher = PluginManager.LoadPublisher(item.Type, CurrentProject);
 				await publisher.RunAsync(CurrentProject.OutputPath, item.Data, progress);
 
 				UpdateStatus(StatusText.PublishingSucceeded);
+				_CompilerError.Messages = publisher.Errors.Select(x => new CompilerMessage(x)).ToArray();
 			}
 			finally {
 				mnuBuildPublish.Enabled = true;

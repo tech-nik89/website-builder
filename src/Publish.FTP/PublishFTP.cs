@@ -1,5 +1,6 @@
 ﻿using FluentFTP;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,8 +16,13 @@ namespace WebsiteStudio.Publish.FTP {
 
 		private const String RemotePathSeparator = "/";
 
+		private readonly List<Exception> _Exceptions;
+
+		public IEnumerable<Exception> Errors => _Exceptions.AsReadOnly();
+
 		public PublishFTP(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
+			_Exceptions = new List<Exception>();
 		}
 
 		public IUserInterface GetUserInterface() {
@@ -59,8 +65,8 @@ namespace WebsiteStudio.Publish.FTP {
 					}
 				}
 			}
-			catch {
-
+			catch (Exception ex) {
+				_Exceptions.Add(ex);
 			}
 		}
 
