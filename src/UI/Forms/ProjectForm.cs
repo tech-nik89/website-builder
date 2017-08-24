@@ -272,22 +272,22 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		private void RefreshLanguageList() {
-			int previousIndex = tscLanguage.SelectedIndex;
-			tscLanguage.Items.Clear();
+			int previousIndex = _LanguageComboBox.SelectedIndex;
+			_LanguageComboBox.Items.Clear();
 
 			if (CurrentProject == null) {
 				return;
 			}
 
 			foreach(Language language in CurrentProject.Languages) {
-				tscLanguage.Items.Add(language.Description);
+				_LanguageComboBox.Items.Add(language.Description);
 			}
 
-			if (previousIndex > 0 && previousIndex < tscLanguage.Items.Count) {
-				tscLanguage.SelectedIndex = previousIndex;
+			if (previousIndex > 0 && previousIndex < _LanguageComboBox.Items.Count) {
+				_LanguageComboBox.SelectedIndex = previousIndex;
 			}
-			else if (tscLanguage.Items.Count > 0 ){
-				tscLanguage.SelectedIndex = 0;
+			else if (_LanguageComboBox.Items.Count > 0 ){
+				_LanguageComboBox.SelectedIndex = 0;
 			}
 		}
 

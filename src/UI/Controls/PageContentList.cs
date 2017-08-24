@@ -4,8 +4,10 @@ using System.Windows.Forms;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Forms;
 using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteStudio.UI.Controls {
@@ -13,9 +15,7 @@ namespace WebsiteStudio.UI.Controls {
 
 		[Browsable(true)]
 		public event EventHandler ContentUpdated;
-
-		private readonly Action EnableContentControls;
-
+		
 		public Page SelectedPage { get; private set; }
 
 		public Language SelectedLanguage { get; set; }
@@ -24,21 +24,65 @@ namespace WebsiteStudio.UI.Controls {
 		public bool CanMoveUp => ContentSelected && lvwContent.SelectedIndices[0] > 0;
 		public bool CanMoveDown => ContentSelected && lvwContent.SelectedIndices[0] < (SelectedPage?.ContentCount - 1);
 
-		public PageContentList(Action enableContentControls) {
+		private ToolStripButton _AddButton;
+		private ToolStripButton _EditButton;
+		private ToolStripButton _DeleteButton;
+		private ToolStripButton _MoveUpButton;
+		private ToolStripButton _MoveDownButton;
+
+		private readonly ToolStrip _Toolbar;
+
+		public ToolStrip Toolbar => _Toolbar;
+
+		public PagesTreeView Pages { get; set; }
+
+		public PageContentList() {
 			InitializeComponent();
 			LocalizeComponent();
+			
+			_Toolbar = CreateToolbar();
 
 			Text = Strings.Content;
 			DockAreas = DockAreas.Document;
 			CloseButton = false;
 			CloseButtonVisible = false;
-
-			EnableContentControls = enableContentControls;
 		}
 
 		private void LocalizeComponent() {
 			clnContentType.Text = Strings.Type;
 			clnContentEditor.Text = Strings.Editor;
+		}
+
+		private ToolStrip CreateToolbar() {
+			ToolStrip bar = new ToolStrip();
+
+			if (IconPack.Current == null) {
+				return bar;
+			}
+
+			_AddButton = new ToolStripButton(Strings.ContentAdd, IconPack.Current.GetImage(IconPackIcon.Add));
+			_AddButton.Click += (sender, e) => { Add(); };
+			bar.Items.Add(_AddButton);
+
+			_EditButton = new ToolStripButton(Strings.ContentEdit, IconPack.Current.GetImage(IconPackIcon.Edit));
+			_EditButton.Click += (sender, e) => { Edit(); };
+			bar.Items.Add(_EditButton);
+
+			_DeleteButton = new ToolStripButton(Strings.ContentDelete, IconPack.Current.GetImage(IconPackIcon.Delete));
+			_DeleteButton.Click += (sender, e) => { Delete(); };
+			bar.Items.Add(_DeleteButton);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			_MoveUpButton = new ToolStripButton(Strings.Up, IconPack.Current.GetImage(IconPackIcon.OrderUp));
+			_MoveUpButton.Click += (sender, e) => { MoveContentUp(); };
+			bar.Items.Add(_MoveUpButton);
+
+			_MoveDownButton = new ToolStripButton(Strings.Down, IconPack.Current.GetImage(IconPackIcon.OrderDown));
+			_MoveDownButton.Click += (sender, e) => { MoveContentDown(); };
+			bar.Items.Add(_MoveDownButton);
+
+			return bar;
 		}
 
 		private void FireContentUpdated() {
@@ -84,7 +128,7 @@ namespace WebsiteStudio.UI.Controls {
 			e.Item = new ListViewItem(columns);
 		}
 
-		public void Add() {
+		private void Add() {
 			Page page = SelectedPage;
 			if (page == null) {
 				return;
@@ -94,8 +138,8 @@ namespace WebsiteStudio.UI.Controls {
 			RefreshContentList();
 			Edit(page, content);
 		}
-		
-		public void Delete() {
+
+		private void Delete() {
 			if (lvwContent.SelectedIndices.Count == 0) {
 				return;
 			}
@@ -113,7 +157,7 @@ namespace WebsiteStudio.UI.Controls {
 			Edit();
 		}
 
-		public void Edit() {
+		private void Edit() {
 			if (lvwContent.SelectedIndices.Count == 0) {
 				return;
 			}
@@ -142,8 +186,8 @@ namespace WebsiteStudio.UI.Controls {
 		private void lvwContent_SelectedIndexChanged(object sender, EventArgs e) {
 			EnableContentControls();
 		}
-		
-		public void MoveContentUp() {
+
+		private void MoveContentUp() {
 			if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] <= 0) {
 				return;
 			}
@@ -154,7 +198,7 @@ namespace WebsiteStudio.UI.Controls {
 			FireContentUpdated();
 		}
 
-		public void MoveContentDown() {
+		private void MoveContentDown() {
 			if (SelectedPage == null || lvwContent.SelectedIndices.Count == 0 || lvwContent.SelectedIndices[0] >= SelectedPage?.ContentCount - 1) {
 				return;
 			}
@@ -163,6 +207,14 @@ namespace WebsiteStudio.UI.Controls {
 			RefreshContentList(newIndex);
 			EnableContentControls();
 			FireContentUpdated();
+		}
+
+		public void EnableContentControls() {
+			_AddButton.Enabled = Pages?.SelectedPage != null;
+			_EditButton.Enabled = ContentSelected;
+			_DeleteButton.Enabled = ContentSelected;
+			_MoveUpButton.Enabled = CanMoveUp;
+			_MoveDownButton.Enabled = CanMoveDown;
 		}
 	}
 }

@@ -19,13 +19,22 @@ namespace WebsiteStudio.UI.Forms {
 		private readonly CompilerOutput _CompilerOutput;
 		private readonly CompilerError _CompilerError;
 
+		private readonly ToolStripComboBox _LanguageComboBox;
+
+		private readonly ToolStrip _ProjectToolbar;
+		
 		public MainForm() {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
-			
-			_Content = new PageContentList(EnableContentControls);
-			_Pages = new PagesTreeView(EnableContentControls, EnableTreeControls, _Content.RefreshContent);
+
+			_LanguageComboBox = new ToolStripComboBox();
+			_ProjectToolbar = CreateProjectToolbar();
+
+			_Content = new PageContentList();
+			_Pages = new PagesTreeView(_Content.EnableContentControls, _Content.RefreshContent);
+			_Content.Pages = _Pages;
+
 			_CompilerOutput = new CompilerOutput();
 			_CompilerError = new CompilerError();
 
@@ -44,20 +53,13 @@ namespace WebsiteStudio.UI.Forms {
 			_ProductName = GetProductName();
 			ofdProject.Filter = _ProjectFilesFilter;
 			sfdProject.Filter = _ProjectFilesFilter;
-
-			tscLanguage.SelectedIndexChanged += (sender, e) => { _Pages.RedrawTree(); };
-			tsbPageAdd.Click += (sender, e) => { _Pages.Add(); };
-			tsbPageEdit.Click += (sender, e) => { _Pages.Edit(); };
-			tsbPageDelete.Click += (sender, e) => { _Pages.Delete(); };
-
-			tsbContentAdd.Click += (sender, e) => { _Content.Add(); };
-			tsbContentEdit.Click += (sender, e) => { _Content.Edit(); };
-			tsbContentDelete.Click += (sender, e) => { _Content.Delete(); };
-			tsbContentUp.Click += (sender, e) => { _Content.MoveContentUp(); };
-			tsbContentDown.Click += (sender, e) => { _Content.MoveContentDown(); };
-
+			
 			_Pages.BuildPageRequested += mnuBuildPage_Click;
 			_Content.ContentUpdated += ptvwPages_ContentUpdated;
+
+			tscMain.TopToolStripPanel.Controls.Add(_Content.Toolbar);
+			tscMain.TopToolStripPanel.Controls.Add(_Pages.Toolbar);
+			tscMain.TopToolStripPanel.Controls.Add(_ProjectToolbar);
 
 			tslStatus.Text = StatusText.Ready;
 			CurrentProject = new Project();
@@ -84,27 +86,6 @@ namespace WebsiteStudio.UI.Forms {
 			mnuToolsPlugins.Image = IconPack.Current.GetImage(IconPackIcon.Plugin);
 
 			mnuHelpAbout.Image = IconPack.Current.GetImage(IconPackIcon.About);
-
-			// Toolstrip
-			tsbProjectNew.Image = IconPack.Current.GetImage(IconPackIcon.New);
-			tsbProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
-			tsbProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
-
-			tsbContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);
-			tsbContentFooter.Image = IconPack.Current.GetImage(IconPackIcon.Footer);
-
-			tsbBuildProject.Image = IconPack.Current.GetImage(IconPackIcon.Build);
-
-			tsbPageAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
-			tsbPageEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
-			tsbPageDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-
-			tsbContentAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
-			tsbContentEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
-			tsbContentDelete.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
-
-			tsbContentUp.Image = IconPack.Current.GetImage(IconPackIcon.OrderUp);
-			tsbContentDown.Image = IconPack.Current.GetImage(IconPackIcon.OrderDown);
 		}
 
 		private void LocalizeComponent() {
@@ -134,27 +115,40 @@ namespace WebsiteStudio.UI.Forms {
 			mnuToolsPlugins.Text = Strings.Plugins;
 
 			mnuHelpAbout.Text = Strings.About;
+		}
 
-			// Toolstrip
-			tsbProjectNew.Text = Strings.New;
-			tsbProjectOpen.Text = Strings.Open;
-			tsbProjectSave.Text = Strings.Save;
+		private ToolStrip CreateProjectToolbar() {
+			ToolStrip bar = new ToolStrip();
 
-			tsbContentMedia.Text = Strings.Media;
-			tsbContentFooter.Text = Strings.Footer;
+			if (IconPack.Current == null) {
+				return bar;
+			}
 
-			tsbBuildProject.Text = Strings.Build;
+			ToolStripButton btnNew = new ToolStripButton(Strings.New, IconPack.Current.GetImage(IconPackIcon.New)) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			btnNew.Click += mnuProjectNew_Click;
+			bar.Items.Add(btnNew);
 
-			tsbPageAdd.Text = Strings.PageAdd;
-			tsbPageEdit.Text = Strings.PageEdit;
-			tsbPageDelete.Text = Strings.PageDelete;
+			ToolStripButton btnOpen = new ToolStripButton(Strings.Open, IconPack.Current.GetImage(IconPackIcon.Open)) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			btnOpen.Click += mnuProjectOpen_Click;
+			bar.Items.Add(btnOpen);
 
-			tsbContentAdd.Text = Strings.ContentAdd;
-			tsbContentEdit.Text = Strings.ContentEdit;
-			tsbContentDelete.Text = Strings.ContentDelete;
+			ToolStripButton btnSave = new ToolStripButton(Strings.Save, IconPack.Current.GetImage(IconPackIcon.Save)) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			btnSave.Click += mnuProjectSave_Click;
+			bar.Items.Add(btnSave);
+			
+			bar.Items.Add(new ToolStripSeparator());
 
-			tsbContentUp.Text = Strings.Up;
-			tsbContentDown.Text = Strings.Down;
+			ToolStripButton btnBuild = new ToolStripButton(Strings.Build, IconPack.Current.GetImage(IconPackIcon.Build)) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			btnBuild.Click += mnuBuildProject_Click;
+			bar.Items.Add(btnBuild);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			_LanguageComboBox.SelectedIndexChanged += tscLanguage_SelectedIndexChanged;
+			_LanguageComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			bar.Items.Add(_LanguageComboBox);
+
+			return bar;
 		}
 
 		private void mnuProjectExit_Click(object sender, EventArgs e) {
@@ -258,32 +252,20 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		private void tscLanguage_SelectedIndexChanged(object sender, EventArgs e) {
-			if (CurrentProject == null || tscLanguage.SelectedIndex >= CurrentProject.Languages.Length) {
+			if (CurrentProject == null || _LanguageComboBox.SelectedIndex >= CurrentProject.Languages.Length) {
 				return;
 			}
 
 			_Pages.SelectedLanguage 
 				= _Content.SelectedLanguage 
-				= CurrentProject.Languages[tscLanguage.SelectedIndex];
+				= CurrentProject.Languages[_LanguageComboBox.SelectedIndex];
+
+			_Pages.RedrawTree();
 		}
 
 		private void mnuToolsPlugins_Click(object sender, EventArgs e) {
 			PluginsForm form = new PluginsForm();
 			form.ShowDialog();
-		}
-
-		private void EnableContentControls() {
-			tsbContentAdd.Enabled = _Pages?.SelectedPage != null;
-			tsbContentEdit.Enabled = _Content.ContentSelected;
-			tsbContentDelete.Enabled = _Content.ContentSelected;
-			tsbContentUp.Enabled = _Content.CanMoveUp;
-			tsbContentDown.Enabled = _Content.CanMoveDown;
-		}
-
-		private void EnableTreeControls() {
-			tsbPageEdit.Enabled 
-				= tsbPageDelete.Enabled 
-				= _Pages?.SelectedPage != null;
 		}
 	}
 }

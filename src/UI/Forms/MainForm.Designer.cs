@@ -62,35 +62,9 @@
 			this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tscMain = new System.Windows.Forms.ToolStripContainer();
-			this.tsMain = new System.Windows.Forms.ToolStrip();
-			this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
-			this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
-			this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbContentMedia = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentFooter = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbBuildProject = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-			this.tscLanguage = new System.Windows.Forms.ToolStripComboBox();
-			this.tsPage = new System.Windows.Forms.ToolStrip();
-			this.tsbPageAdd = new System.Windows.Forms.ToolStripButton();
-			this.tsbPageEdit = new System.Windows.Forms.ToolStripButton();
-			this.tsbPageDelete = new System.Windows.Forms.ToolStripButton();
-			this.tsContent = new System.Windows.Forms.ToolStrip();
-			this.tsbContentAdd = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentEdit = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentDelete = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbContentUp = new System.Windows.Forms.ToolStripButton();
-			this.tsbContentDown = new System.Windows.Forms.ToolStripButton();
 			this.mnuMain.SuspendLayout();
 			this.sstMain.SuspendLayout();
-			this.tscMain.TopToolStripPanel.SuspendLayout();
 			this.tscMain.SuspendLayout();
-			this.tsMain.SuspendLayout();
-			this.tsPage.SuspendLayout();
-			this.tsContent.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mnuMain
@@ -277,7 +251,7 @@
 			this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsPlugins});
 			this.mnuTools.Name = "mnuTools";
-			this.mnuTools.Size = new System.Drawing.Size(56, 20);
+			this.mnuTools.Size = new System.Drawing.Size(55, 20);
 			this.mnuTools.Text = "[Tools]";
 			// 
 			// mnuToolsPlugins
@@ -339,209 +313,6 @@
 			this.tscMain.Size = new System.Drawing.Size(1044, 445);
 			this.tscMain.TabIndex = 4;
 			// 
-			// tscMain.TopToolStripPanel
-			// 
-			this.tscMain.TopToolStripPanel.Controls.Add(this.tsMain);
-			this.tscMain.TopToolStripPanel.Controls.Add(this.tsPage);
-			this.tscMain.TopToolStripPanel.Controls.Add(this.tsContent);
-			// 
-			// tsMain
-			// 
-			this.tsMain.Dock = System.Windows.Forms.DockStyle.None;
-			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbProjectNew,
-            this.tsbProjectOpen,
-            this.tsbProjectSave,
-            this.toolStripSeparator4,
-            this.tsbContentMedia,
-            this.tsbContentFooter,
-            this.toolStripSeparator5,
-            this.tsbBuildProject,
-            this.toolStripSeparator7,
-            this.tscLanguage});
-			this.tsMain.Location = new System.Drawing.Point(7, 0);
-			this.tsMain.Name = "tsMain";
-			this.tsMain.Size = new System.Drawing.Size(291, 25);
-			this.tsMain.TabIndex = 4;
-			// 
-			// tsbProjectNew
-			// 
-			this.tsbProjectNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbProjectNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectNew.Image")));
-			this.tsbProjectNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbProjectNew.Name = "tsbProjectNew";
-			this.tsbProjectNew.Size = new System.Drawing.Size(23, 22);
-			this.tsbProjectNew.Text = "[New]";
-			this.tsbProjectNew.Click += new System.EventHandler(this.mnuProjectNew_Click);
-			// 
-			// tsbProjectOpen
-			// 
-			this.tsbProjectOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbProjectOpen.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectOpen.Image")));
-			this.tsbProjectOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbProjectOpen.Name = "tsbProjectOpen";
-			this.tsbProjectOpen.Size = new System.Drawing.Size(23, 22);
-			this.tsbProjectOpen.Text = "[Open]";
-			this.tsbProjectOpen.Click += new System.EventHandler(this.mnuProjectOpen_Click);
-			// 
-			// tsbProjectSave
-			// 
-			this.tsbProjectSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbProjectSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbProjectSave.Image")));
-			this.tsbProjectSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbProjectSave.Name = "tsbProjectSave";
-			this.tsbProjectSave.Size = new System.Drawing.Size(23, 22);
-			this.tsbProjectSave.Text = "[Save]";
-			this.tsbProjectSave.Click += new System.EventHandler(this.mnuProjectSave_Click);
-			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-			// 
-			// tsbContentMedia
-			// 
-			this.tsbContentMedia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbContentMedia.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentMedia.Image")));
-			this.tsbContentMedia.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentMedia.Name = "tsbContentMedia";
-			this.tsbContentMedia.Size = new System.Drawing.Size(23, 22);
-			this.tsbContentMedia.Text = "[Media]";
-			this.tsbContentMedia.Click += new System.EventHandler(this.mnuContentMedia_Click);
-			// 
-			// tsbContentFooter
-			// 
-			this.tsbContentFooter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbContentFooter.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentFooter.Image")));
-			this.tsbContentFooter.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentFooter.Name = "tsbContentFooter";
-			this.tsbContentFooter.Size = new System.Drawing.Size(23, 22);
-			this.tsbContentFooter.Text = "[Footer]";
-			this.tsbContentFooter.Click += new System.EventHandler(this.mnuContentFooter_Click);
-			// 
-			// toolStripSeparator5
-			// 
-			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-			// 
-			// tsbBuildProject
-			// 
-			this.tsbBuildProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbBuildProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuildProject.Image")));
-			this.tsbBuildProject.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbBuildProject.Name = "tsbBuildProject";
-			this.tsbBuildProject.Size = new System.Drawing.Size(23, 22);
-			this.tsbBuildProject.Text = "toolStripButton1";
-			this.tsbBuildProject.Click += new System.EventHandler(this.mnuBuildAndRunProject_Click);
-			// 
-			// toolStripSeparator7
-			// 
-			this.toolStripSeparator7.Name = "toolStripSeparator7";
-			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-			// 
-			// tscLanguage
-			// 
-			this.tscLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.tscLanguage.Name = "tscLanguage";
-			this.tscLanguage.Size = new System.Drawing.Size(121, 25);
-			this.tscLanguage.SelectedIndexChanged += new System.EventHandler(this.tscLanguage_SelectedIndexChanged);
-			// 
-			// tsPage
-			// 
-			this.tsPage.Dock = System.Windows.Forms.DockStyle.None;
-			this.tsPage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbPageAdd,
-            this.tsbPageEdit,
-            this.tsbPageDelete});
-			this.tsPage.Location = new System.Drawing.Point(298, 0);
-			this.tsPage.Name = "tsPage";
-			this.tsPage.Size = new System.Drawing.Size(192, 25);
-			this.tsPage.TabIndex = 5;
-			// 
-			// tsbPageAdd
-			// 
-			this.tsbPageAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageAdd.Image")));
-			this.tsbPageAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageAdd.Name = "tsbPageAdd";
-			this.tsbPageAdd.Size = new System.Drawing.Size(57, 22);
-			this.tsbPageAdd.Text = "[Add]";
-			// 
-			// tsbPageEdit
-			// 
-			this.tsbPageEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageEdit.Image")));
-			this.tsbPageEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageEdit.Name = "tsbPageEdit";
-			this.tsbPageEdit.Size = new System.Drawing.Size(55, 22);
-			this.tsbPageEdit.Text = "[Edit]";
-			// 
-			// tsbPageDelete
-			// 
-			this.tsbPageDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbPageDelete.Image")));
-			this.tsbPageDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPageDelete.Name = "tsbPageDelete";
-			this.tsbPageDelete.Size = new System.Drawing.Size(68, 22);
-			this.tsbPageDelete.Text = "[Delete]";
-			// 
-			// tsContent
-			// 
-			this.tsContent.Dock = System.Windows.Forms.DockStyle.None;
-			this.tsContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbContentAdd,
-            this.tsbContentEdit,
-            this.tsbContentDelete,
-            this.toolStripSeparator9,
-            this.tsbContentUp,
-            this.tsbContentDown});
-			this.tsContent.Location = new System.Drawing.Point(490, 0);
-			this.tsContent.Name = "tsContent";
-			this.tsContent.Size = new System.Drawing.Size(345, 25);
-			this.tsContent.TabIndex = 6;
-			// 
-			// tsbContentAdd
-			// 
-			this.tsbContentAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentAdd.Image")));
-			this.tsbContentAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentAdd.Name = "tsbContentAdd";
-			this.tsbContentAdd.Size = new System.Drawing.Size(57, 22);
-			this.tsbContentAdd.Text = "[Add]";
-			// 
-			// tsbContentEdit
-			// 
-			this.tsbContentEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentEdit.Image")));
-			this.tsbContentEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentEdit.Name = "tsbContentEdit";
-			this.tsbContentEdit.Size = new System.Drawing.Size(55, 22);
-			this.tsbContentEdit.Text = "[Edit]";
-			// 
-			// tsbContentDelete
-			// 
-			this.tsbContentDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDelete.Image")));
-			this.tsbContentDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentDelete.Name = "tsbContentDelete";
-			this.tsbContentDelete.Size = new System.Drawing.Size(68, 22);
-			this.tsbContentDelete.Text = "[Delete]";
-			// 
-			// toolStripSeparator9
-			// 
-			this.toolStripSeparator9.Name = "toolStripSeparator9";
-			this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
-			// 
-			// tsbContentUp
-			// 
-			this.tsbContentUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentUp.Image")));
-			this.tsbContentUp.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentUp.Name = "tsbContentUp";
-			this.tsbContentUp.Size = new System.Drawing.Size(50, 22);
-			this.tsbContentUp.Text = "[Up]";
-			// 
-			// tsbContentDown
-			// 
-			this.tsbContentDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbContentDown.Image")));
-			this.tsbContentDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbContentDown.Name = "tsbContentDown";
-			this.tsbContentDown.Size = new System.Drawing.Size(66, 22);
-			this.tsbContentDown.Text = "[Down]";
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,16 +334,8 @@
 			this.mnuMain.PerformLayout();
 			this.sstMain.ResumeLayout(false);
 			this.sstMain.PerformLayout();
-			this.tscMain.TopToolStripPanel.ResumeLayout(false);
-			this.tscMain.TopToolStripPanel.PerformLayout();
 			this.tscMain.ResumeLayout(false);
 			this.tscMain.PerformLayout();
-			this.tsMain.ResumeLayout(false);
-			this.tsMain.PerformLayout();
-			this.tsPage.ResumeLayout(false);
-			this.tsPage.PerformLayout();
-			this.tsContent.ResumeLayout(false);
-			this.tsContent.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -612,28 +375,6 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuTools;
 		private System.Windows.Forms.ToolStripMenuItem mnuToolsPlugins;
 		private System.Windows.Forms.ToolStripContainer tscMain;
-		private System.Windows.Forms.ToolStrip tsMain;
-		private System.Windows.Forms.ToolStripButton tsbProjectNew;
-		private System.Windows.Forms.ToolStripButton tsbProjectOpen;
-		private System.Windows.Forms.ToolStripButton tsbProjectSave;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-		private System.Windows.Forms.ToolStripButton tsbContentMedia;
-		private System.Windows.Forms.ToolStripButton tsbContentFooter;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.ToolStripButton tsbBuildProject;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-		private System.Windows.Forms.ToolStripComboBox tscLanguage;
-		private System.Windows.Forms.ToolStrip tsPage;
-		private System.Windows.Forms.ToolStripButton tsbPageAdd;
-		private System.Windows.Forms.ToolStripButton tsbPageEdit;
-		private System.Windows.Forms.ToolStripButton tsbPageDelete;
-		private System.Windows.Forms.ToolStrip tsContent;
-		private System.Windows.Forms.ToolStripButton tsbContentAdd;
-		private System.Windows.Forms.ToolStripButton tsbContentEdit;
-		private System.Windows.Forms.ToolStripButton tsbContentDelete;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-		private System.Windows.Forms.ToolStripButton tsbContentUp;
-		private System.Windows.Forms.ToolStripButton tsbContentDown;
 	}
 }
 

@@ -28,14 +28,20 @@ namespace WebsiteStudio.UI.Controls {
 		private readonly Action<Page> RefreshContent;
 
 		public readonly Action EnableContentControls;
-
-		public readonly Action EnableTreeControlsExternal;
 		
 		public event EventHandler TreeChanged;
 		
 		public event EventHandler<BuildPageEventArgs> BuildPageRequested;
 
 		public Page SelectedPage => SelectedItem?.Page;
+
+		private ToolStripButton _AddButton;
+		private ToolStripButton _EditButton;
+		private ToolStripButton _DeleteButton;
+
+		private readonly ToolStrip _Toolbar;
+
+		public ToolStrip Toolbar => _Toolbar;
 
 		public Project Project {
 			get {
@@ -64,13 +70,13 @@ namespace WebsiteStudio.UI.Controls {
 
 		private DragDropInfo _DropInfo;
 
-		public PagesTreeView(Action enableContentControls, Action enableTreeControlsExternal, Action<Page> refreshContent) {
+		public PagesTreeView(Action enableContentControls, Action<Page> refreshContent) {
 			InitializeComponent();
 			LocalizeComponent();
+			_Toolbar = CreateToolbar();
 
 			EnableContentControls = enableContentControls;
 			RefreshContent = refreshContent;
-			EnableTreeControlsExternal = enableTreeControlsExternal;
 
 			ApplyIcons();
 			EnableTreeControls();
@@ -92,6 +98,28 @@ namespace WebsiteStudio.UI.Controls {
 			DockAreas = DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom;
 			CloseButton = false;
 			CloseButtonVisible = false;
+		}
+
+		private ToolStrip CreateToolbar() {
+			ToolStrip bar = new ToolStrip();
+
+			if (IconPack.Current == null) {
+				return bar;
+			}
+
+			_AddButton = new ToolStripButton(Strings.PageAdd, IconPack.Current.GetImage(IconPackIcon.Add));
+			_AddButton.Click += (sender, e) => { Add(); };
+			bar.Items.Add(_AddButton);
+
+			_EditButton = new ToolStripButton(Strings.PageEdit, IconPack.Current.GetImage(IconPackIcon.Edit));
+			_EditButton.Click += (sender, e) => { Edit(); };
+			bar.Items.Add(_EditButton);
+
+			_DeleteButton = new ToolStripButton(Strings.PageDelete, IconPack.Current.GetImage(IconPackIcon.Delete));
+			_DeleteButton.Click += (sender, e) => { Delete(); };
+			bar.Items.Add(_DeleteButton);
+
+			return bar;
 		}
 
 		private static int ResolveImageIndex(Page page) {
@@ -191,7 +219,7 @@ namespace WebsiteStudio.UI.Controls {
 			return builder.ToString();
 		}
 
-		public void Add() {
+		private void Add() {
 			PagePropertiesForm form = new PagePropertiesForm(_Project);
 			DialogResult result = form.ShowDialog();
 
@@ -220,7 +248,7 @@ namespace WebsiteStudio.UI.Controls {
 			Edit();
 		}
 
-		public void Edit() {
+		private void Edit() {
 			TreeItem item = SelectedItem;
 			if (item == null) {
 				return;
@@ -234,7 +262,7 @@ namespace WebsiteStudio.UI.Controls {
 			}
 		}
 
-		public void Delete() {
+		private void Delete() {
 			TreeItem item = SelectedItem;
 			if (item == null) {
 				return;
@@ -258,7 +286,9 @@ namespace WebsiteStudio.UI.Controls {
 		private void EnableTreeControls() {
 			bool canEdit = lvwPages.SelectedIndices.Count > 0;
 
-			EnableTreeControlsExternal();
+			_EditButton.Enabled
+				= _DeleteButton.Enabled
+				= SelectedPage != null;
 
 			cmbEdit.Enabled = canEdit;
 			cmbDelete.Enabled = canEdit;
