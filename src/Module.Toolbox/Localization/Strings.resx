@@ -141,6 +141,12 @@
   <data name="Item" xml:space="preserve">
     <value>Item</value>
   </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
   </data>

@@ -41,6 +41,8 @@
 			this.lvwPlugins.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lvwPlugins.FullRowSelect = true;
 			this.lvwPlugins.GridLines = true;
+			this.lvwPlugins.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.lvwPlugins.HideSelection = false;
 			this.lvwPlugins.Location = new System.Drawing.Point(0, 25);
 			this.lvwPlugins.Name = "lvwPlugins";
 			this.lvwPlugins.Size = new System.Drawing.Size(557, 365);
@@ -77,8 +79,8 @@
 			// tslDoubleClickForDetails
 			// 
 			this.tslDoubleClickForDetails.Name = "tslDoubleClickForDetails";
-			this.tslDoubleClickForDetails.Size = new System.Drawing.Size(86, 22);
-			this.tslDoubleClickForDetails.Text = "toolStripLabel1";
+			this.tslDoubleClickForDetails.Size = new System.Drawing.Size(38, 22);
+			this.tslDoubleClickForDetails.Text = "[Hint]";
 			// 
 			// PluginsForm
 			// 

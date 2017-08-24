@@ -327,7 +327,7 @@
 			this.MinimumSize = new System.Drawing.Size(580, 300);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "[Open Website Builder]";
+			this.Text = "[NiksWebsiteStudio]";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.mnuMain.ResumeLayout(false);
