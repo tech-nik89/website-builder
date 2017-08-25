@@ -136,5 +136,29 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			_Browser.Document.InvokeScript("ApplyFormat", new Object[] { format });
 		}
+
+		internal void Cut() {
+			if (!_Loaded) {
+				return;
+			}
+
+			_Browser.Document.ExecCommand("Cut", false, null);
+		}
+
+		internal void Copy() {
+			if (!_Loaded) {
+				return;
+			}
+
+			_Browser.Document.ExecCommand("Copy", false, null);
+		}
+
+		internal void Paste() {
+			if (!_Loaded) {
+				return;
+			}
+
+			_Browser.Document.ExecCommand("Paste", false, null);
+		}
 	}
 }

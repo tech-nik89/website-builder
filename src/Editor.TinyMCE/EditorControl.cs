@@ -40,6 +40,8 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		public EditorControl(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
 			InitializeComponent();
+			LocalizeComponent();
+			ApplyIcons();
 
 			tscMain.TopToolStripPanel.Controls.Add(CreateFormatsToolbar());
 			tscMain.TopToolStripPanel.Controls.Add(CreateBasicToolbar());
@@ -51,7 +53,19 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			wbEditor.ObjectForScripting = _EditorAPI;
 			wbEditor.Navigate(GetEditorIndexURL());
 		}
-		
+
+		private void LocalizeComponent() {
+			cmsEditorCut.Text = Resources.Cut;
+			cmsEditorCopy.Text = Resources.Copy;
+			cmsEditorPaste.Text = Resources.Paste;
+		}
+
+		private void ApplyIcons() {
+			cmsEditorCut.Image = IconPack?.GetImage(IconPackIcon.Cut);
+			cmsEditorCopy.Image = IconPack?.GetImage(IconPackIcon.Copy);
+			cmsEditorPaste.Image = IconPack?.GetImage(IconPackIcon.Paste);
+		}
+
 		private static String GetEditorIndexURL() {
 			FileInfo assemblyFileInfo = new FileInfo(Assembly.GetAssembly(typeof(EditorControl)).Location);
 			return Path.Combine(assemblyFileInfo.DirectoryName, "TinyMCE", "Index.html");
@@ -69,6 +83,23 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			_RedoButton.Image = IconPack?.GetImage(IconPackIcon.Redo);
 			_RedoButton.Click += tsbRedo_Click;
 			bar.Items.Add(_RedoButton);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			ToolStripButton cut = new ToolStripButton(Resources.Cut) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			cut.Image = IconPack?.GetImage(IconPackIcon.Cut);
+			cut.Click += tsbCut_Click;
+			bar.Items.Add(cut);
+
+			ToolStripButton copy = new ToolStripButton(Resources.Copy) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			copy.Image = IconPack?.GetImage(IconPackIcon.Copy);
+			copy.Click += tsbCopy_Click;
+			bar.Items.Add(copy);
+
+			ToolStripButton paste = new ToolStripButton(Resources.Paste) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			paste.Image = IconPack?.GetImage(IconPackIcon.Paste);
+			paste.Click += tsbPaste_Click;
+			bar.Items.Add(paste);
 			
 			return bar;
 		}
@@ -200,6 +231,18 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			_UnorderedListButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertUnorderedList);
 			_OrderedListButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertOrderedList);
+		}
+
+		private void tsbCopy_Click(object sender, EventArgs e) {
+			_EditorAPI.Copy();
+		}
+
+		private void tsbCut_Click(object sender, EventArgs e) {
+			_EditorAPI.Cut();
+		}
+
+		private void tsbPaste_Click(object sender, EventArgs e) {
+			_EditorAPI.Paste();
 		}
 
 		private void tsbUndo_Click(object sender, EventArgs e) {
