@@ -84,6 +84,7 @@
     <Content Include="Index.html" />
     <Content Include="Script.js" />
     <Content Include="Style.css" />
+    <None Include="tinymce\license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

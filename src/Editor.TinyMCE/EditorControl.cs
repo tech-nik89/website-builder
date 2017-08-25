@@ -20,12 +20,30 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 		private readonly IPluginHelper _PluginHelper;
 
+		private IIconPack IconPack => _PluginHelper.GetIconPack();
+
+		private ToolStripButton _UndoButton;
+		private ToolStripButton _RedoButton;
+
+		private ToolStripButton _BoldButton;
+		private ToolStripButton _ItalicButton;
+		private ToolStripButton _UnderlineButton;
+
+		private ToolStripButton _JustifyLeftButton;
+		private ToolStripButton _JustifyCenterButton;
+		private ToolStripButton _JustifyRightButton;
+		private ToolStripButton _JustifyFullButton;
+
+		private ToolStripButton _UnorderedListButton;
+		private ToolStripButton _OrderedListButton;
+
 		public EditorControl(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
 			InitializeComponent();
-			LocalizeComponent();
-			CreateFormatButtons();
-			ApplyIcons();
+
+			tscMain.TopToolStripPanel.Controls.Add(CreateFormatsToolbar());
+			tscMain.TopToolStripPanel.Controls.Add(CreateBasicToolbar());
+			tscMain.TopToolStripPanel.Controls.Add(CreateMainToolbar());
 
 			_EditorAPI = new EditorAPI(wbEditor);
 			_EditorAPI.SelectionChanged += Editor_SelectionChanged;
@@ -33,31 +51,118 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			wbEditor.ObjectForScripting = _EditorAPI;
 			wbEditor.Navigate(GetEditorIndexURL());
 		}
-
+		
 		private static String GetEditorIndexURL() {
 			FileInfo assemblyFileInfo = new FileInfo(Assembly.GetAssembly(typeof(EditorControl)).Location);
 			return Path.Combine(assemblyFileInfo.DirectoryName, "TinyMCE", "Index.html");
 		}
+		
+		private ToolStrip CreateMainToolbar() {
+			ToolStrip bar = new ToolStrip();
 
-		private void ApplyIcons() {
-			IIconPack iconPack = _PluginHelper.GetIconPack();
-			if (iconPack == null) {
-				return;
-			}
+			_UndoButton = new ToolStripButton(Resources.Undo) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			_UndoButton.Image = IconPack?.GetImage(IconPackIcon.Undo);
+			_UndoButton.Click += tsbUndo_Click;
+			bar.Items.Add(_UndoButton);
 
-			tsbUndo.Image = iconPack.GetImage(IconPackIcon.Undo);
-			tsbRedo.Image = iconPack.GetImage(IconPackIcon.Redo);
+			_RedoButton = new ToolStripButton(Resources.Redo) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			_RedoButton.Image = IconPack?.GetImage(IconPackIcon.Redo);
+			_RedoButton.Click += tsbRedo_Click;
+			bar.Items.Add(_RedoButton);
+			
+			return bar;
 		}
 
-		private void CreateFormatButtons() {
+		private ToolStrip CreateBasicToolbar() {
+			ToolStrip bar = new ToolStrip();
+			
+			_BoldButton = new ToolStripButton(Resources.Bold) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconBold };
+			_BoldButton.Click += tsbBold_Click;
+			bar.Items.Add(_BoldButton);
+
+			_ItalicButton = new ToolStripButton(Resources.ForeColor) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconItalic };
+			_ItalicButton.Click += tsbItalic_Click;
+			bar.Items.Add(_ItalicButton);
+
+			_UnderlineButton = new ToolStripButton(Resources.Underline) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconUnderline };
+			_UnderlineButton.Click += tsbUnderline_Click;
+			bar.Items.Add(_UnderlineButton);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			_JustifyLeftButton = new ToolStripButton(Resources.JustifyLeft) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconJustifyLeft };
+			_JustifyLeftButton.Click += tsbJustifyLeft_Click;
+			bar.Items.Add(_JustifyLeftButton);
+
+			_JustifyCenterButton = new ToolStripButton(Resources.JustifyCenter) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconJustifyCenter };
+			_JustifyCenterButton.Click += tsbJustifyCenter_Click;
+			bar.Items.Add(_JustifyCenterButton);
+
+			_JustifyRightButton = new ToolStripButton(Resources.JustifyRight) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconJustifyRight };
+			_JustifyRightButton.Click += tsbJustifyRight_Click;
+			bar.Items.Add(_JustifyRightButton);
+
+			_JustifyFullButton = new ToolStripButton(Resources.JustifyFull) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconJustifyFull };
+			_JustifyFullButton.Click += tsbJustifyFull_Click;
+			bar.Items.Add(_JustifyFullButton);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			ToolStripButton indent = new ToolStripButton(Resources.Indent) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconIndent };
+			indent.Click += tsbIndent_Click;
+			bar.Items.Add(indent);
+
+			ToolStripButton outdent = new ToolStripButton(Resources.Outdent) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconOutdent };
+			outdent.Click += tsbOutdent_Click;
+			bar.Items.Add(outdent);
+
+			return bar;
+		}
+
+		private ToolStrip CreateFormatsToolbar() {
+			ToolStrip bar = new ToolStrip();
+
+			ToolStripDropDownButton formats = new ToolStripDropDownButton(Resources.Formats);
+			formats.Image = Resources.IconFormats;
+			CreateFormatButtons(formats);
+			bar.Items.Add(formats);
+
+			ToolStripButton removeFormats = new ToolStripButton(Resources.RemoveFormat) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconFormatsRemove };
+			removeFormats.Click += tsbRemoveFormat_Click;
+			bar.Items.Add(removeFormats);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			ToolStripButton foregroundColor = new ToolStripButton(Resources.ForeColor) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconForeColor };
+			foregroundColor.Click += tsbForeColor_Click;
+			bar.Items.Add(foregroundColor);
+
+			ToolStripButton backgroundColor = new ToolStripButton(Resources.BackColor) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconBackColor };
+			backgroundColor.Click += tsbBackColor_Click;
+			bar.Items.Add(backgroundColor);
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			_UnorderedListButton = new ToolStripButton(Resources.UnorderedList) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconUnorderedList };
+			_UnorderedListButton.Click += tsbUnorderedList_Click;
+			bar.Items.Add(_UnorderedListButton);
+
+			_OrderedListButton = new ToolStripButton(Resources.OrderedList) { DisplayStyle = ToolStripItemDisplayStyle.Image, Image = Resources.IconOrderedList };
+			_OrderedListButton.Click += tsbOrderedList_Click;
+			bar.Items.Add(_OrderedListButton);
+
+			return bar;
+		}
+
+		private void CreateFormatButtons(ToolStripDropDownButton formats) {
 			for(int i = 1; i <= 6; i++) {
-				tsddFormats.DropDownItems.Add(CreateFormatButton(String.Format(Resources.Headline, i), String.Format("h{0}", i)));
+				formats.DropDownItems.Add(CreateFormatButton(String.Format(Resources.Headline, i), String.Format("h{0}", i)));
 			}
 
-			tsddFormats.DropDownItems.Add(new ToolStripSeparator());
+			formats.DropDownItems.Add(new ToolStripSeparator());
 
-			tsddFormats.DropDownItems.Add(CreateFormatButton(Resources.Paragraph, "p"));
-			tsddFormats.DropDownItems.Add(CreateFormatButton(Resources.Code, "pre"));
+			formats.DropDownItems.Add(CreateFormatButton(Resources.Paragraph, "p"));
+			formats.DropDownItems.Add(CreateFormatButton(Resources.Code, "pre"));
 		}
 
 		private ToolStripMenuItem CreateFormatButton(String text, String format) {
@@ -76,51 +181,25 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			_EditorAPI.ApplyFormat(format);
 		}
 		
-		private void LocalizeComponent() {
-			tsbUndo.Text = Resources.Undo;
-			tsbRedo.Text = Resources.Redo;
-
-			tsbBold.Text = Resources.Bold;
-			tsbItalic.Text = Resources.Italic;
-			tsbUnderline.Text = Resources.Underline;
-
-			tsbJustifyLeft.Text = Resources.JustifyLeft;
-			tsbJustifyCenter.Text = Resources.JustifyCenter;
-			tsbJustifyRight.Text = Resources.JustifyRight;
-			tsbJustifyFull.Text = Resources.JustifyFull;
-
-			tsbUnorderedList.Text = Resources.UnorderedList;
-			tsbOrderedList.Text = Resources.OrderedList;
-
-			tsbIndent.Text = Resources.Indent;
-			tsbOutdent.Text = Resources.Outdent;
-
-			tsddFormats.Text = Resources.Formats;
-			tsbRemoveFormat.Text = Resources.RemoveFormat;
-
-			tsbForeColor.Text = Resources.ForeColor;
-			tsbBackColor.Text = Resources.BackColor;
-		}
-
 		private void Editor_SelectionChanged(object sender, EventArgs e) {
 			UpdateControls();
 		}
-
+		
 		private void UpdateControls() {
-			tsbUndo.Enabled = _EditorAPI.HasUndo();
-			tsbRedo.Enabled = _EditorAPI.HasRedo();
+			_UndoButton.Enabled = _EditorAPI.HasUndo();
+			_RedoButton.Enabled = _EditorAPI.HasRedo();
 
-			tsbBold.Checked = _EditorAPI.QueryCommandState(EditorCommand.Bold);
-			tsbItalic.Checked = _EditorAPI.QueryCommandState(EditorCommand.Italic);
-			tsbUnderline.Checked = _EditorAPI.QueryCommandState(EditorCommand.Underline);
+			_BoldButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.Bold);
+			_ItalicButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.Italic);
+			_UnderlineButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.Underline);
 
-			tsbJustifyLeft.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyLeft);
-			tsbJustifyCenter.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyCenter);
-			tsbJustifyRight.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyRight);
-			tsbJustifyFull.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyFull);
+			_JustifyLeftButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyLeft);
+			_JustifyCenterButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyCenter);
+			_JustifyRightButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyRight);
+			_JustifyFullButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.JustifyFull);
 
-			tsbUnorderedList.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertUnorderedList);
-			tsbOrderedList.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertOrderedList);
+			_UnorderedListButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertUnorderedList);
+			_OrderedListButton.Checked = _EditorAPI.QueryCommandState(EditorCommand.InsertOrderedList);
 		}
 
 		private void tsbUndo_Click(object sender, EventArgs e) {

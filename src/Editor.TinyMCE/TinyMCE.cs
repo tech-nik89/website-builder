@@ -1,4 +1,5 @@
 ﻿using System;
+using WebsiteStudio.Editors.TinyMCE.Properties;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Editors.TinyMCE {
@@ -17,7 +18,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		}
 
 		public String GetLicenseInformation() {
-			return String.Empty;
+			return Resources.License;
 		}
 
 		public IUserInterface GetUserInterface() {

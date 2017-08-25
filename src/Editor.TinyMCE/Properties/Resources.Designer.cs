@@ -115,6 +115,156 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconBackColor {
+            get {
+                object obj = ResourceManager.GetObject("IconBackColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconBold {
+            get {
+                object obj = ResourceManager.GetObject("IconBold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconForeColor {
+            get {
+                object obj = ResourceManager.GetObject("IconForeColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconFormats {
+            get {
+                object obj = ResourceManager.GetObject("IconFormats", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconFormatsRemove {
+            get {
+                object obj = ResourceManager.GetObject("IconFormatsRemove", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconIndent {
+            get {
+                object obj = ResourceManager.GetObject("IconIndent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconItalic {
+            get {
+                object obj = ResourceManager.GetObject("IconItalic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconJustifyCenter {
+            get {
+                object obj = ResourceManager.GetObject("IconJustifyCenter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconJustifyFull {
+            get {
+                object obj = ResourceManager.GetObject("IconJustifyFull", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconJustifyLeft {
+            get {
+                object obj = ResourceManager.GetObject("IconJustifyLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconJustifyRight {
+            get {
+                object obj = ResourceManager.GetObject("IconJustifyRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconOrderedList {
+            get {
+                object obj = ResourceManager.GetObject("IconOrderedList", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconOutdent {
+            get {
+                object obj = ResourceManager.GetObject("IconOutdent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconUnderline {
+            get {
+                object obj = ResourceManager.GetObject("IconUnderline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconUnorderedList {
+            get {
+                object obj = ResourceManager.GetObject("IconUnorderedList", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indent.
         /// </summary>
         internal static string Indent {
@@ -165,6 +315,29 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         internal static string JustifyRight {
             get {
                 return ResourceManager.GetString("JustifyRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to       GNU LESSER GENERAL PUBLIC LICENSE
+        ///           Version 2.1, February 1999
+        ///
+        /// Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+        /// 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+        /// Everyone is permitted to copy and distribute verbatim copies
+        /// of this license document, but changing it is not allowed.
+        ///
+        ///[This is the first released version of the Lesser GPL.  It also counts
+        /// as the successor of the GNU Library Public License, version 2, hence
+        /// the version number 2.1.]
+        ///
+        ///          Preamble
+        ///
+        ///  Th [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string License {
+            get {
+                return ResourceManager.GetString("License", resourceCulture);
             }
         }
         
