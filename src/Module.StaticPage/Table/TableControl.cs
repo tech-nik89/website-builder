@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.Modules.Localization;
@@ -108,14 +109,14 @@ namespace WebsiteStudio.Modules.Table {
 		}
 
 		private void tsbInsertLink_Click(object sender, EventArgs e) {
-			String link = _PluginHelper.GetLink();
-			if (String.IsNullOrWhiteSpace(link)) {
+			ILink link = _PluginHelper.GetLink();
+			if (link == null) {
 				return;
 			}
 
 			int selectionIndex = txtData.SelectionStart;
-			txtData.Text = txtData.Text.Insert(selectionIndex, link);
-			txtData.SelectionStart = selectionIndex + link.Length;
+			txtData.Text = txtData.Text.Insert(selectionIndex, link.Link);
+			txtData.SelectionStart = selectionIndex + link.Link.Length;
 		}
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Compiling;
+using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Interface.Icons;
@@ -14,7 +15,11 @@ namespace WebsiteStudio.UI.Forms {
 
 		private readonly Project _Project;
 
+		private readonly Language _Language;
+
 		private readonly ImageList _ImageList;
+
+		public String LinkText { get; private set; }
 
 		public String Link { get; private set; }
 
@@ -22,17 +27,18 @@ namespace WebsiteStudio.UI.Forms {
 
 		public String PageId { get; private set; }
 
-		public InsertLinkForm(Project project)
-			: this(project, Tabs.Media | Tabs.Page) {
+		public InsertLinkForm(Project project, Language language)
+			: this(project, language, Tabs.Media | Tabs.Page) {
 		}
 
-		public InsertLinkForm(Project project, Tabs tabs) {
+		public InsertLinkForm(Project project, Language language, Tabs tabs) {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
 
 			DialogResult = DialogResult.Cancel;
 			_Project = project;
+			_Language = language;
 
 			if (!tabs.HasFlag(Tabs.Media)) {
 				tabMedia.Hide();
@@ -87,11 +93,14 @@ namespace WebsiteStudio.UI.Forms {
 					return;
 				}
 
+				LinkText = page.Title.Get(_Language);
 				Link = String.Format(CompilerConstants.PageLinkFormat, page.Id);
 				PageId = page.Id;
 			}
 			else if (tabCtrl.SelectedTab == tabMedia && lvwMedia.SelectedIndices.Count == 1) {
 				MediaItem item = _Project.Media[lvwMedia.SelectedIndices[0]];
+
+				LinkText = item.Name;
 				Link = String.Format(CompilerConstants.MediaLinkFormat, item.Id);
 				MediaId = item.Id;
 			}

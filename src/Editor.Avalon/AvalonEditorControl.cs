@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 using System.Windows.Input;
 using WebsiteStudio.Editors.Avalon.Localization;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.Interface.Plugins;
 
@@ -171,12 +172,12 @@ namespace WebsiteStudio.Editors.Avalon {
 		}
 
 		private void tsbInsertLink_Click(object sender, EventArgs e) {
-			String link = _PluginHelper.GetLink();
-			if (String.IsNullOrWhiteSpace(link)) {
+			ILink link = _PluginHelper.GetLink();
+			if (link == null) {
 				return;
 			}
 
-			_Editor.Document.Insert(_Editor.TextArea.Caret.Offset, link);
+			_Editor.Document.Insert(_Editor.TextArea.Caret.Offset, link.Link);
 		}
 
 		private void tsbCut_Click(object sender, EventArgs e) {

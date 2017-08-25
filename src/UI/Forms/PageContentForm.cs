@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.UI.Localization;
@@ -47,15 +49,15 @@ namespace WebsiteStudio.UI.Forms {
 			tsbSettings.Text = Strings.ContentSettings;
 		}
 
-		private String GetLink() {
-			InsertLinkForm form = new InsertLinkForm(_Page.Project);
+		private ILink GetLink() {
+			InsertLinkForm form = new InsertLinkForm(_Page.Project, _Language);
 			var result = form.ShowDialog();
 
 			if (result != DialogResult.OK) {
-				return String.Empty;
+				return null;
 			}
 
-			return form.Link;
+			return new ContentLink(form.Link, form.LinkText);
 		}
 
 		private void LoadModule() {

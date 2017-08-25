@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 
 namespace WebsiteStudio.Interface.Plugins {
@@ -17,7 +18,7 @@ namespace WebsiteStudio.Interface.Plugins {
 
 		String NewGuid();
 
-		String GetLink();
+		ILink GetLink();
 
 		DirectoryInfo OutputDirectory { get; }
 

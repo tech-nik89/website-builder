@@ -88,6 +88,7 @@
     <Compile Include="Localization\LocalizedBase.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
     <Compile Include="Localization\LocalizedStringArray.cs" />
+    <Compile Include="Media\ContentLink.cs" />
     <Compile Include="Media\MediaFile.cs" />
     <Compile Include="Media\MediaItem.cs" />
     <Compile Include="Media\MediaReference.cs" />

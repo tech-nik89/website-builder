@@ -160,5 +160,13 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			_Browser.Document.ExecCommand("Paste", false, null);
 		}
+
+		internal void InsertContent(String content) {
+			if (!_Loaded) {
+				return;
+			}
+
+			ExecCommand(EditorCommand.mceInsertContent, content);
+		}
 	}
 }

@@ -101,7 +101,7 @@ namespace WebsiteStudio.UI.Forms {
 					break;
 			}
 
-			InsertLinkForm form = new InsertLinkForm(_Project, tabs);
+			InsertLinkForm form = new InsertLinkForm(_Project, _Language, tabs);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
 			}

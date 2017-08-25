@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="BackColor" xml:space="preserve">
     <value>Back Color</value>
   </data>
   <data name="Bold" xml:space="preserve">
     <value>Bold</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
@@ -132,11 +138,17 @@
   <data name="Cut" xml:space="preserve">
     <value>Cut</value>
   </data>
+  <data name="DisplayText" xml:space="preserve">
+    <value>Text to display</value>
+  </data>
   <data name="ForeColor" xml:space="preserve">
     <value>Fore Color</value>
   </data>
   <data name="Formats" xml:space="preserve">
     <value>Formats</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Headline {0}</value>
@@ -275,6 +287,9 @@
   <data name="Indent" xml:space="preserve">
     <value>Indent</value>
   </data>
+  <data name="InsertLink" xml:space="preserve">
+    <value>Insert Link</value>
+  </data>
   <data name="Italic" xml:space="preserve">
     <value>Italic</value>
   </data>
@@ -294,6 +309,12 @@
   <data name="License" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\tinymce\license.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="OrderedList" xml:space="preserve">
     <value>Ordered List</value>
   </data>
@@ -312,6 +333,12 @@
   <data name="RemoveFormat" xml:space="preserve">
     <value>Remove Format</value>
   </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="Tooltip" xml:space="preserve">
+    <value>Tooltip</value>
+  </data>
   <data name="Underline" xml:space="preserve">
     <value>Underline</value>
   </data>
@@ -320,5 +347,8 @@
   </data>
   <data name="UnorderedList" xml:space="preserve">
     <value>Unordered List</value>
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value>URL</value>
   </data>
 </root>

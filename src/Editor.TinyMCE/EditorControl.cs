@@ -100,7 +100,14 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			paste.Image = IconPack?.GetImage(IconPackIcon.Paste);
 			paste.Click += tsbPaste_Click;
 			bar.Items.Add(paste);
-			
+
+			bar.Items.Add(new ToolStripSeparator());
+
+			ToolStripButton insertLink = new ToolStripButton(Resources.InsertLink) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			insertLink.Image = IconPack?.GetImage(IconPackIcon.InsertLink);
+			insertLink.Click += tsbInsertLink_Click;
+			bar.Items.Add(insertLink);
+
 			return bar;
 		}
 
@@ -243,6 +250,15 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 		private void tsbPaste_Click(object sender, EventArgs e) {
 			_EditorAPI.Paste();
+		}
+
+		private void tsbInsertLink_Click(object sender, EventArgs e) {
+			LinkForm form = new LinkForm(_PluginHelper);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			_EditorAPI.InsertContent(form.Link);
 		}
 
 		private void tsbUndo_Click(object sender, EventArgs e) {

@@ -13,6 +13,7 @@
 		Outdent,
 		RemoveFormat,
 		ForeColor,
-		HiliteColor
+		HiliteColor,
+		mceInsertContent
 	}
 }
