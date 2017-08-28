@@ -44,6 +44,8 @@
     <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Compiling\CompilerMessage.cs" />
+    <Compile Include="Compiling\CompilerMessageType.cs" />
     <Compile Include="Compiling\ICompileHelper.cs" />
     <Compile Include="Compiling\ICompiler.cs" />
     <Compile Include="Compiling\IHtmlElement.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Interface.Plugins;
@@ -18,6 +17,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 			if (_Project?.Webserver != null) {
 				_Webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
+				Output = String.Format("Applying webserver specifics: {0}", _Project.Webserver.Name);
 			}
 		}
 

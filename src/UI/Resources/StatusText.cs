@@ -15,5 +15,7 @@ namespace WebsiteStudio.UI.Resources {
 
 		public const String PublishingSucceeded = "Publishing succeeded";
 
+		public const String PublishingFailed = "Publishing failed";
+
 	}
 }

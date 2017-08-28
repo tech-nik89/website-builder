@@ -11,6 +11,7 @@ using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
@@ -163,17 +164,16 @@ namespace WebsiteStudio.UI.Forms {
 			
 			UpdateStatus(StatusText.BuildStarted);
 			CompilerSetControls(false);
-			_CompilerError.Messages = new CompilerMessage[0];
 
-			_CompilerOutput.Pane.Activate();
-			_CompilerOutput.Activate();
+			_CompilerError.Messages = new CompilerMessage[0];
+			FocusOutputWindow();
 			
 			Compiler compiler = new Compiler(CurrentProject, new CompilerSettings() {
 				PreviewPage = previewPage,
 				PreviewLanguage = previewLanguage
 			});
 
-			Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>((report) => {
+			Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>(report => {
 				tspProgress.Value = report.Percentage;
 				_CompilerOutput?.Push(report);
 			});
@@ -183,8 +183,7 @@ namespace WebsiteStudio.UI.Forms {
 			_CompilerError.Messages = compiler.Messages.ToArray();
 
 			if (compiler.Error) {
-				_CompilerError.Pane.Activate();
-				_CompilerError.Focus();
+				FocusErrorWindow();
 			}
 			else if (!compiler.Error && runAfterCompile) {
 				OpenProjectInDefaultBrowser(CurrentProject);
@@ -193,6 +192,16 @@ namespace WebsiteStudio.UI.Forms {
 			_CompilerRunning = false;
 			CompilerSetControls(true);
 			UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);
+		}
+
+		private void FocusOutputWindow() {
+			_CompilerOutput.Pane.Activate();
+			_CompilerOutput.Activate();
+		}
+
+		private void FocusErrorWindow() {
+			_CompilerError.Pane.Activate();
+			_CompilerError.Activate();
 		}
 
 		private void CompilerSetControls(bool enabled) {
@@ -319,14 +328,15 @@ namespace WebsiteStudio.UI.Forms {
 				return;
 			}
 
-			UpdateStatus(StatusText.PublishingSucceeded);
+			UpdateStatus(StatusText.PublishingStarted);
+			FocusOutputWindow();
 
 			mnuBuildPublish.Enabled = false;
 			int index = (int)((ToolStripMenuItem)sender).Tag;
 			PublishItem item = CurrentProject.Publishing[index];
 
 			try {
-				Progress<String> progress = new Progress<String>((report) => {
+				Progress<String> progress = new Progress<String>(report => {
 					UpdateStatus(report);
 					_CompilerOutput?.Push(report);
 				});
@@ -334,8 +344,15 @@ namespace WebsiteStudio.UI.Forms {
 				IPublish publisher = PluginManager.LoadPublisher(item.Type, CurrentProject);
 				await publisher.RunAsync(CurrentProject.OutputPath, item.Data, progress);
 
-				UpdateStatus(StatusText.PublishingSucceeded);
-				_CompilerError.Messages = publisher.Errors.Select(x => new CompilerMessage(x)).ToArray();
+				_CompilerError.Messages = publisher.Messages.ToArray();
+
+				if (publisher.Error) {
+					UpdateStatus(StatusText.PublishingFailed);
+					FocusErrorWindow();
+				}
+				else {
+					UpdateStatus(StatusText.PublishingSucceeded);
+				}
 			}
 			finally {
 				mnuBuildPublish.Enabled = true;

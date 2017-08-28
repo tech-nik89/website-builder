@@ -59,8 +59,6 @@
     <Compile Include="Compiling\CompileHelper.cs" />
     <Compile Include="Compiling\Compiler.cs" />
     <Compile Include="Compiling\CompilerConstants.cs" />
-    <Compile Include="Compiling\CompilerMessage.cs" />
-    <Compile Include="Compiling\CompilerMessageType.cs" />
     <Compile Include="Compiling\CompilerSettings.cs" />
     <Compile Include="Compiling\HtmlDocument.cs" />
     <Compile Include="Compiling\HtmlElement.cs" />

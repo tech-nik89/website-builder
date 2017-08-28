@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.Publish.FTP.Properties;
 
@@ -16,13 +17,15 @@ namespace WebsiteStudio.Publish.FTP {
 
 		private const String RemotePathSeparator = "/";
 
-		private readonly List<Exception> _Exceptions;
-
-		public IEnumerable<Exception> Errors => _Exceptions.AsReadOnly();
+		private readonly List<CompilerMessage> _Messages;
+		public IEnumerable<CompilerMessage> Messages => _Messages.AsReadOnly();
+		
+		public bool Error { get; private set; }
 
 		public PublishFTP(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
-			_Exceptions = new List<Exception>();
+			_Messages = new List<CompilerMessage>();
+			Error = false;
 		}
 
 		public IUserInterface GetUserInterface() {
@@ -46,39 +49,64 @@ namespace WebsiteStudio.Publish.FTP {
 		}
 
 		public void Run(String outputhPath, String data, IProgress<String> progress) {
+			progress?.Report("------ Publishing started: FTP ------");
+
 			try {
+				progress?.Report("Reading publishing settings ...");
 				Settings settings = Settings.Deserialize(data);
+				progress?.Report(String.Format("Publishing to: {0}:{1}", settings.Host, settings.Port));
+
 				DirectoryInfo directory = new DirectoryInfo(outputhPath);
 
 				if (!directory.Exists) {
-					return;
+					throw new DirectoryNotFoundException(String.Format("The directory '{0}' could not be found.", outputhPath));
 				}
 
+				progress?.Report("Connecting ...");
 				using (FtpClient client = new FtpClient(settings.Host, settings.Port, settings.UserName, settings.Password)) {
 					try {
 						client.RetryAttempts = 3;
 						client.Connect();
+						progress?.Report("Connected.");
+
+						if (client.HashAlgorithms == FtpHashAlgorithm.NONE) {
+							CompilerMessage message = new CompilerMessage("FTP server does not support the HASH command. File size is used instead.", CompilerMessageType.Warning);
+
+							_Messages.Add(message);
+							progress?.Report(message.Message);
+						}
+
 						ProcessDirectory(directory, client, directory, progress);
 					}
 					finally {
 						client.Disconnect();
+						progress?.Report("Connection closed.");
 					}
 				}
 			}
 			catch (Exception ex) {
-				_Exceptions.Add(ex);
+				Error = true;
+				_Messages.Add(new CompilerMessage(ex));
+			}
+
+			if (Error) {
+				progress?.Report("========== Publishing failed ==========");
+			}
+			else {
+				progress?.Report("========== Publishing succeeded ==========");
 			}
 		}
 
 		private void ProcessDirectory(DirectoryInfo rootDirectory, FtpClient client, DirectoryInfo currentDirectory, IProgress<String> progress) {
 			String remoteDirectoryPath = GetRemotePath(rootDirectory, currentDirectory);
-			progress?.Report("Processing directory " + remoteDirectoryPath);
+			progress?.Report(String.Format("Processing directory: {0}", remoteDirectoryPath));
 
 			FileInfo[] localFiles = currentDirectory.GetFiles();
 			DirectoryInfo[] localDirectories = currentDirectory.GetDirectories();
 			FtpListItem[] remoteItems = client.GetListing(remoteDirectoryPath);
 
-			Tasks tasks = Tasks.Determine(
+			Tasks tasks = new Tasks(
+				client,
 				localFiles,
 				remoteItems.Where(x => x.Type == FtpFileSystemObjectType.File),
 				localDirectories,
@@ -86,36 +114,36 @@ namespace WebsiteStudio.Publish.FTP {
 
 			foreach (FileInfo file in tasks.FilesToUpload) {
 				String remotePath = GetRemotePath(rootDirectory, file);
-				progress?.Report("Uploading file " + remotePath);
+				progress?.Report(String.Format("Uploading file: {0}", remotePath));
 				client.UploadFile(file.FullName, remotePath);
-				progress?.Report("Uploaded file " + remotePath);
+				progress?.Report(String.Format("Uploading file completed: {0}", remotePath));
 			}
 
 			foreach (FtpListItem file in tasks.FilesToDelete) {
-				progress?.Report("Deleting file " + file.FullName);
+				progress?.Report(String.Format("Deleting file: {0}", file.FullName));
 				client.DeleteFile(file.FullName);
-				progress?.Report("Deleted file " + file.FullName);
+				progress?.Report(String.Format("Deleting file completed: {0}", file.FullName));
 			}
 
 			foreach (FtpListItem directory in tasks.DirectoriesToDelete) {
-				progress?.Report("Deleting directory " + directory.FullName);
+				progress?.Report(String.Format("Deleting directory: {0}", directory.FullName));
 				client.DeleteDirectory(directory.FullName);
-				progress?.Report("Deleted directory " + directory.FullName);
+				progress?.Report(String.Format("Deleting directory completed: {0}", directory.FullName));
 			}
 
 			foreach (DirectoryInfo directory in tasks.DirectoriesToProcess) {
 				String remotePath = GetRemotePath(rootDirectory, directory);
 
 				if (!client.DirectoryExists(remotePath)) {
-					progress?.Report("Creating directory " + directory.FullName);
+					progress?.Report(String.Format("Creating directory: {0}", directory.FullName));
 					client.CreateDirectory(remotePath);
-					progress?.Report("Created directory " + directory.FullName);
+					progress?.Report(String.Format("Creating directory completed: {0}", directory.FullName));
 				}
 
 				ProcessDirectory(rootDirectory, client, directory, progress);
 			}
 
-			progress?.Report("Processed directory " + remoteDirectoryPath);
+			progress?.Report(String.Format("Processing directory completed: {0}", remoteDirectoryPath));
 		}
 
 		private static String GetRemotePath(DirectoryInfo rootDirectory, DirectoryInfo directory) {

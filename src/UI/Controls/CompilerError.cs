@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using WebsiteStudio.Core.Compiling;
+using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;

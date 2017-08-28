@@ -1,4 +1,4 @@
-﻿namespace WebsiteStudio.Core.Compiling {
+﻿namespace WebsiteStudio.Interface.Compiling {
 	public enum CompilerMessageType {
 		Error,
 		Warning,

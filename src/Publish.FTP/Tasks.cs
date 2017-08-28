@@ -14,30 +14,30 @@ namespace WebsiteStudio.Publish.FTP {
 
 		public FtpListItem[] DirectoriesToDelete { get; set; }
 
-		private Tasks() {
-		}
+		private readonly FtpClient _Client;
 
-		public static Tasks Determine(IEnumerable<FileInfo> localFiles, IEnumerable<FtpListItem> remoteFiles, IEnumerable<DirectoryInfo> localDirectories, IEnumerable<FtpListItem> remoteDirectories) {
-			Tasks tasks = new Tasks();
+		private readonly bool _HashCommandSupported;
 
-			tasks.FilesToUpload = localFiles
+		public Tasks(FtpClient client, IEnumerable<FileInfo> localFiles, IEnumerable<FtpListItem> remoteFiles, IEnumerable<DirectoryInfo> localDirectories, IEnumerable<FtpListItem> remoteDirectories) {
+			_Client = client;
+			_HashCommandSupported = _Client.HashAlgorithms != FtpHashAlgorithm.NONE;
+
+			FilesToUpload = localFiles
 				.Where(local => !ExistsAndIsEqual(local, remoteFiles))
 				.ToArray();
 
-			tasks.FilesToDelete = remoteFiles
+			FilesToDelete = remoteFiles
 				.Where(remote => !Exists(remote, localFiles))
 				.ToArray();
 
-			tasks.DirectoriesToProcess = localDirectories.ToArray();
+			DirectoriesToProcess = localDirectories.ToArray();
 
-			tasks.DirectoriesToDelete = remoteDirectories
+			DirectoriesToDelete = remoteDirectories
 				.Where(remote => !Exists(remote, localDirectories))
 				.ToArray();
-
-			return tasks;
 		}
-
-		private static bool Exists(FtpListItem local, IEnumerable<DirectoryInfo> remoteDirectories) {
+		
+		private bool Exists(FtpListItem local, IEnumerable<DirectoryInfo> remoteDirectories) {
 			foreach (DirectoryInfo remote in remoteDirectories) {
 				if (local.Name == remote.Name) {
 					return true;
@@ -47,7 +47,7 @@ namespace WebsiteStudio.Publish.FTP {
 			return false;
 		}
 
-		private static bool Exists(DirectoryInfo local, IEnumerable<FtpListItem> remoteDirectories) {
+		private bool Exists(DirectoryInfo local, IEnumerable<FtpListItem> remoteDirectories) {
 			foreach(FtpListItem remote in remoteDirectories) {
 				if (local.Name == remote.Name) {
 					return true;
@@ -57,7 +57,7 @@ namespace WebsiteStudio.Publish.FTP {
 			return false;
 		}
 
-		private static bool Exists(FtpListItem remote, IEnumerable<FileInfo> localFiles) {
+		private bool Exists(FtpListItem remote, IEnumerable<FileInfo> localFiles) {
 			foreach (FileInfo local in localFiles) {
 				if (local.Name == remote.Name) {
 					return true;
@@ -67,10 +67,18 @@ namespace WebsiteStudio.Publish.FTP {
 			return false;
 		}
 
-		private static bool ExistsAndIsEqual(FileInfo localFile, IEnumerable<FtpListItem> remoteFiles) {
+		private bool ExistsAndIsEqual(FileInfo localFile, IEnumerable<FtpListItem> remoteFiles) {
 			foreach (FtpListItem remote in remoteFiles) {
-				if (remote.Name == localFile.Name) {
-					return localFile.LastWriteTime <= remote.Modified;
+				if (remote.Name != localFile.Name) {
+					continue;
+				}
+
+				if (_HashCommandSupported) {
+					FtpHash hash = _Client.GetHash(remote.FullName);
+					return hash.IsValid && hash.Verify(localFile.FullName);
+				}
+				else {
+					return remote.Size == localFile.Length;
 				}
 			}
 
