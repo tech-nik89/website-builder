@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using WebsiteStudio.Editors.TinyMCE.Properties;
 using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
@@ -13,7 +13,11 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 		public String Link { get; private set; }
 
-		public LinkForm(IPluginHelper pluginHelper) {
+		public LinkForm(IPluginHelper pluginHelper)
+			: this(pluginHelper, null) {
+		}
+
+		public LinkForm(IPluginHelper pluginHelper, XElement htmlElement) {
 			InitializeComponent();
 			LocalizeComponent();
 
@@ -21,6 +25,10 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			DialogResult = DialogResult.Cancel;
 
 			ApplyIcons();
+
+			if (htmlElement != null) {
+				ReadLink(htmlElement);
+			}
 		}
 
 		private void ApplyIcons() {
@@ -47,28 +55,24 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			btnCancel.Text = Resources.Cancel;
 		}
 
+		private void ReadLink(XElement link) {
+			txtDisplayText.Text = link.Value;
+			txtURL.Text = link.Attribute("href")?.Value;
+			cbxTarget.Text = link.Attribute("target")?.Value;
+			txtTooltip.Text = link.Attribute("title")?.Value;
+		}
+
 		private void BuildLink() {
-			StringBuilder link = new StringBuilder();
-
-			link.Append("<a href=\"");
-			link.Append(txtURL.Text);
-			link.Append("\"");
-
+			XElement link = new XElement("a", txtDisplayText.Text);
+			link.Add(new XAttribute("href", txtURL.Text));
+			
 			if (!String.IsNullOrWhiteSpace(cbxTarget.Text)) {
-				link.Append(" target=\"");
-				link.Append(cbxTarget.Text);
-				link.Append("\"");
+				link.Add(new XAttribute("target", cbxTarget.Text));
 			}
 
 			if (!String.IsNullOrWhiteSpace(txtTooltip.Text)) {
-				link.Append(" title=\"");
-				link.Append(txtTooltip.Text);
-				link.Append("\"");
+				link.Add(new XAttribute("title", txtTooltip.Text));
 			}
-
-			link.Append(">");
-			link.Append(txtDisplayText.Text);
-			link.Append("</a>");
 
 			Link = link.ToString();
 		}

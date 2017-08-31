@@ -414,6 +414,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Link.
+        /// </summary>
+        internal static string LinkEdit {
+            get {
+                return ResourceManager.GetString("LinkEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         internal static string Options {

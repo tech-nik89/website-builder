@@ -56,3 +56,11 @@ function HasRedo() {
 function ApplyFormat(format) {
 	tinyMCE.activeEditor.formatter.apply(format);
 }
+
+function GetSelectedNode() {
+	return tinyMCE.activeEditor.selection.getNode().outerHTML;
+}
+
+function DeleteSelectedNode() {
+	tinyMCE.activeEditor.dom.remove(tinyMCE.activeEditor.selection.getNode());
+}

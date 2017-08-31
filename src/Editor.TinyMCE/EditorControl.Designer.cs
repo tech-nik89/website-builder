@@ -25,15 +25,17 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.wbEditor = new System.Windows.Forms.WebBrowser();
-			this.cdColorPicker = new System.Windows.Forms.ColorDialog();
-			this.tscMain = new System.Windows.Forms.ToolStripContainer();
 			this.cmsEditor = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.cmsEditorCut = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsEditorCopy = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsEditorPaste = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmsEditorLinkEdit = new System.Windows.Forms.ToolStripMenuItem();
+			this.cdColorPicker = new System.Windows.Forms.ColorDialog();
+			this.tscMain = new System.Windows.Forms.ToolStripContainer();
+			this.cmsEditor.SuspendLayout();
 			this.tscMain.ContentPanel.SuspendLayout();
 			this.tscMain.SuspendLayout();
-			this.cmsEditor.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// wbEditor
@@ -48,28 +50,17 @@
 			this.wbEditor.Size = new System.Drawing.Size(686, 373);
 			this.wbEditor.TabIndex = 0;
 			// 
-			// tscMain
-			// 
-			// 
-			// tscMain.ContentPanel
-			// 
-			this.tscMain.ContentPanel.Controls.Add(this.wbEditor);
-			this.tscMain.ContentPanel.Size = new System.Drawing.Size(686, 373);
-			this.tscMain.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tscMain.Location = new System.Drawing.Point(0, 0);
-			this.tscMain.Name = "tscMain";
-			this.tscMain.Size = new System.Drawing.Size(686, 398);
-			this.tscMain.TabIndex = 1;
-			this.tscMain.Text = "toolStripContainer1";
-			// 
 			// cmsEditor
 			// 
 			this.cmsEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsEditorCut,
             this.cmsEditorCopy,
-            this.cmsEditorPaste});
+            this.cmsEditorPaste,
+            this.toolStripSeparator1,
+            this.cmsEditorLinkEdit});
 			this.cmsEditor.Name = "cmsEditor";
-			this.cmsEditor.Size = new System.Drawing.Size(153, 92);
+			this.cmsEditor.Size = new System.Drawing.Size(153, 120);
+			this.cmsEditor.Opening += new System.ComponentModel.CancelEventHandler(this.cmsEditor_Opening);
 			// 
 			// cmsEditorCut
 			// 
@@ -92,6 +83,32 @@
 			this.cmsEditorPaste.Text = "[Paste]";
 			this.cmsEditorPaste.Click += new System.EventHandler(this.tsbPaste_Click);
 			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			// 
+			// cmsEditorLinkEdit
+			// 
+			this.cmsEditorLinkEdit.Name = "cmsEditorLinkEdit";
+			this.cmsEditorLinkEdit.Size = new System.Drawing.Size(152, 22);
+			this.cmsEditorLinkEdit.Text = "[EditLink]";
+			this.cmsEditorLinkEdit.Click += new System.EventHandler(this.cmsEditorLinkEdit_Click);
+			// 
+			// tscMain
+			// 
+			// 
+			// tscMain.ContentPanel
+			// 
+			this.tscMain.ContentPanel.Controls.Add(this.wbEditor);
+			this.tscMain.ContentPanel.Size = new System.Drawing.Size(686, 373);
+			this.tscMain.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tscMain.Location = new System.Drawing.Point(0, 0);
+			this.tscMain.Name = "tscMain";
+			this.tscMain.Size = new System.Drawing.Size(686, 398);
+			this.tscMain.TabIndex = 1;
+			this.tscMain.Text = "toolStripContainer1";
+			// 
 			// EditorControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,10 +116,10 @@
 			this.Controls.Add(this.tscMain);
 			this.Name = "EditorControl";
 			this.Size = new System.Drawing.Size(686, 398);
+			this.cmsEditor.ResumeLayout(false);
 			this.tscMain.ContentPanel.ResumeLayout(false);
 			this.tscMain.ResumeLayout(false);
 			this.tscMain.PerformLayout();
-			this.cmsEditor.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -116,5 +133,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmsEditorCut;
 		private System.Windows.Forms.ToolStripMenuItem cmsEditorCopy;
 		private System.Windows.Forms.ToolStripMenuItem cmsEditorPaste;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem cmsEditorLinkEdit;
 	}
 }

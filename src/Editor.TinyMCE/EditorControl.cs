@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using WebsiteStudio.Editors.TinyMCE.Properties;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.Interface.Plugins;
@@ -37,6 +38,17 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		private ToolStripButton _UnorderedListButton;
 		private ToolStripButton _OrderedListButton;
 
+		private XElement SelectedNode {
+			get {
+				try {
+					return XElement.Parse(_EditorAPI.GetSelectedNode());
+				}
+				catch {
+					return null;
+				}
+			}
+		}
+
 		public EditorControl(IPluginHelper pluginHelper) {
 			_PluginHelper = pluginHelper;
 			InitializeComponent();
@@ -58,6 +70,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			cmsEditorCut.Text = Resources.Cut;
 			cmsEditorCopy.Text = Resources.Copy;
 			cmsEditorPaste.Text = Resources.Paste;
+			cmsEditorLinkEdit.Text = Resources.LinkEdit;
 		}
 
 		private void ApplyIcons() {
@@ -343,6 +356,25 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			}
 
 			_EditorAPI.ExecCommand(EditorCommand.HiliteColor, cdColorPicker.Color);
+		}
+
+		private void cmsEditor_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+			cmsEditorLinkEdit.Enabled = (SelectedNode?.Name.LocalName.Equals("a", StringComparison.InvariantCultureIgnoreCase)).Value;
+		}
+
+		private void cmsEditorLinkEdit_Click(object sender, EventArgs e) {
+			XElement link = SelectedNode;
+			if (link == null || !link.Name.LocalName.Equals("a", StringComparison.InvariantCultureIgnoreCase)) {
+				return;
+			}
+
+			LinkForm form = new LinkForm(_PluginHelper, link);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			_EditorAPI.DeleteSelectedNode();
+			_EditorAPI.InsertContent(form.Link);
 		}
 	}
 }

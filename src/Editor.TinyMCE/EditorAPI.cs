@@ -168,5 +168,21 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			ExecCommand(EditorCommand.mceInsertContent, content);
 		}
+
+		internal String GetSelectedNode() {
+			if (!_Loaded) {
+				return null;
+			}
+
+			return (String)_Browser.Document.InvokeScript("GetSelectedNode");
+		}
+
+		internal void DeleteSelectedNode() {
+			if (!_Loaded) {
+				return;
+			}
+
+			_Browser.Document.InvokeScript("DeleteSelectedNode");
+		}
 	}
 }
