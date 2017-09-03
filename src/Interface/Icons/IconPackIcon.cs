@@ -35,6 +35,7 @@
 		Clear,
 		Error,
 		Warning,
-		Info
+		Info,
+		Update
 	}
 }

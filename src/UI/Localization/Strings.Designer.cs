@@ -412,6 +412,24 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The new software version has been downloaded. Do you want to install it now?.
+        /// </summary>
+        internal static string DownloadCompleteAskRun {
+            get {
+                return ResourceManager.GetString("DownloadCompleteAskRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download Now.
+        /// </summary>
+        internal static string DownloadNow {
+            get {
+                return ResourceManager.GetString("DownloadNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit {
@@ -934,6 +952,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Release Notes.
+        /// </summary>
+        internal static string ReleaseNotes {
+            get {
+                return ResourceManager.GetString("ReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Robots.
         /// </summary>
         internal static string Robots {
@@ -1123,6 +1150,42 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new software version is available for download..
+        /// </summary>
+        internal static string UpdateAvailableMessage {
+            get {
+                return ResourceManager.GetString("UpdateAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for Update.
+        /// </summary>
+        internal static string UpdateCheck {
+            get {
+                return ResourceManager.GetString("UpdateCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are already running the latest software version..
+        /// </summary>
+        internal static string UpdateNotAvailableMessage {
+            get {
+                return ResourceManager.GetString("UpdateNotAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to URL.
         /// </summary>
         internal static string URL {
@@ -1137,6 +1200,24 @@ namespace WebsiteStudio.UI.Localization {
         internal static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Version.
+        /// </summary>
+        internal static string VersionAvailable {
+            get {
+                return ResourceManager.GetString("VersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Version.
+        /// </summary>
+        internal static string VersionCurrent {
+            get {
+                return ResourceManager.GetString("VersionCurrent", resourceCulture);
             }
         }
         

@@ -36,8 +36,6 @@ namespace WebsiteStudio.Core.Compiling {
 		internal IDictionary<Type, int> ModuleCompilerFlags => _ModuleCompilerFlags;
 
 		private readonly List<Exception> _Exceptions;
-
-		private readonly IWebserver _Webserver;
 		
 		public Compiler(Project project)
 			: this(project, new CompilerSettings()) {

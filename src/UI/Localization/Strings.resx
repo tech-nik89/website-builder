@@ -495,4 +495,31 @@
   <data name="SSLRedirect" xml:space="preserve">
     <value>SSL Redirect</value>
   </data>
+  <data name="DownloadCompleteAskRun" xml:space="preserve">
+    <value>The new software version has been downloaded. Do you want to install it now?</value>
+  </data>
+  <data name="DownloadNow" xml:space="preserve">
+    <value>Download Now</value>
+  </data>
+  <data name="ReleaseNotes" xml:space="preserve">
+    <value>Release Notes</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateAvailableMessage" xml:space="preserve">
+    <value>A new software version is available for download.</value>
+  </data>
+  <data name="UpdateCheck" xml:space="preserve">
+    <value>Check for Update</value>
+  </data>
+  <data name="UpdateNotAvailableMessage" xml:space="preserve">
+    <value>You are already running the latest software version.</value>
+  </data>
+  <data name="VersionAvailable" xml:space="preserve">
+    <value>Available Version</value>
+  </data>
+  <data name="VersionCurrent" xml:space="preserve">
+    <value>Your Version</value>
+  </data>
 </root>

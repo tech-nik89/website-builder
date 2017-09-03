@@ -5,6 +5,7 @@ using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Controls;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
+using WebsiteStudio.Updater;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteStudio.UI.Forms {
@@ -22,12 +23,15 @@ namespace WebsiteStudio.UI.Forms {
 		private readonly ToolStripComboBox _LanguageComboBox;
 
 		private readonly ToolStrip _ProjectToolbar;
+
+		private readonly UpdateService _Updater;
 		
 		public MainForm() {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
 
+			_Updater = new UpdateService();
 			_LanguageComboBox = new ToolStripComboBox();
 			_ProjectToolbar = CreateProjectToolbar();
 
@@ -85,6 +89,7 @@ namespace WebsiteStudio.UI.Forms {
 
 			mnuToolsPlugins.Image = IconPack.Current.GetImage(IconPackIcon.Plugin);
 
+			mnuHelpUpdateCheck.Image = IconPack.Current.GetImage(IconPackIcon.Update);
 			mnuHelpAbout.Image = IconPack.Current.GetImage(IconPackIcon.About);
 		}
 
@@ -114,6 +119,7 @@ namespace WebsiteStudio.UI.Forms {
 			mnuTools.Text = Strings.Tools;
 			mnuToolsPlugins.Text = Strings.Plugins;
 
+			mnuHelpUpdateCheck.Text = Strings.UpdateCheck;
 			mnuHelpAbout.Text = Strings.About;
 		}
 
@@ -228,6 +234,8 @@ namespace WebsiteStudio.UI.Forms {
 		private void MainForm_Load(object sender, EventArgs e) {
 			ConfigHelper.RestoreMainForm(this);
 			ConfigHelper.UpdateRecents(mnuProjectRecents, mnuProjectRecentItem_Click);
+
+			CheckForUpdate(true);
 		}
 
 		private void mnuBuildCleanOutput_Click(object sender, EventArgs e) {
@@ -266,6 +274,27 @@ namespace WebsiteStudio.UI.Forms {
 		private void mnuToolsPlugins_Click(object sender, EventArgs e) {
 			PluginsForm form = new PluginsForm();
 			form.ShowDialog();
+		}
+
+		private async void CheckForUpdate(bool silent) {
+			mnuHelpUpdateCheck.Enabled = false;
+			Update update = await _Updater.IsUpdateAvailable();
+			mnuHelpUpdateCheck.Enabled = true;
+
+			if (update == null) {
+				if (!silent) {
+					MessageBox.Show(Strings.UpdateNotAvailableMessage, Strings.Update, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+
+				return;
+			}
+
+			UpdateForm form = new UpdateForm(update);
+			form.ShowDialog();
+		}
+
+		private void mnuHelpUpdateCheck_Click(object sender, EventArgs e) {
+			CheckForUpdate(false);
 		}
 	}
 }

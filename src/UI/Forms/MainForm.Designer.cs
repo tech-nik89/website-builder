@@ -62,6 +62,8 @@
 			this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tscMain = new System.Windows.Forms.ToolStripContainer();
+			this.mnuHelpUpdateCheck = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMain.SuspendLayout();
 			this.sstMain.SuspendLayout();
 			this.tscMain.SuspendLayout();
@@ -264,6 +266,8 @@
 			// mnuHelp
 			// 
 			this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuHelpUpdateCheck,
+            this.toolStripSeparator4,
             this.mnuHelpAbout});
 			this.mnuHelp.Name = "mnuHelp";
 			this.mnuHelp.Size = new System.Drawing.Size(24, 20);
@@ -272,7 +276,7 @@
 			// mnuHelpAbout
 			// 
 			this.mnuHelpAbout.Name = "mnuHelpAbout";
-			this.mnuHelpAbout.Size = new System.Drawing.Size(115, 22);
+			this.mnuHelpAbout.Size = new System.Drawing.Size(170, 22);
 			this.mnuHelpAbout.Text = "[About]";
 			this.mnuHelpAbout.Click += new System.EventHandler(this.mnuHelpAbout_Click);
 			// 
@@ -312,6 +316,18 @@
 			this.tscMain.Name = "tscMain";
 			this.tscMain.Size = new System.Drawing.Size(1044, 445);
 			this.tscMain.TabIndex = 4;
+			// 
+			// mnuHelpUpdateCheck
+			// 
+			this.mnuHelpUpdateCheck.Name = "mnuHelpUpdateCheck";
+			this.mnuHelpUpdateCheck.Size = new System.Drawing.Size(170, 22);
+			this.mnuHelpUpdateCheck.Text = "[CheckForUpdate]";
+			this.mnuHelpUpdateCheck.Click += new System.EventHandler(this.mnuHelpUpdateCheck_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(167, 6);
 			// 
 			// MainForm
 			// 
@@ -375,6 +391,8 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuTools;
 		private System.Windows.Forms.ToolStripMenuItem mnuToolsPlugins;
 		private System.Windows.Forms.ToolStripContainer tscMain;
+		private System.Windows.Forms.ToolStripMenuItem mnuHelpUpdateCheck;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 	}
 }
 
