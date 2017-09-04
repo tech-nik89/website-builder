@@ -4,13 +4,21 @@
 	menubar: false,
 	branding: false,
 	setup: function(editor) {
-        editor.on('init', function(e) {
-            window.external.FireInit();
-        });
-		editor.on('NodeChange', function (e) {
-			window.external.FireSelectionChanged();
-		});
-    }
+		if (window.external) {
+			editor.on('contextmenu', function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				window.external.FireContextMenu();
+				return false;
+			});
+			editor.on('init', function(e) {
+				window.external.FireInit();
+			});
+			editor.on('nodechange', function (e) {
+				window.external.FireSelectionChanged();
+			});
+		}
+	}
 });
 
 function GetData() {
@@ -58,7 +66,15 @@ function ApplyFormat(format) {
 }
 
 function GetSelectedNode() {
-	return tinyMCE.activeEditor.selection.getNode().outerHTML;
+	var node = tinyMCE.activeEditor.selection.getNode();
+	var html = node.outerHTML;
+	
+	if (node.childNodes.length == 0 && html.indexOf('/>', html.length - 2) === -1) {
+		html = html.substr(0, html.length - 1);
+		html += '/>';
+	}
+
+	return html;
 }
 
 function DeleteSelectedNode() {

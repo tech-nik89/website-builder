@@ -193,6 +193,7 @@ namespace WebsiteStudio.Core.Storage {
 					mediaFile.Id = element.Attribute(ProjectStorageConstants.Id).Value;
 					mediaFile.FileName = element.Attribute(ProjectStorageConstants.Name).Value;
 					mediaFile.AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value);
+					mediaFile.Data = Convert.FromBase64String(element.Value);
 					return mediaFile;
 
 				case ProjectStorageConstants.Reference:

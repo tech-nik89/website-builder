@@ -61,7 +61,10 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			_EditorAPI = new EditorAPI(wbEditor);
 			_EditorAPI.SelectionChanged += Editor_SelectionChanged;
-
+			_EditorAPI.ContextMenu += (sender, e) => {
+				cmsEditor.Show(Cursor.Position);
+			};
+			
 			wbEditor.ObjectForScripting = _EditorAPI;
 			wbEditor.Navigate(GetEditorIndexURL());
 		}
@@ -71,6 +74,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			cmsEditorCopy.Text = Resources.Copy;
 			cmsEditorPaste.Text = Resources.Paste;
 			cmsEditorLinkEdit.Text = Resources.LinkEdit;
+			cmsEditorImageEdit.Text = Resources.ImageEdit;
 		}
 
 		private void ApplyIcons() {
@@ -116,10 +120,15 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			bar.Items.Add(new ToolStripSeparator());
 
-			ToolStripButton insertLink = new ToolStripButton(Resources.InsertLink) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			ToolStripButton insertLink = new ToolStripButton(Resources.LinkInsert) { DisplayStyle = ToolStripItemDisplayStyle.Image };
 			insertLink.Image = IconPack?.GetImage(IconPackIcon.InsertLink);
-			insertLink.Click += tsbInsertLink_Click;
+			insertLink.Click += tsbLinkInsert_Click;
 			bar.Items.Add(insertLink);
+
+			ToolStripButton insertImage = new ToolStripButton(Resources.ImageInsert) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			insertImage.Image = IconPack?.GetImage(IconPackIcon.Image);
+			insertImage.Click += tsbImageInsert_Click;
+			bar.Items.Add(insertImage);
 
 			return bar;
 		}
@@ -265,7 +274,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			_EditorAPI.Paste();
 		}
 
-		private void tsbInsertLink_Click(object sender, EventArgs e) {
+		private void tsbLinkInsert_Click(object sender, EventArgs e) {
 			LinkForm form = new LinkForm(_PluginHelper);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
@@ -359,7 +368,16 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		}
 
 		private void cmsEditor_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-			cmsEditorLinkEdit.Enabled = (SelectedNode?.Name.LocalName.Equals("a", StringComparison.InvariantCultureIgnoreCase)).Value;
+			XElement node = SelectedNode;
+
+			if (node == null) {
+				cmsEditorLinkEdit.Enabled = false;
+				cmsEditorImageEdit.Enabled = false;
+				return;
+			}
+
+			cmsEditorLinkEdit.Enabled = node.Name.LocalName.Equals("a", StringComparison.InvariantCultureIgnoreCase);
+			cmsEditorImageEdit.Enabled = node.Name.LocalName.Equals("img", StringComparison.InvariantCultureIgnoreCase);
 		}
 
 		private void cmsEditorLinkEdit_Click(object sender, EventArgs e) {
@@ -375,6 +393,30 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 			_EditorAPI.DeleteSelectedNode();
 			_EditorAPI.InsertContent(form.Link);
+		}
+
+		private void tsbImageInsert_Click(object sender, EventArgs e) {
+			ImageForm form = new ImageForm(_PluginHelper);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			_EditorAPI.InsertContent(form.Image);
+		}
+
+		private void cmsEditorImageEdit_Click(object sender, EventArgs e) {
+			XElement image = SelectedNode;
+			if (image == null || !image.Name.LocalName.Equals("img", StringComparison.InvariantCultureIgnoreCase)) {
+				return;
+			}
+
+			ImageForm form = new ImageForm(_PluginHelper, image);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			_EditorAPI.DeleteSelectedNode();
+			_EditorAPI.InsertContent(form.Image);
 		}
 	}
 }

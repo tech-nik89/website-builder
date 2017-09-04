@@ -57,6 +57,12 @@
       <DependentUpon>EditorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EditorAPI.cs" />
+    <Compile Include="ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LinkForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
   <ItemGroup>
     <EmbeddedResource Include="EditorControl.resx">
       <DependentUpon>EditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LinkForm.resx">
       <DependentUpon>LinkForm.cs</DependentUpon>

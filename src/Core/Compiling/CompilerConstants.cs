@@ -3,10 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace WebsiteStudio.Core.Compiling {
 	public class CompilerConstants {
-
-		private const String HexRegexPattern = "[0-9a-f]";
-		private static readonly String GuidRegexPattern = String.Format("{0}{{8}}-{0}{{4}}-{0}{{4}}-{0}{{4}}-{0}{{12}}", HexRegexPattern);
-
+		
+		private const String GuidRegexPattern = @"[\d\w\-_]{1,36}";
+		
 		public static readonly Regex MediaLinkRegex = new Regex(String.Format(@"@Media\(({0})\)", GuidRegexPattern), RegexOptions.Compiled | RegexOptions.IgnoreCase);
 		public const String MediaLinkFormat = "@Media({0})";
 

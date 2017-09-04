@@ -12,6 +12,8 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 		public event EventHandler SelectionChanged;
 
+		public event EventHandler ContextMenu;
+
 		private readonly WebBrowser _Browser;
 
 		private String _CachedData;
@@ -36,6 +38,10 @@ namespace WebsiteStudio.Editors.TinyMCE {
 
 		public void FireSelectionChanged() {
 			SelectionChanged?.Invoke(this, new EventArgs());
+		}
+
+		public void FireContextMenu() {
+			ContextMenu?.Invoke(this, new EventArgs());
 		}
 
 		internal void SetData(String data) {

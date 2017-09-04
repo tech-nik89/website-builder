@@ -25,7 +25,7 @@ namespace WebsiteStudio.Core.Media {
 		
 		public override String Name => FileName;
 		
-		public override long Size => Data.Length;
+		public override long Size => _Data.Length;
 		
 		public override bool AutoSave {
 			get => true;
@@ -33,7 +33,7 @@ namespace WebsiteStudio.Core.Media {
 		}
 
 		public override void SaveTo(String path) {
-			File.WriteAllBytes(path, Data);
+			File.WriteAllBytes(path, _Data);
 		}
 
 	}

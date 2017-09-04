@@ -70,6 +70,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alternative Text.
+        /// </summary>
+        internal static string AlternateText {
+            get {
+                return ResourceManager.GetString("AlternateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back Color.
         /// </summary>
         internal static string BackColor {
@@ -165,6 +174,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         internal static string Headline {
             get {
                 return ResourceManager.GetString("Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        internal static string Height {
+            get {
+                return ResourceManager.GetString("Height", resourceCulture);
             }
         }
         
@@ -319,20 +337,38 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        internal static string Image {
+            get {
+                return ResourceManager.GetString("Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Image.
+        /// </summary>
+        internal static string ImageEdit {
+            get {
+                return ResourceManager.GetString("ImageEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert Image.
+        /// </summary>
+        internal static string ImageInsert {
+            get {
+                return ResourceManager.GetString("ImageInsert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indent.
         /// </summary>
         internal static string Indent {
             get {
                 return ResourceManager.GetString("Indent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insert Link.
-        /// </summary>
-        internal static string InsertLink {
-            get {
-                return ResourceManager.GetString("InsertLink", resourceCulture);
             }
         }
         
@@ -382,6 +418,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keep Ratio.
+        /// </summary>
+        internal static string KeepRatio {
+            get {
+                return ResourceManager.GetString("KeepRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to       GNU LESSER GENERAL PUBLIC LICENSE
         ///           Version 2.1, February 1999
         ///
@@ -419,6 +464,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         internal static string LinkEdit {
             get {
                 return ResourceManager.GetString("LinkEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert Link.
+        /// </summary>
+        internal static string LinkInsert {
+            get {
+                return ResourceManager.GetString("LinkInsert", resourceCulture);
             }
         }
         
@@ -486,6 +540,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        internal static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Target.
         /// </summary>
         internal static string Target {
@@ -536,6 +599,15 @@ namespace WebsiteStudio.Editors.TinyMCE.Properties {
         internal static string URL {
             get {
                 return ResourceManager.GetString("URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width.
+        /// </summary>
+        internal static string Width {
+            get {
+                return ResourceManager.GetString("Width", resourceCulture);
             }
         }
     }

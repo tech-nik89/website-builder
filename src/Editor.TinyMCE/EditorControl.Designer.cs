@@ -31,6 +31,7 @@
 			this.cmsEditorPaste = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmsEditorLinkEdit = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmsEditorImageEdit = new System.Windows.Forms.ToolStripMenuItem();
 			this.cdColorPicker = new System.Windows.Forms.ColorDialog();
 			this.tscMain = new System.Windows.Forms.ToolStripContainer();
 			this.cmsEditor.SuspendLayout();
@@ -40,7 +41,6 @@
 			// 
 			// wbEditor
 			// 
-			this.wbEditor.ContextMenuStrip = this.cmsEditor;
 			this.wbEditor.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.wbEditor.IsWebBrowserContextMenuEnabled = false;
 			this.wbEditor.Location = new System.Drawing.Point(0, 0);
@@ -57,43 +57,51 @@
             this.cmsEditorCopy,
             this.cmsEditorPaste,
             this.toolStripSeparator1,
-            this.cmsEditorLinkEdit});
+            this.cmsEditorLinkEdit,
+            this.cmsEditorImageEdit});
 			this.cmsEditor.Name = "cmsEditor";
-			this.cmsEditor.Size = new System.Drawing.Size(153, 120);
+			this.cmsEditor.Size = new System.Drawing.Size(136, 120);
 			this.cmsEditor.Opening += new System.ComponentModel.CancelEventHandler(this.cmsEditor_Opening);
 			// 
 			// cmsEditorCut
 			// 
 			this.cmsEditorCut.Name = "cmsEditorCut";
-			this.cmsEditorCut.Size = new System.Drawing.Size(152, 22);
+			this.cmsEditorCut.Size = new System.Drawing.Size(135, 22);
 			this.cmsEditorCut.Text = "[Cut]";
 			this.cmsEditorCut.Click += new System.EventHandler(this.tsbCut_Click);
 			// 
 			// cmsEditorCopy
 			// 
 			this.cmsEditorCopy.Name = "cmsEditorCopy";
-			this.cmsEditorCopy.Size = new System.Drawing.Size(152, 22);
+			this.cmsEditorCopy.Size = new System.Drawing.Size(135, 22);
 			this.cmsEditorCopy.Text = "[Copy]";
 			this.cmsEditorCopy.Click += new System.EventHandler(this.tsbCopy_Click);
 			// 
 			// cmsEditorPaste
 			// 
 			this.cmsEditorPaste.Name = "cmsEditorPaste";
-			this.cmsEditorPaste.Size = new System.Drawing.Size(152, 22);
+			this.cmsEditorPaste.Size = new System.Drawing.Size(135, 22);
 			this.cmsEditorPaste.Text = "[Paste]";
 			this.cmsEditorPaste.Click += new System.EventHandler(this.tsbPaste_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
 			// 
 			// cmsEditorLinkEdit
 			// 
 			this.cmsEditorLinkEdit.Name = "cmsEditorLinkEdit";
-			this.cmsEditorLinkEdit.Size = new System.Drawing.Size(152, 22);
+			this.cmsEditorLinkEdit.Size = new System.Drawing.Size(135, 22);
 			this.cmsEditorLinkEdit.Text = "[EditLink]";
 			this.cmsEditorLinkEdit.Click += new System.EventHandler(this.cmsEditorLinkEdit_Click);
+			// 
+			// cmsEditorImageEdit
+			// 
+			this.cmsEditorImageEdit.Name = "cmsEditorImageEdit";
+			this.cmsEditorImageEdit.Size = new System.Drawing.Size(135, 22);
+			this.cmsEditorImageEdit.Text = "[EditImage]";
+			this.cmsEditorImageEdit.Click += new System.EventHandler(this.cmsEditorImageEdit_Click);
 			// 
 			// tscMain
 			// 
@@ -135,5 +143,6 @@
 		private System.Windows.Forms.ToolStripMenuItem cmsEditorPaste;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem cmsEditorLinkEdit;
+		private System.Windows.Forms.ToolStripMenuItem cmsEditorImageEdit;
 	}
 }

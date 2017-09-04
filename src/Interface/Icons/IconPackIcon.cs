@@ -36,6 +36,7 @@
 		Error,
 		Warning,
 		Info,
-		Update
+		Update,
+		Image
 	}
 }
