@@ -26,15 +26,17 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvalonEditorControl));
 			this.wpfHost = new System.Windows.Forms.Integration.ElementHost();
 			this.tsMain = new System.Windows.Forms.ToolStrip();
+			this.tsbCut = new System.Windows.Forms.ToolStripButton();
+			this.tsbCopy = new System.Windows.Forms.ToolStripButton();
+			this.tsbPaste = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbUndo = new System.Windows.Forms.ToolStripButton();
 			this.tsbRedo = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbSearch = new System.Windows.Forms.ToolStripButton();
 			this.tsbInsertLink = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbCut = new System.Windows.Forms.ToolStripButton();
-			this.tsbCopy = new System.Windows.Forms.ToolStripButton();
-			this.tsbPaste = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbInfo = new System.Windows.Forms.ToolStripButton();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -58,12 +60,49 @@
             this.tsbRedo,
             this.toolStripSeparator1,
             this.tsbSearch,
-            this.tsbInsertLink});
+            this.tsbInsertLink,
+            this.toolStripSeparator3,
+            this.tsbInfo});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
 			this.tsMain.Size = new System.Drawing.Size(565, 25);
 			this.tsMain.TabIndex = 1;
 			this.tsMain.Text = "toolStrip1";
+			// 
+			// tsbCut
+			// 
+			this.tsbCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbCut.Image = ((System.Drawing.Image)(resources.GetObject("tsbCut.Image")));
+			this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbCut.Name = "tsbCut";
+			this.tsbCut.Size = new System.Drawing.Size(23, 22);
+			this.tsbCut.Text = "[Cut]";
+			this.tsbCut.Click += new System.EventHandler(this.tsbCut_Click);
+			// 
+			// tsbCopy
+			// 
+			this.tsbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbCopy.Image = ((System.Drawing.Image)(resources.GetObject("tsbCopy.Image")));
+			this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbCopy.Name = "tsbCopy";
+			this.tsbCopy.Size = new System.Drawing.Size(23, 22);
+			this.tsbCopy.Text = "[Copy]";
+			this.tsbCopy.Click += new System.EventHandler(this.tsbCopy_Click);
+			// 
+			// tsbPaste
+			// 
+			this.tsbPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbPaste.Image = ((System.Drawing.Image)(resources.GetObject("tsbPaste.Image")));
+			this.tsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbPaste.Name = "tsbPaste";
+			this.tsbPaste.Size = new System.Drawing.Size(23, 22);
+			this.tsbPaste.Text = "[Paste]";
+			this.tsbPaste.Click += new System.EventHandler(this.tsbPaste_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
 			// 
 			// tsbUndo
 			// 
@@ -110,40 +149,20 @@
 			this.tsbInsertLink.Text = "[InsertLink]";
 			this.tsbInsertLink.Click += new System.EventHandler(this.tsbInsertLink_Click);
 			// 
-			// toolStripSeparator2
+			// toolStripSeparator3
 			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
 			// 
-			// tsbCut
+			// tsbInfo
 			// 
-			this.tsbCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbCut.Image = ((System.Drawing.Image)(resources.GetObject("tsbCut.Image")));
-			this.tsbCut.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbCut.Name = "tsbCut";
-			this.tsbCut.Size = new System.Drawing.Size(23, 22);
-			this.tsbCut.Text = "[Cut]";
-			this.tsbCut.Click += new System.EventHandler(this.tsbCut_Click);
-			// 
-			// tsbCopy
-			// 
-			this.tsbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbCopy.Image = ((System.Drawing.Image)(resources.GetObject("tsbCopy.Image")));
-			this.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbCopy.Name = "tsbCopy";
-			this.tsbCopy.Size = new System.Drawing.Size(23, 22);
-			this.tsbCopy.Text = "[Copy]";
-			this.tsbCopy.Click += new System.EventHandler(this.tsbCopy_Click);
-			// 
-			// tsbPaste
-			// 
-			this.tsbPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbPaste.Image = ((System.Drawing.Image)(resources.GetObject("tsbPaste.Image")));
-			this.tsbPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbPaste.Name = "tsbPaste";
-			this.tsbPaste.Size = new System.Drawing.Size(23, 22);
-			this.tsbPaste.Text = "[Paste]";
-			this.tsbPaste.Click += new System.EventHandler(this.tsbPaste_Click);
+			this.tsbInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsbInfo.Image")));
+			this.tsbInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbInfo.Name = "tsbInfo";
+			this.tsbInfo.Size = new System.Drawing.Size(23, 22);
+			this.tsbInfo.Text = "[Info]";
+			this.tsbInfo.Click += new System.EventHandler(this.tsbInfo_Click);
 			// 
 			// AvalonEditorControl
 			// 
@@ -173,5 +192,7 @@
 		private System.Windows.Forms.ToolStripButton tsbCut;
 		private System.Windows.Forms.ToolStripButton tsbCopy;
 		private System.Windows.Forms.ToolStripButton tsbPaste;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripButton tsbInfo;
 	}
 }

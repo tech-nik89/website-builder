@@ -2,6 +2,7 @@
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
 using WebsiteStudio.Editors.Avalon.Localization;
@@ -77,6 +78,7 @@ namespace WebsiteStudio.Editors.Avalon {
 			tsbCut.Text = Strings.Cut;
 			tsbCopy.Text = Strings.Copy;
 			tsbPaste.Text = Strings.Paste;
+			tsbInfo.Text = Strings.Info;
 		}
 
 		private void ApplyIcons() {
@@ -92,6 +94,7 @@ namespace WebsiteStudio.Editors.Avalon {
 			tsbCut.Image = iconPack.GetImage(IconPackIcon.Cut);
 			tsbCopy.Image = iconPack.GetImage(IconPackIcon.Copy);
 			tsbPaste.Image = iconPack.GetImage(IconPackIcon.Paste);
+			tsbInfo.Image = iconPack.GetImage(IconPackIcon.About);
 		}
 
 		public void UpdateButtons() {
@@ -190,6 +193,10 @@ namespace WebsiteStudio.Editors.Avalon {
 
 		private void tsbPaste_Click(object sender, EventArgs e) {
 			_Editor.Paste();
+		}
+
+		private void tsbInfo_Click(object sender, EventArgs e) {
+			Process.Start("http://avalonedit.net/");
 		}
 	}
 }

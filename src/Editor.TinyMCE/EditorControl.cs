@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -55,6 +56,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 			LocalizeComponent();
 			ApplyIcons();
 
+			tscMain.TopToolStripPanel.Controls.Add(CreateHelpToolBar());
 			tscMain.TopToolStripPanel.Controls.Add(CreateFormatsToolbar());
 			tscMain.TopToolStripPanel.Controls.Add(CreateBasicToolbar());
 			tscMain.TopToolStripPanel.Controls.Add(CreateMainToolbar());
@@ -86,6 +88,17 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		private static String GetEditorIndexURL() {
 			FileInfo assemblyFileInfo = new FileInfo(Assembly.GetAssembly(typeof(EditorControl)).Location);
 			return Path.Combine(assemblyFileInfo.DirectoryName, "TinyMCE", "Index.html");
+		}
+
+		private ToolStrip CreateHelpToolBar() {
+			ToolStrip bar = new ToolStrip();
+
+			ToolStripButton info = new ToolStripButton(Resources.Info) { DisplayStyle = ToolStripItemDisplayStyle.Image };
+			info.Image = IconPack?.GetImage(IconPackIcon.About);
+			info.Click += (sender, e) => { Process.Start("https://www.tinymce.com/"); };
+			bar.Items.Add(info);
+
+			return bar;
 		}
 		
 		private ToolStrip CreateMainToolbar() {

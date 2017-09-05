@@ -376,4 +376,7 @@
   <data name="Width" xml:space="preserve">
     <value>Width</value>
   </data>
+  <data name="Info" xml:space="preserve">
+    <value>More Information</value>
+  </data>
 </root>

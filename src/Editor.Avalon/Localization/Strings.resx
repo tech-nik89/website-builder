@@ -138,6 +138,9 @@
   <data name="GoTo" xml:space="preserve">
     <value>Go To</value>
   </data>
+  <data name="Info" xml:space="preserve">
+    <value>More Information</value>
+  </data>
   <data name="InsertLink" xml:space="preserve">
     <value>Insert Link</value>
   </data>

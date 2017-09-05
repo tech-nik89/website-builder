@@ -124,6 +124,15 @@ namespace WebsiteStudio.Editors.Avalon.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Information.
+        /// </summary>
+        internal static string Info {
+            get {
+                return ResourceManager.GetString("Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert Link.
         /// </summary>
         internal static string InsertLink {
