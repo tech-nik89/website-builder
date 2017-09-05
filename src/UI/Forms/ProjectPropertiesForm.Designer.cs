@@ -58,7 +58,7 @@
 			this.tabMain.Location = new System.Drawing.Point(12, 12);
 			this.tabMain.Name = "tabMain";
 			this.tabMain.SelectedIndex = 0;
-			this.tabMain.Size = new System.Drawing.Size(484, 389);
+			this.tabMain.Size = new System.Drawing.Size(484, 408);
 			this.tabMain.TabIndex = 0;
 			this.tabMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabMain_Selected);
 			// 
@@ -68,7 +68,7 @@
 			this.tabGeneral.Location = new System.Drawing.Point(4, 22);
 			this.tabGeneral.Name = "tabGeneral";
 			this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-			this.tabGeneral.Size = new System.Drawing.Size(476, 363);
+			this.tabGeneral.Size = new System.Drawing.Size(476, 382);
 			this.tabGeneral.TabIndex = 0;
 			this.tabGeneral.Text = "[General]";
 			this.tabGeneral.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
 			this.pgsGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pgsGeneral.Location = new System.Drawing.Point(3, 3);
 			this.pgsGeneral.Name = "pgsGeneral";
-			this.pgsGeneral.Size = new System.Drawing.Size(470, 357);
+			this.pgsGeneral.Size = new System.Drawing.Size(470, 376);
 			this.pgsGeneral.TabIndex = 0;
 			// 
 			// tabLanguages
@@ -87,7 +87,7 @@
 			this.tabLanguages.Location = new System.Drawing.Point(4, 22);
 			this.tabLanguages.Name = "tabLanguages";
 			this.tabLanguages.Padding = new System.Windows.Forms.Padding(3);
-			this.tabLanguages.Size = new System.Drawing.Size(476, 295);
+			this.tabLanguages.Size = new System.Drawing.Size(476, 363);
 			this.tabLanguages.TabIndex = 1;
 			this.tabLanguages.Text = "[Languages]";
 			this.tabLanguages.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
 			this.plsLanguages.Languages = new WebsiteStudio.Core.Localization.Language[0];
 			this.plsLanguages.Location = new System.Drawing.Point(3, 3);
 			this.plsLanguages.Name = "plsLanguages";
-			this.plsLanguages.Size = new System.Drawing.Size(470, 289);
+			this.plsLanguages.Size = new System.Drawing.Size(470, 357);
 			this.plsLanguages.TabIndex = 0;
 			// 
 			// tabMeta
@@ -107,7 +107,7 @@
 			this.tabMeta.Location = new System.Drawing.Point(4, 22);
 			this.tabMeta.Name = "tabMeta";
 			this.tabMeta.Padding = new System.Windows.Forms.Padding(3);
-			this.tabMeta.Size = new System.Drawing.Size(476, 295);
+			this.tabMeta.Size = new System.Drawing.Size(476, 363);
 			this.tabMeta.TabIndex = 2;
 			this.tabMeta.Text = "[Meta]";
 			this.tabMeta.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
 			this.lvwMeta.Location = new System.Drawing.Point(3, 3);
 			this.lvwMeta.MultiSelect = false;
 			this.lvwMeta.Name = "lvwMeta";
-			this.lvwMeta.Size = new System.Drawing.Size(470, 289);
+			this.lvwMeta.Size = new System.Drawing.Size(470, 357);
 			this.lvwMeta.TabIndex = 0;
 			this.lvwMeta.UseCompatibleStateImageBehavior = false;
 			this.lvwMeta.View = System.Windows.Forms.View.Details;
@@ -139,7 +139,7 @@
 			this.tabPublish.Location = new System.Drawing.Point(4, 22);
 			this.tabPublish.Name = "tabPublish";
 			this.tabPublish.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPublish.Size = new System.Drawing.Size(476, 295);
+			this.tabPublish.Size = new System.Drawing.Size(476, 363);
 			this.tabPublish.TabIndex = 3;
 			this.tabPublish.Text = "[Publishing]";
 			this.tabPublish.UseVisualStyleBackColor = true;
@@ -150,13 +150,13 @@
 			this.psPublishingSettings.Location = new System.Drawing.Point(3, 3);
 			this.psPublishingSettings.Name = "psPublishingSettings";
 			this.psPublishingSettings.Project = null;
-			this.psPublishingSettings.Size = new System.Drawing.Size(470, 289);
+			this.psPublishingSettings.Size = new System.Drawing.Size(470, 357);
 			this.psPublishingSettings.TabIndex = 0;
 			// 
 			// btnAccept
 			// 
 			this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAccept.Location = new System.Drawing.Point(286, 413);
+			this.btnAccept.Location = new System.Drawing.Point(286, 432);
 			this.btnAccept.Name = "btnAccept";
 			this.btnAccept.Size = new System.Drawing.Size(100, 25);
 			this.btnAccept.TabIndex = 1;
@@ -168,7 +168,7 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(392, 413);
+			this.btnCancel.Location = new System.Drawing.Point(392, 432);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(100, 25);
 			this.btnCancel.TabIndex = 2;
@@ -182,12 +182,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(508, 452);
+			this.ClientSize = new System.Drawing.Size(508, 471);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAccept);
 			this.Controls.Add(this.tabMain);
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(524, 490);
+			this.MinimumSize = new System.Drawing.Size(524, 510);
 			this.Name = "ProjectPropertiesForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
