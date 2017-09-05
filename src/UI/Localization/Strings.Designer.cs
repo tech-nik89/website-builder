@@ -529,6 +529,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get Link.
+        /// </summary>
+        internal static string GetLink {
+            get {
+                return ResourceManager.GetString("GetLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hourly.
         /// </summary>
         internal static string Hourly {
@@ -1020,6 +1029,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string SaveAs {
             get {
                 return ResourceManager.GetString("SaveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         

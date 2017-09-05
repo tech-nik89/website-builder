@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
 
 namespace WebsiteStudio.Core.Media {
 
 	public abstract class MediaItem {
+
+		public static readonly String[] ImageExtensions = { ".jpg", ".jpeg", ".gif", ".png" };
 
 		protected readonly Project _Project;
 
@@ -19,6 +22,10 @@ namespace WebsiteStudio.Core.Media {
 		public abstract long Size { get; }
 
 		public abstract void SaveTo(String path);
+
+		public String Extension => Path.GetExtension(Name).ToLower();
+
+		public bool IsImage => Array.IndexOf(ImageExtensions, Extension) > -1;
 
 	}
 }

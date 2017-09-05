@@ -522,4 +522,10 @@
   <data name="VersionCurrent" xml:space="preserve">
     <value>Your Version</value>
   </data>
+  <data name="GetLink" xml:space="preserve">
+    <value>Get Link</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>

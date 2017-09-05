@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Footer;
 using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
@@ -90,18 +91,19 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		private void btnBrowse_Click(object sender, EventArgs e) {
-			InsertLinkForm.Tabs tabs = 0;
+			GetLinkMode tabs = 0;
 
 			switch (SelectedType) {
 				case FooterLinkType.Internal:
-					tabs |= InsertLinkForm.Tabs.Page;
+					tabs |= GetLinkMode.Pages;
 					break;
 				case FooterLinkType.Media:
-					tabs |= InsertLinkForm.Tabs.Media;
+					tabs |= GetLinkMode.Files;
+					tabs |= GetLinkMode.Images;
 					break;
 			}
 
-			InsertLinkForm form = new InsertLinkForm(_Project, _Language, tabs);
+			GetLinkForm form = new GetLinkForm(_Project, _Language, tabs);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
 			}

@@ -73,7 +73,7 @@ namespace WebsiteStudio.Editors.TinyMCE {
 		}
 
 		private void btnBrowseURL_Click(object sender, EventArgs e) {
-			ILink link = _PluginHelper.GetLink();
+			ILink link = _PluginHelper.GetLink(GetLinkMode.Images);
 			if (link == null) {
 				return;
 			}

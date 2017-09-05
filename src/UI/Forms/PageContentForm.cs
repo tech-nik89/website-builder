@@ -49,8 +49,8 @@ namespace WebsiteStudio.UI.Forms {
 			tsbSettings.Text = Strings.ContentSettings;
 		}
 
-		private ILink GetLink() {
-			InsertLinkForm form = new InsertLinkForm(_Page.Project, _Language);
+		private ILink GetLink(GetLinkMode mode) {
+			GetLinkForm form = new GetLinkForm(_Page.Project, _Language, mode);
 			var result = form.ShowDialog();
 
 			if (result != DialogResult.OK) {

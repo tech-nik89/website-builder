@@ -20,6 +20,8 @@ namespace WebsiteStudio.Interface.Plugins {
 
 		ILink GetLink();
 
+		ILink GetLink(GetLinkMode mode);
+
 		DirectoryInfo OutputDirectory { get; }
 
 	}

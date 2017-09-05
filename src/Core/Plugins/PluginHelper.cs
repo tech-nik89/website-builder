@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using WebsiteStudio.Core.Tools;
 using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
@@ -14,7 +15,7 @@ namespace WebsiteStudio.Core.Plugins {
 
 		private readonly Project _Project;
 
-		private readonly Func<ILink> _GetLink;
+		private readonly Func<GetLinkMode, ILink> _GetLink;
 
 		public DirectoryInfo OutputDirectory => new DirectoryInfo(_Project.OutputPath);
 		
@@ -25,7 +26,7 @@ namespace WebsiteStudio.Core.Plugins {
 			: this (project, editorType, iconPack, null) {
 		}
 
-		public PluginHelper(Project project, Type editorType, IIconPack iconPack, Func<ILink> getLink) {
+		public PluginHelper(Project project, Type editorType, IIconPack iconPack, Func<GetLinkMode, ILink> getLink) {
 			_Project = project;
 			_EditorType = editorType;
 			_IconPack = iconPack;
@@ -65,7 +66,12 @@ namespace WebsiteStudio.Core.Plugins {
 		}
 
 		public ILink GetLink() {
-			return _GetLink?.Invoke();
+			int all = Enum.GetValues(typeof(GetLinkMode)).Cast<int>().Sum();
+			return GetLink((GetLinkMode)all);
+		}
+
+		public ILink GetLink(GetLinkMode mode) {
+			return _GetLink?.Invoke(mode);
 		}
 	}
 }

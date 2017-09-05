@@ -147,7 +147,7 @@ namespace WebsiteStudio.Core.Plugins {
 			return LoadModule(content, null, project, null);
 		}
 
-		public static IModule LoadModule(PageContent content, IIconPack iconPack, Project project, Func<ILink> getLink) {
+		public static IModule LoadModule(PageContent content, IIconPack iconPack, Project project, Func<GetLinkMode, ILink> getLink) {
 			if (content == null || content.ModuleType == null || content.EditorType == null) {
 				return null;
 			}
