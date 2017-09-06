@@ -96,6 +96,7 @@
     <Compile Include="Pages\PageCollection.cs" />
     <Compile Include="Pages\PageContent.cs" />
     <Compile Include="Pages\PageContentItem.cs" />
+    <Compile Include="Pages\PageLinkType.cs" />
     <Compile Include="Pages\PageMoveDirection.cs" />
     <Compile Include="Plugins\PluginHelper.cs" />
     <Compile Include="Plugins\PluginInfo.cs" />

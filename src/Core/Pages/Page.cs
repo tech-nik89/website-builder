@@ -66,6 +66,20 @@ namespace WebsiteStudio.Core.Pages {
 			set { _RobotsNoFollow = value; Project.Dirty = true; }
 		}
 
+		private String _LinkTarget;
+
+		public String LinkTarget {
+			get => _LinkTarget;
+			set { _LinkTarget = value; Project.Dirty = true; }
+		}
+
+		private PageLinkType _LinkType;
+
+		public PageLinkType LinkType {
+			get => _LinkType;
+			set { _LinkType = value; Project.Dirty = true; }
+		}
+
 		public int ParentCount {
 			get {
 				int level = 0;

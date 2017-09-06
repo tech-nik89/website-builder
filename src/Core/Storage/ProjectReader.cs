@@ -131,9 +131,22 @@ namespace WebsiteStudio.Core.Storage {
 			GetLocalizedString(element.Element(ProjectStorageConstants.Title), page.Title);
 			GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), page.MetaDescription);
 			GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), page.MetaKeywords);
+			GetPageLink(element.Element(ProjectStorageConstants.Link), page);
 			GetContent(element.Element(ProjectStorageConstants.Content), page);
 
 			return page;
+		}
+
+		private void GetPageLink(XElement element, Page page) {
+			if (element == null) {
+				return;
+			}
+
+			PageLinkType type = PageLinkType.None;
+			Enum.TryParse(element.Attribute(ProjectStorageConstants.Type)?.Value, out type);
+
+			page.LinkType = type;
+			page.LinkTarget = element.Attribute(ProjectStorageConstants.Target)?.Value;
 		}
 
 		private void GetContent(XElement element, Page page) {

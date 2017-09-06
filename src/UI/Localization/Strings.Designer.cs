@@ -772,6 +772,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         internal static string Open {
@@ -948,6 +957,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string RecentProjects {
             get {
                 return ResourceManager.GetString("RecentProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redirect.
+        /// </summary>
+        internal static string Redirect {
+            get {
+                return ResourceManager.GetString("Redirect", resourceCulture);
             }
         }
         

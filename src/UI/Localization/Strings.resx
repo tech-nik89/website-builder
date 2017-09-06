@@ -528,4 +528,10 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Redirect" xml:space="preserve">
+    <value>Redirect</value>
+  </data>
 </root>

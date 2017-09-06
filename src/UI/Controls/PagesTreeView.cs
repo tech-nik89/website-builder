@@ -220,7 +220,7 @@ namespace WebsiteStudio.UI.Controls {
 		}
 
 		private void Add() {
-			PagePropertiesForm form = new PagePropertiesForm(_Project);
+			PagePropertiesForm form = new PagePropertiesForm(_Project, SelectedLanguage);
 			DialogResult result = form.ShowDialog();
 
 			if (result == DialogResult.OK) {
@@ -254,7 +254,7 @@ namespace WebsiteStudio.UI.Controls {
 				return;
 			}
 
-			PagePropertiesForm form = new PagePropertiesForm(item.Page);
+			PagePropertiesForm form = new PagePropertiesForm(item.Page, SelectedLanguage);
 			DialogResult result = form.ShowDialog();
 
 			if (result == DialogResult.OK) {

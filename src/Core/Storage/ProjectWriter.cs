@@ -94,8 +94,16 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.Title, GetLocalizedString(page.Title)),
 				new XElement(ProjectStorageConstants.MetaDescription, GetLocalizedString(page.MetaDescription)),
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(page.MetaKeywords)),
+				new XElement(GetPageLink(page)),
 				new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
 				GetPages(page.Pages)
+			);
+		}
+
+		private XElement GetPageLink(Page page) {
+			return new XElement(ProjectStorageConstants.Link,
+				new XAttribute(ProjectStorageConstants.Type, page.LinkType.ToString()),
+				new XAttribute(ProjectStorageConstants.Target, page.LinkTarget ?? String.Empty)
 			);
 		}
 		

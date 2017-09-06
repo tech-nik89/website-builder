@@ -5,6 +5,7 @@ using WebsiteStudio.Core;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Validation;
+using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Localization;
 using WebsiteStudio.UI.Resources;
@@ -18,11 +19,13 @@ namespace WebsiteStudio.UI.Forms {
 
 		private readonly ResourceSet _ResourceSet;
 
-		public PagePropertiesForm(Project project)
-			: this(project.CreatePage()) {
+		private readonly Language _Language;
+
+		public PagePropertiesForm(Project project, Language language)
+			: this(project.CreatePage(), language) {
 		}
 
-		public PagePropertiesForm(Page page) {
+		public PagePropertiesForm(Page page, Language language) {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
@@ -32,6 +35,7 @@ namespace WebsiteStudio.UI.Forms {
 			_ChangeFrequencies = (PageChangeFrequency[])Enum.GetValues(typeof(PageChangeFrequency));
 			
 			Page = page;
+			_Language = language;
 
 			FillChangeFrequency();
 			FillForm();
@@ -64,6 +68,7 @@ namespace WebsiteStudio.UI.Forms {
 			tabTitle.Text = Strings.Title;
 			tabMeta.Text = Strings.Meta;
 			tabRobots.Text = Strings.Robots;
+			tabLink.Text = Strings.Link;
 
 			clnLanguage.Text = Strings.Language;
 			clnTitle.Text = Strings.Title;
@@ -81,6 +86,13 @@ namespace WebsiteStudio.UI.Forms {
 			chkDisable.Text = Strings.Yes;
 			chkRobotsNoFollow.Text = Strings.RobotsNoFollow;
 			chkRobotsNoIndex.Text = Strings.RobotsNoIndex;
+
+			gbxLinkType.Text = Strings.Type;
+			gbxLinkTarget.Text = Strings.Target;
+
+			rbLinkNone.Text = Strings.None;
+			rbLinkLink.Text = Strings.Link;
+			rbLinkRedirect.Text = Strings.Redirect;
 		}
 
 		private void FillForm() {
@@ -94,6 +106,9 @@ namespace WebsiteStudio.UI.Forms {
 			chkRobotsNoIndex.Checked = Page.RobotsNoIndex;
 
 			cbxChangeFrequency.SelectedIndex = Array.IndexOf(_ChangeFrequencies, Page.ChangeFrequency);
+
+			SetPageLinkType(Page.LinkType);
+			txtLinkTarget.Text = Page.LinkTarget;
 		}
 
 		private void FillTitleList() {
@@ -146,6 +161,9 @@ namespace WebsiteStudio.UI.Forms {
 			for (int i = 0; i < page.Project.Languages.Length; i++) {
 				page.Title.Set(page.Project.Languages[i], lvwTitle.Items[i].Text);
 			}
+
+			page.LinkTarget = txtLinkTarget.Text;
+			page.LinkType = GetPageLinkType();
 		}
 
 		private void lvwTitle_MouseUp(object sender, MouseEventArgs e) {
@@ -178,6 +196,32 @@ namespace WebsiteStudio.UI.Forms {
 
 			Page.MetaDescription.Set(language, form.Description);
 			Page.MetaKeywords.Set(language, form.Keywords);
+		}
+
+		private PageLinkType GetPageLinkType() {
+			if(rbLinkLink.Checked) {
+				return PageLinkType.Link;
+			}
+			else if (rbLinkRedirect.Checked) {
+				return PageLinkType.Redirect;
+			}
+
+			return PageLinkType.None;
+		}
+
+		private void SetPageLinkType(PageLinkType type) {
+			rbLinkNone.Checked = type == PageLinkType.None;
+			rbLinkLink.Checked = type == PageLinkType.Link;
+			rbLinkRedirect.Checked = type == PageLinkType.Redirect;
+		}
+
+		private void btnBrowse_Click(object sender, EventArgs e) {
+			GetLinkForm form = new GetLinkForm(Page.Project, _Language, GetLinkMode.Pages);
+			if (form.ShowDialog() != DialogResult.OK) {
+				return;
+			}
+
+			txtLinkTarget.Text = form.Link;
 		}
 	}
 }

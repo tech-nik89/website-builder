@@ -94,7 +94,6 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			CurrentProject = new Project();
-			UpdateFormText();
 		}
 
 		private void SaveProject(bool saveAs) {
@@ -136,7 +135,6 @@ namespace WebsiteStudio.UI.Forms {
 				Project project = Project.Load(path);
 
 				CurrentProject = project;
-				UpdateFormText();
 			}
 			catch (Exception e) {
 				HandleError(Strings.ProjectLoadErrorMessage, e);

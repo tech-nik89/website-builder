@@ -48,12 +48,23 @@
 			this.chkRobotsNoIndex = new System.Windows.Forms.CheckBox();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnAccept = new System.Windows.Forms.Button();
+			this.tabLink = new System.Windows.Forms.TabPage();
+			this.rbLinkRedirect = new System.Windows.Forms.RadioButton();
+			this.gbxLinkType = new System.Windows.Forms.GroupBox();
+			this.rbLinkLink = new System.Windows.Forms.RadioButton();
+			this.gbxLinkTarget = new System.Windows.Forms.GroupBox();
+			this.rbLinkNone = new System.Windows.Forms.RadioButton();
+			this.txtLinkTarget = new System.Windows.Forms.TextBox();
+			this.btnBrowse = new System.Windows.Forms.Button();
 			this.tabMain.SuspendLayout();
 			this.tabDetails.SuspendLayout();
 			this.gbxGeneral.SuspendLayout();
 			this.tabTitle.SuspendLayout();
 			this.tabMeta.SuspendLayout();
 			this.tabRobots.SuspendLayout();
+			this.tabLink.SuspendLayout();
+			this.gbxLinkType.SuspendLayout();
+			this.gbxLinkTarget.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabMain
@@ -65,6 +76,7 @@
 			this.tabMain.Controls.Add(this.tabTitle);
 			this.tabMain.Controls.Add(this.tabMeta);
 			this.tabMain.Controls.Add(this.tabRobots);
+			this.tabMain.Controls.Add(this.tabLink);
 			this.tabMain.Location = new System.Drawing.Point(12, 12);
 			this.tabMain.Name = "tabMain";
 			this.tabMain.SelectedIndex = 0;
@@ -329,6 +341,98 @@
 			this.btnAccept.UseVisualStyleBackColor = true;
 			this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
 			// 
+			// tabLink
+			// 
+			this.tabLink.Controls.Add(this.gbxLinkTarget);
+			this.tabLink.Controls.Add(this.gbxLinkType);
+			this.tabLink.Location = new System.Drawing.Point(4, 22);
+			this.tabLink.Name = "tabLink";
+			this.tabLink.Padding = new System.Windows.Forms.Padding(3);
+			this.tabLink.Size = new System.Drawing.Size(452, 239);
+			this.tabLink.TabIndex = 4;
+			this.tabLink.Text = "[Link]";
+			this.tabLink.UseVisualStyleBackColor = true;
+			// 
+			// rbLinkRedirect
+			// 
+			this.rbLinkRedirect.AutoSize = true;
+			this.rbLinkRedirect.Location = new System.Drawing.Point(19, 74);
+			this.rbLinkRedirect.Name = "rbLinkRedirect";
+			this.rbLinkRedirect.Size = new System.Drawing.Size(71, 17);
+			this.rbLinkRedirect.TabIndex = 1;
+			this.rbLinkRedirect.TabStop = true;
+			this.rbLinkRedirect.Text = "[Redirect]";
+			this.rbLinkRedirect.UseVisualStyleBackColor = true;
+			// 
+			// gbxLinkType
+			// 
+			this.gbxLinkType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxLinkType.Controls.Add(this.rbLinkNone);
+			this.gbxLinkType.Controls.Add(this.rbLinkLink);
+			this.gbxLinkType.Controls.Add(this.rbLinkRedirect);
+			this.gbxLinkType.Location = new System.Drawing.Point(6, 6);
+			this.gbxLinkType.Name = "gbxLinkType";
+			this.gbxLinkType.Size = new System.Drawing.Size(440, 110);
+			this.gbxLinkType.TabIndex = 1;
+			this.gbxLinkType.TabStop = false;
+			this.gbxLinkType.Text = "[Type]";
+			// 
+			// rbLinkLink
+			// 
+			this.rbLinkLink.AutoSize = true;
+			this.rbLinkLink.Location = new System.Drawing.Point(19, 51);
+			this.rbLinkLink.Name = "rbLinkLink";
+			this.rbLinkLink.Size = new System.Drawing.Size(51, 17);
+			this.rbLinkLink.TabIndex = 0;
+			this.rbLinkLink.TabStop = true;
+			this.rbLinkLink.Text = "[Link]";
+			this.rbLinkLink.UseVisualStyleBackColor = true;
+			// 
+			// gbxLinkTarget
+			// 
+			this.gbxLinkTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxLinkTarget.Controls.Add(this.btnBrowse);
+			this.gbxLinkTarget.Controls.Add(this.txtLinkTarget);
+			this.gbxLinkTarget.Location = new System.Drawing.Point(6, 122);
+			this.gbxLinkTarget.Name = "gbxLinkTarget";
+			this.gbxLinkTarget.Size = new System.Drawing.Size(440, 79);
+			this.gbxLinkTarget.TabIndex = 2;
+			this.gbxLinkTarget.TabStop = false;
+			this.gbxLinkTarget.Text = "[Target]";
+			// 
+			// rbLinkNone
+			// 
+			this.rbLinkNone.AutoSize = true;
+			this.rbLinkNone.Location = new System.Drawing.Point(19, 28);
+			this.rbLinkNone.Name = "rbLinkNone";
+			this.rbLinkNone.Size = new System.Drawing.Size(57, 17);
+			this.rbLinkNone.TabIndex = 2;
+			this.rbLinkNone.TabStop = true;
+			this.rbLinkNone.Text = "[None]";
+			this.rbLinkNone.UseVisualStyleBackColor = true;
+			// 
+			// txtLinkTarget
+			// 
+			this.txtLinkTarget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtLinkTarget.Location = new System.Drawing.Point(19, 32);
+			this.txtLinkTarget.Name = "txtLinkTarget";
+			this.txtLinkTarget.Size = new System.Drawing.Size(348, 20);
+			this.txtLinkTarget.TabIndex = 0;
+			// 
+			// btnBrowse
+			// 
+			this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnBrowse.Location = new System.Drawing.Point(373, 32);
+			this.btnBrowse.Name = "btnBrowse";
+			this.btnBrowse.Size = new System.Drawing.Size(49, 20);
+			this.btnBrowse.TabIndex = 1;
+			this.btnBrowse.Text = "...";
+			this.btnBrowse.UseVisualStyleBackColor = true;
+			this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+			// 
 			// PagePropertiesForm
 			// 
 			this.AcceptButton = this.btnAccept;
@@ -352,6 +456,11 @@
 			this.tabMeta.ResumeLayout(false);
 			this.tabRobots.ResumeLayout(false);
 			this.tabRobots.PerformLayout();
+			this.tabLink.ResumeLayout(false);
+			this.gbxLinkType.ResumeLayout(false);
+			this.gbxLinkType.PerformLayout();
+			this.gbxLinkTarget.ResumeLayout(false);
+			this.gbxLinkTarget.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -383,5 +492,13 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lblDisable;
 		private System.Windows.Forms.Label lblIncludeInMenu;
+		private System.Windows.Forms.TabPage tabLink;
+		private System.Windows.Forms.GroupBox gbxLinkTarget;
+		private System.Windows.Forms.GroupBox gbxLinkType;
+		private System.Windows.Forms.RadioButton rbLinkNone;
+		private System.Windows.Forms.RadioButton rbLinkLink;
+		private System.Windows.Forms.RadioButton rbLinkRedirect;
+		private System.Windows.Forms.Button btnBrowse;
+		private System.Windows.Forms.TextBox txtLinkTarget;
 	}
 }
