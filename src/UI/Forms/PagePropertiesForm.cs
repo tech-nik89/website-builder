@@ -91,7 +91,6 @@ namespace WebsiteStudio.UI.Forms {
 			gbxLinkTarget.Text = Strings.Target;
 
 			rbLinkNone.Text = Strings.None;
-			rbLinkLink.Text = Strings.Link;
 			rbLinkRedirect.Text = Strings.Redirect;
 		}
 
@@ -199,10 +198,7 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		private PageLinkType GetPageLinkType() {
-			if(rbLinkLink.Checked) {
-				return PageLinkType.Link;
-			}
-			else if (rbLinkRedirect.Checked) {
+			if (rbLinkRedirect.Checked) {
 				return PageLinkType.Redirect;
 			}
 
@@ -211,7 +207,6 @@ namespace WebsiteStudio.UI.Forms {
 
 		private void SetPageLinkType(PageLinkType type) {
 			rbLinkNone.Checked = type == PageLinkType.None;
-			rbLinkLink.Checked = type == PageLinkType.Link;
 			rbLinkRedirect.Checked = type == PageLinkType.Redirect;
 		}
 

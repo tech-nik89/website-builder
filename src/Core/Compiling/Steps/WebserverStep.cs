@@ -9,7 +9,6 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		public String Output { get; private set; }
 
 		private readonly IWebserver _Webserver;
-
 		private readonly Project _Project;
 		
 		public WebserverStep(Project project) {
@@ -27,13 +26,14 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			}
 
 			if (_Project.StartPage != null) {
-				_Webserver.CreateLanguageRedirect(_Project.Languages.Select(x => x.Id).ToArray(), Compiler.CreateUrl(_Project.StartPage));
+				_Webserver.CreateLanguageRedirect(_Project.Languages.Select(x => x.Id).ToArray(),
+					Compiler.CreateUrl(_Project.StartPage));
 			}
 
 			if (_Project.SSLRedirect) {
 				_Webserver.CreateSSLRedirect();
 			}
-
+			
 			_Webserver.Complete();
 		}
 	}

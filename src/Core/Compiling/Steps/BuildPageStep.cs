@@ -24,7 +24,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		private readonly DirectoryInfo _OutputDirectory;
 
 		private readonly IReadOnlyCollection<String> _StyleSheetFiles;
-		
+
 		private readonly FileInfo _File;
 
 		private readonly int _Level;
@@ -71,7 +71,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 				}
 
 				_CompileHelper.ModuleType = content.ModuleType;
-				pageContent[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Page.Project, _Level);
+				pageContent[i] = ResolveUrls(module.Compile(data, _CompileHelper), _Level);
 			}
 
 			htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
@@ -90,6 +90,11 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		}
 
 		private void AddMeta(HtmlDocument document) {
+
+			// Redirect
+			if (_Page.LinkType == PageLinkType.Redirect && !String.IsNullOrWhiteSpace(_Page.LinkTarget)) {
+				document.AddMetaTagHttpEquiv("refresh", String.Format("0;URL={0}", ResolveUrls(_Page.LinkTarget, _Level)));
+			}
 
 			// Description
 			String description = _Page.MetaDescription.Get(_Language);
@@ -374,12 +379,12 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 			return RenderTemplate(_Theme.TemplateNavItems, new { Children = builder.ToString() });
 		}
-
-		private String ResolveUrls(String html, Project project, int level) {
+		
+		private String ResolveUrls(String html, int level) {
 			html = CompilerConstants.MediaLinkRegex.Replace(html, match => {
 
 				String id = match.Groups[1].Value;
-				MediaItem media = project.Media.SingleOrDefault(m => m.Id == id);
+				MediaItem media = _Page.Project.Media.SingleOrDefault(m => m.Id == id);
 
 				if (media == null) {
 					return String.Empty;
@@ -391,7 +396,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			html = CompilerConstants.PageLinkRegex.Replace(html, match => {
 
 				String id = match.Groups[1].Value;
-				var targetPage = project.AllPages.SingleOrDefault(p => p.Id == id);
+				var targetPage = _Page.Project.AllPages.SingleOrDefault(p => p.Id == id);
 
 				if (targetPage == null) {
 					return String.Empty;

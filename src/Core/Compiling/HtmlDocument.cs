@@ -24,6 +24,7 @@ namespace WebsiteStudio.Core.Compiling {
 		private const String AttributeCharset = "charset";
 		private const String AttributeName = "name";
 		private const String AttributeContent = "content";
+		private const String AttributeHttpEquiv = "http-equiv";
 
 		private const String TypeJavascript = "text/javascript";
 		private const String TypeCSS = "text/css";
@@ -128,6 +129,13 @@ namespace WebsiteStudio.Core.Compiling {
 		public void AddMetaTag(String name, String content) {
 			HtmlElement tag = new HtmlElement(TagMeta);
 			tag.SetAttribute(AttributeName, name);
+			tag.SetAttribute(AttributeContent, content);
+			_Head.AppendChild(tag);
+		}
+
+		public void AddMetaTagHttpEquiv(String httpEquiv, String content) {
+			HtmlElement tag = new HtmlElement(TagMeta);
+			tag.SetAttribute(AttributeHttpEquiv, httpEquiv);
 			tag.SetAttribute(AttributeContent, content);
 			_Head.AppendChild(tag);
 		}

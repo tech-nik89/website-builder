@@ -8,7 +8,6 @@ using WebsiteStudio.Core.Compiling.Steps;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Interface.Compiling;
-using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling {
 	public class Compiler {
