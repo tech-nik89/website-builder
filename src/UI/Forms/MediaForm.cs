@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Media;
@@ -13,12 +15,16 @@ namespace WebsiteStudio.UI.Forms {
 
 		private readonly Project _Project;
 
+		private readonly List<MediaItem> _Items;
+
 		public MediaForm(Project project) {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons();
 
 			_Project = project;
+			_Items = new List<MediaItem>();
+			_Items.AddRange(_Project.Media);
 
 			FillDeployToOutputComboBox();
 			EnableControls();
@@ -46,6 +52,7 @@ namespace WebsiteStudio.UI.Forms {
 			tsbEdit.Text = Strings.Edit;
 			tsbRemove.Text = Strings.Delete;
 			tslDeployToOutput.Text = Strings.DeployToOutput + ":";
+			tslSearch.Text = Strings.Search + ":";
 
 			clnName.Text = Strings.File;
 			clnSize.Text = Strings.Size;
@@ -125,14 +132,15 @@ namespace WebsiteStudio.UI.Forms {
 				return;
 			}
 
-			if (MessageBox.Show(Strings.Delete, Strings.MediaDeleteConfirmMessage, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) {
+			if (MessageBox.Show(Strings.MediaDeleteConfirmMessage, Strings.Delete, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) {
 				return;
 			}
 
 			foreach (int index in lvwFiles.SelectedIndices) {
 				_Project.Media.RemoveAt(index);
 			}
-			
+
+			tstSearch_KeyUp(this, null);
 			RefreshListView();
 		}
 
@@ -141,17 +149,17 @@ namespace WebsiteStudio.UI.Forms {
 			lvwFiles.SelectedIndices.CopyTo(selectedIndices, 0);
 
 			lvwFiles.VirtualListSize = 0;
-			lvwFiles.VirtualListSize = _Project.Media.Count;
+			lvwFiles.VirtualListSize = _Items.Count;
 
 			foreach (int index in selectedIndices) {
-				if (index < _Project.Media.Count) {
+				if (index < _Items.Count) {
 					lvwFiles.SelectedIndices.Add(index);
 				}
 			}
 		}
 
 		private void EnableControls() {
-			tsbRemove.Enabled = lvwFiles.SelectedIndices.Count == 1;
+			tsbRemove.Enabled = lvwFiles.SelectedIndices.Count > 0;
 
 			if (lvwFiles.SelectedIndices.Count == 1) {
 				MediaItem item = _Project.Media[lvwFiles.SelectedIndices[0]];
@@ -207,6 +215,19 @@ namespace WebsiteStudio.UI.Forms {
 
 			item.FileName = info.Name;
 			item.Data = File.ReadAllBytes(info.FullName);
+
+			RefreshListView();
+		}
+
+		private void tstSearch_KeyUp(object sender, KeyEventArgs e) {
+			_Items.Clear();
+
+			if (!String.IsNullOrWhiteSpace(tstSearch.Text)) {
+				_Items.AddRange(_Project.Media.Where(x => x.Name.ToLower().Contains(tstSearch.Text.ToLower())));
+			}
+			else {
+				_Items.AddRange(_Project.Media);
+			}
 
 			RefreshListView();
 		}

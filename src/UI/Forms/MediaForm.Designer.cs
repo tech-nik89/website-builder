@@ -37,6 +37,9 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tslDeployToOutput = new System.Windows.Forms.ToolStripLabel();
 			this.tscDeployToOutput = new System.Windows.Forms.ToolStripComboBox();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tslSearch = new System.Windows.Forms.ToolStripLabel();
+			this.tstSearch = new System.Windows.Forms.ToolStripTextBox();
 			this.ofdFile = new System.Windows.Forms.OpenFileDialog();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
@@ -53,7 +56,7 @@
 			this.lvwFiles.HideSelection = false;
 			this.lvwFiles.Location = new System.Drawing.Point(0, 25);
 			this.lvwFiles.Name = "lvwFiles";
-			this.lvwFiles.Size = new System.Drawing.Size(697, 332);
+			this.lvwFiles.Size = new System.Drawing.Size(893, 481);
 			this.lvwFiles.TabIndex = 0;
 			this.lvwFiles.UseCompatibleStateImageBehavior = false;
 			this.lvwFiles.View = System.Windows.Forms.View.Details;
@@ -84,17 +87,19 @@
 			// 
 			// tsMain
 			// 
-			this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
             this.tsbEdit,
             this.tsbRemove,
             this.toolStripSeparator1,
             this.tslDeployToOutput,
-            this.tscDeployToOutput});
+            this.tscDeployToOutput,
+            this.toolStripSeparator2,
+            this.tslSearch,
+            this.tstSearch});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
-			this.tsMain.Size = new System.Drawing.Size(697, 25);
+			this.tsMain.Size = new System.Drawing.Size(893, 25);
 			this.tsMain.TabIndex = 1;
 			this.tsMain.Text = "toolStrip1";
 			// 
@@ -156,11 +161,28 @@
 			this.tscDeployToOutput.Size = new System.Drawing.Size(121, 25);
 			this.tscDeployToOutput.SelectedIndexChanged += new System.EventHandler(this.tscDeployToOutput_SelectedIndexChanged);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tslSearch
+			// 
+			this.tslSearch.Name = "tslSearch";
+			this.tslSearch.Size = new System.Drawing.Size(53, 22);
+			this.tslSearch.Text = "[Search:]";
+			// 
+			// tstSearch
+			// 
+			this.tstSearch.Name = "tstSearch";
+			this.tstSearch.Size = new System.Drawing.Size(140, 25);
+			this.tstSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tstSearch_KeyUp);
+			// 
 			// MediaForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(697, 357);
+			this.ClientSize = new System.Drawing.Size(893, 506);
 			this.Controls.Add(this.lvwFiles);
 			this.Controls.Add(this.tsMain);
 			this.MinimizeBox = false;
@@ -193,5 +215,8 @@
 		private System.Windows.Forms.ToolStripLabel tslDeployToOutput;
 		private System.Windows.Forms.ToolStripComboBox tscDeployToOutput;
 		private System.Windows.Forms.ToolStripButton tsbEdit;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripLabel tslSearch;
+		private System.Windows.Forms.ToolStripTextBox tstSearch;
 	}
 }
