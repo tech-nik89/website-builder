@@ -164,7 +164,7 @@ namespace WebsiteStudio.Core.Storage {
 				return new XElement(ProjectStorageConstants.File,
 					new XAttribute(ProjectStorageConstants.Id, mediaFile.Id),
 					new XAttribute(ProjectStorageConstants.Name, mediaFile.Name),
-					new XAttribute(ProjectStorageConstants.AutoSave, mediaFile.AutoSave),
+					new XAttribute(ProjectStorageConstants.DeployToOutput, mediaFile.DeployToOutput),
 					Convert.ToBase64String(mediaFile.Data)
 				);
 			}
@@ -172,7 +172,7 @@ namespace WebsiteStudio.Core.Storage {
 				return new XElement(ProjectStorageConstants.Reference,
 					new XAttribute(ProjectStorageConstants.Id, referenceFile.Id),
 					new XAttribute(ProjectStorageConstants.Path, GetRelativePath(referenceFile.FilePath)),
-					new XAttribute(ProjectStorageConstants.AutoSave, referenceFile.AutoSave)
+					new XAttribute(ProjectStorageConstants.DeployToOutput, referenceFile.DeployToOutput)
 				);
 			}
 

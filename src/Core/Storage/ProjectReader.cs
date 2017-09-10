@@ -205,7 +205,7 @@ namespace WebsiteStudio.Core.Storage {
 					MediaFile mediaFile = _Project.CreateMediaFile();
 					mediaFile.Id = element.Attribute(ProjectStorageConstants.Id).Value;
 					mediaFile.FileName = element.Attribute(ProjectStorageConstants.Name).Value;
-					mediaFile.AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value);
+					mediaFile.DeployToOutput = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.DeployToOutput)?.Value);
 					mediaFile.Data = Convert.FromBase64String(element.Value);
 					return mediaFile;
 
@@ -213,7 +213,7 @@ namespace WebsiteStudio.Core.Storage {
 					MediaReference mediaReference = _Project.CreateMediaReference();
 					mediaReference.Id = element.Attribute(ProjectStorageConstants.Id).Value;
 					mediaReference.FilePath = GetFullPath(element.Attribute(ProjectStorageConstants.Path).Value);
-					mediaReference.AutoSave = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.AutoSave).Value);
+					mediaReference.DeployToOutput = Convert.ToBoolean(element.Attribute(ProjectStorageConstants.DeployToOutput)?.Value);
 					return mediaReference;
 			}
 

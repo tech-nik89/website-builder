@@ -51,7 +51,7 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String Name = "name";
 
-		public const String AutoSave = "autoSave";
+		public const String DeployToOutput = "deployToOutput";
 
 		public const String StartPage = "startPage";
 

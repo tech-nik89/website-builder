@@ -15,7 +15,7 @@ namespace WebsiteStudio.Core.Media {
 		
 		public String Id { get; set; }
 		
-		public abstract bool AutoSave { get; set; }
+		public abstract bool DeployToOutput { get; set; }
 		
 		public abstract String Name { get; }
 		

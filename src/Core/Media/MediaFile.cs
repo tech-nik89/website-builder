@@ -13,21 +13,27 @@ namespace WebsiteStudio.Core.Media {
 
 		public String FileName {
 			get => _FileName;
-			set { _FileName = value; _Project.Dirty = true; }
+			set {
+				_FileName = value;
+				_Project.Dirty = true;
+			}
 		}
 
 		private Byte[] _Data;
 
 		public Byte[] Data {
 			get => _Data;
-			set { _Data = value; _Project.Dirty = true; }
+			set {
+				_Data = value;
+				_Project.Dirty = true;
+			}
 		}
 		
 		public override String Name => FileName;
 		
 		public override long Size => _Data.Length;
 		
-		public override bool AutoSave {
+		public override bool DeployToOutput {
 			get => true;
 			set { }
 		}

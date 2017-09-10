@@ -129,8 +129,8 @@
   <data name="AutoCloseCompilingForm" xml:space="preserve">
     <value>Close automatically after successful build.</value>
   </data>
-  <data name="AutoSave" xml:space="preserve">
-    <value>Auto Save</value>
+  <data name="DeployToOutput" xml:space="preserve">
+    <value>Deploy to output</value>
   </data>
   <data name="Build" xml:space="preserve">
     <value>Build</value>
@@ -533,5 +533,8 @@
   </data>
   <data name="Redirect" xml:space="preserve">
     <value>Redirect</value>
+  </data>
+  <data name="MediaDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to remove the selected media items?</value>
   </data>
 </root>

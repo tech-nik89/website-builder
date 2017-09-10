@@ -133,15 +133,6 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto Save.
-        /// </summary>
-        internal static string AutoSave {
-            get {
-                return ResourceManager.GetString("AutoSave", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Base URL.
         /// </summary>
         internal static string BaseURL {
@@ -336,6 +327,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deploy to output.
+        /// </summary>
+        internal static string DeployToOutput {
+            get {
+                return ResourceManager.GetString("DeployToOutput", resourceCulture);
             }
         }
         
@@ -687,6 +687,15 @@ namespace WebsiteStudio.UI.Localization {
         internal static string Media {
             get {
                 return ResourceManager.GetString("Media", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to remove the selected media items?.
+        /// </summary>
+        internal static string MediaDeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("MediaDeleteConfirmMessage", resourceCulture);
             }
         }
         

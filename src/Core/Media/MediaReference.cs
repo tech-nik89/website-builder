@@ -22,10 +22,10 @@ namespace WebsiteStudio.Core.Media {
 		
 		public override long Size => FileInfo.Length;
 		
-		public override bool AutoSave { get; set; }
+		public override bool DeployToOutput { get; set; }
 
 		public override void SaveTo(String path) {
-			if (AutoSave) {
+			if (DeployToOutput) {
 				File.Copy(FileInfo.FullName, path, true);
 			}
 		}

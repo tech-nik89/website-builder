@@ -20,8 +20,8 @@ namespace WebsiteStudio.UI.Forms {
 
 			_Project = project;
 
-			FillAutoSaveComboBox();
-			SetAutoSaveEnabled(false);
+			FillDeployToOutputComboBox();
+			EnableControls();
 			RefreshListView();
 		}
 
@@ -33,6 +33,7 @@ namespace WebsiteStudio.UI.Forms {
 			Icon = IconPack.Current.GetIcon(IconPackIcon.Media);
 
 			tsbAdd.Image = IconPack.Current.GetImage(IconPackIcon.Add);
+			tsbEdit.Image = IconPack.Current.GetImage(IconPackIcon.Edit);
 			tsbRemove.Image = IconPack.Current.GetImage(IconPackIcon.Delete);
 		}
 
@@ -42,19 +43,20 @@ namespace WebsiteStudio.UI.Forms {
 			tsbAdd.Text = Strings.Add;
 			tsbAddImport.Text = Strings.ImportIntoProject;
 			tsbAddReference.Text = Strings.AddReference;
+			tsbEdit.Text = Strings.Edit;
 			tsbRemove.Text = Strings.Delete;
-			tslAutoSave.Text = Strings.AutoSave + ":";
+			tslDeployToOutput.Text = Strings.DeployToOutput + ":";
 
 			clnName.Text = Strings.File;
 			clnSize.Text = Strings.Size;
 			clnType.Text = Strings.Type;
-			clnAutoSave.Text = Strings.AutoSave;
+			clnDeployToOutput.Text = Strings.DeployToOutput;
 		}
 
-		private void FillAutoSaveComboBox() {
-			tscAutoSave.Items.Clear();
-			tscAutoSave.Items.Add(Strings.Yes);
-			tscAutoSave.Items.Add(Strings.No);
+		private void FillDeployToOutputComboBox() {
+			tscDeployToOutput.Items.Clear();
+			tscDeployToOutput.Items.Add(Strings.Yes);
+			tscDeployToOutput.Items.Add(Strings.No);
 		}
 
 		private void tsbAddReference_Click(object sender, System.EventArgs e) {
@@ -75,7 +77,7 @@ namespace WebsiteStudio.UI.Forms {
 				item.Name,
 				item.Size.FormatFileSize(),
 				LocalizeMediaType(item.GetType()),
-				item.AutoSave ? Strings.Yes : Strings.No
+				item.DeployToOutput ? Strings.Yes : Strings.No
 			});
 		}
 
@@ -123,6 +125,10 @@ namespace WebsiteStudio.UI.Forms {
 				return;
 			}
 
+			if (MessageBox.Show(Strings.Delete, Strings.MediaDeleteConfirmMessage, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) {
+				return;
+			}
+
 			foreach (int index in lvwFiles.SelectedIndices) {
 				_Project.Media.RemoveAt(index);
 			}
@@ -144,22 +150,31 @@ namespace WebsiteStudio.UI.Forms {
 			}
 		}
 
-		private void SetAutoSaveEnabled(bool value) {
-			tscAutoSave.Enabled = value;
-			tslAutoSave.Enabled = value;
-		}
+		private void EnableControls() {
+			tsbRemove.Enabled = lvwFiles.SelectedIndices.Count == 1;
 
-		private void lvwFiles_SelectedIndexChanged(object sender, EventArgs e) {
-			if (lvwFiles.SelectedIndices.Count != 1) {
-				return;
+			if (lvwFiles.SelectedIndices.Count == 1) {
+				MediaItem item = _Project.Media[lvwFiles.SelectedIndices[0]];
+				bool isReference = item is MediaReference;
+
+				tscDeployToOutput.Enabled = isReference;
+				tslDeployToOutput.Enabled = isReference;
+				tsbEdit.Enabled = item is MediaFile;
+
+				tscDeployToOutput.SelectedIndex = item.DeployToOutput ? 0 : 1;
 			}
-
-			MediaItem item = _Project.Media[lvwFiles.SelectedIndices[0]];
-			SetAutoSaveEnabled(item is MediaReference);
-			tscAutoSave.SelectedIndex = item.AutoSave ? 0 : 1;
+			else {
+				tscDeployToOutput.Enabled = false;
+				tslDeployToOutput.Enabled = false;
+				tsbEdit.Enabled = false;
+			}
+		}
+		
+		private void lvwFiles_SelectedIndexChanged(object sender, EventArgs e) {
+			EnableControls();
 		}
 
-		private void tscAutoSave_SelectedIndexChanged(object sender, EventArgs e) {
+		private void tscDeployToOutput_SelectedIndexChanged(object sender, EventArgs e) {
 			if (lvwFiles.SelectedIndices.Count != 1) {
 				return;
 			}
@@ -169,7 +184,30 @@ namespace WebsiteStudio.UI.Forms {
 				return;
 			}
 
-			item.AutoSave = tscAutoSave.SelectedIndex == 0;
+			item.DeployToOutput = tscDeployToOutput.SelectedIndex == 0;
+			RefreshListView();
+		}
+
+		private void tsbEdit_Click(object sender, EventArgs e) {
+			if (lvwFiles.SelectedIndices.Count != 1) {
+				return;
+			}
+
+			MediaFile item = _Project.Media[lvwFiles.SelectedIndices[0]] as MediaFile;
+			if (item == null) {
+				return;
+			}
+
+			var result = ofdFile.ShowDialog();
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			FileInfo info = new FileInfo(ofdFile.FileName);
+
+			item.FileName = info.Name;
+			item.Data = File.ReadAllBytes(info.FullName);
+
 			RefreshListView();
 		}
 	}

@@ -27,15 +27,16 @@
 			this.clnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clnSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clnType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.clnAutoSave = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clnDeployToOutput = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.tsMain = new System.Windows.Forms.ToolStrip();
 			this.tsbAdd = new System.Windows.Forms.ToolStripDropDownButton();
 			this.tsbAddReference = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsbAddImport = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsbEdit = new System.Windows.Forms.ToolStripButton();
 			this.tsbRemove = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.tslAutoSave = new System.Windows.Forms.ToolStripLabel();
-			this.tscAutoSave = new System.Windows.Forms.ToolStripComboBox();
+			this.tslDeployToOutput = new System.Windows.Forms.ToolStripLabel();
+			this.tscDeployToOutput = new System.Windows.Forms.ToolStripComboBox();
 			this.ofdFile = new System.Windows.Forms.OpenFileDialog();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
@@ -46,7 +47,7 @@
             this.clnName,
             this.clnSize,
             this.clnType,
-            this.clnAutoSave});
+            this.clnDeployToOutput});
 			this.lvwFiles.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lvwFiles.FullRowSelect = true;
 			this.lvwFiles.HideSelection = false;
@@ -59,6 +60,7 @@
 			this.lvwFiles.VirtualMode = true;
 			this.lvwFiles.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvwFiles_RetrieveVirtualItem);
 			this.lvwFiles.SelectedIndexChanged += new System.EventHandler(this.lvwFiles_SelectedIndexChanged);
+			this.lvwFiles.DoubleClick += new System.EventHandler(this.tsbEdit_Click);
 			// 
 			// clnName
 			// 
@@ -75,20 +77,21 @@
 			this.clnType.Text = "[Type]";
 			this.clnType.Width = 120;
 			// 
-			// clnAutoSave
+			// clnDeployToOutput
 			// 
-			this.clnAutoSave.Text = "[Auto Save]";
-			this.clnAutoSave.Width = 120;
+			this.clnDeployToOutput.Text = "[DeployToOutput]";
+			this.clnDeployToOutput.Width = 120;
 			// 
 			// tsMain
 			// 
 			this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
+            this.tsbEdit,
             this.tsbRemove,
             this.toolStripSeparator1,
-            this.tslAutoSave,
-            this.tscAutoSave});
+            this.tslDeployToOutput,
+            this.tscDeployToOutput});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
 			this.tsMain.Size = new System.Drawing.Size(697, 25);
@@ -119,6 +122,14 @@
 			this.tsbAddImport.Text = "[Import into project]";
 			this.tsbAddImport.Click += new System.EventHandler(this.tsbAddImport_Click);
 			// 
+			// tsbEdit
+			// 
+			this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbEdit.Name = "tsbEdit";
+			this.tsbEdit.Size = new System.Drawing.Size(39, 22);
+			this.tsbEdit.Text = "[Edit]";
+			this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
+			// 
 			// tsbRemove
 			// 
 			this.tsbRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -132,18 +143,18 @@
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
 			// 
-			// tslAutoSave
+			// tslDeployToOutput
 			// 
-			this.tslAutoSave.Name = "tslAutoSave";
-			this.tslAutoSave.Size = new System.Drawing.Size(71, 22);
-			this.tslAutoSave.Text = "[Auto Save:]";
+			this.tslDeployToOutput.Name = "tslDeployToOutput";
+			this.tslDeployToOutput.Size = new System.Drawing.Size(106, 22);
+			this.tslDeployToOutput.Text = "[DeployToOutput:]";
 			// 
-			// tscAutoSave
+			// tscDeployToOutput
 			// 
-			this.tscAutoSave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.tscAutoSave.Name = "tscAutoSave";
-			this.tscAutoSave.Size = new System.Drawing.Size(121, 25);
-			this.tscAutoSave.SelectedIndexChanged += new System.EventHandler(this.tscAutoSave_SelectedIndexChanged);
+			this.tscDeployToOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.tscDeployToOutput.Name = "tscDeployToOutput";
+			this.tscDeployToOutput.Size = new System.Drawing.Size(121, 25);
+			this.tscDeployToOutput.SelectedIndexChanged += new System.EventHandler(this.tscDeployToOutput_SelectedIndexChanged);
 			// 
 			// MediaForm
 			// 
@@ -177,9 +188,10 @@
         private System.Windows.Forms.ColumnHeader clnName;
         private System.Windows.Forms.ColumnHeader clnSize;
         private System.Windows.Forms.ColumnHeader clnType;
-		private System.Windows.Forms.ColumnHeader clnAutoSave;
+		private System.Windows.Forms.ColumnHeader clnDeployToOutput;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripLabel tslAutoSave;
-		private System.Windows.Forms.ToolStripComboBox tscAutoSave;
-    }
+		private System.Windows.Forms.ToolStripLabel tslDeployToOutput;
+		private System.Windows.Forms.ToolStripComboBox tscDeployToOutput;
+		private System.Windows.Forms.ToolStripButton tsbEdit;
+	}
 }
