@@ -202,6 +202,10 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		internal static String CreateUrl(Page targetPage, Page currentPage) {
+			if (targetPage == null || currentPage == null) {
+				return String.Empty;
+			}
+
 			List<String> path = new List<String>();
 			Page parent = targetPage.Parent as Page;
 

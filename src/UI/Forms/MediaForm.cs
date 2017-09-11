@@ -124,7 +124,8 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			_Project.Media.Add(file);
-			RefreshListView();
+
+			tstSearch_KeyUp(this, null);
 		}
 
 		private void Remove() {
@@ -141,7 +142,6 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			tstSearch_KeyUp(this, null);
-			RefreshListView();
 		}
 
 		private void RefreshListView() {
@@ -216,7 +216,7 @@ namespace WebsiteStudio.UI.Forms {
 			item.FileName = info.Name;
 			item.Data = File.ReadAllBytes(info.FullName);
 
-			RefreshListView();
+			tstSearch_KeyUp(this, null);
 		}
 
 		private void tstSearch_KeyUp(object sender, KeyEventArgs e) {

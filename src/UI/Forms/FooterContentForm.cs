@@ -172,7 +172,7 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			DialogResult result = MessageBox.Show(Strings.FooterLinkDeleteConfirmMessage, Strings.Delete, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-			if (result != DialogResult.OK) {
+			if (result != DialogResult.Yes) {
 				return;
 			}
 
