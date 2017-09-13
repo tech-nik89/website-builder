@@ -20,7 +20,7 @@ namespace WebsiteStudio.Core.Tools {
 		}
 
 		public static String FullToRelativePath(String fullPath, String directoryPath) {
-			if (!Path.IsPathRooted(fullPath) || !fullPath.StartsWith(directoryPath) || fullPath == directoryPath) {
+			if (!Path.IsPathRooted(fullPath) || !fullPath.StartsWith(directoryPath, StringComparison.InvariantCultureIgnoreCase) || fullPath == directoryPath) {
 				return fullPath;
 			}
 
@@ -41,6 +41,10 @@ namespace WebsiteStudio.Core.Tools {
 			}
 
 			return Path.Combine(directoryPath, relativePath);
+		}
+
+		public static bool IsBelowProject(String fullPath, Project project) {
+			return Path.IsPathRooted(fullPath) && fullPath.StartsWith(fullPath, StringComparison.InvariantCultureIgnoreCase);
 		}
 
 		public static String NewGuid() {

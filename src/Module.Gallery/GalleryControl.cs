@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.Interface.Plugins;
@@ -45,6 +47,10 @@ namespace WebsiteStudio.Modules.Gallery {
 			_ImageList = new ImageList() { ImageSize = new Size(ImageSize, ImageSize), ColorDepth = ColorDepth.Depth32Bit };
 			
 			lvwImages.LargeImageList = _ImageList;
+			lvwImages.View = View.LargeIcon;
+
+			lblLoading.Visible = false;
+			lblLoading.BackColor = Color.Transparent;
 
 			EnableControls();
 		}
@@ -53,6 +59,13 @@ namespace WebsiteStudio.Modules.Gallery {
 			tsbAdd.Text = Strings.Add;
 			tsbDelete.Text = Strings.Remove;
 			tsbSettings.Text = Strings.GallerySettings;
+			lblLoading.Text = Strings.Loading;
+			clnFile.Text = Strings.File;
+			clnSize.Text = Strings.Size;
+
+			tsbViewLargeIcon.Text = Strings.ViewLargeIcons;
+			tsbViewList.Text = Strings.ViewList;
+			tsbViewDetails.Text = Strings.ViewDetails;
 
 			IIconPack iconPack = _PluginHelper.GetIconPack();
 			tsbAdd.Image = iconPack.GetImage(IconPackIcon.Add);
@@ -83,8 +96,25 @@ namespace WebsiteStudio.Modules.Gallery {
 			}
 
 			bool itemsRemoved = false;
+			bool askedForDeletingFiles = false;
+			bool deleteFiles = false;
+			
 			for (int i = lvwImages.SelectedIndices.Count - 1; i >= 0; i--) {
-				_Data.Files.RemoveAt(lvwImages.SelectedIndices[i]);
+				int index = lvwImages.SelectedIndices[i];
+				String path = _Data.Files[index];
+				bool isBelowProject = _PluginHelper.IsBelowProject(path);
+
+				if (isBelowProject && !askedForDeletingFiles && !deleteFiles) {
+					deleteFiles = MessageBox.Show(Strings.SuggestDeleteFromProjectDirectoryMessage, Strings.SuggestDeleteFromProjectDirectoryTitle,
+						MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+					askedForDeletingFiles = true;
+				}
+
+				if (isBelowProject && deleteFiles) {
+					File.Delete(path);
+				}
+
+				_Data.Files.Remove(path);
 				itemsRemoved = true;
 			}
 
@@ -95,20 +125,32 @@ namespace WebsiteStudio.Modules.Gallery {
 			}
 		}
 
-		private void RefreshList() {
+		private async void RefreshList() {
 			lvwImages.VirtualListSize = 0;
-			_ImageList.Images.Clear();
+			lvwImages.Enabled = false;
+			lblLoading.Visible = true;
 
-			Size thumbSize = lvwImages.TileSize;
+			await CreateThumbnailsAsync();
 
-			foreach(String path in _Data.Files) {
-				using (Image image = Image.FromFile(path)) {
-					int height = image.Height * ImageSize / image.Width;
-					_ImageList.Images.Add(ImageHelper.ResizeImageToSquare(image, ImageSize));
-				}
-			}
-
+			lblLoading.Visible = false;
+			lvwImages.Enabled = true;
 			lvwImages.VirtualListSize = _Data.Files.Count;
+		}
+
+		private async Task CreateThumbnailsAsync() {
+			_ImageList.Images.Clear();
+			Size thumbSize = lvwImages.TileSize;
+			Image[] images = new Image[_Data.Files.Count];
+
+			await Task.Run(() => {
+				for (int i = 0; i < images.Length; i++) {
+					using (Image image = Image.FromFile(_Data.Files[i])) {
+						images[i] = ImageHelper.ResizeImageToSquare(image, ImageSize);
+					}
+				}
+			});
+
+			_ImageList.Images.AddRange(images);
 		}
 
 		private void lvwImages_SelectedIndexChanged(object sender, EventArgs e) {
@@ -117,8 +159,9 @@ namespace WebsiteStudio.Modules.Gallery {
 
 		private void lvwImages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
 			String path = _Data.Files[e.ItemIndex];
-			String name = Path.GetFileNameWithoutExtension(path);
-			ListViewItem item = new ListViewItem(name);
+			FileInfo info = new FileInfo(path);
+
+			ListViewItem item = new ListViewItem(new String[] { info.Name, _PluginHelper.GetFormattedFileSize(info.Length) });
 			item.ImageIndex = e.ItemIndex;
 
 			e.Item = item;
@@ -194,6 +237,18 @@ namespace WebsiteStudio.Modules.Gallery {
 			_Data.Title = form.Title;
 			_Data.FullSize = form.FullSize;
 			_Data.ThumbnailSize = form.ThumbnailSize;
+		}
+
+		private void tsbViewLargeIcon_Click(object sender, EventArgs e) {
+			lvwImages.View = View.LargeIcon;
+		}
+
+		private void tsbViewList_Click(object sender, EventArgs e) {
+			lvwImages.View = View.List;
+		}
+
+		private void tsbViewDetails_Click(object sender, EventArgs e) {
+			lvwImages.View = View.Details;
 		}
 	}
 }

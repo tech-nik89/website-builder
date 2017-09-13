@@ -19,7 +19,7 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -88,6 +88,15 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        internal static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Size.
         /// </summary>
         internal static string FullSize {
@@ -115,11 +124,29 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading ....
+        /// </summary>
+        internal static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         internal static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        internal static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
             }
         }
         
@@ -142,6 +169,24 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete the selected files also from the project directory?.
+        /// </summary>
+        internal static string SuggestDeleteFromProjectDirectoryMessage {
+            get {
+                return ResourceManager.GetString("SuggestDeleteFromProjectDirectoryMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete from project directory.
+        /// </summary>
+        internal static string SuggestDeleteFromProjectDirectoryTitle {
+            get {
+                return ResourceManager.GetString("SuggestDeleteFromProjectDirectoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thumbnail Size.
         /// </summary>
         internal static string ThumbnailSize {
@@ -156,6 +201,33 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string ViewDetails {
+            get {
+                return ResourceManager.GetString("ViewDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large Icons.
+        /// </summary>
+        internal static string ViewLargeIcons {
+            get {
+                return ResourceManager.GetString("ViewLargeIcons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List.
+        /// </summary>
+        internal static string ViewList {
+            get {
+                return ResourceManager.GetString("ViewList", resourceCulture);
             }
         }
         

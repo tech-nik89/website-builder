@@ -14,6 +14,8 @@ namespace WebsiteStudio.Interface.Plugins {
 
 		String GetRelativePath(String fullPath);
 
+		bool IsBelowProject(String fullPath);
+
 		bool CanSuggestCopyToProjectDirectory(String fullFilePath);
 
 		String NewGuid();
@@ -23,6 +25,8 @@ namespace WebsiteStudio.Interface.Plugins {
 		ILink GetLink(GetLinkMode mode);
 
 		DirectoryInfo OutputDirectory { get; }
+
+		String GetFormattedFileSize(long bytes);
 
 	}
 }

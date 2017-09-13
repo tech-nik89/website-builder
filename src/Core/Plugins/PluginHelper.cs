@@ -49,6 +49,10 @@ namespace WebsiteStudio.Core.Plugins {
 			return Utilities.FullToRelativePath(fullPath, _Project);
 		}
 
+		public bool IsBelowProject(String fullPath) {
+			return Utilities.IsBelowProject(fullPath, _Project);
+		}
+
 		public bool CanSuggestCopyToProjectDirectory(String fullFilePath) {
 			if (!Path.IsPathRooted(fullFilePath) || _Project.ProjectFile == null || !_Project.ProjectFile.Exists) {
 				return false;
@@ -72,6 +76,10 @@ namespace WebsiteStudio.Core.Plugins {
 
 		public ILink GetLink(GetLinkMode mode) {
 			return _GetLink?.Invoke(mode);
+		}
+
+		public String GetFormattedFileSize(long bytes) {
+			return bytes.FormatFileSize();
 		}
 	}
 }
