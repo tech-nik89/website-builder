@@ -49,6 +49,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			_File.Directory.Create();
 
 			HtmlDocument htmlFile = new HtmlDocument();
+			htmlFile.Title = _Page.Title.Get(_Language);
 			_CompileHelper = new CompileHelper(htmlFile, _File, CreateSubPage);
 
 			AddMeta(htmlFile);
@@ -77,7 +78,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			htmlFile.Body = RenderTemplate(_Theme.TemplateBody, new {
 				Content = String.Join(Environment.NewLine, pageContent),
 				Navigation = RenderNavigation(_Language, _Level),
-				Title = _Page.Title.Get(_Language),
+				Title = htmlFile.Title,
 				Languages = RenderLanguageSwitcher(),
 				Footer = RenderFooter(),
 				Path = path

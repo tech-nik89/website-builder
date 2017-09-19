@@ -16,6 +16,7 @@ namespace WebsiteStudio.Core.Compiling {
 		private const String TagStyle = "style";
 		private const String TagLink = "link";
 		private const String TagMeta = "meta";
+		private const String TagTitle = "title";
 
 		private const String AttributeType = "type";
 		private const String AttributeRel = "rel";
@@ -35,14 +36,16 @@ namespace WebsiteStudio.Core.Compiling {
 		private readonly HtmlElement _Head;
 		private readonly HtmlElement _Body;
 		private readonly HtmlElement _Encoding;
-		
+		private readonly HtmlElement _Title;
+
 		public Encoding Encoding {
-			get {
-				return Encoding.GetEncoding(_Encoding.GetAttribute(AttributeCharset));
-			}
-			set {
-				_Encoding.SetAttribute(AttributeCharset, value.WebName);
-			}
+			get => Encoding.GetEncoding(_Encoding.GetAttribute(AttributeCharset));
+			set =>	_Encoding.SetAttribute(AttributeCharset, value.WebName);
+		}
+
+		public String Title {
+			get => _Title.Content;
+			set => _Title.Content = value;
 		}
 
 		public HtmlDocument() {
@@ -50,12 +53,14 @@ namespace WebsiteStudio.Core.Compiling {
 			_Head = new HtmlElement(TagHead);
 			_Body = new HtmlElement(TagBody);
 			_Encoding = new HtmlElement(TagMeta);
+			_Title = new HtmlElement(TagTitle);
 
 			_Html.AppendChild(_Head);
 			_Html.AppendChild(_Body);
 			
 			_Head.AppendChild(_Encoding);
 			_Head.AppendChild(GetMetaViewport());
+			_Head.AppendChild(_Title);
 
 			ApplyWebkitTouchHoverFix();
 
