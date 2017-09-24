@@ -79,9 +79,7 @@ namespace WebsiteStudio.Modules.Gallery {
 			Bitmap destImage = preserveRatio && crop
 				? new Bitmap(width, height)
 				: new Bitmap(imageWidth, imageHeight);
-
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
+			
 			using (Graphics graphics = Graphics.FromImage(destImage)) {
 				graphics.CompositingMode = CompositingMode.SourceCopy;
 				graphics.CompositingQuality = CompositingQuality.HighQuality;
