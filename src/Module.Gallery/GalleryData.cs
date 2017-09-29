@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Modules.Gallery {
+
 	class GalleryData {
 
 		private const String RootTag = "gallery";

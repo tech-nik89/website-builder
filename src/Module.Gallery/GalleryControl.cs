@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -37,6 +36,10 @@ namespace WebsiteStudio.Modules.Gallery {
 			}
 		}
 
+		private bool SingleItemSelected => lvwImages.SelectedIndices.Count == 1;
+		private bool CanMoveUp => SingleItemSelected && lvwImages.SelectedIndices[0] > 0;
+		private bool CanMoveDown => SingleItemSelected && lvwImages.SelectedIndices[0] < (_Data?.Files.Count - 1);
+
 		public GalleryControl(IPluginHelper pluginHelper) {
 			InitializeComponent();
 
@@ -58,18 +61,23 @@ namespace WebsiteStudio.Modules.Gallery {
 		private void LocalizeComponent() {
 			tsbAdd.Text = Strings.Add;
 			tsbDelete.Text = Strings.Remove;
+			tsbUp.Text = Strings.Up;
+			tsbDown.Text = Strings.Down;
 			tsbSettings.Text = Strings.GallerySettings;
 			lblLoading.Text = Strings.Loading;
-			clnFile.Text = Strings.File;
-			clnSize.Text = Strings.Size;
-
+			
 			tsbViewLargeIcon.Text = Strings.ViewLargeIcons;
 			tsbViewList.Text = Strings.ViewList;
 			tsbViewDetails.Text = Strings.ViewDetails;
 
+			clnFile.Text = Strings.File;
+			clnSize.Text = Strings.Size;
+
 			IIconPack iconPack = _PluginHelper.GetIconPack();
 			tsbAdd.Image = iconPack.GetImage(IconPackIcon.Add);
 			tsbDelete.Image = iconPack.GetImage(IconPackIcon.Delete);
+			tsbUp.Image = iconPack.GetImage(IconPackIcon.OrderUp);
+			tsbDown.Image = iconPack.GetImage(IconPackIcon.OrderDown);
 			tsbSettings.Image = iconPack.GetImage(IconPackIcon.Settings);
 		}
 		
@@ -88,6 +96,8 @@ namespace WebsiteStudio.Modules.Gallery {
 		private void EnableControls() {
 			bool enabled = lvwImages.SelectedIndices.Count > 0;
 			tsbDelete.Enabled = enabled;
+			tsbUp.Enabled = CanMoveUp;
+			tsbDown.Enabled = CanMoveDown;
 		}
 
 		private void Delete() {
@@ -249,6 +259,40 @@ namespace WebsiteStudio.Modules.Gallery {
 
 		private void tsbViewDetails_Click(object sender, EventArgs e) {
 			lvwImages.View = View.Details;
+		}
+
+		private void tsbUp_Click(object sender, EventArgs e) {
+			if (!CanMoveUp) {
+				return;
+			}
+
+			int index = lvwImages.SelectedIndices[0];
+			String item = _Data.Files[index];
+			_Data.Files.Remove(item);
+
+			index--;
+			_Data.Files.Insert(index, item);
+			lvwImages.SelectedIndices.Clear();
+			lvwImages.SelectedIndices.Add(index);
+
+			RefreshList();
+		}
+
+		private void tsbDown_Click(object sender, EventArgs e) {
+			if (!CanMoveDown) {
+				return;
+			}
+
+			int index = lvwImages.SelectedIndices[0];
+			String item = _Data.Files[index];
+			_Data.Files.Remove(item);
+
+			index++;
+			_Data.Files.Insert(index, item);
+			lvwImages.SelectedIndices.Clear();
+			lvwImages.SelectedIndices.Add(index);
+
+			RefreshList();
 		}
 	}
 }

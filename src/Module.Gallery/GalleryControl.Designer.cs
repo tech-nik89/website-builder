@@ -35,10 +35,13 @@
 			this.tsbViewLargeIcon = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsbViewList = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsbViewDetails = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbSettings = new System.Windows.Forms.ToolStripButton();
 			this.ofdImages = new System.Windows.Forms.OpenFileDialog();
 			this.lblLoading = new System.Windows.Forms.Label();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbUp = new System.Windows.Forms.ToolStripButton();
+			this.tsbDown = new System.Windows.Forms.ToolStripButton();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -55,7 +58,7 @@
 			this.lvwImages.HideSelection = false;
 			this.lvwImages.Location = new System.Drawing.Point(0, 25);
 			this.lvwImages.Name = "lvwImages";
-			this.lvwImages.Size = new System.Drawing.Size(424, 281);
+			this.lvwImages.Size = new System.Drawing.Size(616, 368);
 			this.lvwImages.TabIndex = 0;
 			this.lvwImages.UseCompatibleStateImageBehavior = false;
 			this.lvwImages.View = System.Windows.Forms.View.Details;
@@ -82,13 +85,16 @@
 			this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
             this.tsbDelete,
+            this.toolStripSeparator3,
+            this.tsbUp,
+            this.tsbDown,
             this.toolStripSeparator1,
             this.tsbView,
             this.toolStripSeparator2,
             this.tsbSettings});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
 			this.tsMain.Name = "tsMain";
-			this.tsMain.Size = new System.Drawing.Size(424, 25);
+			this.tsMain.Size = new System.Drawing.Size(616, 25);
 			this.tsMain.TabIndex = 1;
 			this.tsMain.Text = "toolStrip1";
 			// 
@@ -149,6 +155,11 @@
 			this.tsbViewDetails.Text = "[Detail]";
 			this.tsbViewDetails.Click += new System.EventHandler(this.tsbViewDetails_Click);
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
 			// tsbSettings
 			// 
 			this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
@@ -169,15 +180,33 @@
 			this.lblLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblLoading.Location = new System.Drawing.Point(3, 147);
 			this.lblLoading.Name = "lblLoading";
-			this.lblLoading.Size = new System.Drawing.Size(418, 43);
+			this.lblLoading.Size = new System.Drawing.Size(610, 43);
 			this.lblLoading.TabIndex = 2;
 			this.lblLoading.Text = "[Loading]";
 			this.lblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// toolStripSeparator2
+			// toolStripSeparator3
 			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tsbUp
+			// 
+			this.tsbUp.Image = ((System.Drawing.Image)(resources.GetObject("tsbUp.Image")));
+			this.tsbUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbUp.Name = "tsbUp";
+			this.tsbUp.Size = new System.Drawing.Size(50, 22);
+			this.tsbUp.Text = "[Up]";
+			this.tsbUp.Click += new System.EventHandler(this.tsbUp_Click);
+			// 
+			// tsbDown
+			// 
+			this.tsbDown.Image = ((System.Drawing.Image)(resources.GetObject("tsbDown.Image")));
+			this.tsbDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbDown.Name = "tsbDown";
+			this.tsbDown.Size = new System.Drawing.Size(66, 22);
+			this.tsbDown.Text = "[Down]";
+			this.tsbDown.Click += new System.EventHandler(this.tsbDown_Click);
 			// 
 			// GalleryControl
 			// 
@@ -187,7 +216,7 @@
 			this.Controls.Add(this.lvwImages);
 			this.Controls.Add(this.tsMain);
 			this.Name = "GalleryControl";
-			this.Size = new System.Drawing.Size(424, 306);
+			this.Size = new System.Drawing.Size(616, 393);
 			this.tsMain.ResumeLayout(false);
 			this.tsMain.PerformLayout();
 			this.ResumeLayout(false);
@@ -212,5 +241,8 @@
 		private System.Windows.Forms.ColumnHeader clnFile;
 		private System.Windows.Forms.ColumnHeader clnSize;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripButton tsbUp;
+		private System.Windows.Forms.ToolStripButton tsbDown;
 	}
 }

@@ -88,6 +88,15 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Down.
+        /// </summary>
+        internal static string Down {
+            get {
+                return ResourceManager.GetString("Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         internal static string File {
@@ -201,6 +210,15 @@ namespace WebsiteStudio.Modules.Gallery.Localization {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up.
+        /// </summary>
+        internal static string Up {
+            get {
+                return ResourceManager.GetString("Up", resourceCulture);
             }
         }
         
