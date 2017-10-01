@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +37,8 @@ namespace WebsiteStudio.Core.Compiling {
 
 		private readonly List<Exception> _Exceptions;
 		
+		private readonly Stopwatch _Stopwatch;
+
 		public Compiler(Project project)
 			: this(project, new CompilerSettings()) {
 		}
@@ -46,6 +49,7 @@ namespace WebsiteStudio.Core.Compiling {
 			_StyleSheetFiles = new List<String>();
 			_ModuleCompilerFlags = new Dictionary<Type, int>();
 			_Exceptions = new List<Exception>();
+			_Stopwatch = new Stopwatch();
 			
 			ValidateProject(project);
 			
@@ -148,6 +152,7 @@ namespace WebsiteStudio.Core.Compiling {
 
 			progress?.Report(CreateProgressReport(0, 1, "------ Build started: {0} ------", _Project.ProjectFileName));
 
+			_Stopwatch.Start();
 			int steps = _Steps.Count;
 
 			for(int i = 0; i < steps; i++) {
@@ -163,6 +168,9 @@ namespace WebsiteStudio.Core.Compiling {
 				}
 			}
 
+			_Stopwatch.Stop();
+			progress?.Report(CreateProgressReport(1, 1, "Time elapsed: {0}", _Stopwatch.Elapsed.ToString()));
+			
 			if (!Error) {
 				progress?.Report(CreateProgressReport(1, 1, "========== Build succeeded =========="));
 			}

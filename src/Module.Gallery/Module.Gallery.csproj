@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="GalleryModule.cs" />
     <Compile Include="ImageHelper.cs" />
+    <Compile Include="ImageTask.cs" />
     <Compile Include="Localization\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
