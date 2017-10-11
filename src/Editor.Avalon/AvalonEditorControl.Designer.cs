@@ -37,6 +37,7 @@
 			this.tsbInsertLink = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbInfo = new System.Windows.Forms.ToolStripButton();
+			this.tsbWrap = new System.Windows.Forms.ToolStripButton();
 			this.tsMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -61,6 +62,7 @@
             this.toolStripSeparator1,
             this.tsbSearch,
             this.tsbInsertLink,
+            this.tsbWrap,
             this.toolStripSeparator3,
             this.tsbInfo});
 			this.tsMain.Location = new System.Drawing.Point(0, 0);
@@ -164,6 +166,16 @@
 			this.tsbInfo.Text = "[Info]";
 			this.tsbInfo.Click += new System.EventHandler(this.tsbInfo_Click);
 			// 
+			// tsbWrap
+			// 
+			this.tsbWrap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbWrap.Image = ((System.Drawing.Image)(resources.GetObject("tsbWrap.Image")));
+			this.tsbWrap.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbWrap.Name = "tsbWrap";
+			this.tsbWrap.Size = new System.Drawing.Size(23, 22);
+			this.tsbWrap.Text = "toolStripButton1";
+			this.tsbWrap.Click += new System.EventHandler(this.tsbWrap_Click);
+			// 
 			// AvalonEditorControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,5 +206,6 @@
 		private System.Windows.Forms.ToolStripButton tsbPaste;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton tsbInfo;
+		private System.Windows.Forms.ToolStripButton tsbWrap;
 	}
 }

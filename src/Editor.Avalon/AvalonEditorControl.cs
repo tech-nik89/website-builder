@@ -198,5 +198,10 @@ namespace WebsiteStudio.Editors.Avalon {
 		private void tsbInfo_Click(object sender, EventArgs e) {
 			Process.Start("http://avalonedit.net/");
 		}
+
+		private void tsbWrap_Click(object sender, EventArgs e) {
+			_Editor.WordWrap = !_Editor.WordWrap;
+			tsbWrap.Checked = _Editor.WordWrap;
+		}
 	}
 }
