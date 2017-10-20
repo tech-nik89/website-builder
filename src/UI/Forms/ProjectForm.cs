@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Taskbar;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -162,6 +163,11 @@ namespace WebsiteStudio.UI.Forms {
 			
 			UpdateStatus(StatusText.BuildStarted);
 			CompilerSetControls(false);
+			bool taskBarProgressSupported = TaskbarManager.IsPlatformSupported;
+
+			if (taskBarProgressSupported) {
+				TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+			}
 
 			_CompilerError.Messages = new CompilerMessage[0];
 			FocusOutputWindow();
@@ -174,8 +180,13 @@ namespace WebsiteStudio.UI.Forms {
 			Progress<CompilerProgressReport> progress = new Progress<CompilerProgressReport>(report => {
 				tspProgress.Value = report.Percentage;
 				_CompilerOutput?.Push(report);
+
+				if (taskBarProgressSupported) {
+					TaskbarManager.Instance.SetProgressValue(report.Percentage, 100);
+				}
 			});
 
+			
 			await compiler.CompileAsync(progress);
 				
 			_CompilerError.Messages = compiler.Messages.ToArray();
@@ -186,7 +197,11 @@ namespace WebsiteStudio.UI.Forms {
 			else if (!compiler.Error && runAfterCompile) {
 				OpenProjectInDefaultBrowser(CurrentProject);
 			}
-				
+
+			if (taskBarProgressSupported) {
+				TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+			}
+
 			_CompilerRunning = false;
 			CompilerSetControls(true);
 			UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);

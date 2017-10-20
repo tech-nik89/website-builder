@@ -210,7 +210,7 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		internal static String CreateUrl(Page targetPage, Page currentPage) {
-			if (targetPage == null || currentPage == null) {
+			if (targetPage == null) {
 				return String.Empty;
 			}
 

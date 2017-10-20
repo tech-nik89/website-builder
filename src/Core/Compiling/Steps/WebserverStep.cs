@@ -26,8 +26,9 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			}
 
 			if (_Project.StartPage != null) {
-				_Webserver.CreateLanguageRedirect(_Project.Languages.Select(x => x.Id).ToArray(),
-					Compiler.CreateUrl(_Project.StartPage));
+				String url = Compiler.CreateUrl(_Project.StartPage);
+				String[] languages = _Project.Languages.Select(x => x.Id).ToArray();
+				_Webserver.CreateLanguageRedirect(languages, url);
 			}
 
 			if (_Project.SSLRedirect) {
