@@ -228,6 +228,7 @@ namespace WebsiteStudio.Core.Storage {
 			_Project.BaseURL = element.Element(ProjectStorageConstants.BaseURL)?.Value ?? String.Empty;
 			_Project.GenerateSitemap = Convert.ToBoolean(element.Element(ProjectStorageConstants.Sitemap)?.Value);
 			_Project.SSLRedirect = Convert.ToBoolean(element.Element(ProjectStorageConstants.SSLRedirect)?.Value);
+			_Project.Favicon = Convert.FromBase64String(element.Element(ProjectStorageConstants.Favicon)?.Value ?? String.Empty);
 
 			GetLocalizedString(element.Element(ProjectStorageConstants.MetaDescription), _Project.MetaDescription);
 			GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), _Project.MetaKeywords);

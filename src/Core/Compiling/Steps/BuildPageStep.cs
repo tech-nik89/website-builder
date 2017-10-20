@@ -97,6 +97,12 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 				document.AddMetaTagHttpEquiv("refresh", String.Format("0;URL={0}", ResolveUrls(_Page.LinkTarget, _Level)));
 			}
 
+			// Favicon
+			if (_Page.Project.Favicon.Length > 0) {
+				String faviconPath = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", BuildImagesStep.FileFavicon), _Level);
+				document.AddFaviconTag(faviconPath);
+			}
+
 			// Description
 			String description = _Page.MetaDescription.Get(_Language);
 			if (!String.IsNullOrWhiteSpace(description)) {

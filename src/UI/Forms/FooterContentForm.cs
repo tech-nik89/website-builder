@@ -142,12 +142,13 @@ namespace WebsiteStudio.UI.Forms {
 			}
 
 			DialogResult result = MessageBox.Show(Strings.FooterSectionDeleteConfirmMessage, Strings.Delete, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-			if (result != DialogResult.OK) {
+			if (result != DialogResult.Yes) {
 				return;
 			}
 
 			_Project.Footer.RemoveAt(lvwSections.SelectedIndices[0]);
 			RefreshSectionList();
+			RefreshSection();
 		}
 
 		private void btnLinkAdd_Click(object sender, EventArgs e) {

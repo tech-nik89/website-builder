@@ -95,5 +95,7 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String Sitemap = "sitemap";
 
+		public const String Favicon = "favicon";
+
 	}
 }

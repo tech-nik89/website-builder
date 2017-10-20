@@ -42,12 +42,14 @@
 			this.cbxWebserver = new System.Windows.Forms.ComboBox();
 			this.chkGenerateSitemap = new System.Windows.Forms.CheckBox();
 			this.gbxGeneral = new System.Windows.Forms.GroupBox();
+			this.lblSSLRedirect = new System.Windows.Forms.Label();
+			this.chkSSLRedirect = new System.Windows.Forms.CheckBox();
 			this.lblGenerateSitemap = new System.Windows.Forms.Label();
 			this.lblUglyURLs = new System.Windows.Forms.Label();
 			this.txtBaseURL = new System.Windows.Forms.TextBox();
 			this.lblBaseURL = new System.Windows.Forms.Label();
-			this.lblSSLRedirect = new System.Windows.Forms.Label();
-			this.chkSSLRedirect = new System.Windows.Forms.CheckBox();
+			this.lblFavicon = new System.Windows.Forms.Label();
+			this.btnFavicon = new System.Windows.Forms.Button();
 			this.gbxOutput.SuspendLayout();
 			this.gbxTheme.SuspendLayout();
 			this.gbxWebserver.SuspendLayout();
@@ -111,12 +113,14 @@
 			// 
 			this.gbxTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxTheme.Controls.Add(this.btnFavicon);
+			this.gbxTheme.Controls.Add(this.lblFavicon);
 			this.gbxTheme.Controls.Add(this.btnThemeBrowse);
 			this.gbxTheme.Controls.Add(this.txtThemePath);
 			this.gbxTheme.Controls.Add(this.lblThemePath);
 			this.gbxTheme.Location = new System.Drawing.Point(3, 216);
 			this.gbxTheme.Name = "gbxTheme";
-			this.gbxTheme.Size = new System.Drawing.Size(600, 73);
+			this.gbxTheme.Size = new System.Drawing.Size(600, 97);
 			this.gbxTheme.TabIndex = 3;
 			this.gbxTheme.TabStop = false;
 			this.gbxTheme.Text = "[Theme]";
@@ -155,7 +159,7 @@
 			this.gbxWebserver.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbxWebserver.Controls.Add(this.cbxWebserver);
-			this.gbxWebserver.Location = new System.Drawing.Point(3, 295);
+			this.gbxWebserver.Location = new System.Drawing.Point(3, 319);
 			this.gbxWebserver.Name = "gbxWebserver";
 			this.gbxWebserver.Size = new System.Drawing.Size(600, 79);
 			this.gbxWebserver.TabIndex = 4;
@@ -202,6 +206,25 @@
 			this.gbxGeneral.TabStop = false;
 			this.gbxGeneral.Text = "[General]";
 			// 
+			// lblSSLRedirect
+			// 
+			this.lblSSLRedirect.AutoSize = true;
+			this.lblSSLRedirect.Location = new System.Drawing.Point(18, 96);
+			this.lblSSLRedirect.Name = "lblSSLRedirect";
+			this.lblSSLRedirect.Size = new System.Drawing.Size(76, 13);
+			this.lblSSLRedirect.TabIndex = 8;
+			this.lblSSLRedirect.Text = "[SSLRedirect:]";
+			// 
+			// chkSSLRedirect
+			// 
+			this.chkSSLRedirect.AutoSize = true;
+			this.chkSSLRedirect.Location = new System.Drawing.Point(131, 95);
+			this.chkSSLRedirect.Name = "chkSSLRedirect";
+			this.chkSSLRedirect.Size = new System.Drawing.Size(65, 17);
+			this.chkSSLRedirect.TabIndex = 3;
+			this.chkSSLRedirect.Text = "[Enable]";
+			this.chkSSLRedirect.UseVisualStyleBackColor = true;
+			// 
 			// lblGenerateSitemap
 			// 
 			this.lblGenerateSitemap.AutoSize = true;
@@ -239,24 +262,24 @@
 			this.lblBaseURL.TabIndex = 0;
 			this.lblBaseURL.Text = "[BaseURL:]";
 			// 
-			// lblSSLRedirect
+			// lblFavicon
 			// 
-			this.lblSSLRedirect.AutoSize = true;
-			this.lblSSLRedirect.Location = new System.Drawing.Point(18, 96);
-			this.lblSSLRedirect.Name = "lblSSLRedirect";
-			this.lblSSLRedirect.Size = new System.Drawing.Size(76, 13);
-			this.lblSSLRedirect.TabIndex = 8;
-			this.lblSSLRedirect.Text = "[SSLRedirect:]";
+			this.lblFavicon.AutoSize = true;
+			this.lblFavicon.Location = new System.Drawing.Point(18, 60);
+			this.lblFavicon.Name = "lblFavicon";
+			this.lblFavicon.Size = new System.Drawing.Size(54, 13);
+			this.lblFavicon.TabIndex = 8;
+			this.lblFavicon.Text = "[Favicon:]";
 			// 
-			// chkSSLRedirect
+			// btnFavicon
 			// 
-			this.chkSSLRedirect.AutoSize = true;
-			this.chkSSLRedirect.Location = new System.Drawing.Point(131, 95);
-			this.chkSSLRedirect.Name = "chkSSLRedirect";
-			this.chkSSLRedirect.Size = new System.Drawing.Size(65, 17);
-			this.chkSSLRedirect.TabIndex = 3;
-			this.chkSSLRedirect.Text = "[Enable]";
-			this.chkSSLRedirect.UseVisualStyleBackColor = true;
+			this.btnFavicon.Location = new System.Drawing.Point(131, 55);
+			this.btnFavicon.Name = "btnFavicon";
+			this.btnFavicon.Size = new System.Drawing.Size(75, 23);
+			this.btnFavicon.TabIndex = 9;
+			this.btnFavicon.Text = "...";
+			this.btnFavicon.UseVisualStyleBackColor = true;
+			this.btnFavicon.Click += new System.EventHandler(this.btnFavicon_Click);
 			// 
 			// ProjectGeneralSettings
 			// 
@@ -302,5 +325,7 @@
 		private System.Windows.Forms.Label lblUglyURLs;
 		private System.Windows.Forms.Label lblSSLRedirect;
 		private System.Windows.Forms.CheckBox chkSSLRedirect;
+		private System.Windows.Forms.Button btnFavicon;
+		private System.Windows.Forms.Label lblFavicon;
 	}
 }

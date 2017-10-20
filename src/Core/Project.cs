@@ -120,6 +120,15 @@ namespace WebsiteStudio.Core {
 
 		public CustomCollection<PublishItem> Publishing { get; private set; }
 
+		private byte[] _Favicon;
+
+		public byte[] Favicon {
+			get => _Favicon;
+			set { _Favicon = value; Dirty = true; }
+		}
+
+		public const String FaviconExtension = ".ico";
+
 		private Type _Webserver;
 
 		public Type Webserver {

@@ -537,4 +537,10 @@
   <data name="MediaDeleteConfirmMessage" xml:space="preserve">
     <value>Do you really want to remove the selected media items?</value>
   </data>
+  <data name="Favicon" xml:space="preserve">
+    <value>Favicon</value>
+  </data>
+  <data name="FaviconFilesFilter" xml:space="preserve">
+    <value>Icon Files (*{0})|*{0}</value>
+  </data>
 </root>

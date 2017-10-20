@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Theming;
@@ -11,7 +12,10 @@ namespace WebsiteStudio.UI.Controls {
 	public partial class ProjectGeneralSettings : UserControl {
 		
 		private static String ThemeFileFilter => String.Format(Strings.ThemeFilesFilter, Theme.FileExtension);
-		
+		private static String FaviconFileFilter => String.Format(Strings.FaviconFilesFilter, Project.FaviconExtension);
+
+		private byte[] _Favicon;
+
 		public ProjectGeneralSettings() {
 			InitializeComponent();
 			LocalizeComponent();
@@ -28,6 +32,7 @@ namespace WebsiteStudio.UI.Controls {
 			lblBaseURL.Text = Strings.BaseURL + ":";
 			lblOutputPath.Text = Strings.Path + ":";
 			lblThemePath.Text = Strings.Path + ":";
+			lblFavicon.Text = Strings.Favicon + ":";
 			lblSSLRedirect.Text = Strings.SSLRedirect + ":";
 
 			lblUglyURLs.Text = Strings.UglyURLs + ":";
@@ -56,6 +61,10 @@ namespace WebsiteStudio.UI.Controls {
 			project.GenerateSitemap = chkGenerateSitemap.Checked;
 			project.SSLRedirect = chkSSLRedirect.Checked;
 			project.Webserver = cbxWebserver.GetWebserverPlugin();
+
+			if (_Favicon.Length > 0) {
+				project.Favicon = _Favicon;
+			}
 		}
 
 		private void btnThemeBrowse_Click(object sender, EventArgs e) {
@@ -84,6 +93,22 @@ namespace WebsiteStudio.UI.Controls {
 		private void txtBaseURL_TextChanged(object sender, EventArgs e) {
 			txtBaseURL.BackColor = Uri.IsWellFormedUriString(txtBaseURL.Text, UriKind.Absolute)
 				? CommonColors.ValidBackground : CommonColors.InvalidBackground;
+		}
+
+		private void btnFavicon_Click(object sender, EventArgs e) {
+			ofdFile.Filter = FaviconFileFilter;
+			ofdFile.FileName = String.Empty;
+
+			var result = ofdFile.ShowDialog();
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			if (!File.Exists(ofdFile.FileName)) {
+				return;
+			}
+
+			_Favicon = File.ReadAllBytes(ofdFile.FileName);
 		}
 	}
 }

@@ -12,18 +12,23 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		private const String FileSpritesCss = "sprites.css";
 
+		public const String FileFavicon = "favicon.ico";
+
 		private readonly List<String> _StyleSheetFiles;
 
 		private readonly Theme _Theme;
 		
 		private readonly DirectoryInfo _MetaDirectory;
 
+		private readonly byte[] _Favicon;
+
 		public String Output { get; private set; }
 
-		public BuildImagesStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles) {
+		public BuildImagesStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles, byte[] favicon) {
 			_MetaDirectory = metaDirectory;
 			_Theme = theme;
 			_StyleSheetFiles = styleSheetFiles;
+			_Favicon = favicon;
 
 			Output = "Building image files";
 		}
@@ -37,12 +42,17 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 			String pngPath = Path.Combine(_MetaDirectory.FullName, FileSpritesPng);
 			String cssPath = Path.Combine(_MetaDirectory.FullName, FileSpritesCss);
-
+			
 			SpriteGenerator generator = new SpriteGenerator(_Theme.Images, FileSpritesPng, _Theme.Settings.ImageCssClass);
 			generator.GenerateSprite();
 
 			generator.Image.Save(pngPath);
 			File.WriteAllText(cssPath, Utilities.CssMinifier.Compile(generator.CSS));
+
+			if (_Favicon.Length > 0) {
+				String faviconPath = Path.Combine(_MetaDirectory.FullName, FileFavicon);
+				File.WriteAllBytes(faviconPath, _Favicon);
+			}
 		}
 
 	}

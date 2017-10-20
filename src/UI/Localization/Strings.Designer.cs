@@ -484,6 +484,24 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favicon.
+        /// </summary>
+        internal static string Favicon {
+            get {
+                return ResourceManager.GetString("Favicon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon Files (*{0})|*{0}.
+        /// </summary>
+        internal static string FaviconFilesFilter {
+            get {
+                return ResourceManager.GetString("FaviconFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         internal static string File {

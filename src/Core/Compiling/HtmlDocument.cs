@@ -145,6 +145,14 @@ namespace WebsiteStudio.Core.Compiling {
 			_Head.AppendChild(tag);
 		}
 
+		public void AddFaviconTag(String path) {
+			HtmlElement tag = new HtmlElement(TagLink);
+			tag.SetAttribute(AttributeRel, "icon");
+			tag.SetAttribute(AttributeReference, path);
+			tag.SetAttribute(AttributeType, "image/x-icon");
+			_Head.AppendChild(tag);
+		}
+
 		public String Body {
 			get {
 				return _Body.Content;

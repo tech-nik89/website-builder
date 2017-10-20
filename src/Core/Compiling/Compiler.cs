@@ -70,7 +70,7 @@ namespace WebsiteStudio.Core.Compiling {
 			_Steps.Add(new PrepareDirectoryStep(mediaDirectory));
 			_Steps.Add(new BuildStyleSheetsStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
 			_Steps.Add(new BuildFontsStep(_Project.Theme, metaDirectory));
-			_Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles));
+			_Steps.Add(new BuildImagesStep(_Project.Theme, metaDirectory, _StyleSheetFiles, _Project.Favicon));
 			_Steps.Add(new CopyMediaStep(_Project.Media, mediaDirectory));
 
 			if (_Project.GenerateSitemap) {
