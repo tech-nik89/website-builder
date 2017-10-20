@@ -62,7 +62,7 @@ namespace WebsiteStudio.UI.Controls {
 			project.SSLRedirect = chkSSLRedirect.Checked;
 			project.Webserver = cbxWebserver.GetWebserverPlugin();
 
-			if (_Favicon.Length > 0) {
+			if (_Favicon?.Length > 0) {
 				project.Favicon = _Favicon;
 			}
 		}

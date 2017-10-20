@@ -49,7 +49,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			generator.Image.Save(pngPath);
 			File.WriteAllText(cssPath, Utilities.CssMinifier.Compile(generator.CSS));
 
-			if (_Favicon.Length > 0) {
+			if (_Favicon?.Length > 0) {
 				String faviconPath = Path.Combine(_MetaDirectory.FullName, FileFavicon);
 				File.WriteAllBytes(faviconPath, _Favicon);
 			}

@@ -98,7 +98,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			}
 
 			// Favicon
-			if (_Page.Project.Favicon.Length > 0) {
+			if (_Page.Project.Favicon?.Length > 0) {
 				String faviconPath = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", BuildImagesStep.FileFavicon), _Level);
 				document.AddFaviconTag(faviconPath);
 			}
