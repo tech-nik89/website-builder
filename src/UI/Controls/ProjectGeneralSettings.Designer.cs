@@ -33,6 +33,9 @@
 			this.lblOutputPath = new System.Windows.Forms.Label();
 			this.chkUglyURLs = new System.Windows.Forms.CheckBox();
 			this.gbxTheme = new System.Windows.Forms.GroupBox();
+			this.pbxFavicon = new System.Windows.Forms.PictureBox();
+			this.btnFavicon = new System.Windows.Forms.Button();
+			this.lblFavicon = new System.Windows.Forms.Label();
 			this.btnThemeBrowse = new System.Windows.Forms.Button();
 			this.txtThemePath = new System.Windows.Forms.TextBox();
 			this.lblThemePath = new System.Windows.Forms.Label();
@@ -48,10 +51,9 @@
 			this.lblUglyURLs = new System.Windows.Forms.Label();
 			this.txtBaseURL = new System.Windows.Forms.TextBox();
 			this.lblBaseURL = new System.Windows.Forms.Label();
-			this.lblFavicon = new System.Windows.Forms.Label();
-			this.btnFavicon = new System.Windows.Forms.Button();
 			this.gbxOutput.SuspendLayout();
 			this.gbxTheme.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbxFavicon)).BeginInit();
 			this.gbxWebserver.SuspendLayout();
 			this.gbxGeneral.SuspendLayout();
 			this.SuspendLayout();
@@ -113,6 +115,7 @@
 			// 
 			this.gbxTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxTheme.Controls.Add(this.pbxFavicon);
 			this.gbxTheme.Controls.Add(this.btnFavicon);
 			this.gbxTheme.Controls.Add(this.lblFavicon);
 			this.gbxTheme.Controls.Add(this.btnThemeBrowse);
@@ -120,10 +123,37 @@
 			this.gbxTheme.Controls.Add(this.lblThemePath);
 			this.gbxTheme.Location = new System.Drawing.Point(3, 216);
 			this.gbxTheme.Name = "gbxTheme";
-			this.gbxTheme.Size = new System.Drawing.Size(600, 97);
+			this.gbxTheme.Size = new System.Drawing.Size(600, 94);
 			this.gbxTheme.TabIndex = 3;
 			this.gbxTheme.TabStop = false;
 			this.gbxTheme.Text = "[Theme]";
+			// 
+			// pbxFavicon
+			// 
+			this.pbxFavicon.Location = new System.Drawing.Point(212, 60);
+			this.pbxFavicon.Name = "pbxFavicon";
+			this.pbxFavicon.Size = new System.Drawing.Size(16, 16);
+			this.pbxFavicon.TabIndex = 10;
+			this.pbxFavicon.TabStop = false;
+			// 
+			// btnFavicon
+			// 
+			this.btnFavicon.Location = new System.Drawing.Point(131, 55);
+			this.btnFavicon.Name = "btnFavicon";
+			this.btnFavicon.Size = new System.Drawing.Size(75, 23);
+			this.btnFavicon.TabIndex = 9;
+			this.btnFavicon.Text = "...";
+			this.btnFavicon.UseVisualStyleBackColor = true;
+			this.btnFavicon.Click += new System.EventHandler(this.btnFavicon_Click);
+			// 
+			// lblFavicon
+			// 
+			this.lblFavicon.AutoSize = true;
+			this.lblFavicon.Location = new System.Drawing.Point(18, 60);
+			this.lblFavicon.Name = "lblFavicon";
+			this.lblFavicon.Size = new System.Drawing.Size(54, 13);
+			this.lblFavicon.TabIndex = 8;
+			this.lblFavicon.Text = "[Favicon:]";
 			// 
 			// btnThemeBrowse
 			// 
@@ -159,7 +189,7 @@
 			this.gbxWebserver.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.gbxWebserver.Controls.Add(this.cbxWebserver);
-			this.gbxWebserver.Location = new System.Drawing.Point(3, 319);
+			this.gbxWebserver.Location = new System.Drawing.Point(3, 316);
 			this.gbxWebserver.Name = "gbxWebserver";
 			this.gbxWebserver.Size = new System.Drawing.Size(600, 79);
 			this.gbxWebserver.TabIndex = 4;
@@ -262,25 +292,6 @@
 			this.lblBaseURL.TabIndex = 0;
 			this.lblBaseURL.Text = "[BaseURL:]";
 			// 
-			// lblFavicon
-			// 
-			this.lblFavicon.AutoSize = true;
-			this.lblFavicon.Location = new System.Drawing.Point(18, 60);
-			this.lblFavicon.Name = "lblFavicon";
-			this.lblFavicon.Size = new System.Drawing.Size(54, 13);
-			this.lblFavicon.TabIndex = 8;
-			this.lblFavicon.Text = "[Favicon:]";
-			// 
-			// btnFavicon
-			// 
-			this.btnFavicon.Location = new System.Drawing.Point(131, 55);
-			this.btnFavicon.Name = "btnFavicon";
-			this.btnFavicon.Size = new System.Drawing.Size(75, 23);
-			this.btnFavicon.TabIndex = 9;
-			this.btnFavicon.Text = "...";
-			this.btnFavicon.UseVisualStyleBackColor = true;
-			this.btnFavicon.Click += new System.EventHandler(this.btnFavicon_Click);
-			// 
 			// ProjectGeneralSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,11 +301,12 @@
 			this.Controls.Add(this.gbxTheme);
 			this.Controls.Add(this.gbxOutput);
 			this.Name = "ProjectGeneralSettings";
-			this.Size = new System.Drawing.Size(606, 436);
+			this.Size = new System.Drawing.Size(606, 403);
 			this.gbxOutput.ResumeLayout(false);
 			this.gbxOutput.PerformLayout();
 			this.gbxTheme.ResumeLayout(false);
 			this.gbxTheme.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbxFavicon)).EndInit();
 			this.gbxWebserver.ResumeLayout(false);
 			this.gbxGeneral.ResumeLayout(false);
 			this.gbxGeneral.PerformLayout();
@@ -327,5 +339,6 @@
 		private System.Windows.Forms.CheckBox chkSSLRedirect;
 		private System.Windows.Forms.Button btnFavicon;
 		private System.Windows.Forms.Label lblFavicon;
+		private System.Windows.Forms.PictureBox pbxFavicon;
 	}
 }

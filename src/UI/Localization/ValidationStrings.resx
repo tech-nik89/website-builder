@@ -132,6 +132,9 @@
   <data name="Project" xml:space="preserve">
     <value>The project is currently invalid. Please check the following properties.</value>
   </data>
+  <data name="ProjectFavicon" xml:space="preserve">
+    <value>The favicon is invalid.</value>
+  </data>
   <data name="ProjectLanguages" xml:space="preserve">
     <value>There are no languages defined or one or more language is invalid.</value>
   </data>

@@ -51,6 +51,11 @@ namespace WebsiteStudio.UI.Controls {
 			chkSSLRedirect.Checked = project.SSLRedirect;
 			cbxWebserver.SelectWebserverPlugin(project.Webserver);
 			txtBaseURL_TextChanged(null, null);
+
+			if (project.Favicon?.Length > 0) {
+				_Favicon = project.Favicon;
+				UpdateFaviconPreview();
+			}
 		}
 
 		public void FillProjectFrom(Project project) {
@@ -107,8 +112,20 @@ namespace WebsiteStudio.UI.Controls {
 			if (!File.Exists(ofdFile.FileName)) {
 				return;
 			}
-
+			
 			_Favicon = File.ReadAllBytes(ofdFile.FileName);
+			UpdateFaviconPreview();
+		}
+
+		private void UpdateFaviconPreview() {
+			if (_Favicon?.Length == 0) {
+				return;
+			}
+
+			using(MemoryStream stream = new MemoryStream(_Favicon)) {
+				Bitmap bitmap = new Bitmap(Image.FromStream(stream));
+				pbxFavicon.Image = bitmap;
+			}
 		}
 	}
 }

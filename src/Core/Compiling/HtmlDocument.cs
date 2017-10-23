@@ -146,11 +146,17 @@ namespace WebsiteStudio.Core.Compiling {
 		}
 
 		public void AddFaviconTag(String path) {
-			HtmlElement tag = new HtmlElement(TagLink);
-			tag.SetAttribute(AttributeRel, "icon");
-			tag.SetAttribute(AttributeReference, path);
-			tag.SetAttribute(AttributeType, "image/x-icon");
-			_Head.AppendChild(tag);
+			HtmlElement tagModernBrowsers = new HtmlElement(TagLink);
+			tagModernBrowsers.SetAttribute(AttributeRel, "icon");
+			tagModernBrowsers.SetAttribute(AttributeReference, path);
+			tagModernBrowsers.SetAttribute(AttributeType, "image/x-icon");
+			_Head.AppendChild(tagModernBrowsers);
+
+			HtmlElement tagInternetExplorer = new HtmlElement(TagLink);
+			tagInternetExplorer.SetAttribute(AttributeRel, "shortcut icon");
+			tagInternetExplorer.SetAttribute(AttributeReference, path);
+			tagInternetExplorer.SetAttribute(AttributeType, "image/x-icon");
+			_Head.AppendChild(tagInternetExplorer);
 		}
 
 		public String Body {
