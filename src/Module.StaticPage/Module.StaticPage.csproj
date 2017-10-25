@@ -48,6 +48,15 @@
     <Compile Include="..\SharedSources\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Image\ImageData.cs" />
+    <Compile Include="Image\StaticImageAlignment.cs" />
+    <Compile Include="Image\StaticImageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Image\StaticImageControl.Designer.cs">
+      <DependentUpon>StaticImageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\StaticImageModule.cs" />
     <Compile Include="Localization\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +92,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Image\StaticImageControl.resx">
+      <DependentUpon>StaticImageControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
