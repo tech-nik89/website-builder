@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.Publish.FTP.Properties;
@@ -55,6 +56,19 @@ namespace WebsiteStudio.Publish.FTP {
 				progress?.Report("Reading publishing settings ...");
 				Settings settings = Settings.Deserialize(data);
 				progress?.Report(String.Format("Publishing to: {0}:{1}", settings.Host, settings.Port));
+				
+				if (String.IsNullOrWhiteSpace(settings.Password)) {
+					progress?.Report("Password missing. Asking user for password.");
+
+					AskUserPasswordForm form = new AskUserPasswordForm(settings.UserName);
+					DialogResult result = form.ShowDialog();
+
+					if (result != DialogResult.OK) {
+						throw new Exception("User cancelled.");
+					}
+
+					settings.Password = form.Password;
+				}
 
 				DirectoryInfo directory = new DirectoryInfo(outputhPath);
 

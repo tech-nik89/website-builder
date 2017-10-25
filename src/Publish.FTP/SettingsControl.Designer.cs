@@ -35,6 +35,7 @@
 			this.lblPassword = new System.Windows.Forms.Label();
 			this.txtUserName = new System.Windows.Forms.TextBox();
 			this.lblUserName = new System.Windows.Forms.Label();
+			this.lblPasswordEmptyHint = new System.Windows.Forms.Label();
 			this.gbxServer.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numPort)).BeginInit();
 			this.gbxCredentials.SuspendLayout();
@@ -118,13 +119,14 @@
 			// 
 			this.gbxCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbxCredentials.Controls.Add(this.lblPasswordEmptyHint);
 			this.gbxCredentials.Controls.Add(this.txtPassword);
 			this.gbxCredentials.Controls.Add(this.lblPassword);
 			this.gbxCredentials.Controls.Add(this.txtUserName);
 			this.gbxCredentials.Controls.Add(this.lblUserName);
 			this.gbxCredentials.Location = new System.Drawing.Point(3, 142);
 			this.gbxCredentials.Name = "gbxCredentials";
-			this.gbxCredentials.Size = new System.Drawing.Size(473, 100);
+			this.gbxCredentials.Size = new System.Drawing.Size(473, 124);
 			this.gbxCredentials.TabIndex = 1;
 			this.gbxCredentials.TabStop = false;
 			this.gbxCredentials.Text = "[Credentials]";
@@ -167,6 +169,16 @@
 			this.lblUserName.TabIndex = 2;
 			this.lblUserName.Text = "[UserName]";
 			// 
+			// lblPasswordEmptyHint
+			// 
+			this.lblPasswordEmptyHint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblPasswordEmptyHint.Location = new System.Drawing.Point(112, 78);
+			this.lblPasswordEmptyHint.Name = "lblPasswordEmptyHint";
+			this.lblPasswordEmptyHint.Size = new System.Drawing.Size(330, 36);
+			this.lblPasswordEmptyHint.TabIndex = 6;
+			this.lblPasswordEmptyHint.Text = "[PasswordEmptyHint]";
+			// 
 			// SettingsControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,7 +186,7 @@
 			this.Controls.Add(this.gbxCredentials);
 			this.Controls.Add(this.gbxServer);
 			this.Name = "SettingsControl";
-			this.Size = new System.Drawing.Size(479, 327);
+			this.Size = new System.Drawing.Size(479, 281);
 			this.gbxServer.ResumeLayout(false);
 			this.gbxServer.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numPort)).EndInit();
@@ -198,5 +210,6 @@
 		private System.Windows.Forms.Label lblPassword;
 		private System.Windows.Forms.TextBox txtUserName;
 		private System.Windows.Forms.Label lblUserName;
+		private System.Windows.Forms.Label lblPasswordEmptyHint;
 	}
 }

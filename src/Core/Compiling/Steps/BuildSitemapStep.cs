@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
@@ -28,28 +29,30 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			XElement xRoot = new XElement("urlset");
 			xSitemap.Add(xRoot);
 
-			foreach(Page page in _Project.AllPages) {
-				if (page.RobotsNoIndex || page.Disable) {
-					continue;
-				}
+			foreach (Language language in _Project.Languages) {
+				foreach (Page page in _Project.AllPages) {
+					if (page.RobotsNoIndex || page.Disable) {
+						continue;
+					}
 
-				XElement xUrl = new XElement("url");
-				xRoot.Add(xUrl);
+					XElement xUrl = new XElement("url");
+					xRoot.Add(xUrl);
 
-				xUrl.Add(new XElement("loc", CreateUrl(page)));
-				xUrl.Add(new XElement("changefreq", page.ChangeFrequency.ToString().ToLower()));
+					xUrl.Add(new XElement("loc", CreateUrl(page, language)));
+					xUrl.Add(new XElement("changefreq", page.ChangeFrequency.ToString().ToLower()));
 
-				if (page.LastModified != null && page.LastModified != DateTime.MinValue) {
-					xUrl.Add(new XElement("lastmod", page.LastModified.ToString("yyyy-MM-dd")));
+					if (page.LastModified != null && page.LastModified != DateTime.MinValue) {
+						xUrl.Add(new XElement("lastmod", page.LastModified.ToString("yyyy-MM-dd")));
+					}
 				}
 			}
 			
 			xSitemap.Save(_OutputPath);
 		}
 
-		private String CreateUrl(Page page) {
+		private String CreateUrl(Page page, Language language) {
 			UriBuilder builder = new UriBuilder(_Project.BaseURL);
-			builder.Path = Compiler.CreateUrl(page);
+			builder.Path = language.Id + "/" + Compiler.CreateUrl(page);
 			return builder.Uri.ToString();
 		}
 	}

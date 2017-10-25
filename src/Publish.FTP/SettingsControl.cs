@@ -58,6 +58,8 @@ namespace WebsiteStudio.Publish.FTP {
 			gbxCredentials.Text = Strings.Credentials;
 			lblUserName.Text = Strings.UserName + ":";
 			lblPassword.Text = Strings.Password + ":";
+
+			lblPasswordEmptyHint.Text = Strings.PasswordEmptyHint;
 		}
 		
 	}
