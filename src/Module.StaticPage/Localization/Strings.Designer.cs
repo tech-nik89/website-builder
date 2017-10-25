@@ -124,6 +124,24 @@ namespace WebsiteStudio.Modules.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Footer Text.
+        /// </summary>
+        internal static string FooterText {
+            get {
+                return ResourceManager.GetString("FooterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When specifying a footer text, the image will no longer be clickable. Only the footer text will become a link..
+        /// </summary>
+        internal static string FooterTextExplanation {
+            get {
+                return ResourceManager.GetString("FooterTextExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
         internal static string General {

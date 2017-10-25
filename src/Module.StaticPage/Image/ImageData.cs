@@ -32,6 +32,8 @@ namespace WebsiteStudio.Modules.Image {
 
 		public String LinkTarget { get; set; }
 
+		public String FooterText { get; set; }
+
 		public ImageData() {
 			WidthUnit = SizeUnits[0];
 			MaxWidthUnit = SizeUnits[0];

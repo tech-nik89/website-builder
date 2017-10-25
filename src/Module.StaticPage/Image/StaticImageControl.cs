@@ -29,6 +29,7 @@ namespace WebsiteStudio.Modules.Image {
 
 				data.Link = txtLink.Text;
 				data.LinkTarget = cbxLinkTarget.Text;
+				data.FooterText = txtFooterText.Text;
 
 				Dirty = false;
 
@@ -60,6 +61,7 @@ namespace WebsiteStudio.Modules.Image {
 
 				txtLink.Text = data.Link;
 				cbxLinkTarget.Text = data.LinkTarget;
+				txtFooterText.Text = data.FooterText;
 
 				Dirty = false;
 			}
@@ -112,6 +114,8 @@ namespace WebsiteStudio.Modules.Image {
 
 			lblLink.Text = Strings.Link + ":";
 			lblLinkTarget.Text = Strings.LinkTarget + ":";
+			lblFooterText.Text = Strings.FooterText + ":";
+			lblFooterTextExplanation.Text = Strings.FooterTextExplanation;
 
 			String[] alignmentItems = Enum.GetNames(typeof(StaticImageAlignment));
 			foreach(String item in alignmentItems) {

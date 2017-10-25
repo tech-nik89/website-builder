@@ -16,7 +16,7 @@ namespace WebsiteStudio.Modules.Image {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
-			IHtmlElement div = compileHelper.CreateHtmlElement("div");
+			IHtmlElement figure = compileHelper.CreateHtmlElement("figure");
 			IHtmlElement img = compileHelper.CreateHtmlElement("img");
 
 			try {
@@ -36,9 +36,9 @@ namespace WebsiteStudio.Modules.Image {
 					img.SetAttribute("style", style.ToString());
 				}
 
-				div.SetAttribute("style", String.Format("text-align:{0}", data.Alignment.ToString().ToLower()));
+				figure.SetAttribute("style", String.Format("text-align:{0}", data.Alignment.ToString().ToLower()));
 
-				if (!String.IsNullOrWhiteSpace(data.Link)) {
+				if (!String.IsNullOrWhiteSpace(data.Link) && String.IsNullOrWhiteSpace(data.FooterText)) {
 					IHtmlElement a = compileHelper.CreateHtmlElement("a");
 					a.SetAttribute("href", data.Link);
 
@@ -46,17 +46,39 @@ namespace WebsiteStudio.Modules.Image {
 						a.SetAttribute("target", data.LinkTarget);
 					}
 
-					div.AppendChild(a);
+					figure.AppendChild(a);
 					a.AppendChild(img);
 				}
 				else {
-					div.AppendChild(img);
+					figure.AppendChild(img);
+				}
+
+				if (!String.IsNullOrWhiteSpace(data.FooterText)) {
+					IHtmlElement figcaption = compileHelper.CreateHtmlElement("figcaption");
+					figcaption.SetAttribute("style", "text-align:right;display:block;");
+
+					if (!String.IsNullOrWhiteSpace(data.Link)) {
+						IHtmlElement a = compileHelper.CreateHtmlElement("a");
+						a.SetAttribute("href", data.Link);
+						a.Content = data.FooterText;
+
+						if (!String.IsNullOrWhiteSpace(data.LinkTarget)) {
+							a.SetAttribute("target", data.LinkTarget);
+						}
+
+						figcaption.AppendChild(a);
+						figure.AppendChild(figcaption);
+					}
+					else {
+						figcaption.Content = data.FooterText;
+						figure.AppendChild(figcaption);
+					}
 				}
 			}
 			catch {
 			}
 
-			return compileHelper.Compile(div);
+			return compileHelper.Compile(figure);
 		}
 
 		private static void AppendStyle(StringBuilder style, String type, int value, String unit) {

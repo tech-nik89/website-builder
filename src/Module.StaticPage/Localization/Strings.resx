@@ -138,6 +138,12 @@
   <data name="Comma" xml:space="preserve">
     <value>Comma</value>
   </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>Footer Text</value>
+  </data>
+  <data name="FooterTextExplanation" xml:space="preserve">
+    <value>When specifying a footer text, the image will no longer be clickable. Only the footer text will become a link.</value>
+  </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>

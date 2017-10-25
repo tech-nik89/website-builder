@@ -48,6 +48,9 @@
 			this.tabMain = new System.Windows.Forms.TabControl();
 			this.tabImage = new System.Windows.Forms.TabPage();
 			this.tabLink = new System.Windows.Forms.TabPage();
+			this.lblFooterTextExplanation = new System.Windows.Forms.Label();
+			this.txtFooterText = new System.Windows.Forms.TextBox();
+			this.lblFooterText = new System.Windows.Forms.Label();
 			this.cbxLinkTarget = new System.Windows.Forms.ComboBox();
 			this.lblLinkTarget = new System.Windows.Forms.Label();
 			this.lblLink = new System.Windows.Forms.Label();
@@ -333,6 +336,9 @@
 			// 
 			// tabLink
 			// 
+			this.tabLink.Controls.Add(this.lblFooterTextExplanation);
+			this.tabLink.Controls.Add(this.txtFooterText);
+			this.tabLink.Controls.Add(this.lblFooterText);
 			this.tabLink.Controls.Add(this.cbxLinkTarget);
 			this.tabLink.Controls.Add(this.lblLinkTarget);
 			this.tabLink.Controls.Add(this.lblLink);
@@ -345,6 +351,34 @@
 			this.tabLink.TabIndex = 1;
 			this.tabLink.Text = "[Link]";
 			this.tabLink.UseVisualStyleBackColor = true;
+			// 
+			// lblFooterTextExplanation
+			// 
+			this.lblFooterTextExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblFooterTextExplanation.Location = new System.Drawing.Point(130, 122);
+			this.lblFooterTextExplanation.Name = "lblFooterTextExplanation";
+			this.lblFooterTextExplanation.Size = new System.Drawing.Size(366, 53);
+			this.lblFooterTextExplanation.TabIndex = 12;
+			this.lblFooterTextExplanation.Text = "[Explanation]";
+			// 
+			// txtFooterText
+			// 
+			this.txtFooterText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtFooterText.Location = new System.Drawing.Point(133, 89);
+			this.txtFooterText.Name = "txtFooterText";
+			this.txtFooterText.Size = new System.Drawing.Size(363, 20);
+			this.txtFooterText.TabIndex = 11;
+			// 
+			// lblFooterText
+			// 
+			this.lblFooterText.AutoSize = true;
+			this.lblFooterText.Location = new System.Drawing.Point(29, 92);
+			this.lblFooterText.Name = "lblFooterText";
+			this.lblFooterText.Size = new System.Drawing.Size(67, 13);
+			this.lblFooterText.TabIndex = 10;
+			this.lblFooterText.Text = "[FooterText:]";
 			// 
 			// cbxLinkTarget
 			// 
@@ -458,5 +492,8 @@
 		private System.Windows.Forms.Button btnLinkBrowse;
 		private System.Windows.Forms.ComboBox cbxLinkTarget;
 		private System.Windows.Forms.Label lblLinkTarget;
+		private System.Windows.Forms.TextBox txtFooterText;
+		private System.Windows.Forms.Label lblFooterText;
+		private System.Windows.Forms.Label lblFooterTextExplanation;
 	}
 }
