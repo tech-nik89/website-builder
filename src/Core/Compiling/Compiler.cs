@@ -214,10 +214,20 @@ namespace WebsiteStudio.Core.Compiling {
 				return String.Empty;
 			}
 
+			if (targetPage == currentPage) {
+				return ".";
+			}
+
 			List<String> path = new List<String>();
 			Page parent = targetPage.Parent as Page;
+			bool targetPageIsSubpageOfCurrentPage = false;
 
 			while (parent != null) {
+				if (parent == currentPage) {
+					targetPageIsSubpageOfCurrentPage = true;
+					break;
+				}
+
 				path.Insert(0, parent.PathName);
 				parent = parent.Parent as Page;
 			}
@@ -228,9 +238,11 @@ namespace WebsiteStudio.Core.Compiling {
 			else {
 				path.Add(String.Concat(targetPage.PathName, "/"));
 			}
-			
-			for (int i = 0; i < (currentPage?.Level ?? 0); i++) {
-				path.Insert(0, DirectoryUp);
+
+			if (!targetPageIsSubpageOfCurrentPage) {
+				for (int i = 0; i < (currentPage?.Level ?? 0); i++) {
+					path.Insert(0, DirectoryUp);
+				}
 			}
 
 			return String.Join("/", path);

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using WebsiteStudio.Core.Compiling.Links;
+using WebsiteStudio.Core.Extensions;
 using WebsiteStudio.Core.Footer;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Media;
@@ -244,17 +245,18 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 				String path = GetRelativePath(String.Concat(Compiler.MetaDirectoryName, "/", font.Name), level);
 				String name = Path.GetFileNameWithoutExtension(font.Name);
 
-				builder.AppendLine("@font-face {");
+				builder.StartSelector("@font-face");
 
-				builder.AppendFormat("font-family: '{0}';", name);
+				builder.AppendProperty("font-family", "'{0}'", name);
 				builder.AppendLine();
 
-				builder.AppendFormat("src: url('{0}') format('{1}');", path, font.Type);
+				builder.AppendProperty("src", "url('{0}') format('{1}')", path, font.Type);
 				builder.AppendLine();
 
-				builder.AppendLine("font-style: normal;");
-				builder.AppendLine("font-weight: normal;");
-				builder.AppendLine("}");
+				builder.AppendProperty("font-style", "normal");
+				builder.AppendProperty("font-weight", "normal");
+
+				builder.EndSelector();
 			}
 
 			return builder.ToString();

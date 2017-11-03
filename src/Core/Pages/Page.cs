@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using WebsiteStudio.Core.Localization;
 
 namespace WebsiteStudio.Core.Pages {
 
 	[Serializable]
+	[DebuggerDisplay("{DisplayPath}")]
 	public class Page : IPage {
 		
 		public String Id { get; internal set; }
