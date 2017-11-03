@@ -3,9 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Core.Properties;
-using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildIndexFileStep : ICompilerStep {
@@ -28,7 +26,6 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		public void Run() {
 			BuildIndexHtmlFile();
-			BuildJavaScriptLanguageRedirect();
 		}
 
 		private void BuildIndexHtmlFile() {
@@ -50,10 +47,6 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			file.AddScript(script.ToString());
 
 			file.Compile(_Path);
-		}
-
-		private void BuildJavaScriptLanguageRedirect() {
-			String startPage = _Project.StartPage != null ? Compiler.CreateUrl(_Project.StartPage) : null;
 		}
 	}
 }

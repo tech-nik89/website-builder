@@ -25,7 +25,12 @@ namespace WebsiteStudio.Core.Compiling {
 		
 		public bool Error { get; private set; }
 
-		public IEnumerable<CompilerMessage> Messages => _Exceptions.Select(x => new CompilerMessage(x));
+		public IEnumerable<CompilerMessage> Messages
+			=> _Exceptions.Select(x => new CompilerMessage(x))
+			.Concat(_Messages)
+			.OrderBy(x => x.MessageType);
+
+		private readonly List<CompilerMessage> _Messages;
 		
 		private readonly List<String> _StyleSheetFiles;
 
@@ -50,6 +55,7 @@ namespace WebsiteStudio.Core.Compiling {
 			_ModuleCompilerFlags = new Dictionary<Type, int>();
 			_Exceptions = new List<Exception>();
 			_Stopwatch = new Stopwatch();
+			_Messages = new List<CompilerMessage>();
 			
 			ValidateProject(project);
 			
@@ -119,6 +125,14 @@ namespace WebsiteStudio.Core.Compiling {
 			if (project.Theme == null) {
 				HandleException(new FileNotFoundException("The theme file could not be found.", project.ThemePath));
 			}
+
+			if (project.StartPage == null) {
+				HandleException(new Exception("No start page selected."));
+			}
+
+			if (project.Webserver == null) {
+				_Messages.Add(new CompilerMessage("No web server configured.", CompilerMessageType.Information));
+			}
 		}
 
 		public async Task CompileAsync() {
@@ -163,8 +177,7 @@ namespace WebsiteStudio.Core.Compiling {
 					step.Run();
 				}
 				catch (Exception ex) {
-					Error = true;
-					_Exceptions.Add(ex);
+					HandleException(ex);
 				}
 			}
 
