@@ -13,7 +13,7 @@ namespace WebsiteStudio.UI.Forms {
 
 		private readonly PagesTreeView _Pages;
 
-		private readonly PageContentList _Content;
+		private readonly PageContentListAdvanced _Content;
 
 		private readonly DockPanel _DockPanel;
 
@@ -35,7 +35,7 @@ namespace WebsiteStudio.UI.Forms {
 			_LanguageComboBox = new ToolStripComboBox();
 			_ProjectToolbar = CreateProjectToolbar();
 
-			_Content = new PageContentList();
+			_Content = new PageContentListAdvanced();
 			_Pages = new PagesTreeView(_Content.EnableContentControls, _Content.RefreshContent);
 			_Content.Pages = _Pages;
 

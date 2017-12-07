@@ -16,6 +16,10 @@ namespace WebsiteStudio.Modules.Image {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 			IHtmlElement figure = compileHelper.CreateHtmlElement("figure");
 			IHtmlElement img = compileHelper.CreateHtmlElement("img");
 

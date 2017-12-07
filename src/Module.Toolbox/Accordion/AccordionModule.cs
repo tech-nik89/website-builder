@@ -21,6 +21,10 @@ namespace WebsiteStudio.Modules.Toolbox.Accordion {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 			try {
 				IEditor editor = _PluginHelper.CreateEditor();
 				IEnumerable<AccordionItem> data = DataSerializer.Deserialize<AccordionItem>(source);

@@ -18,6 +18,10 @@ namespace WebsiteStudio.Modules.Toolbox.Quotes {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 			try {
 				IEditor editor = _PluginHelper.CreateEditor();
 				IEnumerable<Quote> data = DataSerializer.Deserialize<Quote>(source);

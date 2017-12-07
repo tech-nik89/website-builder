@@ -25,6 +25,10 @@ namespace WebsiteStudio.Modules.Gallery {
 		}
 
 		public String Compile(String source, ICompileHelper helper) {
+			return Compile(source, helper, false);
+		}
+
+		public String Compile(String source, ICompileHelper helper, bool preview) {
 			try {
 				GalleryData data = GalleryData.Deserialize(source, _PluginHelper);
 				String galleryCssClass = _PluginHelper.NewGuid();
@@ -40,6 +44,23 @@ namespace WebsiteStudio.Modules.Gallery {
 				IHtmlElement gallery = helper.CreateHtmlElement("div");
 				gallery.SetAttribute("class", "gallery");
 				container.AppendChild(gallery);
+
+				if (preview) {
+					for (int i = 0; i < data.Files.Count; i++) {
+						IHtmlElement img = helper.CreateHtmlElement("img");
+
+						if (data.ThumbnailSize.Width > data.ThumbnailSize.Height) {
+							img.SetAttribute("width", data.ThumbnailSize.Width.ToString());
+						}
+						else {
+							img.SetAttribute("height", data.ThumbnailSize.Height.ToString());
+						}
+
+						container.AppendChild(img);
+					}
+
+					return helper.Compile(container);
+				}
 
 				int threadCount = data.Files.Count;
 				if (threadCount > _MaxThreadCount) {

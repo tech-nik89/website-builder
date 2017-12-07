@@ -18,6 +18,10 @@ namespace WebsiteStudio.Modules.News {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 
 			IEditor editor = _PluginHelper.CreateEditor();
 			compileHelper.CreateLessFile(Resources.NewsStyles);

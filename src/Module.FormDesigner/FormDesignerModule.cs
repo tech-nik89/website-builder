@@ -21,6 +21,10 @@ namespace WebsiteStudio.Modules.FormDesigner {
 		}
 
 		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 			try {
 				FormData data = FormData.Deserialize(source);
 				Service service = Service.GetService(data.TargetService, data);

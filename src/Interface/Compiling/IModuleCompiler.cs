@@ -5,5 +5,7 @@ namespace WebsiteStudio.Interface.Compiling {
 
 		String Compile(String source, ICompileHelper compileHelper);
 
+		String Compile(String source, ICompileHelper compileHelper, bool preview);
+
 	}
 }

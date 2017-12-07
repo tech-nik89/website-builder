@@ -18,7 +18,11 @@ namespace WebsiteStudio.Modules.Toolbox.Timeline {
 			_PluginHelper = pluginHelper;
 		}
 
-		public string Compile(String source, ICompileHelper compileHelper) {
+		public String Compile(String source, ICompileHelper compileHelper) {
+			return Compile(source, compileHelper, false);
+		}
+
+		public String Compile(String source, ICompileHelper compileHelper, bool preview) {
 			try {
 				IEditor editor = _PluginHelper.CreateEditor();
 				IEnumerable<TimelineItem> data = DataSerializer.Deserialize<TimelineItem>(source);
@@ -55,7 +59,7 @@ namespace WebsiteStudio.Modules.Toolbox.Timeline {
 				return String.Empty;
 			}
 		}
-
+		
 		public IUserInterface GetUserInterface() {
 			return new GenericControl<TimelineItem>(_PluginHelper);
 		}

@@ -90,6 +90,12 @@
     <Compile Include="Controls\PageContentList.Designer.cs">
       <DependentUpon>PageContentList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PageContentListAdvanced.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\PageContentListAdvanced.Designer.cs">
+      <DependentUpon>PageContentListAdvanced.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PublishingSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PageContentList.resx">
       <DependentUpon>PageContentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PageContentListAdvanced.resx">
+      <DependentUpon>PageContentListAdvanced.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PublishingSettings.resx">
       <DependentUpon>PublishingSettings.cs</DependentUpon>

@@ -15,6 +15,10 @@ namespace WebsiteStudio.Modules.StaticPage {
 		}
 
 		public String Compile(String source, ICompileHelper helper) {
+			return Compile(source, helper, false);
+		}
+
+		public String Compile(String source, ICompileHelper helper, bool preview) {
 			IEditor editor = _PluginHelper.CreateEditor();
 			return editor.Compile(source);
 		}

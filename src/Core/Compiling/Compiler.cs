@@ -272,5 +272,9 @@ namespace WebsiteStudio.Core.Compiling {
 			Error = true;
 			_Exceptions.Add(ex);
 		}
+
+		public static IHtmlElement CreateHtmlElement(String name) {
+			return new HtmlElement(name);
+		}
 	}
 }
