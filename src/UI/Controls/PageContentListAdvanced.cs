@@ -67,8 +67,7 @@ namespace WebsiteStudio.UI.Controls {
 		}
 
 		private void ContentApi_Selected(object sender, int index) {
-			_SelectedIndex = index;
-			RefreshContentList();
+			RefreshContentList(index);
 			EnableContentControls();
 		}
 
@@ -80,14 +79,18 @@ namespace WebsiteStudio.UI.Controls {
 		}
 
 		private void RefreshContentList(int selectedIndex = -1) {
-			if (selectedIndex > -1) {
-				_SelectedIndex = selectedIndex;
-			}
 
 			if (SelectedPage == null) {
 				return;
 			}
 
+			int scrollPos = 0;
+
+			if (selectedIndex > -1) {
+				_SelectedIndex = selectedIndex;
+				scrollPos = wbContent.Document != null ? (int)wbContent.Document.InvokeScript("GetScrollPosition") : 0;
+			}
+			
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("<!DOCTYPE html>");
 			sb.AppendLine("<html><head>");
@@ -95,9 +98,11 @@ namespace WebsiteStudio.UI.Controls {
 			sb.AppendLine("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></meta>");
 			sb.AppendLine("<style type=\"text/css\">");
 			sb.AppendLine("html,body{font-family:'Segoe UI';font-size:9pt;cursor:default;}");
-			sb.AppendLine(".section{border:2px solid #eee;margin:15px; padding:15px;}");
+			sb.AppendLine(".section{border:2px solid #eee;margin:10px;padding:10px;}");
 			sb.AppendLine(".section.selected{background-color:#eee;}");
 			sb.AppendLine(".section:not(.selected):hover{background-color:#eee;}");
+			sb.AppendLine("*{-ms-user-select:none;}");
+			sb.AppendLine("h1,h2,h3,h4,h5,h6{margin:0;padding:5px;}");
 			sb.AppendLine("</style>");
 			
 			for (int i = 0; i < SelectedPage.ContentCount; i++) {
@@ -124,7 +129,11 @@ namespace WebsiteStudio.UI.Controls {
 			sb.Append("<script type=\"text/javascript\">");
 			sb.Append("setTimeout(function(){var imgs=document.getElementsByTagName('img');for(var i=0;i<imgs.length;i++)imgs[i].src='");
 			sb.Append(_SvgPhoto);
-			sb.Append("';var as=document.getElementsByTagName('a');for(var i=0;i<as.length;i++)as[i].href='javascript:void(0);';}, 5);");
+			sb.Append("';var as=document.getElementsByTagName('a');for(var i=0;i<as.length;i++)as[i].href='javascript:void(0);';},5);");
+			sb.Append("function GetScrollPosition(){return ((window.pageYOffset||document.scrollTop)-(document.clientTop||0))||0;}");
+			sb.Append("setTimeout(function(){window.scrollTo(0,");
+			sb.Append(scrollPos);
+			sb.Append(");},30);");
 			sb.AppendLine("</script>");
 
 			sb.Append("</body></html>");
