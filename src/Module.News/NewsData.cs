@@ -46,6 +46,8 @@ namespace WebsiteStudio.Modules.News {
 
 		public NewsData() {
 			_Items = new List<NewsItem>();
+			LargeItemsCount = 5;
+			LargeItemsMaxHeight = 50;
 		}
 
 		public static NewsData Deserialize(String str) {

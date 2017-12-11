@@ -35,6 +35,7 @@
 			this.wbContent.Name = "wbContent";
 			this.wbContent.Size = new System.Drawing.Size(630, 462);
 			this.wbContent.TabIndex = 0;
+			this.wbContent.WebBrowserShortcutsEnabled = false;
 			// 
 			// PageContentListAdvanced
 			// 

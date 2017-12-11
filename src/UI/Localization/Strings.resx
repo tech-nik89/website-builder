@@ -543,4 +543,7 @@
   <data name="FaviconFilesFilter" xml:space="preserve">
     <value>Icon Files (*{0})|*{0}</value>
   </data>
+  <data name="NoContent" xml:space="preserve">
+    <value>No Content</value>
+  </data>
 </root>

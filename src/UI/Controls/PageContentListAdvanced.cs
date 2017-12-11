@@ -98,31 +98,44 @@ namespace WebsiteStudio.UI.Controls {
 			sb.AppendLine("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></meta>");
 			sb.AppendLine("<style type=\"text/css\">");
 			sb.AppendLine("html,body{font-family:'Segoe UI';font-size:9pt;cursor:default;}");
-			sb.AppendLine(".section{border:2px solid #eee;margin:10px;padding:10px;}");
-			sb.AppendLine(".section.selected{background-color:#eee;}");
-			sb.AppendLine(".section:not(.selected):hover{background-color:#eee;}");
+			sb.AppendLine(".section{position:relative;border:2px solid #eee;margin:10px;padding:10px;min-height:45px;overflow:hidden;}");
+			sb.AppendLine(".section.selected{border:2px solid #666;}");
+			sb.AppendLine(".section:not(.selected):hover{border:2px solid #666;}");
+			sb.AppendLine(".section>.empty{color:#666;}");
+			sb.AppendLine(".section>.type{position:absolute;top:10px;right:10px;color:#666;}");
 			sb.AppendLine("*{-ms-user-select:none;}");
 			sb.AppendLine("h1,h2,h3,h4,h5,h6{margin:0;padding:5px;}");
 			sb.AppendLine("</style>");
 			
 			for (int i = 0; i < SelectedPage.ContentCount; i++) {
 				PageContent content = SelectedPage[i];
-				if (content == null || content.ModuleType == null || content.EditorType == null) {
-					continue;
-				}
 
-				IModule module = PluginManager.LoadModule(content, SelectedPage.Project);
-				
 				sb.Append("<div class=\"section");
 
 				if (i == _SelectedIndex) {
 					sb.Append(" selected");
 				}
 
-				sb.Append("\" onclick=\"window.external.Select(");
+				sb.Append("\" onclick=\"Select(");
 				sb.Append(i);
-				sb.Append(")\">");
-				sb.Append(module.Compile(content.LoadData(SelectedLanguage), _CompileHelper, true));
+				sb.Append(",event);\">");
+
+				if (content != null && content.ModuleType != null && content.EditorType != null) {
+					IModule module = PluginManager.LoadModule(content, SelectedPage.Project);
+					
+					sb.Append(module.Compile(content.LoadData(SelectedLanguage), _CompileHelper, true));
+					sb.Append("<div class=\"type\">");
+					sb.Append(PluginManager.Modules[content.ModuleType]);
+					sb.Append(", ");
+					sb.Append(PluginManager.Editors[content.EditorType]);
+					sb.AppendLine("</div>");
+				}
+				else {
+					sb.Append("<div class=\"empty\">");
+					sb.Append(Strings.NoContent);
+					sb.Append("</div>");
+				}
+
 				sb.AppendLine("</div>");
 			}
 
@@ -131,6 +144,7 @@ namespace WebsiteStudio.UI.Controls {
 			sb.Append(_SvgPhoto);
 			sb.Append("';var as=document.getElementsByTagName('a');for(var i=0;i<as.length;i++)as[i].href='javascript:void(0);';},5);");
 			sb.Append("function GetScrollPosition(){return ((window.pageYOffset||document.scrollTop)-(document.clientTop||0))||0;}");
+			sb.Append("function Select(i,e){window.external.Select(i);e.preventDefault();e.stopPropagation();};");
 			sb.Append("setTimeout(function(){window.scrollTo(0,");
 			sb.Append(scrollPos);
 			sb.Append(");},30);");

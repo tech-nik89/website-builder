@@ -48,6 +48,10 @@ namespace WebsiteStudio.Modules.FormDesigner {
 				submit.SetAttribute("type", "submit");
 				submit.SetAttribute("value", !String.IsNullOrWhiteSpace(data.SubmitButtonText) ? data.SubmitButtonText : Strings.Submit);
 
+				if (preview) {
+					submit.SetAttribute("disabled", "disabled");
+				}
+
 				innerHtml.Append(compileHelper.Compile(submit));
 
 				if (!compileHelper.HasPageFlag(ResourceFilesAlreadyAddedFlag)) {
