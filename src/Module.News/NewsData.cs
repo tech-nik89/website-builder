@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using WebsiteStudio.Modules.News.Localization;
 
 namespace WebsiteStudio.Modules.News {
 	class NewsData : IEnumerable<NewsItem>, IList<NewsItem>, ICollection<NewsItem> {
@@ -48,6 +49,7 @@ namespace WebsiteStudio.Modules.News {
 			_Items = new List<NewsItem>();
 			LargeItemsCount = 5;
 			LargeItemsMaxHeight = 50;
+			ExpanderText = Strings.ExpanderText;
 		}
 
 		public static NewsData Deserialize(String str) {

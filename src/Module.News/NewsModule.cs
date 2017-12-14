@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
 using WebsiteStudio.Modules.News.Properties;
@@ -37,18 +38,19 @@ namespace WebsiteStudio.Modules.News {
 				
 				for(Int32 i = 0; i < data.LargeItemsCount; i++) {
 					if (enumerator.MoveNext()) {
-						element.AppendChild(CreateNewsItem(enumerator.Current, compileHelper, editor, data.LargeItemsMaxHeight, data.ExpanderText));
+						String url = CompileNewsSubPage(enumerator.Current, compileHelper, editor, data.ExpanderText);
+						element.AppendChild(CreateNewsItem(enumerator.Current, compileHelper, editor, data.ExpanderText, true, url));
 					}
 				}
 				
 				IHtmlElement ul = compileHelper.CreateHtmlElement("ul");
 				element.AppendChild(ul);
-				
+
 				while (enumerator.MoveNext()) {
 					IHtmlElement li = compileHelper.CreateHtmlElement("li");
 					ul.AppendChild(li);
 
-					String url = CompileNewsSubPage(enumerator.Current, compileHelper, editor);
+					String url = CompileNewsSubPage(enumerator.Current, compileHelper, editor, data.ExpanderText);
 
 					IHtmlElement a = compileHelper.CreateHtmlElement("a");
 					a.Content = enumerator.Current.Title;
@@ -70,40 +72,57 @@ namespace WebsiteStudio.Modules.News {
 			}
 		}
 
-		private IHtmlElement CreateNewsItem(NewsItem item, ICompileHelper compileHelper, IEditor editor, int maxHeight = 0, String expanderText = "") {
+		private IHtmlElement CreateNewsItem(NewsItem item, ICompileHelper compileHelper, IEditor editor, String expanderText, bool overview, String url = null) {
 			IHtmlElement element = compileHelper.CreateHtmlElement("article");
 			element.AppendChild(CreateTimeElement(item.Created, compileHelper));
-
-			IHtmlElement inner = compileHelper.CreateHtmlElement("div");
-			inner.SetAttribute("class", "inner");
-			element.AppendChild(inner);
-
+			
 			IHtmlElement h1 = compileHelper.CreateHtmlElement("h1");
-			inner.AppendChild(h1);
 			h1.Content = item.Title;
 
-			IHtmlElement p = compileHelper.CreateHtmlElement("p");
-			inner.AppendChild(p);
-			p.Content = editor.Compile(item.Data);
-
-			if (maxHeight > 0) {
-				inner.SetAttribute("style", "max-height:" + maxHeight + "px");
-
+			if (overview && !String.IsNullOrWhiteSpace(url)) {
 				IHtmlElement a = compileHelper.CreateHtmlElement("a");
+				a.SetAttribute("href", url);
 				element.AppendChild(a);
+				a.AppendChild(h1);
+			}
+			else {
+				element.AppendChild(h1);
+			}
 
-				a.Content = expanderText;
-				a.SetAttribute("href", "javascript:void(0);");
-				a.SetAttribute("class", "expander");
+			IHtmlElement p = compileHelper.CreateHtmlElement("p");
+			element.AppendChild(p);
+			
+			p.Content = editor.Compile(item.Data);
+			if (overview) {
+				p.Content = GetPreview(p.Content);
+
+				if (!String.IsNullOrWhiteSpace(url)) {
+					IHtmlElement a = compileHelper.CreateHtmlElement("a");
+					a.Content = expanderText;
+					a.SetAttribute("href", url);
+					element.AppendChild(a);
+				}
 			}
 
 			return element;
 		}
 
-		private String CompileNewsSubPage(NewsItem item, ICompileHelper compileHelper, IEditor editor) {
+		private static readonly Regex _PreviewRegex = new Regex("<p[^>]*>([^~]*?)<\\/p>", RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+		private static String GetPreview(String html) {
+			MatchCollection matches = _PreviewRegex.Matches(html);
+
+			if (matches.Count > 1 && matches[0].Groups.Count > 1) {
+				return matches[1].Groups[1].Value;
+			}
+
+			return html;
+		}
+
+		private String CompileNewsSubPage(NewsItem item, ICompileHelper compileHelper, IEditor editor, String expanderText) {
 			IHtmlElement element = compileHelper.CreateHtmlElement("div");
 			element.SetAttribute("class", "module-news");
-			element.AppendChild(CreateNewsItem(item, compileHelper, editor));
+			element.AppendChild(CreateNewsItem(item, compileHelper, editor, expanderText, false));
 
 			String pathName = GetNewsPagePath(item);
 			return compileHelper.CreateSubPage(pathName, compileHelper.Compile(element));
