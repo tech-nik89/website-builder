@@ -7,12 +7,10 @@ namespace WebsiteStudio.Modules.News {
 	public partial class NewsSettingsForm : Form {
 
 		public int LargeItemsCount => (int)numLargeItemsCount.Value;
-
-		public int LargeItemsMaxHeight => (int)numLargeItemsMaxHeight.Value;
-
+		
 		public String ExpanderText => txtExpanderText.Text;
 
-		public NewsSettingsForm(IIconPack iconPack, int largeItemsCount, int largeItemsMaxHeight, String expanderText) {
+		public NewsSettingsForm(IIconPack iconPack, int largeItemsCount, String expanderText) {
 			InitializeComponent();
 			LocalizeComponent();
 			ApplyIcons(iconPack);
@@ -21,12 +19,8 @@ namespace WebsiteStudio.Modules.News {
 
 			numLargeItemsCount.Minimum = 1;
 			numLargeItemsCount.Maximum = 50;
-
-			numLargeItemsMaxHeight.Minimum = 50;
-			numLargeItemsMaxHeight.Maximum = decimal.MaxValue;
-
+			
 			numLargeItemsCount.Value = largeItemsCount;
-			numLargeItemsMaxHeight.Value = largeItemsMaxHeight;
 			txtExpanderText.Text = expanderText;
 		}
 
@@ -45,7 +39,6 @@ namespace WebsiteStudio.Modules.News {
 			btnCancel.Text = Strings.Cancel;
 
 			lblLargeItemsCount.Text = Strings.LargeItemsCount + ":";
-			lblLargeItemsMaxHeight.Text = Strings.LargeItemsMaxHeight + ":";
 			lblExpanderText.Text = Strings.ExpanderTextCaption + ":";
 		}
 

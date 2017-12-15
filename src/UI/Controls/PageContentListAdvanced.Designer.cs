@@ -28,6 +28,7 @@
 			// 
 			// wbContent
 			// 
+			this.wbContent.AllowWebBrowserDrop = false;
 			this.wbContent.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.wbContent.IsWebBrowserContextMenuEnabled = false;
 			this.wbContent.Location = new System.Drawing.Point(0, 0);
@@ -36,6 +37,7 @@
 			this.wbContent.Size = new System.Drawing.Size(630, 462);
 			this.wbContent.TabIndex = 0;
 			this.wbContent.WebBrowserShortcutsEnabled = false;
+			this.wbContent.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wbContent_PreviewKeyDown);
 			// 
 			// PageContentListAdvanced
 			// 

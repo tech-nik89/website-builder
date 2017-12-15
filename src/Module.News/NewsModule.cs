@@ -74,8 +74,14 @@ namespace WebsiteStudio.Modules.News {
 
 		private IHtmlElement CreateNewsItem(NewsItem item, ICompileHelper compileHelper, IEditor editor, String expanderText, bool overview, String url = null) {
 			IHtmlElement element = compileHelper.CreateHtmlElement("article");
-			element.AppendChild(CreateTimeElement(item.Created, compileHelper));
-			
+
+			IHtmlElement details = compileHelper.CreateHtmlElement("aside");
+			details.SetAttribute("class", "details");
+			element.AppendChild(details);
+
+			details.AppendChild(CreateTimeElement(item.Created, compileHelper));
+			details.AppendChild(CreateAuthorElement(item.Author, compileHelper));
+
 			IHtmlElement h1 = compileHelper.CreateHtmlElement("h1");
 			h1.Content = item.Title;
 
@@ -133,6 +139,13 @@ namespace WebsiteStudio.Modules.News {
 			time.Content = date.ToShortDateString();
 			time.SetAttribute("datetime", date.ToString("o"));
 			return time;
+		}
+
+		private static IHtmlElement CreateAuthorElement(String author, ICompileHelper compileHelper) {
+			IHtmlElement span = compileHelper.CreateHtmlElement("span");
+			span.SetAttribute("class", "author");
+			span.Content = author;
+			return span;
 		}
 
 		private static String GetNewsPagePath(NewsItem item) {

@@ -18,21 +18,26 @@
 
     article {
         position: relative;
-        padding-bottom:10px;
+        padding-bottom: 10px;
 
         > .inner {
             overflow: hidden;
         }
 
         > .expander {
-            padding:5px 0;
-            text-align:right;
+            padding: 5px 0;
+            text-align: right;
         }
 
-        > time {
+        > aside.details {
             position: absolute;
             top: 20px;
             right: 10px;
+            font-style:italic;
+
+            > time, .author {
+                margin:0 4px;
+            }
         }
     }
 }

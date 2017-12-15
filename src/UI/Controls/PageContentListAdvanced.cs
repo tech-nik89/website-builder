@@ -22,6 +22,9 @@ namespace WebsiteStudio.UI.Controls {
 		[Browsable(true)]
 		public event EventHandler ContentUpdated;
 
+		[Browsable(true)]
+		public event EventHandler<KeyEventArgs> KeyPressed;
+
 		public PagesTreeView Pages { get; set; }
 
 		private int _SelectedIndex;
@@ -81,6 +84,7 @@ namespace WebsiteStudio.UI.Controls {
 		private void RefreshContentList(int selectedIndex = -1) {
 
 			if (SelectedPage == null) {
+				wbContent.Navigate("about:blank");
 				return;
 			}
 
@@ -271,6 +275,10 @@ namespace WebsiteStudio.UI.Controls {
 			_MoveDownButton.Enabled = CanMoveDown;
 		}
 
+		private void wbContent_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+			KeyPressed?.Invoke(this, new KeyEventArgs(e.KeyCode));
+		}
+
 		[ComVisible(true)]
 		public class API {
 
@@ -348,6 +356,5 @@ namespace WebsiteStudio.UI.Controls {
 			}
 
 		}
-
 	}
 }

@@ -178,15 +178,6 @@ namespace WebsiteStudio.Modules.News.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Large items max height.
-        /// </summary>
-        internal static string LargeItemsMaxHeight {
-            get {
-                return ResourceManager.GetString("LargeItemsMaxHeight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to News.
         /// </summary>
         internal static string News {

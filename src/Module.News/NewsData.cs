@@ -13,9 +13,7 @@ namespace WebsiteStudio.Modules.News {
 		private const String TagSettings = "settings";
 
 		private const String TagSettingsLargeItemsCount = "largeItemsCount";
-
-		private const String TagSettingsLargeItemsMaxHeight = "largeItemsMaxHeight";
-
+		
 		private const String TagSettingsExpanderText = "expanderText";
 
 		private const String TagItem = "item";
@@ -35,9 +33,7 @@ namespace WebsiteStudio.Modules.News {
 		public bool IsReadOnly => false;
 
 		public int LargeItemsCount { get; set; }
-
-		public int LargeItemsMaxHeight { get; set; }
-
+		
 		public String ExpanderText { get; set; }
 
 		public NewsItem this[int index] {
@@ -48,7 +44,6 @@ namespace WebsiteStudio.Modules.News {
 		public NewsData() {
 			_Items = new List<NewsItem>();
 			LargeItemsCount = 5;
-			LargeItemsMaxHeight = 50;
 			ExpanderText = Strings.ExpanderText;
 		}
 
@@ -69,7 +64,6 @@ namespace WebsiteStudio.Modules.News {
 
 				XElement settings = root.Element(TagSettings);
 				data.LargeItemsCount = Convert.ToInt32(settings.Attribute(TagSettingsLargeItemsCount)?.Value ?? "3");
-				data.LargeItemsMaxHeight = Convert.ToInt32(settings.Attribute(TagSettingsLargeItemsMaxHeight)?.Value ?? "300");
 				data.ExpanderText = settings.Attribute(TagSettingsExpanderText)?.Value ?? "More";
 
 				return data;
@@ -87,7 +81,6 @@ namespace WebsiteStudio.Modules.News {
 			XElement root = new XElement(TagRoot,
 				new XElement(TagSettings,
 					new XAttribute(TagSettingsLargeItemsCount, data.LargeItemsCount),
-					new XAttribute(TagSettingsLargeItemsMaxHeight, data.LargeItemsMaxHeight),
 					new XAttribute(TagSettingsExpanderText, data.ExpanderText)
 				),
 				data.Select(x => new XElement(TagItem,

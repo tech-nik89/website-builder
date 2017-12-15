@@ -30,6 +30,7 @@ namespace WebsiteStudio.Modules.News {
 			_PluginHelper = pluginHelper;
 			ApplyLocalization();
 			ApplyIcons();
+			UpdateButtonsEnabledStatus();
 		}
 
 		private void ApplyIcons() {
@@ -117,14 +118,21 @@ namespace WebsiteStudio.Modules.News {
 		}
 
 		private void tsbSettings_Click(object sender, EventArgs e) {
-			NewsSettingsForm form = new NewsSettingsForm(_PluginHelper.GetIconPack(), _Data.LargeItemsCount, _Data.LargeItemsMaxHeight, _Data.ExpanderText);
+			NewsSettingsForm form = new NewsSettingsForm(_PluginHelper.GetIconPack(), _Data.LargeItemsCount, _Data.ExpanderText);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
 			}
 
 			_Data.LargeItemsCount = form.LargeItemsCount;
-			_Data.LargeItemsMaxHeight = form.LargeItemsMaxHeight;
 			_Data.ExpanderText = form.ExpanderText;
+		}
+
+		private void lvwItems_SelectedIndexChanged(object sender, EventArgs e) {
+			UpdateButtonsEnabledStatus();
+		}
+
+		private void UpdateButtonsEnabledStatus() {
+			tsbEdit.Enabled = tsbDelete.Enabled = lvwItems.SelectedIndices.Count > 0;
 		}
 	}
 }

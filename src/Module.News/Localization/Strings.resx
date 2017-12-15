@@ -156,9 +156,6 @@
   <data name="LargeItemsCount" xml:space="preserve">
     <value>Large items count</value>
   </data>
-  <data name="LargeItemsMaxHeight" xml:space="preserve">
-    <value>Large items max height</value>
-  </data>
   <data name="News" xml:space="preserve">
     <value>News</value>
   </data>

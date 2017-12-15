@@ -38,6 +38,7 @@ namespace WebsiteStudio.UI.Forms {
 			_Content = new PageContentListAdvanced();
 			_Pages = new PagesTreeView(_Content.EnableContentControls, _Content.RefreshContent);
 			_Content.Pages = _Pages;
+			_Content.KeyPressed += Content_KeyPressed;
 
 			_CompilerOutput = new CompilerOutput();
 			_CompilerError = new CompilerError();
@@ -295,6 +296,17 @@ namespace WebsiteStudio.UI.Forms {
 
 		private void mnuHelpUpdateCheck_Click(object sender, EventArgs e) {
 			CheckForUpdate(false);
+		}
+
+		private void Content_KeyPressed(object sender, KeyEventArgs e) {
+			switch(e.KeyCode) {
+				case Keys.F5:
+					mnuBuildAndRunProject_Click(sender, e);
+					break;
+				case Keys.F6:
+					mnuBuildProject_Click(sender, e);
+					break;
+			}
 		}
 	}
 }

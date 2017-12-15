@@ -249,13 +249,11 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		public void OpenProjectInDefaultBrowser(Project project) {
-			String path = Path.Combine(project.OutputPath, Project.FileIndex);
-
-			if (!File.Exists(path)) {
+			if (String.IsNullOrWhiteSpace(project.OutputPath) || !Directory.Exists(project.OutputPath)) {
 				return;
 			}
 
-			Process.Start(path);
+			Process.Start(project.OutputPath);
 		}
 
 		private void UpdateStatus(String status) {
