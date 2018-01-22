@@ -61,8 +61,13 @@ namespace WebsiteStudio.Modules.Gallery {
 
 					return helper.Compile(container);
 				}
-
+				
 				int threadCount = data.Files.Count;
+
+				if (threadCount == 0) {
+					return String.Empty;
+				}
+
 				if (threadCount > _MaxThreadCount) {
 					threadCount = _MaxThreadCount;
 				}
