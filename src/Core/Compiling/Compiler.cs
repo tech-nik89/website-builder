@@ -126,6 +126,10 @@ namespace WebsiteStudio.Core.Compiling {
 				HandleException(new FileNotFoundException("The theme file could not be found.", project.ThemePath));
 			}
 
+			if (project.Languages.Length == 0) {
+				HandleException(new Exception("No languages configured."));
+			}
+
 			if (project.StartPage == null) {
 				HandleException(new Exception("No start page selected."));
 			}

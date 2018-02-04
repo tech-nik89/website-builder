@@ -147,7 +147,7 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.BaseURL, _Project.BaseURL),
 				new XElement(ProjectStorageConstants.SSLRedirect, _Project.SSLRedirect),
 				new XElement(ProjectStorageConstants.Sitemap, _Project.GenerateSitemap),
-				new XElement(ProjectStorageConstants.Favicon, Convert.ToBase64String(_Project.Favicon))
+				new XElement(ProjectStorageConstants.Favicon, _Project.Favicon != null ? Convert.ToBase64String(_Project.Favicon) : String.Empty)
 			);
 		}
 
