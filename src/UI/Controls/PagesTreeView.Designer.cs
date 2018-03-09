@@ -42,6 +42,7 @@
 			this.cmsDragDropMoveAsChild = new System.Windows.Forms.ToolStripMenuItem();
 			this.lvwPages = new System.Windows.Forms.ListView();
 			this.clnPathName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.txtSearch = new System.Windows.Forms.TextBox();
 			this.cmsTree.SuspendLayout();
 			this.cmsDragDrop.SuspendLayout();
 			this.SuspendLayout();
@@ -142,10 +143,10 @@
 			this.lvwPages.FullRowSelect = true;
 			this.lvwPages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.lvwPages.HideSelection = false;
-			this.lvwPages.Location = new System.Drawing.Point(0, 0);
+			this.lvwPages.Location = new System.Drawing.Point(0, 20);
 			this.lvwPages.MultiSelect = false;
 			this.lvwPages.Name = "lvwPages";
-			this.lvwPages.Size = new System.Drawing.Size(785, 358);
+			this.lvwPages.Size = new System.Drawing.Size(785, 338);
 			this.lvwPages.TabIndex = 3;
 			this.lvwPages.UseCompatibleStateImageBehavior = false;
 			this.lvwPages.View = System.Windows.Forms.View.Details;
@@ -162,17 +163,27 @@
 			this.clnPathName.Text = "[Path name]";
 			this.clnPathName.Width = 180;
 			// 
+			// txtSearch
+			// 
+			this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
+			this.txtSearch.Location = new System.Drawing.Point(0, 0);
+			this.txtSearch.Name = "txtSearch";
+			this.txtSearch.Size = new System.Drawing.Size(785, 20);
+			this.txtSearch.TabIndex = 4;
+			// 
 			// PagesTreeView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(785, 358);
 			this.Controls.Add(this.lvwPages);
+			this.Controls.Add(this.txtSearch);
 			this.DoubleBuffered = true;
 			this.Name = "PagesTreeView";
 			this.cmsTree.ResumeLayout(false);
 			this.cmsDragDrop.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
@@ -191,5 +202,6 @@
         private System.Windows.Forms.ToolStripMenuItem cmbBuildPage;
 		private System.Windows.Forms.ListView lvwPages;
 		private System.Windows.Forms.ColumnHeader clnPathName;
+		private System.Windows.Forms.TextBox txtSearch;
 	}
 }

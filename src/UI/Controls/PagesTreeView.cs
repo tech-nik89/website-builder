@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Localization;
@@ -14,6 +15,8 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace WebsiteStudio.UI.Controls {
 	public partial class PagesTreeView : DockContent {
+
+		private static readonly String SearchPlaceholder = Strings.Search + " ...";
 
 		private readonly List<TreeItem> _FlatList;
 
@@ -98,6 +101,44 @@ namespace WebsiteStudio.UI.Controls {
 			DockAreas = DockAreas.DockLeft | DockAreas.DockRight | DockAreas.DockTop | DockAreas.DockBottom;
 			CloseButton = false;
 			CloseButtonVisible = false;
+
+			txtSearch.GotFocus += RemoveSearchPlaceholder;
+			txtSearch.LostFocus += AddSearchPlaceholder;
+			txtSearch.KeyDown += SearchKeyDown;
+			txtSearch.TextChanged += Search;
+			AddSearchPlaceholder(txtSearch, null);
+		}
+
+		private void Search(object sender, EventArgs e) {
+			TextBox box = (TextBox)sender;
+			if (!box.Focused) {
+				return;
+			}
+			
+			RefreshTree(box.Text);
+		}
+
+		private void SearchKeyDown(object sender, KeyEventArgs e) {
+			if (e.KeyCode == Keys.Escape) {
+				TextBox box = (TextBox)sender;
+				box.Text = String.Empty;
+				e.Handled = true;
+				e.SuppressKeyPress = true;
+			}
+		}
+
+		private void RemoveSearchPlaceholder(object sender, EventArgs e) {
+			TextBox box = (TextBox)sender;
+			if (box.Text.Equals(SearchPlaceholder)) {
+				box.Text = String.Empty;
+			}
+		}
+
+		private void AddSearchPlaceholder(object sender, EventArgs e) {
+			TextBox box = (TextBox)sender;
+			if (String.IsNullOrWhiteSpace(box.Text)) {
+				box.Text = SearchPlaceholder;
+			}
 		}
 
 		private ToolStrip CreateToolbar() {
@@ -157,16 +198,22 @@ namespace WebsiteStudio.UI.Controls {
 			clnPathName.Text = Strings.Page;
 		}
 
-		private void RefreshTree() {
+		private async void RefreshTree() {
+			await RefreshTree(null);
+		}
+
+		private async Task RefreshTree(String searchText) {
 			int index = -1;
 			if (lvwPages.SelectedIndices.Count > 0) {
 				index = lvwPages.SelectedIndices[0];
 			}
 
 			lvwPages.SelectedIndices.Clear();
-
-			_FlatList.Clear();
-			FillFlatList(Project.Pages, 0);
+			
+			await Task.Run(() => {
+				_FlatList.Clear();
+				FillFlatList(Project.Pages, 0, searchText);
+			});
 			
 			lvwPages.VirtualListSize = 0;
 			lvwPages.VirtualListSize = _FlatList.Count;
@@ -179,15 +226,34 @@ namespace WebsiteStudio.UI.Controls {
 			FireTreeChanged();
 		}
 
-		private void FireTreeChanged() {
-			TreeChanged?.Invoke(this, new EventArgs());
+		private void FillFlatList(PageCollection pages, int level, String searchText) {
+			foreach (Page page in pages) {
+				if (IsSearchTextMatch(searchText, page, SelectedLanguage)) {
+					_FlatList.Add(new TreeItem(page, level));
+				}
+
+				FillFlatList(page.Pages, level + 1, searchText);
+			}
 		}
 
-		private void FillFlatList(PageCollection pages, int level) {
-			foreach (Page page in pages) {
-				_FlatList.Add(new TreeItem(page, level));
-				FillFlatList(page.Pages, level + 1);
+		private static bool IsSearchTextMatch(String searchText, Page page, Language language) {
+			if (String.IsNullOrWhiteSpace(searchText)) {
+				return true;
 			}
+
+			if (page.Id.IndexOf(searchText, StringComparison.CurrentCultureIgnoreCase) > -1) {
+				return true;
+			}
+
+			if (page.Title.Get(language)?.IndexOf(searchText, StringComparison.CurrentCultureIgnoreCase) > -1) {
+				return true;
+			}
+
+			return false;
+		}
+
+		private void FireTreeChanged() {
+			TreeChanged?.Invoke(this, new EventArgs());
 		}
 
 		private void lvwPages_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
