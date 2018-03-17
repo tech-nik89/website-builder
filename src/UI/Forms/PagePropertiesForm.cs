@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
+using WebsiteStudio.Core.Security;
 using WebsiteStudio.Core.Validation;
 using WebsiteStudio.Interface.Content;
 using WebsiteStudio.Interface.Icons;
@@ -69,6 +70,7 @@ namespace WebsiteStudio.UI.Forms {
 			tabMeta.Text = Strings.Meta;
 			tabRobots.Text = Strings.Robots;
 			tabLink.Text = Strings.Link;
+			tabSecurity.Text = Strings.Security;
 
 			clnLanguage.Text = Strings.Language;
 			clnTitle.Text = Strings.Title;
@@ -92,6 +94,8 @@ namespace WebsiteStudio.UI.Forms {
 
 			rbLinkNone.Text = Strings.None;
 			rbLinkRedirect.Text = Strings.Redirect;
+
+			clnGroup.Text = Strings.Group;
 		}
 
 		private void FillForm() {
@@ -108,6 +112,17 @@ namespace WebsiteStudio.UI.Forms {
 
 			SetPageLinkType(Page.LinkType);
 			txtLinkTarget.Text = Page.LinkTarget;
+
+			FillSecurityList();
+		}
+
+		private void FillSecurityList() {
+			lvwSecurity.Items.Clear();
+			foreach(Group group in Page.Project.Groups) {
+				var item = new ListViewItem(group.Name);
+				item.Checked = Page.AllowedGroups.Contains(group);
+				lvwSecurity.Items.Add(item);
+			}
 		}
 
 		private void FillTitleList() {
@@ -163,6 +178,13 @@ namespace WebsiteStudio.UI.Forms {
 
 			page.LinkTarget = txtLinkTarget.Text;
 			page.LinkType = GetPageLinkType();
+
+			page.AllowedGroups.Clear();
+			for(int i = 0; i < page.Project.Groups.Count; i++) {
+				if (lvwSecurity.Items[i].Checked) {
+					page.AllowedGroups.Add(page.Project.Groups[i]);
+				}
+			}
 		}
 
 		private void lvwTitle_MouseUp(object sender, MouseEventArgs e) {

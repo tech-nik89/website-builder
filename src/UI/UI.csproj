@@ -96,6 +96,18 @@
     <Compile Include="Controls\PageContentListAdvanced.Designer.cs">
       <DependentUpon>PageContentListAdvanced.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GroupForm.Designer.cs">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SecurityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SecurityForm.Designer.cs">
+      <DependentUpon>SecurityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PublishingSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +213,12 @@
     <Compile Include="Forms\UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Localization\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,6 +266,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PageContentListAdvanced.resx">
       <DependentUpon>PageContentListAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GroupForm.resx">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SecurityForm.resx">
+      <DependentUpon>SecurityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PublishingSettings.resx">
       <DependentUpon>PublishingSettings.cs</DependentUpon>
@@ -308,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UpdateForm.resx">
       <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>

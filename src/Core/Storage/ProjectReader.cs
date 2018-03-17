@@ -10,6 +10,7 @@ using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Core.Security;
 using WebsiteStudio.Core.Tools;
 
 namespace WebsiteStudio.Core.Storage {
@@ -42,6 +43,8 @@ namespace WebsiteStudio.Core.Storage {
 
 				_Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
 				_Project.Footer.AddRange(GetFooter(root.Element(ProjectStorageConstants.Footer)));
+				_Project.Groups.AddRange(GetGroups(root.Element(ProjectStorageConstants.Groups)));
+				_Project.Users.AddRange(GetUsers(root.Element(ProjectStorageConstants.Users)));
 
 				GetSettings(root.Element(ProjectStorageConstants.Settings));
 
@@ -52,6 +55,35 @@ namespace WebsiteStudio.Core.Storage {
 				Exception = e;
 				return null;
 			}
+		}
+
+		private IEnumerable<User> GetUsers(XElement element) {
+			List<User> users = new List<User>();
+
+			if (element != null) {
+				foreach (XElement item in element.Elements(ProjectStorageConstants.Item)) {
+					User user = _Project.CreateUser();
+					user.Name = item.Attribute(ProjectStorageConstants.Name)?.Value ?? String.Empty;
+					user.Password = item.Attribute(ProjectStorageConstants.Password)?.Value ?? String.Empty;
+					users.Add(user);
+				}
+			}
+
+			return users;
+		}
+
+		private IEnumerable<Group> GetGroups(XElement element) {
+			List<Group> groups = new List<Group>();
+
+			if (element != null) {
+				foreach (XElement item in element.Elements(ProjectStorageConstants.Item)) {
+					Group group = _Project.CreateGroup();
+					group.Name = item.Attribute(ProjectStorageConstants.Name)?.Value ?? String.Empty;
+					groups.Add(group);
+				}
+			}
+
+			return groups;
 		}
 
 		private void GetPublishing(XElement element) {

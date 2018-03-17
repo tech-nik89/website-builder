@@ -17,37 +17,37 @@ namespace WebsiteStudio.Core {
 			_Items = new List<T>();
 		}
 
-		public void AddRange(IEnumerable<T> items) {
+		public virtual void AddRange(IEnumerable<T> items) {
 			foreach (T item in items) {
 				Add(item);
 			}
 		}
 
-		public void Add(T item) {
+		public virtual void Add(T item) {
 			_Items.Add(item);
 			_Project.Dirty = true;
 		}
 
-		public void Insert(int index, T item) {
+		public virtual void Insert(int index, T item) {
 			_Items.Insert(index, item);
 			_Project.Dirty = true;
 		}
 
-		public void RemoveAt(int index) {
+		public virtual void RemoveAt(int index) {
 			T item = _Items[index];
 			Remove(item);
 		}
 
-		public void Remove(T item) {
+		public virtual void Remove(T item) {
 			_Project.Dirty = true;
 			_Items.Remove(item);
 		}
 
-		public int IndexOf(T item) {
+		public virtual int IndexOf(T item) {
 			return _Items.IndexOf(item);
 		}
 
-		public void Clear() {
+		public virtual void Clear() {
 			_Items.Clear();
 			_Project.Dirty = true;
 		}
@@ -60,5 +60,18 @@ namespace WebsiteStudio.Core {
 			return _Items.GetEnumerator();
 		}
 
+		public virtual bool Contains(T item) {
+			return _Items.Contains(item);
+		}
+
+		public List<T> ToList() {
+			List<T> list = new List<T>();
+
+			foreach (T item in _Items) {
+				list.Add(item);
+			}
+
+			return list;
+		}
 	}
 }

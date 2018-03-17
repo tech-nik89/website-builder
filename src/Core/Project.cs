@@ -8,6 +8,7 @@ using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Publishing;
+using WebsiteStudio.Core.Security;
 using WebsiteStudio.Core.Storage;
 using WebsiteStudio.Core.Theming;
 using WebsiteStudio.Core.Tools;
@@ -120,6 +121,10 @@ namespace WebsiteStudio.Core {
 
 		public CustomCollection<PublishItem> Publishing { get; private set; }
 
+		public CustomCollection<User> Users { get; private set; }
+
+		public CustomCollection<Group> Groups { get; private set; }
+
 		private byte[] _Favicon;
 
 		public byte[] Favicon {
@@ -154,6 +159,8 @@ namespace WebsiteStudio.Core {
 			MetaDescription = new LocalizedString(this);
 			MetaKeywords = new LocalizedStringArray(this);
 			Publishing = new CustomCollection<PublishItem>(this);
+			Users = new CustomCollection<User>(this);
+			Groups = new GroupCollection(this);
 			Dirty = false;
 		}
 
@@ -163,6 +170,14 @@ namespace WebsiteStudio.Core {
 
 		public Page CreatePage() {
 			return new Page(this) { Id = Utilities.NewGuid() };
+		}
+
+		public User CreateUser() {
+			return new User(this);
+		}
+
+		public Group CreateGroup() {
+			return new Group(this);
 		}
 
 		public FooterLink CreateFooterLink() {

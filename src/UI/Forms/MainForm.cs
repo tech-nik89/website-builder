@@ -104,6 +104,7 @@ namespace WebsiteStudio.UI.Forms {
 			mnuProjectSave.Text = Strings.Save;
 			mnuProjectSaveAs.Text = Strings.SaveAs;
 			mnuProjectSettings.Text = Strings.ProjectSettings;
+			mnuProjectSecurity.Text = Strings.Security;
 			mnuProjectExit.Text = Strings.Exit;
 
 			mnuContent.Text = Strings.Content;
@@ -169,6 +170,15 @@ namespace WebsiteStudio.UI.Forms {
 			if (result == DialogResult.OK) {
 				RefreshLanguageList();
 				RefreshPublishMenu();
+				UpdateFormText();
+			}
+		}
+
+		private void mnuProjectSecurity_Click(object sender, EventArgs e) {
+			SecurityForm form = new SecurityForm(CurrentProject);
+			DialogResult result = form.ShowDialog();
+
+			if (result == DialogResult.OK) {
 				UpdateFormText();
 			}
 		}

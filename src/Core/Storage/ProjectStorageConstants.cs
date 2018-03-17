@@ -97,5 +97,11 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String Favicon = "favicon";
 
+		public const String Users = "users";
+
+		public const String Password = "password";
+
+		public const String Groups = "groups";
+
 	}
 }

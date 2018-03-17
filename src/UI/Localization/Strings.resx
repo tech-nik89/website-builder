@@ -546,4 +546,28 @@
   <data name="NoContent" xml:space="preserve">
     <value>No Content</value>
   </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="GroupDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to delete the selected group?</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserDeleteConfirmMessage" xml:space="preserve">
+    <value>Do you really want to delete the selected user?</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
 </root>

@@ -111,6 +111,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Publishing\PublishItem.cs" />
+    <Compile Include="Security\Group.cs" />
+    <Compile Include="Security\GroupCollection.cs" />
+    <Compile Include="Security\User.cs" />
     <Compile Include="StaticResources.cs" />
     <Compile Include="Storage\ProjectReader.cs" />
     <Compile Include="Storage\ProjectStorageConstants.cs" />
@@ -125,9 +128,11 @@
     <Compile Include="Tools\FileSizeFormatter.cs" />
     <Compile Include="Tools\MicrosoftMinifier.cs" />
     <Compile Include="Tools\Utilities.cs" />
+    <Compile Include="Validation\GroupValidator.cs" />
     <Compile Include="Validation\LanguageValidator.cs" />
     <Compile Include="Validation\PageValidator.cs" />
     <Compile Include="Validation\ProjectValidator.cs" />
+    <Compile Include="Validation\UserValidator.cs" />
     <Compile Include="Validation\ValidatorBase.cs" />
   </ItemGroup>
   <ItemGroup>

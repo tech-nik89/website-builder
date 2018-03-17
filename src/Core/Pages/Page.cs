@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using WebsiteStudio.Core.Localization;
+using WebsiteStudio.Core.Security;
 
 namespace WebsiteStudio.Core.Pages {
 
@@ -122,12 +123,15 @@ namespace WebsiteStudio.Core.Pages {
 			}
 		}
 		
+		public CustomCollection<Group> AllowedGroups { get; private set; }
+
 		internal Page(Project project) {
 			Project = project;
 			Pages = new PageCollection(this);
 			Title = new LocalizedString(project);
 			MetaDescription = new LocalizedString(project);
 			MetaKeywords = new LocalizedStringArray(project);
+			AllowedGroups = new CustomCollection<Group>(project);
 			_Content = new List<PageContent>();
 			IncludeInMenu = true;
 		}

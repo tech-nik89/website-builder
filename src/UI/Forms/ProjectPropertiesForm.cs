@@ -22,7 +22,7 @@ namespace WebsiteStudio.UI.Forms {
 
 			psPublishingSettings.Project = _Project;
 			psPublishingSettings.Items = _Project.Publishing;
-
+			
 			DialogResult = DialogResult.Cancel;
 		}
 
@@ -34,7 +34,7 @@ namespace WebsiteStudio.UI.Forms {
 			tabLanguages.Text = Strings.Languages;
 			tabMeta.Text = Strings.Meta;
 			tabPublish.Text = Strings.Publishing;
-
+			
 			clnLanguage.Text = Strings.Language;
 
 			btnAccept.Text = Strings.Accept;

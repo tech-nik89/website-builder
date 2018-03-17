@@ -32,12 +32,31 @@ namespace WebsiteStudio.Core.Storage {
 					GetMedia(),
 					GetFooter(),
 					GetPublishing(),
+					GetGroups(),
+					GetUsers(),
 					GetPages(_Project.Pages)
 				)
 			);
 
 			String xml = document.ToString();
 			File.WriteAllText(_File.FullName, xml);
+		}
+
+		private XElement GetUsers() {
+			return new XElement(ProjectStorageConstants.Users,
+				_Project.Users.Select(x => new XElement(ProjectStorageConstants.Item,
+					new XAttribute(ProjectStorageConstants.Name, x.Name),
+					new XAttribute(ProjectStorageConstants.Password, x.Password)
+				)
+			));
+		}
+
+		private XElement GetGroups() {
+			return new XElement(ProjectStorageConstants.Groups,
+				_Project.Groups.Select(x => new XElement(ProjectStorageConstants.Item,
+					new XAttribute(ProjectStorageConstants.Name, x.Name)
+				)
+			));
 		}
 
 		private XElement GetPublishing() {

@@ -55,6 +55,8 @@
 			this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuToolsPlugins = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuHelpUpdateCheck = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.sfdProject = new System.Windows.Forms.SaveFileDialog();
 			this.ofdProject = new System.Windows.Forms.OpenFileDialog();
@@ -62,8 +64,7 @@
 			this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tspProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tscMain = new System.Windows.Forms.ToolStripContainer();
-			this.mnuHelpUpdateCheck = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuProjectSecurity = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMain.SuspendLayout();
 			this.sstMain.SuspendLayout();
 			this.tscMain.SuspendLayout();
@@ -94,6 +95,7 @@
             this.mnuProjectSaveAs,
             this.toolStripSeparator2,
             this.mnuProjectSettings,
+            this.mnuProjectSecurity,
             this.toolStripSeparator1,
             this.mnuProjectExit});
 			this.mnuProject.Name = "mnuProject";
@@ -103,7 +105,7 @@
 			// mnuProjectNew
 			// 
 			this.mnuProjectNew.Name = "mnuProjectNew";
-			this.mnuProjectNew.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectNew.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectNew.Text = "[New]";
 			this.mnuProjectNew.Click += new System.EventHandler(this.mnuProjectNew_Click);
 			// 
@@ -111,57 +113,57 @@
 			// 
 			this.mnuProjectOpen.Name = "mnuProjectOpen";
 			this.mnuProjectOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.mnuProjectOpen.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectOpen.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectOpen.Text = "[Open]";
 			this.mnuProjectOpen.Click += new System.EventHandler(this.mnuProjectOpen_Click);
 			// 
 			// mnuProjectRecents
 			// 
 			this.mnuProjectRecents.Name = "mnuProjectRecents";
-			this.mnuProjectRecents.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectRecents.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectRecents.Text = "[Recents]";
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(160, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
 			// 
 			// mnuProjectSave
 			// 
 			this.mnuProjectSave.Name = "mnuProjectSave";
 			this.mnuProjectSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.mnuProjectSave.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectSave.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectSave.Text = "[Save]";
 			this.mnuProjectSave.Click += new System.EventHandler(this.mnuProjectSave_Click);
 			// 
 			// mnuProjectSaveAs
 			// 
 			this.mnuProjectSaveAs.Name = "mnuProjectSaveAs";
-			this.mnuProjectSaveAs.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectSaveAs.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectSaveAs.Text = "[Save as ...]";
 			this.mnuProjectSaveAs.Click += new System.EventHandler(this.mnuProjectSaveAs_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
 			// 
 			// mnuProjectSettings
 			// 
 			this.mnuProjectSettings.Name = "mnuProjectSettings";
-			this.mnuProjectSettings.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectSettings.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectSettings.Text = "[Project settings]";
 			this.mnuProjectSettings.Click += new System.EventHandler(this.mnuProjectSettings_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// mnuProjectExit
 			// 
 			this.mnuProjectExit.Name = "mnuProjectExit";
-			this.mnuProjectExit.Size = new System.Drawing.Size(163, 22);
+			this.mnuProjectExit.Size = new System.Drawing.Size(180, 22);
 			this.mnuProjectExit.Text = "[Exit]";
 			this.mnuProjectExit.Click += new System.EventHandler(this.mnuProjectExit_Click);
 			// 
@@ -273,6 +275,18 @@
 			this.mnuHelp.Size = new System.Drawing.Size(24, 20);
 			this.mnuHelp.Text = "?";
 			// 
+			// mnuHelpUpdateCheck
+			// 
+			this.mnuHelpUpdateCheck.Name = "mnuHelpUpdateCheck";
+			this.mnuHelpUpdateCheck.Size = new System.Drawing.Size(170, 22);
+			this.mnuHelpUpdateCheck.Text = "[CheckForUpdate]";
+			this.mnuHelpUpdateCheck.Click += new System.EventHandler(this.mnuHelpUpdateCheck_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(167, 6);
+			// 
 			// mnuHelpAbout
 			// 
 			this.mnuHelpAbout.Name = "mnuHelpAbout";
@@ -317,17 +331,12 @@
 			this.tscMain.Size = new System.Drawing.Size(1044, 445);
 			this.tscMain.TabIndex = 4;
 			// 
-			// mnuHelpUpdateCheck
+			// mnuProjectSecurity
 			// 
-			this.mnuHelpUpdateCheck.Name = "mnuHelpUpdateCheck";
-			this.mnuHelpUpdateCheck.Size = new System.Drawing.Size(170, 22);
-			this.mnuHelpUpdateCheck.Text = "[CheckForUpdate]";
-			this.mnuHelpUpdateCheck.Click += new System.EventHandler(this.mnuHelpUpdateCheck_Click);
-			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(167, 6);
+			this.mnuProjectSecurity.Name = "mnuProjectSecurity";
+			this.mnuProjectSecurity.Size = new System.Drawing.Size(180, 22);
+			this.mnuProjectSecurity.Text = "[Security]";
+			this.mnuProjectSecurity.Click += new System.EventHandler(this.mnuProjectSecurity_Click);
 			// 
 			// MainForm
 			// 
@@ -393,6 +402,7 @@
 		private System.Windows.Forms.ToolStripContainer tscMain;
 		private System.Windows.Forms.ToolStripMenuItem mnuHelpUpdateCheck;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.ToolStripMenuItem mnuProjectSecurity;
 	}
 }
 

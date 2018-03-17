@@ -53,6 +53,9 @@
 			this.gbxLinkType = new System.Windows.Forms.GroupBox();
 			this.rbLinkNone = new System.Windows.Forms.RadioButton();
 			this.rbLinkRedirect = new System.Windows.Forms.RadioButton();
+			this.tabSecurity = new System.Windows.Forms.TabPage();
+			this.lvwSecurity = new System.Windows.Forms.ListView();
+			this.clnGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnAccept = new System.Windows.Forms.Button();
 			this.tabMain.SuspendLayout();
@@ -64,6 +67,7 @@
 			this.tabLink.SuspendLayout();
 			this.gbxLinkTarget.SuspendLayout();
 			this.gbxLinkType.SuspendLayout();
+			this.tabSecurity.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabMain
@@ -76,6 +80,7 @@
 			this.tabMain.Controls.Add(this.tabMeta);
 			this.tabMain.Controls.Add(this.tabRobots);
 			this.tabMain.Controls.Add(this.tabLink);
+			this.tabMain.Controls.Add(this.tabSecurity);
 			this.tabMain.Location = new System.Drawing.Point(12, 12);
 			this.tabMain.Name = "tabMain";
 			this.tabMain.SelectedIndex = 0;
@@ -397,6 +402,35 @@
 			this.rbLinkRedirect.Text = "[Redirect]";
 			this.rbLinkRedirect.UseVisualStyleBackColor = true;
 			// 
+			// tabSecurity
+			// 
+			this.tabSecurity.Controls.Add(this.lvwSecurity);
+			this.tabSecurity.Location = new System.Drawing.Point(4, 22);
+			this.tabSecurity.Name = "tabSecurity";
+			this.tabSecurity.Size = new System.Drawing.Size(452, 239);
+			this.tabSecurity.TabIndex = 5;
+			this.tabSecurity.Text = "[Security]";
+			this.tabSecurity.UseVisualStyleBackColor = true;
+			// 
+			// lvwSecurity
+			// 
+			this.lvwSecurity.CheckBoxes = true;
+			this.lvwSecurity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clnGroup});
+			this.lvwSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvwSecurity.GridLines = true;
+			this.lvwSecurity.Location = new System.Drawing.Point(0, 0);
+			this.lvwSecurity.Name = "lvwSecurity";
+			this.lvwSecurity.Size = new System.Drawing.Size(452, 239);
+			this.lvwSecurity.TabIndex = 0;
+			this.lvwSecurity.UseCompatibleStateImageBehavior = false;
+			this.lvwSecurity.View = System.Windows.Forms.View.Details;
+			// 
+			// clnGroup
+			// 
+			this.clnGroup.Text = "[Group]";
+			this.clnGroup.Width = 200;
+			// 
 			// btnCancel
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -448,6 +482,7 @@
 			this.gbxLinkTarget.PerformLayout();
 			this.gbxLinkType.ResumeLayout(false);
 			this.gbxLinkType.PerformLayout();
+			this.tabSecurity.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -486,5 +521,8 @@
 		private System.Windows.Forms.RadioButton rbLinkRedirect;
 		private System.Windows.Forms.Button btnBrowse;
 		private System.Windows.Forms.TextBox txtLinkTarget;
+		private System.Windows.Forms.TabPage tabSecurity;
+		private System.Windows.Forms.ListView lvwSecurity;
+		private System.Windows.Forms.ColumnHeader clnGroup;
 	}
 }
