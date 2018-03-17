@@ -745,6 +745,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Memberships ähnelt.
+        /// </summary>
+        internal static string Memberships {
+            get {
+                return ResourceManager.GetString("Memberships", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Message ähnelt.
         /// </summary>
         internal static string Message {

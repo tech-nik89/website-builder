@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -19,8 +20,11 @@ namespace WebsiteStudio.Core.Security {
 			set { _Password = value; _Project.Dirty = true; }
 		}
 
+		public CustomCollection<Group> Memberships { get; private set; }
+
 		internal User(Project project) {
 			_Project = project;
+			Memberships = new CustomCollection<Group>(_Project);
 		}
 
 		public void SetAndEncryptPassword(String plainPassword) {
@@ -33,6 +37,5 @@ namespace WebsiteStudio.Core.Security {
 				Password = String.Format("{{SHA}}{0}", Convert.ToBase64String(hash));
 			}
 		}
-
 	}
 }

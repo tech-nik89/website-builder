@@ -555,6 +555,9 @@
   <data name="Groups" xml:space="preserve">
     <value>Groups</value>
   </data>
+  <data name="Memberships" xml:space="preserve">
+    <value>Memberships</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>

@@ -41,11 +41,12 @@ namespace WebsiteStudio.Core.Storage {
 				GetMedia(root.Element(ProjectStorageConstants.Media));
 				GetPublishing(root.Element(ProjectStorageConstants.Publishing));
 
-				_Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
-				_Project.Footer.AddRange(GetFooter(root.Element(ProjectStorageConstants.Footer)));
 				_Project.Groups.AddRange(GetGroups(root.Element(ProjectStorageConstants.Groups)));
 				_Project.Users.AddRange(GetUsers(root.Element(ProjectStorageConstants.Users)));
 
+				_Project.Pages.AddRange(GetPages(root.Element(ProjectStorageConstants.Pages)));
+				_Project.Footer.AddRange(GetFooter(root.Element(ProjectStorageConstants.Footer)));
+				
 				GetSettings(root.Element(ProjectStorageConstants.Settings));
 
 				_Project.Dirty = false;
@@ -65,6 +66,14 @@ namespace WebsiteStudio.Core.Storage {
 					User user = _Project.CreateUser();
 					user.Name = item.Attribute(ProjectStorageConstants.Name)?.Value ?? String.Empty;
 					user.Password = item.Attribute(ProjectStorageConstants.Password)?.Value ?? String.Empty;
+					
+					foreach(XElement membership in item.Elements(ProjectStorageConstants.Membership)) {
+						Group group = _Project.Groups.FirstOrDefault(x => x.Name == membership.Value);
+						if (group != null) {
+							user.Memberships.Add(group);
+						}
+					}
+
 					users.Add(user);
 				}
 			}
@@ -165,8 +174,22 @@ namespace WebsiteStudio.Core.Storage {
 			GetLocalizedStringArray(element.Element(ProjectStorageConstants.MetaKeywords), page.MetaKeywords);
 			GetPageLink(element.Element(ProjectStorageConstants.Link), page);
 			GetContent(element.Element(ProjectStorageConstants.Content), page);
+			GetPageAllowedGroups(element.Element(ProjectStorageConstants.Groups), page);
 
 			return page;
+		}
+
+		private void GetPageAllowedGroups(XElement element, Page page) {
+			if (element == null) {
+				return;
+			}
+
+			foreach(XElement item in element.Elements(ProjectStorageConstants.Item)) {
+				Group group = _Project.Groups.FirstOrDefault(x => x.Name == item.Value);
+				if (group != null) {
+					page.AllowedGroups.Add(group);
+				}
+			}
 		}
 
 		private void GetPageLink(XElement element, Page page) {

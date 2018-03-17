@@ -87,7 +87,7 @@ namespace WebsiteStudio.UI.Forms {
 		}
 
 		private void btnUserAdd_Click(object sender, EventArgs e) {
-			UserForm form = new UserForm(_Project);
+			UserForm form = new UserForm(_Project, _Groups);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
 			}
@@ -103,7 +103,7 @@ namespace WebsiteStudio.UI.Forms {
 
 			User user = _Users[lvwUsers.SelectedIndices[0]];
 
-			UserForm form = new UserForm(_Project, user);
+			UserForm form = new UserForm(_Project, user, _Groups);
 			if (form.ShowDialog() != DialogResult.OK) {
 				return;
 			}
@@ -171,6 +171,8 @@ namespace WebsiteStudio.UI.Forms {
 
 			_Project.Groups.Clear();
 			_Project.Groups.AddRange(_Groups);
+
+			_Project.ValidateAndCleanUpSecurityReferences();
 
 			DialogResult = DialogResult.OK;
 			Close();

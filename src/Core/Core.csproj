@@ -112,7 +112,6 @@
     </Compile>
     <Compile Include="Publishing\PublishItem.cs" />
     <Compile Include="Security\Group.cs" />
-    <Compile Include="Security\GroupCollection.cs" />
     <Compile Include="Security\User.cs" />
     <Compile Include="StaticResources.cs" />
     <Compile Include="Storage\ProjectReader.cs" />

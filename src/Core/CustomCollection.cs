@@ -43,6 +43,13 @@ namespace WebsiteStudio.Core {
 			_Items.Remove(item);
 		}
 
+		public virtual void RemoveRange(IEnumerable<T> items) {
+			_Project.Dirty = true;
+			foreach (T item in items) {
+				_Items.Remove(item);
+			}
+		}
+
 		public virtual int IndexOf(T item) {
 			return _Items.IndexOf(item);
 		}

@@ -160,7 +160,7 @@ namespace WebsiteStudio.Core {
 			MetaKeywords = new LocalizedStringArray(this);
 			Publishing = new CustomCollection<PublishItem>(this);
 			Users = new CustomCollection<User>(this);
-			Groups = new GroupCollection(this);
+			Groups = new CustomCollection<Group>(this);
 			Dirty = false;
 		}
 
@@ -200,6 +200,34 @@ namespace WebsiteStudio.Core {
 			foreach (Page page in pages) {
 				allPages.Add(page);
 				FillAllPagesList(page.Pages, allPages);
+			}
+		}
+
+		public void ValidateAndCleanUpSecurityReferences() {
+			List<Group> list = new List<Group>();
+
+			foreach(User user in Users) {
+				list.Clear();
+
+				foreach(Group group in user.Memberships) {
+					if (!Groups.Contains(group)) {
+						list.Add(group);
+					}
+				}
+
+				user.Memberships.RemoveRange(list);
+			}
+
+			foreach(Page page in AllPages) {
+				list.Clear();
+
+				foreach(Group group in page.AllowedGroups) {
+					if (!Groups.Contains(group)) {
+						list.Add(group);
+					}
+				}
+
+				page.AllowedGroups.RemoveRange(list);
 			}
 		}
 

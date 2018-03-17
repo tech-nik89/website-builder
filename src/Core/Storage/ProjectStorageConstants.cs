@@ -103,5 +103,7 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String Groups = "groups";
 
+		public const String Membership = "membership";
+
 	}
 }

@@ -46,7 +46,8 @@ namespace WebsiteStudio.Core.Storage {
 			return new XElement(ProjectStorageConstants.Users,
 				_Project.Users.Select(x => new XElement(ProjectStorageConstants.Item,
 					new XAttribute(ProjectStorageConstants.Name, x.Name),
-					new XAttribute(ProjectStorageConstants.Password, x.Password)
+					new XAttribute(ProjectStorageConstants.Password, x.Password ?? String.Empty),
+					x.Memberships.Select(y => new XElement(ProjectStorageConstants.Membership, y.Name))
 				)
 			));
 		}
@@ -115,6 +116,7 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(page.MetaKeywords)),
 				new XElement(GetPageLink(page)),
 				new XElement(ProjectStorageConstants.Content, GetContent(page.Content)),
+				new XElement(ProjectStorageConstants.Groups, page.AllowedGroups.Select(x => new XElement(ProjectStorageConstants.Item, x.Name))),
 				GetPages(page.Pages)
 			);
 		}
