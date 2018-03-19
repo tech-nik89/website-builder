@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace WebsiteStudio.Interface.Compiling {
-	public class CompilerMessage {
+	public class CompilerMessage : IEquatable<CompilerMessage> {
 
 		public CompilerMessageType MessageType { get; private set; }
 
@@ -17,5 +17,17 @@ namespace WebsiteStudio.Interface.Compiling {
 			MessageType = type;
 		}
 
+		public override bool Equals(object obj) {
+			CompilerMessage other = (CompilerMessage)obj;
+			return Equals(other);
+		}
+
+		public bool Equals(CompilerMessage other) {
+			return other.MessageType == MessageType && other.Message == Message;
+		}
+
+		public override int GetHashCode() {
+			return Message.GetHashCode() + MessageType.GetHashCode();
+		}
 	}
 }

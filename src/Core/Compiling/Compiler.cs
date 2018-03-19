@@ -29,13 +29,14 @@ namespace WebsiteStudio.Core.Compiling {
 		public IEnumerable<CompilerMessage> Messages
 			=> _Exceptions.Select(x => new CompilerMessage(x))
 			.Concat(_Messages)
-			.OrderBy(x => x.MessageType);
+			.OrderBy(x => x.MessageType)
+			.Distinct();
 
 		private readonly List<CompilerMessage> _Messages;
 		
 		private readonly List<String> _StyleSheetFiles;
 
-		private readonly List<ICompilerStep> _Steps;
+		private readonly List<CompilerStep> _Steps;
 
 		private readonly Dictionary<Type, int> _ModuleCompilerFlags;
 
@@ -70,7 +71,7 @@ namespace WebsiteStudio.Core.Compiling {
 
 			_Project.ReloadTheme();
 			
-			_Steps = new List<ICompilerStep>();
+			_Steps = new List<CompilerStep>();
 
 			_Steps.Add(new PrepareDirectoryStep(outputDirectory));
 			_Steps.Add(new PrepareDirectoryStep(metaDirectory));
@@ -201,6 +202,7 @@ namespace WebsiteStudio.Core.Compiling {
 
 				try {
 					step.Run();
+					_Messages.AddRange(step.Messages);
 				}
 				catch (Exception ex) {
 					HandleException(ex);

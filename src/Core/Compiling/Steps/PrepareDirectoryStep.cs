@@ -2,7 +2,7 @@
 using System.IO;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class PrepareDirectoryStep : ICompilerStep {
+	class PrepareDirectoryStep : CompilerStep {
 
 		private readonly DirectoryInfo _Directory;
 
@@ -13,7 +13,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = String.Format("Preparing directory: {0}", _Directory.FullName);
 		}
 
-		public void Run() {
+		public override void Run() {
 			if (!_Directory.Exists) {
 				_Directory.Create();
 				return;

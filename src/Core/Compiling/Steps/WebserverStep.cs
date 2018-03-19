@@ -6,7 +6,7 @@ using WebsiteStudio.Interface.Compiling.Security;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class WebserverStep : ICompilerStep {
+	class WebserverStep : CompilerStep {
 
 		public String Output { get; private set; }
 
@@ -24,7 +24,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			}
 		}
 
-		public void Run() {
+		public override void Run() {
 			if (_Project == null || _Webserver == null) {
 				return;
 			}

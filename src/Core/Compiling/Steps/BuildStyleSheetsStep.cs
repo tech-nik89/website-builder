@@ -5,7 +5,7 @@ using WebsiteStudio.Core.Theming;
 using WebsiteStudio.Core.Tools;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildStyleSheetsStep : ICompilerStep {
+	class BuildStyleSheetsStep : CompilerStep {
 
 		private const String FileExtensionCss = "css";
 
@@ -25,7 +25,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = "Building style sheets";
 		}
 
-		public void Run() {
+		public override void Run() {
 			foreach (ThemeStyle style in _Theme.Styles) {
 				String css = Utilities.CssMinifier.Compile(style.Css);
 

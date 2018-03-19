@@ -6,7 +6,7 @@ using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildSitemapStep : ICompilerStep {
+	class BuildSitemapStep : CompilerStep {
 
 		public String Output { get; private set; }
 
@@ -20,7 +20,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = String.Format("Building sitemap: {0}", _OutputPath);
 		}
 
-		public void Run() {
+		public override void Run() {
 			if (String.IsNullOrWhiteSpace(_Project.BaseURL)) {
 				throw new Exception("Could not generate sitemap. Base URL is required.");
 			}

@@ -62,7 +62,7 @@
     <Compile Include="Compiling\CompilerSettings.cs" />
     <Compile Include="Compiling\HtmlDocument.cs" />
     <Compile Include="Compiling\HtmlElement.cs" />
-    <Compile Include="Compiling\ICompilerStep.cs" />
+    <Compile Include="Compiling\CompilerStep.cs" />
     <Compile Include="Compiling\Links\ScriptLink.cs" />
     <Compile Include="Compiling\Links\StyleLink.cs" />
     <Compile Include="Compiling\CompilerProgressReport.cs" />

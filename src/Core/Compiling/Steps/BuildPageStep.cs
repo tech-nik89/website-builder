@@ -11,11 +11,11 @@ using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Core.Theming;
-using WebsiteStudio.Interface.Compiling.Security;
+using WebsiteStudio.Interface.Compiling;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildPageStep : ICompilerStep {
+	class BuildPageStep : CompilerStep {
 
 		private readonly Page _Page;
 
@@ -30,8 +30,6 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		private readonly FileInfo _File;
 
 		private readonly int _Level;
-
-		public String Output { get; private set; }
 
 		private CompileHelper _CompileHelper;
 
@@ -49,7 +47,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = String.Format("Building page: {0}", _File.FullName);
 		}
 
-		public void Run() {
+		public override void Run() {
 			_File.Directory.Create();
 
 			HtmlDocument htmlFile = new HtmlDocument();
@@ -378,7 +376,12 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			StringBuilder builder = new StringBuilder();
 
 			foreach (Page page in pages) {
-				if (!page.IncludeInMenu || page.Disable || (_Theme.Settings.MaxMenuDepth > 0 && page.ParentCount > _Theme.Settings.MaxMenuDepth - 1)) {
+				if (!page.IncludeInMenu || page.Disable) {
+					continue;
+				}
+
+				if (_Theme.Settings.MaxMenuDepth > 0 && page.ParentCount > _Theme.Settings.MaxMenuDepth - 1) {
+					_Messages.Add(new CompilerMessage(String.Format("The page {0} has not been added to the main menu du to the maximum supported menu depth of the currently selected theme.", page.PathName), CompilerMessageType.Warning));
 					continue;
 				}
 

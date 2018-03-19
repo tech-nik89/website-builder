@@ -6,7 +6,7 @@ using WebsiteStudio.Core.Theming;
 using WebsiteStudio.Core.Tools;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildImagesStep : ICompilerStep {
+	class BuildImagesStep : CompilerStep {
 
 		private const String FileSpritesPng = "sprites.png";
 
@@ -33,7 +33,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = "Building image files";
 		}
 
-		public void Run() {
+		public override void Run() {
 			if (!_Theme.Images.Any()) {
 				return;
 			}

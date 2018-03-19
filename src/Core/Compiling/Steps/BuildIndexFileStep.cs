@@ -6,7 +6,7 @@ using System.Text;
 using WebsiteStudio.Core.Properties;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildIndexFileStep : ICompilerStep {
+	class BuildIndexFileStep : CompilerStep {
 
 		private readonly Project _Project;
 
@@ -24,7 +24,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = String.Format("Building index file: {0}", _Path);
 		}
 
-		public void Run() {
+		public override void Run() {
 			BuildIndexHtmlFile();
 		}
 

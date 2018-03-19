@@ -3,7 +3,7 @@ using System.IO;
 using WebsiteStudio.Core.Theming;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
-	class BuildFontsStep : ICompilerStep {
+	class BuildFontsStep : CompilerStep {
 
 		public String Output { get; private set; }
 
@@ -18,7 +18,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 			Output = "Building font files";
 		}
 
-		public void Run() {
+		public override void Run() {
 			foreach(Font font in _Theme.Fonts) {
 				String path = Path.Combine(_MetaDirectory.FullName, font.Name);
 				File.WriteAllBytes(path, font.Data);
