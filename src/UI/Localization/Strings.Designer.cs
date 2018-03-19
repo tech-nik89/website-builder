@@ -1159,6 +1159,15 @@ namespace WebsiteStudio.UI.Localization {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Server local root path ähnelt.
+        /// </summary>
+        internal static string ServerLocalRootPath {
+            get {
+                return ResourceManager.GetString("ServerLocalRootPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set as Start Page ähnelt.
         /// </summary>
         internal static string SetStartPage {

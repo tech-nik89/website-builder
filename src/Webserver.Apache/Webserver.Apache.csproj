@@ -44,7 +44,10 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ApacheWebserver.cs" />
+    <Compile Include="FileBase.cs" />
     <Compile Include="HtAccessFile.cs" />
+    <Compile Include="HtGroupFile.cs" />
+    <Compile Include="HtPasswdFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

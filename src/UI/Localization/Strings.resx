@@ -573,4 +573,7 @@
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="ServerLocalRootPath" xml:space="preserve">
+    <value>Server local root path</value>
+  </data>
 </root>

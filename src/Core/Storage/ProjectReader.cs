@@ -281,6 +281,7 @@ namespace WebsiteStudio.Core.Storage {
 			_Project.UglyURLs = Convert.ToBoolean(element.Element(ProjectStorageConstants.UglyURLs)?.Value);
 			_Project.Webserver = PluginManager.GetWebserver(element.Element(ProjectStorageConstants.Webserver)?.Value);
 			_Project.BaseURL = element.Element(ProjectStorageConstants.BaseURL)?.Value ?? String.Empty;
+			_Project.ServerLocalRootPath = element.Element(ProjectStorageConstants.ServerLocalRootPath)?.Value ?? String.Empty;
 			_Project.GenerateSitemap = Convert.ToBoolean(element.Element(ProjectStorageConstants.Sitemap)?.Value);
 			_Project.SSLRedirect = Convert.ToBoolean(element.Element(ProjectStorageConstants.SSLRedirect)?.Value);
 			_Project.Favicon = Convert.FromBase64String(element.Element(ProjectStorageConstants.Favicon)?.Value ?? String.Empty);

@@ -3,19 +3,15 @@ using System.IO;
 using System.Text;
 
 namespace WebsiteStudio.Webserver.Apache {
-	class HtAccessFile {
+	class HtAccessFile : FileBase {
 
 		private const String HtAccessFileName = ".htaccess";
 
-		private readonly FileInfo _File;
-		private readonly StringBuilder _Content;
-
 		private bool _RewriteEngineOn;
 		
-		public HtAccessFile(String directoryPath) {
-			String path = Path.Combine(directoryPath, HtAccessFileName);
-			_File = new FileInfo(path);
-			_Content = new StringBuilder();
+		public HtAccessFile(String directoryPath)
+			: base (Path.Combine(directoryPath, HtAccessFileName)) {
+			
 			_RewriteEngineOn = false;
 		}
 
@@ -55,13 +51,34 @@ namespace WebsiteStudio.Webserver.Apache {
 			_Content.AppendLine(@"RewriteCond %{HTTP_HOST} !^www\. [NC]");
 			_Content.AppendLine(@"RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]");
 		}
-		
-		public void Write() {
-			if (_Content.Length == 0) {
-				return;
-			}
 
-			File.WriteAllText(_File.FullName, _Content.ToString());
+		public void RequireAuthentication(String passwdFilePath, String groupFilePath, String[] groups) {
+			RequireAuthentication("Password required", passwdFilePath, groupFilePath, groups);
+		}
+
+		public void RequireAuthentication(String passwdFilePath) {
+			RequireAuthentication("Password required", passwdFilePath, null, new String[0]);
+		}
+
+		public void RequireAuthentication(String message, String passwdFilePath, String groupFilePath, String[] groups) {
+			_Content.AppendLine("AuthType Basic");
+
+			_Content.AppendFormat("AuthName \"{0}\"", message);
+			_Content.AppendLine();
+
+			_Content.AppendFormat("AuthUserFile \"{0}\"", passwdFilePath);
+			_Content.AppendLine();
+
+			if (groups?.Length == 0 || String.IsNullOrWhiteSpace(groupFilePath)) {
+				_Content.AppendLine("Require valid-user");
+			}
+			else {
+				_Content.AppendFormat("AuthGroupFile \"{0}\"", groupFilePath);
+				_Content.AppendLine();
+
+				_Content.Append("Require group ");
+				_Content.AppendLine(String.Join(" ", groups));
+			}
 		}
 	}
 }

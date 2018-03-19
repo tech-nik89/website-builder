@@ -9,6 +9,7 @@ using WebsiteStudio.Core.Compiling.Steps;
 using WebsiteStudio.Core.Localization;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Interface.Compiling;
+using WebsiteStudio.Interface.Compiling.Security;
 
 namespace WebsiteStudio.Core.Compiling {
 	public class Compiler {
@@ -84,6 +85,8 @@ namespace WebsiteStudio.Core.Compiling {
 			}
 
 			ReadOnlyCollection<String> styleSheetFiles = _StyleSheetFiles.AsReadOnly();
+			List<PageSecurityInfo> pageSecurityInfos = new List<PageSecurityInfo>();
+
 			foreach (Language language in _Project.Languages) {
 				if (settings.PreviewLanguage != null && language.Id != settings.PreviewLanguage.Id) {
 					continue;
@@ -94,12 +97,20 @@ namespace WebsiteStudio.Core.Compiling {
 						continue;
 					}
 
-					_Steps.Add(new BuildPageStep(language, page, _Project.Theme, outputDirectory, styleSheetFiles));
+					BuildPageStep step = new BuildPageStep(language, page, _Project.Theme, outputDirectory, styleSheetFiles);
+					_Steps.Add(step);
+
+					if (page.AllowedGroups.Any()) {
+						PageSecurityInfo securityInfo = new PageSecurityInfo();
+						securityInfo.Directory = step.File.Directory;
+						securityInfo.Groups = page.AllowedGroups;
+						pageSecurityInfos.Add(securityInfo);
+					}
 				}
 			}
 
 			if (_Project.Webserver != null) {
-				_Steps.Add(new WebserverStep(_Project));
+				_Steps.Add(new WebserverStep(_Project, pageSecurityInfos));
 			}
 		}
 
@@ -136,6 +147,17 @@ namespace WebsiteStudio.Core.Compiling {
 
 			if (project.Webserver == null) {
 				_Messages.Add(new CompilerMessage("No web server configured.", CompilerMessageType.Information));
+			}
+
+			if (project.UglyURLs) {
+				const String uglyURLsNoAuthSupport = "Using ugly URLs does not support the usage of page security.";
+
+				if (project.AllPages.Any(x => x.AllowedGroups.Any())) {
+					HandleException(new Exception(uglyURLsNoAuthSupport));
+				}
+				else {
+					_Messages.Add(new CompilerMessage(uglyURLsNoAuthSupport, CompilerMessageType.Warning));
+				}
 			}
 		}
 

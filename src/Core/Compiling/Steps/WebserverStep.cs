@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WebsiteStudio.Core.Plugins;
+using WebsiteStudio.Interface.Compiling.Security;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
@@ -10,9 +12,11 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		private readonly IWebserver _Webserver;
 		private readonly Project _Project;
-		
-		public WebserverStep(Project project) {
+		private readonly IEnumerable<PageSecurityInfo> _PageSecurityInfos;
+
+		public WebserverStep(Project project, IEnumerable<PageSecurityInfo> pageSecurityInfos) {
 			_Project = project;
+			_PageSecurityInfos = pageSecurityInfos;
 
 			if (_Project?.Webserver != null) {
 				_Webserver = PluginManager.LoadWebserver(_Project.Webserver, _Project);
@@ -33,6 +37,10 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 			if (_Project.SSLRedirect) {
 				_Webserver.CreateSSLRedirect();
+			}
+
+			if (_Project.Users.Any() && _Project.Groups.Any() && _PageSecurityInfos.Any()) {
+				_Webserver.CreateAuthentication(_Project.Groups, _Project.Users, _PageSecurityInfos);
 			}
 			
 			_Webserver.Complete();

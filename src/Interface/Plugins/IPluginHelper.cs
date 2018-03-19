@@ -28,5 +28,7 @@ namespace WebsiteStudio.Interface.Plugins {
 
 		String GetFormattedFileSize(long bytes);
 
+		String GetRemoteFullPath(String localFullPath);
+
 	}
 }

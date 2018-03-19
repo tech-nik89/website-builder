@@ -11,6 +11,7 @@ using WebsiteStudio.Core.Media;
 using WebsiteStudio.Core.Pages;
 using WebsiteStudio.Core.Plugins;
 using WebsiteStudio.Core.Theming;
+using WebsiteStudio.Interface.Compiling.Security;
 using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
@@ -25,7 +26,7 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		private readonly DirectoryInfo _OutputDirectory;
 
 		private readonly IReadOnlyCollection<String> _StyleSheetFiles;
-
+		
 		private readonly FileInfo _File;
 
 		private readonly int _Level;
@@ -33,6 +34,8 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		public String Output { get; private set; }
 
 		private CompileHelper _CompileHelper;
+
+		public FileInfo File => _File;
 
 		public BuildPageStep(Language language, Page page, Theme theme, DirectoryInfo outputDirectory, IReadOnlyCollection<String> styleSheetFiles) {
 			_Language = language;

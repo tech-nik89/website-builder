@@ -30,6 +30,7 @@ namespace WebsiteStudio.UI.Controls {
 			gbxWebserver.Text = Strings.Webserver;
 
 			lblBaseURL.Text = Strings.BaseURL + ":";
+			lblLocalRootPath.Text = Strings.ServerLocalRootPath + ":";
 			lblOutputPath.Text = Strings.Path + ":";
 			lblThemePath.Text = Strings.Path + ":";
 			lblFavicon.Text = Strings.Favicon + ":";
@@ -44,6 +45,7 @@ namespace WebsiteStudio.UI.Controls {
 
 		public void FillFromProject(Project project) {
 			txtBaseURL.Text = project.BaseURL;
+			txtLocalRootPath.Text = project.ServerLocalRootPath;
 			txtOutputPath.Text = project.OutputPath;
 			txtThemePath.Text = project.ThemePath;
 			chkUglyURLs.Checked = project.UglyURLs;
@@ -60,6 +62,7 @@ namespace WebsiteStudio.UI.Controls {
 
 		public void FillProjectFrom(Project project) {
 			project.BaseURL = txtBaseURL.Text;
+			project.ServerLocalRootPath = txtLocalRootPath.Text;
 			project.OutputPath = txtOutputPath.Text;
 			project.ThemePath = txtThemePath.Text;
 			project.UglyURLs = chkUglyURLs.Checked;

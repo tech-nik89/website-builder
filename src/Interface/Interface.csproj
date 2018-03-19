@@ -51,6 +51,9 @@
     <Compile Include="Compiling\IHtmlElement.cs" />
     <Compile Include="Compiling\IModuleCompiler.cs" />
     <Compile Include="Compiling\Library.cs" />
+    <Compile Include="Compiling\Security\IGroup.cs" />
+    <Compile Include="Compiling\Security\IUser.cs" />
+    <Compile Include="Compiling\Security\PageSecurityInfo.cs" />
     <Compile Include="Content\GetLinkMode.cs" />
     <Compile Include="Content\ILink.cs" />
     <Compile Include="Icons\IconPackIcon.cs" />

@@ -166,6 +166,7 @@ namespace WebsiteStudio.Core.Storage {
 				new XElement(ProjectStorageConstants.MetaKeywords, GetLocalizedStringArray(_Project.MetaKeywords)),
 				new XElement(ProjectStorageConstants.Webserver, _Project.Webserver?.FullName ?? String.Empty),
 				new XElement(ProjectStorageConstants.BaseURL, _Project.BaseURL),
+				new XElement(ProjectStorageConstants.ServerLocalRootPath, _Project.ServerLocalRootPath ?? String.Empty),
 				new XElement(ProjectStorageConstants.SSLRedirect, _Project.SSLRedirect),
 				new XElement(ProjectStorageConstants.Sitemap, _Project.GenerateSitemap),
 				new XElement(ProjectStorageConstants.Favicon, _Project.Favicon != null ? Convert.ToBase64String(_Project.Favicon) : String.Empty)

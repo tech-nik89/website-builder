@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using WebsiteStudio.Interface.Compiling.Security;
 
 namespace WebsiteStudio.Core.Security {
-	public class User {
+
+	[DebuggerDisplay("{Name}")]
+	public class User : IUser {
 
 		private readonly Project _Project;
 
@@ -21,6 +26,8 @@ namespace WebsiteStudio.Core.Security {
 		}
 
 		public CustomCollection<Group> Memberships { get; private set; }
+
+		public IEnumerable<IGroup> GroupMemberships => Memberships.Cast<IGroup>();
 
 		internal User(Project project) {
 			_Project = project;

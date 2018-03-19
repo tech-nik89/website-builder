@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using WebsiteStudio.Interface.Compiling.Security;
 
 namespace WebsiteStudio.Core.Security {
-	public class Group {
+
+	[DebuggerDisplay("{Name}")]
+	public class Group : IGroup {
 
 		private readonly Project _Project;
 		

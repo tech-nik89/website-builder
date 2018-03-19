@@ -81,5 +81,16 @@ namespace WebsiteStudio.Core.Plugins {
 		public String GetFormattedFileSize(long bytes) {
 			return bytes.FormatFileSize();
 		}
+
+		public String GetRemoteFullPath(String localFullPath) {
+			String localRelativePath = Utilities.FullToRelativePath(localFullPath, _Project.OutputPath);
+			if (_Project.ServerLocalRootPath.Contains("/")) {
+				localRelativePath = localRelativePath.Replace(Path.PathSeparator, '/');
+				return _Project.ServerLocalRootPath + localRelativePath;
+			}
+			else {
+				return Path.Combine(_Project.ServerLocalRootPath, localRelativePath);
+			}
+		}
 	}
 }

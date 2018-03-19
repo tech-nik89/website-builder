@@ -145,6 +145,8 @@ namespace WebsiteStudio.Core {
 
 		public String BaseURL { get; set; }
 
+		public String ServerLocalRootPath { get; set; }
+
 		public bool SSLRedirect { get; set; }
 
 		public bool GenerateSitemap { get; set; }

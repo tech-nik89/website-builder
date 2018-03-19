@@ -91,6 +91,8 @@ namespace WebsiteStudio.Core.Storage {
 
 		public const String BaseURL = "baseURL";
 
+		public const String ServerLocalRootPath = "serverLocalRootPath";
+
 		public const String SSLRedirect = "sslRedirect";
 
 		public const String Sitemap = "sitemap";
