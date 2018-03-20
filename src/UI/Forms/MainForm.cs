@@ -79,6 +79,7 @@ namespace WebsiteStudio.UI.Forms {
 			mnuProjectSave.Image = IconPack.Current.GetImage(IconPackIcon.Save);
 			mnuProjectOpen.Image = IconPack.Current.GetImage(IconPackIcon.Open);
 			mnuProjectSettings.Image = IconPack.Current.GetImage(IconPackIcon.Settings);
+			mnuProjectSecurity.Image = IconPack.Current.GetImage(IconPackIcon.Security);
 			mnuProjectExit.Image = IconPack.Current.GetImage(IconPackIcon.Close);
 
 			mnuContentMedia.Image = IconPack.Current.GetImage(IconPackIcon.Media);

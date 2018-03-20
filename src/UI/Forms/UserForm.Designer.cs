@@ -47,8 +47,8 @@
 			this.txtPassword.Location = new System.Drawing.Point(112, 51);
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = 'l';
-			this.txtPassword.Size = new System.Drawing.Size(366, 20);
-			this.txtPassword.TabIndex = 3;
+			this.txtPassword.Size = new System.Drawing.Size(221, 20);
+			this.txtPassword.TabIndex = 1;
 			// 
 			// lblPassword
 			// 
@@ -65,8 +65,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtName.Location = new System.Drawing.Point(112, 24);
 			this.txtName.Name = "txtName";
-			this.txtName.Size = new System.Drawing.Size(366, 20);
-			this.txtName.TabIndex = 1;
+			this.txtName.Size = new System.Drawing.Size(221, 20);
+			this.txtName.TabIndex = 0;
 			// 
 			// lblName
 			// 
@@ -80,10 +80,10 @@
 			// btnAccept
 			// 
 			this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAccept.Location = new System.Drawing.Point(311, 251);
+			this.btnAccept.Location = new System.Drawing.Point(166, 204);
 			this.btnAccept.Name = "btnAccept";
 			this.btnAccept.Size = new System.Drawing.Size(100, 25);
-			this.btnAccept.TabIndex = 1;
+			this.btnAccept.TabIndex = 2;
 			this.btnAccept.Text = "[OK]";
 			this.btnAccept.UseVisualStyleBackColor = true;
 			this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -92,10 +92,10 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(417, 251);
+			this.btnCancel.Location = new System.Drawing.Point(272, 204);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(100, 25);
-			this.btnCancel.TabIndex = 2;
+			this.btnCancel.TabIndex = 3;
 			this.btnCancel.Text = "[Cancel]";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -110,7 +110,7 @@
 			this.tabMain.Location = new System.Drawing.Point(12, 12);
 			this.tabMain.Name = "tabMain";
 			this.tabMain.SelectedIndex = 0;
-			this.tabMain.Size = new System.Drawing.Size(505, 233);
+			this.tabMain.Size = new System.Drawing.Size(360, 186);
 			this.tabMain.TabIndex = 4;
 			// 
 			// tabGeneral
@@ -122,7 +122,7 @@
 			this.tabGeneral.Location = new System.Drawing.Point(4, 22);
 			this.tabGeneral.Name = "tabGeneral";
 			this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-			this.tabGeneral.Size = new System.Drawing.Size(497, 207);
+			this.tabGeneral.Size = new System.Drawing.Size(352, 160);
 			this.tabGeneral.TabIndex = 0;
 			this.tabGeneral.Text = "[General]";
 			this.tabGeneral.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
 			this.tabMemberships.Location = new System.Drawing.Point(4, 22);
 			this.tabMemberships.Name = "tabMemberships";
 			this.tabMemberships.Padding = new System.Windows.Forms.Padding(3);
-			this.tabMemberships.Size = new System.Drawing.Size(497, 207);
+			this.tabMemberships.Size = new System.Drawing.Size(352, 163);
 			this.tabMemberships.TabIndex = 1;
 			this.tabMemberships.Text = "[Memberships]";
 			this.tabMemberships.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
 			this.lvwGroups.GridLines = true;
 			this.lvwGroups.Location = new System.Drawing.Point(3, 3);
 			this.lvwGroups.Name = "lvwGroups";
-			this.lvwGroups.Size = new System.Drawing.Size(491, 201);
+			this.lvwGroups.Size = new System.Drawing.Size(346, 157);
 			this.lvwGroups.TabIndex = 0;
 			this.lvwGroups.UseCompatibleStateImageBehavior = false;
 			this.lvwGroups.View = System.Windows.Forms.View.Details;
@@ -164,11 +164,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(529, 288);
+			this.ClientSize = new System.Drawing.Size(384, 241);
 			this.Controls.Add(this.tabMain);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAccept);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(400, 280);
 			this.Name = "UserForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "UserForm";

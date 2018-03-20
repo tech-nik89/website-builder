@@ -24,8 +24,8 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.gbxGeneral = new System.Windows.Forms.GroupBox();
-			this.lblName = new System.Windows.Forms.Label();
 			this.txtName = new System.Windows.Forms.TextBox();
+			this.lblName = new System.Windows.Forms.Label();
 			this.btnAccept = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.gbxGeneral.SuspendLayout();
@@ -39,10 +39,19 @@
 			this.gbxGeneral.Controls.Add(this.lblName);
 			this.gbxGeneral.Location = new System.Drawing.Point(12, 12);
 			this.gbxGeneral.Name = "gbxGeneral";
-			this.gbxGeneral.Size = new System.Drawing.Size(374, 78);
+			this.gbxGeneral.Size = new System.Drawing.Size(360, 78);
 			this.gbxGeneral.TabIndex = 0;
 			this.gbxGeneral.TabStop = false;
 			this.gbxGeneral.Text = "[General]";
+			// 
+			// txtName
+			// 
+			this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtName.Location = new System.Drawing.Point(106, 31);
+			this.txtName.Name = "txtName";
+			this.txtName.Size = new System.Drawing.Size(223, 20);
+			this.txtName.TabIndex = 1;
 			// 
 			// lblName
 			// 
@@ -53,19 +62,10 @@
 			this.lblName.TabIndex = 0;
 			this.lblName.Text = "[Name]";
 			// 
-			// txtName
-			// 
-			this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtName.Location = new System.Drawing.Point(106, 31);
-			this.txtName.Name = "txtName";
-			this.txtName.Size = new System.Drawing.Size(237, 20);
-			this.txtName.TabIndex = 1;
-			// 
 			// btnAccept
 			// 
 			this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAccept.Location = new System.Drawing.Point(180, 109);
+			this.btnAccept.Location = new System.Drawing.Point(166, 109);
 			this.btnAccept.Name = "btnAccept";
 			this.btnAccept.Size = new System.Drawing.Size(100, 25);
 			this.btnAccept.TabIndex = 1;
@@ -77,7 +77,7 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(286, 109);
+			this.btnCancel.Location = new System.Drawing.Point(272, 109);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(100, 25);
 			this.btnCancel.TabIndex = 2;
@@ -91,11 +91,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(398, 146);
+			this.ClientSize = new System.Drawing.Size(384, 146);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAccept);
 			this.Controls.Add(this.gbxGeneral);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(400, 185);
 			this.Name = "GroupForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "[Group]";

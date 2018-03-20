@@ -37,6 +37,9 @@
 		Warning,
 		Info,
 		Update,
-		Image
+		Image,
+		Security,
+		User,
+		Group
 	}
 }

@@ -26,6 +26,7 @@ namespace WebsiteStudio.UI.Forms {
 			LocalizeComponent();
 
 			DialogResult = DialogResult.Cancel;
+			Icon = IconPack.Current.GetIcon(Interface.Icons.IconPackIcon.Group);
 
 			_Project = project;
 			_Group = group;

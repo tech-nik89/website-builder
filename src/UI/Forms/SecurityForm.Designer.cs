@@ -55,7 +55,7 @@
 			this.lvwUsers.HideSelection = false;
 			this.lvwUsers.Location = new System.Drawing.Point(0, 0);
 			this.lvwUsers.Name = "lvwUsers";
-			this.lvwUsers.Size = new System.Drawing.Size(540, 297);
+			this.lvwUsers.Size = new System.Drawing.Size(325, 109);
 			this.lvwUsers.TabIndex = 4;
 			this.lvwUsers.UseCompatibleStateImageBehavior = false;
 			this.lvwUsers.View = System.Windows.Forms.View.Details;
@@ -72,7 +72,7 @@
 			// btnUserDelete
 			// 
 			this.btnUserDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnUserDelete.Location = new System.Drawing.Point(218, 303);
+			this.btnUserDelete.Location = new System.Drawing.Point(218, 115);
 			this.btnUserDelete.Name = "btnUserDelete";
 			this.btnUserDelete.Size = new System.Drawing.Size(100, 25);
 			this.btnUserDelete.TabIndex = 10;
@@ -83,7 +83,7 @@
 			// btnUserEdit
 			// 
 			this.btnUserEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnUserEdit.Location = new System.Drawing.Point(112, 303);
+			this.btnUserEdit.Location = new System.Drawing.Point(112, 115);
 			this.btnUserEdit.Name = "btnUserEdit";
 			this.btnUserEdit.Size = new System.Drawing.Size(100, 25);
 			this.btnUserEdit.TabIndex = 9;
@@ -94,7 +94,7 @@
 			// btnUserAdd
 			// 
 			this.btnUserAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnUserAdd.Location = new System.Drawing.Point(6, 303);
+			this.btnUserAdd.Location = new System.Drawing.Point(6, 115);
 			this.btnUserAdd.Name = "btnUserAdd";
 			this.btnUserAdd.Size = new System.Drawing.Size(100, 25);
 			this.btnUserAdd.TabIndex = 8;
@@ -112,7 +112,7 @@
 			this.tabMain.Location = new System.Drawing.Point(12, 12);
 			this.tabMain.Name = "tabMain";
 			this.tabMain.SelectedIndex = 0;
-			this.tabMain.Size = new System.Drawing.Size(548, 360);
+			this.tabMain.Size = new System.Drawing.Size(448, 235);
 			this.tabMain.TabIndex = 11;
 			// 
 			// tabGroups
@@ -124,7 +124,7 @@
 			this.tabGroups.Location = new System.Drawing.Point(4, 22);
 			this.tabGroups.Name = "tabGroups";
 			this.tabGroups.Padding = new System.Windows.Forms.Padding(3);
-			this.tabGroups.Size = new System.Drawing.Size(540, 334);
+			this.tabGroups.Size = new System.Drawing.Size(440, 209);
 			this.tabGroups.TabIndex = 1;
 			this.tabGroups.Text = "[Groups]";
 			this.tabGroups.UseVisualStyleBackColor = true;
@@ -132,7 +132,7 @@
 			// btnGroupDelete
 			// 
 			this.btnGroupDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnGroupDelete.Location = new System.Drawing.Point(218, 303);
+			this.btnGroupDelete.Location = new System.Drawing.Point(218, 178);
 			this.btnGroupDelete.Name = "btnGroupDelete";
 			this.btnGroupDelete.Size = new System.Drawing.Size(100, 25);
 			this.btnGroupDelete.TabIndex = 13;
@@ -143,7 +143,7 @@
 			// btnGroupAdd
 			// 
 			this.btnGroupAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnGroupAdd.Location = new System.Drawing.Point(6, 303);
+			this.btnGroupAdd.Location = new System.Drawing.Point(6, 178);
 			this.btnGroupAdd.Name = "btnGroupAdd";
 			this.btnGroupAdd.Size = new System.Drawing.Size(100, 25);
 			this.btnGroupAdd.TabIndex = 11;
@@ -154,7 +154,7 @@
 			// btnGroupEdit
 			// 
 			this.btnGroupEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnGroupEdit.Location = new System.Drawing.Point(112, 303);
+			this.btnGroupEdit.Location = new System.Drawing.Point(112, 178);
 			this.btnGroupEdit.Name = "btnGroupEdit";
 			this.btnGroupEdit.Size = new System.Drawing.Size(100, 25);
 			this.btnGroupEdit.TabIndex = 12;
@@ -174,7 +174,7 @@
 			this.lvwGroups.HideSelection = false;
 			this.lvwGroups.Location = new System.Drawing.Point(0, 0);
 			this.lvwGroups.Name = "lvwGroups";
-			this.lvwGroups.Size = new System.Drawing.Size(540, 297);
+			this.lvwGroups.Size = new System.Drawing.Size(440, 172);
 			this.lvwGroups.TabIndex = 5;
 			this.lvwGroups.UseCompatibleStateImageBehavior = false;
 			this.lvwGroups.View = System.Windows.Forms.View.Details;
@@ -197,7 +197,7 @@
 			this.tabUsers.Location = new System.Drawing.Point(4, 22);
 			this.tabUsers.Name = "tabUsers";
 			this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
-			this.tabUsers.Size = new System.Drawing.Size(540, 334);
+			this.tabUsers.Size = new System.Drawing.Size(325, 146);
 			this.tabUsers.TabIndex = 0;
 			this.tabUsers.Text = "[Users]";
 			this.tabUsers.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
 			// btnAccept
 			// 
 			this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAccept.Location = new System.Drawing.Point(354, 378);
+			this.btnAccept.Location = new System.Drawing.Point(254, 253);
 			this.btnAccept.Name = "btnAccept";
 			this.btnAccept.Size = new System.Drawing.Size(100, 25);
 			this.btnAccept.TabIndex = 12;
@@ -217,7 +217,7 @@
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(460, 378);
+			this.btnCancel.Location = new System.Drawing.Point(360, 253);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(100, 25);
 			this.btnCancel.TabIndex = 13;
@@ -231,10 +231,12 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
-			this.ClientSize = new System.Drawing.Size(572, 415);
+			this.ClientSize = new System.Drawing.Size(472, 290);
 			this.Controls.Add(this.btnAccept);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.tabMain);
+			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(373, 266);
 			this.Name = "SecurityForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "[Security]";

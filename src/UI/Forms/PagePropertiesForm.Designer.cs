@@ -464,6 +464,7 @@
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAccept);
 			this.Controls.Add(this.tabMain);
+			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(500, 360);
 			this.Name = "PagePropertiesForm";
 			this.ShowInTaskbar = false;

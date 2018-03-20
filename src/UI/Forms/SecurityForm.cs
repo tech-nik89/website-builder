@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Security;
+using WebsiteStudio.Interface.Icons;
 using WebsiteStudio.UI.Localization;
+using WebsiteStudio.UI.Resources;
 
 namespace WebsiteStudio.UI.Forms {
 	public partial class SecurityForm : Form {
@@ -17,6 +19,7 @@ namespace WebsiteStudio.UI.Forms {
 			LocalizeComponent();
 
 			DialogResult = DialogResult.Cancel;
+			Icon = IconPack.Current.GetIcon(IconPackIcon.Security);
 
 			_Project = project;
 
