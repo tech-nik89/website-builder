@@ -14,8 +14,6 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		private readonly String[] _Languages;
 
-		public String Output { get; private set; }
-		
 		public BuildIndexFileStep(Project project) {
 			_Project = project;
 			_Languages = _Project.Languages.Select(l => l.Id).ToArray();

@@ -22,15 +22,13 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 
 		private readonly byte[] _Favicon;
 
-		public String Output { get; private set; }
+		public BuildImagesStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles, byte[] favicon) 
+			: base("Building image files") {
 
-		public BuildImagesStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles, byte[] favicon) {
 			_MetaDirectory = metaDirectory;
 			_Theme = theme;
 			_StyleSheetFiles = styleSheetFiles;
 			_Favicon = favicon;
-
-			Output = "Building image files";
 		}
 
 		public override void Run() {

@@ -14,15 +14,12 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 		private readonly Theme _Theme;
 
 		private readonly List<String> _StyleSheetFiles;
-
-		public String Output { get; private set; }
-
-		public BuildStyleSheetsStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles) {
+		
+		public BuildStyleSheetsStep(Theme theme, DirectoryInfo metaDirectory, List<String> styleSheetFiles) 
+			: base("Building style sheets") {
 			_MetaDirectory = metaDirectory;
 			_StyleSheetFiles = styleSheetFiles;
 			_Theme = theme;
-
-			Output = "Building style sheets";
 		}
 
 		public override void Run() {

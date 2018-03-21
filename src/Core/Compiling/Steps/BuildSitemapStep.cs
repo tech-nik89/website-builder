@@ -8,8 +8,6 @@ using WebsiteStudio.Core.Pages;
 namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildSitemapStep : CompilerStep {
 
-		public String Output { get; private set; }
-
 		private readonly Project _Project;
 
 		private readonly String _OutputPath;

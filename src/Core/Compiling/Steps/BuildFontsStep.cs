@@ -5,17 +5,15 @@ using WebsiteStudio.Core.Theming;
 namespace WebsiteStudio.Core.Compiling.Steps {
 	class BuildFontsStep : CompilerStep {
 
-		public String Output { get; private set; }
-
 		private readonly Theme _Theme;
 
 		private readonly DirectoryInfo _MetaDirectory;
 
-		public BuildFontsStep(Theme theme, DirectoryInfo metaDirectory) {
+		public BuildFontsStep(Theme theme, DirectoryInfo metaDirectory)
+			: base("Building font files") {
+
 			_Theme = theme;
 			_MetaDirectory = metaDirectory;
-
-			Output = "Building font files";
 		}
 
 		public override void Run() {

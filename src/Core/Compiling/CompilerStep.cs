@@ -13,8 +13,12 @@ namespace WebsiteStudio.Core.Compiling {
 
 		protected readonly List<CompilerMessage> _Messages;
 
-		public CompilerStep() {
+		public CompilerStep() : this(String.Empty) {
+		}
+
+		public CompilerStep(String output) {
 			_Messages = new List<CompilerMessage>();
+			Output = output;
 		}
 
 	}

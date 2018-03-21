@@ -5,12 +5,11 @@ namespace WebsiteStudio.Core.Compiling.Steps {
 	class PrepareDirectoryStep : CompilerStep {
 
 		private readonly DirectoryInfo _Directory;
+		
+		public PrepareDirectoryStep(DirectoryInfo directory)
+			: base(String.Format("Preparing directory: {0}", directory.FullName)) {
 
-		public String Output { get; private set; }
-
-		public PrepareDirectoryStep(DirectoryInfo directory) {
 			_Directory = directory;
-			Output = String.Format("Preparing directory: {0}", _Directory.FullName);
 		}
 
 		public override void Run() {

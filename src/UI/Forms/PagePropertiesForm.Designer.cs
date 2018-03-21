@@ -418,6 +418,7 @@
 			this.lvwSecurity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clnGroup});
 			this.lvwSecurity.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvwSecurity.FullRowSelect = true;
 			this.lvwSecurity.GridLines = true;
 			this.lvwSecurity.Location = new System.Drawing.Point(0, 0);
 			this.lvwSecurity.Name = "lvwSecurity";

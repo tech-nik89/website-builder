@@ -7,9 +7,7 @@ using WebsiteStudio.Interface.Plugins;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
 	class WebserverStep : CompilerStep {
-
-		public String Output { get; private set; }
-
+		
 		private readonly IWebserver _Webserver;
 		private readonly Project _Project;
 		private readonly IEnumerable<PageSecurityInfo> _PageSecurityInfos;

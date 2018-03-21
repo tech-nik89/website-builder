@@ -5,15 +5,14 @@ using WebsiteStudio.Core.Media;
 
 namespace WebsiteStudio.Core.Compiling.Steps {
 	class CopyMediaStep : CompilerStep {
-
-		public String Output { get; private set; }
-
+		
 		private readonly IEnumerable<MediaItem> _Media;
 
 		private readonly DirectoryInfo _Directory;
 
-		public CopyMediaStep(IEnumerable<MediaItem> media, DirectoryInfo mediaDirectory) {
-			Output = "Copying media";
+		public CopyMediaStep(IEnumerable<MediaItem> media, DirectoryInfo mediaDirectory) 
+			: base("Copying media") {
+			
 			_Media = media;
 			_Directory = mediaDirectory;
 		}
