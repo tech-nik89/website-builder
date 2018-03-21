@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using WebsiteStudio.Core;
 using WebsiteStudio.Core.Security;
@@ -12,6 +14,7 @@ namespace WebsiteStudio.UI.Forms {
 		private readonly Group _Group;
 		private readonly Project _Project;
 		private readonly GroupValidator.Mode _ValidationMode = GroupValidator.Mode.Edit;
+		private readonly List<User> _Members;
 
 		public Group Group => _Group;
 
@@ -31,13 +34,20 @@ namespace WebsiteStudio.UI.Forms {
 			_Project = project;
 			_Group = group;
 			txtName.Text = _Group.Name;
+
+			_Members = new List<User>();
+			_Members.AddRange(_Project.Users.Where(user => user.Memberships.Contains(_Group)));
+			lvwMembers.VirtualListSize = _Members.Count;
 		}
 
 		private void LocalizeComponent() {
 			Text = Strings.Group;
-			gbxGeneral.Text = Strings.General;
+			tabGeneral.Text = Strings.General;
+			tabMembers.Text = Strings.Members;
 
 			lblName.Text = Strings.Name + ":";
+
+			clnMemberName.Text = Strings.Name;
 
 			btnAccept.Text = Strings.Accept;
 			btnCancel.Text = Strings.Cancel;
@@ -46,7 +56,7 @@ namespace WebsiteStudio.UI.Forms {
 		private void ApplyToGroup(Group group) {
 			group.Name = txtName.Text;
 		}
-
+		
 		private void btnAccept_Click(object sender, EventArgs e) {
 
 			Group validationGroup = _Project.CreateGroup();
@@ -66,6 +76,11 @@ namespace WebsiteStudio.UI.Forms {
 
 		private void btnCancel_Click(object sender, EventArgs e) {
 			Close();
+		}
+
+		private void lvwMembers_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e) {
+			User user = _Members[e.ItemIndex];
+			e.Item = new ListViewItem(user.Name);
 		}
 	}
 }
