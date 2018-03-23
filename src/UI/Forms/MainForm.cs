@@ -68,6 +68,10 @@ namespace WebsiteStudio.UI.Forms {
 
 			tslStatus.Text = StatusText.Ready;
 			CurrentProject = new Project();
+
+			// Focus the output window once to ensure it's being
+			// displayed when running a build (workaround).
+			FocusOutputWindow();
 		}
 		
 		private void ApplyIcons() {
