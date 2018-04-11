@@ -1,6 +1,6 @@
 @echo off
 
-set MSBUILD_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\amd64\MSBuild.exe"
+set MSBUILD_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\amd64\MSBuild.exe"
 set INNO_PATH="C:\Program Files (x86)\Inno Setup 5\Compil32.exe"
 
 rem UPDATE VERSION INFO

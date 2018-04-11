@@ -5,7 +5,7 @@
 	</description>
 	<settings>
 		<imageCssClass>.img-{0}</imageCssClass>
-	</settings>
+	<maxMenuDepth>3</maxMenuDepth></settings>
 	<style type="less" name="default">
 		@acentColor: #DD5533;
 		
@@ -72,7 +72,7 @@
 			border: 2px solid transparent;
 			outline:none;
 			
-			> i {
+			&gt; i {
 				position:absolute;
 				top:4px;
 				right:4px;
@@ -87,11 +87,11 @@
 				border-radius:3px;
 			}
 			
-			> ul {
+			&gt; ul {
 				padding:0;
 				margin:28px 0 0 0;
 				
-				> li {
+				&gt; li {
 					margin:0;
 					padding:0;
 					
@@ -145,15 +145,15 @@
 				margin:0;
 			}
 			
-			> ul {
+			&gt; ul {
 				margin:0 15px;
 				padding:0;
 				
-				> li {
+				&gt; li {
 					position:relative;
 					display:inline-block;
 					
-					> ul {
+					&gt; ul {
 						position:absolute;
 						left:0;
 						top:35px;
@@ -176,7 +176,7 @@
 				}
 				
 				li:hover {
-					> ul {
+					&gt; ul {
 						display:block;
 					}
 				}

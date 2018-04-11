@@ -24,7 +24,7 @@ Source: "..\src\UI\bin\Release\*.dll"; DestDir: "{app}"; Components: core
 Source: "..\src\UI\bin\Release\Plugins\*.dll"; DestDir: "{app}\Plugins"; Components: core
 Source: "..\src\UI\bin\Release\Resources\IconPacks\Default.zip"; DestDir: "{app}\Resources\IconPacks"; DestName: "Default.zip"; Components: core
 Source: "..\LICENSE"; DestDir: "{app}"; DestName: "license.txt"; Components: core
-Source: "..\themes\*.wbtx"; DestDir: "{app}\SampleThemes"; Components: themes
+Source: "..\themes\*.wstx"; DestDir: "{app}\SampleThemes"; Components: themes
 Source: "..\src\Compiler\bin\Release\WebsiteStudio.Compiler.exe"; DestDir: "{app}"; Components: compilerconsole
 Source: "..\src\Compiler\bin\Release\WebsiteStudio.Compiler.exe.config"; DestDir: "{app}"; Components: compilerconsole
 
