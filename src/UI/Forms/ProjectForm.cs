@@ -204,7 +204,10 @@ namespace WebsiteStudio.UI.Forms {
 
 			_CompilerRunning = false;
 			CompilerSetControls(true);
-			UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded);
+			UpdateStatus(compiler.Error ? StatusText.BuildFailed : StatusText.BuildSucceeded,
+				compiler.Messages.Count(x => x.MessageType == CompilerMessageType.Error),
+				compiler.Messages.Count(x => x.MessageType == CompilerMessageType.Warning)
+			);
 		}
 
 		private void FocusOutputWindow() {
@@ -258,6 +261,11 @@ namespace WebsiteStudio.UI.Forms {
 
 		private void UpdateStatus(String status) {
 			tslStatus.Text = status;
+		}
+
+		private void UpdateStatus(String status, int errors, int warnings) {
+			tslStatus.Text = String.Format("{0} ({1} {2} / {3} {4})", 
+				status, errors, StatusText.Errors, warnings, StatusText.Warnings);
 		}
 
 		private bool ConfirmCloseDirtyProject() {
@@ -357,12 +365,13 @@ namespace WebsiteStudio.UI.Forms {
 
 				_CompilerError.Messages = publisher.Messages.ToArray();
 
+				UpdateStatus(publisher.Error ? StatusText.PublishingFailed : StatusText.PublishingSucceeded,
+					publisher.Messages.Count(x => x.MessageType == CompilerMessageType.Error),
+					publisher.Messages.Count(x => x.MessageType == CompilerMessageType.Warning)
+				);
+
 				if (publisher.Error) {
-					UpdateStatus(StatusText.PublishingFailed);
 					FocusErrorWindow();
-				}
-				else {
-					UpdateStatus(StatusText.PublishingSucceeded);
 				}
 			}
 			finally {

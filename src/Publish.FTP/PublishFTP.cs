@@ -84,7 +84,7 @@ namespace WebsiteStudio.Publish.FTP {
 						progress?.Report("Connected.");
 
 						if (client.HashAlgorithms == FtpHashAlgorithm.NONE) {
-							CompilerMessage message = new CompilerMessage("FTP server does not support the HASH command. File size is used instead.", CompilerMessageType.Warning);
+							CompilerMessage message = new CompilerMessage("FTP server does not support the HASH command. File size and modification date is used instead.", CompilerMessageType.Warning);
 
 							_Messages.Add(message);
 							progress?.Report(message.Message);

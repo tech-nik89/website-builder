@@ -78,7 +78,7 @@ namespace WebsiteStudio.Publish.FTP {
 					return hash.IsValid && hash.Verify(localFile.FullName);
 				}
 				else {
-					return remote.Size == localFile.Length;
+					return remote.Size == localFile.Length && localFile.LastWriteTime <= remote.Modified;
 				}
 			}
 
